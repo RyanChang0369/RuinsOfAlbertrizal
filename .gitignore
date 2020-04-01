@@ -1,0 +1,10 @@
+packages/
+.vs/
+No/obj/
+No/bin/
+Appdata.lnk
+No.sln
+Thumbs.db
+No.csproj
+No.csproj.user
+*.config
