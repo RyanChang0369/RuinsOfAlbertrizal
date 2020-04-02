@@ -6,9 +6,5 @@
         xmlns:local="clr-namespace:RuinsOfAlbertrizal"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-    </Grid>
+    <Frame x:Name="WindowFrame" Source="MainMenu.xaml"/>
 </Window>

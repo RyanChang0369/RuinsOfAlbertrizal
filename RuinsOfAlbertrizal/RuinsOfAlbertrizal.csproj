@@ -55,10 +55,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AIs\AI.cs" />
+    <Compile Include="Characters\Character.cs" />
+    <Compile Include="Characters\Player\Player.cs" />
+    <Compile Include="Characters\Size.cs" />
+    <Compile Include="Editor.xaml.cs">
+      <DependentUpon>Editor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Characters\Enemies\Enemy.cs" />
+    <Compile Include="Environment\Buff.cs" />
+    <Compile Include="Environment\Hazard.cs" />
+    <Compile Include="Environment\Obstacle.cs" />
+    <Compile Include="XMLInterpreter\FileHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleInterface.xaml.cs">
@@ -99,6 +111,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Editor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BattleInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\" />
+    <Folder Include="Environment\Maps\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
