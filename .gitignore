@@ -1,10 +1,10 @@
 packages/
 .vs/
-No/obj/
-No/bin/
+RuinsOfAlbertrizal/obj/
+RuinsOfAlbertrizal/bin/
 Appdata.lnk
-No.sln
+*.sln
 Thumbs.db
-No.csproj
-No.csproj.user
+*.csproj
+*.csproj.user
 *.config
