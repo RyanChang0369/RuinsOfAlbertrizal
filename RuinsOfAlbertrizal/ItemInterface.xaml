@@ -8,7 +8,7 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="ItemInterface">
 
-    <Grid>
+    <Grid Background="WhiteSmoke">
         
     </Grid>
 </Page>

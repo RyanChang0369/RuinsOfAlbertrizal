@@ -16,12 +16,26 @@
         </Grid.RowDefinitions>
         <Label Style="{StaticResource title}">Create Enemy</Label>
         <StackPanel Grid.Row="1">
-            
+            <Label ToolTip='The name of the "species", such as human or orc'>General Name</Label>
+            <TextBox x:Name="GeneralName"/>
+            <Label ToolTip='The proper name, such as Bob or Robert'>Specific Name</Label>
+            <TextBox x:Name="SpecificName"/>
+            <Label Content="HP"/>
+            <TextBox x:Name="BaseHP"/>
+            <Label Content="Mana"/>
+            <TextBox x:Name="BaseMana"/>
+            <Label Content="Defense"/>
+            <TextBox x:Name="BaseDef"/>
+            <Label Content="Damage"/>
+            <TextBox x:Name="BaseDmg"/>
+            <Label Content="Speed"/>
+            <TextBox x:Name="BaseSpd"/>
+            <Label Content="Abilities"/>
+            <TextBox x:Name="Abilities" IsEnabled="False"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Button Click="Back">Back</Button>
             <Button Click="Save">Save</Button>
-            <Button Click="Load">Load</Button>
         </StackPanel>
     </Grid>
 </Page>

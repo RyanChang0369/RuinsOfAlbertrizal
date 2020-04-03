@@ -56,14 +56,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AIs\AI.cs" />
+    <Compile Include="ArrayMethods.cs" />
+    <Compile Include="Characters\Boss.cs" />
     <Compile Include="Characters\Character.cs" />
-    <Compile Include="Characters\Player\Player.cs" />
+    <Compile Include="Characters\Player.cs" />
     <Compile Include="Characters\Size.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Characters\Enemies\Enemy.cs" />
+    <Compile Include="Characters\Enemy.cs" />
     <Compile Include="Editor\CreateEnemyPrompt.xaml.cs">
       <DependentUpon>CreateEnemyPrompt.xaml</DependentUpon>
     </Compile>
@@ -76,9 +78,15 @@
     <Compile Include="Editor\EditorMenu.xaml.cs">
       <DependentUpon>EditorMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Environment\Buff.cs" />
+    <Compile Include="Items\Equiptment.cs" />
+    <Compile Include="Items\Consumable.cs" />
+    <Compile Include="Items\Item.cs" />
+    <Compile Include="Mechanics\Buff.cs" />
     <Compile Include="Environment\Hazard.cs" />
     <Compile Include="Environment\Obstacle.cs" />
+    <Compile Include="GameBase.cs" />
+    <Compile Include="Environment\Map.cs" />
+    <Compile Include="XMLInterpreter\FileDialog.cs" />
     <Compile Include="XMLInterpreter\FileHandler.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\" />
-    <Folder Include="Environment\Maps\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
