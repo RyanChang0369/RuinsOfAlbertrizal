@@ -59,14 +59,23 @@
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Player\Player.cs" />
     <Compile Include="Characters\Size.cs" />
-    <Compile Include="Editor.xaml.cs">
-      <DependentUpon>Editor.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Characters\Enemies\Enemy.cs" />
+    <Compile Include="Editor\CreateEnemyPrompt.xaml.cs">
+      <DependentUpon>CreateEnemyPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\CreateMapPrompt.xaml.cs">
+      <DependentUpon>CreateMapPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\CreatePlayerPrompt.xaml.cs">
+      <DependentUpon>CreatePlayerPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\EditorMenu.xaml.cs">
+      <DependentUpon>EditorMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Environment\Buff.cs" />
     <Compile Include="Environment\Hazard.cs" />
     <Compile Include="Environment\Obstacle.cs" />
@@ -111,13 +120,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Editor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="BattleInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\CreateEnemyPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\CreateMapPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\CreatePlayerPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\EditorMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ItemInterface.xaml">
       <Generator>MSBuild:Compile</Generator>

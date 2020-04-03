@@ -1,0 +1,44 @@
+﻿<Page x:Class="RuinsOfAlbertrizal.Editor.CreatePlayerPrompt"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1600"
+      Title="CreatePlayerPrompt">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource title}">Create Player</Label>
+        <StackPanel Grid.Row="1">
+            <Label ToolTip='The name of the "species", such as human or orc'>General Name</Label>
+            <TextBox x:Name="GeneralName"/>
+            <Label ToolTip='The proper name, such as Bob or Robert'>Specific Name</Label>
+            <TextBox x:Name="SpecificName"/>
+            <Label Content="HP"/>
+            <TextBox x:Name="BaseHP"/>
+            <Label Content="Mana"/>
+            <TextBox x:Name="BaseMana"/>
+            <Label Content="Defense"/>
+            <TextBox x:Name="BaseDef"/>
+            <Label Content="Damage"/>
+            <TextBox x:Name="BaseDmg"/>
+            <Label Content="Spd"/>
+            <TextBox x:Name="BaseSpd"/>
+            <Label Content="Jump"/>
+            <TextBox x:Name="BaseJump"/>
+            <Label Content="Abilities"/>
+            <TextBox x:Name="Abilities" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button Click="Back">Back</Button>
+            <Button Click="Save">Save</Button>
+            <Button Click="Load">Load</Button>
+        </StackPanel>
+    </Grid>
+</Page>

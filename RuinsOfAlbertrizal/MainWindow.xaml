@@ -5,6 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RuinsOfAlbertrizal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
-    <Frame x:Name="WindowFrame" Source="MainMenu.xaml"/>
+        Title="MainWindow" Height="1000" Width="1600">
+    <Frame x:Name="WindowFrame" NavigationUIVisibility="Hidden" Source="MainMenu.xaml"/>
 </Window>

@@ -47,7 +47,7 @@
         </Style>
 
         <!--Button Styles-->
-        <Style x:Key="btn" TargetType="Button">
+        <Style TargetType="Button">
             <Setter Property="FontSize" Value="36"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>

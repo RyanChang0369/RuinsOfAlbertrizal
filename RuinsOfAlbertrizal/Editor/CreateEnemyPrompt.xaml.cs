@@ -13,21 +13,29 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RuinsOfAlbertrizal
+namespace RuinsOfAlbertrizal.Editor
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for CreateEnemyPrompt.xaml
     /// </summary>
-    public partial class MainMenu : Page
+    public partial class CreateEnemyPrompt : Page
     {
-        public MainMenu()
+        public CreateEnemyPrompt()
         {
             InitializeComponent();
         }
 
-        private void OpenEditor(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Editor/EditorMenu.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("Editor/EditorMenu.xaml", UriKind.RelativeOrAbsolute));
+        }
+        private void Save(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Load(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
