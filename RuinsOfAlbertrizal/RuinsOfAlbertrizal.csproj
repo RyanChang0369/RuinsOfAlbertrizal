@@ -119,6 +119,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="assets\Other\TitleImage.xcf" />
+    <None Include="assets\Other\TitleImage2.xcf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -161,8 +163,10 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="assets\" />
+    <Resource Include="assets\Other\Shotguns.jpg" />
+    <Resource Include="assets\Other\TitleImage2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
