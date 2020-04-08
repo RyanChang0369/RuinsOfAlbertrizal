@@ -1,8 +1,2 @@
 # Ruins Of Albertrizal
-This is a game about something. I don't know what that something is, but it should be good.
-
-
-
-
-
-I lied, it's trash.
+Ruins of Albertrizal is based off of D&D in the regards that it focuses on user-made content. Sure, there is a campaign, but even it was made with the game's built-in map creator.
