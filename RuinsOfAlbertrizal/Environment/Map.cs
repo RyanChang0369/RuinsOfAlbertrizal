@@ -26,7 +26,5 @@ namespace RuinsOfAlbertrizal.Environment
             Levels = levels;
             LevelsCompleted = 0;
         }
-
-
     }
 }

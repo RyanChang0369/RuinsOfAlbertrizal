@@ -1,5 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
-using RuinsOfAlbertrizal.Items;
+using RuinsOfAlbertrizal.Text;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,9 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class Level
     {
-        string Name { get; set; }
+        public string Name { get; set; }
+
+        public List<Message> Messages { get; set; }
 
         Bitmap BackgroundImage { get; set; }
         /// <summary>
@@ -60,16 +62,31 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
-        public Level(string name, Bitmap backgroundImage,
+        public Level(string name, Bitmap backgroundImage, List<Message> messages,
             List<Enemy> enemies, Boss boss, int winCondition, double maxPoints)
         {
             Name = name;
             BackgroundImage = backgroundImage;
+            Messages = messages;
             Enemies = enemies;
             Boss = boss;
             WinCondition = winCondition;
             MaxPoints = maxPoints;
             Points = 0;
+        }
+
+        /// <summary>
+        /// Run whenever an enemy encounter is finished.
+        /// </summary>
+        public void EncounterFinished()
+        {
+            foreach(Message message in Messages)
+            {
+                if (message.ReadyToDisplay)
+                {
+                    message.Display();
+                }
+            }
         }
     }
 }

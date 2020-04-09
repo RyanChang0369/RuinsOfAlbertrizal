@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -95,6 +96,7 @@
     <Compile Include="Environment\Obstacle.cs" />
     <Compile Include="GameBase.cs" />
     <Compile Include="Environment\Map.cs" />
+    <Compile Include="Text\Message.cs" />
     <Compile Include="XMLInterpreter\FileDialog.cs" />
     <Compile Include="XMLInterpreter\FileHandler.cs" />
   </ItemGroup>
