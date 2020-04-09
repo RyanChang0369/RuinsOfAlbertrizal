@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="CreatePlayerPrompt">
+      Title="Create Player">
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -20,7 +20,13 @@
             <TextBox x:Name="GeneralName"/>
             <Label ToolTip='The proper name, such as Bob or Robert'>Specific Name</Label>
             <TextBox x:Name="SpecificName"/>
-            <Label Content="HP"/>
+            <Label>Class</Label>
+            <ComboBox x:Name="Class">
+                <ComboBoxItem>Warrior</ComboBoxItem>
+                <ComboBoxItem>Mage</ComboBoxItem>
+                <ComboBoxItem>Scout</ComboBoxItem>
+            </ComboBox>
+            <!--<Label Content="HP"/>
             <TextBox x:Name="BaseHP"/>
             <Label Content="Mana"/>
             <TextBox x:Name="BaseMana"/>
@@ -31,11 +37,11 @@
             <Label Content="Speed"/>
             <TextBox x:Name="BaseSpd"/>
             <Label Content="Abilities"/>
-            <TextBox x:Name="Abilities" IsEnabled="False"/>
+            <TextBox x:Name="Abilities" IsEnabled="False"/>-->
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Button Click="Back">Back</Button>
-            <Button Click="Save">Save</Button>
+            <Button Click="Create">Create</Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -78,6 +78,9 @@
     <Compile Include="Editor\EditorMenu.xaml.cs">
       <DependentUpon>EditorMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CampaignLoader.cs" />
+    <Compile Include="Editor\Validator.cs" />
+    <Compile Include="Environment\Level.cs" />
     <Compile Include="Items\Equiptment.cs" />
     <Compile Include="Items\Consumable.cs" />
     <Compile Include="Items\Item.cs" />

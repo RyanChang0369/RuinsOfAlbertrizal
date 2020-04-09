@@ -14,6 +14,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreatePlayerPrompt : Page
     {
+        public static Player CreatedPlayer;
         public CreatePlayerPrompt()
         {
             InitializeComponent();
@@ -23,42 +24,65 @@ namespace RuinsOfAlbertrizal.Editor
         {
             NavigationService.Navigate(new Uri("Editor/EditorMenu.xaml", UriKind.RelativeOrAbsolute));
         }
-        private void Save(object sender, RoutedEventArgs e)
+        private void Create(object sender, RoutedEventArgs e)
         {
-            TextBox[] requiredBoxes = { GeneralName, SpecificName, BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
-            TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
+            TextBox[] requiredTextBoxes = { GeneralName, SpecificName };
+            ComboBox[] requiredComboBoxes = { Class };
+            //TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
             int[] numericalValues = new int[5];
 
-            for (int i = 0; i < numericalBoxes.Length; i++)
+            if (!Validator.Validate(requiredTextBoxes, requiredComboBoxes))
+                return;
+
+            switch (Class.SelectedIndex)
             {
-                numericalBoxes[i].Text = Regex.Replace(numericalBoxes[i].Text, "[^0-9]+", "");
-                numericalValues[i] = int.Parse(numericalBoxes[i].Text);
+                case 0: //Warrior
+                    numericalValues[0] = 200;
+                    numericalValues[1] = 20;
+                    numericalValues[2] = 10;
+                    numericalValues[3] = 5;
+                    numericalValues[4] = 5;
+                    break;
+                case 1: //Mage
+                    numericalValues[0] = 150;
+                    numericalValues[1] = 100;
+                    numericalValues[2] = 2;
+                    numericalValues[3] = 5;
+                    numericalValues[4] = 7;
+                    break;
+                case 2: //Scout
+                    numericalValues[0] = 100;
+                    numericalValues[1] = 55;
+                    numericalValues[2] = 2;
+                    numericalValues[3] = 7;
+                    numericalValues[4] = 10;
+                    break;
             }
 
-            foreach (TextBox box in requiredBoxes)
-            {
-                if (box.Text == null || box.Text == "")
-                {
-                    MessageBox.Show("Please fill out all required text boxes.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
+            //for (int i = 0; i < numericalBoxes.Length; i++)
+            //{
+            //    numericalBoxes[i].Text = Regex.Replace(numericalBoxes[i].Text, "[^0-9]+", "");
+            //    numericalValues[i] = int.Parse(numericalBoxes[i].Text);
+            //}
 
-            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Save);
+            CreatedPlayer = new Player(GeneralName.Text, SpecificName.Text, numericalValues);
 
-            Player player = new Player(GeneralName.Text, SpecificName.Text, numericalValues);
+            //FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Save);
 
-            try
-            {
-                FileHandler.SavePlayer(player, dialog.Path);
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("File not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unknown error!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            //Player player = new Player(GeneralName.Text, SpecificName.Text, numericalValues);
+
+            //try
+            //{
+            //    FileHandler.SavePlayer(player, dialog.Path);
+            //}
+            //catch (IOException)
+            //{
+            //    MessageBox.Show("File not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Unknown error!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
     }
 }

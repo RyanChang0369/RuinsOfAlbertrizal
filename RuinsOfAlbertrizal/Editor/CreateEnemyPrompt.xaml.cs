@@ -24,6 +24,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreateEnemyPrompt : Page
     {
+        public static Enemy CreatedEnemy;
         public CreateEnemyPrompt()
         {
             InitializeComponent();
@@ -35,9 +36,12 @@ namespace RuinsOfAlbertrizal.Editor
         }
         private void Save(object sender, RoutedEventArgs e)
         {
-            TextBox[] requiredBoxes = { GeneralName, SpecificName, BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
+            TextBox[] requiredTextBoxes = { GeneralName, SpecificName, BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
             TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
             int[] numericalValues = new int[5];
+
+            if (!Validator.Validate(requiredTextBoxes, null))
+                return;
 
             for (int i = 0; i < numericalBoxes.Length; i++)
             {
@@ -45,30 +49,7 @@ namespace RuinsOfAlbertrizal.Editor
                 numericalValues[i] = int.Parse(numericalBoxes[i].Text);
             }
 
-            foreach (TextBox box in requiredBoxes)
-            {
-                if (box.Text == null || box.Text == "")
-                {
-                    MessageBox.Show("Please fill out all required text boxes.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-
-            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Save);
-
-            Enemy enemy = new Enemy(GeneralName.Text, SpecificName.Text, numericalValues);
-
-            try
-            {
-                FileHandler.SaveEnemy(enemy, dialog.Path);
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("File not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unknown error!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            CreatedEnemy = new Enemy(GeneralName.Text, SpecificName.Text, numericalValues);
         }
     }
 }

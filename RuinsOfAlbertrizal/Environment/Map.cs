@@ -9,23 +9,16 @@ namespace RuinsOfAlbertrizal.Environment
     {
         public List<string> IntroText { get; set; }
 
-        /// <summary>
-        /// Number of enemies to kill before boss fight. Set to -1 for unwinnable
-        /// </summary>
-        public int EnemiesToKill { get; set; }
-        
-        public Boss Boss { get; set; }
-
         public Player Player { get; set; }
 
-        public List<Enemy> Enemies { get; set; }
+        public List<Level> Levels { get; set; }
 
-        public List<Buff> Buffs { get; set; }
 
-        public List<Item> Items { get; set; }
-
-        public List<Consumable> Consumables { get; set; }
-
-        public List<Equiptment> Equiptments { get; set; }
+        public Map(List<string> introText, Player player, List<Level> levels)
+        {
+            IntroText = introText;
+            Player = player;
+            Levels = levels;
+        }
     }
 }

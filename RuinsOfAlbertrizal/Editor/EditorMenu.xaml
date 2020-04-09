@@ -20,13 +20,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel>
-                <Button Click="CreateNewPlayer">Create New Player</Button>
-                <Button Click="CreateNewEnemy">Create New Enemy</Button>
+                <Button Click="CreateNewPlayer" Visibility="Hidden">Create New Player</Button>
+                <Button Click="CreateNewEnemy" Visibility="Hidden">Create New Enemy</Button>
                 <Button Click="CreateNewMap">Create New Map</Button>
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <Button>Load Player</Button>
-                <Button>Load Enemy</Button>
+                <Button Visibility="Hidden">Load Player</Button>
+                <Button Visibility="Hidden">Load Enemy</Button>
                 <Button>Load Map</Button>
             </StackPanel>
         </Grid>

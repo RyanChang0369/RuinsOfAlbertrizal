@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="CreateMapPrompt">
+      Title="Create Map">
 
-    <Grid>
+    <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="3*"/>
@@ -16,6 +16,18 @@
         </Grid.RowDefinitions>
         <Label Style="{StaticResource title}">Create Map</Label>
         <StackPanel Grid.Row="1">
+            <TabControl>
+                <TabItem Header="Step 1" FontSize="48">
+                    <StackPanel Background="#FFE5E5E5">
+                        <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
+                        <Button x:Name="CreatePlayerBtn" Click="NavPlayerPrompt" Content="Create Player" HorizontalAlignment="Left"/>
+                        <Button x:Name="CreateEnemyBtn" Click="NavEnemyPrompt" Content="Create Enemy" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Step 2" FontSize="48">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
 
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
