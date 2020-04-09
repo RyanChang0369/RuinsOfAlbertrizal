@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AdventureInterface.xaml.cs">
+      <DependentUpon>AdventureInterface.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AIs\AI.cs" />
     <Compile Include="ArrayMethods.cs" />
     <Compile Include="Characters\Boss.cs" />
@@ -78,9 +81,12 @@
     <Compile Include="Editor\EditorMenu.xaml.cs">
       <DependentUpon>EditorMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CampaignLoader.cs" />
+    <Compile Include="GameLoader.cs" />
     <Compile Include="Editor\Validator.cs" />
     <Compile Include="Environment\Level.cs" />
+    <Compile Include="IntroInterface.xaml.cs">
+      <DependentUpon>IntroInterface.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Items\Equiptment.cs" />
     <Compile Include="Items\Consumable.cs" />
     <Compile Include="Items\Item.cs" />
@@ -133,6 +139,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AdventureInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BattleInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,6 +163,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="IntroInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ItemInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -166,7 +180,9 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UserCampaign\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\Other\Shotguns.jpg" />
     <Resource Include="assets\Other\TitleImage2.png" />

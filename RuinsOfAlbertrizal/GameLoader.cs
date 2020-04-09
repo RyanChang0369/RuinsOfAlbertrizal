@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal
 {
-    public class CampaignLoader
+    public class GameLoader
     {
         public static void NewCampaign()
         {
@@ -17,6 +17,16 @@ namespace RuinsOfAlbertrizal
         public static void LoadCampaign()
         {
             GameBase.NewGame(FileHandler.LoadMap("UserCampaign/userMap.xml"));
+        }
+
+        public static void LoadCustomMap()
+        {
+            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Load);
+
+            if (dialog.Path == null)
+                return;
+
+            GameBase.NewGame(FileHandler.LoadMap(dialog.Path));
         }
     }
 }

@@ -17,9 +17,10 @@ namespace RuinsOfAlbertrizal.Environment
         public List<Enemy> Enemies { get; set; }
 
         /// <summary>
-        /// Number of enemies to kill before boss fight. Set to -1 for unwinnable
+        /// The amount of percentage one gains from killing one enemy.
+        /// Boss fight starts at next encounter if this is equal to or exceeds 100%.
         /// </summary>
-        public int EnemiesToKill { get; set; }
+        public int PercentageGainPerKill { get; set; }
 
         /// <summary>
         /// The boss that appears at the end of the level.
@@ -37,12 +38,12 @@ namespace RuinsOfAlbertrizal.Environment
             DefeatEnemies
         }
 
-        public Level(List<Enemy> enemies, Boss boss, int winCondition, int enemiesToKill)
+        public Level(List<Enemy> enemies, Boss boss, int winCondition, int percentageGainPerKill)
         {
             Enemies = enemies;
             Boss = boss;
             WinCondition = winCondition;
-            EnemiesToKill = enemiesToKill;
+            PercentageGainPerKill = percentageGainPerKill;
         }
     }
 }

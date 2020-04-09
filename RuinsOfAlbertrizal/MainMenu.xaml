@@ -21,8 +21,11 @@
                 <Button x:Name="NewCampaign" Click="NewCampaign_Click">Start New Campaign</Button>
                 <Button x:Name="ContinueCampaign" Click="ContinueCampaign_Click">Continue Campaign</Button>
             </StackPanel>
-            
-            <Button Click="OpenEditor" IsEnabled="False">Editor</Button>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Click="NavEditorMenu" IsEnabled="False">New Custom Map</Button>
+                <Button Click="ContinueCustomMap" IsEnabled="False">Continue Custom Map</Button>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

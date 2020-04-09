@@ -2,6 +2,7 @@
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
@@ -13,12 +14,17 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Level> Levels { get; set; }
 
+        public int LevelsCompleted { get; set; }
+
+        [XmlIgnore]
+        public Level CurrentLevel { get => Levels[LevelsCompleted]; }
 
         public Map(List<string> introText, Player player, List<Level> levels)
         {
             IntroText = introText;
             Player = player;
             Levels = levels;
+            LevelsCompleted = 0;
         }
 
 

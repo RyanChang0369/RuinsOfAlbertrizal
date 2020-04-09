@@ -24,6 +24,7 @@ namespace RuinsOfAlbertrizal
         public IntroInterface()
         {
             InitializeComponent();
+            WriteText();
         }
         private void WriteText()
         {
@@ -35,9 +36,17 @@ namespace RuinsOfAlbertrizal
                 foreach (char charecter in charecters)
                 {
                     IntroText.Text += charecter;
-                    Thread.Sleep(10);
+                    Thread.Sleep(11);
                 }
+                Thread.Sleep(5555);
             }
+
+            NavAdventureInterface();
+        }
+
+        private void NavAdventureInterface()
+        {
+            this.NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

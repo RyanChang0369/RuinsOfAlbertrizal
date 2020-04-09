@@ -25,19 +25,32 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
         }
 
-        private void OpenEditor(object sender, RoutedEventArgs e)
+        private void NavEditorMenu(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Editor/EditorMenu.xaml", UriKind.RelativeOrAbsolute));
         }
 
+        private void ContinueCustomMap(object sender, RoutedEventArgs e)
+        {
+            GameLoader.LoadCustomMap();
+            NavIntroInterface();
+        }
+
         private void NewCampaign_Click(object sender, RoutedEventArgs e)
         {
-            CampaignLoader.NewCampaign();
+            GameLoader.NewCampaign();
+            NavIntroInterface();
         }
 
         private void ContinueCampaign_Click(object sender, RoutedEventArgs e)
         {
-            CampaignLoader.LoadCampaign();
+            GameLoader.LoadCampaign();
+            NavIntroInterface();
+        }
+
+        private void NavIntroInterface()
+        {
+            this.NavigationService.Navigate(new Uri("IntroInterface.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
