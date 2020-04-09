@@ -3,24 +3,30 @@ using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
     public class Level
     {
+        string Name { get; set; }
+
+        Bitmap BackgroundImage { get; set; }
         /// <summary>
         /// The Enemies that can appear in this level.
         /// </summary>
         public List<Enemy> Enemies { get; set; }
 
         /// <summary>
-        /// The amount of percentage one gains from killing one enemy.
-        /// Boss fight starts at next encounter if this is equal to or exceeds 100%.
+        /// Boss fight starts at next encounter if points is equal to or exceeds this.
         /// </summary>
-        public int PercentageGainPerKill { get; set; }
+        public double MaxPoints { get; set; }
+
+        public double Points { get; set; }
 
         /// <summary>
         /// The boss that appears at the end of the level.
@@ -38,12 +44,32 @@ namespace RuinsOfAlbertrizal.Environment
             DefeatEnemies
         }
 
-        public Level(List<Enemy> enemies, Boss boss, int winCondition, int percentageGainPerKill)
+        [XmlIgnore]
+        public bool HasWon {
+            get
+            {
+                switch (WinCondition)
+                {
+                    case (int)WinConditions.None:
+                        return false;
+                    case (int)WinConditions.DefeatEnemies:
+                        return Boss.IsDead;
+                    default:
+                        return false;
+                }
+            }
+        }
+
+        public Level(string name, Bitmap backgroundImage,
+            List<Enemy> enemies, Boss boss, int winCondition, double maxPoints)
         {
+            Name = name;
+            BackgroundImage = backgroundImage;
             Enemies = enemies;
             Boss = boss;
             WinCondition = winCondition;
-            PercentageGainPerKill = percentageGainPerKill;
+            MaxPoints = maxPoints;
+            Points = 0;
         }
     }
 }
