@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Environment;
 using System;
 using System.IO;
 using System.Threading;
@@ -44,6 +45,15 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                 {
                     Thread.Sleep(25);
                 }
+            }
+        }
+
+        public static Map LoadMap(string loadLocation)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Map));
+            using (FileStream fs = new FileStream(loadLocation, FileMode.Open))
+            {
+                return (Map)serializer.Deserialize(fs);
             }
         }
 

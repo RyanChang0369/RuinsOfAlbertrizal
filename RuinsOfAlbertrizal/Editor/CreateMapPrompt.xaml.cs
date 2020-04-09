@@ -56,7 +56,7 @@ namespace RuinsOfAlbertrizal.Editor
                     return;
             }
 
-            GameBase.NewGame();
+            //GameBase.NewGame();
         }
 
         private void Back(object sender, RoutedEventArgs e)

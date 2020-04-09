@@ -29,5 +29,15 @@ namespace RuinsOfAlbertrizal
         {
             this.NavigationService.Navigate(new Uri("Editor/EditorMenu.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        private void NewCampaign_Click(object sender, RoutedEventArgs e)
+        {
+            CampaignLoader.NewCampaign();
+        }
+
+        private void ContinueCampaign_Click(object sender, RoutedEventArgs e)
+        {
+            CampaignLoader.LoadCampaign();
+        }
     }
 }
