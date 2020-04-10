@@ -14,8 +14,14 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         public double PointGainPerKill { get; set; }
 
+        protected Enemy()
+        {
+
+        }
+
         public Enemy(string generalName, string specificName, int[] baseValues) : base(generalName, specificName, baseValues)
         {
+
         }
 
         public Enemy(string generalName, string specificName, int[] baseValues, double pointGainPerKill) :

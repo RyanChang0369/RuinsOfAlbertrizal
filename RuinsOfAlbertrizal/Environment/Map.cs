@@ -19,6 +19,11 @@ namespace RuinsOfAlbertrizal.Environment
         [XmlIgnore]
         public Level CurrentLevel { get => Levels[LevelsCompleted]; }
 
+        private Map()
+        {
+
+        }
+
         public Map(List<string> introText, Player player, List<Level> levels)
         {
             IntroText = introText;

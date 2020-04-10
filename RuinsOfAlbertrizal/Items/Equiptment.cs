@@ -21,6 +21,9 @@ namespace RuinsOfAlbertrizal.Items
 
         public int[] StatGain { get; set; }
 
+        private Equiptment()
+        { }
+
         public Equiptment(string name, string description, int rarity,
             List<Enemy> droppedBy, int[] slots) : base(name, description, rarity, droppedBy)
         {

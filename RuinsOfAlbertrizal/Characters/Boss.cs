@@ -10,6 +10,12 @@ namespace RuinsOfAlbertrizal.Characters
     public class Boss : Enemy
     {
         public string[] BossMessage { get; set; }
+
+        private Boss()
+        {
+
+        }
+
         public Boss(string generalName, string specificName, int[] baseValues, string[] bossMessage) : base(generalName, specificName, baseValues)
         {
         }

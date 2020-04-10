@@ -14,6 +14,10 @@ namespace RuinsOfAlbertrizal.Items
         public double Rarity { get; set; }
         public List<Enemy> DroppedBy { get; set; }
 
+
+        protected Item()
+        { }
+
         /// <summary>
         /// Create a new item
         /// </summary>

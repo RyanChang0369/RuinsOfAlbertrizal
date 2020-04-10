@@ -35,6 +35,9 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         public bool Immobalized { get; set; }
 
+        private Buff()
+        { }
+
         /// <summary>
         /// Creates a new buff
         /// </summary>

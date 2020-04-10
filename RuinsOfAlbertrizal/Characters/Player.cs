@@ -8,8 +8,13 @@ namespace RuinsOfAlbertrizal.Characters
 {
     public class Player : Character
     {
+        private Player()
+        {
+
+        }
         public Player(string generalName, string specificName, int[] baseValues) : base(generalName, specificName, baseValues)
         {
+
         }
     }
 }

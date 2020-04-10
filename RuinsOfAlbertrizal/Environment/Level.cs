@@ -62,6 +62,11 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
+        private Level()
+        {
+
+        }
+
         public Level(string name, Bitmap backgroundImage, List<Message> messages,
             List<Enemy> enemies, Boss boss, int winCondition, double maxPoints)
         {

@@ -12,6 +12,9 @@ namespace RuinsOfAlbertrizal.Items
     {
         public List<Buff> Buffs { get; set; }
 
+        private Consumable()
+        { }
+
         public Consumable(string name, string description, int rarity,
             List<Enemy> droppedBy, List<Buff> buffs) : base(name, description, rarity, droppedBy)
         {
