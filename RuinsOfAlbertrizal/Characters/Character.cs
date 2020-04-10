@@ -24,6 +24,8 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         public string SpecificName { get; set; }
 
+        public string Description { get; set; }
+
         public int[] BaseStats { get; set; }
 
         [XmlIgnore]
@@ -66,11 +68,12 @@ namespace RuinsOfAlbertrizal.Characters
         /// <param name="specificName">The proper name, such as Bob or Robert</param>
         /// <param name="currentStats">[0]=HP, [1]=Mana, [2]=Def, [3]=Spd, [4]=Jump</param>
         /// <param name="abilities">See Ability class</param>
-        public Character(string generalName, string specificName, int[] baseStats,
+        public Character(string generalName, string specificName, string description, int[] baseStats,
             List<int> abilities, List<Buff> buffs, List<Equiptment> equiptments)
         {
             GeneralName = generalName;
             SpecificName = specificName;
+            Description = description;
             BaseStats = baseStats;
 
             Abilities = abilities;
@@ -83,8 +86,8 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         /// <param name="generalName">The name of the "species" such as human or orc</param>
         /// <param name="specificName">The proper name, such as Bob or Robert</param>
-        public Character(string generalName, string specificName, int[] baseStats)
-            : this(generalName, specificName, baseStats, new List<int>(), new List<Buff>(), new List<Equiptment>())
+        public Character(string generalName, string specificName, string description, int[] baseStats)
+            : this(generalName, specificName, description, baseStats, new List<int>(), new List<Buff>(), new List<Equiptment>())
         {
             
         }

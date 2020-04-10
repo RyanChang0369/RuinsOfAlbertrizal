@@ -14,7 +14,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             Open = 2,
             Load = 2
         }
-        public string Path;
+        private string Path;
 
         public FileDialog(int dialogOption)
         {
@@ -37,6 +37,19 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                     break;
             }
             
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"/>
+        public string GetPath()
+        {
+            if (Path == null)
+                throw new ArgumentNullException("Path cannot be null");
+
+            return Path;
         }
     }
 }

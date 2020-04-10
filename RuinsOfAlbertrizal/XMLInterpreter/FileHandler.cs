@@ -48,6 +48,38 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
+        public static object LoadObject()
+        {
+            string path = "";
+            try
+            {
+                path = new FileDialog((int)FileDialog.DialogOptions.Load).GetPath();
+            }
+            catch (ArgumentNullException)
+            {
+                return null;
+            }
+            return FileHandler.LoadObject(path);
+        }
+
+        public static object LoadObject(string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Map));
+            using (FileStream fs = new FileStream(path, FileMode.Open))
+            {
+                return serializer.Deserialize(fs);
+            }
+        }
+
+        public static void SaveObject(Type type, object obj, string path)
+        {
+            XmlSerializer serializer = new XmlSerializer(type);
+            using (TextWriter writer = new StreamWriter(path))
+            {
+                serializer.Serialize(writer, obj);
+            }
+        }
+
         public static Map LoadMap(string loadLocation)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Map));

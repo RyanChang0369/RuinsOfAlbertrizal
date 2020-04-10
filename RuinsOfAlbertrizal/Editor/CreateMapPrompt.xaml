@@ -18,10 +18,25 @@
         <StackPanel Grid.Row="1">
             <TabControl>
                 <TabItem Header="Step 1" FontSize="48">
-                    <StackPanel Background="#FFE5E5E5">
-                        <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
-                        <Button x:Name="CreatePlayerBtn" Click="NavPlayerPrompt" Content="Create Player" HorizontalAlignment="Left"/>
-                        <Button x:Name="CreateEnemyBtn" Click="NavEnemyPrompt" Content="Create Enemy" HorizontalAlignment="Left"/>
+                    <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
+                        <StackPanel>
+                            <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
+                            <Button x:Name="CreatePlayerBtn" Click="NavPlayerPrompt" Content="Create Player" HorizontalAlignment="Left"/>
+                            <Button x:Name="CreateEnemyBtn" Click="NavEnemyPrompt" Content="Create Enemies" HorizontalAlignment="Left"/>
+                            <Button x:Name="CreateBossBtn" Click="NavBossPrompt" Content="Create Bosses" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Label x:Name="CreatedPlayerLabel" Content="Created Player: "/>
+                            <StackPanel Margin="50,0">
+                                <Label>Created Enemies</Label>
+                                <TextBlock x:Name="CreatedEnemiesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <Label>Created Bosses</Label>
+                                <TextBlock x:Name="CreatedBossesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}"/>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
                 </TabItem>
                 <TabItem Header="Step 2" FontSize="48">
@@ -31,9 +46,9 @@
 
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button Click="Back">Back</Button>
-            <Button Click="Save">Save</Button>
-            <Button Click="Load">Load</Button>
+            <Button x:Name="BackBtn" Click="Back">Back</Button>
+            <Button x:Name="SaveBtn" Click="Save" IsEnabled="False" IsDefault="True">Save</Button>
+            <Button x:Name="LoadBtn" Click="Load">Load</Button>
         </StackPanel>
     </Grid>
 </Page>

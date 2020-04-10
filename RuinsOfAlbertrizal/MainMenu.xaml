@@ -23,8 +23,8 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Click="NavEditorMenu" IsEnabled="False">New Custom Map</Button>
-                <Button Click="ContinueCustomMap" IsEnabled="False">Continue Custom Map</Button>
+                <Button Click="NavEditorMenu">New Custom Map</Button>
+                <Button Click="ContinueCustomMap">Continue Custom Map</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

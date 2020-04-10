@@ -70,6 +70,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Characters\Enemy.cs" />
+    <Compile Include="Editor\CreateBossPrompt.xaml.cs">
+      <DependentUpon>CreateBossPrompt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\CreateEnemyPrompt.xaml.cs">
       <DependentUpon>CreateEnemyPrompt.xaml</DependentUpon>
     </Compile>
@@ -148,6 +151,10 @@
     <Page Include="BattleInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\CreateBossPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\CreateEnemyPrompt.xaml">
       <SubType>Designer</SubType>

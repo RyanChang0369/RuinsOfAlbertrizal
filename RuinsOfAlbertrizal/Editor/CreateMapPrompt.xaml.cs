@@ -24,7 +24,7 @@ namespace RuinsOfAlbertrizal.Editor
         //public List<Player> CreatedPlayers = new List<Player>();
         public Player CreatedPlayer;
         public List<Enemy> CreatedEnemies = new List<Enemy>();
-        
+        public List<Boss> CreatedBosses = new List<Boss>();
 
         public bool[] StepsDone = new bool[9];
 
@@ -40,22 +40,55 @@ namespace RuinsOfAlbertrizal.Editor
             {
                 StepsDone[i] = false;
             }
+
+            //Step 1: Player
             if (CreatePlayerPrompt.CreatedPlayer != null)
             {
                 CreatedPlayer = CreatePlayerPrompt.CreatedPlayer;
-                CreatePlayerBtn.IsEnabled = false;
+                CreatePlayerBtn.Content = "Edit Player";
+                CreatedPlayerLabel.Content = "Created Player: " + CreatedPlayer.SpecificName;
                 StepsDone[0] = true;
             }
-            if (CreatedEnemies != null)
+
+            //Step 2: Enemies
+            if (CreateEnemyPrompt.CreatedEnemy != null)
+            {
+                CreatedEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
+
+                CreatedEnemiesTextBlock.Text = "";
+                foreach (Enemy enemy in CreatedEnemies)
+                {
+                    CreatedEnemiesTextBlock.Text = CreatedEnemiesTextBlock.Text + enemy.SpecificName + "\r\n";
+                }
+
                 StepsDone[1] = true;
+            }
 
+            //Step 3: Bosses
+            if (CreateBossPrompt.CreatedBoss != null)
+            {
+                CreatedBosses.Add(CreateBossPrompt.CreatedBoss);
 
+                CreatedBossesTextBlock.Text = "";
+                foreach (Boss boss in CreatedBosses)
+                {
+                    CreatedBossesTextBlock.Text = CreatedBossesTextBlock.Text + boss.SpecificName + "\r\n";
+                }
+
+                StepsDone[2] = true;
+            }
+
+            //Checking for completness
             foreach (bool stepDone in StepsDone)
             {
                 if (!stepDone)
+                {
+                    SaveBtn.IsEnabled = false;
                     return;
+                }
             }
 
+            SaveBtn.IsEnabled = true;
             //GameBase.NewGame();
         }
 
@@ -80,6 +113,11 @@ namespace RuinsOfAlbertrizal.Editor
         private void NavEnemyPrompt(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Editor/CreateEnemyPrompt.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void NavBossPrompt(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Editor/CreateBossPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

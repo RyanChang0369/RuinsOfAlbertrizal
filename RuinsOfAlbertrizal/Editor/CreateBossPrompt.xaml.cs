@@ -2,7 +2,6 @@
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,13 +19,13 @@ using System.Windows.Shapes;
 namespace RuinsOfAlbertrizal.Editor
 {
     /// <summary>
-    /// Interaction logic for CreateEnemyPrompt.xaml
+    /// Interaction logic for CreateBossPrompt.xaml
     /// </summary>
-    public partial class CreateEnemyPrompt : Page
+    public partial class CreateBossPrompt : Page
     {
-        public static Enemy CreatedEnemy;
+        public static Boss CreatedBoss;
 
-        public CreateEnemyPrompt()
+        public CreateBossPrompt()
         {
             InitializeComponent();
         }
@@ -50,8 +49,34 @@ namespace RuinsOfAlbertrizal.Editor
             if (!Validator.Validate(requiredTextBoxes, null))
                 return;
 
-            CreatedEnemy = new Enemy(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues);
+            CreatedBoss = new Boss(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues,
+                BossMessageStart.Text.Split('\n'), BossMesageDefeat.Text.Split('\n'), BossMessageVictory.Text.Split('\n'));
             Back(sender, null);
+        }
+
+        private void Load(object sender, RoutedEventArgs e)
+        {
+            Boss temp = (Boss)FileHandler.LoadObject();
+
+            if (temp == null)
+                return;
+
+            CreatedBoss = temp;
+        }
+
+        private void RemoveWatermark(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.Text = "";
+        }
+
+        private void AddWatermark(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox.Text == "")
+            {
+                textBox.Text = "Press Enter to Seperate Lines";
+            }
         }
     }
 }

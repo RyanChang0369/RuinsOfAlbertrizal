@@ -15,30 +15,22 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Style="{StaticResource title}">Create Player</Label>
-        <StackPanel Grid.Row="1">
-            <Label ToolTip='The name of the "species", such as human or orc'>General Name</Label>
-            <TextBox x:Name="GeneralName"/>
-            <Label ToolTip='The proper name, such as Bob or Robert'>Specific Name</Label>
-            <TextBox x:Name="SpecificName"/>
-            <Label>Class</Label>
-            <ComboBox x:Name="Class">
-                <ComboBoxItem>Warrior</ComboBoxItem>
-                <ComboBoxItem>Mage</ComboBoxItem>
-                <ComboBoxItem>Scout</ComboBoxItem>
-            </ComboBox>
-            <!--<Label Content="HP"/>
-            <TextBox x:Name="BaseHP"/>
-            <Label Content="Mana"/>
-            <TextBox x:Name="BaseMana"/>
-            <Label Content="Defense"/>
-            <TextBox x:Name="BaseDef"/>
-            <Label Content="Damage"/>
-            <TextBox x:Name="BaseDmg"/>
-            <Label Content="Speed"/>
-            <TextBox x:Name="BaseSpd"/>
-            <Label Content="Abilities"/>
-            <TextBox x:Name="Abilities" IsEnabled="False"/>-->
-        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="Form">
+                <Label ToolTip='The name of the "species", such as human or orc'>Species</Label>
+                <TextBox x:Name="GeneralName"/>
+                <Label ToolTip='The proper name, such as Bob or Robert' Content="Name *"/>
+                <TextBox x:Name="SpecificName"/>
+                <Label>Description</Label>
+                <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}"/>
+                <Label Content="Class *"/>
+                <ComboBox x:Name="Class">
+                    <ComboBoxItem>Warrior</ComboBoxItem>
+                    <ComboBoxItem>Mage</ComboBoxItem>
+                    <ComboBoxItem>Scout</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </ScrollViewer>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Button Click="Back">Back</Button>
             <Button Click="Create">Create</Button>

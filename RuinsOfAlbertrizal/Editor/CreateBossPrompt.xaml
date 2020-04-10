@@ -1,4 +1,4 @@
-﻿<Page x:Class="RuinsOfAlbertrizal.Editor.CreateEnemyPrompt"
+﻿<Page x:Class="RuinsOfAlbertrizal.Editor.CreateBossPrompt"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="Create Enemy">
+      Title="Create Boss">
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -14,7 +14,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Style="{StaticResource title}">Create Enemy</Label>
+        <Label Style="{StaticResource title}" Content="Create Boss"/>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
                 <Label ToolTip='The proper name, such as Bob or Robert' Content="Proper Name *"/>
@@ -35,12 +35,19 @@
                 <TextBox x:Name="BaseSpd"/>
                 <Label Content="Abilities"/>
                 <TextBox x:Name="Abilities" IsEnabled="False"/>
+                <Label Content="Boss Message At Encounter" ToolTip="The message to display when boss first appears."/>
+                <TextBox x:Name="BossMessageStart" Text="Press Enter to Separate Lines" Style="{StaticResource paragraphTextBox}" GotFocus="RemoveWatermark" LostFocus="AddWatermark"/>
+                <Label Content="Boss Message At Player Victory" ToolTip="The message to display when boss is defeated."/>
+                <TextBox x:Name="BossMesageDefeat" Text="Press Enter to Separate Lines" Style="{StaticResource paragraphTextBox}" GotFocus="RemoveWatermark" LostFocus="AddWatermark"/>
+                <Label Content="Boss Message At Player Death" ToolTip="The message to display when player is defeated."/>
+                <TextBox x:Name="BossMessageVictory" Text="Press Enter to Separate Lines" Style="{StaticResource paragraphTextBox}" GotFocus="RemoveWatermark" LostFocus="AddWatermark"/>
             </StackPanel>
         </ScrollViewer>
-        
+
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Button Click="Back">Back</Button>
-            <Button Click="Create" IsDefault="True" Content="Create"/>
+            <Button Click="Create" Content="Create"/>
+            <Button Click="Load" Content="Load"/>
         </StackPanel>
     </Grid>
 </Page>

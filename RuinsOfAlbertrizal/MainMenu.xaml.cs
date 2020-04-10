@@ -27,24 +27,50 @@ namespace RuinsOfAlbertrizal
 
         private void NavEditorMenu(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Editor/EditorMenu.xaml", UriKind.RelativeOrAbsolute));
+            this.NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void ContinueCustomMap(object sender, RoutedEventArgs e)
         {
-            GameLoader.LoadCustomMap();
+            try
+            {
+                GameLoader.LoadCustomMap();
+            }
+            catch (ArgumentNullException)
+            {
+                return;
+            }
+            
             NavIntroInterface();
         }
 
         private void NewCampaign_Click(object sender, RoutedEventArgs e)
         {
-            GameLoader.NewCampaign();
+            try
+            {
+                GameLoader.NewCampaign();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Program files not found.", "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
             NavIntroInterface();
         }
 
         private void ContinueCampaign_Click(object sender, RoutedEventArgs e)
         {
-            GameLoader.LoadCampaign();
+            try
+            {
+                GameLoader.LoadCampaign();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Program files not found.", "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
             NavIntroInterface();
         }
 

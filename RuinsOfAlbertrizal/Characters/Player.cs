@@ -12,7 +12,8 @@ namespace RuinsOfAlbertrizal.Characters
         {
 
         }
-        public Player(string generalName, string specificName, int[] baseValues) : base(generalName, specificName, baseValues)
+        public Player(string generalName, string specificName, string description, int[] baseValues)
+            : base(generalName, specificName, description, baseValues)
         {
 
         }

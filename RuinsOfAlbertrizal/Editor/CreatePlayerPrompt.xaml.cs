@@ -22,11 +22,11 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Editor/EditorMenu.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
         private void Create(object sender, RoutedEventArgs e)
         {
-            TextBox[] requiredTextBoxes = { GeneralName, SpecificName };
+            TextBox[] requiredTextBoxes = { SpecificName };
             ComboBox[] requiredComboBoxes = { Class };
             //TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
             int[] numericalValues = new int[5];
@@ -59,30 +59,8 @@ namespace RuinsOfAlbertrizal.Editor
                     break;
             }
 
-            //for (int i = 0; i < numericalBoxes.Length; i++)
-            //{
-            //    numericalBoxes[i].Text = Regex.Replace(numericalBoxes[i].Text, "[^0-9]+", "");
-            //    numericalValues[i] = int.Parse(numericalBoxes[i].Text);
-            //}
-
-            CreatedPlayer = new Player(GeneralName.Text, SpecificName.Text, numericalValues);
-
-            //FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Save);
-
-            //Player player = new Player(GeneralName.Text, SpecificName.Text, numericalValues);
-
-            //try
-            //{
-            //    FileHandler.SavePlayer(player, dialog.Path);
-            //}
-            //catch (IOException)
-            //{
-            //    MessageBox.Show("File not found!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Unknown error!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+            CreatedPlayer = new Player(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues);
+            Back(sender, null);
         }
     }
 }
