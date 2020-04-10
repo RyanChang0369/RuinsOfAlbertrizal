@@ -16,6 +16,9 @@ namespace RuinsOfAlbertrizal.Text
         /// </summary>
         public double PointCompletion { get; set; }
 
+        private Message()
+        { }
+
         /// <summary>
         /// Creates a new Text object that will make text available to diplay after conditions are met.
         /// </summary>
