@@ -34,34 +34,40 @@ namespace RuinsOfAlbertrizal.Editor
         {
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
-        private void Create(object sender, RoutedEventArgs e)
+        private void Save(object sender, RoutedEventArgs e)
         {
             TextBox[] requiredTextBoxes = { SpecificName, BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
             TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
-            int[] numericalValues = new int[5];
+            int[] numericalValues = Validator.ParseNumericalValues(numericalBoxes);
 
-            for (int i = 0; i < numericalBoxes.Length; i++)
-            {
-                numericalBoxes[i].Text = Regex.Replace(numericalBoxes[i].Text, "[^0-9]+", "");
-                numericalValues[i] = int.Parse(numericalBoxes[i].Text);
-            }
-
-            if (!Validator.Validate(requiredTextBoxes, null))
-                return;
-
-            CreatedBoss = new Boss(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues,
+            Boss temp = new Boss(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues,
                 BossMessageStart.Text.Split('\n'), BossMesageDefeat.Text.Split('\n'), BossMessageVictory.Text.Split('\n'));
-            Back(sender, null);
-        }
 
-        private void Load(object sender, RoutedEventArgs e)
-        {
-            Boss temp = (Boss)FileHandler.LoadObject();
-
-            if (temp == null)
+            if (!Validator.ValidateTextBoxes(requiredTextBoxes, null))
                 return;
 
             CreatedBoss = temp;
+            Back(sender, null);
+        }
+        private void Create(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Load(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Boss temp = (Boss)FileHandler.LoadObject();
+
+                if (temp == null)
+                    return;
+
+                CreatedBoss = temp;
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
 
         private void RemoveWatermark(object sender, RoutedEventArgs e)

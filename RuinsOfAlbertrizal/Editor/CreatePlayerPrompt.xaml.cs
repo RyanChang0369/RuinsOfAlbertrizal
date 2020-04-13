@@ -24,14 +24,13 @@ namespace RuinsOfAlbertrizal.Editor
         {
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
-        private void Create(object sender, RoutedEventArgs e)
+        private void Save(object sender, RoutedEventArgs e)
         {
             TextBox[] requiredTextBoxes = { SpecificName };
             ComboBox[] requiredComboBoxes = { Class };
-            //TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
             int[] numericalValues = new int[5];
 
-            if (!Validator.Validate(requiredTextBoxes, requiredComboBoxes))
+            if (!Validator.ValidateTextBoxes(requiredTextBoxes, requiredComboBoxes))
                 return;
 
             switch (Class.SelectedIndex)
@@ -61,6 +60,33 @@ namespace RuinsOfAlbertrizal.Editor
 
             CreatedPlayer = new Player(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues);
             Back(sender, null);
+        }
+        private void Load(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Player temp = (Player)FileHandler.LoadObject();
+
+                if (temp == null)
+                    return;
+
+                CreatedPlayer = temp;
+
+                GeneralName.Text = temp.GeneralName;
+                SpecificName.Text = temp.SpecificName;
+                Description.Text = temp.Description;
+
+                if (temp.BaseStats[0] == 200)
+                    Class.SelectedIndex = 0;
+                else if (temp.BaseStats[0] == 100)
+                    Class.SelectedIndex = 1;
+                else
+                    Class.SelectedIndex = 2;
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
     }
 }

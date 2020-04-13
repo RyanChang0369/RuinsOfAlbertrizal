@@ -82,9 +82,15 @@
     <Compile Include="Editor\CreatePlayerPrompt.xaml.cs">
       <DependentUpon>CreatePlayerPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\EditorInterface.xaml.cs">
+      <DependentUpon>EditorInterface.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\EditorProperties.cs" />
     <Compile Include="Editor\EditorMenu.xaml.cs">
       <DependentUpon>EditorMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\EnemyProperties.cs" />
+    <Compile Include="Editor\Groupings\Grouping.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Editor\Validator.cs" />
     <Compile Include="Environment\Level.cs" />
@@ -165,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\CreatePlayerPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\EditorInterface.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

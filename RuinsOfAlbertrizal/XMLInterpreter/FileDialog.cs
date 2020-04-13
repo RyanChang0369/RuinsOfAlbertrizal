@@ -12,7 +12,8 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         {
             Save = 1,
             Open = 2,
-            Load = 2
+            Load = 2,
+            Folder = 3
         }
         private string Path;
 
@@ -28,6 +29,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                         Path = openFileDialog.FileName;
                     }
                     break;
+
                 case (int)DialogOptions.Save:
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     if (saveFileDialog.ShowDialog() == true)
@@ -35,8 +37,24 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                         Path = saveFileDialog.FileName;
                     }
                     break;
+
+                case (int)DialogOptions.Folder:
+                    SaveFileDialog folderDialog = new SaveFileDialog();
+                    folderDialog.Title = "Select a Directory";
+                    folderDialog.Filter = "Directory|*.this.directory";
+                    folderDialog.FileName = "select";
+
+
+                    if (folderDialog.ShowDialog() == true)
+                    {
+                        string path = folderDialog.FileName;
+                        // Remove fake filename from resulting path
+                        path = path.Replace("\\select.this.directory", "");
+                        path = path.Replace(".this.directory", "");
+                        Path = path;
+                    }
+                    break;
             }
-            
         }
 
         /// <summary>

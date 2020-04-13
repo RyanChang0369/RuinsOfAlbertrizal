@@ -25,8 +25,17 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
         }
 
-        private void NavEditorMenu(object sender, RoutedEventArgs e)
+        private void NewCustomMap(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                XMLInterpreter.FileHandler.CreateProgramDirectory();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            
             this.NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -46,6 +55,7 @@ namespace RuinsOfAlbertrizal
 
         private void NewCampaign_Click(object sender, RoutedEventArgs e)
         {
+
             try
             {
                 GameLoader.NewCampaign();

@@ -27,10 +27,12 @@ namespace RuinsOfAlbertrizal
         {
             FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Load);
 
-            if (dialog.Path == null)
-                return;
-
-            GameBase.NewGame(FileHandler.LoadMap(dialog.Path));
+            try
+            {
+                GameBase.NewGame(FileHandler.LoadMap(dialog.GetPath()));
+            }
+            catch (ArgumentNullException)
+            { return; }
         }
     }
 }

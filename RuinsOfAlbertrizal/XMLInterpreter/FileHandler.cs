@@ -48,6 +48,18 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="IOException"></exception>
+        public static void CreateProgramDirectory()
+        {
+            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Folder);
+
+            GameBase.CustomMapLocation = dialog.GetPath();
+
+        }
+
         public static object LoadObject()
         {
             string path = "";
