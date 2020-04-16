@@ -52,12 +52,49 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         /// 
         /// </summary>
         /// <exception cref="IOException"></exception>
-        public static void CreateProgramDirectory()
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void CreateCustomCampaign()
         {
-            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Folder);
+            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Save, "XAML File|.xml", "map");
 
             GameBase.CustomMapLocation = dialog.GetPath();
 
+            //CreateProjectDirectory(dialog.GetPath());
+
+            GameBase.NewGame(new Map());
+
+            SaveObject(typeof(Map), GameBase.CurrentGame);
+        }
+
+
+        /// <summary>
+        /// Opens a file dialog to load a custom map.
+        /// </summary>
+        /// <exception cref="IOException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void LoadCustomCampaign()
+        {
+            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Open, "XAML File | map.xml");
+
+            GameBase.NewGame(LoadMap(dialog.GetPath()));
+        }
+
+        /// <summary>
+        /// Creates a project file with a path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <exception cref="IOException"></exception>
+        public static void CreateProjectDirectory(string path)
+        {
+            try
+            {
+                File.WriteAllText(path, path);
+            }
+            catch (IOException)
+            {
+
+                throw;
+            }
         }
 
         public static object LoadObject()
@@ -92,6 +129,17 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
+        /// <summary>
+        /// Saves the object under the GameBase.CustomMapLocation
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="obj"></param>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void SaveObject(Type type, object obj)
+        {
+            SaveObject(type, obj, GameBase.CustomMapLocation);
+        }
+
         public static Map LoadMap(string loadLocation)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Map));
@@ -119,10 +167,10 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
-        public static void SavePlayer(Player player, string saveLocation)
+        public static void SavePlayer(Player player)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Player));
-            using (TextWriter writer = new StreamWriter(saveLocation))
+            using (TextWriter writer = new StreamWriter(GameBase.CustomMapLocation))
             {
                 serializer.Serialize(writer, player);
             }

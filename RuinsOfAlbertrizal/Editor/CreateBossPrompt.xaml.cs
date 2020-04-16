@@ -49,10 +49,10 @@ namespace RuinsOfAlbertrizal.Editor
             CreatedBoss = temp;
             Back(sender, null);
         }
-        private void Create(object sender, RoutedEventArgs e)
-        {
+        //private void Create(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
         private void Load(object sender, RoutedEventArgs e)
         {
             try
@@ -63,6 +63,20 @@ namespace RuinsOfAlbertrizal.Editor
                     return;
 
                 CreatedBoss = temp;
+
+                SpecificName.Text = temp.SpecificName;
+                GeneralName.Text = temp.GeneralName;
+                Description.Text = temp.Description;
+
+                BaseHP.Text = temp.BaseStats[0] + "";
+                BaseMana.Text = temp.BaseStats[1] + "";
+                BaseDef.Text = temp.BaseStats[2] + "";
+                BaseDmg.Text = temp.BaseStats[3] + "";
+                BaseSpd.Text = temp.BaseStats[4] + "";
+
+                BossMessageStart.Text = temp.BossMessageStart.JoinArray("\r\n");
+                BossMesageDefeat.Text = temp.BossMessageDefeat.JoinArray("\r\n");
+                BossMessageVictory.Text = temp.BossMessageVictory.JoinArray("\r\n");
             }
             catch (Exception)
             {

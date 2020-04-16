@@ -59,6 +59,7 @@ namespace RuinsOfAlbertrizal.Editor
             }
 
             CreatedPlayer = new Player(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues);
+            FileHandler.SavePlayer(CreatedPlayer);
             Back(sender, null);
         }
         private void Load(object sender, RoutedEventArgs e)

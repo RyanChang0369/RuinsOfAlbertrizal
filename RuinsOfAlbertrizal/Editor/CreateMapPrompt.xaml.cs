@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Environment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,10 @@ namespace RuinsOfAlbertrizal.Editor
         //public List<Player> CreatedPlayers = new List<Player>();
         public Player CreatedPlayer;
         public List<Enemy> CreatedEnemies = new List<Enemy>();
-        public List<Boss> CreatedBosses = new List<Boss>();
+        public Boss CreatedBoss;
+
+        //Just one level for now
+        public Level CreatedLevel;
 
         public bool[] StepsDone = new bool[9];
 
@@ -49,6 +53,8 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedPlayerLabel.Content = "Created Player: " + CreatedPlayer.SpecificName;
                 StepsDone[0] = true;
             }
+            else
+                return;
 
             //Step 2: Enemies
             if (CreateEnemyPrompt.CreatedEnemy != null)
@@ -63,38 +69,39 @@ namespace RuinsOfAlbertrizal.Editor
 
                 StepsDone[1] = true;
             }
+            else
+                return;
 
             //Step 3: Bosses
             if (CreateBossPrompt.CreatedBoss != null)
             {
-                CreatedBosses.Add(CreateBossPrompt.CreatedBoss);
+                CreatedBoss = CreateBossPrompt.CreatedBoss;
 
-                CreatedBossesTextBlock.Text = "";
-                foreach (Boss boss in CreatedBosses)
-                {
-                    CreatedBossesTextBlock.Text = CreatedBossesTextBlock.Text + boss.SpecificName + "\r\n";
-                }
+                CreatedBossesTextBlock.Text = CreatedBoss.SpecificName;
 
                 StepsDone[2] = true;
             }
+            else
+                return;
 
-            //Checking for completness
-            foreach (bool stepDone in StepsDone)
-            {
-                if (!stepDone)
-                {
-                    SaveBtn.IsEnabled = false;
-                    return;
-                }
-            }
 
-            SaveBtn.IsEnabled = true;
+            //Checking for completeness
+            //foreach (bool stepDone in StepsDone)
+            //{
+            //    if (!stepDone)
+            //    {
+            //        SaveBtn.IsEnabled = false;
+            //        return;
+            //    }
+            //}
+
+            //SaveBtn.IsEnabled = true;
             //GameBase.NewGame();
         }
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Editor/EditorMenu.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.RelativeOrAbsolute));
         }
         private void Save(object sender, RoutedEventArgs e)
         {

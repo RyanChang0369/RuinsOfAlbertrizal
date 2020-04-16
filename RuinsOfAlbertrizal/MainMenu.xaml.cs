@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,13 +30,32 @@ namespace RuinsOfAlbertrizal
         {
             try
             {
-                XMLInterpreter.FileHandler.CreateProgramDirectory();
+                XMLInterpreter.FileHandler.CreateCustomCampaign();
             }
             catch (Exception)
             {
                 return;
             }
-            
+
+            this.NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void EditCustomMap(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                XMLInterpreter.FileHandler.LoadCustomCampaign();
+            }
+            catch (ArgumentNullException)
+            {
+                return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Project File Cannot Be Read!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             this.NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -43,10 +63,15 @@ namespace RuinsOfAlbertrizal
         {
             try
             {
-                GameLoader.LoadCustomMap();
+                XMLInterpreter.FileHandler.LoadCustomCampaign();
             }
             catch (ArgumentNullException)
             {
+                return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Project File Cannot Be Read!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             

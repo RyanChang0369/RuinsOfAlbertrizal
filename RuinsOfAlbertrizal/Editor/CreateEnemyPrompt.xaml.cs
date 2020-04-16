@@ -63,6 +63,16 @@ namespace RuinsOfAlbertrizal.Editor
                     return;
 
                 CreatedEnemy = temp;
+
+                SpecificName.Text = temp.SpecificName;
+                GeneralName.Text = temp.GeneralName;
+                Description.Text = temp.Description;
+
+                BaseHP.Text = temp.BaseStats[0] + "";
+                BaseMana.Text = temp.BaseStats[1] + "";
+                BaseDef.Text = temp.BaseStats[2] + "";
+                BaseDmg.Text = temp.BaseStats[3] + "";
+                BaseSpd.Text = temp.BaseStats[4] + "";
             }
             catch (Exception)
             {

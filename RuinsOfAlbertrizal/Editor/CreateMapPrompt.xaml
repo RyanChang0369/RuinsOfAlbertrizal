@@ -47,7 +47,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <Button x:Name="BackBtn" Click="Back">Back</Button>
-            <Button x:Name="SaveBtn" Click="Save" IsEnabled="False" IsDefault="True">Save</Button>
+            <Button x:Name="SaveBtn" Click="Save" IsDefault="True">Save</Button>
             <Button x:Name="LoadBtn" Click="Load">Load</Button>
         </StackPanel>
     </Grid>

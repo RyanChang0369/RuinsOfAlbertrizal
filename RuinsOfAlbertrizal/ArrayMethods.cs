@@ -22,5 +22,15 @@ namespace RuinsOfAlbertrizal
 
             return a3;
         }
+
+        public static string JoinArray(this string[] a, string delimiter)
+        {
+            string joinedString = "";
+            foreach (string s in a)
+            {
+                joinedString = joinedString + s + delimiter;
+            }
+            return joinedString;
+        }
     }
 }

@@ -13,7 +13,6 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             Save = 1,
             Open = 2,
             Load = 2,
-            Folder = 3
         }
         private string Path;
 
@@ -37,21 +36,56 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                         Path = saveFileDialog.FileName;
                     }
                     break;
+            }
+        }
 
-                case (int)DialogOptions.Folder:
-                    SaveFileDialog folderDialog = new SaveFileDialog();
-                    folderDialog.Title = "Select a Directory";
-                    folderDialog.Filter = "Directory|*.this.directory";
-                    folderDialog.FileName = "select";
-
-
-                    if (folderDialog.ShowDialog() == true)
+        public FileDialog(int dialogOption, string filter)
+        {
+            switch (dialogOption)
+            {
+                case (int)DialogOptions.Open:
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Multiselect = false;
+                    openFileDialog.Filter = filter;
+                    if (openFileDialog.ShowDialog() == true)
                     {
-                        string path = folderDialog.FileName;
-                        // Remove fake filename from resulting path
-                        path = path.Replace("\\select.this.directory", "");
-                        path = path.Replace(".this.directory", "");
-                        Path = path;
+                        Path = openFileDialog.FileName;
+                    }
+                    break;
+
+                case (int)DialogOptions.Save:
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = filter;
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        Path = saveFileDialog.FileName;
+                    }
+                    break;
+            }
+        }
+
+        public FileDialog(int dialogOption, string filter, string defaultName)
+        {
+            switch (dialogOption)
+            {
+                case (int)DialogOptions.Open:
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Multiselect = false;
+                    openFileDialog.Filter = filter;
+                    openFileDialog.FileName = defaultName;
+                    if (openFileDialog.ShowDialog() == true)
+                    {
+                        Path = openFileDialog.FileName;
+                    }
+                    break;
+
+                case (int)DialogOptions.Save:
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = filter;
+                    saveFileDialog.FileName = defaultName;
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        Path = saveFileDialog.FileName;
                     }
                     break;
             }
