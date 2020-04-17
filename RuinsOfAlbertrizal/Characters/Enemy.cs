@@ -14,7 +14,7 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         public double PointGainPerKill { get; set; }
 
-        protected Enemy()
+        public Enemy()
         {
 
         }

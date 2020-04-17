@@ -53,8 +53,6 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedPlayerLabel.Content = "Created Player: " + CreatedPlayer.SpecificName;
                 StepsDone[0] = true;
             }
-            else
-                return;
 
             //Step 2: Enemies
             if (CreateEnemyPrompt.CreatedEnemy != null)
@@ -69,8 +67,6 @@ namespace RuinsOfAlbertrizal.Editor
 
                 StepsDone[1] = true;
             }
-            else
-                return;
 
             //Step 3: Bosses
             if (CreateBossPrompt.CreatedBoss != null)
@@ -81,19 +77,17 @@ namespace RuinsOfAlbertrizal.Editor
 
                 StepsDone[2] = true;
             }
-            else
-                return;
 
 
             //Checking for completeness
-            //foreach (bool stepDone in StepsDone)
-            //{
-            //    if (!stepDone)
-            //    {
-            //        SaveBtn.IsEnabled = false;
-            //        return;
-            //    }
-            //}
+            foreach (bool stepDone in StepsDone)
+            {
+                if (!stepDone)
+                {
+                    SaveBtn.IsEnabled = false;
+                    return;
+                }
+            }
 
             //SaveBtn.IsEnabled = true;
             //GameBase.NewGame();

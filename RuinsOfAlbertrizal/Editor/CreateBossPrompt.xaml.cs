@@ -23,12 +23,12 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreateBossPrompt : Page
     {
-        public static Boss CreatedBoss;
+        public static Boss CreatedBoss { get; set; }
 
         public CreateBossPrompt()
         {
             InitializeComponent();
-        }
+        }       
 
         private void Back(object sender, RoutedEventArgs e)
         {
@@ -36,17 +36,17 @@ namespace RuinsOfAlbertrizal.Editor
         }
         private void Save(object sender, RoutedEventArgs e)
         {
-            TextBox[] requiredTextBoxes = { SpecificName, BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
-            TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
-            int[] numericalValues = Validator.ParseNumericalValues(numericalBoxes);
+            //TextBox[] requiredTextBoxes = { SpecificName, BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
+            //TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
+            //int[] numericalValues = Validator.ParseNumericalValues(numericalBoxes);
 
-            Boss temp = new Boss(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues,
-                BossMessageStart.Text.Split('\n'), BossMesageDefeat.Text.Split('\n'), BossMessageVictory.Text.Split('\n'));
+            //Boss temp = new Boss(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues,
+            //    BossMessageStart.Text.Split('\n'), BossMesageDefeat.Text.Split('\n'), BossMessageVictory.Text.Split('\n'));
 
-            if (!Validator.ValidateTextBoxes(requiredTextBoxes, null))
-                return;
+            //if (!Validator.ValidateTextBoxes(requiredTextBoxes))
+            //    return;
 
-            CreatedBoss = temp;
+            //CreatedBoss = temp;
             Back(sender, null);
         }
         //private void Create(object sender, RoutedEventArgs e)
@@ -55,48 +55,48 @@ namespace RuinsOfAlbertrizal.Editor
         //}
         private void Load(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Boss temp = (Boss)FileHandler.LoadObject();
+            //try
+            //{
+            //    Boss temp = (Boss)FileHandler.LoadObject();
 
-                if (temp == null)
-                    return;
+            //    if (temp == null)
+            //        return;
 
-                CreatedBoss = temp;
+            //    CreatedBoss = temp;
 
-                SpecificName.Text = temp.SpecificName;
-                GeneralName.Text = temp.GeneralName;
-                Description.Text = temp.Description;
+            //    SpecificName.Text = temp.SpecificName;
+            //    GeneralName.Text = temp.GeneralName;
+            //    Description.Text = temp.Description;
 
-                BaseHP.Text = temp.BaseStats[0] + "";
-                BaseMana.Text = temp.BaseStats[1] + "";
-                BaseDef.Text = temp.BaseStats[2] + "";
-                BaseDmg.Text = temp.BaseStats[3] + "";
-                BaseSpd.Text = temp.BaseStats[4] + "";
+            //    BaseHP.Text = temp.BaseStats[0] + "";
+            //    BaseMana.Text = temp.BaseStats[1] + "";
+            //    BaseDef.Text = temp.BaseStats[2] + "";
+            //    BaseDmg.Text = temp.BaseStats[3] + "";
+            //    BaseSpd.Text = temp.BaseStats[4] + "";
 
-                BossMessageStart.Text = temp.BossMessageStart.JoinArray("\r\n");
-                BossMesageDefeat.Text = temp.BossMessageDefeat.JoinArray("\r\n");
-                BossMessageVictory.Text = temp.BossMessageVictory.JoinArray("\r\n");
-            }
-            catch (Exception)
-            {
-                return;
-            }
+            //    BossMessageStart.Text = temp.BossMessageStart.JoinArray("\r\n");
+            //    BossMesageDefeat.Text = temp.BossMessageDefeat.JoinArray("\r\n");
+            //    BossMessageVictory.Text = temp.BossMessageVictory.JoinArray("\r\n");
+            //}
+            //catch (Exception)
+            //{
+            //    return;
+            //}
         }
 
-        private void RemoveWatermark(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            textBox.Text = "";
-        }
+        //private void RemoveWatermark(object sender, RoutedEventArgs e)
+        //{
+        //    TextBox textBox = sender as TextBox;
+        //    textBox.Text = "";
+        //}
 
-        private void AddWatermark(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            if (textBox.Text == "")
-            {
-                textBox.Text = "Press Enter to Seperate Lines";
-            }
-        }
+        //private void AddWatermark(object sender, RoutedEventArgs e)
+        //{
+        //    TextBox textBox = sender as TextBox;
+        //    if (textBox.Text == "")
+        //    {
+        //        textBox.Text = "Press Enter to Seperate Lines";
+        //    }
+        //}
     }
 }

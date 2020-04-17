@@ -24,7 +24,7 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         public string[] BossMessageVictory { get; set; }
 
-        private Boss()
+        public Boss()
         {
 
         }

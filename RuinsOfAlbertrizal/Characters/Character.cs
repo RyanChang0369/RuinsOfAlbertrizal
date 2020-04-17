@@ -56,7 +56,7 @@ namespace RuinsOfAlbertrizal.Characters
         [XmlIgnore]
         public bool IsDead { get => CurrentStats[0] <= 0; }
 
-        protected Character()
+        public Character()
         {
 
         }

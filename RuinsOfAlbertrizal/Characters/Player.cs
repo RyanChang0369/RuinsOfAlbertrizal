@@ -8,7 +8,7 @@ namespace RuinsOfAlbertrizal.Characters
 {
     public class Player : Character
     {
-        private Player()
+        public Player()
         {
 
         }

@@ -27,6 +27,7 @@ namespace RuinsOfAlbertrizal.Editor
             }
             return true;
         }
+
         /// <summary>
         /// Returns true if validation succeeds
         /// </summary>

@@ -91,6 +91,8 @@
     </Compile>
     <Compile Include="Editor\EnemyProperties.cs" />
     <Compile Include="Editor\Groupings\Grouping.cs" />
+    <Compile Include="Editor\RequiredValidation.cs" />
+    <Compile Include="Editor\NumberValidation.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Editor\Validator.cs" />
     <Compile Include="Environment\Level.cs" />

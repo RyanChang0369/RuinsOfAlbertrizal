@@ -33,7 +33,7 @@
                                 <TextBlock x:Name="CreatedEnemiesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}"/>
                             </StackPanel>
                             <StackPanel>
-                                <Label>Created Bosses</Label>
+                                <Label>Created Boss</Label>
                                 <TextBlock x:Name="CreatedBossesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}"/>
                             </StackPanel>
                         </StackPanel>
