@@ -36,6 +36,23 @@ namespace RuinsOfAlbertrizal.Characters
             Beserk_Ranged
         }
 
+        public static string[] AIStyleTooltips =
+        {
+            "",
+
+            "Attacks player with the most damaging attacks possible. " +
+            "Moves towards player if no attacks are in range. " +
+            "No regard to health.",
+
+            "Attacks player with the most damaging attacks possible. " +
+            "Priotizes movement towards player. Moves before attacking. " +
+            "No regard to health.",
+
+            "Attacks player with the most damaging attacks possible. " +
+            "Priotizes movement away from player. Moves before attacking. " +
+            "No regard to health."
+        };
+
         /// <summary>
         /// The amount of percentage one gains from killing one enemy.
         /// Boss fight starts at next encounter if this is equal to or exceeds 100%.
@@ -47,17 +64,17 @@ namespace RuinsOfAlbertrizal.Characters
 
         }
 
-        public Enemy(string generalName, string specificName, string description, int[] baseValues)
-            : base(generalName, specificName, description, baseValues)
-        {
+        //public Enemy(string generalName, string specificName, string description, int[] baseValues)
+        //    : base(generalName, specificName, description, baseValues)
+        //{
 
-        }
+        //}
 
-        public Enemy(string generalName, string specificName, string description,
-            int[] baseValues, double pointGainPerKill) :
-             base(generalName, specificName, description, baseValues)
-        {
-            PointGainPerKill = pointGainPerKill;
-        }
+        //public Enemy(string generalName, string specificName, string description,
+        //    int[] baseValues, double pointGainPerKill) :
+        //     base(generalName, specificName, description, baseValues)
+        //{
+        //    PointGainPerKill = pointGainPerKill;
+        //}
     }
 }
