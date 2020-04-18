@@ -36,7 +36,11 @@
                 <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
                 <TextBox x:Name="GeneralName">
                     <TextBox.Text>
-                        <Binding Path="GeneralName" Mode="TwoWay"/>
+                        <Binding Path="GeneralName" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <local:RequiredValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
                     </TextBox.Text>
                 </TextBox>
                 
@@ -52,7 +56,7 @@
                     <TextBox.Text>
                         <Binding Path="BaseStats[0]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:NumberValidation/>
+                                <local:RequiredValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>

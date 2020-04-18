@@ -10,6 +10,8 @@ namespace RuinsOfAlbertrizal.Editor
 {
     public class RequiredValidation : ValidationRule
     {
+        public RequiredValidation()
+        { }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             if ((string)value == null || (string)value == "")

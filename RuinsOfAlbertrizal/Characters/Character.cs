@@ -58,7 +58,7 @@ namespace RuinsOfAlbertrizal.Characters
 
         public Character()
         {
-
+            BaseStats = new int[5];
         }
 
         /// <summary>

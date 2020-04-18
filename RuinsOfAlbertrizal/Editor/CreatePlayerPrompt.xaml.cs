@@ -14,10 +14,12 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreatePlayerPrompt : Page
     {
-        public static Player CreatedPlayer;
+        public static Player CreatedPlayer { get; set; }
         public CreatePlayerPrompt()
         {
             InitializeComponent();
+            CreatedPlayer = new Player();
+            DataContext = CreatedPlayer;
         }
 
         private void Back(object sender, RoutedEventArgs e)
@@ -26,12 +28,7 @@ namespace RuinsOfAlbertrizal.Editor
         }
         private void Save(object sender, RoutedEventArgs e)
         {
-            TextBox[] requiredTextBoxes = { SpecificName };
-            ComboBox[] requiredComboBoxes = { Class };
             int[] numericalValues = new int[5];
-
-            if (!Validator.ValidateTextBoxes(requiredTextBoxes, requiredComboBoxes))
-                return;
 
             switch (Class.SelectedIndex)
             {
@@ -58,7 +55,7 @@ namespace RuinsOfAlbertrizal.Editor
                     break;
             }
 
-            CreatedPlayer = new Player(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues);
+            CreatedPlayer.BaseStats = numericalValues;
             FileHandler.SavePlayer(CreatedPlayer);
             Back(sender, null);
         }

@@ -17,12 +17,27 @@
         <Label Style="{StaticResource title}">Create Player</Label>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
-                <Label ToolTip='The name of the "species", such as human or orc'>Species</Label>
-                <TextBox x:Name="GeneralName"/>
                 <Label ToolTip='The proper name, such as Bob or Robert' Content="Name *"/>
-                <TextBox x:Name="SpecificName"/>
+                <TextBox x:Name="SpecificName">
+                    <TextBox.Text>
+                        <Binding Path="SpecificName" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <local:RequiredValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                
+                <Label ToolTip='The name of the "species", such as human or orc'>Species</Label>
+                <TextBox x:Name="GeneralName">
+                    <TextBox.Text>
+                        <Binding Path="GeneralName" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+
                 <Label>Description</Label>
                 <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}"/>
+                
                 <Label Content="Class *"/>
                 <ComboBox x:Name="Class">
                     <ComboBoxItem>Warrior</ComboBoxItem>

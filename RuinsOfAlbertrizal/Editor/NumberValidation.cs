@@ -10,6 +10,8 @@ namespace RuinsOfAlbertrizal.Editor
 {
     public class NumberValidation : ValidationRule
     {
+        public NumberValidation()
+        { }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             int number = 0;

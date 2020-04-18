@@ -18,21 +18,75 @@
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
                 <Label ToolTip='The proper name, such as Bob or Robert' Content="Proper Name *"/>
-                <TextBox x:Name="SpecificName"/>
+                <TextBox x:Name="SpecificName">
+                    <TextBox.Text>
+                        <Binding Path="SpecificName" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <local:RequiredValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                
                 <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
-                <TextBox x:Name="GeneralName"/>
+                <TextBox x:Name="GeneralName">
+                    <TextBox.Text>
+                        <Binding Path="GeneralName" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+
                 <Label Content="Description"/>
-                <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}"/>
+                <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}">
+                    <TextBox.Text>
+                        <Binding Path="Description" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+                
                 <Label Content="HP *"/>
-                <TextBox x:Name="BaseHP"/>
+                <TextBox x:Name="BaseHP">
+                    <Binding Path="BaseStats[0]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <local:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                
                 <Label Content="Mana *"/>
-                <TextBox x:Name="BaseMana"/>
+                <TextBox x:Name="BaseMana">
+                    <Binding Path="BaseStats[1]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <local:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                
                 <Label Content="Defense *"/>
-                <TextBox x:Name="BaseDef"/>
+                <TextBox x:Name="BaseDef">
+                    <Binding Path="BaseStats[2]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <local:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                
                 <Label Content="Damage *"/>
-                <TextBox x:Name="BaseDmg"/>
+                <TextBox x:Name="BaseDmg">
+                    <Binding Path="BaseStats[3]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <local:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                
                 <Label Content="Speed *"/>
-                <TextBox x:Name="BaseSpd"/>
+                <TextBox x:Name="BaseSpd">
+                    <Binding Path="BaseStats[4]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <local:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+                
                 <Label Content="Abilities"/>
                 <TextBox x:Name="Abilities" IsEnabled="False"/>
             </StackPanel>
