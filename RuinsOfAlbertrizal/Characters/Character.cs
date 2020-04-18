@@ -12,8 +12,6 @@ namespace RuinsOfAlbertrizal.Characters
 {
     public abstract class Character
     {
-        public int AIStyle { get; set; }
-
         /// <summary>
         /// The name of the "species" such as human or orc
         /// </summary>
