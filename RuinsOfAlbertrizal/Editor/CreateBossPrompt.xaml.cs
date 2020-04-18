@@ -29,7 +29,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             InitializeComponent();
             CreatedBoss = new Boss();
-            DataContext = this;
+            DataContext = CreatedBoss;
         }       
 
         private void Back(object sender, RoutedEventArgs e)

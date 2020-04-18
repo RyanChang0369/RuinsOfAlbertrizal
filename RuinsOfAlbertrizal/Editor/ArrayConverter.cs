@@ -12,14 +12,29 @@ namespace RuinsOfAlbertrizal.Editor
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ArrayMethods.JoinArray((string[])value, "\r\n");
+            try
+            {
+                return ArrayMethods.JoinArray((string[])value, "\r\n");
+            }
+            catch (NullReferenceException)
+            {
+                return "";
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string[] delimiter = { "\r\n" };
 
-            return ((string)value).Split(delimiter, StringSplitOptions.None);
+            try
+            {
+                return ((string)value).Split(delimiter, StringSplitOptions.None);
+            }
+            catch (NullReferenceException)
+            {
+                string[] emptyArr = { "" };
+                return emptyArr;
+            }
         }
     }
 }
