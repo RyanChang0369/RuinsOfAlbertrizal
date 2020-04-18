@@ -21,7 +21,7 @@
                 <Label ToolTip='The proper name, such as Bob or Robert' Content="Proper Name *"/>
                 <TextBox x:Name="SpecificName">
                     <TextBox.Text>
-                        <Binding Path="SpecificName" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="SpecificName" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:RequiredValidation/>
                             </Binding.ValidationRules>
@@ -32,7 +32,7 @@
                 <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
                 <TextBox x:Name="GeneralName">
                     <TextBox.Text>
-                        <Binding Path="GeneralName" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="GeneralName" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:RequiredValidation/>
                             </Binding.ValidationRules>
@@ -43,14 +43,14 @@
                 <Label Content="Description"/>
                 <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>
-                        <Binding Path="Description" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
+                        <Binding Path="Description" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
                 
                 <Label Content="HP *"/>
                 <TextBox x:Name="BaseHP">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[0]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="BaseStats[0]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:NumberValidation/>
                             </Binding.ValidationRules>
@@ -61,7 +61,7 @@
                 <Label Content="Mana *"/>
                 <TextBox x:Name="BaseMana">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[1]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="BaseStats[1]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:NumberValidation/>
                             </Binding.ValidationRules>
@@ -72,7 +72,7 @@
                 <Label Content="Defense *"/>
                 <TextBox x:Name="BaseDef">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[2]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="BaseStats[2]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:NumberValidation/>
                             </Binding.ValidationRules>
@@ -83,7 +83,7 @@
                 <Label Content="Damage *"/>
                 <TextBox x:Name="BaseDmg">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[3]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="BaseStats[3]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:NumberValidation/>
                             </Binding.ValidationRules>
@@ -94,7 +94,7 @@
                 <Label Content="Speed *"/>
                 <TextBox x:Name="BaseSpd">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[4]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="BaseStats[4]" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:NumberValidation/>
                             </Binding.ValidationRules>
@@ -108,10 +108,13 @@
                 <Label Content="Boss Message At Encounter (Press Enter to Separate Lines)" ToolTip="The message to display when boss first appears."/>
                 <TextBox x:Name="BossMessageStart" Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>
-                        <Binding Path="BossMesssageStart" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="BossMesssageStart" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:RequiredValidation/>
                             </Binding.ValidationRules>
+                            <Binding.Converter>
+                                <local:ArrayConverter/>
+                            </Binding.Converter>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
@@ -119,10 +122,13 @@
                 <Label Content="Boss Message At Player Victory (Press Enter to Separate Lines)" ToolTip="The message to display when boss is defeated."/>
                 <TextBox x:Name="BossMesageDefeat" Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>
-                        <Binding Path="BossMesageDefeat" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="BossMesageDefeat" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:RequiredValidation/>
                             </Binding.ValidationRules>
+                            <Binding.Converter>
+                                <local:ArrayConverter/>
+                            </Binding.Converter>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
@@ -131,10 +137,13 @@
                 <Label Content="Boss Message At Player Death (Press Enter to Separate Lines)" ToolTip="The message to display when player is defeated."/>
                 <TextBox x:Name="BossMessageVictory" Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>
-                        <Binding Path="BossMessageVictory" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                        <Binding Path="BossMessageVictory" Source="{x:Static local:CreateBossPrompt.CreatedBoss}" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <local:RequiredValidation/>
                             </Binding.ValidationRules>
+                            <Binding.Converter>
+                                <local:ArrayConverter/>
+                            </Binding.Converter>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>

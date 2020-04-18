@@ -28,6 +28,8 @@ namespace RuinsOfAlbertrizal.Editor
         public CreateBossPrompt()
         {
             InitializeComponent();
+            CreatedBoss = new Boss();
+            DataContext = this;
         }       
 
         private void Back(object sender, RoutedEventArgs e)
