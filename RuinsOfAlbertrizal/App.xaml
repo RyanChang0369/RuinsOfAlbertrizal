@@ -109,5 +109,12 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
+        <!--ComboBox Reasources-->
+        <x:Array x:Key="ClassList" Type="local:ComboBoxList">
+            <local:ComboBoxList ValueString="Warrior"/>
+            <local:ComboBoxList ValueString="Mage"/>
+            <local:ComboBoxList ValueString="Scout"/>
+        </x:Array>
     </Application.Resources>
 </Application>

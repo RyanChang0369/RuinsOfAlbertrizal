@@ -18,7 +18,7 @@
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
                 <Label ToolTip='The proper name, such as Bob or Robert' Content="Name *"/>
-                <TextBox x:Name="SpecificName">
+                <TextBox x:Name="SpecificName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="SpecificName" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -40,7 +40,7 @@
                 
                 <Label Content="Class *"/>
                 <ComboBox x:Name="Class">
-                    <ComboBoxItem>Warrior</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">Warrior</ComboBoxItem>
                     <ComboBoxItem>Mage</ComboBoxItem>
                     <ComboBoxItem>Scout</ComboBoxItem>
                 </ComboBox>
