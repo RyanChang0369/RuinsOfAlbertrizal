@@ -22,6 +22,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreateMapPrompt : Page
     {
+        public Map Map;
         //public List<Player> CreatedPlayers = new List<Player>();
         public Player CreatedPlayer;
         public List<Enemy> CreatedEnemies = new List<Enemy>();
@@ -36,6 +37,8 @@ namespace RuinsOfAlbertrizal.Editor
         {
             InitializeComponent();
             UpdateComponent();
+            Map = new Map();
+            DataContext = Map;
         }
 
         private void UpdateComponent()

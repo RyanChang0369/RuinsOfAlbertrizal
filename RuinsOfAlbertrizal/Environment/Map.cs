@@ -8,6 +8,7 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class Map
     {
+        public string Name { get; set; }
         public List<string> IntroText { get; set; }
 
         public Player Player { get; set; }
@@ -24,12 +25,12 @@ namespace RuinsOfAlbertrizal.Environment
 
         }
 
-        public Map(List<string> introText, Player player, List<Level> levels)
-        {
-            IntroText = introText;
-            Player = player;
-            Levels = levels;
-            LevelsCompleted = 0;
-        }
+        //public Map(List<string> introText, Player player, List<Level> levels)
+        //{
+        //    IntroText = introText;
+        //    Player = player;
+        //    Levels = levels;
+        //    LevelsCompleted = 0;
+        //}
     }
 }

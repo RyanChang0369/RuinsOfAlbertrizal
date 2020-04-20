@@ -22,7 +22,7 @@
                     <TextBox.Text>
                         <Binding Path="SpecificName" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:RequiredValidation/>
+                                <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>

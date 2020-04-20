@@ -16,7 +16,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             if ((string)value == null || (string)value == "")
             {
-                return new ValidationResult(false, $"Box not filled in.");
+                return new ValidationResult(false, "Value is required.");
             }
             else
             {

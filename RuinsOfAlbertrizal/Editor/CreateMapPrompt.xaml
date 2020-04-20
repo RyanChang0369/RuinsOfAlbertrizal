@@ -18,6 +18,22 @@
         <StackPanel Grid.Row="1">
             <TabControl>
                 <TabItem Header="Step 1" FontSize="48">
+                    <StackPanel Background="#FFE5E5E5">
+                        <Label Style="{StaticResource h2}" Content="Create Map"/>
+
+                        <Label Content="Name *"/>
+                        <TextBox x:Name="MapName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                            <TextBox.Text>
+                                <Binding Path="Name" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Step 2" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
                             <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
@@ -39,9 +55,7 @@
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
-                <TabItem Header="Step 2" FontSize="48">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
+                
             </TabControl>
 
         </StackPanel>

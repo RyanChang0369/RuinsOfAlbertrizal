@@ -91,5 +91,23 @@
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="MinWidth" Value="400"/>
         </Style>
+
+        <!--Validation Templates and Styles-->
+        <ControlTemplate x:Key="validationTemplate">
+            <DockPanel>
+                <TextBlock Foreground="DarkRed" Style="{StaticResource defaultTextBlock}" MinHeight="0"
+                           Text="{Binding [0].ErrorContent}" DockPanel.Dock="Right"/>
+                <AdornedElementPlaceholder/>
+            </DockPanel>
+        </ControlTemplate>
+
+        <Style x:Key="validationError" TargetType="TextBox" BasedOn="{StaticResource defaultTextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                        Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

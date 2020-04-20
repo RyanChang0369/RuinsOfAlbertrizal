@@ -24,6 +24,8 @@ namespace RuinsOfAlbertrizal.Characters
 
         public string Description { get; set; }
 
+        public int Level { get; set; }
+
         public int[] BaseStats { get; set; }
 
         [XmlIgnore]
@@ -66,13 +68,14 @@ namespace RuinsOfAlbertrizal.Characters
         /// <param name="specificName">The proper name, such as Bob or Robert</param>
         /// <param name="currentStats">[0]=HP, [1]=Mana, [2]=Def, [3]=Spd, [4]=Jump</param>
         /// <param name="abilities">See Ability class</param>
-        public Character(string generalName, string specificName, string description, int[] baseStats,
+        public Character(string generalName, string specificName, string description, int level, int[] baseStats,
             List<int> abilities, List<Buff> buffs, List<Equiptment> equiptments)
         {
             GeneralName = generalName;
             SpecificName = specificName;
             Description = description;
             BaseStats = baseStats;
+            Level = level;
 
             Abilities = abilities;
             Buffs = buffs;
@@ -80,12 +83,12 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Creates a new charecter with the following values and no abilities
+        /// Creates a new character with the following values and no abilities
         /// </summary>
         /// <param name="generalName">The name of the "species" such as human or orc</param>
         /// <param name="specificName">The proper name, such as Bob or Robert</param>
-        public Character(string generalName, string specificName, string description, int[] baseStats)
-            : this(generalName, specificName, description, baseStats, new List<int>(), new List<Buff>(), new List<Equiptment>())
+        public Character(string generalName, string specificName, string description, int level, int[] baseStats)
+            : this(generalName, specificName, description, level, baseStats, new List<int>(), new List<Buff>(), new List<Equiptment>())
         {
             
         }

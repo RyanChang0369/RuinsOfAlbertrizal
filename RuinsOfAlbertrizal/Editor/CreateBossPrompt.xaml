@@ -23,22 +23,22 @@
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
                 <Label ToolTip='The proper name, such as Bob or Robert' Content="Proper Name *"/>
-                <TextBox x:Name="SpecificName">
+                <TextBox x:Name="SpecificName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="SpecificName" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:RequiredValidation/>
+                                <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
                 
                 <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
-                <TextBox x:Name="GeneralName">
+                <TextBox x:Name="GeneralName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="GeneralName" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:RequiredValidation/>
+                                <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -52,18 +52,18 @@
                 </TextBox>
                 
                 <Label Content="HP *"/>
-                <TextBox x:Name="BaseHP">
+                <TextBox x:Name="BaseHP" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="BaseStats[0]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:RequiredValidation/>
+                                <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
                 
                 <Label Content="Mana *"/>
-                <TextBox x:Name="BaseMana">
+                <TextBox x:Name="BaseMana" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="BaseStats[1]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -74,7 +74,7 @@
                 </TextBox>
                 
                 <Label Content="Defense *"/>
-                <TextBox x:Name="BaseDef">
+                <TextBox x:Name="BaseDef" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="BaseStats[2]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -85,7 +85,7 @@
                 </TextBox>
                 
                 <Label Content="Damage *"/>
-                <TextBox x:Name="BaseDmg">
+                <TextBox x:Name="BaseDmg" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="BaseStats[3]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -96,7 +96,7 @@
                 </TextBox>
                 
                 <Label Content="Speed *"/>
-                <TextBox x:Name="BaseSpd">
+                <TextBox x:Name="BaseSpd" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="BaseStats[4]" Mode="TwoWay">
                             <Binding.ValidationRules>

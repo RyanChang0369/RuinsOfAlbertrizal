@@ -21,9 +21,9 @@ namespace RuinsOfAlbertrizal.Editor
                 if (((string)value).Length > 0)
                     number = int.Parse((string)value);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return new ValidationResult(false, $"Illegal characters or {e.Message}");
+                return new ValidationResult(false, "Value entered must be a number.");
             }
 
             return ValidationResult.ValidResult;
