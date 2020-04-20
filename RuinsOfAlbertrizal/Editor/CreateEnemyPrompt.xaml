@@ -93,7 +93,7 @@
         </ScrollViewer>
         
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button Click="Back">Back</Button>
+            <!--<Button Click="Back">Back</Button>-->
             <Button Click="Save" Content="Save"/>
             <Button Click="Load" Content="Load"/>
         </StackPanel>

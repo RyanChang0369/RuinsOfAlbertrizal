@@ -43,14 +43,27 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            <Label x:Name="CreatedPlayerLabel" Content="Created Player: "/>
+                            <Label Content="Created Player:"/>
+                            <Label x:Name="CreatedPlayerLabel">
+                                <Label.Content>
+                                    <Binding Path="Player.SpecificName"/>
+                                </Label.Content>
+                            </Label>
                             <StackPanel Margin="50,0">
                                 <Label>Created Enemies</Label>
-                                <TextBlock x:Name="CreatedEnemiesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}"/>
+                                <TextBlock x:Name="CreatedEnemiesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}">
+                                    <TextBlock.Text>
+                                        <Binding Path="StoredEnemyNames"/>
+                                    </TextBlock.Text>
+                                </TextBlock>
                             </StackPanel>
                             <StackPanel>
                                 <Label>Created Boss</Label>
-                                <TextBlock x:Name="CreatedBossesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}"/>
+                                <TextBlock x:Name="CreatedBossesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}">
+                                    <TextBlock.Text>
+                                        <Binding Path="StoredBossNames"/>
+                                    </TextBlock.Text>
+                                </TextBlock>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

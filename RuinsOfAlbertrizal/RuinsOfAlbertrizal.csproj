@@ -70,7 +70,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Characters\Enemy.cs" />
-    <Compile Include="ComboBoxList.cs" />
     <Compile Include="Editor\ArrayConverter.cs" />
     <Compile Include="Editor\CreateBossPrompt.xaml.cs">
       <DependentUpon>CreateBossPrompt.xaml</DependentUpon>

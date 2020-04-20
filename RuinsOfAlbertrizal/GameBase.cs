@@ -9,7 +9,7 @@ namespace RuinsOfAlbertrizal
 {
     public static class GameBase
     {
-        public static string CustomMapLocation;
+        public static string CustomMapLocation { get; set; }
         public static Map CurrentGame;
         
         /// <summary>

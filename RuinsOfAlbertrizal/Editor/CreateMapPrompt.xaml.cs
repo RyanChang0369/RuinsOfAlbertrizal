@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,49 +25,51 @@ namespace RuinsOfAlbertrizal.Editor
     {
         public Map Map;
         //public List<Player> CreatedPlayers = new List<Player>();
-        public Player CreatedPlayer;
-        public List<Enemy> CreatedEnemies = new List<Enemy>();
-        public Boss CreatedBoss;
 
         //Just one level for now
-        public Level CreatedLevel;
 
         public bool[] StepsDone = new bool[9];
 
         public CreateMapPrompt()
         {
             InitializeComponent();
-            UpdateComponent();
-            Map = new Map();
+            
+            Map = GameBase.CurrentGame;
+
+            if (Map == null)
+                Map = new Map();
+
             DataContext = Map;
+
+            UpdateComponent();
         }
 
         private void UpdateComponent()
         {
-            for (int i = 0; i < StepsDone.Length; i++)
-            {
-                StepsDone[i] = false;
-            }
-
             //Step 1: Player
             if (CreatePlayerPrompt.CreatedPlayer != null)
             {
-                CreatedPlayer = CreatePlayerPrompt.CreatedPlayer;
+                Map.Player = CreatePlayerPrompt.CreatedPlayer;
                 CreatePlayerBtn.Content = "Edit Player";
-                CreatedPlayerLabel.Content = "Created Player: " + CreatedPlayer.SpecificName;
+                StepsDone[0] = true;
+            }
+            else if (Map.Player != null)
+            {
+                CreatePlayerPrompt.CreatedPlayer = Map.Player;
+                CreatePlayerBtn.Content = "Edit Player";
                 StepsDone[0] = true;
             }
 
             //Step 2: Enemies
             if (CreateEnemyPrompt.CreatedEnemy != null)
             {
-                CreatedEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
+                Map.StoredEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
 
-                CreatedEnemiesTextBlock.Text = "";
-                foreach (Enemy enemy in CreatedEnemies)
-                {
-                    CreatedEnemiesTextBlock.Text = CreatedEnemiesTextBlock.Text + enemy.SpecificName + "\r\n";
-                }
+                StepsDone[1] = true;
+            }
+            else if (Map.StoredEnemies != null)
+            {
+                CreateEnemyPrompt.CreatedEnemy = Map.StoredEnemies[Map.StoredEnemies.Count - 1];
 
                 StepsDone[1] = true;
             }
@@ -74,22 +77,15 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 3: Bosses
             if (CreateBossPrompt.CreatedBoss != null)
             {
-                CreatedBoss = CreateBossPrompt.CreatedBoss;
-
-                CreatedBossesTextBlock.Text = CreatedBoss.SpecificName;
+                Map.StoredBosses[0] = CreateBossPrompt.CreatedBoss;
 
                 StepsDone[2] = true;
             }
-
-
-            //Checking for completeness
-            foreach (bool stepDone in StepsDone)
+            else if (Map.StoredBosses.Count > 0 && Map.StoredBosses[0] != null)
             {
-                if (!stepDone)
-                {
-                    SaveBtn.IsEnabled = false;
-                    return;
-                }
+                CreateBossPrompt.CreatedBoss = Map.StoredBosses[0];
+
+                StepsDone[2] = true;
             }
 
             //SaveBtn.IsEnabled = true;
@@ -102,11 +98,13 @@ namespace RuinsOfAlbertrizal.Editor
         }
         private void Save(object sender, RoutedEventArgs e)
         {
-
+            GameBase.CurrentGame = Map;
+            FileHandler.SaveObject(typeof(Map), Map, GameBase.CustomMapLocation);
         }
         private void Load(object sender, RoutedEventArgs e)
         {
-
+            FileHandler.LoadCustomCampaign();
+            Map = GameBase.CurrentGame;
         }
 
         private void NavPlayerPrompt(object sender, RoutedEventArgs e)

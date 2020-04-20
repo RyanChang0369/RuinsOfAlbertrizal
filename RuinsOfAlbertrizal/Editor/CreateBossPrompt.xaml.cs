@@ -38,17 +38,7 @@ namespace RuinsOfAlbertrizal.Editor
         }
         private void Save(object sender, RoutedEventArgs e)
         {
-            //TextBox[] requiredTextBoxes = { SpecificName, BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
-            //TextBox[] numericalBoxes = { BaseHP, BaseMana, BaseDef, BaseDmg, BaseSpd };
-            //int[] numericalValues = Validator.ParseNumericalValues(numericalBoxes);
-
-            //Boss temp = new Boss(GeneralName.Text, SpecificName.Text, Description.Text, numericalValues,
-            //    BossMessageStart.Text.Split('\n'), BossMesageDefeat.Text.Split('\n'), BossMessageVictory.Text.Split('\n'));
-
-            //if (!Validator.ValidateTextBoxes(requiredTextBoxes))
-            //    return;
-
-            //CreatedBoss = temp;
+            FileHandler.SaveBoss(CreatedBoss);
             Back(sender, null);
         }
         //private void Create(object sender, RoutedEventArgs e)

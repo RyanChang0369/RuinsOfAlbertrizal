@@ -20,6 +20,7 @@ namespace RuinsOfAlbertrizal.Editor
             InitializeComponent();
             CreatedPlayer = new Player();
             DataContext = CreatedPlayer;
+            Load(null, null);
         }
 
         private void Back(object sender, RoutedEventArgs e)
@@ -56,29 +57,21 @@ namespace RuinsOfAlbertrizal.Editor
             }
 
             CreatedPlayer.BaseStats = numericalValues;
-            FileHandler.SavePlayer(CreatedPlayer);
+            //FileHandler.SavePlayer(CreatedPlayer);
             Back(sender, null);
         }
         private void Load(object sender, RoutedEventArgs e)
         {
             try
             {
-                Player temp = (Player)FileHandler.LoadObject();
-
-                if (temp == null)
+                if (CreatedPlayer == null)
                     return;
 
-                CreatedPlayer = temp;
-
-                GeneralName.Text = temp.GeneralName;
-                SpecificName.Text = temp.SpecificName;
-                Description.Text = temp.Description;
-
-                if (temp.BaseStats[0] == 200)
+                if (CreatedPlayer.BaseStats[0] == 200)
                     Class.SelectedIndex = 0;
-                else if (temp.BaseStats[0] == 100)
+                else if (CreatedPlayer.BaseStats[0] == 150)
                     Class.SelectedIndex = 1;
-                else
+                else if (CreatedPlayer.BaseStats[0] == 100)
                     Class.SelectedIndex = 2;
             }
             catch (Exception)

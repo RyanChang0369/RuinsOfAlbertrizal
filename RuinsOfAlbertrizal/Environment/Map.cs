@@ -13,6 +13,44 @@ namespace RuinsOfAlbertrizal.Environment
 
         public Player Player { get; set; }
 
+        /// <summary>
+        /// For reference only
+        /// </summary>
+        public List<Enemy> StoredEnemies { get; set; }
+
+        [XmlIgnore]
+        public string StoredEnemyNames
+        {
+            get
+            {
+                string names = "";
+
+                foreach (Enemy enemy in StoredEnemies)
+                    names = names + enemy.SpecificName + "\r\n";
+
+                return names;
+            }
+        }
+
+        /// <summary>
+        /// For reference only
+        /// </summary>
+        public List<Boss> StoredBosses { get; set; }
+
+        [XmlIgnore]
+        public string StoredBossNames
+        {
+            get
+            {
+                string names = "";
+
+                foreach (Boss boss in StoredBosses)
+                    names = names + boss.SpecificName + "\r\n";
+
+                return names;
+            }
+        }
+
         public List<Level> Levels { get; set; }
 
         public int LevelsCompleted { get; set; }
@@ -22,7 +60,9 @@ namespace RuinsOfAlbertrizal.Environment
 
         public Map()
         {
-
+            StoredEnemies = new List<Enemy>();
+            StoredBosses = new List<Boss>();
+            Levels = new List<Level>();
         }
 
         //public Map(List<string> introText, Player player, List<Level> levels)

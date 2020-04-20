@@ -11,12 +11,12 @@ namespace RuinsOfAlbertrizal
     {
         public static void NewCampaign()
         {
-            GameBase.NewGame(FileHandler.LoadMap("UserCampaign/newMap.xml"));
+            GameBase.NewGame(FileHandler.LoadMap("Campaign/newMap.xml"));
         }
 
         public static void LoadCampaign()
         {
-            GameBase.NewGame(FileHandler.LoadMap("UserCampaign/userMap.xml"));
+            GameBase.NewGame(FileHandler.LoadMap("Campaign/userMap.xml"));
         }
     }
 }

@@ -3,6 +3,7 @@ using RuinsOfAlbertrizal.Environment;
 using System;
 using System.IO;
 using System.Threading;
+using System.Windows;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.XMLInterpreter
@@ -63,7 +64,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
 
             GameBase.NewGame(new Map());
 
-            SaveObject(typeof(Map), GameBase.CurrentGame);
+            SaveObject(typeof(Map), GameBase.CurrentGame, GameBase.CustomMapLocation);
         }
 
 
@@ -76,6 +77,8 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         {
             FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Open, "XAML File | map.xml");
 
+            GameBase.CustomMapLocation = dialog.GetPath();
+
             GameBase.NewGame(LoadMap(dialog.GetPath()));
         }
 
@@ -86,15 +89,13 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         /// <exception cref="IOException"></exception>
         public static void CreateProjectDirectory(string path)
         {
-            try
-            {
-                File.WriteAllText(path, path);
-            }
-            catch (IOException)
-            {
+            string directory = Path.GetDirectoryName(path);
 
-                throw;
-            }
+            Directory.CreateDirectory(directory + "/Character");
+            Directory.CreateDirectory(directory + "/Environment");
+            Directory.CreateDirectory(directory + "/Items");
+            Directory.CreateDirectory(directory + "/Mechanics");
+            Directory.CreateDirectory(directory + "/Text");
         }
 
         public static object LoadObject()
@@ -108,7 +109,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             {
                 return null;
             }
-            return FileHandler.LoadObject(path);
+            return LoadObject(path);
         }
 
         public static object LoadObject(string path)
@@ -120,25 +121,41 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
+        /// <summary>
+        /// Saves an object
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="obj"></param>
+        /// <param name="path"></param>
         public static void SaveObject(Type type, object obj, string path)
         {
             XmlSerializer serializer = new XmlSerializer(type);
-            using (TextWriter writer = new StreamWriter(path))
+            try
             {
-                serializer.Serialize(writer, obj);
+                using (TextWriter writer = new StreamWriter(path))
+                {
+                    serializer.Serialize(writer, obj);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBoxResult result = MessageBox.Show("File cannot be saved! Retry?", "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
+
+                if (result == MessageBoxResult.Yes)
+                    SaveObject(type, obj, path);
             }
         }
 
         /// <summary>
-        /// Saves the object under the GameBase.CustomMapLocation
+        /// Saves the object in default directory
         /// </summary>
         /// <param name="type"></param>
         /// <param name="obj"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public static void SaveObject(Type type, object obj)
-        {
-            SaveObject(type, obj, GameBase.CustomMapLocation);
-        }
+        //public static void SaveObject(Type type, object obj)
+        //{
+        //    SaveObject(type, obj, GameBase.CustomMapLocation);
+        //}
 
         public static Map LoadMap(string loadLocation)
         {
@@ -149,40 +166,19 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
-        public static void SaveEnemy(Enemy enemy, string saveLocation)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Enemy));
-            using (TextWriter writer = new StreamWriter(saveLocation))
-            {
-                serializer.Serialize(writer, enemy);
-            }
-        }
-
-        public static Enemy LoadEnemy(string loadLocation)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Enemy));
-            using (FileStream fs = new FileStream(loadLocation, FileMode.Open))
-            {
-                return (Enemy)serializer.Deserialize(fs);
-            }
-        }
-
         public static void SavePlayer(Player player)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Player));
-            using (TextWriter writer = new StreamWriter(GameBase.CustomMapLocation))
-            {
-                serializer.Serialize(writer, player);
-            }
+            SaveObject(typeof(Player), player, GameBase.CustomMapLocation + "/Character/Player/" + player.SpecificName);
         }
 
-        public static Player LoadPlayer(string loadLocation)
+        public static void SaveBoss(Boss boss)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Player));
-            using (FileStream fs = new FileStream(loadLocation, FileMode.Open))
-            {
-                return (Player)serializer.Deserialize(fs);
-            }
+            SaveObject(typeof(Boss), boss, GameBase.CustomMapLocation + "/Character/Boss/" + boss.SpecificName);
+        }
+
+        public static void SaveEnemy(Enemy enemy)
+        {
+            SaveObject(typeof(Enemy), enemy, GameBase.CustomMapLocation + "/Character/Enemy/" + enemy.SpecificName);
         }
     }
 }
