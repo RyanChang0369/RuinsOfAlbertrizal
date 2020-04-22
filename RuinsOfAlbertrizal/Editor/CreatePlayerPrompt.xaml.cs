@@ -14,41 +14,23 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreatePlayerPrompt : Page
     {
-        public static Player CreatedPlayer { get; set; }
         public CreatePlayerPrompt()
         {
             InitializeComponent();
-            CreatedPlayer = new Player();
-            DataContext = CreatedPlayer;
-            Load(null, null);
+            UpdateComponent();
+            DataContext = CreateMapPrompt.Map.Player;
         }
 
-        private void Back(object sender, RoutedEventArgs e)
+        private void UpdateComponent()
         {
-            NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
+            if (CreateMapPrompt.Map.Player == null)
+                CreateMapPrompt.Map.Player = new Player();
         }
+
+
         private void Save(object sender, RoutedEventArgs e)
         {
-            Back(sender, null);
-        }
-        private void Load(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (CreatedPlayer == null)
-                    return;
-
-                if (CreatedPlayer.BaseStats[0] == 200)
-                    Class.SelectedIndex = 0;
-                else if (CreatedPlayer.BaseStats[0] == 150)
-                    Class.SelectedIndex = 1;
-                else if (CreatedPlayer.BaseStats[0] == 100)
-                    Class.SelectedIndex = 2;
-            }
-            catch (Exception)
-            {
-                return;
-            }
+            NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

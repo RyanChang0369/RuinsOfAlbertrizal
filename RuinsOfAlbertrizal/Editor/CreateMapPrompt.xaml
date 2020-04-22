@@ -8,7 +8,7 @@
       xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="Create Map">
+      Title="Create Map" Unloaded="Page_Unloaded">
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Label Style="{StaticResource title}">Create Map</Label>
         <StackPanel Grid.Row="1">
-            <TabControl>
+            <TabControl x:Name="MainTabControl">
                 <TabItem Header="Step 1" FontSize="48">
                     <StackPanel Background="#FFE5E5E5">
                         <Label Style="{StaticResource h2}" Content="Create Map"/>
@@ -53,19 +53,24 @@
                             </Label>
                             <StackPanel Margin="50,0">
                                 <Label>Created Enemies</Label>
-                                <TextBlock x:Name="CreatedEnemiesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}">
+                                <!--<TextBlock x:Name="CreatedEnemiesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}">
                                     <TextBlock.Text>
                                         <Binding Path="StoredEnemyNames"/>
                                     </TextBlock.Text>
-                                </TextBlock>
+                                </TextBlock>-->
+                                <ListBox x:Name="CreatedEnemiesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedEnemiesList_SelectionChanged">
+                                    <ListBox.ItemsSource>
+                                        <Binding Path="StoredEnemyNames"/>
+                                    </ListBox.ItemsSource>
+                                </ListBox>
                             </StackPanel>
                             <StackPanel>
                                 <Label>Created Boss</Label>
-                                <TextBlock x:Name="CreatedBossesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}">
-                                    <TextBlock.Text>
+                                <ListBox x:Name="CreatedBossesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBossesList_SelectionChanged">
+                                    <ListBox.ItemsSource>
                                         <Binding Path="StoredBossNames"/>
-                                    </TextBlock.Text>
-                                </TextBlock>
+                                    </ListBox.ItemsSource>
+                                </ListBox>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

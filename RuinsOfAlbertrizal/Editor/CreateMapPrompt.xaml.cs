@@ -23,21 +23,20 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreateMapPrompt : Page
     {
-        public Map Map;
-        //public List<Player> CreatedPlayers = new List<Player>();
+        public static Map Map;
 
-        //Just one level for now
+        public static int SelectedTab;
 
         public bool[] StepsDone = new bool[9];
 
         public CreateMapPrompt()
         {
             InitializeComponent();
-            
-            Map = GameBase.CurrentGame;
 
-            if (Map == null)
+            if (GameBase.CurrentGame == null)
                 Map = new Map();
+            else
+                Map = GameBase.CurrentGame;
 
             DataContext = Map;
 
@@ -46,16 +45,11 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void UpdateComponent()
         {
+            MainTabControl.SelectedIndex = SelectedTab;
+
             //Step 1: Player
-            if (CreatePlayerPrompt.CreatedPlayer != null)
+            if (Map.Player != null)
             {
-                Map.Player = CreatePlayerPrompt.CreatedPlayer;
-                CreatePlayerBtn.Content = "Edit Player";
-                StepsDone[0] = true;
-            }
-            else if (Map.Player != null)
-            {
-                CreatePlayerPrompt.CreatedPlayer = Map.Player;
                 CreatePlayerBtn.Content = "Edit Player";
                 StepsDone[0] = true;
             }
@@ -67,23 +61,11 @@ namespace RuinsOfAlbertrizal.Editor
 
                 StepsDone[1] = true;
             }
-            else if (Map.StoredEnemies != null)
-            {
-                CreateEnemyPrompt.CreatedEnemy = Map.StoredEnemies[Map.StoredEnemies.Count - 1];
-
-                StepsDone[1] = true;
-            }
 
             //Step 3: Bosses
             if (CreateBossPrompt.CreatedBoss != null)
             {
-                Map.StoredBosses[0] = CreateBossPrompt.CreatedBoss;
-
-                StepsDone[2] = true;
-            }
-            else if (Map.StoredBosses.Count > 0 && Map.StoredBosses[0] != null)
-            {
-                CreateBossPrompt.CreatedBoss = Map.StoredBosses[0];
+                Map.StoredBosses.Add(CreateBossPrompt.CreatedBoss);
 
                 StepsDone[2] = true;
             }
@@ -120,6 +102,21 @@ namespace RuinsOfAlbertrizal.Editor
         private void NavBossPrompt(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Editor/CreateBossPrompt.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            SelectedTab = MainTabControl.SelectedIndex;
+        }
+
+        private void CreatedEnemiesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Edit
+        }
+
+        private void CreatedBossesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Edit
         }
     }
 }

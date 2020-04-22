@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Name>Campaign</Name>
+  <Name>Death</Name>
   <IntroText />
   <Player>
-    <SpecificName>Bob</SpecificName>
+    <SpecificName>rh</SpecificName>
     <Level>0</Level>
     <BaseStats>
-      <int>200</int>
-      <int>20</int>
-      <int>10</int>
+      <int>150</int>
+      <int>100</int>
+      <int>2</int>
       <int>5</int>
-      <int>5</int>
+      <int>7</int>
     </BaseStats>
     <Abilities />
     <Buffs />
@@ -18,18 +18,15 @@
   </Player>
   <StoredEnemies>
     <Enemy>
-      <SpecificName>Slime</SpecificName>
+      <SpecificName>God</SpecificName>
       <Level>0</Level>
       <BaseStats>
-        <int>10</int>
         <int>0</int>
         <int>0</int>
-        <int>2</int>
-        <int>2</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
       </BaseStats>
-      <Abilities />
-      <Buffs />
-      <Equiptments />
       <AI>None</AI>
       <PointGainPerKill>0</PointGainPerKill>
     </Enemy>

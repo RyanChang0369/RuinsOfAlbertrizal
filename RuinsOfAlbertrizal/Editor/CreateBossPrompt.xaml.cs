@@ -28,54 +28,21 @@ namespace RuinsOfAlbertrizal.Editor
         public CreateBossPrompt()
         {
             InitializeComponent();
-            CreatedBoss = new Boss();
+            UpdateComponent();
             DataContext = CreatedBoss;
         }       
 
-        private void Back(object sender, RoutedEventArgs e)
+        private void UpdateComponent()
+        {
+            if (CreatedBoss == null)
+                CreatedBoss = new Boss();
+        }
+
+        private void Save(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
-        private void Save(object sender, RoutedEventArgs e)
-        {
-            FileHandler.SaveBoss(CreatedBoss);
-            Back(sender, null);
-        }
-        //private void Create(object sender, RoutedEventArgs e)
-        //{
-
-        //}
-        private void Load(object sender, RoutedEventArgs e)
-        {
-            //try
-            //{
-            //    Boss temp = (Boss)FileHandler.LoadObject();
-
-            //    if (temp == null)
-            //        return;
-
-            //    CreatedBoss = temp;
-
-            //    SpecificName.Text = temp.SpecificName;
-            //    GeneralName.Text = temp.GeneralName;
-            //    Description.Text = temp.Description;
-
-            //    BaseHP.Text = temp.BaseStats[0] + "";
-            //    BaseMana.Text = temp.BaseStats[1] + "";
-            //    BaseDef.Text = temp.BaseStats[2] + "";
-            //    BaseDmg.Text = temp.BaseStats[3] + "";
-            //    BaseSpd.Text = temp.BaseStats[4] + "";
-
-            //    BossMessageStart.Text = temp.BossMessageStart.JoinArray("\r\n");
-            //    BossMesageDefeat.Text = temp.BossMessageDefeat.JoinArray("\r\n");
-            //    BossMessageVictory.Text = temp.BossMessageVictory.JoinArray("\r\n");
-            //}
-            //catch (Exception)
-            //{
-            //    return;
-            //}
-        }
-
+        
         //private void RemoveWatermark(object sender, RoutedEventArgs e)
         //{
         //    TextBox textBox = sender as TextBox;

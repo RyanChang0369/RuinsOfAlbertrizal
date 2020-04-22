@@ -22,12 +22,12 @@ namespace RuinsOfAlbertrizal
 
         public enum ClassType
         {
-            NA, Warrior, Mage, Scout
+            Warrior, Mage, Scout
         }
 
         public static int[] GetBaseValues(ClassType classType)
         {
-            return GetBaseValues((int)classType - 1);
+            return GetBaseValues((int)classType);
         }
 
         public static int[] GetBaseValues(int selectedIndex)
@@ -73,7 +73,7 @@ namespace RuinsOfAlbertrizal
                 case 100:
                     return ClassType.Scout;
                 default:
-                    return ClassType.NA;
+                    return ClassType.Warrior;
             }
         }
 
