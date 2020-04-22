@@ -70,7 +70,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Characters\Enemy.cs" />
-    <Compile Include="Editor\ArrayConverter.cs" />
+    <Compile Include="Editor\Converter\ArrayConverter.cs" />
+    <Compile Include="Editor\Converter\ClassToBaseStatsConverter.cs" />
     <Compile Include="Editor\CreateBossPrompt.xaml.cs">
       <DependentUpon>CreateBossPrompt.xaml</DependentUpon>
     </Compile>
@@ -83,19 +84,14 @@
     <Compile Include="Editor\CreatePlayerPrompt.xaml.cs">
       <DependentUpon>CreatePlayerPrompt.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Editor\EditorInterface.xaml.cs">
-      <DependentUpon>EditorInterface.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Editor\EditorProperties.cs" />
     <Compile Include="Editor\EditorMenu.xaml.cs">
       <DependentUpon>EditorMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\EnemyProperties.cs" />
-    <Compile Include="Editor\Groupings\Grouping.cs" />
-    <Compile Include="Editor\RequiredValidation.cs" />
-    <Compile Include="Editor\NumberValidation.cs" />
+    <Compile Include="Editor\Validator\RequiredValidation.cs" />
+    <Compile Include="Editor\Validator\NumberValidation.cs" />
     <Compile Include="GameLoader.cs" />
-    <Compile Include="Editor\Validator.cs" />
     <Compile Include="Environment\Level.cs" />
     <Compile Include="IntroInterface.xaml.cs">
       <DependentUpon>IntroInterface.xaml</DependentUpon>
@@ -174,10 +170,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\CreatePlayerPrompt.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Editor\EditorInterface.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

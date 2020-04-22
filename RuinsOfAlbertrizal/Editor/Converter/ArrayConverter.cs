@@ -6,10 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace RuinsOfAlbertrizal.Editor
+namespace RuinsOfAlbertrizal.Editor.Converter
 {
     public class ArrayConverter : IValueConverter
     {
+        /// <summary>
+        /// Message to string
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             try
@@ -22,6 +30,14 @@ namespace RuinsOfAlbertrizal.Editor
             }
         }
 
+        /// <summary>
+        /// String to message
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="targetType"></param>
+        /// <param name="parameter"></param>
+        /// <param name="culture"></param>
+        /// <returns></returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             string[] delimiter = { "\r\n" };
