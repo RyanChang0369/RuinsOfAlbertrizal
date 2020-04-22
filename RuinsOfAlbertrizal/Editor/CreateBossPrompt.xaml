@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
       xmlns:characters="clr-namespace:RuinsOfAlbertrizal.Characters"
+      xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
+      xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Create Boss">
@@ -27,7 +29,7 @@
                     <TextBox.Text>
                         <Binding Path="SpecificName" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -38,7 +40,7 @@
                     <TextBox.Text>
                         <Binding Path="GeneralName" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -56,7 +58,7 @@
                     <TextBox.Text>
                         <Binding Path="BaseStats[0]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -67,7 +69,7 @@
                     <TextBox.Text>
                         <Binding Path="BaseStats[1]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:NumberValidation/>
+                                <validation:NumberValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -78,7 +80,7 @@
                     <TextBox.Text>
                         <Binding Path="BaseStats[2]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:NumberValidation/>
+                                <validation:NumberValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -89,7 +91,7 @@
                     <TextBox.Text>
                         <Binding Path="BaseStats[3]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:NumberValidation/>
+                                <validation:NumberValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -100,7 +102,7 @@
                     <TextBox.Text>
                         <Binding Path="BaseStats[4]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:NumberValidation/>
+                                <validation:NumberValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -114,7 +116,7 @@
                     <TextBox.Text>
                         <Binding Path="BossMesssageStart" Mode="TwoWay">
                             <Binding.Converter>
-                                <local:ArrayConverter/>
+                                <converter:ArrayConverter/>
                             </Binding.Converter>
                         </Binding>
                     </TextBox.Text>
@@ -125,7 +127,7 @@
                     <TextBox.Text>
                         <Binding Path="BossMesageDefeat" Mode="TwoWay">
                             <Binding.Converter>
-                                <local:ArrayConverter/>
+                                <converter:ArrayConverter/>
                             </Binding.Converter>
                         </Binding>
                     </TextBox.Text>
@@ -137,7 +139,7 @@
                     <TextBox.Text>
                         <Binding Path="BossMessageVictory" Mode="TwoWay">
                             <Binding.Converter>
-                                <local:ArrayConverter/>
+                                <converter:ArrayConverter/>
                             </Binding.Converter>
                         </Binding>
                     </TextBox.Text>

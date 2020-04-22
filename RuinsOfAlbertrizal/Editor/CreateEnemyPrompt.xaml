@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
+      xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
+      xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Create Enemy">
@@ -22,7 +24,7 @@
                     <TextBox.Text>
                         <Binding Path="SpecificName" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <local:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -46,7 +48,7 @@
                 <TextBox x:Name="BaseHP" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <Binding Path="BaseStats[0]" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:NumberValidation/>
+                            <validation:NumberValidation/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
@@ -55,7 +57,7 @@
                 <TextBox x:Name="BaseMana" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <Binding Path="BaseStats[1]" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:NumberValidation/>
+                            <validation:NumberValidation/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
@@ -64,7 +66,7 @@
                 <TextBox x:Name="BaseDef" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <Binding Path="BaseStats[2]" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:NumberValidation/>
+                            <validation:NumberValidation/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
@@ -73,7 +75,7 @@
                 <TextBox x:Name="BaseDmg" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <Binding Path="BaseStats[3]" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:NumberValidation/>
+                            <validation:NumberValidation/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
@@ -82,7 +84,7 @@
                 <TextBox x:Name="BaseSpd" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <Binding Path="BaseStats[4]" Mode="TwoWay">
                         <Binding.ValidationRules>
-                            <local:NumberValidation/>
+                            <validation:NumberValidation/>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox>

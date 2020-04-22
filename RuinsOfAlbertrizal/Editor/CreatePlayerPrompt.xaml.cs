@@ -29,35 +29,6 @@ namespace RuinsOfAlbertrizal.Editor
         }
         private void Save(object sender, RoutedEventArgs e)
         {
-            int[] numericalValues = new int[5];
-
-            switch (Class.SelectedIndex)
-            {
-                case 0: //Warrior
-                    numericalValues[0] = 200;
-                    numericalValues[1] = 20;
-                    numericalValues[2] = 10;
-                    numericalValues[3] = 5;
-                    numericalValues[4] = 5;
-                    break;
-                case 1: //Mage
-                    numericalValues[0] = 150;
-                    numericalValues[1] = 100;
-                    numericalValues[2] = 2;
-                    numericalValues[3] = 5;
-                    numericalValues[4] = 7;
-                    break;
-                case 2: //Scout
-                    numericalValues[0] = 100;
-                    numericalValues[1] = 55;
-                    numericalValues[2] = 2;
-                    numericalValues[3] = 7;
-                    numericalValues[4] = 10;
-                    break;
-            }
-
-            CreatedPlayer.BaseStats = numericalValues;
-            //FileHandler.SavePlayer(CreatedPlayer);
             Back(sender, null);
         }
         private void Load(object sender, RoutedEventArgs e)
