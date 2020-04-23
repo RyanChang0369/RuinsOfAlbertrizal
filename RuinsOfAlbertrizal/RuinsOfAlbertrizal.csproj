@@ -113,6 +113,7 @@
     <Compile Include="Environment\Map.cs" />
     <Compile Include="MiscMethods.cs" />
     <Compile Include="Text\Message.cs" />
+    <Compile Include="ITurnBasedObject.cs" />
     <Compile Include="XMLInterpreter\FileDialog.cs" />
     <Compile Include="XMLInterpreter\FileHandler.cs" />
   </ItemGroup>
