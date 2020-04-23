@@ -38,7 +38,11 @@
                 </TextBox>
 
                 <Label>Description</Label>
-                <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}"/>
+                <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}">
+                    <TextBox.Text>
+                        <Binding Path="Description" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
                 
                 <Label Content="Class *"/>
                 <ComboBox x:Name="Class">

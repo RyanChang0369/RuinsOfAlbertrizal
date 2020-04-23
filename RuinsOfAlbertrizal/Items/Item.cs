@@ -11,24 +11,8 @@ namespace RuinsOfAlbertrizal.Items
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public double Rarity { get; set; }
-        public List<Enemy> DroppedBy { get; set; }
 
-
-        protected Item()
+        public Item()
         { }
-
-        /// <summary>
-        /// Create a new item
-        /// </summary>
-        /// <param name="name">The name of this item.</param>
-        /// <param name="description">The text to display below the name.</param>
-        /// <param name="rarity">The percent chance of finding this item per enemy killed.</param>
-        /// <param name="droppedBy">Which enemies drop this item.</param>
-        public Item(string name, string description, int rarity, List<Enemy> droppedBy)
-        {
-            Name = name;
-            Description = description;
-        }
     }
 }

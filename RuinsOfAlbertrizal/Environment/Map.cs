@@ -68,6 +68,14 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
+        public List<Buff> StoredBuffs { get; set; }
+
+        public List<Item> StoredItems { get; set; }
+
+        public List<Equiptment> StoredEquiptment { get; set; }
+
+        public List<Consumable> StoredConsumables { get; set; }
+
         public List<Level> Levels { get; set; }
 
         public int LevelsCompleted { get; set; }

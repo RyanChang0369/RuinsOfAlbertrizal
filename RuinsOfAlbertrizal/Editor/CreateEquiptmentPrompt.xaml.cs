@@ -19,21 +19,20 @@ namespace RuinsOfAlbertrizal.Editor
     /// <summary>
     /// Interaction logic for CreateItemPrompt.xaml
     /// </summary>
-    public partial class CreateItemPrompt : EditorInterface
+    public partial class CreateEquiptmentPrompt : EditorInterface
     {
-        public Item CreatedItem { get; set; }
-
-        public CreateItemPrompt()
+        public Equiptment CreatedEquiptment { get; set; }
+        public CreateEquiptmentPrompt()
         {
             InitializeComponent();
             UpdateComponent();
-            DataContext = CreatedItem;
+            DataContext = CreatedEquiptment;
         }
 
         private void UpdateComponent()
         {
-            if (CreatedItem == null)
-                CreatedItem = new Item();
+            if (CreatedEquiptment == null)
+                CreatedEquiptment = new Equiptment();
         }
     }
 }

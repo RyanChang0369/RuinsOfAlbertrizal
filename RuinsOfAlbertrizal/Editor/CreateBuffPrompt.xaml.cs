@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Mechanics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,19 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreateBuffPrompt : EditorInterface
     {
+        public static Buff CreatedBuff { get; set; }
         public CreateBuffPrompt()
         {
             InitializeComponent();
+            UpdateComponent();
+            DataContext = CreatedBuff;
         }
+
+        private void UpdateComponent()
+        {
+            if (CreatedBuff == null)
+                CreatedBuff = new Buff();
+        }
+
     }
 }

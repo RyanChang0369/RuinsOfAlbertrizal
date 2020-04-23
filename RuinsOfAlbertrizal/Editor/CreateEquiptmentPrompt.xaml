@@ -1,4 +1,4 @@
-﻿<local:EditorInterface x:Class="RuinsOfAlbertrizal.Editor.CreateBuffPrompt"
+﻿<local:EditorInterface x:Class="RuinsOfAlbertrizal.Editor.CreateEquiptmentPrompt"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
       xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="Create Buff">
+      Title="Create Item">
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -16,11 +16,11 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Style="{StaticResource title}" Content="Create Buff"/>
+        <Label Style="{StaticResource title}" Content="Create Equipment"/>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
                 <Label Content="Name *"/>
-                <TextBox x:Name="BuffName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <TextBox x:Name="ItemName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="Name" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -34,17 +34,6 @@
                 <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>
                         <Binding Path="Description" Mode="TwoWay"/>
-                    </TextBox.Text>
-                </TextBox>
-                
-                <Label Content="Duration"/>
-                <TextBox x:Name="Duration">
-                    <TextBox.Text>
-                        <Binding Path="Duration" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <validation:NumberValidation/>
-                            </Binding.ValidationRules>
-                        </Binding>
                     </TextBox.Text>
                 </TextBox>
 
@@ -103,14 +92,15 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Change in AI (Set to -1 For No Change)*"/>
-                <TextBox x:Name="AIChange" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
-                    <Binding Path="AIChange" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <validation:NumberValidation DefaultValue="-1"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox>
+                <Label Content="Buffs"/>
+                <ListBox x:Name="Buffs" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" SelectionMode="Multiple">
+                    <ListBox.ItemsSource>
+                        <Binding Path="CreateMapPrompt.Map.StoredBuffs"/>
+                    </ListBox.ItemsSource>
+                    <ListBox.SelectedItems>
+                        <Binding Path="Buffs" Mode="TwoWay"/>
+                    </ListBox.SelectedItems>
+                </ListBox>
             </StackPanel>
         </ScrollViewer>
 

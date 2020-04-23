@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static RuinsOfAlbertrizal.AIs.AI;
 
 namespace RuinsOfAlbertrizal.Mechanics
 {
     /// <summary>
     /// Buffs and debuffs
     /// </summary>
-    public class Buff
+    public class Buff : ITurnBasedObject
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -30,77 +31,22 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         public int[] StatGain { get; set; }
 
-        /// <summary>
-        /// If true, then player cannot do anything.
-        /// </summary>
-        public bool Immobalized { get; set; }
+        ///// <summary>
+        ///// Changes the AI
+        ///// </summary>
+        //public AIStyle AIChange { get; set; }
 
-        private Buff()
+        public Buff()
         { }
 
-        /// <summary>
-        /// Creates a new buff
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="description"></param>
-        /// <param name="statGain"></param>
-        /// <param name="immobalized"></param>
-        public Buff(string name, string description, int[] statGain, bool immobalized)
+        public void TurnEnded()
         {
-            Name = name;
-            Description = description;
-            StatGain = statGain;
-            Immobalized = immobalized;
+            TurnsPassed++;
         }
 
-        /// <summary>
-        /// Creates a new non-immobalizing buff
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="description"></param>
-        /// <param name="statGain"></param>
-        public Buff(string name, string description, int[] statGain) : this(name, description, statGain, false)
-        {   }
-
-        //public Buff(string name, string description, int duration, int interval,
-        //    int HPGainPerInterval, int manaGainPerInterval, int defGainPerInterval,
-        //    int dmgGainPerInterval, int spdGainPerInterval, double jumpGainPerInterval)
-        //{
-        //    Name = name;
-        //    Description = description;
-
-        //    Duration = duration;
-        //    Interval = interval;
-
-        //    this.HPGainPerInterval = HPGainPerInterval;
-        //    DefGainPerInterval = defGainPerInterval;
-        //    DmgGainPerInterval = dmgGainPerInterval;
-        //    SpdGainPerInterval = spdGainPerInterval;
-        //    JumpGainPerInterval = jumpGainPerInterval;
-        //}
-
-        //public Buff(string name, string description, int duration, int interval,
-        //    int HPGain, int manaGain, int defGain, int dmgGain, int spdGain, double jumpGain,
-        //    int HPGainPerInterval, int manaGainPerInterval, int defGainPerInterval,
-        //    int dmgGainPerInterval, int spdGainPerInterval, double jumpGainPerInterval)
-        //{
-        //    Name = name;
-        //    Description = description;
-
-        //    Duration = duration;
-        //    Interval = interval;
-
-        //    this.HPGain = HPGain;
-        //    DefGain = defGain;
-        //    DmgGain = dmgGain;
-        //    SpdGain = spdGain;
-        //    JumpGain = jumpGain;
-
-        //    this.HPGainPerInterval = HPGainPerInterval;
-        //    DefGainPerInterval = defGainPerInterval;
-        //    DmgGainPerInterval = dmgGainPerInterval;
-        //    SpdGainPerInterval = spdGainPerInterval;
-        //    JumpGainPerInterval = jumpGainPerInterval;
-        //}
+        public void TurnStarted()
+        {
+            
+        }
     }
 }

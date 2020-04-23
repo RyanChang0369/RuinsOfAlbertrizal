@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,22 +13,18 @@ namespace RuinsOfAlbertrizal.Items
         /// <summary>
         /// Refer to SlotEnum
         /// </summary>
-        public int[] Slots { get; set; }
+        public SlotMode[] Slots { get; set; }
 
-        public enum SlotEnum
+        public enum SlotMode
         {
             Head, Torso, Legs, Feet, Neck, Hand1, Hand2, Finger1, Finger2, Finger3, Finger4, Finger5, Finger6, Finger7, Finger8, Finger9, Finger10
         }
 
         public int[] StatGain { get; set; }
 
-        private Equiptment()
-        { }
+        public List<Buff> Buffs { get; set; }
 
-        public Equiptment(string name, string description, int rarity,
-            List<Enemy> droppedBy, int[] slots) : base(name, description, rarity, droppedBy)
-        {
-            Slots = slots;
-        }
+        public Equiptment()
+        { }
     }
 }

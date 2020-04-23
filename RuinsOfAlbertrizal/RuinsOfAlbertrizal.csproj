@@ -81,6 +81,9 @@
     <Compile Include="Editor\CreateBuffPrompt.xaml.cs">
       <DependentUpon>CreateBuffPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\CreateEquiptmentPrompt.xaml.cs">
+      <DependentUpon>CreateEquiptmentPrompt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\CreateItemPrompt.xaml.cs">
       <DependentUpon>CreateItemPrompt.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\CreateBuffPrompt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\CreateEquiptmentPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

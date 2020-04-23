@@ -5,20 +5,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Items
 {
-    public class Consumable : Item
+    public class Consumable : Item, ITurnBasedObject
     {
         public List<Buff> Buffs { get; set; }
 
-        private Consumable()
+        [XmlIgnore]
+        public int Duration
+        {
+            get
+            {
+                int duration = 0;
+
+                foreach (Buff buff in Buffs)
+                {
+                    if (buff.Duration > duration)
+                        duration = buff.Duration;
+                }
+
+                return duration;
+            }
+        }
+
+        public int TurnsPassed { get; set; }
+
+        [XmlIgnore]
+        public bool HasEnded { get => TurnsPassed >= Duration; }
+
+        public Consumable()
         { }
 
-        public Consumable(string name, string description, int rarity,
-            List<Enemy> droppedBy, List<Buff> buffs) : base(name, description, rarity, droppedBy)
+        public void TurnEnded()
         {
-            Buffs = buffs;
+            TurnsPassed++;
+        }
+
+        public void TurnStarted()
+        {
+            try
+            {
+                for (int i = 0; i < Buffs.Count; i++)
+                {
+                    if (Buffs[i].HasEnded)
+                    {
+                        Buffs.RemoveAt(i);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal.AIs
 {
-    class AI
+    public class AI
     {
-        public enum AIStyles
+        public enum AIStyle
         {
             None,
             SimpleMelee,

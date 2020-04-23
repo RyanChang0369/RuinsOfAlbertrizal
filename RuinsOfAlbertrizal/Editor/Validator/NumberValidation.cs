@@ -10,11 +10,13 @@ namespace RuinsOfAlbertrizal.Editor.Validator
 {
     public class NumberValidation : ValidationRule
     {
+        public int DefaultValue { get; set; }
+
         public NumberValidation()
         { }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            int number = 0;
+            int number = DefaultValue;
 
             try
             {
