@@ -52,7 +52,7 @@ namespace RuinsOfAlbertrizal.Environment
         {
             get
             {
-                string[] names = new string[StoredEnemies.Count];
+                string[] names = new string[StoredBosses.Count];
 
                 try
                 {

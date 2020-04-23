@@ -39,13 +39,13 @@ namespace RuinsOfAlbertrizal.Editor
                 Map = GameBase.CurrentGame;
 
             DataContext = Map;
-
             UpdateComponent();
         }
 
         private void UpdateComponent()
         {
             MainTabControl.SelectedIndex = SelectedTab;
+            StatusBar.Content = "";
 
             //Step 1: Player
             if (Map.Player != null)
@@ -57,7 +57,8 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 2: Enemies
             if (CreateEnemyPrompt.CreatedEnemy != null)
             {
-                Map.StoredEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
+                if (!Map.StoredEnemies.Contains(CreateEnemyPrompt.CreatedEnemy))
+                    Map.StoredEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
 
                 StepsDone[1] = true;
             }
@@ -65,7 +66,8 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 3: Bosses
             if (CreateBossPrompt.CreatedBoss != null)
             {
-                Map.StoredBosses.Add(CreateBossPrompt.CreatedBoss);
+                if (!Map.StoredBosses.Contains(CreateBossPrompt.CreatedBoss))
+                    Map.StoredBosses.Add(CreateBossPrompt.CreatedBoss);
 
                 StepsDone[2] = true;
             }
@@ -80,8 +82,11 @@ namespace RuinsOfAlbertrizal.Editor
         }
         private void Save(object sender, RoutedEventArgs e)
         {
+            StatusBar.Content = "Saving...";
             GameBase.CurrentGame = Map;
             FileHandler.SaveObject(typeof(Map), Map, GameBase.CustomMapLocation);
+            
+            StatusBar.Content = "Saved!";
         }
         private void Load(object sender, RoutedEventArgs e)
         {
@@ -111,12 +116,70 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void CreatedEnemiesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Edit
+            try
+            {
+                CreateEnemyPrompt.CreatedEnemy = Map.StoredEnemies[CreatedEnemiesList.SelectedIndex];
+                CreateEnemyBtn.Content = "Edit Enemy";
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void CreatedBossesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Edit
+            try
+            {
+                CreateBossPrompt.CreatedBoss = Map.StoredBosses[CreatedBossesList.SelectedIndex];
+                CreateBossBtn.Content = "Edit Boss";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void ClearSelectionEnemy(object sender, RoutedEventArgs e)
+        {
+            CreatedEnemiesList.SelectedIndex = -1;
+            CreateEnemyBtn.Content = "Create Enemy";
+        }
+
+        private void ClearSelectionBoss(object sender, RoutedEventArgs e)
+        {
+            CreatedBossesList.SelectedIndex = -1;
+            CreateBossBtn.Content = "Create Boss";
+        }
+
+        private void DeleteSelectionEnemy(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CreateEnemyPrompt.CreatedEnemy = new Enemy();
+                Map.StoredEnemies.RemoveAt(CreatedEnemiesList.SelectedIndex);
+                CreatedEnemiesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                ClearSelectionEnemy(sender, null);
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void DeleteSelectionBoss(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CreateBossPrompt.CreatedBoss = new Boss();
+                Map.StoredBosses.RemoveAt(CreatedBossesList.SelectedIndex);
+                CreatedBossesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                ClearSelectionBoss(sender, null);
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

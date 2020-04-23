@@ -54,6 +54,10 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="MinWidth" Value="500"/>
         </Style>
+        <Style x:Key="buttonSmall" TargetType="Button">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
         
         <!--Label Styles-->
         <Style TargetType="Label">

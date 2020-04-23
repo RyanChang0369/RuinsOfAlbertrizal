@@ -56,7 +56,7 @@
             </StackPanel>
         </ScrollViewer>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button Click="Save">Save</Button>
+            <Button Click="Back">Back</Button>
         </StackPanel>
     </Grid>
 </Page>

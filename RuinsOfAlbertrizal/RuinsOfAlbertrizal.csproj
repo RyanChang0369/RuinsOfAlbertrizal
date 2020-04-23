@@ -104,6 +104,7 @@
     <Compile Include="Environment\Obstacle.cs" />
     <Compile Include="GameBase.cs" />
     <Compile Include="Environment\Map.cs" />
+    <Compile Include="MiscMethods.cs" />
     <Compile Include="Text\Message.cs" />
     <Compile Include="XMLInterpreter\FileDialog.cs" />
     <Compile Include="XMLInterpreter\FileHandler.cs" />

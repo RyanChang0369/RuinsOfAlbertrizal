@@ -21,17 +21,62 @@
       <SpecificName>God</SpecificName>
       <Level>0</Level>
       <BaseStats>
+        <int>999</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <Abilities />
+      <Buffs />
+      <Equiptments />
+      <AI>None</AI>
+      <PointGainPerKill>0</PointGainPerKill>
+    </Enemy>
+    <Enemy>
+      <SpecificName>Slime</SpecificName>
+      <Level>0</Level>
+      <BaseStats>
         <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </BaseStats>
+      <Abilities />
+      <Buffs />
+      <Equiptments />
       <AI>None</AI>
       <PointGainPerKill>0</PointGainPerKill>
     </Enemy>
   </StoredEnemies>
-  <StoredBosses />
+  <StoredBosses>
+    <Boss>
+      <SpecificName>LAMBSAUCE</SpecificName>
+      <Level>0</Level>
+      <BaseStats>
+        <int>500</int>
+        <int>200</int>
+        <int>25</int>
+        <int>25</int>
+        <int>25</int>
+      </BaseStats>
+      <Abilities />
+      <Buffs />
+      <Equiptments />
+      <AI>None</AI>
+      <PointGainPerKill>0</PointGainPerKill>
+      <BossMessageStart>
+        <string>WHERE'S THE FAQING LAMBSAUCE?</string>
+      </BossMessageStart>
+      <BossMessageDefeat>
+        <string>RAW!</string>
+      </BossMessageDefeat>
+      <BossMessageVictory>
+        <string>ded</string>
+      </BossMessageVictory>
+    </Boss>
+  </StoredBosses>
   <Levels />
   <LevelsCompleted>0</LevelsCompleted>
 </Map>

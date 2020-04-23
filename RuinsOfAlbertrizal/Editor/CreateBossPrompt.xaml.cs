@@ -38,24 +38,9 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedBoss = new Boss();
         }
 
-        private void Save(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
-        
-        //private void RemoveWatermark(object sender, RoutedEventArgs e)
-        //{
-        //    TextBox textBox = sender as TextBox;
-        //    textBox.Text = "";
-        //}
-
-        //private void AddWatermark(object sender, RoutedEventArgs e)
-        //{
-        //    TextBox textBox = sender as TextBox;
-        //    if (textBox.Text == "")
-        //    {
-        //        textBox.Text = "Press Enter to Seperate Lines";
-        //    }
-        //}
     }
 }

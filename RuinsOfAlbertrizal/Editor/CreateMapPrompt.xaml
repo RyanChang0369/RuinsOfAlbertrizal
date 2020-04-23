@@ -40,38 +40,46 @@
                         <StackPanel>
                             <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
                             <Button x:Name="CreatePlayerBtn" Click="NavPlayerPrompt" Content="Create Player" HorizontalAlignment="Left"/>
-                            <Button x:Name="CreateEnemyBtn" Click="NavEnemyPrompt" Content="Create Enemies" HorizontalAlignment="Left"/>
-                            <Button x:Name="CreateBossBtn" Click="NavBossPrompt" Content="Create Bosses" HorizontalAlignment="Left"/>
+                            <Button x:Name="CreateEnemyBtn" Click="NavEnemyPrompt" Content="Create Enemy" HorizontalAlignment="Left"/>
+                            <Button x:Name="CreateBossBtn" Click="NavBossPrompt" Content="Create Boss" HorizontalAlignment="Left"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             <Label Content="Created Player:"/>
                             <Label x:Name="CreatedPlayerLabel">
                                 <Label.Content>
-                                    <Binding Path="Player.SpecificName"/>
+                                    <Binding Path="Player.SpecificName" UpdateSourceTrigger="PropertyChanged"/>
                                 </Label.Content>
                             </Label>
-                            <StackPanel Margin="50,0">
-                                <Label>Created Enemies</Label>
-                                <!--<TextBlock x:Name="CreatedEnemiesTextBlock" Width="200" Style="{StaticResource defaultTextBlock}">
-                                    <TextBlock.Text>
-                                        <Binding Path="StoredEnemyNames"/>
-                                    </TextBlock.Text>
-                                </TextBlock>-->
-                                <ListBox x:Name="CreatedEnemiesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedEnemiesList_SelectionChanged">
-                                    <ListBox.ItemsSource>
-                                        <Binding Path="StoredEnemyNames"/>
-                                    </ListBox.ItemsSource>
-                                </ListBox>
-                            </StackPanel>
-                            <StackPanel>
-                                <Label>Created Boss</Label>
-                                <ListBox x:Name="CreatedBossesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBossesList_SelectionChanged">
-                                    <ListBox.ItemsSource>
-                                        <Binding Path="StoredBossNames"/>
-                                    </ListBox.ItemsSource>
-                                </ListBox>
-                            </StackPanel>
+                            <Grid Margin="50, 0">
+                                <StackPanel>
+                                    <Label>Created Enemies</Label>
+                                    <ListBox x:Name="CreatedEnemiesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedEnemiesList_SelectionChanged" HorizontalAlignment="Center">
+                                        <ListBox.ItemsSource>
+                                            <Binding Path="StoredEnemyNames" UpdateSourceTrigger="PropertyChanged"/>
+                                        </ListBox.ItemsSource>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                                    <Button Content="Clear Selection" Click="ClearSelectionEnemy" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelectionEnemy" Style="{StaticResource buttonSmall}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid>
+                                <StackPanel>
+                                    <Label>Created Bosses</Label>
+                                    <ListBox x:Name="CreatedBossesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBossesList_SelectionChanged">
+                                        <ListBox.ItemsSource>
+                                            <Binding Path="StoredBossNames" UpdateSourceTrigger="PropertyChanged"/>
+                                        </ListBox.ItemsSource>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                                    <Button Content="Clear Selection" Click="ClearSelectionBoss" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelectionBoss" Style="{StaticResource buttonSmall}"/>
+                                </StackPanel>
+                            </Grid>
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
@@ -79,10 +87,13 @@
             </TabControl>
 
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button x:Name="BackBtn" Click="Back">Back</Button>
-            <Button x:Name="SaveBtn" Click="Save" IsDefault="True">Save</Button>
-            <Button x:Name="LoadBtn" Click="Load">Load</Button>
-        </StackPanel>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="BackBtn" Click="Back">Back</Button>
+                <Button x:Name="SaveBtn" Click="Save" IsDefault="True">Save</Button>
+                <Button x:Name="LoadBtn" Click="Load">Load</Button>
+            </StackPanel>
+            <Label x:Name="StatusBar" Height="32" Grid.Row="1" VerticalAlignment="Bottom" FontSize="18"/>
+        </Grid>
     </Grid>
 </Page>

@@ -27,8 +27,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreateMapPrompt.Map.Player = new Player();
         }
 
-
-        private void Save(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }

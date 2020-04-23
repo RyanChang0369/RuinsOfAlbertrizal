@@ -38,11 +38,7 @@
                 <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
                 <TextBox x:Name="GeneralName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="GeneralName" Mode="TwoWay">
-                            <Binding.ValidationRules>
-                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
-                            </Binding.ValidationRules>
-                        </Binding>
+                        <Binding Path="GeneralName" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
                 
@@ -114,7 +110,7 @@
                 <Label Content="Boss Message At Encounter (Press Enter to Separate Lines)" ToolTip="The message to display when boss first appears."/>
                 <TextBox x:Name="BossMessageStart" Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>
-                        <Binding Path="BossMesssageStart" Mode="TwoWay">
+                        <Binding Path="BossMessageStart" Mode="TwoWay">
                             <Binding.Converter>
                                 <converter:ArrayConverter/>
                             </Binding.Converter>
@@ -125,7 +121,7 @@
                 <Label Content="Boss Message At Player Victory (Press Enter to Separate Lines)" ToolTip="The message to display when boss is defeated."/>
                 <TextBox x:Name="BossMesageDefeat" Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>
-                        <Binding Path="BossMesageDefeat" Mode="TwoWay">
+                        <Binding Path="BossMessageDefeat" Mode="TwoWay">
                             <Binding.Converter>
                                 <converter:ArrayConverter/>
                             </Binding.Converter>
@@ -150,7 +146,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <!--<Button Click="Back">Back</Button>-->
-            <Button Click="Save" Content="Save"/>
+            <Button Click="Back" Content="Back"/>
             <!--<Button Click="Load" Content="Load"/>-->
         </StackPanel>
     </Grid>
