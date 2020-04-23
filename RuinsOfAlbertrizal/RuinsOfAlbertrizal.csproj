@@ -78,16 +78,20 @@
     <Compile Include="Editor\CreateEnemyPrompt.xaml.cs">
       <DependentUpon>CreateEnemyPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\CreateBuffPrompt.xaml.cs">
+      <DependentUpon>CreateBuffPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\CreateItemPrompt.xaml.cs">
+      <DependentUpon>CreateItemPrompt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\CreateMapPrompt.xaml.cs">
       <DependentUpon>CreateMapPrompt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\CreatePlayerPrompt.xaml.cs">
       <DependentUpon>CreatePlayerPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\EditorInterface.cs" />
     <Compile Include="Editor\EditorProperties.cs" />
-    <Compile Include="Editor\EditorMenu.xaml.cs">
-      <DependentUpon>EditorMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Editor\EnemyProperties.cs" />
     <Compile Include="Editor\Validator\RequiredValidation.cs" />
     <Compile Include="Editor\Validator\NumberValidation.cs" />
@@ -166,15 +170,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Editor\CreateBuffPrompt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\CreateItemPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Editor\CreateMapPrompt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\CreatePlayerPrompt.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Editor\EditorMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

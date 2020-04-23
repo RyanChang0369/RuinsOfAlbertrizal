@@ -22,7 +22,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// <summary>
     /// Interaction logic for CreateEnemyPrompt.xaml
     /// </summary>
-    public partial class CreateEnemyPrompt : Page
+    public partial class CreateEnemyPrompt : EditorInterface
     {
         public static Enemy CreatedEnemy { get; set; }
         public CreateEnemyPrompt()
@@ -36,11 +36,6 @@ namespace RuinsOfAlbertrizal.Editor
         {
             if (CreatedEnemy == null)
                 CreatedEnemy = new Enemy();
-        }
-
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

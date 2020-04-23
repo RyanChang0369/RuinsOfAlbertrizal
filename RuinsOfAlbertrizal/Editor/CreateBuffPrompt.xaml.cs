@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace RuinsOfAlbertrizal.Editor
 {
     /// <summary>
-    /// Interaction logic for CreateItemPrompt.xaml
+    /// Interaction logic for CreateBuffPrompt.xaml
     /// </summary>
-    public partial class CreateItemPrompt : Page
+    public partial class CreateBuffPrompt : EditorInterface
     {
-        public CreateItemPrompt()
+        public CreateBuffPrompt()
         {
             InitializeComponent();
         }

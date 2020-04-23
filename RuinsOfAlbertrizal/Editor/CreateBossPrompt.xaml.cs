@@ -21,7 +21,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// <summary>
     /// Interaction logic for CreateBossPrompt.xaml
     /// </summary>
-    public partial class CreateBossPrompt : Page
+    public partial class CreateBossPrompt : EditorInterface
     {
         public static Boss CreatedBoss { get; set; }
 
@@ -36,11 +36,6 @@ namespace RuinsOfAlbertrizal.Editor
         {
             if (CreatedBoss == null)
                 CreatedBoss = new Boss();
-        }
-
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

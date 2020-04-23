@@ -18,7 +18,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// <summary>
     /// Interaction logic for CreateItemPrompt.xaml
     /// </summary>
-    public partial class CreateItemPrompt : Page
+    public partial class CreateItemPrompt : EditorInterface
     {
         public CreateItemPrompt()
         {

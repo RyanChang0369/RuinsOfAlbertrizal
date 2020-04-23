@@ -12,7 +12,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// <summary>
     /// Interaction logic for CreatePlayerPrompt.xaml
     /// </summary>
-    public partial class CreatePlayerPrompt : Page
+    public partial class CreatePlayerPrompt : EditorInterface
     {
         public CreatePlayerPrompt()
         {
@@ -25,11 +25,6 @@ namespace RuinsOfAlbertrizal.Editor
         {
             if (CreateMapPrompt.Map.Player == null)
                 CreateMapPrompt.Map.Player = new Player();
-        }
-
-        private void Back(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
