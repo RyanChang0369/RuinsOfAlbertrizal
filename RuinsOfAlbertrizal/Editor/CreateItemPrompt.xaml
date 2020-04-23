@@ -1,0 +1,103 @@
+﻿<Page x:Class="RuinsOfAlbertrizal.Editor.CreateItemPrompt"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
+      xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
+      xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1600"
+      Title="Create Item">
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Style="{StaticResource title}" Content="Create Item"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="Form">
+                <Label ToolTip='The proper name, such as Bob or Robert' Content="Proper Name *"/>
+                <TextBox x:Name="SpecificName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="SpecificName" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
+                <TextBox x:Name="GeneralName">
+                    <TextBox.Text>
+                        <Binding Path="GeneralName" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="Description"/>
+                <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}">
+                    <TextBox.Text>
+                        <Binding Path="Description" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="HP *"/>
+                <TextBox x:Name="BaseHP" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <Binding Path="BaseStats[0]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validation:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+
+                <Label Content="Mana *"/>
+                <TextBox x:Name="BaseMana" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <Binding Path="BaseStats[1]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validation:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+
+                <Label Content="Defense *"/>
+                <TextBox x:Name="BaseDef" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <Binding Path="BaseStats[2]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validation:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+
+                <Label Content="Damage *"/>
+                <TextBox x:Name="BaseDmg" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <Binding Path="BaseStats[3]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validation:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+
+                <Label Content="Speed *"/>
+                <TextBox x:Name="BaseSpd" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <Binding Path="BaseStats[4]" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validation:NumberValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
+
+                <Label Content="Abilities"/>
+                <TextBox x:Name="Abilities" IsEnabled="False"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <!--<Button Click="Back">Back</Button>-->
+            <Button Click="Back" Content="Back"/>
+            <!--<Button Click="Load" Content="Load"/>-->
+        </StackPanel>
+    </Grid>
+</Page>
