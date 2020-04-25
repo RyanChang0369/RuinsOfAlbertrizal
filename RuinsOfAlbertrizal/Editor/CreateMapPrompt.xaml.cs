@@ -114,6 +114,19 @@ namespace RuinsOfAlbertrizal.Editor
             SelectedTab = MainTabControl.SelectedIndex;
         }
 
+        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+
+            if (listBox.SelectedIndex < 0)
+                return;
+
+            switch (listBox.Name)
+            {
+
+            }
+        }
+
         private void CreatedEnemiesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
