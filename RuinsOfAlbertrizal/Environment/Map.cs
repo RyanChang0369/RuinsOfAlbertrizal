@@ -87,15 +87,9 @@ namespace RuinsOfAlbertrizal.Environment
         {
             StoredEnemies = new List<Enemy>();
             StoredBosses = new List<Boss>();
+            StoredEquiptment = new List<Equiptment>();
+            StoredConsumables = new List<Consumable>();
             Levels = new List<Level>();
         }
-
-        //public Map(List<string> introText, Player player, List<Level> levels)
-        //{
-        //    IntroText = introText;
-        //    Player = player;
-        //    Levels = levels;
-        //    LevelsCompleted = 0;
-        //}
     }
 }

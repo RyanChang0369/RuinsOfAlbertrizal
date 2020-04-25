@@ -64,17 +64,9 @@ namespace RuinsOfAlbertrizal.Characters
 
         }
 
-        //public Enemy(string generalName, string specificName, string description, int[] baseValues)
-        //    : base(generalName, specificName, description, baseValues)
-        //{
-
-        //}
-
-        //public Enemy(string generalName, string specificName, string description,
-        //    int[] baseValues, double pointGainPerKill) :
-        //     base(generalName, specificName, description, baseValues)
-        //{
-        //    PointGainPerKill = pointGainPerKill;
-        //}
+        public override void Die()
+        {
+            throw new NotImplementedException("");
+        }
     }
 }

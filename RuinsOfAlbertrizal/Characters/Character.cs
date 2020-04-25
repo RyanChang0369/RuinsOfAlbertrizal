@@ -50,10 +50,11 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        public List<int> Abilities { get; set; }
+        //public List<int> Abilities { get; set; }
 
         public List<Buff> AppliedBuffs { get; set; }
 
+        [XmlIgnore]
         public List<Buff> CurrentBuffs
         {
             get
@@ -87,7 +88,7 @@ namespace RuinsOfAlbertrizal.Characters
         /// <summary>
         /// The equiptment the character has equipted
         /// </summary>
-        public List<Equiptment> CurrentEquiptments { get; set; }
+        public Equiptment[] CurrentEquiptments { get; set; }
         
         /// <summary>
         /// The consumables the character has consumed
@@ -106,6 +107,12 @@ namespace RuinsOfAlbertrizal.Characters
         public Character()
         {
             BaseStats = new int[5];
+            AppliedBuffs = new List<Buff>();
+            CurrentEquiptments = new Equiptment[16];        //16 possible slots for equiptment
+            InventoryEquiptments = new List<Equiptment>();
+            CurrentConsumables = new List<Consumable>();
+            InventoryConsumables = new List<Consumable>();
+            InventoryItems = new List<Item>();
         }
 
         /// <summary>
@@ -116,21 +123,26 @@ namespace RuinsOfAlbertrizal.Characters
         public void Equipt(int index)
         {
             Equiptment equiptment = InventoryEquiptments[index];
+            Unequipt(index);
             
-            foreach(Equiptment equiptment1 in CurrentEquiptments)
+            foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
             {
-                foreach (Equiptment.SlotMode slot in equiptment1.Slots)
-                {
-                    if (equiptment.Slots.Contains(slot))
-                    {
-                        CurrentEquiptments.Remove(equiptment1);
-                    }
-                }
+
+                CurrentEquiptments[(int)slotMode] = equiptment;
             }
+        }
 
-            InventoryEquiptments.RemoveAt(index);
-
-            CurrentEquiptments.Add(equiptment);
+        /// <summary>
+        /// Removes this equiptment and any of the slots it may have occupied.
+        /// </summary>
+        /// <param name="index"></param>
+        public void Unequipt(int index)
+        {
+            foreach (Equiptment.SlotMode slotMode in CurrentEquiptments[index].Slots)
+            {
+                CurrentEquiptments[(int)slotMode] = null;
+            }
+            InventoryEquiptments.Add(CurrentEquiptments[index]);
         }
 
         /// <summary>
@@ -150,10 +162,7 @@ namespace RuinsOfAlbertrizal.Characters
             CurrentStats[(int)GameBase.Stats.HP] -= dmg;
         }
 
-        public void Die()
-        {
-            
-        }
+        public abstract void Die();
 
         public void TurnEnded()
         {
@@ -166,6 +175,7 @@ namespace RuinsOfAlbertrizal.Characters
             if (IsDead)
                 Die();
 
+            //Remove any expired consumables
             try
             {
                 for (int i = 0; i < CurrentConsumables.Count; i++)
