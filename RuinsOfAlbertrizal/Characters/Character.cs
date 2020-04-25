@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Items;
+﻿using RuinsOfAlbertrizal.AIs;
+using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,33 @@ namespace RuinsOfAlbertrizal.Characters
 
         public int Level { get; set; }
 
-        public int[] BaseStats { get; set; }
+        public AI AI { get; set; }
+
+        /// <summary>
+        /// The original stats that SHOULD NOT CHANGE.
+        /// </summary>
+        private int[] BaseStats { get; set; }
+
+        [XmlIgnore]
+        public int[] LeveledStats
+        {
+            get
+            {
+                int[] leveledStats = BaseStats;
+
+                for (int i = 0; i < leveledStats.Length; i++)
+                {
+                    leveledStats[i] = (int)Math.Round(leveledStats[i] * (1 + (0.02 * (Level - 1))));
+                }
+
+                return leveledStats;
+            }
+        }
+
+        /// <summary>
+        /// Use this to apply damage
+        /// </summary>
+        public int[] AppliedStats { get; set; }
 
         [XmlIgnore]
         public int[] CurrentStats {
@@ -34,9 +61,9 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 int[] currentStats = { 0, 0, 0, 0, 0 };
 
-                List<Buff> currentBuffs = CurrentBuffs;
+                currentStats = ArrayMethods.AddArrays(currentStats, LeveledStats);
 
-                foreach (Buff buff in currentBuffs)
+                foreach (Buff buff in CurrentBuffs)
                 {
                     currentStats = ArrayMethods.AddArrays(currentStats, buff.StatGain);
                 }
@@ -45,6 +72,8 @@ namespace RuinsOfAlbertrizal.Characters
                 {
                     currentStats = ArrayMethods.AddArrays(currentStats, equiptment.StatGain);
                 }
+
+                currentStats = ArrayMethods.AddArrays(currentStats, AppliedStats);
 
                 return currentStats;
             }
@@ -101,6 +130,8 @@ namespace RuinsOfAlbertrizal.Characters
 
         public List<Item> InventoryItems { get; set; }
 
+        public List<Attack> Attacks { get; set; }
+
         /// <summary>
         /// True if character is charging an attack, false otherwise.
         /// </summary>
@@ -112,12 +143,14 @@ namespace RuinsOfAlbertrizal.Characters
         public Character()
         {
             BaseStats = new int[5];
+            AppliedStats = new int[5];
             AppliedBuffs = new List<Buff>();
             CurrentEquiptments = new Equiptment[16];        //16 possible slots for equiptment
             InventoryEquiptments = new List<Equiptment>();
             CurrentConsumables = new List<Consumable>();
             InventoryConsumables = new List<Consumable>();
             InventoryItems = new List<Item>();
+            Attacks = new List<Attack>();
         }
 
         /// <summary>
@@ -162,9 +195,9 @@ namespace RuinsOfAlbertrizal.Characters
             CurrentConsumables.Add(consumable);
         }
 
-        public void TakeDamage(int dmg)
+        public void Attack(int attackIndex, Character character)
         {
-            CurrentStats[(int)GameBase.Stats.HP] -= dmg;
+            Attacks[attackIndex].BeginAttack(character);
         }
 
         public abstract void Die();

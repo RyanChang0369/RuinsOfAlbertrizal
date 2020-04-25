@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,13 @@ namespace RuinsOfAlbertrizal.Mechanics
 {
     public class Attack
     {
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
         public Buff Buff { get; set; }
+
+        public int[] StatLoss { get; set; }
 
         public int CoolDown { get; set; }
 
@@ -24,6 +31,11 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// Turns since charging an attack, or 0 if not applicable.
         /// </summary>
         public int TurnsSinceBeginCharge { get; set; }
+
+        public Attack()
+        {
+            StatLoss = new int[5];
+        }
 
         [XmlIgnore]
         public bool CanAttack
@@ -43,14 +55,20 @@ namespace RuinsOfAlbertrizal.Mechanics
             }
         }
 
-        public void BeginAttack()
+        /// <summary>
+        /// Starts the attack.
+        /// </summary>
+        public void BeginAttack(Character character)
         {
             if (CanAttack)
             {
                 TurnSinceAttacked = 0;
                 TurnsSinceBeginCharge = 0;
 
-                //Deal damage
+                for (int i = 0; i < StatLoss.Length; i++)
+                {
+                    character.AppliedStats[i] -= StatLoss[i];
+                }
             }
             else if (!IsCharged)
             {
