@@ -83,6 +83,8 @@ namespace RuinsOfAlbertrizal.Environment
         [XmlIgnore]
         public Level CurrentLevel { get => Levels[LevelsCompleted]; }
 
+        public int TurnsPassed { get; set; }
+
         public Map()
         {
             StoredEnemies = new List<Enemy>();

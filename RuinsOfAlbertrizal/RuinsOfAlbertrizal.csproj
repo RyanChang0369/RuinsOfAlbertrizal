@@ -106,6 +106,7 @@
     <Compile Include="Items\Equiptment.cs" />
     <Compile Include="Items\Consumable.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Mechanics\Attack.cs" />
     <Compile Include="Mechanics\Buff.cs" />
     <Compile Include="Environment\Hazard.cs" />
     <Compile Include="Environment\Obstacle.cs" />

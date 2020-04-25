@@ -101,6 +101,11 @@ namespace RuinsOfAlbertrizal.Characters
 
         public List<Item> InventoryItems { get; set; }
 
+        /// <summary>
+        /// True if character is charging an attack, false otherwise.
+        /// </summary>
+        public bool IsCharging { get; set; }
+
         [XmlIgnore]
         public bool IsDead { get => CurrentStats[0] <= 0; }
 
