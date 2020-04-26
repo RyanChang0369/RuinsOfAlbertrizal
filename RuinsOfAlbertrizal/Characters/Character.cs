@@ -11,19 +11,12 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
-    public abstract class Character : ITurnBasedObject
+    public abstract class Character : ObjectOfAlbertrizal, ITurnBasedObject
     {
-        /// <summary>
-        /// The name of the "species" such as human or orc
-        /// </summary>
-        public string GeneralName { get; set; }
-
         /// <summary>
         /// The proper name, such as Bob or Robert
         /// </summary>
         public string SpecificName { get; set; }
-
-        public string Description { get; set; }
 
         public int Level { get; set; }
 
@@ -32,7 +25,7 @@ namespace RuinsOfAlbertrizal.Characters
         /// <summary>
         /// The original stats that SHOULD NOT CHANGE.
         /// </summary>
-        private int[] BaseStats { get; set; }
+        public int[] BaseStats { get; set; }
 
         [XmlIgnore]
         public int[] LeveledStats

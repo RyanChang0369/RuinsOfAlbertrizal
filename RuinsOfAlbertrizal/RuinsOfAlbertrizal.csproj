@@ -70,6 +70,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Characters\Enemy.cs" />
+    <Compile Include="Editor\Converter\NameConverter.cs" />
     <Compile Include="Editor\Converter\ArrayConverter.cs" />
     <Compile Include="Editor\Converter\ClassToBaseStatsConverter.cs" />
     <Compile Include="Editor\CreateBossPrompt.xaml.cs">
@@ -113,6 +114,7 @@
     <Compile Include="GameBase.cs" />
     <Compile Include="Environment\Map.cs" />
     <Compile Include="MiscMethods.cs" />
+    <Compile Include="ObjectOfAlbertrizal.cs" />
     <Compile Include="Text\Message.cs" />
     <Compile Include="ITurnBasedObject.cs" />
     <Compile Include="XMLInterpreter\FileDialog.cs" />

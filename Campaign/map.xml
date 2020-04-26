@@ -3,39 +3,102 @@
   <Name>Death</Name>
   <IntroText />
   <Player>
-    <SpecificName>rh</SpecificName>
+    <SpecificName>Bobert</SpecificName>
     <Level>0</Level>
     <BaseStats>
-      <int>150</int>
-      <int>100</int>
-      <int>2</int>
-      <int>5</int>
-      <int>7</int>
+      <int>0</int>
+      <int>0</int>
+      <int>0</int>
+      <int>0</int>
+      <int>0</int>
     </BaseStats>
-    <Abilities />
-    <Buffs />
-    <Equiptments />
+    <AppliedStats>
+      <int>0</int>
+      <int>0</int>
+      <int>0</int>
+      <int>0</int>
+      <int>0</int>
+    </AppliedStats>
+    <AppliedBuffs />
+    <CurrentEquiptments>
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+      <Equiptment xsi:nil="true" />
+    </CurrentEquiptments>
+    <CurrentConsumables />
+    <InventoryEquiptments />
+    <InventoryConsumables />
+    <InventoryItems />
+    <Attacks />
+    <IsCharging>false</IsCharging>
   </Player>
   <StoredEnemies>
     <Enemy>
       <SpecificName>God</SpecificName>
       <Level>0</Level>
+      <AI>
+        <Style>None</Style>
+      </AI>
       <BaseStats>
-        <int>999</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </BaseStats>
-      <Abilities />
-      <Buffs />
-      <Equiptments />
-      <AI>None</AI>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
       <PointGainPerKill>0</PointGainPerKill>
     </Enemy>
     <Enemy>
       <SpecificName>Slime</SpecificName>
       <Level>0</Level>
+      <AI>
+        <Style>None</Style>
+      </AI>
       <BaseStats>
         <int>0</int>
         <int>0</int>
@@ -43,28 +106,88 @@
         <int>0</int>
         <int>0</int>
       </BaseStats>
-      <Abilities />
-      <Buffs />
-      <Equiptments />
-      <AI>None</AI>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
       <PointGainPerKill>0</PointGainPerKill>
     </Enemy>
   </StoredEnemies>
   <StoredBosses>
     <Boss>
+      <Name>Gordon Remesey</Name>
       <SpecificName>LAMBSAUCE</SpecificName>
       <Level>0</Level>
+      <AI>
+        <Style>None</Style>
+      </AI>
       <BaseStats>
-        <int>500</int>
-        <int>200</int>
-        <int>25</int>
-        <int>25</int>
-        <int>25</int>
+        <int>400</int>
+        <int>20</int>
+        <int>20</int>
+        <int>20</int>
+        <int>10</int>
       </BaseStats>
-      <Abilities />
-      <Buffs />
-      <Equiptments />
-      <AI>None</AI>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
       <PointGainPerKill>0</PointGainPerKill>
       <BossMessageStart>
         <string>WHERE'S THE FAQING LAMBSAUCE?</string>
@@ -74,9 +197,59 @@
       </BossMessageDefeat>
       <BossMessageVictory>
         <string>ded</string>
+        <string>I is ded</string>
+        <string />
       </BossMessageVictory>
     </Boss>
+    <Boss>
+      <Level>0</Level>
+      <BaseStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
+      <PointGainPerKill>0</PointGainPerKill>
+    </Boss>
   </StoredBosses>
+  <StoredBuffs />
+  <StoredItems />
+  <StoredEquiptment />
+  <StoredConsumables />
   <Levels />
   <LevelsCompleted>0</LevelsCompleted>
+  <TurnsPassed>0</TurnsPassed>
 </Map>

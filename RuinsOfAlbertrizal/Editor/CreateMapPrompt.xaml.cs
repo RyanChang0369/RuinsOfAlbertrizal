@@ -57,8 +57,8 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 2: Enemies
             if (CreateEnemyPrompt.CreatedEnemy != null)
             {
-                if (!Map.StoredEnemies.Contains(CreateEnemyPrompt.CreatedEnemy))
-                    Map.StoredEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
+                //if (!Map.StoredEnemies.Contains(CreateEnemyPrompt.CreatedEnemy))
+                //    Map.StoredEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
 
                 StepsDone[1] = true;
             }
@@ -66,8 +66,8 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 3: Bosses
             if (CreateBossPrompt.CreatedBoss != null)
             {
-                if (!Map.StoredBosses.Contains(CreateBossPrompt.CreatedBoss))
-                    Map.StoredBosses.Add(CreateBossPrompt.CreatedBoss);
+                //if (!Map.StoredBosses.Contains(CreateBossPrompt.CreatedBoss))
+                //    Map.StoredBosses.Add(CreateBossPrompt.CreatedBoss);
 
                 StepsDone[2] = true;
             }
@@ -94,6 +94,17 @@ namespace RuinsOfAlbertrizal.Editor
             Map = GameBase.CurrentGame;
         }
 
+        /// <summary>
+        /// Uses tag to navigate to correct editor page (relative uri).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Navigate(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            NavigationService.Navigate(new Uri((string)btn.Tag, UriKind.RelativeOrAbsolute));
+        }
+
         private void NavPlayerPrompt(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("Editor/CreatePlayerPrompt.xaml", UriKind.RelativeOrAbsolute));
@@ -114,18 +125,21 @@ namespace RuinsOfAlbertrizal.Editor
             SelectedTab = MainTabControl.SelectedIndex;
         }
 
-        private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ListBox listBox = sender as ListBox;
+        //private void List_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    ListBox listBox = sender as ListBox;
 
-            if (listBox.SelectedIndex < 0)
-                return;
+        //    if (listBox.SelectedIndex < 0)
+        //        return;
 
-            switch (listBox.Name)
-            {
-
-            }
-        }
+        //    switch (listBox.Name)
+        //    {
+        //        case ('CreatedEnemiesList'):
+        //            CreateEnemyPrompt.CreatedEnemy = Map.StoredEnemies[CreatedEnemiesList.SelectedIndex];
+        //            CreateEnemyBtn.Content = "Edit Enemy";
+        //            break;
+        //    }
+        //}
 
         private void CreatedEnemiesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -193,6 +207,11 @@ namespace RuinsOfAlbertrizal.Editor
             {
 
             }
+        }
+
+        private void CreatedBuffsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -38,10 +38,36 @@
                 <TabItem Header="Step 2" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
+                            <Label Style="{StaticResource h2}">Create Buffs and Attacks</Label>
+                            <Button x:Name="CreateBuffBtn" Click="Navigate" Content="Create Buff" HorizontalAlignment="Left" Tag="Editor/CreateBuffPrompt.xaml"/>
+                            <Button x:Name="CreateAttackBtn" Click="Navigate" Content="Create Attack" HorizontalAlignment="Left" Tag="Editor/CreateAttackPrompt.xaml"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Grid>
+                                <StackPanel>
+                                    <Label>Created Buffs</Label>
+                                    <ListBox x:Name="CreatedBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBuffsList_SelectionChanged">
+                                        <ListBox.ItemsSource>
+                                            <Binding Path="StoredBossNames" UpdateSourceTrigger="PropertyChanged"/>
+                                        </ListBox.ItemsSource>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                                    <Button Content="Clear Selection" Click="ClearSelectionBoss" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelectionBoss" Style="{StaticResource buttonSmall}"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Step 3" FontSize="48">
+                    <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
+                        <StackPanel>
                             <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
-                            <Button x:Name="CreatePlayerBtn" Click="NavPlayerPrompt" Content="Create Player" HorizontalAlignment="Left"/>
-                            <Button x:Name="CreateEnemyBtn" Click="NavEnemyPrompt" Content="Create Enemy" HorizontalAlignment="Left"/>
-                            <Button x:Name="CreateBossBtn" Click="NavBossPrompt" Content="Create Boss" HorizontalAlignment="Left"/>
+                            <Button x:Name="CreatePlayerBtn" Click="Navigate" Content="Create Player" HorizontalAlignment="Left" Tag="Editor/CreatePlayerPrompt.xaml"/>
+                            <Button x:Name="CreateEnemyBtn" Click="Navigate" Content="Create Enemy" HorizontalAlignment="Left" Tag="Editor/CreateEnemyPrompt.xaml"/>
+                            <Button x:Name="CreateBossBtn" Click="Navigate" Content="Create Boss" HorizontalAlignment="Left" Tag="Editor/CreateBossPrompt.xaml"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>

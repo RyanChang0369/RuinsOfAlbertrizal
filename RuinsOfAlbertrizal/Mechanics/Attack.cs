@@ -8,12 +8,8 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Mechanics
 {
-    public class Attack
+    public class Attack : ObjectOfAlbertrizal
     {
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-
         public Buff Buff { get; set; }
 
         public int[] StatLoss { get; set; }

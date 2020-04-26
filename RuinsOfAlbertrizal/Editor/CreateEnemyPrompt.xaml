@@ -31,9 +31,9 @@
                 </TextBox>
                 
                 <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
-                <TextBox x:Name="GeneralName">
+                <TextBox x:Name="EnemyName">
                     <TextBox.Text>
-                        <Binding Path="GeneralName" Mode="TwoWay"/>
+                        <Binding Path="Name" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
 

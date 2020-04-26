@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal.Items
 {
-    public class Item
+    public class Item : ObjectOfAlbertrizal
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-
         public Item()
         { }
     }

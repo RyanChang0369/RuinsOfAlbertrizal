@@ -36,9 +36,9 @@
                 </TextBox>
                 
                 <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
-                <TextBox x:Name="GeneralName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <TextBox x:Name="BossName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="GeneralName" Mode="TwoWay"/>
+                        <Binding Path="Name" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
                 

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class Obstacle
+    public class Obstacle : ObjectOfAlbertrizal
     {
-        public string Name { get; set; }
 
         public int PathOfTravel { get; set; }
         /// <summary>
@@ -29,12 +28,5 @@ namespace RuinsOfAlbertrizal.Environment
         /// The maximum sized character than can pass through this obstacle
         /// </summary>
         public int MaximumSize { get; set; }
-
-        public Obstacle(string name, int pathOfTravel, int maximumSize)
-        {
-            PathOfTravel = pathOfTravel;
-            Name = name;
-            MaximumSize = maximumSize;
-        }
     }
 }

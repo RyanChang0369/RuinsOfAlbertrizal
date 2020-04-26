@@ -11,11 +11,8 @@ namespace RuinsOfAlbertrizal.Mechanics
     /// <summary>
     /// Buffs and debuffs
     /// </summary>
-    public class Buff : ITurnBasedObject
+    public class Buff : ObjectOfAlbertrizal, ITurnBasedObject
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-
         /// <summary>
         /// How many turns will this last for?
         /// </summary>

@@ -7,11 +7,8 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class Map
+    public class Map : ObjectOfAlbertrizal
     {
-        //public int EditorTabPosition { get; set; }
-
-        public string Name { get; set; }
         public List<string> IntroText { get; set; }
 
         public Player Player { get; set; }

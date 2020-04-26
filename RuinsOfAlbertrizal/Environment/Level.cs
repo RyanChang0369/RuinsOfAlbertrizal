@@ -11,10 +11,8 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class Level
+    public class Level : ObjectOfAlbertrizal
     {
-        public string Name { get; set; }
-
         public List<Message> Messages { get; set; }
 
         Bitmap BackgroundImage { get; set; }
@@ -60,24 +58,6 @@ namespace RuinsOfAlbertrizal.Environment
                         return false;
                 }
             }
-        }
-
-        private Level()
-        {
-
-        }
-
-        public Level(string name, Bitmap backgroundImage, List<Message> messages,
-            List<Enemy> enemies, Boss boss, int winCondition, double maxPoints)
-        {
-            Name = name;
-            BackgroundImage = backgroundImage;
-            Messages = messages;
-            Enemies = enemies;
-            Boss = boss;
-            WinCondition = winCondition;
-            MaxPoints = maxPoints;
-            Points = 0;
         }
 
         /// <summary>

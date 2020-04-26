@@ -31,9 +31,9 @@
                 </TextBox>
                 
                 <Label ToolTip='The name of the "species", such as human or orc'>Species</Label>
-                <TextBox x:Name="GeneralName">
+                <TextBox x:Name="PlayerName">
                     <TextBox.Text>
-                        <Binding Path="GeneralName" Mode="TwoWay"/>
+                        <Binding Path="Name" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
 
@@ -47,13 +47,13 @@
                 <Label Content="Class *"/>
                 <ComboBox x:Name="Class">
                     <ComboBox.SelectedIndex>
-                        <Binding Path="BaseStats" Mode="TwoWay">
+                        <Binding Path="BaseStats" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                             <Binding.Converter>
                                 <converter:ClassToBaseStatsConverter/>
                             </Binding.Converter>
                         </Binding>
                     </ComboBox.SelectedIndex>
-                    <ComboBoxItem IsSelected="True">Warrior</ComboBoxItem>
+                    <ComboBoxItem>Warrior</ComboBoxItem>
                     <ComboBoxItem>Mage</ComboBoxItem>
                     <ComboBoxItem>Scout</ComboBoxItem>
                 </ComboBox>

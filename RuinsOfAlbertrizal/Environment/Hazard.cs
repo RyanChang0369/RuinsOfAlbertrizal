@@ -7,16 +7,8 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    class Hazard
+    public class Hazard : ObjectOfAlbertrizal
     {
-        public string Name { get; set; }
-
         public List<Buff> Buffs { get; set; }
-
-        public Hazard(string name, List<Buff> buffs)
-        {
-            Name = name;
-            Buffs = buffs;
-        }
     }
 }

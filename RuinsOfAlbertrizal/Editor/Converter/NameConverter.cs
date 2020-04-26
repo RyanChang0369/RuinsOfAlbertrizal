@@ -8,10 +8,10 @@ using System.Windows.Data;
 
 namespace RuinsOfAlbertrizal.Editor.Converter
 {
-    public class ClassToBaseStatsConverter : IValueConverter
+    public class NameConverter : IValueConverter
     {
         /// <summary>
-        /// BaseStats to SelectedIndex
+        /// Message to string
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -20,11 +20,18 @@ namespace RuinsOfAlbertrizal.Editor.Converter
         /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (int)GameBase.GetClassType((int[])value);
+            try
+            {
+                return ArrayMethods.JoinArray((string[])value, "\r\n");
+            }
+            catch (NullReferenceException)
+            {
+                return "";
+            }
         }
 
         /// <summary>
-        /// SelectedIndex to BaseStats
+        /// String to message
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -33,7 +40,17 @@ namespace RuinsOfAlbertrizal.Editor.Converter
         /// <returns></returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return new int[5];
+            string[] delimiter = { "\r\n" };
+
+            try
+            {
+                return ((string)value).Split(delimiter, StringSplitOptions.None);
+            }
+            catch (NullReferenceException)
+            {
+                string[] emptyArr = { "" };
+                return emptyArr;
+            }
         }
     }
 }
