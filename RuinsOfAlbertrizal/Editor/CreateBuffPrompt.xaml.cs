@@ -29,7 +29,7 @@ namespace RuinsOfAlbertrizal.Editor
             DataContext = CreatedBuff;
         }
 
-        private void UpdateComponent()
+        protected override void UpdateComponent()
         {
             if (CreatedBuff == null)
                 CreatedBuff = new Buff();

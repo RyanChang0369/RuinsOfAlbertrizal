@@ -32,7 +32,7 @@ namespace RuinsOfAlbertrizal.Editor
             DataContext = CreatedEnemy;
         }
 
-        private void UpdateComponent()
+        protected override void UpdateComponent()
         {
             if (CreatedEnemy == null)
                 CreatedEnemy = new Enemy();

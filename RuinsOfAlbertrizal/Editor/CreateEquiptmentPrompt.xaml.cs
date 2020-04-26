@@ -22,6 +22,7 @@ namespace RuinsOfAlbertrizal.Editor
     public partial class CreateEquiptmentPrompt : EditorInterface
     {
         public Equiptment CreatedEquiptment { get; set; }
+
         public CreateEquiptmentPrompt()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace RuinsOfAlbertrizal.Editor
             DataContext = CreatedEquiptment;
         }
 
-        private void UpdateComponent()
+        protected override void UpdateComponent()
         {
             if (CreatedEquiptment == null)
                 CreatedEquiptment = new Equiptment();

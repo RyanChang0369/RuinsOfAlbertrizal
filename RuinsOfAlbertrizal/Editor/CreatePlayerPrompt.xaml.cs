@@ -21,7 +21,7 @@ namespace RuinsOfAlbertrizal.Editor
             DataContext = CreateMapPrompt.Map.Player;
         }
 
-        private void UpdateComponent()
+        protected override void UpdateComponent()
         {
             if (CreateMapPrompt.Map.Player == null)
                 CreateMapPrompt.Map.Player = new Player();

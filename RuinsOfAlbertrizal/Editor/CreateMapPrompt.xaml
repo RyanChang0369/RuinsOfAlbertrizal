@@ -123,7 +123,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Enemy">
                                     <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                    <Button Content="Delete Selection" Click="DeleteSelectionEnemy" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
                                 </StackPanel>
                             </Grid>
 
@@ -142,7 +142,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Boss">
                                     <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                    <Button Content="Delete Selection" Click="DeleteSelectionBoss" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>

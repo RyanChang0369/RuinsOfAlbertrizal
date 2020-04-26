@@ -32,7 +32,7 @@ namespace RuinsOfAlbertrizal.Editor
             DataContext = CreatedBoss;
         }       
 
-        private void UpdateComponent()
+        protected override void UpdateComponent()
         {
             if (CreatedBoss == null)
                 CreatedBoss = new Boss();

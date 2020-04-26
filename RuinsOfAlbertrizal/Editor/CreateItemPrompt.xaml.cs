@@ -30,7 +30,7 @@ namespace RuinsOfAlbertrizal.Editor
             DataContext = CreatedItem;
         }
 
-        private void UpdateComponent()
+        protected override void UpdateComponent()
         {
             if (CreatedItem == null)
                 CreatedItem = new Item();

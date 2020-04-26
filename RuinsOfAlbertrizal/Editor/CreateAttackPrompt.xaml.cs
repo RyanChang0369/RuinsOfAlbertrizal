@@ -30,7 +30,7 @@ namespace RuinsOfAlbertrizal.Editor
             DataContext = CreatedAttack;
         }
 
-        private void UpdateComponent()
+        protected override void UpdateComponent()
         {
             if (CreatedAttack == null)
                 CreatedAttack = new Attack();

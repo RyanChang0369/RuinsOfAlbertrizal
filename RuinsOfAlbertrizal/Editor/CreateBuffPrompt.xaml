@@ -37,7 +37,7 @@
                     </TextBox.Text>
                 </TextBox>
                 
-                <Label Content="Duration"/>
+                <Label Content="Duration *"/>
                 <TextBox x:Name="Duration">
                     <TextBox.Text>
                         <Binding Path="Duration" Mode="TwoWay">
