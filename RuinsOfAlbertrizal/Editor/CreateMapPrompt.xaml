@@ -35,6 +35,9 @@
                         </TextBox>
                     </StackPanel>
                 </TabItem>
+                
+                
+                
                 <TabItem Header="Step 2" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
@@ -49,7 +52,11 @@
                                     <Label>Created Buffs</Label>
                                     <ListBox x:Name="CreatedBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBuffsList_SelectionChanged">
                                         <ListBox.ItemsSource>
-                                            <Binding Path="StoredBossNames" UpdateSourceTrigger="PropertyChanged"/>
+                                            <Binding Path="StoredBuffs" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.Converter>
+                                                    <converter:NameConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
                                         </ListBox.ItemsSource>
                                     </ListBox>
                                 </StackPanel>
@@ -61,6 +68,9 @@
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
+                
+                
+                
                 <TabItem Header="Step 3" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
@@ -74,7 +84,7 @@
                             <Label Content="Created Player:"/>
                             <Label x:Name="CreatedPlayerLabel">
                                 <Label.Content>
-                                    <Binding Path="Player.SpecificName" UpdateSourceTrigger="PropertyChanged"/>
+                                    <Binding Path="Player.Name" UpdateSourceTrigger="PropertyChanged"/>
                                 </Label.Content>
                             </Label>
                             <Grid Margin="50, 0">
@@ -82,7 +92,11 @@
                                     <Label>Created Enemies</Label>
                                     <ListBox x:Name="CreatedEnemiesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedEnemiesList_SelectionChanged" HorizontalAlignment="Center">
                                         <ListBox.ItemsSource>
-                                            <Binding Path="StoredEnemyNames" UpdateSourceTrigger="PropertyChanged"/>
+                                            <Binding Path="StoredEnemies" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.Converter>
+                                                    <converter:NameConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
                                         </ListBox.ItemsSource>
                                     </ListBox>
                                 </StackPanel>
@@ -97,7 +111,11 @@
                                     <Label>Created Bosses</Label>
                                     <ListBox x:Name="CreatedBossesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBossesList_SelectionChanged">
                                         <ListBox.ItemsSource>
-                                            <Binding Path="StoredBossNames" UpdateSourceTrigger="PropertyChanged"/>
+                                            <Binding Path="StoredBosses" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.Converter>
+                                                    <converter:NameConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
                                         </ListBox.ItemsSource>
                                     </ListBox>
                                 </StackPanel>

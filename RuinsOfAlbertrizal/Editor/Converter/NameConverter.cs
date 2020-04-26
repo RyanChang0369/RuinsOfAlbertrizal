@@ -11,7 +11,7 @@ namespace RuinsOfAlbertrizal.Editor.Converter
     public class NameConverter : IValueConverter
     {
         /// <summary>
-        /// Message to string
+        /// ObjectsOfAlbertrizal to string[]
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -22,7 +22,9 @@ namespace RuinsOfAlbertrizal.Editor.Converter
         {
             try
             {
-                return ArrayMethods.JoinArray((string[])value, "\r\n");
+                List<ObjectOfAlbertrizal> objectsOfAlbertrizal = (value as IEnumerable<ObjectOfAlbertrizal>).Cast<ObjectOfAlbertrizal>().ToList();
+
+                return ObjectOfAlbertrizal.GetNames(objectsOfAlbertrizal);
             }
             catch (NullReferenceException)
             {
@@ -30,27 +32,9 @@ namespace RuinsOfAlbertrizal.Editor.Converter
             }
         }
 
-        /// <summary>
-        /// String to message
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="targetType"></param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string[] delimiter = { "\r\n" };
-
-            try
-            {
-                return ((string)value).Split(delimiter, StringSplitOptions.None);
-            }
-            catch (NullReferenceException)
-            {
-                string[] emptyArr = { "" };
-                return emptyArr;
-            }
+            throw new NotSupportedException("This type of conversion is not supported");
         }
     }
 }

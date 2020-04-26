@@ -165,20 +165,5 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                 return (Map)serializer.Deserialize(fs);
             }
         }
-
-        public static void SavePlayer(Player player)
-        {
-            SaveObject(typeof(Player), player, GameBase.CustomMapLocation + "/Character/Player/" + player.SpecificName);
-        }
-
-        public static void SaveBoss(Boss boss)
-        {
-            SaveObject(typeof(Boss), boss, GameBase.CustomMapLocation + "/Character/Boss/" + boss.SpecificName);
-        }
-
-        public static void SaveEnemy(Enemy enemy)
-        {
-            SaveObject(typeof(Enemy), enemy, GameBase.CustomMapLocation + "/Character/Enemy/" + enemy.SpecificName);
-        }
     }
 }

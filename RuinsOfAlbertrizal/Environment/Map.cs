@@ -28,7 +28,7 @@ namespace RuinsOfAlbertrizal.Environment
                 try
                 {
                     for (int i = 0; i < names.Length; i++)
-                        names[i] = StoredEnemies[i].SpecificName;
+                        names[i] = StoredEnemies[i].Name;
                 }
                 catch (Exception)
                 {
@@ -54,7 +54,7 @@ namespace RuinsOfAlbertrizal.Environment
                 try
                 {
                     for (int i = 0; i < names.Length; i++)
-                        names[i] = StoredBosses[i].SpecificName;
+                        names[i] = StoredBosses[i].Name;
                 }
                 catch (Exception)
                 {

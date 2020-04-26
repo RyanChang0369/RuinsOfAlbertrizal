@@ -29,15 +29,6 @@ namespace RuinsOfAlbertrizal.Characters
 
         }
 
-        //public Boss(string generalName, string specificName, string description, int level, int[] baseValues,
-        //    string[] bossMessageStart, string[] bossMessageDefeat, string[] bossMessageVictory)
-        //    : base(generalName, specificName, description, baseValues)
-        //{
-        //    BossMessageStart = bossMessageStart;
-        //    BossMessageDefeat = bossMessageDefeat;
-        //    BossMessageVictory = bossMessageVictory;
-        //}
-
         public void SummonBoss()
         {
             

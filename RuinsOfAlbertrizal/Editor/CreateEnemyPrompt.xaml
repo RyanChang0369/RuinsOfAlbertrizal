@@ -20,9 +20,9 @@
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
                 <Label ToolTip='The proper name, such as Bob or Robert' Content="Proper Name *"/>
-                <TextBox x:Name="SpecificName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <TextBox x:Name="EnemyName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="SpecificName" Mode="TwoWay">
+                        <Binding Path="Name" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
@@ -31,9 +31,9 @@
                 </TextBox>
                 
                 <Label ToolTip='The name of the "species", such as human, orc, or slime.' Content="Species Name"/>
-                <TextBox x:Name="EnemyName">
+                <TextBox x:Name="GeneralName">
                     <TextBox.Text>
-                        <Binding Path="Name" Mode="TwoWay"/>
+                        <Binding Path="GeneralName" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
 

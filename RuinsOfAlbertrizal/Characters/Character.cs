@@ -14,9 +14,9 @@ namespace RuinsOfAlbertrizal.Characters
     public abstract class Character : ObjectOfAlbertrizal, ITurnBasedObject
     {
         /// <summary>
-        /// The proper name, such as Bob or Robert
+        /// The species name, such as human or slime
         /// </summary>
-        public string SpecificName { get; set; }
+        public string GeneralName { get; set; }
 
         public int Level { get; set; }
 

@@ -3,7 +3,7 @@
   <Name>Death</Name>
   <IntroText />
   <Player>
-    <SpecificName>Bobert</SpecificName>
+    <Name>Bobert</Name>
     <Level>0</Level>
     <BaseStats>
       <int>0</int>
@@ -47,7 +47,8 @@
   </Player>
   <StoredEnemies>
     <Enemy>
-      <SpecificName>God</SpecificName>
+      <Name>Goblin Grunt</Name>
+      <GeneralName>Goblin</GeneralName>
       <Level>0</Level>
       <AI>
         <Style>None</Style>
@@ -94,7 +95,7 @@
       <PointGainPerKill>0</PointGainPerKill>
     </Enemy>
     <Enemy>
-      <SpecificName>Slime</SpecificName>
+      <Name>Slime</Name>
       <Level>0</Level>
       <AI>
         <Style>None</Style>
@@ -144,7 +145,7 @@
   <StoredBosses>
     <Boss>
       <Name>Gordon Remesey</Name>
-      <SpecificName>LAMBSAUCE</SpecificName>
+      <GeneralName>LAMBSAUCE</GeneralName>
       <Level>0</Level>
       <AI>
         <Style>None</Style>
