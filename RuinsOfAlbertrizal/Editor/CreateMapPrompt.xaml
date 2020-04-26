@@ -13,12 +13,12 @@
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Style="{StaticResource title}">Create Map</Label>
         <StackPanel Grid.Row="1">
-            <TabControl x:Name="MainTabControl">
+            <TabControl x:Name="MainTabControl" MinHeight="500">
                 <TabItem Header="Step 1" FontSize="48">
                     <StackPanel Background="#FFE5E5E5">
                         <Label Style="{StaticResource h2}" Content="Create Map"/>
@@ -45,6 +45,7 @@
                             <Button x:Name="CreateBuffBtn" Click="Navigate" Content="Create Buff" HorizontalAlignment="Left" Tag="Editor/CreateBuffPrompt.xaml"/>
                             <Button x:Name="CreateAttackBtn" Click="Navigate" Content="Create Attack" HorizontalAlignment="Left" Tag="Editor/CreateAttackPrompt.xaml"/>
                         </StackPanel>
+                        
                         <StackPanel Orientation="Horizontal">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             <Grid>
@@ -60,9 +61,28 @@
                                         </ListBox.ItemsSource>
                                     </ListBox>
                                 </StackPanel>
-                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
-                                    <Button Content="Clear Selection" Click="ClearSelectionBoss" Style="{StaticResource buttonSmall}"/>
-                                    <Button Content="Delete Selection" Click="DeleteSelectionBoss" Style="{StaticResource buttonSmall}"/>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Buff">
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Margin="50, 0">
+                                <StackPanel>
+                                    <Label Content="Created Attacks"/>
+                                    <ListBox x:Name="CreatedAttacksList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedAttacksList_SelectionChanged">
+                                        <ListBox.ItemsSource>
+                                            <Binding Path="StoredAttacks" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.Converter>
+                                                    <converter:NameConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </ListBox.ItemsSource>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Attack">
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -79,6 +99,7 @@
                             <Button x:Name="CreateEnemyBtn" Click="Navigate" Content="Create Enemy" HorizontalAlignment="Left" Tag="Editor/CreateEnemyPrompt.xaml"/>
                             <Button x:Name="CreateBossBtn" Click="Navigate" Content="Create Boss" HorizontalAlignment="Left" Tag="Editor/CreateBossPrompt.xaml"/>
                         </StackPanel>
+                        
                         <StackPanel Orientation="Horizontal">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
                             <Label Content="Created Player:"/>
@@ -100,8 +121,8 @@
                                         </ListBox.ItemsSource>
                                     </ListBox>
                                 </StackPanel>
-                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
-                                    <Button Content="Clear Selection" Click="ClearSelectionEnemy" Style="{StaticResource buttonSmall}"/>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Enemy">
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
                                     <Button Content="Delete Selection" Click="DeleteSelectionEnemy" Style="{StaticResource buttonSmall}"/>
                                 </StackPanel>
                             </Grid>
@@ -119,8 +140,8 @@
                                         </ListBox.ItemsSource>
                                     </ListBox>
                                 </StackPanel>
-                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
-                                    <Button Content="Clear Selection" Click="ClearSelectionBoss" Style="{StaticResource buttonSmall}"/>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Boss">
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
                                     <Button Content="Delete Selection" Click="DeleteSelectionBoss" Style="{StaticResource buttonSmall}"/>
                                 </StackPanel>
                             </Grid>

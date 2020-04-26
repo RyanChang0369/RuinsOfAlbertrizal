@@ -4,21 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
-      xmlns:characters="clr-namespace:RuinsOfAlbertrizal.Characters"
       xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
       xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Create Boss">
 
-    <!--<local:EditorInterface.Resources>
-        <characters:Boss x:Key="CreatedBoss"/>
-    </Page.Resources>-->
-
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Style="{StaticResource title}" Content="Create Boss"/>
@@ -145,9 +140,7 @@
         </ScrollViewer>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <!--<Button Click="Back">Back</Button>-->
             <Button Click="Back" Content="Back"/>
-            <!--<Button Click="Load" Content="Load"/>-->
         </StackPanel>
     </Grid>
 </local:EditorInterface>

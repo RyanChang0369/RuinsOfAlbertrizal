@@ -73,6 +73,9 @@
     <Compile Include="Editor\Converter\NameConverter.cs" />
     <Compile Include="Editor\Converter\ArrayConverter.cs" />
     <Compile Include="Editor\Converter\ClassToBaseStatsConverter.cs" />
+    <Compile Include="Editor\CreateAttackPrompt.xaml.cs">
+      <DependentUpon>CreateAttackPrompt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\CreateBossPrompt.xaml.cs">
       <DependentUpon>CreateBossPrompt.xaml</DependentUpon>
     </Compile>
@@ -168,6 +171,10 @@
     <Page Include="BattleInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\CreateAttackPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\CreateBossPrompt.xaml">
       <SubType>Designer</SubType>

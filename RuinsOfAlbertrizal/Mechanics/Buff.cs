@@ -31,7 +31,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         ///// <summary>
         ///// Changes the AI
         ///// </summary>
-        //public AIStyle AIChange { get; set; }
+        public AIStyle AIChange { get; set; }
 
         public Buff()
         { }

@@ -1,4 +1,4 @@
-﻿<local:EditorInterface x:Class="RuinsOfAlbertrizal.Editor.CreateBuffPrompt"
+﻿<local:EditorInterface x:Class="RuinsOfAlbertrizal.Editor.CreateAttackPrompt"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,7 +8,7 @@
       xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="Create Buff">
+      Title="Create Attack">
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -16,11 +16,11 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Style="{StaticResource title}" Content="Create Buff"/>
+        <Label Style="{StaticResource title}" Content="Create Attack"/>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
-                <Label Content="Name *"/>
-                <TextBox x:Name="BuffName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <Label ToolTip='The proper name, such as Bob or Robert' Content="Name *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="Name" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -31,16 +31,27 @@
                 </TextBox>
 
                 <Label Content="Description"/>
-                <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}">
+                <TextBox Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>
                         <Binding Path="Description" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
-                
-                <Label Content="Duration"/>
-                <TextBox x:Name="Duration">
+
+                <Label Content="HP Lost Per Hit *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="Duration" Mode="TwoWay">
+                        <Binding Path="BaseStats[0]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="Mana Lost Per HIt *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="BaseStats[1]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -48,10 +59,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="HP Gain *"/>
-                <TextBox x:Name="HPGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for HP Loss">
+                <Label Content="Defense Lost Per Hit *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="StatGain[0]" Mode="TwoWay">
+                        <Binding Path="BaseStats[2]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -59,10 +70,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Mana Gain *"/>
-                <TextBox x:Name="ManaGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Mana Loss">
+                <Label Content="Damage Lost Per Hit *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="StatGain[1]" Mode="TwoWay">
+                        <Binding Path="BaseStats[3]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -70,10 +81,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Defense Gain *"/>
-                <TextBox x:Name="DefGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Defense Loss">
+                <Label Content="Speed Lost Per Hit *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="StatGain[2]" Mode="TwoWay">
+                        <Binding Path="BaseStats[4]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -81,10 +92,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Damage Gain *"/>
-                <TextBox x:Name="DmgGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Speed Loss">
+                <Label Content="Cool Down *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="StatGain[3]" Mode="TwoWay">
+                        <Binding Path="CoolDown" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -92,10 +103,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Speed Gain *"/>
-                <TextBox x:Name="SpdGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Speed Loss">
+                <Label Content="Charge Up *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="StatGain[4]" Mode="TwoWay">
+                        <Binding Path="ChargeUp" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -103,14 +114,6 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Change in AI (Set to -1 For No Change)*"/>
-                <TextBox x:Name="AIChange" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
-                    <Binding Path="AIChange" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <validation:NumberValidation DefaultValue="-1"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox>
             </StackPanel>
         </ScrollViewer>
 

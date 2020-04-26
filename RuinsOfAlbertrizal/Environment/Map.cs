@@ -18,54 +18,14 @@ namespace RuinsOfAlbertrizal.Environment
         /// </summary>
         public List<Enemy> StoredEnemies { get; set; }
 
-        [XmlIgnore]
-        public string[] StoredEnemyNames
-        {
-            get
-            {
-                string[] names = new string[StoredEnemies.Count];
-
-                try
-                {
-                    for (int i = 0; i < names.Length; i++)
-                        names[i] = StoredEnemies[i].Name;
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-
-                return names;
-            }
-        }
-
         /// <summary>
         /// For reference only
         /// </summary>
         public List<Boss> StoredBosses { get; set; }
 
-        [XmlIgnore]
-        public string[] StoredBossNames
-        {
-            get
-            {
-                string[] names = new string[StoredBosses.Count];
-
-                try
-                {
-                    for (int i = 0; i < names.Length; i++)
-                        names[i] = StoredBosses[i].Name;
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-
-                return names;
-            }
-        }
-
         public List<Buff> StoredBuffs { get; set; }
+
+        public List<Attack> StoredAttacks { get; set; }
 
         public List<Item> StoredItems { get; set; }
 
