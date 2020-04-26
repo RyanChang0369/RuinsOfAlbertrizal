@@ -37,5 +37,10 @@ namespace RuinsOfAlbertrizal.Editor
             if (CreatedBoss == null)
                 CreatedBoss = new Boss();
         }
+
+        protected override bool FormIsValid()
+        {
+            return Form.IsValid();
+        }
     }
 }

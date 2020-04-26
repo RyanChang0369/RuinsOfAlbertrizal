@@ -28,6 +28,8 @@ namespace RuinsOfAlbertrizal.Editor
 
         public static int SelectedTab;
 
+        public static bool DoNotUpdate;
+
         public bool[] StepsDone = new bool[9];
 
         public CreateMapPrompt()
@@ -45,6 +47,12 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void UpdateComponent()
         {
+            if (DoNotUpdate)
+            {
+                DoNotUpdate = false;
+                return;
+            }
+
             MainTabControl.SelectedIndex = SelectedTab;
             StatusBar.Content = "";
 
@@ -58,8 +66,8 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 2: Enemies
             if (CreateEnemyPrompt.CreatedEnemy != null)
             {
-                //if (!Map.StoredEnemies.Contains(CreateEnemyPrompt.CreatedEnemy))
-                //    Map.StoredEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
+                if (!Map.StoredEnemies.Contains(CreateEnemyPrompt.CreatedEnemy))
+                    Map.StoredEnemies.Add(CreateEnemyPrompt.CreatedEnemy);
 
                 StepsDone[1] = true;
             }
@@ -67,10 +75,16 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 3: Bosses
             if (CreateBossPrompt.CreatedBoss != null)
             {
-                //if (!Map.StoredBosses.Contains(CreateBossPrompt.CreatedBoss))
-                //    Map.StoredBosses.Add(CreateBossPrompt.CreatedBoss);
+                if (!Map.StoredBosses.Contains(CreateBossPrompt.CreatedBoss))
+                    Map.StoredBosses.Add(CreateBossPrompt.CreatedBoss);
 
                 StepsDone[2] = true;
+            }
+
+            //Step 4: Buffs
+            if (CreateBuffPrompt.CreatedBuff != null)
+            {
+
             }
 
             //SaveBtn.IsEnabled = true;
@@ -80,6 +94,7 @@ namespace RuinsOfAlbertrizal.Editor
         private void Back(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.RelativeOrAbsolute));
+            DoNotUpdate = true;
         }
         private void Save(object sender, RoutedEventArgs e)
         {
@@ -104,21 +119,6 @@ namespace RuinsOfAlbertrizal.Editor
         {
             Button btn = (Button)sender;
             NavigationService.Navigate(new Uri((string)btn.Tag, UriKind.RelativeOrAbsolute));
-        }
-
-        private void NavPlayerPrompt(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Editor/CreatePlayerPrompt.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void NavEnemyPrompt(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Editor/CreateEnemyPrompt.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void NavBossPrompt(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Editor/CreateBossPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)

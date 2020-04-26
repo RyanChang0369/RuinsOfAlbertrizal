@@ -31,5 +31,26 @@ namespace RuinsOfAlbertrizal
 
             return names;
         }
+
+        /// <summary>
+        /// Gets the index of the ObjectOfAlberizal by name, or returns -1 if list does not contain an object with such name.
+        /// </summary>
+        /// <param name="objectsOfAlbertrizal"></param>
+        /// <param name="objectOfAlbertrizal"></param>
+        /// <returns></returns>
+        public static int GetIndexOfName(List<ObjectOfAlbertrizal> objectsOfAlbertrizal, ObjectOfAlbertrizal objectOfAlbertrizal)
+        {
+            string[] names = GetNames(objectsOfAlbertrizal);
+
+            for (int i = 0; i < objectsOfAlbertrizal.Count; i++)
+            {
+                if (objectsOfAlbertrizal[i].Name == objectOfAlbertrizal.Name)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
     }
 }

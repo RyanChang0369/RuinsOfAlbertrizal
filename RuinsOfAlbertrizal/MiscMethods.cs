@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace RuinsOfAlbertrizal
@@ -14,6 +16,20 @@ namespace RuinsOfAlbertrizal
         public static void Refresh(this UIElement uiElement)
         {
             uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
+        }
+
+        public static bool IsValid(this DependencyObject parent)
+        {
+            if (Validation.GetHasError(parent))
+                return false;
+
+            for (int i = 0; i != VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                if (!IsValid(child)) { return false; }
+            }
+
+            return true;
         }
     }
 }

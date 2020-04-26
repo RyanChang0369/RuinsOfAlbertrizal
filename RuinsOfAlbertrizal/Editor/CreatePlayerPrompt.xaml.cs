@@ -26,5 +26,10 @@ namespace RuinsOfAlbertrizal.Editor
             if (CreateMapPrompt.Map.Player == null)
                 CreateMapPrompt.Map.Player = new Player();
         }
+
+        protected override bool FormIsValid()
+        {
+            return Form.IsValid();
+        }
     }
 }

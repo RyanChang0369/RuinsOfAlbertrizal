@@ -35,5 +35,10 @@ namespace RuinsOfAlbertrizal.Editor
             if (CreatedEquiptment == null)
                 CreatedEquiptment = new Equiptment();
         }
+
+        protected override bool FormIsValid()
+        {
+            return Form.IsValid();
+        }
     }
 }

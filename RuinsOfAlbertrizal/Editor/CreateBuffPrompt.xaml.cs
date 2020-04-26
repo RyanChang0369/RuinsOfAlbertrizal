@@ -35,5 +35,9 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedBuff = new Buff();
         }
 
+        protected override bool FormIsValid()
+        {
+            return Form.IsValid();
+        }
     }
 }

@@ -37,5 +37,10 @@ namespace RuinsOfAlbertrizal.Editor
             if (CreatedEnemy == null)
                 CreatedEnemy = new Enemy();
         }
+
+        protected override bool FormIsValid()
+        {
+            return Form.IsValid();
+        }
     }
 }

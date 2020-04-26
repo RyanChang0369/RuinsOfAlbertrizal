@@ -247,6 +247,7 @@
     </Boss>
   </StoredBosses>
   <StoredBuffs />
+  <StoredAttacks />
   <StoredItems />
   <StoredEquiptment />
   <StoredConsumables />
