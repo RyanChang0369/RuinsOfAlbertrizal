@@ -119,7 +119,7 @@ namespace RuinsOfAlbertrizal.Editor
             FileHandler.SaveObject(typeof(Map), Map, GameBase.CustomMapLocation);
             
             StatusBar.Content = "Saved!";
-            hasSaved = true;
+            HasSaved = true;
         }
         private void Load(object sender, RoutedEventArgs e)
         {
@@ -136,7 +136,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             Button btn = (Button)sender;
             NavigationService.Navigate(new Uri((string)btn.Tag, UriKind.RelativeOrAbsolute));
-            hasSaved = false;
+            HasSaved = false;
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
