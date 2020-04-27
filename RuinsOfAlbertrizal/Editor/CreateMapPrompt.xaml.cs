@@ -30,6 +30,8 @@ namespace RuinsOfAlbertrizal.Editor
 
         public static bool DoNotUpdate;
 
+        public static bool HasSaved = true;
+
         public bool[] StepsDone = new bool[9];
 
         public CreateMapPrompt()
@@ -117,6 +119,7 @@ namespace RuinsOfAlbertrizal.Editor
             FileHandler.SaveObject(typeof(Map), Map, GameBase.CustomMapLocation);
             
             StatusBar.Content = "Saved!";
+            hasSaved = true;
         }
         private void Load(object sender, RoutedEventArgs e)
         {
@@ -133,6 +136,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             Button btn = (Button)sender;
             NavigationService.Navigate(new Uri((string)btn.Tag, UriKind.RelativeOrAbsolute));
+            hasSaved = false;
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)

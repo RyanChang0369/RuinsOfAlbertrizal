@@ -18,20 +18,30 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         public int Duration { get; set; }
 
+        [XmlIgnore]
+        public int LeveledDuration { get => Duration * (1 + Level); }
+
         public int TurnsPassed { get; set; }
 
         [XmlIgnore]
-        public bool HasEnded { get => TurnsPassed >= Duration; }
+        public bool HasEnded { get => TurnsPassed >= LeveledDuration; }
 
         /// <summary>
         /// See GameBase.Stats for values
         /// </summary>
         public int[] StatGain { get; set; }
 
-        ///// <summary>
-        ///// Changes the AI
-        ///// </summary>
+        /// <summary>
+        /// Changes the AI
+        /// </summary>
         public AIStyle AIChange { get; set; }
+
+        /// <summary>
+        /// Use to alter the duration of the effect. Duration is mutiplied by the level + 1 (level starts at 0).
+        /// </summary>
+        public int Level { get; set; }
+
+
 
         public Buff()
         {

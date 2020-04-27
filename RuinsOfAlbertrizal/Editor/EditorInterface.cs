@@ -24,6 +24,7 @@ namespace RuinsOfAlbertrizal.Editor
         protected void Quit(object sender, RoutedEventArgs e)
         {
             ClearVariable();
+            CreateMapPrompt.DoNotUpdate = true;
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
 

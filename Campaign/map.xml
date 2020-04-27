@@ -250,7 +250,23 @@
       <PointGainPerKill>0</PointGainPerKill>
     </Boss>
   </StoredBosses>
-  <StoredBuffs />
+  <StoredBuffs>
+    <Buff>
+      <Name>On Fire</Name>
+      <Description>You are on fire</Description>
+      <Duration>1</Duration>
+      <TurnsPassed>0</TurnsPassed>
+      <StatGain>
+        <int>-4</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <AIChange>Player</AIChange>
+      <Level>0</Level>
+    </Buff>
+  </StoredBuffs>
   <StoredAttacks />
   <StoredItems />
   <StoredEquiptment />

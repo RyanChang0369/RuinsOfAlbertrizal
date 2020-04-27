@@ -3,13 +3,25 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib" 
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
       xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
       xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
+      xmlns:ai="clr-namespace:RuinsOfAlbertrizal.AIs"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Create Buff">
 
+    <!--<Page.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}"
+                        x:Key="AIChange">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:AIChange" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>-->
+    
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -103,19 +115,19 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Change in AI (Set to -1 For No Change)*"/>
+                <Label Content="Change in AI *"/>
                 <ComboBox>
                     <ComboBox.ItemsSource>
-                        <Binding Path="AIChange" Mode="TwoWay"/>
+                        <Binding Path="AIChange" Mode="OneTime">
+                            <Binding.Converter>
+                                <converter:EnumConverter/>
+                            </Binding.Converter>
+                        </Binding>
                     </ComboBox.ItemsSource>
+                    <ComboBox.SelectedItem>
+                        <Binding Path="AIChange"/>
+                    </ComboBox.SelectedItem>
                 </ComboBox>
-                <!--<TextBox x:Name="AIChange" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
-                    <Binding Path="AIChange" Mode="TwoWay">
-                        <Binding.ValidationRules>
-                            <validation:NumberValidation DefaultValue="-1"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox>-->
             </StackPanel>
         </ScrollViewer>
 

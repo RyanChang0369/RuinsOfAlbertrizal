@@ -22,8 +22,8 @@ namespace RuinsOfAlbertrizal.Items
 
                 foreach (Buff buff in Buffs)
                 {
-                    if (buff.Duration > duration)
-                        duration = buff.Duration;
+                    if (buff.LeveledDuration > duration)
+                        duration = buff.LeveledDuration;
                 }
 
                 return duration;

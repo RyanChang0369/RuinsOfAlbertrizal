@@ -50,6 +50,14 @@ namespace RuinsOfAlbertrizal.AIs
             Flying = 20,
         }
 
+        public static string[] AINames
+        {
+            get
+            {
+                return Enum.GetNames(typeof(AIStyle));
+            }
+        }
+
         public static string[] AIStyleTooltips =
         {
             "",
