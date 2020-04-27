@@ -104,13 +104,18 @@
                 </TextBox>
 
                 <Label Content="Change in AI (Set to -1 For No Change)*"/>
-                <TextBox x:Name="AIChange" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <ComboBox>
+                    <ComboBox.ItemsSource>
+                        <Binding Path="AIChange" Mode="TwoWay"/>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+                <!--<TextBox x:Name="AIChange" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <Binding Path="AIChange" Mode="TwoWay">
                         <Binding.ValidationRules>
                             <validation:NumberValidation DefaultValue="-1"/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox>
+                </TextBox>-->
             </StackPanel>
         </ScrollViewer>
 

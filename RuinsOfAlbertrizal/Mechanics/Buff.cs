@@ -34,7 +34,9 @@ namespace RuinsOfAlbertrizal.Mechanics
         public AIStyle AIChange { get; set; }
 
         public Buff()
-        { }
+        {
+            StatGain = new int[5];
+        }
 
         public void TurnEnded()
         {

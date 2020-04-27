@@ -67,7 +67,9 @@
                                 </StackPanel>
                             </Grid>
 
-                            <Grid Margin="50, 0">
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+                            <Grid>
                                 <StackPanel>
                                     <Label Content="Created Attacks"/>
                                     <ListBox x:Name="CreatedAttacksList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedAttacksList_SelectionChanged">
