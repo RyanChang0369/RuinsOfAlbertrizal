@@ -47,19 +47,21 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void UpdateComponent()
         {
+            MainTabControl.SelectedIndex = SelectedTab;
+            StatusBar.Content = "";
+
             if (DoNotUpdate)
             {
                 DoNotUpdate = false;
                 return;
             }
 
-            MainTabControl.SelectedIndex = SelectedTab;
-            StatusBar.Content = "";
-
             //Step 1: Player
-            if (Map.Player != null)
+            if (CreatePlayerPrompt.CreatedPlayer != null)
             {
-                CreatePlayerBtn.Content = "Edit Player";
+                if (!Map.StoredPlayers.Contains(CreatePlayerPrompt.CreatedPlayer))
+                    Map.StoredPlayers.Add(CreatePlayerPrompt.CreatedPlayer);
+
                 StepsDone[0] = true;
             }
 
@@ -84,7 +86,19 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 4: Buffs
             if (CreateBuffPrompt.CreatedBuff != null)
             {
+                if (!Map.StoredBuffs.Contains(CreateBuffPrompt.CreatedBuff))
+                    Map.StoredBuffs.Add(CreateBuffPrompt.CreatedBuff);
 
+                StepsDone[3] = true;
+            }
+
+            //Step 5: Attacks
+            if (CreateAttackPrompt.CreatedAttack != null)
+            {
+                if (!Map.StoredAttacks.Contains(CreateAttackPrompt.CreatedAttack))
+                    Map.StoredAttacks.Add(CreateAttackPrompt.CreatedAttack);
+
+                StepsDone[4] = true;
             }
 
             //SaveBtn.IsEnabled = true;
@@ -245,6 +259,11 @@ namespace RuinsOfAlbertrizal.Editor
             {
 
             }
+        }
+
+        private void CreatedPlayersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

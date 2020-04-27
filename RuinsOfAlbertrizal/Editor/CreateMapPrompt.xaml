@@ -102,13 +102,28 @@
                         
                         <StackPanel Orientation="Horizontal">
                             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                            <Label Content="Created Player:"/>
-                            <Label x:Name="CreatedPlayerLabel">
-                                <Label.Content>
-                                    <Binding Path="Player.Name" UpdateSourceTrigger="PropertyChanged"/>
-                                </Label.Content>
-                            </Label>
-                            <Grid Margin="50, 0">
+                            <Grid>
+                                <StackPanel>
+                                    <Label Content="Created Players"/>
+                                    <ListBox x:Name="CreatedPlayersList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedPlayersList_SelectionChanged" HorizontalAlignment="Center">
+                                        <ListBox.ItemsSource>
+                                            <Binding Path="StoredPlayers" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.Converter>
+                                                    <converter:NameConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </ListBox.ItemsSource>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Player">
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+                            <Grid>
                                 <StackPanel>
                                     <Label>Created Enemies</Label>
                                     <ListBox x:Name="CreatedEnemiesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedEnemiesList_SelectionChanged" HorizontalAlignment="Center">
@@ -127,6 +142,8 @@
                                 </StackPanel>
                             </Grid>
 
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            
                             <Grid>
                                 <StackPanel>
                                     <Label>Created Bosses</Label>

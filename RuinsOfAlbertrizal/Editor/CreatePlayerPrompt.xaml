@@ -60,7 +60,7 @@
             </StackPanel>
         </ScrollViewer>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button Click="Back">Back</Button>
+            <Button Click="Save" Content="Save"/>
         </StackPanel>
     </Grid>
 </local:EditorInterface>

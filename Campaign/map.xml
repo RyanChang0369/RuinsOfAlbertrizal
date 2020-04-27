@@ -2,49 +2,53 @@
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>Death</Name>
   <IntroText />
-  <Player>
-    <Name>Bobert</Name>
-    <Level>0</Level>
-    <BaseStats>
-      <int>0</int>
-      <int>0</int>
-      <int>0</int>
-      <int>0</int>
-      <int>0</int>
-    </BaseStats>
-    <AppliedStats>
-      <int>0</int>
-      <int>0</int>
-      <int>0</int>
-      <int>0</int>
-      <int>0</int>
-    </AppliedStats>
-    <AppliedBuffs />
-    <CurrentEquiptments>
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-      <Equiptment xsi:nil="true" />
-    </CurrentEquiptments>
-    <CurrentConsumables />
-    <InventoryEquiptments />
-    <InventoryConsumables />
-    <InventoryItems />
-    <Attacks />
-    <IsCharging>false</IsCharging>
-  </Player>
+  <StoredPlayers>
+    <Player>
+      <Name>Sam</Name>
+      <Description>Sam did not sign up for any of this.</Description>
+      <GeneralName>Human</GeneralName>
+      <Level>0</Level>
+      <BaseStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
+    </Player>
+  </StoredPlayers>
   <StoredEnemies>
     <Enemy>
       <Name>Goblin Grunt</Name>

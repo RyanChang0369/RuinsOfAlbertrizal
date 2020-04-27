@@ -14,22 +14,29 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreatePlayerPrompt : EditorInterface
     {
+        public static Player CreatedPlayer { get; set; }
+
         public CreatePlayerPrompt()
         {
             InitializeComponent();
             UpdateComponent();
-            DataContext = CreateMapPrompt.Map.Player;
+            DataContext = CreatedPlayer;
         }
 
         protected override void UpdateComponent()
         {
-            if (CreateMapPrompt.Map.Player == null)
-                CreateMapPrompt.Map.Player = new Player();
+            if (CreatedPlayer == null)
+                CreatedPlayer = new Player();
         }
 
         protected override bool FormIsValid()
         {
             return Form.IsValid();
+        }
+
+        protected override void ClearVariable()
+        {
+            CreatedPlayer = new Player();
         }
     }
 }

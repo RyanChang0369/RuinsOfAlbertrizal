@@ -42,5 +42,10 @@ namespace RuinsOfAlbertrizal.Editor
         {
             return Form.IsValid();
         }
+
+        protected override void ClearVariable()
+        {
+            CreatedEnemy = new Enemy();
+        }
     }
 }

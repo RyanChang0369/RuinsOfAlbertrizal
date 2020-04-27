@@ -10,7 +10,7 @@ namespace RuinsOfAlbertrizal.Editor
 {
     public abstract partial class EditorInterface : Page
     {
-        protected void Back(object sender, RoutedEventArgs e)
+        protected void Save(object sender, RoutedEventArgs e)
         {
             if (!FormIsValid())
             {
@@ -21,8 +21,16 @@ namespace RuinsOfAlbertrizal.Editor
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
 
+        protected void Quit(object sender, RoutedEventArgs e)
+        {
+            ClearVariable();
+            NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
+        }
+
         protected abstract void UpdateComponent();
 
         protected abstract bool FormIsValid();
+
+        protected abstract void ClearVariable();
     }
 }

@@ -115,7 +115,8 @@
         </ScrollViewer>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button Click="Back" Content="Back"/>
+            <Button Click="Quit" Content="Quit"/>
+            <Button Click="Save" Content="Save"/>
         </StackPanel>
     </Grid>
 </local:EditorInterface>

@@ -11,7 +11,7 @@ namespace RuinsOfAlbertrizal.Environment
     {
         public List<string> IntroText { get; set; }
 
-        public Player Player { get; set; }
+        public List<Player> StoredPlayers { get; set; }
 
         /// <summary>
         /// For reference only
