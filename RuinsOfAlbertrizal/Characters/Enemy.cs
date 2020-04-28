@@ -17,7 +17,7 @@ namespace RuinsOfAlbertrizal.Characters
 
         public Enemy()
         {
-
+            AIStyle = AIs.AI.AIStyle.NoAI;
         }
 
         public override void Die()

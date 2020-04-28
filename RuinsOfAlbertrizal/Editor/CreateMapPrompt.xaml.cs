@@ -24,7 +24,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreateMapPrompt : Page
     {
-        public static Map Map;
+        public static Map Map { get; set; }
 
         public static int SelectedTab;
 
@@ -196,6 +196,32 @@ namespace RuinsOfAlbertrizal.Editor
             }
         }
 
+        private void CreatedPlayersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                CreatePlayerPrompt.CreatedPlayer = Map.StoredPlayers[CreatedPlayersList.SelectedIndex];
+                CreatePlayerBtn.Content = "Edit Player";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void CreatedHazardsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                CreateHazardPrompt.CreatedHazard = Map.StoredHazards[CreatedHazardsList.SelectedIndex];
+                CreateHazardBtn.Content = "Edit Hazard";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void ClearSelection(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -218,6 +244,14 @@ namespace RuinsOfAlbertrizal.Editor
                 case "Attack":
                     CreatedAttacksList.SelectedIndex = -1;
                     CreateAttackBtn.Content = "Create Attack";
+                    break;
+                case "Player":
+                    CreatedPlayersList.SelectedIndex = -1;
+                    CreatePlayerBtn.Content = "Create Player";
+                    break;
+                case "Hazard":
+                    CreatedHazardsList.SelectedIndex = -1;
+                    CreateAttackBtn.Content = "Create Hazard";
                     break;
                 default:
                     throw new ArgumentException("Tag missing or invalid");
@@ -263,11 +297,6 @@ namespace RuinsOfAlbertrizal.Editor
             {
 
             }
-        }
-
-        private void CreatedPlayersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

@@ -17,7 +17,7 @@ namespace RuinsOfAlbertrizal.Editor
                 MessageBox.Show("Please fill out all required forms", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
+            SafelyExit();
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -26,6 +26,14 @@ namespace RuinsOfAlbertrizal.Editor
             ClearVariable();
             CreateMapPrompt.DoNotUpdate = true;
             NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        /// <summary>
+        /// Anything the program needs to do before navigating to CreateMaPrompt can be done here.
+        /// </summary>
+        protected virtual void SafelyExit()
+        {
+
         }
 
         protected abstract void UpdateComponent();

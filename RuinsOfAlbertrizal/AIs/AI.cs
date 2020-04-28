@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.AIs
 {
@@ -18,8 +19,11 @@ namespace RuinsOfAlbertrizal.AIs
             /// <summary>
             /// The player controls this character. Only works with the player character, and is treated as None everywhere else
             /// </summary>
-            Player = -1,
-            None = 0,
+            Player = 0,
+            /// <summary>
+            /// No AI. Cannot Move
+            /// </summary>
+            NoAI = 1,
             /// <summary>
             /// Attacks player with the most damaging attacks possible.
             /// Moves so that its most damaging attack or attacks is in range of the player.
@@ -50,29 +54,19 @@ namespace RuinsOfAlbertrizal.AIs
             Flying = 20,
         }
 
-        public static string[] AINames
+        [XmlIgnore]
+        public static IList<AIStyle> AIStyleNames
         {
             get
             {
-                return Enum.GetNames(typeof(AIStyle));
+                return Enum.GetValues(typeof(AIStyle)).Cast<AIStyle>().ToList<AIStyle>();
             }
         }
 
-        public static string[] AIStyleTooltips =
-        {
-            "",
-
-            "Attacks player with the most damaging attacks possible. " +
-            "Moves towards player if no attacks are in range. " +
-            "No regard to health.",
-
-            "Attacks player with the most damaging attacks possible. " +
-            "Priotizes movement towards player. Moves before attacking. " +
-            "No regard to health.",
-
-            "Attacks player with the most damaging attacks possible. " +
-            "Priotizes movement away from player. Moves before attacking. " +
-            "No regard to health."
-        };
+        //[XmlIgnore]
+        //public static string[] AIStyleTooltips =
+        //{
+            
+        //};
     }
 }

@@ -26,7 +26,7 @@ namespace RuinsOfAlbertrizal.Editor.Converter
 
                 return ObjectOfAlbertrizal.GetNames(objectsOfAlbertrizal);
             }
-            catch (NullReferenceException)
+            catch (ArgumentNullException)
             {
                 return "";
             }

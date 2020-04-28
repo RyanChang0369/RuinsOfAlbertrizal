@@ -27,7 +27,11 @@ namespace RuinsOfAlbertrizal
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!CreateMapPrompt.Map.Equals(GameBase.CurrentGame))
+            if (CreateMapPrompt.Map == null)
+            {
+                return;
+            }
+            else if (GameBase.CurrentGame == null || !CreateMapPrompt.Map.Equals(GameBase.CurrentGame))
             {
                 MessageBoxResult result = MessageBox.Show("You have unsaved data. Press OK to discard all changes.", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
 

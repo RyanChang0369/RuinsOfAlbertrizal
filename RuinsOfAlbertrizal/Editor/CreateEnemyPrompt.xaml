@@ -91,6 +91,20 @@
                 
                 <Label Content="Abilities"/>
                 <TextBox x:Name="Abilities" IsEnabled="False"/>
+
+                <Label Content="AI *"/>
+                <ComboBox>
+                    <ComboBox.ItemsSource>
+                        <Binding Path="AIStyle" Mode="OneTime">
+                            <Binding.Converter>
+                                <converter:EnumConverter/>
+                            </Binding.Converter>
+                        </Binding>
+                    </ComboBox.ItemsSource>
+                    <ComboBox.SelectedItem>
+                        <Binding Path="AIStyle"/>
+                    </ComboBox.SelectedItem>
+                </ComboBox>
             </StackPanel>
         </ScrollViewer>
         

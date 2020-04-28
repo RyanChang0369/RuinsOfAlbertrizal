@@ -41,9 +41,10 @@
                 <TabItem Header="Step 2" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
-                            <Label Style="{StaticResource h2}">Create Buffs and Attacks</Label>
+                            <Label Style="{StaticResource h2}" Content="Create Buffs, Attacks, and Hazards"/>
                             <Button x:Name="CreateBuffBtn" Click="Navigate" Content="Create Buff" HorizontalAlignment="Left" Tag="Editor/CreateBuffPrompt.xaml"/>
                             <Button x:Name="CreateAttackBtn" Click="Navigate" Content="Create Attack" HorizontalAlignment="Left" Tag="Editor/CreateAttackPrompt.xaml"/>
+                            <Button x:Name="CreateHazardBtn" Click="Navigate" Content="Create Hazard" HorizontalAlignment="Left" Tag="Editor/CreateHazardPrompt.xaml"/>
                         </StackPanel>
                         
                         <StackPanel Orientation="Horizontal">
@@ -83,6 +84,27 @@
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Attack">
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+                            <Grid>
+                                <StackPanel>
+                                    <Label Content="Created Hazards"/>
+                                    <ListBox x:Name="CreatedHazardsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedHazardsList_SelectionChanged">
+                                        <ListBox.ItemsSource>
+                                            <Binding Path="StoredHazards" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.Converter>
+                                                    <converter:NameConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </ListBox.ItemsSource>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Hazard">
                                     <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
                                     <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
                                 </StackPanel>

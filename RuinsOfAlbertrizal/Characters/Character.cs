@@ -20,7 +20,7 @@ namespace RuinsOfAlbertrizal.Characters
 
         public int Level { get; set; }
 
-        public AI AI { get; set; }
+        public AI.AIStyle AIStyle { get; set; }
 
         /// <summary>
         /// The original stats that SHOULD NOT CHANGE.

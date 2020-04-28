@@ -1,10 +1,10 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.AIs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using static RuinsOfAlbertrizal.AIs.AI;
 
 namespace RuinsOfAlbertrizal.Mechanics
 {
@@ -34,14 +34,12 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// <summary>
         /// Changes the AI
         /// </summary>
-        public AIStyle AIChange { get; set; }
+        public AI.AIStyle AIChange { get; set; }
 
         /// <summary>
         /// Use to alter the duration of the effect. Duration is mutiplied by the level + 1 (level starts at 0).
         /// </summary>
         public int Level { get; set; }
-
-
 
         public Buff()
         {

@@ -12,16 +12,6 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Create Buff">
 
-    <!--<Page.Resources>
-        <ObjectDataProvider MethodName="GetValues"
-                        ObjectType="{x:Type sys:Enum}"
-                        x:Key="AIChange">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="local:AIChange" />
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-    </Page.Resources>-->
-    
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

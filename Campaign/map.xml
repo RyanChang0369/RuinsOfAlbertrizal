@@ -1,213 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Name>Death</Name>
   <IntroText />
-  <StoredPlayers>
-    <Player>
-      <Name>Sam</Name>
-      <Description>Sam did not sign up for any of this.</Description>
-      <GeneralName>Human</GeneralName>
-      <Level>0</Level>
-      <BaseStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </BaseStats>
-      <AppliedStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </AppliedStats>
-      <AppliedBuffs />
-      <CurrentEquiptments>
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-      </CurrentEquiptments>
-      <CurrentConsumables />
-      <InventoryEquiptments />
-      <InventoryConsumables />
-      <InventoryItems />
-      <Attacks />
-      <IsCharging>false</IsCharging>
-    </Player>
-  </StoredPlayers>
-  <StoredEnemies>
-    <Enemy>
-      <Name>Goblin Grunt</Name>
-      <GeneralName>Goblin</GeneralName>
-      <Level>0</Level>
-      <AI>
-        <Style>None</Style>
-      </AI>
-      <BaseStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </BaseStats>
-      <AppliedStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </AppliedStats>
-      <AppliedBuffs />
-      <CurrentEquiptments>
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-      </CurrentEquiptments>
-      <CurrentConsumables />
-      <InventoryEquiptments />
-      <InventoryConsumables />
-      <InventoryItems />
-      <Attacks />
-      <IsCharging>false</IsCharging>
-      <PointGainPerKill>0</PointGainPerKill>
-    </Enemy>
-    <Enemy>
-      <Name>Slime</Name>
-      <Level>0</Level>
-      <AI>
-        <Style>None</Style>
-      </AI>
-      <BaseStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </BaseStats>
-      <AppliedStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </AppliedStats>
-      <AppliedBuffs />
-      <CurrentEquiptments>
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-      </CurrentEquiptments>
-      <CurrentConsumables />
-      <InventoryEquiptments />
-      <InventoryConsumables />
-      <InventoryItems />
-      <Attacks />
-      <IsCharging>false</IsCharging>
-      <PointGainPerKill>0</PointGainPerKill>
-    </Enemy>
-  </StoredEnemies>
+  <StoredPlayers />
+  <StoredEnemies />
   <StoredBosses>
     <Boss>
-      <Name>Gordon Remesey</Name>
-      <GeneralName>LAMBSAUCE</GeneralName>
+      <Name>Ur Mum</Name>
       <Level>0</Level>
       <AI>
-        <Style>None</Style>
+        <Style>Player</Style>
       </AI>
-      <BaseStats>
-        <int>400</int>
-        <int>20</int>
-        <int>20</int>
-        <int>20</int>
-        <int>10</int>
-      </BaseStats>
-      <AppliedStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </AppliedStats>
-      <AppliedBuffs />
-      <CurrentEquiptments>
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-      </CurrentEquiptments>
-      <CurrentConsumables />
-      <InventoryEquiptments />
-      <InventoryConsumables />
-      <InventoryItems />
-      <Attacks />
-      <IsCharging>false</IsCharging>
-      <PointGainPerKill>0</PointGainPerKill>
-      <BossMessageStart>
-        <string>WHERE'S THE FAQING LAMBSAUCE?</string>
-      </BossMessageStart>
-      <BossMessageDefeat>
-        <string>RAW!</string>
-      </BossMessageDefeat>
-      <BossMessageVictory>
-        <string>ded</string>
-        <string>I is ded</string>
-        <string />
-      </BossMessageVictory>
-    </Boss>
-    <Boss>
-      <Level>0</Level>
       <BaseStats>
         <int>0</int>
         <int>0</int>
@@ -252,18 +54,19 @@
   </StoredBosses>
   <StoredBuffs>
     <Buff>
-      <Name>On Fire</Name>
-      <Description>You are on fire</Description>
+      <Name>Paralysis</Name>
       <Duration>1</Duration>
       <TurnsPassed>0</TurnsPassed>
       <StatGain>
-        <int>-4</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
       </StatGain>
-      <AIChange>Player</AIChange>
+      <AIChange>
+        <Style>Player</Style>
+      </AIChange>
       <Level>0</Level>
     </Buff>
   </StoredBuffs>
@@ -271,6 +74,7 @@
   <StoredItems />
   <StoredEquiptment />
   <StoredConsumables />
+  <StoredHazards />
   <Levels />
   <LevelsCompleted>0</LevelsCompleted>
   <TurnsPassed>0</TurnsPassed>
