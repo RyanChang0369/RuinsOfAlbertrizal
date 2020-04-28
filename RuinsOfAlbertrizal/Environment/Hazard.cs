@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class Hazard : ObjectOfAlbertrizal
+    public class Hazard : Block
     {
         public int[] StatLoss { get; set; }
 
@@ -55,36 +55,14 @@ namespace RuinsOfAlbertrizal.Environment
 
         public DamageDirection DirectionOfDamage { get; set; }
 
-        public enum HazardType
-        {
-            /// <summary>
-            /// Characters appear behind this hazard and can stand on it. 
-            /// </summary>
-            [Description("Characters appear behind this hazard and can stand on it.")]
-            TangableBlock,
-            /// <summary>
-            /// Characters appear ahead of this hazard and can stand on it.
-            /// </summary>
-            [Description("Characters appear ahead of this hazard and can stand on it.")]
-            TangableWall,
-            /// <summary>
-            /// Characters appear behind this hazard and cannot stand on it. 
-            /// </summary>
-            [Description("Characters appear behind this hazard and cannot stand on it.")]
-            IntangableBlock,
-            /// <summary>
-            /// Characters appear ahead of this hazard and cannot stand on it.
-            /// </summary>
-            [Description("Characters appear ahead of this hazard and cannot stand on it.")]
-            IntangableWall
-        }
+        
 
-        public HazardType TypeOfHazard { get; set; }
+        public BlockType TypeOfHazard { get; set; }
 
         public Hazard()
         {
             DirectionOfDamage = new DamageDirection();
-            TypeOfHazard = new HazardType();
+            TypeOfHazard = new BlockType();
         }
     }
 }

@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -21,29 +20,22 @@ using System.Windows.Shapes;
 namespace RuinsOfAlbertrizal.Editor
 {
     /// <summary>
-    /// Interaction logic for CreateHazardPrompt.xaml
+    /// Interaction logic for CreateBlockPrompt.xaml
     /// </summary>
-    public partial class CreateHazardPrompt : EditorInterface
+    public partial class CreateBlockPrompt : EditorInterface
     {
-        public static Hazard CreatedHazard { get; set; }
-        public CreateHazardPrompt()
+        public static Block CreatedBlock { get; set; }
+        public CreateBlockPrompt()
         {
             InitializeComponent();
             UpdateComponent();
-            DataContext = CreatedHazard;
+            DataContext = CreatedBlock;
         }
 
         protected override void UpdateComponent()
         {
-            if (CreatedHazard == null)
-                CreatedHazard = new Hazard();
-            else
-            {
-                foreach (Buff buff in CreatedHazard.Buffs)
-                {
-                    AssociatedBuffsListBox.SelectedItems.Add(buff);
-                }
-            }
+            if (CreatedBlock == null)
+                CreatedBlock = new Block();
         }
 
         protected override bool FormIsValid()
@@ -53,12 +45,7 @@ namespace RuinsOfAlbertrizal.Editor
 
         protected override void ClearVariable()
         {
-            CreatedHazard = new Hazard();
-        }
-
-        protected override void SafelyExit()
-        {
-            CreatedHazard.Buffs = (List<Buff>)AssociatedBuffsListBox.SelectedItems;
+            CreatedBlock = new Block();
         }
 
         private void SelectTileImageBtn_Click(object sender, RoutedEventArgs e)
@@ -67,7 +54,7 @@ namespace RuinsOfAlbertrizal.Editor
 
             try
             {
-                CreatedHazard.TileImage = (Bitmap)Bitmap.FromFile(dialog.GetPath());
+                CreatedBlock.TileImage = (Bitmap)Bitmap.FromFile(dialog.GetPath());
             }
             catch (ArgumentNullException)
             {

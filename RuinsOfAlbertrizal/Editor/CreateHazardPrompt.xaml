@@ -44,6 +44,68 @@
                     </TextBox.Text>
                 </TextBox>
 
+                <Label Content="Tile Image *" ToolTip="How the tile looks like on the map"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="SelectTileImageBtn" Click="SelectTileImageBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
+                    <Image Source="{Binding TileImage}" Height="50"/>
+                </StackPanel>
+                
+                <Label Content="HP Lost On Touch *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatLoss[0]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="Mana Lost On Touch *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatLoss[1]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="Defense Lost On Touch *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatLoss[2]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="Damage Lost On Touch *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatLoss[3]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Label Content="Speed Lost On Touch *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatLoss[4]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+
                 <Label Content="Associated Buffs" ToolTip="What buff does this hazard inflict on the player or enemy?"/>
                 <ListBox x:Name="AssociatedBuffsListBox" Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10,0,0,0" DisplayMemberPath="Name">
                     <ListBox.ItemsSource>

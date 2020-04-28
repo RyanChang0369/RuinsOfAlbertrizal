@@ -40,7 +40,7 @@
                 <Label Content="HP Lost Per Hit *"/>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[0]" Mode="TwoWay">
+                        <Binding Path="StatLoss[0]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
                             </Binding.ValidationRules>
@@ -48,10 +48,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Mana Lost Per HIt *"/>
+                <Label Content="Mana Lost Per Hit *"/>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[1]" Mode="TwoWay">
+                        <Binding Path="StatLoss[1]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -62,7 +62,7 @@
                 <Label Content="Defense Lost Per Hit *"/>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[2]" Mode="TwoWay">
+                        <Binding Path="StatLoss[2]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -73,7 +73,7 @@
                 <Label Content="Damage Lost Per Hit *"/>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[3]" Mode="TwoWay">
+                        <Binding Path="StatLoss[3]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
@@ -84,7 +84,7 @@
                 <Label Content="Speed Lost Per Hit *"/>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="BaseStats[4]" Mode="TwoWay">
+                        <Binding Path="StatLoss[4]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>

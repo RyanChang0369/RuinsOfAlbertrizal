@@ -3,6 +3,7 @@ using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,32 @@ namespace RuinsOfAlbertrizal.Characters
         public int Level { get; set; }
 
         public AI.AIStyle AIStyle { get; set; }
+
+        [XmlIgnore]
+        public Hitbox Hitbox
+        {
+            get
+            {
+                try
+                {
+                    return new Hitbox(MapImage.Width, MapImage.Height);
+                }
+                catch (ArgumentNullException)
+                {
+                    return new Hitbox();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Image as it appears in the HUD. (48x48)
+        /// </summary>
+        public Bitmap Icon { get; set; }
+
+        /// <summary>
+        /// Image as it appears on the map. Determies hitbox size.
+        /// </summary>
+        public Bitmap MapImage { get; set; }
 
         /// <summary>
         /// The original stats that SHOULD NOT CHANGE.

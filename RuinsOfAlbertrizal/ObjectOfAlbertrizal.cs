@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace RuinsOfAlbertrizal
 {
     /// <summary>
-    /// Everything must have a name and description in this world.
+    /// Everything must have a name, description, and icon in this world.
     /// </summary>
     public abstract class ObjectOfAlbertrizal
     {

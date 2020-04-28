@@ -64,7 +64,7 @@
     <Compile Include="Characters\Boss.cs" />
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Player.cs" />
-    <Compile Include="Characters\Size.cs" />
+    <Compile Include="Characters\Hitbox.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -79,6 +79,9 @@
     </Compile>
     <Compile Include="Editor\CreateBossPrompt.xaml.cs">
       <DependentUpon>CreateBossPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\CreateBlockPrompt.xaml.cs">
+      <DependentUpon>CreateBlockPrompt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\CreateHazardPrompt.xaml.cs">
       <DependentUpon>CreateHazardPrompt.xaml</DependentUpon>
@@ -107,6 +110,7 @@
     <Compile Include="Editor\Validator\RequiredValidation.cs" />
     <Compile Include="Editor\Validator\NumberValidation.cs" />
     <Compile Include="EnumBindingSourceExtension.cs" />
+    <Compile Include="Environment\Block.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
     <Compile Include="IntroInterface.xaml.cs">
@@ -184,6 +188,10 @@
     <Page Include="Editor\CreateBossPrompt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\CreateBlockPrompt.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Editor\CreateHazardPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>
