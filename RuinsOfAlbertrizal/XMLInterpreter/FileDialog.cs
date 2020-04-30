@@ -16,11 +16,11 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         }
         private string Path;
 
-        public FileDialog(int dialogOption)
+        public FileDialog(DialogOptions dialogOption)
         {
             switch (dialogOption)
             {
-                case (int)DialogOptions.Open:
+                case DialogOptions.Open:
                     OpenFileDialog openFileDialog = new OpenFileDialog();
                     openFileDialog.Multiselect = false;
                     if (openFileDialog.ShowDialog() == true)
@@ -29,7 +29,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                     }
                     break;
 
-                case (int)DialogOptions.Save:
+                case DialogOptions.Save:
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     if (saveFileDialog.ShowDialog() == true)
                     {
@@ -39,11 +39,11 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
-        public FileDialog(int dialogOption, string filter)
+        public FileDialog(DialogOptions dialogOption, string filter)
         {
             switch (dialogOption)
             {
-                case (int)DialogOptions.Open:
+                case DialogOptions.Open:
                     OpenFileDialog openFileDialog = new OpenFileDialog();
                     openFileDialog.Multiselect = false;
                     openFileDialog.Filter = filter;
@@ -53,7 +53,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                     }
                     break;
 
-                case (int)DialogOptions.Save:
+                case DialogOptions.Save:
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     saveFileDialog.Filter = filter;
                     if (saveFileDialog.ShowDialog() == true)
@@ -64,11 +64,11 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
-        public FileDialog(int dialogOption, string filter, string defaultName)
+        public FileDialog(DialogOptions dialogOption, string filter, string defaultName)
         {
             switch (dialogOption)
             {
-                case (int)DialogOptions.Open:
+                case DialogOptions.Open:
                     OpenFileDialog openFileDialog = new OpenFileDialog();
                     openFileDialog.Multiselect = false;
                     openFileDialog.Filter = filter;
@@ -79,7 +79,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                     }
                     break;
 
-                case (int)DialogOptions.Save:
+                case DialogOptions.Save:
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
                     saveFileDialog.Filter = filter;
                     saveFileDialog.FileName = defaultName;

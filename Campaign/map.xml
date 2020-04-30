@@ -1,15 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <IntroText />
-  <StoredPlayers />
+  <StoredPlayers>
+    <Player>
+      <Name>Jerry</Name>
+      <Description>Jerry did not sign up for this.</Description>
+      <GeneralName>Human</GeneralName>
+      <Level>0</Level>
+      <AIStyle>Player</AIStyle>
+      <BaseStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
+    </Player>
+    <Player>
+      <Level>0</Level>
+      <AIStyle>Player</AIStyle>
+      <BaseStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
+    </Player>
+  </StoredPlayers>
   <StoredEnemies />
   <StoredBosses>
     <Boss>
       <Name>Ur Mum</Name>
       <Level>0</Level>
-      <AI>
-        <Style>Player</Style>
-      </AI>
+      <AIStyle>NoAI</AIStyle>
       <BaseStats>
         <int>0</int>
         <int>0</int>
@@ -55,6 +143,7 @@
   <StoredBuffs>
     <Buff>
       <Name>Paralysis</Name>
+      <Description>Cannot move!</Description>
       <Duration>1</Duration>
       <TurnsPassed>0</TurnsPassed>
       <StatGain>
@@ -64,17 +153,66 @@
         <int>0</int>
         <int>0</int>
       </StatGain>
-      <AIChange>
-        <Style>Player</Style>
-      </AIChange>
+      <AIChange>NoAI</AIChange>
       <Level>0</Level>
     </Buff>
   </StoredBuffs>
-  <StoredAttacks />
+  <StoredAttacks>
+    <Attack>
+      <Name>Stab</Name>
+      <Description>Basic stab attack.</Description>
+      <StatLoss>
+        <int>5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>0</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+    </Attack>
+  </StoredAttacks>
   <StoredItems />
   <StoredEquiptment />
   <StoredConsumables />
-  <StoredHazards />
+  <StoredHazards>
+    <Hazard>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <TypeOfBlock>TangableBlock</TypeOfBlock>
+      <StatLoss>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <Buffs />
+      <DirectionOfDamage>None</DirectionOfDamage>
+    </Hazard>
+  </StoredHazards>
+  <StoredBlocks>
+    <Block>
+      <Name>error_block</Name>
+      <Description>Used as a placeholder.</Description>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <TypeOfBlock>TangableBlock</TypeOfBlock>
+    </Block>
+    <Block>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <TypeOfBlock>TangableBlock</TypeOfBlock>
+    </Block>
+  </StoredBlocks>
   <Levels />
   <LevelsCompleted>0</LevelsCompleted>
   <TurnsPassed>0</TurnsPassed>

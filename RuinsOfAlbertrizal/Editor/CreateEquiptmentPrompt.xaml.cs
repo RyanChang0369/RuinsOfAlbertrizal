@@ -36,14 +36,14 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedEquiptment = new Equiptment();
         }
 
-        protected override bool FormIsValid()
-        {
-            return Form.IsValid();
-        }
-
         protected override void ClearVariable()
         {
             CreatedEquiptment = new Equiptment();
+        }
+
+        protected override void AddRequiredControls()
+        {
+            RequiredControls.Add(EquiptmentName);
         }
     }
 }

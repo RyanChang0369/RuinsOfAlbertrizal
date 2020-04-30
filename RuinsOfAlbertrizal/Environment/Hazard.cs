@@ -55,14 +55,12 @@ namespace RuinsOfAlbertrizal.Environment
 
         public DamageDirection DirectionOfDamage { get; set; }
 
-        
-
-        public BlockType TypeOfHazard { get; set; }
-
         public Hazard()
         {
+            StatLoss = new int[5];
+            Buffs = new List<Buff>();
             DirectionOfDamage = new DamageDirection();
-            TypeOfHazard = new BlockType();
+            TypeOfBlock = new BlockType();
         }
     }
 }

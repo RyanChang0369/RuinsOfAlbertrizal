@@ -38,14 +38,14 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedBoss = new Boss();
         }
 
-        protected override bool FormIsValid()
-        {
-            return Form.IsValid();
-        }
-
         protected override void ClearVariable()
         {
             CreatedBoss = new Boss();
+        }
+
+        protected override void AddRequiredControls()
+        {
+            RequiredControls.Add(BossName);
         }
     }
 }

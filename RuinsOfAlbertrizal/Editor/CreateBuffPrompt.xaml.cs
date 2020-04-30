@@ -35,14 +35,14 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedBuff = new Buff();
         }
 
-        protected override bool FormIsValid()
-        {
-            return Form.IsValid();
-        }
-
         protected override void ClearVariable()
         {
             CreatedBuff = new Buff();
+        }
+
+        protected override void AddRequiredControls()
+        {
+            RequiredControls.Add(BuffName);
         }
     }
 }

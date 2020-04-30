@@ -29,14 +29,14 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedPlayer = new Player();
         }
 
-        protected override bool FormIsValid()
-        {
-            return Form.IsValid();
-        }
-
         protected override void ClearVariable()
         {
             CreatedPlayer = new Player();
+        }
+
+        protected override void AddRequiredControls()
+        {
+            RequiredControls.Add(PlayerName);
         }
     }
 }

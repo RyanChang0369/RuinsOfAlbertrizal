@@ -46,11 +46,6 @@ namespace RuinsOfAlbertrizal.Editor
             }
         }
 
-        protected override bool FormIsValid()
-        {
-            return Form.IsValid();
-        }
-
         protected override void ClearVariable()
         {
             CreatedHazard = new Hazard();
@@ -58,25 +53,20 @@ namespace RuinsOfAlbertrizal.Editor
 
         protected override void SafelyExit()
         {
-            CreatedHazard.Buffs = (List<Buff>)AssociatedBuffsListBox.SelectedItems;
+            foreach (object obj in AssociatedBuffsListBox.SelectedItems)
+            {
+                CreatedHazard.Buffs.Add((Buff)obj);
+            }
         }
 
         private void SelectTileImageBtn_Click(object sender, RoutedEventArgs e)
         {
-            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Open, "PNG File | .png");
+            CreatedHazard.TileImageLocation = GetBitmapPath();
+        }
 
-            try
-            {
-                CreatedHazard.TileImage = (Bitmap)Bitmap.FromFile(dialog.GetPath());
-            }
-            catch (ArgumentNullException)
-            {
-
-            }
-            catch (IOException)
-            {
-
-            }
+        protected override void AddRequiredControls()
+        {
+            RequiredControls.Add(HazardName);
         }
     }
 }

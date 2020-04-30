@@ -38,14 +38,14 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedEnemy = new Enemy();
         }
 
-        protected override bool FormIsValid()
-        {
-            return Form.IsValid();
-        }
-
         protected override void ClearVariable()
         {
             CreatedEnemy = new Enemy();
+        }
+
+        protected override void AddRequiredControls()
+        {
+            RequiredControls.Add(EnemyName);
         }
     }
 }

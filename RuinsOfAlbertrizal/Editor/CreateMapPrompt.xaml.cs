@@ -103,6 +103,30 @@ namespace RuinsOfAlbertrizal.Editor
                 StepsDone[4] = true;
             }
 
+            if (CreatePlayerPrompt.CreatedPlayer != null)
+            {
+                if (!Map.StoredPlayers.Contains(CreatePlayerPrompt.CreatedPlayer))
+                    Map.StoredPlayers.Add(CreatePlayerPrompt.CreatedPlayer);
+
+                StepsDone[5] = true;
+            }
+
+            if (CreateBlockPrompt.CreatedBlock != null)
+            {
+                if (!Map.StoredBlocks.Contains(CreateBlockPrompt.CreatedBlock))
+                    Map.StoredBlocks.Add(CreateBlockPrompt.CreatedBlock);
+
+                StepsDone[6] = true;
+            }
+
+            if (CreateHazardPrompt.CreatedHazard != null)
+            {
+                if (!Map.StoredHazards.Contains(CreateHazardPrompt.CreatedHazard))
+                    Map.StoredHazards.Add(CreateHazardPrompt.CreatedHazard);
+
+                StepsDone[7] = true;
+            }
+
             //SaveBtn.IsEnabled = true;
             //GameBase.NewGame();
         }
@@ -142,6 +166,104 @@ namespace RuinsOfAlbertrizal.Editor
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
             SelectedTab = MainTabControl.SelectedIndex;
+        }
+
+
+
+        private void ClearSelection(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            StackPanel stackPanel = (StackPanel)VisualTreeHelper.GetParent(button);
+
+            switch (stackPanel.Tag)
+            {
+                case "Enemy":
+                    CreatedEnemiesList.SelectedIndex = -1;
+                    CreateEnemyBtn.Content = "Create Enemy";
+                    break;
+                case "Boss":
+                    CreatedBossesList.SelectedIndex = -1;
+                    CreateBossBtn.Content = "Create Boss";
+                    break;
+                case "Buff":
+                    CreatedBuffsList.SelectedIndex = -1;
+                    CreateBuffBtn.Content = "Create Buff";
+                    break;
+                case "Attack":
+                    CreatedAttacksList.SelectedIndex = -1;
+                    CreateAttackBtn.Content = "Create Attack";
+                    break;
+                case "Player":
+                    CreatedPlayersList.SelectedIndex = -1;
+                    CreatePlayerBtn.Content = "Create Player";
+                    break;
+                case "Hazard":
+                    CreatedHazardsList.SelectedIndex = -1;
+                    CreateHazardBtn.Content = "Create Hazard";
+                    break;
+                case "Block":
+                    CreatedBlocksList.SelectedIndex = -1;
+                    CreateBlockBtn.Content = "Create Block";
+                    break;
+                default:
+                    throw new ArgumentException("Tag missing or invalid");
+            }
+        }
+
+        private void DeleteSelection(object sender, RoutedEventArgs e)
+        {
+            Button button = (Button)sender;
+            StackPanel stackPanel = (StackPanel)VisualTreeHelper.GetParent(button);
+
+            try
+            {
+                switch (stackPanel.Tag)
+                {
+                    case "Enemy":
+                        CreateEnemyPrompt.CreatedEnemy = new Enemy();
+                        Map.StoredEnemies.RemoveAt(CreatedEnemiesList.SelectedIndex);
+                        CreatedEnemiesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Boss":
+                        CreateBossPrompt.CreatedBoss = new Boss();
+                        Map.StoredBosses.RemoveAt(CreatedBossesList.SelectedIndex);
+                        CreatedBossesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Buff":
+                        CreateBuffPrompt.CreatedBuff = new Buff();
+                        Map.StoredBuffs.RemoveAt(CreatedBuffsList.SelectedIndex);
+                        CreatedBuffsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Attack":
+                        CreateAttackPrompt.CreatedAttack = new Attack();
+                        Map.StoredAttacks.RemoveAt(CreatedAttacksList.SelectedIndex);
+                        CreatedAttacksList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Player":
+                        CreatePlayerPrompt.CreatedPlayer = new Player();
+                        Map.StoredPlayers.RemoveAt(CreatedPlayersList.SelectedIndex);
+                        CreatedPlayersList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Hazard":
+                        CreateHazardPrompt.CreatedHazard = new Hazard();
+                        Map.StoredHazards.RemoveAt(CreatedHazardsList.SelectedIndex);
+                        CreatedHazardsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Block":
+                        CreateBlockPrompt.CreatedBlock = new Environment.Block();
+                        Map.StoredBlocks.RemoveAt(CreatedBlocksList.SelectedIndex);
+                        CreatedBlocksList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    default:
+                        throw new ArgumentException("Tag missing or invalid");
+                }
+
+                ClearSelection(sender, null);
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
         }
 
         private void CreatedEnemiesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -222,78 +344,14 @@ namespace RuinsOfAlbertrizal.Editor
             }
         }
 
-        private void ClearSelection(object sender, RoutedEventArgs e)
+        private void CreatedBlocksList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Button button = (Button)sender;
-            StackPanel stackPanel = (StackPanel)VisualTreeHelper.GetParent(button);
-
-            switch (stackPanel.Tag)
-            {
-                case "Enemy":
-                    CreatedEnemiesList.SelectedIndex = -1;
-                    CreateEnemyBtn.Content = "Create Enemy";
-                    break;
-                case "Boss":
-                    CreatedBossesList.SelectedIndex = -1;
-                    CreateBossBtn.Content = "Create Boss";
-                    break;
-                case "Buff":
-                    CreatedBuffsList.SelectedIndex = -1;
-                    CreateBuffBtn.Content = "Create Buff";
-                    break;
-                case "Attack":
-                    CreatedAttacksList.SelectedIndex = -1;
-                    CreateAttackBtn.Content = "Create Attack";
-                    break;
-                case "Player":
-                    CreatedPlayersList.SelectedIndex = -1;
-                    CreatePlayerBtn.Content = "Create Player";
-                    break;
-                case "Hazard":
-                    CreatedHazardsList.SelectedIndex = -1;
-                    CreateAttackBtn.Content = "Create Hazard";
-                    break;
-                default:
-                    throw new ArgumentException("Tag missing or invalid");
-            }
-        }
-
-        private void DeleteSelection(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            StackPanel stackPanel = (StackPanel)VisualTreeHelper.GetParent(button);
-
             try
             {
-                switch (stackPanel.Tag)
-                {
-                    case "Enemy":
-                        CreateEnemyPrompt.CreatedEnemy = new Enemy();
-                        Map.StoredEnemies.RemoveAt(CreatedEnemiesList.SelectedIndex);
-                        CreatedEnemiesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Boss":
-                        CreateBossPrompt.CreatedBoss = new Boss();
-                        Map.StoredBosses.RemoveAt(CreatedBossesList.SelectedIndex);
-                        CreatedBossesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Buff":
-                        CreateBuffPrompt.CreatedBuff = new Buff();
-                        Map.StoredBuffs.RemoveAt(CreatedBuffsList.SelectedIndex);
-                        CreatedBuffsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Attack":
-                        CreateAttackPrompt.CreatedAttack = new Attack();
-                        Map.StoredAttacks.RemoveAt(CreatedAttacksList.SelectedIndex);
-                        CreatedAttacksList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    default:
-                        throw new ArgumentException("Tag missing or invalid");
-                }
-
-                ClearSelection(sender, null);
+                CreateBlockPrompt.CreatedBlock = Map.StoredBlocks[CreatedBlocksList.SelectedIndex];
+                CreateBlockBtn.Content = "Edit Block";
             }
-            catch (IndexOutOfRangeException)
+            catch (Exception)
             {
 
             }

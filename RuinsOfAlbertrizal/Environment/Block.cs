@@ -5,12 +5,32 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
     public class Block : ObjectOfAlbertrizal
     {
-        public Bitmap TileImage { get; set; }
+        public string TileImageLocation { get; set; }
+
+        protected Bitmap tileImage = Properties.Resources.error;
+
+        [XmlIgnore]
+        public Bitmap TileImage
+        {
+            get
+            {
+                try
+                {
+                    tileImage = new Bitmap(TileImageLocation);
+                }
+                catch (Exception)
+                {
+
+                }
+                return tileImage;
+            }
+        }
 
         public Point Location { get; set; }
 
@@ -36,6 +56,13 @@ namespace RuinsOfAlbertrizal.Environment
             /// </summary>
             [Description("Characters appear ahead of this hazard and cannot stand on it.")]
             IntangableWall
+        }
+
+        public BlockType TypeOfBlock { get; set; }
+
+        public Block()
+        {
+            TypeOfBlock = new BlockType();
         }
     }
 }

@@ -56,7 +56,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         /// <exception cref="ArgumentNullException"></exception>
         public static void CreateCustomCampaign()
         {
-            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Save, "XAML File|.xml", "map");
+            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Save, "XAML File|.xml", "map");
 
             GameBase.CustomMapLocation = dialog.GetPath();
 
@@ -75,7 +75,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         /// <exception cref="ArgumentNullException"></exception>
         public static void LoadCustomCampaign()
         {
-            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Open, "XAML File | map.xml");
+            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "XAML File | map.xml");
 
             GameBase.CustomMapLocation = dialog.GetPath();
 
@@ -103,7 +103,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             string path = "";
             try
             {
-                path = new FileDialog((int)FileDialog.DialogOptions.Load).GetPath();
+                path = new FileDialog(FileDialog.DialogOptions.Load).GetPath();
             }
             catch (ArgumentNullException)
             {

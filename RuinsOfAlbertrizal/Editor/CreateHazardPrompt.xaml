@@ -47,7 +47,24 @@
                 <Label Content="Tile Image *" ToolTip="How the tile looks like on the map"/>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectTileImageBtn" Click="SelectTileImageBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
-                    <Image Source="{Binding TileImage}" Height="50"/>
+                    <Label>
+                        <Label.Content>
+                            <Binding Path="TileImageLocation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <validation:RequiredValidation/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </Label.Content>
+                    </Label>
+                    <Image Name="TileImageElement" Height="50">
+                        <Image.Source>
+                            <Binding Path="TileImage" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.Converter>
+                                    <converter:ImageConverter/>
+                                </Binding.Converter>
+                            </Binding>
+                        </Image.Source>
+                    </Image>
                 </StackPanel>
                 
                 <Label Content="HP Lost On Touch *"/>
@@ -55,7 +72,7 @@
                     <TextBox.Text>
                         <Binding Path="StatLoss[0]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                                <validation:NumberValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -122,17 +139,23 @@
                             </Binding.Converter>
                         </Binding>
                     </ComboBox.ItemsSource>
+                    <ComboBox.SelectedItem>
+                        <Binding Path="DirectionOfDamage"/>
+                    </ComboBox.SelectedItem>
                 </ComboBox>
 
                 <Label Content="Hazard Type *"/>
                 <ComboBox Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10,0,0,0">
                     <ComboBox.ItemsSource>
-                        <Binding Path="TypeOfHazard" UpdateSourceTrigger="PropertyChanged" Mode="OneTime">
+                        <Binding Path="TypeOfBlock" UpdateSourceTrigger="PropertyChanged" Mode="OneTime">
                             <Binding.Converter>
                                 <converter:EnumConverter/>
                             </Binding.Converter>
                         </Binding>
                     </ComboBox.ItemsSource>
+                    <ComboBox.SelectedItem>
+                        <Binding Path="TypeOfBlock"/>
+                    </ComboBox.SelectedItem>
                 </ComboBox>
             </StackPanel>
         </ScrollViewer>

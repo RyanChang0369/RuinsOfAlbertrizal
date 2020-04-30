@@ -20,7 +20,7 @@
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
                 <Label ToolTip='The proper name, such as Bob or Robert' Content="Name *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <TextBox x:Name="AttackName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="Name" Mode="TwoWay">
                             <Binding.ValidationRules>

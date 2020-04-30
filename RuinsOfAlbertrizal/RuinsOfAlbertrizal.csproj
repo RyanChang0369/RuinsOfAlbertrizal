@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Characters\Enemy.cs" />
     <Compile Include="Editor\Converter\EnumConverter.cs" />
+    <Compile Include="Editor\Converter\ImageConverter.cs" />
     <Compile Include="Editor\Converter\NameConverter.cs" />
     <Compile Include="Editor\Converter\ArrayConverter.cs" />
     <Compile Include="Editor\Converter\ClassToBaseStatsConverter.cs" />
@@ -244,6 +245,9 @@
   <ItemGroup>
     <Resource Include="assets\Other\Shotguns.jpg" />
     <Resource Include="assets\Other\TitleImage2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\error.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

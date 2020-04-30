@@ -35,6 +35,8 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Hazard> StoredHazards { get; set; }
 
+        public List<Block> StoredBlocks { get; set; }
+
         public List<Level> Levels { get; set; }
 
         public int LevelsCompleted { get; set; }
@@ -54,6 +56,7 @@ namespace RuinsOfAlbertrizal.Environment
             StoredEquiptment = new List<Equiptment>();
             StoredConsumables = new List<Consumable>();
             StoredHazards = new List<Hazard>();
+            StoredBlocks = new List<Block>();
             Levels = new List<Level>();
         }
     }

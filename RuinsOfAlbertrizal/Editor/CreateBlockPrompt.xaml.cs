@@ -38,11 +38,6 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedBlock = new Block();
         }
 
-        protected override bool FormIsValid()
-        {
-            return Form.IsValid();
-        }
-
         protected override void ClearVariable()
         {
             CreatedBlock = new Block();
@@ -50,20 +45,12 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectTileImageBtn_Click(object sender, RoutedEventArgs e)
         {
-            FileDialog dialog = new FileDialog((int)FileDialog.DialogOptions.Open, "PNG File | .png");
+            CreatedBlock.TileImageLocation = GetBitmapPath();
+        }
 
-            try
-            {
-                CreatedBlock.TileImage = (Bitmap)Bitmap.FromFile(dialog.GetPath());
-            }
-            catch (ArgumentNullException)
-            {
-
-            }
-            catch (IOException)
-            {
-
-            }
+        protected override void AddRequiredControls()
+        {
+            RequiredControls.Add(BlockName);
         }
     }
 }
