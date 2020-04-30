@@ -37,10 +37,22 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
         {
             ListBox listBox = (ListBox)sender;
 
-            LevelSelect levelSelect = new LevelSelect("buff", CreateMapPrompt.Map.StoredBuffs[listBox.SelectedIndex].Name);
+            Buff buff = CreateMapPrompt.Map.StoredBuffs[listBox.SelectedIndex];
+
+            LevelSelect levelSelect = new LevelSelect("buff", buff.Name);
             levelSelect.ShowDialog();
 
-            CreateMapPrompt.Map.StoredBuffs[listBox.SelectedIndex].Level = levelSelect.GetLevelValue();
+            buff.Level = levelSelect.GetLevelValue();
+            TargetBuffs.Add(buff);
+            AddedBuffsList.Items.Add(buff);
+        }
+
+        private void ListBox_PreviewMouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+
+            TargetBuffs.RemoveAt(listBox.SelectedIndex);
+            listBox.Items.RemoveAt(listBox.SelectedIndex);
         }
     }
 }

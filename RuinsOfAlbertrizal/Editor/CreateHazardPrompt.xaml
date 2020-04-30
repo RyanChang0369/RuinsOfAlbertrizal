@@ -123,12 +123,7 @@
 
 
                 <Label Content="Associated Buffs" ToolTip="What buff does this hazard inflict on the player or enemy?"/>
-                <Button x:Name="EditBuffBtn" Content="Add or Remove Buff" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}"/>
-                <!--<ListBox x:Name="AssociatedBuffsListBox" Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10,0,0,0" DisplayMemberPath="Name">
-                    <ListBox.ItemsSource>
-                        <Binding Path="Map.StoredBuffs" UpdateSourceTrigger="PropertyChanged" Mode="OneTime" Source="{StaticResource CreateMapPrompt}"/>
-                    </ListBox.ItemsSource>
-                </ListBox>-->
+                <Button x:Name="EditBuffBtn" Content="Add or Remove Buff" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
 
                 <Label Content="Direction of Damage *"/>
                 <ComboBox Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10,0,0,0">

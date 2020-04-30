@@ -74,6 +74,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedHazard.Buffs);
             buffAdderPrompt.Show();
+            CreatedHazard.Buffs = buffAdderPrompt.TargetBuffs;
         }
     }
 }
