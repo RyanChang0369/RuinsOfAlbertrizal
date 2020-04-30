@@ -1,0 +1,23 @@
+﻿<Window x:Class="RuinsOfAlbertrizal.Editor.AdderPrompts.LevelSelect"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
+        xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor.AdderPrompts"
+        mc:Ignorable="d"
+        Title="Select a Level" Height="200" Width="400">
+    <StackPanel>
+        <Label x:Name="HeaderLabel"/>
+        <TextBox x:Name="ValueTextBox" Margin="10,0,0,0" Width="372">
+            <TextBox.Text>
+                <Binding Path="TextboxText" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <validation:NumberValidation/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button x:Name="Submit" IsDefault="True" Click="Submit_Click" Content="Submit" Style="{StaticResource buttonSmall}"/>
+    </StackPanel>
+</Window>

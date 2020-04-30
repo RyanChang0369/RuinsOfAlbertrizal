@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Environment;
+﻿using RuinsOfAlbertrizal.Editor.AdderPrompts;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
@@ -39,10 +40,10 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedHazard = new Hazard();
             else
             {
-                foreach (Buff buff in CreatedHazard.Buffs)
-                {
-                    AssociatedBuffsListBox.SelectedItems.Add(buff);
-                }
+                //foreach (Buff buff in CreatedHazard.Buffs)
+                //{
+                //    AssociatedBuffsListBox.SelectedItems.Add(buff);
+                //}
             }
         }
 
@@ -53,10 +54,10 @@ namespace RuinsOfAlbertrizal.Editor
 
         protected override void SafelyExit()
         {
-            foreach (object obj in AssociatedBuffsListBox.SelectedItems)
-            {
-                CreatedHazard.Buffs.Add((Buff)obj);
-            }
+            //foreach (object obj in AssociatedBuffsListBox.SelectedItems)
+            //{
+            //    CreatedHazard.Buffs.Add((Buff)obj);
+            //}
         }
 
         private void SelectTileImageBtn_Click(object sender, RoutedEventArgs e)
@@ -67,6 +68,12 @@ namespace RuinsOfAlbertrizal.Editor
         protected override void AddRequiredControls()
         {
             RequiredControls.Add(HazardName);
+        }
+
+        private void EditBuffBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedHazard.Buffs);
+            buffAdderPrompt.Show();
         }
     }
 }

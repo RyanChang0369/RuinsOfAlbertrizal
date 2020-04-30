@@ -70,6 +70,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Characters\Enemy.cs" />
+    <Compile Include="Editor\AdderPrompts\AdderPrompt.cs" />
+    <Compile Include="Editor\AdderPrompts\BuffAdderPrompt.xaml.cs">
+      <DependentUpon>BuffAdderPrompt.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\AdderPrompts\LevelSelect.xaml.cs">
+      <DependentUpon>LevelSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Converter\EnumConverter.cs" />
     <Compile Include="Editor\Converter\ImageConverter.cs" />
     <Compile Include="Editor\Converter\NameConverter.cs" />
@@ -181,6 +188,14 @@
     <Page Include="BattleInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\AdderPrompts\BuffAdderPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\AdderPrompts\LevelSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\CreateAttackPrompt.xaml">
       <SubType>Designer</SubType>
