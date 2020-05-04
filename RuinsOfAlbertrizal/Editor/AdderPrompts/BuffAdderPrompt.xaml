@@ -16,7 +16,7 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel>
                 <Label Content="Click To Add"/>
-                <ListBox Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp">
+                <ListBox x:Name="AvailableBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="AvailableBuffsList_PreviewMouseLeftButtonUp">
                     <ListBox.ItemsSource>
                         <Binding Path="Map.StoredBuffs" UpdateSourceTrigger="PropertyChanged" Mode="OneTime" Source="{StaticResource CreateMapPrompt}"/>
                     </ListBox.ItemsSource>
@@ -24,7 +24,7 @@
             </StackPanel>
             <StackPanel>
                 <Label Content="Click to Remove"/>
-                <ListBox Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="ListBox_PreviewMouseLeftButtonUp_1" x:Name="AddedBuffsList"/>
+                <ListBox x:Name="AddedBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="AddedBuffsList_PreviewMouseLeftButtonUp"/>
             </StackPanel>
         </StackPanel>
     </Grid>

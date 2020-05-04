@@ -33,7 +33,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             TargetBuffs = targetBuffs;
         }
 
-        private void ListBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void AvailableBuffsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
 
@@ -47,7 +47,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             AddedBuffsList.Items.Add(buff);
         }
 
-        private void ListBox_PreviewMouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        private void AddedBuffsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
 
