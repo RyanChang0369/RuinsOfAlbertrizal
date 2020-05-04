@@ -29,7 +29,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Item> StoredItems { get; set; }
 
-        public List<Equiptment> StoredEquiptment { get; set; }
+        public List<Equiptment> StoredEquiptments { get; set; }
 
         public List<Consumable> StoredConsumables { get; set; }
 
@@ -53,7 +53,7 @@ namespace RuinsOfAlbertrizal.Environment
             StoredBuffs = new List<Buff>();
             StoredAttacks = new List<Attack>();
             StoredItems = new List<Item>();
-            StoredEquiptment = new List<Equiptment>();
+            StoredEquiptments = new List<Equiptment>();
             StoredConsumables = new List<Consumable>();
             StoredHazards = new List<Hazard>();
             StoredBlocks = new List<Block>();
