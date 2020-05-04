@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal.Items
 {
-    public class Item : ObjectOfAlbertrizal
+    public class Item : IconedObjectOfAlbertrizal
     {
         /// <summary>
         /// Percent chance this item will drop from an enemy, ranging from 0.0 to 1.0

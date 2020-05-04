@@ -11,7 +11,7 @@ namespace RuinsOfAlbertrizal.Mechanics
     /// <summary>
     /// Buffs and debuffs
     /// </summary>
-    public class Buff : ObjectOfAlbertrizal, ITurnBasedObject
+    public class Buff : IconedObjectOfAlbertrizal, ITurnBasedObject
     {
         /// <summary>
         /// How many turns will this last for?
