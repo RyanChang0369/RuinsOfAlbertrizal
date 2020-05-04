@@ -131,6 +131,7 @@
     <Compile Include="Environment\Block.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
+    <Compile Include="IconedObjectOfAlbertrizal.cs" />
     <Compile Include="IntroInterface.xaml.cs">
       <DependentUpon>IntroInterface.xaml</DependentUpon>
     </Compile>
@@ -147,6 +148,7 @@
     <Compile Include="ObjectOfAlbertrizal.cs" />
     <Compile Include="Text\Message.cs" />
     <Compile Include="ITurnBasedObject.cs" />
+    <Compile Include="WorldMapObject.cs" />
     <Compile Include="XMLInterpreter\FileDialog.cs" />
     <Compile Include="XMLInterpreter\FileHandler.cs" />
   </ItemGroup>
