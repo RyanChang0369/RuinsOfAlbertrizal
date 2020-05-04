@@ -115,6 +115,7 @@
     <Compile Include="Editor\EditorInterface.cs" />
     <Compile Include="Editor\EditorProperties.cs" />
     <Compile Include="Editor\EnemyProperties.cs" />
+    <Compile Include="Editor\Validator\PercentValidation.cs" />
     <Compile Include="Editor\Validator\RequiredValidation.cs" />
     <Compile Include="Editor\Validator\NumberValidation.cs" />
     <Compile Include="EnumBindingSourceExtension.cs" />
