@@ -60,5 +60,10 @@ namespace RuinsOfAlbertrizal.Editor
             slotAdderPrompt.Show();
             CreatedEquiptment.Slots = slotAdderPrompt.Slots;
         }
+
+        private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatedEquiptment.IconLocation = GetBitmapPath();
+        }
     }
 }

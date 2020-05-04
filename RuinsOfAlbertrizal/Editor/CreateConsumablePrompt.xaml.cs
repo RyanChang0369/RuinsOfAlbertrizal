@@ -54,5 +54,10 @@ namespace RuinsOfAlbertrizal.Editor
             buffAdderPrompt.Show();
             CreatedConsumable.Buffs = buffAdderPrompt.TargetBuffs;
         }
+
+        private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatedConsumable.IconLocation = GetBitmapPath();
+        }
     }
 }

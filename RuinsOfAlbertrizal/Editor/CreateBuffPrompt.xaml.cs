@@ -44,5 +44,10 @@ namespace RuinsOfAlbertrizal.Editor
         {
             RequiredControls.Add(BuffName);
         }
+
+        private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatedBuff.IconLocation = GetBitmapPath();
+        }
     }
 }

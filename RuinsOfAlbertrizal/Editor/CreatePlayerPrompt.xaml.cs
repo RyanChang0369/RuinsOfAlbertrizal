@@ -38,5 +38,15 @@ namespace RuinsOfAlbertrizal.Editor
         {
             RequiredControls.Add(PlayerName);
         }
+
+        private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatedPlayer.IconLocation = GetBitmapPath();
+        }
+
+        private void SelectWorldImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatedPlayer.WorldImgLocation = GetBitmapPath();
+        }
     }
 }

@@ -46,5 +46,10 @@ namespace RuinsOfAlbertrizal.Editor
             RequiredControls.Add(ItemName);
             RequiredControls.Add(DropChance);
         }
+
+        private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatedItem.IconLocation = GetBitmapPath();
+        }
     }
 }
