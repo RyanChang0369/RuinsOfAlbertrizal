@@ -13,11 +13,11 @@ namespace RuinsOfAlbertrizal.Items
         /// <summary>
         /// Refer to SlotEnum
         /// </summary>
-        public SlotMode[] Slots { get; set; }
+        public List<SlotMode> Slots { get; set; }
 
         public enum SlotMode
         {
-            Head, Torso, Legs, Feet, Neck, Hand1, Hand2, Finger1, Finger2, Finger3, Finger4, Finger5, Finger6, Finger7, Finger8, Finger9, Finger10
+            None, Head, Neck, Torso, Hand1, Hand2, Legs, Feet, Finger1, Finger2, Finger3, Finger4, Finger5, Finger6, Finger7, Finger8, Finger9, Finger10
         }
 
         public int[] StatGain { get; set; }
@@ -30,6 +30,7 @@ namespace RuinsOfAlbertrizal.Items
         {
             BuffImmunities = new List<Buff>();
             Attacks = new List<Attack>();
+            Slots = new List<SlotMode>();
         }
 
         public bool CanAttack()
