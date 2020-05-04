@@ -30,7 +30,11 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
         public BuffAdderPrompt(List<Buff> targetBuffs)
         {
             InitializeComponent();
-            TargetBuffs = targetBuffs;
+
+            if (targetBuffs == null)
+                TargetBuffs = new List<Buff>();
+            else
+                TargetBuffs = targetBuffs;
         }
 
         private void AvailableBuffsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
