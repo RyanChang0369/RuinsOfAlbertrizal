@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor.AdderPrompts"
         xmlns:mapPrompts="clr-namespace:RuinsOfAlbertrizal.Editor"
         mc:Ignorable="d"
-        Title="BuffAdderPrompt" Height="450" Width="800">
+        Title="Add a Buff" Height="450" Width="800">
     
     <Window.Resources>
         <mapPrompts:CreateMapPrompt x:Key="CreateMapPrompt"/>
