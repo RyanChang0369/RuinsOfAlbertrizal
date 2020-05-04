@@ -90,10 +90,85 @@
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
-                
-                
+
 
                 <TabItem Header="Step 3" FontSize="48">
+                    <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
+                        <StackPanel>
+                            <Label Style="{StaticResource h2}" Content="Create Items"/>
+                            <Button x:Name="CreateItemBtn" Click="Navigate" Content="Create Item" HorizontalAlignment="Left" Tag="Editor/CreateItemPrompt.xaml"/>
+                            <Button x:Name="CreateEquiptmentBtn" Click="Navigate" Content="Create Equiptment" HorizontalAlignment="Left" Tag="Editor/CreateEquiptmentPrompt.xaml"/>
+                            <Button x:Name="CreateConsumableBtn" Click="Navigate" Content="Create Consumable" HorizontalAlignment="Left" Tag="Editor/CreateConsumablePrompt.xaml"/>
+                        </StackPanel>
+
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+                        <Grid>
+                            <StackPanel>
+                                <Label Content="Created Items"/>
+                                <ListBox x:Name="CreatedItemsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedItemsList_SelectionChanged">
+                                    <ListBox.ItemsSource>
+                                        <Binding Path="StoredItems" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.Converter>
+                                                <converter:NameConverter/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </ListBox.ItemsSource>
+                                </ListBox>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Item">
+                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
+                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+                        <Grid>
+                            <StackPanel>
+                                <Label Content="Created Equiptments"/>
+                                <ListBox x:Name="CreatedEquiptmentsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedEquiptmentsList_SelectionChanged">
+                                    <ListBox.ItemsSource>
+                                        <Binding Path="StoredEquiptments" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.Converter>
+                                                <converter:NameConverter/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </ListBox.ItemsSource>
+                                </ListBox>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Equiptment">
+                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
+                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+                        <Grid>
+                            <StackPanel>
+                                <Label Content="Created Consumables"/>
+                                <ListBox x:Name="CreatedConsumablesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedConsumablesList_SelectionChanged">
+                                    <ListBox.ItemsSource>
+                                        <Binding Path="StoredConsumables" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.Converter>
+                                                <converter:NameConverter/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </ListBox.ItemsSource>
+                                </ListBox>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Consumable">
+                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
+                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </TabItem>
+                
+
+                
+                <TabItem Header="Step 4" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
                             <Label Style="{StaticResource h2}" Content="Create Blocks"/>
@@ -147,7 +222,7 @@
                 
                 
                 
-                <TabItem Header="Step 4" FontSize="48">
+                <TabItem Header="Step 5" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
                             <Label Style="{StaticResource h2}">Create Players and Enemies</Label>

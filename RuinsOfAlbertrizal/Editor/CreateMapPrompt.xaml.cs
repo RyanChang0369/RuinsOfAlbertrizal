@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
@@ -32,7 +33,7 @@ namespace RuinsOfAlbertrizal.Editor
 
         public static bool HasSaved = true;
 
-        public bool[] StepsDone = new bool[9];
+        public bool[] StepsDone = new bool[13];
 
         public CreateMapPrompt()
         {
@@ -103,6 +104,7 @@ namespace RuinsOfAlbertrizal.Editor
                 StepsDone[4] = true;
             }
 
+            //Step 6: Players
             if (CreatePlayerPrompt.CreatedPlayer != null)
             {
                 if (!Map.StoredPlayers.Contains(CreatePlayerPrompt.CreatedPlayer))
@@ -111,6 +113,7 @@ namespace RuinsOfAlbertrizal.Editor
                 StepsDone[5] = true;
             }
 
+            //Step 7: Blocks
             if (CreateBlockPrompt.CreatedBlock != null)
             {
                 if (!Map.StoredBlocks.Contains(CreateBlockPrompt.CreatedBlock))
@@ -119,12 +122,31 @@ namespace RuinsOfAlbertrizal.Editor
                 StepsDone[6] = true;
             }
 
+            //Step 8: Hazards
             if (CreateHazardPrompt.CreatedHazard != null)
             {
                 if (!Map.StoredHazards.Contains(CreateHazardPrompt.CreatedHazard))
                     Map.StoredHazards.Add(CreateHazardPrompt.CreatedHazard);
 
                 StepsDone[7] = true;
+            }
+
+            //Step 9: Items
+            if (CreateItemPrompt.CreatedItem != null)
+            {
+                if (!Map.StoredItems.Contains(CreateItemPrompt.CreatedItem))
+                    Map.StoredItems.Add(CreateItemPrompt.CreatedItem);
+
+                StepsDone[8] = true;
+            }
+
+            //Step 10: Equiptment
+            if (CreateEquiptmentPrompt.CreatedEquiptment != null)
+            {
+                if (!Map.StoredEquiptments.Contains(CreateEquiptmentPrompt.CreatedEquiptment))
+                    Map.StoredEquiptments.Add(CreateEquiptmentPrompt.CreatedEquiptment);
+
+                StepsDone[9] = true;
             }
 
             //SaveBtn.IsEnabled = true;
@@ -205,6 +227,18 @@ namespace RuinsOfAlbertrizal.Editor
                     CreatedBlocksList.SelectedIndex = -1;
                     CreateBlockBtn.Content = "Create Block";
                     break;
+                case "Item":
+                    CreatedItemsList.SelectedIndex = -1;
+                    CreateItemBtn.Content = "Create Item";
+                    break;
+                case "Equiptment":
+                    CreatedEquiptmentsList.SelectedIndex = -1;
+                    CreateEquiptmentBtn.Content = "Create Equiptment";
+                    break;
+                case "Consumable":
+                    CreatedConsumablesList.SelectedIndex = -1;
+                    CreateConsumableBtn.Content = "Create Consumable";
+                    break;
                 default:
                     throw new ArgumentException("Tag missing or invalid");
             }
@@ -253,6 +287,21 @@ namespace RuinsOfAlbertrizal.Editor
                         CreateBlockPrompt.CreatedBlock = new Environment.Block();
                         Map.StoredBlocks.RemoveAt(CreatedBlocksList.SelectedIndex);
                         CreatedBlocksList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Item":
+                        CreateItemPrompt.CreatedItem = new Item();
+                        Map.StoredItems.RemoveAt(CreatedItemsList.SelectedIndex);
+                        CreatedItemsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Equiptment":
+                        CreateEquiptmentPrompt.CreatedEquiptment = new Equiptment();
+                        Map.StoredEquiptments.RemoveAt(CreatedEquiptmentsList.SelectedIndex);
+                        CreatedEquiptmentsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Consumable":
+                        CreateConsumablePrompt.CreatedConsumable = new Consumable();
+                        Map.StoredConsumables.RemoveAt(CreatedConsumablesList.SelectedIndex);
+                        CreatedConsumablesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
                         break;
                     default:
                         throw new ArgumentException("Tag missing or invalid");
@@ -350,6 +399,45 @@ namespace RuinsOfAlbertrizal.Editor
             {
                 CreateBlockPrompt.CreatedBlock = Map.StoredBlocks[CreatedBlocksList.SelectedIndex];
                 CreateBlockBtn.Content = "Edit Block";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void CreatedItemsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                CreateItemPrompt.CreatedItem = Map.StoredItems[CreatedItemsList.SelectedIndex];
+                CreateItemBtn.Content = "Edit Item";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void CreatedEquiptmentsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                CreateEquiptmentPrompt.CreatedEquiptment = Map.StoredEquiptments[CreatedEquiptmentsList.SelectedIndex];
+                CreateEquiptmentBtn.Content = "Edit Equiptment";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void CreatedConsumablesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                CreateConsumablePrompt.CreatedConsumable = Map.StoredConsumables[CreatedConsumablesList.SelectedIndex];
+                CreateConsumableBtn.Content = "Edit Consumable";
             }
             catch (Exception)
             {
