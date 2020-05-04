@@ -10,7 +10,7 @@ namespace RuinsOfAlbertrizal.Mechanics
 {
     public class Attack : ObjectOfAlbertrizal
     {
-        public Buff Buff { get; set; }
+        public List<Buff> Buffs { get; set; }
 
         public int[] StatLoss { get; set; }
 
@@ -31,6 +31,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         public Attack()
         {
             StatLoss = new int[5];
+            Buffs = new List<Buff>();
         }
 
         [XmlIgnore]
