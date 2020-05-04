@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RuinsOfAlbertrizal.Editor.AdderPrompts;
 using RuinsOfAlbertrizal.Items;
 
 namespace RuinsOfAlbertrizal.Editor
@@ -44,6 +45,13 @@ namespace RuinsOfAlbertrizal.Editor
         protected override void AddRequiredControls()
         {
             RequiredControls.Add(EquiptmentName);
+        }
+
+        private void EditBuffBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedEquiptment.BuffImmunities);
+            buffAdderPrompt.Show();
+            CreatedEquiptment.BuffImmunities = buffAdderPrompt.TargetBuffs;
         }
     }
 }

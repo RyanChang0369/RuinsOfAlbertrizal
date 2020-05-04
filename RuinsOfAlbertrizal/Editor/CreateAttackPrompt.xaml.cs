@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Mechanics;
+﻿using RuinsOfAlbertrizal.Editor.AdderPrompts;
+using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,13 @@ namespace RuinsOfAlbertrizal.Editor
         protected override void AddRequiredControls()
         {
             RequiredControls.Add(AttackName);
+        }
+
+        private void EditBuffBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedAttack.Buffs);
+            buffAdderPrompt.Show();
+            CreatedAttack.Buffs = buffAdderPrompt.TargetBuffs;
         }
     }
 }

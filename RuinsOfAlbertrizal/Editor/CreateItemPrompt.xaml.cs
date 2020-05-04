@@ -44,6 +44,7 @@ namespace RuinsOfAlbertrizal.Editor
         protected override void AddRequiredControls()
         {
             RequiredControls.Add(ItemName);
+            RequiredControls.Add(DropChance);
         }
     }
 }

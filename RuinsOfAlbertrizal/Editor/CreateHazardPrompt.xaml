@@ -123,7 +123,7 @@
 
 
                 <Label Content="Associated Buffs" ToolTip="What buff does this hazard inflict on the player or enemy?"/>
-                <Button x:Name="EditBuffBtn" Content="Add or Remove Buff" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
+                <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
 
                 <Label Content="Direction of Damage *"/>
                 <ComboBox Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10,0,0,0">

@@ -92,15 +92,8 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Buffs"/>
-                <ListBox x:Name="Buffs" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" SelectionMode="Multiple">
-                    <ListBox.ItemsSource>
-                        <Binding Path="CreateMapPrompt.Map.StoredBuffs"/>
-                    </ListBox.ItemsSource>
-                    <ListBox.SelectedItems>
-                        <Binding Path="Buffs" Mode="TwoWay"/>
-                    </ListBox.SelectedItems>
-                </ListBox>
+                <Label Content="Buff Immunities" ToolTip="When equipted, what buffs is the user immune to?"/>
+                <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
             </StackPanel>
         </ScrollViewer>
 

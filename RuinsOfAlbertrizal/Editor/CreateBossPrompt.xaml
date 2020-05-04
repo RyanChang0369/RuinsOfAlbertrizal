@@ -124,7 +124,6 @@
                     </TextBox.Text>
                 </TextBox>
 
-
                 <Label Content="Boss Message At Player Death (Press Enter to Separate Lines)" ToolTip="The message to display when player is defeated."/>
                 <TextBox x:Name="BossMessageVictory" Style="{StaticResource paragraphTextBox}">
                     <TextBox.Text>

@@ -114,6 +114,8 @@
                     </TextBox.Text>
                 </TextBox>
 
+                <Label Content="Buffs Inflicted on Hit" ToolTip="What buffs or debuffs does this attack inflict?"/>
+                <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
             </StackPanel>
         </ScrollViewer>
 
