@@ -21,7 +21,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreateItemPrompt : EditorInterface
     {
-        public Item CreatedItem { get; set; }
+        public static Item CreatedItem { get; set; }
 
         public CreateItemPrompt()
         {
