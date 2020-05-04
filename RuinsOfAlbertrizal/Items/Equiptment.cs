@@ -22,9 +22,33 @@ namespace RuinsOfAlbertrizal.Items
 
         public int[] StatGain { get; set; }
 
-        public List<Buff> Buffs { get; set; }
+        public List<Buff> BuffImmunities { get; set; }
+
+        public List<Attack> Attacks { get; set; }
 
         public Equiptment()
-        { }
+        {
+            BuffImmunities = new List<Buff>();
+            Attacks = new List<Attack>();
+        }
+
+        public bool CanAttack()
+        {
+            foreach (SlotMode slot in Slots)
+            {
+                if (slot == SlotMode.Hand1 || slot == SlotMode.Hand2)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public void Attack()
+        {
+            if (!CanAttack())
+                return;
+
+            throw new NotImplementedException();
+        }
     }
 }
