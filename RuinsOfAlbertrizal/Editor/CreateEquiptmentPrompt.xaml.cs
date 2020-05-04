@@ -22,7 +22,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// </summary>
     public partial class CreateEquiptmentPrompt : EditorInterface
     {
-        public Equiptment CreatedEquiptment { get; set; }
+        public static Equiptment CreatedEquiptment { get; set; }
 
         public CreateEquiptmentPrompt()
         {
@@ -52,6 +52,13 @@ namespace RuinsOfAlbertrizal.Editor
             BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedEquiptment.BuffImmunities);
             buffAdderPrompt.Show();
             CreatedEquiptment.BuffImmunities = buffAdderPrompt.TargetBuffs;
+        }
+
+        private void SelectSlotsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SlotAdderPrompt slotAdderPrompt = new SlotAdderPrompt(CreatedEquiptment.Slots);
+            slotAdderPrompt.Show();
+            CreatedEquiptment.Slots = slotAdderPrompt.Slots;
         }
     }
 }

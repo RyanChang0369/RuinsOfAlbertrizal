@@ -37,6 +37,17 @@
                     </TextBox.Text>
                 </TextBox>
 
+                <Label Content="Drop Chance *" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy."/>
+                <TextBox x:Name="DropChance">
+                    <TextBox.Text>
+                        <Binding Path="DropChance" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:PercentValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
                 <Label Content="HP Gain *"/>
                 <TextBox x:Name="HPGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for HP Loss">
                     <TextBox.Text>
@@ -94,6 +105,9 @@
 
                 <Label Content="Buff Immunities" ToolTip="When equipted, what buffs is the user immune to?"/>
                 <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
+
+                <Label Content="Slots"/>
+                <Button x:Name="SelectSlotsBtn" Content="Select Slots" Click="SelectSlotsBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
             </StackPanel>
         </ScrollViewer>
 
