@@ -116,7 +116,7 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
-                    foreach (Buff buff in equiptment.Buffs)
+                    foreach (Buff buff in equiptment.BuffImmunities)
                     {
                         currentBuffs.Add(buff);
                     }
