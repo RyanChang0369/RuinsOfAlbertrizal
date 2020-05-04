@@ -12,7 +12,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
-    public abstract class Character : ObjectOfAlbertrizal, ITurnBasedObject
+    public abstract class Character : WorldMapObject, ITurnBasedObject
     {
         /// <summary>
         /// The species name, such as human or slime
@@ -38,11 +38,6 @@ namespace RuinsOfAlbertrizal.Characters
                 }
             }
         }
-
-        /// <summary>
-        /// Image as it appears in the HUD. (48x48)
-        /// </summary>
-        public Bitmap Icon { get; set; }
 
         /// <summary>
         /// Image as it appears on the map. Determies hitbox size.
