@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Campaign</Name>
   <IntroText />
   <StoredPlayers>
     <Player>
@@ -96,6 +97,7 @@
   <StoredBosses>
     <Boss>
       <Name>Ur Mum</Name>
+      <IconLocation>C:\Users\Hui\Documents\Coding\C#\RuinsOfAlbertrizal\Campaign\RuinsOfAlbertrizal.Characters.Boss\Ur Mum_icon.png</IconLocation>
       <Level>0</Level>
       <AIStyle>NoAI</AIStyle>
       <BaseStats>
@@ -156,11 +158,27 @@
       <AIChange>NoAI</AIChange>
       <Level>0</Level>
     </Buff>
+    <Buff>
+      <Name>Poison</Name>
+      <Description>Losing health!</Description>
+      <Duration>1</Duration>
+      <TurnsPassed>0</TurnsPassed>
+      <StatGain>
+        <int>-5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <AIChange>Player</AIChange>
+      <Level>0</Level>
+    </Buff>
   </StoredBuffs>
   <StoredAttacks>
     <Attack>
       <Name>Stab</Name>
       <Description>Basic stab attack.</Description>
+      <Buffs />
       <StatLoss>
         <int>5</int>
         <int>0</int>
@@ -175,7 +193,7 @@
     </Attack>
   </StoredAttacks>
   <StoredItems />
-  <StoredEquiptment />
+  <StoredEquiptments />
   <StoredConsumables />
   <StoredHazards>
     <Hazard>
