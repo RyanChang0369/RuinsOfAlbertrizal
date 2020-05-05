@@ -19,7 +19,10 @@
         <Label Style="{StaticResource title}">Create Player</Label>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
-                <Label ToolTip='The proper name, such as Bob or Robert' Content="Name *"/>
+                <StackPanel Orientation="Horizontal"  ToolTip='The proper name, such as Bob or Robert'>
+                    <Label Content="Name *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="PlayerName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="Name" Mode="TwoWay">
@@ -29,8 +32,11 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                
-                <Label ToolTip='The name of the "species", such as human or orc'>Species</Label>
+
+                <StackPanel Orientation="Horizontal"  ToolTip='The name of the "species", such as human or orc'>
+                    <Label Content="Species Name"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="GeneralName">
                     <TextBox.Text>
                         <Binding Path="GeneralName" Mode="TwoWay"/>
@@ -67,7 +73,10 @@
                     </Image>-->
                 </StackPanel>
 
-                <Label Content="Image on Map *" ToolTip="The object as it appears on the battle screen."/>
+                <StackPanel Orientation="Horizontal"  ToolTip="The object as it appears on the battle screen.">
+                    <Label Content="Image on Map *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <!--<Label>

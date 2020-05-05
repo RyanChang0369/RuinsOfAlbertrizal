@@ -444,5 +444,10 @@ namespace RuinsOfAlbertrizal.Editor
 
             }
         }
+
+        private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Map.IconLocation = FileHandler.SaveBitmap(Map, "icon");
+        }
     }
 }

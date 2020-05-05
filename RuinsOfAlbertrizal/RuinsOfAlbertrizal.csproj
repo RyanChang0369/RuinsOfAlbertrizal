@@ -288,5 +288,11 @@
   <ItemGroup>
     <None Include="assets\error.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\questionMark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Editor\questionMark.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

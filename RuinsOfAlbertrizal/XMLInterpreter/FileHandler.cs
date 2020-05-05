@@ -211,8 +211,6 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
-
-
         ///// <summary>
         ///// When something is renamed, reflect that change in the file directories.
         ///// </summary>

@@ -61,8 +61,11 @@
                         <Binding Path="Description" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
-                
-                <Label Content="Duration *"/>
+
+                <StackPanel Orientation="Horizontal" ToolTip="The duration of the buff, which is also affected by the level of the buff.">
+                    <Label Content="Duration *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="Duration">
                     <TextBox.Text>
                         <Binding Path="Duration" Mode="TwoWay">
