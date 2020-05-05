@@ -166,52 +166,94 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
+        public static string GetRelativePath(string fullPath, string basePath)
+        {
+            // Require trailing backslash for path
+            if (!basePath.EndsWith("\\"))
+                basePath += "\\";
+
+            Uri baseUri = new Uri(basePath);
+            Uri fullUri = new Uri(fullPath);
+
+            Uri relativeUri = baseUri.MakeRelativeUri(fullUri);
+
+            // Uri's use forward slashes so convert back to backward slashes
+            return relativeUri.ToString().Replace("/", "\\");
+
+        }
+
         /// <summary>
         /// Copies a bitmap to the correct file directory.
         /// </summary>
-        /// <returns>The string of the location of new bitmap.</returns>
+        /// <returns>The string of the location of new bitmap relative to the project directory.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public static string SaveBitmap(ObjectOfAlbertrizal obj)
+        public static string SaveBitmap(ObjectOfAlbertrizal obj, string fileNameAddition)
         {
             try
             {
                 FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "PNG File | *.png");
-                return CopyImageToProjectDirectory(dialog.GetPath(), obj);
+                string fullPath = CopyImageToProjectDirectory(dialog.GetPath(), fileNameAddition, obj);
+                string relativePath = GetRelativePath(fullPath, GameBase.CustomMapLocation);
+                return relativePath;
             }
             catch (ArgumentNullException)
             {
                 throw new ArgumentException();
             }
-            catch (IOException)
+            catch (IOException e)
             {
-                MessageBox.Show("File cannot be read or is busy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                throw new ArgumentException();
+                MessageBoxResult result =  MessageBox.Show("File cannot be read or is busy. Try again?", "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
+
+                if (result == MessageBoxResult.Yes)
+                    return SaveBitmap(obj, fileNameAddition);
+                else
+                    return "";
             }
         }
 
-        /// <summary>
-        /// When something is renamed, replect that change in the file directories.
-        /// </summary>
-        /// <param name="oldName"></param>
-        /// <param name="newName"></param>
-        public static void AlertRename(string oldName, string newName)
-        {
-            if (oldName == newName)
-                return;
 
 
-        }
+        ///// <summary>
+        ///// When something is renamed, reflect that change in the file directories.
+        ///// </summary>
+        ///// <param name="oldName"></param>
+        ///// <param name="newName"></param>
+        //public static void AlertRename(string oldName, string newName, ObjectOfAlbertrizal obj)
+        //{
+        //    if (oldName == newName)
+        //        return;
+
+        //    string imageLocation = 
+        //}
 
         /// <summary>
         /// Copies an image to the project directory.
         /// </summary>
         /// <param name="location">The location of the file.</param>
         /// <param name="obj">The object being saved.</param>
-        public static string CopyImageToProjectDirectory(string location, ObjectOfAlbertrizal obj)
+        public static string CopyImageToProjectDirectory(string location, string fileNameAddition, ObjectOfAlbertrizal obj)
         {
-            string saveLocation = Path.GetDirectoryName(GameBase.CustomMapLocation) + "/" + obj.GetType() + "/" + obj.Name + ".png";
+
+            if (obj.Name == null || obj.Name == "")
+            {
+                MessageBox.Show("Please enter a name for your creation before selecting an image.");
+                throw new ArgumentException("Object must be given a name");
+            }
+
+            string saveLocation = $"{Path.GetDirectoryName(GameBase.CustomMapLocation)}\\{obj.GetType()}\\{obj.Name}_{fileNameAddition}.png";
+            Directory.CreateDirectory(Path.GetDirectoryName(saveLocation));
+
+            if (File.Exists(saveLocation))
+            {
+                MessageBoxResult result = MessageBox.Show($"{saveLocation} exists. Overwrite?", "File Exists", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.No)
+                    return saveLocation;
+            }
+
             File.Copy(location, saveLocation, true);
 
+ 
             return saveLocation;
         }
     }
