@@ -165,5 +165,54 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                 return (Map)serializer.Deserialize(fs);
             }
         }
+
+        /// <summary>
+        /// Copies a bitmap to the correct file directory.
+        /// </summary>
+        /// <returns>The string of the location of new bitmap.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static string SaveBitmap(ObjectOfAlbertrizal obj)
+        {
+            try
+            {
+                FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "PNG File | *.png");
+                return CopyImageToProjectDirectory(dialog.GetPath(), obj);
+            }
+            catch (ArgumentNullException)
+            {
+                throw new ArgumentException();
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("File cannot be read or is busy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                throw new ArgumentException();
+            }
+        }
+
+        /// <summary>
+        /// When something is renamed, replect that change in the file directories.
+        /// </summary>
+        /// <param name="oldName"></param>
+        /// <param name="newName"></param>
+        public static void AlertRename(string oldName, string newName)
+        {
+            if (oldName == newName)
+                return;
+
+
+        }
+
+        /// <summary>
+        /// Copies an image to the project directory.
+        /// </summary>
+        /// <param name="location">The location of the file.</param>
+        /// <param name="obj">The object being saved.</param>
+        public static string CopyImageToProjectDirectory(string location, ObjectOfAlbertrizal obj)
+        {
+            string saveLocation = Path.GetDirectoryName(GameBase.CustomMapLocation) + "/" + obj.GetType() + "/" + obj.Name + ".png";
+            File.Copy(location, saveLocation, true);
+
+            return saveLocation;
+        }
     }
 }
