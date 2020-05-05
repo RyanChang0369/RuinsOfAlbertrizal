@@ -60,56 +60,56 @@ namespace RuinsOfAlbertrizal.Editor
 
         protected abstract void ClearVariable();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <returns></returns>
-        protected static string GetBitmapPath()
-        {
-            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "PNG File | *.png");
-            return dialog.GetPath();
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <exception cref="ArgumentNullException"></exception>
+        ///// <returns></returns>
+        //protected static string GetBitmapPath()
+        //{
+        //    FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "PNG File | *.png");
+        //    return dialog.GetPath();
+        //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <exception cref="ArgumentException"></exception>
-        /// <returns></returns>
-        protected static Bitmap OpenBitmap()
-        {
-            try
-            {
-                return (Bitmap)Bitmap.FromFile(GetBitmapPath());
-            }
-            catch (ArgumentNullException)
-            {
-                throw new ArgumentException();
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("File cannot be read or is busy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                throw new ArgumentException();
-            }
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <exception cref="ArgumentException"></exception>
+        ///// <returns></returns>
+        //protected static Bitmap OpenBitmap()
+        //{
+        //    try
+        //    {
+        //        return (Bitmap)Bitmap.FromFile(GetBitmapPath());
+        //    }
+        //    catch (ArgumentNullException)
+        //    {
+        //        throw new ArgumentException();
+        //    }
+        //    catch (IOException)
+        //    {
+        //        MessageBox.Show("File cannot be read or is busy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        throw new ArgumentException();
+        //    }
+        //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="width">The expected width of the bitmap.</param>
-        /// <param name="height">The expected height of the bitmap.</param>
-        /// <returns></returns>
-        protected static Bitmap OpenBitmap(int width, int height)
-        {
-            Bitmap bitmap = OpenBitmap();
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="width">The expected width of the bitmap.</param>
+        ///// <param name="height">The expected height of the bitmap.</param>
+        ///// <returns></returns>
+        //protected static Bitmap OpenBitmap(int width, int height)
+        //{
+        //    Bitmap bitmap = OpenBitmap();
 
-            if (bitmap.Width != width || bitmap.Height != height)
-            {
-                MessageBox.Show($"Dimentions of image is incorrect. Must be {width} pixels long and {height} pixels tall.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                throw new ArgumentException("Incorrect picture dimentions.");
-            }
-            else
-                return bitmap;
-        }
+        //    if (bitmap.Width != width || bitmap.Height != height)
+        //    {
+        //        MessageBox.Show($"Dimentions of image is incorrect. Must be {width} pixels long and {height} pixels tall.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        throw new ArgumentException("Incorrect picture dimentions.");
+        //    }
+        //    else
+        //        return bitmap;
+        //}
     }
 }

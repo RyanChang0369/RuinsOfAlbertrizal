@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Mechanics;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,7 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedBuff.IconLocation = GetBitmapPath();
+            CreatedBuff.IconLocation = FileHandler.SaveBitmap(CreatedBuff, "icon");
         }
     }
 }

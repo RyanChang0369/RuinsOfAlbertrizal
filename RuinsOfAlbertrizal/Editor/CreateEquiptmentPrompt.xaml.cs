@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RuinsOfAlbertrizal.Editor.AdderPrompts;
 using RuinsOfAlbertrizal.Items;
+using RuinsOfAlbertrizal.XMLInterpreter;
 
 namespace RuinsOfAlbertrizal.Editor
 {
@@ -63,7 +64,7 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedEquiptment.IconLocation = GetBitmapPath();
+            CreatedEquiptment.IconLocation = FileHandler.SaveBitmap(CreatedEquiptment, "icon");
         }
     }
 }

@@ -47,7 +47,7 @@
                 <Label Content="Icon *"/>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
-                    <Label>
+                    <!--<Label>
                         <Label.Content>
                             <Binding Path="IconLocation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                                 <Binding.ValidationRules>
@@ -64,15 +64,15 @@
                                 </Binding.Converter>
                             </Binding>
                         </Image.Source>
-                    </Image>
+                    </Image>-->
                 </StackPanel>
 
-                <Label Content="Image on Map *" ToolTip="The object as it appears on the fight screen."/>
+                <Label Content="Image on Map *" ToolTip="The object as it appears on the battle screen."/>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
-                    <Label>
+                    <!--<Label>
                         <Label.Content>
-                            <Binding Path="WorlImgLocation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                            <Binding Path="WorldImgLocation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                                 <Binding.ValidationRules>
                                     <validation:RequiredValidation/>
                                 </Binding.ValidationRules>
@@ -87,7 +87,7 @@
                                 </Binding.Converter>
                             </Binding>
                         </Image.Source>
-                    </Image>
+                    </Image>-->
                 </StackPanel>
 
                 <Label Content="HP *"/>

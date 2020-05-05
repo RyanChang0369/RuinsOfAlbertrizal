@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Editor.AdderPrompts;
 using RuinsOfAlbertrizal.Items;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,7 +58,7 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedConsumable.IconLocation = GetBitmapPath();
+            CreatedConsumable.IconLocation = FileHandler.SaveBitmap(CreatedConsumable, "icon");
         }
     }
 }
