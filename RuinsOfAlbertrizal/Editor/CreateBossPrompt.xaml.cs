@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Editor.AdderPrompts;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
@@ -56,6 +57,34 @@ namespace RuinsOfAlbertrizal.Editor
         private void SelectWorldImgBtn_Click(object sender, RoutedEventArgs e)
         {
             CreatedBoss.WorldImgLocation = FileHandler.SaveBitmap(CreatedBoss, "worldImg");
+        }
+
+        private void AddEncounterMessage_Click(object sender, RoutedEventArgs e)
+        {
+            MessageAdderPrompt messageAdderPrompt = new MessageAdderPrompt("Boss Encounter", CreatedBoss.MessagesOnEncounter);
+            messageAdderPrompt.ShowDialog();
+            CreatedBoss.MessagesOnEncounter = messageAdderPrompt.Messages;
+        }
+
+        private void AddAttackMessage_Click(object sender, RoutedEventArgs e)
+        {
+            MessageAdderPrompt messageAdderPrompt = new MessageAdderPrompt("Boss Attack", CreatedBoss.MessagesOnAttack);
+            messageAdderPrompt.ShowDialog();
+            CreatedBoss.MessagesOnAttack = messageAdderPrompt.Messages;
+        }
+
+        private void AddDefeatMessage_Click(object sender, RoutedEventArgs e)
+        {
+            MessageAdderPrompt messageAdderPrompt = new MessageAdderPrompt("Boss Defeat", CreatedBoss.MessagesOnDefeat);
+            messageAdderPrompt.ShowDialog();
+            CreatedBoss.MessagesOnDefeat = messageAdderPrompt.Messages;
+        }
+
+        private void AddVictoryMessage_Click(object sender, RoutedEventArgs e)
+        {
+            MessageAdderPrompt messageAdderPrompt = new MessageAdderPrompt("Boss Victory", CreatedBoss.MessagesOnVictory);
+            messageAdderPrompt.ShowDialog();
+            CreatedBoss.MessagesOnVictory = messageAdderPrompt.Messages;
         }
     }
 }
