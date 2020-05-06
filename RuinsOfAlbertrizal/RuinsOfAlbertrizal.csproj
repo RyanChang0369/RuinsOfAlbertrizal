@@ -77,12 +77,19 @@
     <Compile Include="Editor\AdderPrompts\BuffAdderPrompt.xaml.cs">
       <DependentUpon>BuffAdderPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\AdderPrompts\MessageSelect.xaml.cs">
+      <DependentUpon>MessageSelect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\AdderPrompts\LevelSelect.xaml.cs">
       <DependentUpon>LevelSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\AdderPrompts\MessageAdderPrompt.xaml.cs">
+      <DependentUpon>MessageAdderPrompt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\AdderPrompts\SlotAdderPrompt.xaml.cs">
       <DependentUpon>SlotAdderPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\Converter\ListConverter.cs" />
     <Compile Include="Editor\Converter\EnumConverter.cs" />
     <Compile Include="Editor\Converter\ImageConverter.cs" />
     <Compile Include="Editor\Converter\NameConverter.cs" />
@@ -124,6 +131,9 @@
     <Compile Include="Editor\EditorInterface.cs" />
     <Compile Include="Editor\EditorProperties.cs" />
     <Compile Include="Editor\EnemyProperties.cs" />
+    <Compile Include="Editor\HelpSection.xaml.cs">
+      <DependentUpon>HelpSection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\Validator\PercentValidation.cs" />
     <Compile Include="Editor\Validator\RequiredValidation.cs" />
     <Compile Include="Editor\Validator\NumberValidation.cs" />
@@ -209,7 +219,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Editor\AdderPrompts\MessageSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Editor\AdderPrompts\LevelSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\AdderPrompts\MessageAdderPrompt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -258,6 +276,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\CreatePlayerPrompt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\HelpSection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
