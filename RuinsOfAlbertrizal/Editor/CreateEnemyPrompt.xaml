@@ -50,24 +50,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
-                    <!--<Label>
-                        <Label.Content>
-                            <Binding Path="IconLocation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                                <Binding.ValidationRules>
-                                    <validation:RequiredValidation/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </Label.Content>
-                    </Label>
-                    <Image Name="IconElement" Height="50">
-                        <Image.Source>
-                            <Binding Path="Icon" UpdateSourceTrigger="PropertyChanged">
-                                <Binding.Converter>
-                                    <converter:ImageConverter/>
-                                </Binding.Converter>
-                            </Binding>
-                        </Image.Source>
-                    </Image>-->
+                    <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"  ToolTip="The enemy as it appears on the battle screen.">
@@ -76,24 +59,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
-                    <!--<Label>
-                        <Label.Content>
-                            <Binding Path="WorldImgLocation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                                <Binding.ValidationRules>
-                                    <validation:RequiredValidation/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </Label.Content>
-                    </Label>
-                    <Image Name="WorldImgElement" Height="50">
-                        <Image.Source>
-                            <Binding Path="WorldImg" UpdateSourceTrigger="PropertyChanged">
-                                <Binding.Converter>
-                                    <converter:ImageConverter/>
-                                </Binding.Converter>
-                            </Binding>
-                        </Image.Source>
-                    </Image>-->
+                    <Label Content="{Binding Path=WorldImgLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
                 <Label Content="HP *"/>

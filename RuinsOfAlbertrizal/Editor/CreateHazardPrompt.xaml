@@ -49,24 +49,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectTileImageBtn" Click="SelectTileImageBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
-                    <Label>
-                        <Label.Content>
-                            <Binding Path="TileImageLocation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                                <Binding.ValidationRules>
-                                    <validation:RequiredValidation/>
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </Label.Content>
-                    </Label>
-                    <Image Name="TileImageElement" Height="50">
-                        <Image.Source>
-                            <Binding Path="TileImage" UpdateSourceTrigger="PropertyChanged">
-                                <Binding.Converter>
-                                    <converter:ImageConverter/>
-                                </Binding.Converter>
-                            </Binding>
-                        </Image.Source>
-                    </Image>
+                    <Label Content="{Binding Path=TileImageLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
                 
                 <Label Content="HP Lost On Touch *"/>
