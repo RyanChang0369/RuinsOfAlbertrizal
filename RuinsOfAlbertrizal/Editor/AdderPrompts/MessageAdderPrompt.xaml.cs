@@ -62,5 +62,10 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             AddedMessagesListBox.Items.RemoveAt(index);
             Messages.RemoveAt(index);
         }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

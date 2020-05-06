@@ -17,6 +17,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel>
                 <Button x:Name="AddMessageBtn" Content="Click to Add" Click="AddMessageBtn_Click"/>
+                <Button Click="Back" Content="Back"/>
             </StackPanel>
             <StackPanel>
                 <ListBox x:Name="AddedMessagesListBox" Width="200" FontSize="18" ToolTip="Click Item to Select" Margin="10"/>
