@@ -9,33 +9,51 @@ namespace RuinsOfAlbertrizal.Text
 {
     public class Message
     {
-        public string Text { get; set; }
+        public List<string> Lines { get; set; }
 
-        /// <summary>
-        /// What point completion should this fire at?
-        /// </summary>
-        public double PointCompletion { get; set; }
-
-        private Message()
+        public Message()
         { }
 
         /// <summary>
         /// Creates a new Text object that will make text available to diplay after conditions are met.
         /// </summary>
-        /// <param name="message">The message to display.</param>
+        /// <param name="lines">The message to display.</param>
         /// <param name="pointCompletion">The point completion when the message will be fired at.</param>
-        public Message(string text, double pointCompletion)
+        public Message(List<string> lines)
         {
-            Text = text;
-            PointCompletion = pointCompletion;
+            Lines = lines;
         }
-
-        [XmlIgnore]
-        public bool ReadyToDisplay { get => PointCompletion >= GameBase.CurrentGame.CurrentLevel.Points; }
 
         public void Display()
         {
-            throw new NotImplementedException("Add in display method from GameOfNo");
+            throw new NotImplementedException("Add display method in BaseGame");
+        }
+
+        public override string ToString()
+        {
+            return ToString("\r\n");
+        }
+
+        public string ToString(string delimiter)
+        {
+            try
+            {
+                return ArrayMethods.JoinList(Lines, delimiter);
+            }
+            catch (NullReferenceException)
+            {
+                return "";
+            }
+        }
+
+        public string[] ToStringArray()
+        {
+            return Lines.ToArray();
+        }
+
+        public List<string> ToStringList()
+        {
+            return Lines;
         }
     }
 }
