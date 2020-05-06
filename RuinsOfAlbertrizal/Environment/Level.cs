@@ -13,8 +13,6 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class Level : ObjectOfAlbertrizal
     {
-        public List<Message> Messages { get; set; }
-
         Bitmap BackgroundImage { get; set; }
         /// <summary>
         /// The Enemies that can appear in this level.
@@ -65,13 +63,13 @@ namespace RuinsOfAlbertrizal.Environment
         /// </summary>
         public void EncounterFinished()
         {
-            foreach(Message message in Messages)
-            {
-                if (message.ReadyToDisplay)
-                {
-                    message.Display();
-                }
-            }
+            //foreach(Message message in Messages)
+            //{
+            //    if (message.ReadyToDisplay)
+            //    {
+            //        message.Display();
+            //    }
+            //}
         }
     }
 }

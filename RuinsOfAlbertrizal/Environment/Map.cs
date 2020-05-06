@@ -1,6 +1,7 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
+using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
@@ -9,7 +10,7 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class Map : IconedObjectOfAlbertrizal
     {
-        public List<string> IntroText { get; set; }
+        public Message IntroMessage { get; set; }
 
         public List<Player> StoredPlayers { get; set; }
 
