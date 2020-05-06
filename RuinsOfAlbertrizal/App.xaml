@@ -59,6 +59,10 @@
         <Style x:Key="buttonSmall" TargetType="Button">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="10"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="buttonSmallStretch" TargetType="Button" BasedOn="{StaticResource buttonSmall}">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
         </Style>
         
         <!--Label Styles-->
@@ -88,6 +92,7 @@
             <Setter Property="MinLines" Value="4"/>
             <Setter Property="SpellCheck.IsEnabled" Value="True"/>
             <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="MinHeight" Value="100"/>
         </Style>
         
         <!--ComboBox Styles-->

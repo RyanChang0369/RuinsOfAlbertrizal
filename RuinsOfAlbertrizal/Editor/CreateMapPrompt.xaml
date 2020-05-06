@@ -47,7 +47,7 @@
                         </StackPanel>
                         
                         <StackPanel Orientation="Horizontal">
-                            <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
+                            <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmallStretch}"/>
                             <!--<Label>
                                 <Label.Content>
                                     <Binding Path="IconLocation" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
@@ -69,18 +69,13 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" ToolTip="The introduction to the game. Shown to player at the start of the game.">
-                            <Label Content="Intro Text (Press Enter to Separate Lines)"/>
+                            <Label Content="Intro Text"/>
                             <Image Source="questionMark.png" Height="20" Margin="10"/>
                         </StackPanel>
-                        <TextBox x:Name="IntroText" Style="{StaticResource paragraphTextBox}">
-                            <TextBox.Text>
-                                <Binding Path="IntroText" Mode="TwoWay">
-                                    <Binding.Converter>
-                                        <converter:ArrayConverter/>
-                                    </Binding.Converter>
-                                </Binding>
-                            </TextBox.Text>
-                        </TextBox>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="AddIntroMessage" Content="Add/Edit Message" Click="AddIntroMessage_Click" Style="{StaticResource buttonSmallStretch}"/>
+                            <Label Content="{Binding Path=IntroMessage[0]}"/>
+                        </StackPanel>
                     </StackPanel>
                 </TabItem>
                 
@@ -110,8 +105,8 @@
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Buff">
-                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                                 </StackPanel>
                             </Grid>
 
@@ -131,8 +126,8 @@
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Attack">
-                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -165,8 +160,8 @@
                                 </ListBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Item">
-                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                             </StackPanel>
                         </Grid>
 
@@ -186,8 +181,8 @@
                                 </ListBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Equiptment">
-                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                             </StackPanel>
                         </Grid>
 
@@ -207,8 +202,8 @@
                                 </ListBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Consumable">
-                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
@@ -240,8 +235,8 @@
                                 </ListBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Block">
-                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                             </StackPanel>
                         </Grid>
 
@@ -261,8 +256,8 @@
                                 </ListBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Hazard">
-                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
@@ -295,8 +290,8 @@
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Player">
-                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                                 </StackPanel>
                             </Grid>
 
@@ -316,8 +311,8 @@
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Enemy">
-                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                                 </StackPanel>
                             </Grid>
 
@@ -337,8 +332,8 @@
                                     </ListBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Boss">
-                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmall}"/>
-                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmall}"/>
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>

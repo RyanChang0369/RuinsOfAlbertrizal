@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Editor.AdderPrompts;
 using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
@@ -448,6 +449,13 @@ namespace RuinsOfAlbertrizal.Editor
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
             Map.IconLocation = FileHandler.SaveBitmap(Map, "icon");
+        }
+
+        private void AddIntroMessage_Click(object sender, RoutedEventArgs e)
+        {
+            MessageSelect messageSelect = new MessageSelect("Introduction Message", Map.IntroMessage);
+            messageSelect.ShowDialog();
+            Map.IntroMessage = messageSelect.GetMessage();
         }
     }
 }
