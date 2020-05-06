@@ -28,18 +28,18 @@ namespace RuinsOfAlbertrizal
         }
         private void WriteText()
         {
-            List<string> text = GameBase.CurrentGame.IntroText;
-            foreach (string line in text)
-            {
-                IntroText.Text = "";
-                char[] charecters = line.ToCharArray();
-                foreach (char charecter in charecters)
-                {
-                    IntroText.Text += charecter;
-                    Thread.Sleep(11);
-                }
-                Thread.Sleep(5555);
-            }
+            //List<string> text = GameBase.CurrentGame.IntroText;
+            //foreach (string line in text)
+            //{
+            //    IntroText.Text = "";
+            //    char[] charecters = line.ToCharArray();
+            //    foreach (char charecter in charecters)
+            //    {
+            //        IntroText.Text += charecter;
+            //        Thread.Sleep(11);
+            //    }
+            //    Thread.Sleep(5555);
+            //}
 
             NavAdventureInterface();
         }
