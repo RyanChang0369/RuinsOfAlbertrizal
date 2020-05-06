@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor.AdderPrompts"
         xmlns:mapPrompts="clr-namespace:RuinsOfAlbertrizal.Editor"
         mc:Ignorable="d"
-        Title="Add a Buff" Height="450" Width="800">
+        Title="Add a Buff" Height="450" Width="800"
+        Closing="Window_Closing">
     
     <Window.Resources>
         <mapPrompts:CreateMapPrompt x:Key="CreateMapPrompt"/>
@@ -22,9 +23,19 @@
                     </ListBox.ItemsSource>
                 </ListBox>
             </StackPanel>
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            
             <StackPanel>
                 <Label Content="Click to Remove"/>
                 <ListBox x:Name="AddedBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="AddedBuffsList_PreviewMouseLeftButtonUp"/>
+            </StackPanel>
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+            <StackPanel>
+                <Button Content="Quit" Click="Quit" Style="{StaticResource buttonSmallStretch}" IsCancel="True"/>
+                <Button Content="Save and exit" Click="Save" Style="{StaticResource buttonSmallStretch}" IsDefault="True"/>
             </StackPanel>
         </StackPanel>
     </Grid>

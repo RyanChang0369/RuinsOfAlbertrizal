@@ -22,6 +22,8 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     {
         public List<Buff> TargetBuffs { get; set; }
 
+        private bool saved = false;
+
         public BuffAdderPrompt()
         {
             InitializeComponent();
@@ -73,6 +75,32 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetBuffs.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
+        }
+
+        private void Quit(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            saved = true;
+            Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (saved)
+                return;
+
+            MessageBoxResult result = MessageBox.Show("Save before quitting?", "Unsaved Work", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {  }
+            else if (result == MessageBoxResult.Cancel)
+                e.Cancel = true;
+            else
+                TargetBuffs = null;
         }
     }
 }
