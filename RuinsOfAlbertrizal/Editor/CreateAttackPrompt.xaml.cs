@@ -50,7 +50,7 @@ namespace RuinsOfAlbertrizal.Editor
         private void EditBuffBtn_Click(object sender, RoutedEventArgs e)
         {
             BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedAttack.Buffs);
-            buffAdderPrompt.Show();
+            buffAdderPrompt.ShowDialog();
             CreatedAttack.Buffs = buffAdderPrompt.TargetBuffs;
         }
     }
