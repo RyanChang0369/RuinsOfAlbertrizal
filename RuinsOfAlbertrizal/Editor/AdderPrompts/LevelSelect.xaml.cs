@@ -21,10 +21,14 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     {
         public int GetLevelValue()
         {
-            if (!ValueTextBox.IsValid())
-                return 0;
-
-            return int.Parse(ValueTextBox.Text);
+            try
+            {
+                return int.Parse(ValueTextBox.Text);
+            }
+            catch (FormatException)
+            {
+                return -1;
+            }
         }
 
         public LevelSelect()
@@ -41,6 +45,13 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            if (GetLevelValue() < 1)
+            {
+                MessageBoxResult result = MessageBox.Show("Level must be 1 or higher.", "Error", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+
+                if (result == MessageBoxResult.OK)
+                    return;
+            }
             this.Close();
         }
     }

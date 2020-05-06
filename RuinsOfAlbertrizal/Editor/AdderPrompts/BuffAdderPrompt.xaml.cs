@@ -34,17 +34,30 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             if (targetBuffs == null)
                 TargetBuffs = new List<Buff>();
             else
+            {
                 TargetBuffs = targetBuffs;
+
+                for (int i = 0; i < TargetBuffs.Count; i++)
+                {
+                    AddedBuffsList.Items.Add(TargetBuffs[i]);
+                }
+            }
         }
 
         private void AvailableBuffsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
 
+            if (listBox.SelectedIndex < 0)
+                return;
+
             Buff buff = CreateMapPrompt.Map.StoredBuffs[listBox.SelectedIndex];
 
             LevelSelect levelSelect = new LevelSelect("buff", buff.Name);
             levelSelect.ShowDialog();
+
+            if (levelSelect.GetLevelValue() < 1)
+                return;
 
             buff.Level = levelSelect.GetLevelValue();
             TargetBuffs.Add(buff);
@@ -54,6 +67,9 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
         private void AddedBuffsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
+
+            if (listBox.SelectedIndex < 0)
+                return;
 
             TargetBuffs.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
