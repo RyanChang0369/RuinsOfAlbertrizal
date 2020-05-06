@@ -40,6 +40,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             InitializeComponent();
             this.Title = $"Select a {objectType} level for {objectName}.";
             HeaderLabel.Content = $"Select a {objectType} level for {objectName}.";
+            DataContext = this;
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
