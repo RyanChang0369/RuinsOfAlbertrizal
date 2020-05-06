@@ -178,8 +178,12 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             Uri relativeUri = baseUri.MakeRelativeUri(fullUri);
 
             // Uri's use forward slashes so convert back to backward slashes
-            return relativeUri.ToString().Replace("/", "\\");
+            string newPath = relativeUri.ToString().Replace("/", "\\");
 
+            // Uri's contains uri escape codes. Replace them.
+            newPath = Uri.UnescapeDataString(newPath);
+
+            return newPath;
         }
 
         /// <summary>
@@ -238,7 +242,10 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                 throw new ArgumentException("Object must be given a name");
             }
 
-            string saveLocation = $"{Path.GetDirectoryName(GameBase.CustomMapLocation)}\\{obj.GetType()}\\{obj.Name}_{fileNameAddition}.png";
+            string basetype = obj.GetType().ToString();
+            basetype = basetype.Substring(basetype.LastIndexOf(".") + 1);
+
+            string saveLocation = $"{Path.GetDirectoryName(GameBase.CustomMapLocation)}\\{basetype}\\{obj.Name}_{fileNameAddition}.png";
             Directory.CreateDirectory(Path.GetDirectoryName(saveLocation));
 
             if (File.Exists(saveLocation))
