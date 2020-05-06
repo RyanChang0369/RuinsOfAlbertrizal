@@ -102,6 +102,7 @@
     <Boss>
       <Name>Shotgun Slime</Name>
       <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
+      <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
       <GeneralName>Rare Green Slime</GeneralName>
       <Level>0</Level>
       <AIStyle>NoAI</AIStyle>
