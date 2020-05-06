@@ -44,7 +44,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Icon *"/>
+                <StackPanel Orientation="Horizontal" ToolTip="The icon of the enemy as it appears on the HUD.">
+                    <Label Content="Icon *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <!--<Label>
@@ -67,7 +70,10 @@
                     </Image>-->
                 </StackPanel>
 
-                <Label Content="Image on Map *" ToolTip="The object as it appears on the battle screen."/>
+                <StackPanel Orientation="Horizontal"  ToolTip="The enemy as it appears on the battle screen.">
+                    <Label Content="Image on Map *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <!--<Label>

@@ -37,7 +37,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Icon *"/>
+                <StackPanel Orientation="Horizontal" ToolTip="The item as it appears in the inventory.">
+                    <Label Content="Icon *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <!--<Label>
@@ -60,7 +63,10 @@
                     </Image>-->
                 </StackPanel>
 
-                <Label Content="Drop Chance *" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy."/>
+                <StackPanel Orientation="Horizontal" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy.">
+                    <Label Content="Drop Chance *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="DropChance">
                     <TextBox.Text>
                         <Binding Path="DropChance" Mode="TwoWay">

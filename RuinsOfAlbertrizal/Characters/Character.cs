@@ -80,7 +80,7 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Buff buff in CurrentBuffs)
                 {
-                    currentStats = ArrayMethods.AddArrays(currentStats, buff.StatGain);
+                    currentStats = ArrayMethods.AddArrays(currentStats, buff.LeveledStatGain);
                 }
 
                 foreach (Equiptment equiptment in CurrentEquiptments)

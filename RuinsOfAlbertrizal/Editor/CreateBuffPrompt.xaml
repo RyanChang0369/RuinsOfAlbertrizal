@@ -76,7 +76,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="HP Gain *"/>
+                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                    <Label Content="HP Gain *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="HPGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for HP Loss">
                     <TextBox.Text>
                         <Binding Path="StatGain[0]" Mode="TwoWay">
@@ -87,7 +90,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Mana Gain *"/>
+                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                    <Label Content="Mana Gain *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="ManaGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Mana Loss">
                     <TextBox.Text>
                         <Binding Path="StatGain[1]" Mode="TwoWay">
@@ -98,7 +104,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Defense Gain *"/>
+                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                    <Label Content="Defense Gain *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="DefGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Defense Loss">
                     <TextBox.Text>
                         <Binding Path="StatGain[2]" Mode="TwoWay">
@@ -109,7 +118,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Damage Gain *"/>
+                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                    <Label Content="Damage Gain *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="DmgGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Speed Loss">
                     <TextBox.Text>
                         <Binding Path="StatGain[3]" Mode="TwoWay">
@@ -120,7 +132,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Speed Gain *"/>
+                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                    <Label Content="Speed Gain *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox x:Name="SpdGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Speed Loss">
                     <TextBox.Text>
                         <Binding Path="StatGain[4]" Mode="TwoWay">

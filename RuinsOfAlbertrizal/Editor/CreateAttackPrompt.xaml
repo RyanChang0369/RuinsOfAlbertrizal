@@ -19,7 +19,7 @@
         <Label Style="{StaticResource title}" Content="Create Attack"/>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
-                <Label ToolTip='The proper name, such as Bob or Robert' Content="Name *"/>
+                <Label Content="Name *"/>
                 <TextBox x:Name="AttackName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="Name" Mode="TwoWay">
@@ -92,7 +92,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Cool Down *"/>
+                <StackPanel Orientation="Horizontal"  ToolTip='Turns it takes for this attack to be used again after it is last used.'>
+                    <Label Content="Cool Down *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="CoolDown" Mode="TwoWay">
@@ -103,7 +106,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Charge Up *"/>
+                <StackPanel Orientation="Horizontal"  ToolTip='Turns it takes for this attack to deal damage.'>
+                    <Label Content="Charge Up *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="ChargeUp" Mode="TwoWay">
@@ -114,7 +120,7 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Buffs Inflicted on Hit" ToolTip="What buffs or debuffs does this attack inflict?"/>
+                <Label Content="Buffs Inflicted on Hit"/>
                 <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
             </StackPanel>
         </ScrollViewer>

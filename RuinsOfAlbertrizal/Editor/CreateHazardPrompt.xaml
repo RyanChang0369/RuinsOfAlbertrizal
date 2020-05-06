@@ -43,7 +43,10 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Tile Image *" ToolTip="How the tile looks like on the map"/>
+                <StackPanel Orientation="Horizontal" ToolTip="How the tile looks like on the map">
+                    <Label Content="Tile Image *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectTileImageBtn" Click="SelectTileImageBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <Label>
@@ -122,10 +125,16 @@
                 </TextBox>
 
 
-                <Label Content="Associated Buffs" ToolTip="What buff does this hazard inflict on the player or enemy?"/>
+                <StackPanel Orientation="Horizontal" ToolTip="What buff does this hazard inflict on the player, enemy, or boss?">
+                    <Label Content="Buffs on Touch"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
 
-                <Label Content="Direction of Damage *"/>
+                <StackPanel Orientation="Horizontal" ToolTip="Which direction does the character have to be traveling in order to be damaged by this hazard?">
+                    <Label Content="Direction of Damage *"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
                 <ComboBox Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10,0,0,0">
                     <ComboBox.ItemsSource>
                         <Binding Path="DirectionOfDamage" UpdateSourceTrigger="PropertyChanged" Mode="OneTime">
