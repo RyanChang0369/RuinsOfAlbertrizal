@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>Campaign</Name>
-  <IntroText />
+  <IntroMessage>
+    <Lines>
+      <string>Stuff</string>
+    </Lines>
+  </IntroMessage>
   <StoredPlayers>
     <Player>
       <Name>Jerry</Name>
@@ -140,6 +144,10 @@
       <Attacks />
       <IsCharging>false</IsCharging>
       <PointGainPerKill>0</PointGainPerKill>
+      <MessagesOnEncounter />
+      <MessagesOnAttack />
+      <MessagesOnDefeat />
+      <MessagesOnVictory />
     </Boss>
   </StoredBosses>
   <StoredBuffs>
