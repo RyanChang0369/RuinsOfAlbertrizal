@@ -100,16 +100,17 @@
   <StoredEnemies />
   <StoredBosses>
     <Boss>
-      <Name>Ur Mum</Name>
-      <IconLocation>C:\Users\Hui\Documents\Coding\C#\RuinsOfAlbertrizal\Campaign\RuinsOfAlbertrizal.Characters.Boss\Ur Mum_icon.png</IconLocation>
+      <Name>Shotgun Slime</Name>
+      <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
+      <GeneralName>Rare Green Slime</GeneralName>
       <Level>0</Level>
       <AIStyle>NoAI</AIStyle>
       <BaseStats>
+        <int>1000</int>
+        <int>221</int>
+        <int>4</int>
         <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
+        <int>20</int>
       </BaseStats>
       <AppliedStats>
         <int>0</int>
@@ -144,7 +145,18 @@
       <Attacks />
       <IsCharging>false</IsCharging>
       <PointGainPerKill>0</PointGainPerKill>
-      <MessagesOnEncounter />
+      <MessagesOnEncounter>
+        <Message>
+          <Lines>
+            <string>*reloads shotgun*</string>
+          </Lines>
+        </Message>
+        <Message>
+          <Lines>
+            <string>*inserts 7 clips*</string>
+          </Lines>
+        </Message>
+      </MessagesOnEncounter>
       <MessagesOnAttack />
       <MessagesOnDefeat />
       <MessagesOnVictory />
