@@ -9,21 +9,6 @@ namespace RuinsOfAlbertrizal.Characters
 {
     public class Boss : Enemy
     {
-        /// <summary>
-        /// Message to play when boss encountered
-        /// </summary>
-        public string[] BossMessageStart { get; set; }
-
-        /// <summary>
-        /// Message to play when boss is defeated
-        /// </summary>
-        public string[] BossMessageDefeat { get; set; }
-
-        /// <summary>
-        /// Message to play when player is defeated
-        /// </summary>
-        public string[] BossMessageVictory { get; set; }
-
         public Boss()
         {
 
