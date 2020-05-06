@@ -1,16 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
 {
-    public abstract class IconedObjectOfAlbertrizal : ObjectOfAlbertrizal
+    public abstract class IconedObjectOfAlbertrizal : ObjectOfAlbertrizal, INotifyPropertyChanged
     {
-        public string IconLocation { get; set; }
+        private string iconLocation;
+        
+        public string IconLocation 
+        {
+            get => iconLocation;
+            set
+            {
+                iconLocation = value;
+                OnPropertyChanged();
+            }
+        }
 
         protected Bitmap icon = Properties.Resources.error;
 
@@ -29,6 +42,13 @@ namespace RuinsOfAlbertrizal
                 }
                 return icon;
             }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged([CallerMemberName] string iconLocation = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(iconLocation));
         }
     }
 }
