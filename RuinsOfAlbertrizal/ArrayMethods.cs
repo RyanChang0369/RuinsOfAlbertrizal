@@ -25,12 +25,26 @@ namespace RuinsOfAlbertrizal
 
         public static string JoinArray(this string[] a, string delimiter)
         {
-            string joinedString = "";
-            foreach (string s in a)
+            try
             {
-                joinedString = joinedString + s + delimiter;
+                return string.Join(delimiter, a);
             }
-            return joinedString;
+            catch (ArgumentNullException)
+            {
+                return "";
+            }
+        }
+
+        public static string JoinList(this List<string> a, string delimiter)
+        {
+            try
+            {
+                return string.Join(delimiter, a);
+            }
+            catch (ArgumentNullException)
+            {
+                return "";
+            }
         }
     }
 }
