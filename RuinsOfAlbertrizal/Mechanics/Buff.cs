@@ -31,6 +31,22 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         public int[] StatGain { get; set; }
 
+        [XmlIgnore]
+        public int[] LeveledStatGain
+        {
+            get
+            {
+                int[] leveledStats = new int[5];
+
+                for (int i = 0; i < StatGain.Length; i++)
+                {
+                    leveledStats[i] = (int)Math.Round(StatGain[i] * 1.2);
+                }
+
+                return leveledStats;
+            }
+        }
+
         /// <summary>
         /// Changes the AI
         /// </summary>
