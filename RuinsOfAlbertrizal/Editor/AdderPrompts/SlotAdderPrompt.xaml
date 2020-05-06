@@ -47,8 +47,12 @@
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
@@ -63,6 +67,16 @@
             <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot" Click="SelectSlot_Clicked"/>
             <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot" Click="SelectSlot_Clicked"/>
             <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1"/>
+            <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2"/>
+            <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3"/>
+            <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4"/>
+            <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5"/>
+            <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6"/>
+            <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7"/>
+            <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8"/>
+            <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9"/>
+            <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10"/>
         </Grid>
     </Grid>
 </Window>

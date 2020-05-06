@@ -91,25 +91,25 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             //}
         }
 
-        /// <summary>
-        /// Returns false if sender is not selected
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <returns></returns>
-        private bool ToggleButton(Button sender)
-        {
-            if (sender.Tag == null || (string)sender.Tag == "")
-            {
-                sender.Background = new SolidColorBrush(Colors.Gray);
-                sender.Tag = "Selected";
-                return false;
-            }
-            else
-            {
-                sender.Background = new SolidColorBrush(Colors.LightGray);
-                sender.Tag = "";
-                return true;
-            }
-        }
+        ///// <summary>
+        ///// Returns false if sender is not selected
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <returns></returns>
+        //private bool ToggleButton(Button sender)
+        //{
+        //    if (sender.Tag == null || (string)sender.Tag == "")
+        //    {
+        //        sender.Background = new SolidColorBrush(Colors.Gray);
+        //        sender.Tag = "Selected";
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        sender.Background = new SolidColorBrush(Colors.LightGray);
+        //        sender.Tag = "";
+        //        return true;
+        //    }
+        //}
     }
 }
