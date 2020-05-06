@@ -159,39 +159,30 @@
                 
                 <Label Content="Abilities"/>
                 <TextBox x:Name="Abilities" IsEnabled="False"/>
-                
-                <Label Content="Boss Message At Encounter (Press Enter to Separate Lines)" ToolTip="The message to display when boss first appears."/>
-                <TextBox x:Name="BossMessageStart" Style="{StaticResource paragraphTextBox}">
-                    <TextBox.Text>
-                        <Binding Path="BossMessageStart" Mode="TwoWay">
-                            <Binding.Converter>
-                                <converter:ArrayConverter/>
-                            </Binding.Converter>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
 
-                <Label Content="Boss Message At Player Victory (Press Enter to Separate Lines)" ToolTip="The message to display when boss is defeated."/>
-                <TextBox x:Name="BossMesageDefeat" Style="{StaticResource paragraphTextBox}">
-                    <TextBox.Text>
-                        <Binding Path="BossMessageDefeat" Mode="TwoWay">
-                            <Binding.Converter>
-                                <converter:ArrayConverter/>
-                            </Binding.Converter>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                <StackPanel Orientation="Horizontal" ToolTip="The message to display when the boss is encountered.">
+                    <Label Content="Message for Encounter"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
+                <Button x:Name="AddEncounterMessage" Content="Add/Edit Message" Click="AddEncounterMessage_Click" Style="{StaticResource buttonSmall}"/>
 
-                <Label Content="Boss Message At Player Death (Press Enter to Separate Lines)" ToolTip="The message to display when player is defeated."/>
-                <TextBox x:Name="BossMessageVictory" Style="{StaticResource paragraphTextBox}">
-                    <TextBox.Text>
-                        <Binding Path="BossMessageVictory" Mode="TwoWay">
-                            <Binding.Converter>
-                                <converter:ArrayConverter/>
-                            </Binding.Converter>
-                        </Binding>
-                    </TextBox.Text>
-                </TextBox>
+                <StackPanel Orientation="Horizontal" ToolTip="The message to display when the boss attacks.">
+                    <Label Content="Message for Attack"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
+                <Button x:Name="AddAttackMessage" Content="Add/Edit Message" Click="AddAttackMessage_Click" Style="{StaticResource buttonSmall}"/>
+
+                <StackPanel Orientation="Horizontal" ToolTip="The message to display when the boss is defeated">
+                    <Label Content="Message for Boss Defeat"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
+                <Button x:Name="AddDefeatMessage" Content="Add/Edit Message" Click="AddDefeatMessage_Click" Style="{StaticResource buttonSmall}"/>
+
+                <StackPanel Orientation="Horizontal" ToolTip="The message to display when the player is defeated">
+                    <Label Content="Message for Boss Victory"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
+                <Button x:Name="AddVictoryMessage" Content="Add/Edit Message" Click="AddVictoryMessage_Click" Style="{StaticResource buttonSmall}"/>
 
                 <Label Content="AI *"/>
                 <ComboBox>
