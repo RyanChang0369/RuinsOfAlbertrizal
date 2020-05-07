@@ -57,7 +57,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="AddIntroMessage" Content="Add/Edit Message" Click="AddIntroMessage_Click" Style="{StaticResource buttonSmallStretch}"/>
-                            <Label Content="{Binding Path=IntroMessage[0]}"/>
+                            <Label Content="{Binding Path=IntroMessage}"/>
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
@@ -322,7 +322,38 @@
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
-                
+
+
+                <TabItem Header="Step 6" FontSize="48">
+                    <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
+                        <StackPanel>
+                            <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
+                            <Button x:Name="CreatedLevelBtn" Click="Navigate" Content="Create Level" HorizontalAlignment="Left" Tag="Editor/CreateLevelPrompt.xaml"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Grid>
+                                <StackPanel>
+                                    <Label Content="Created Levels"/>
+                                    <ListBox x:Name="CreatedLevelsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedLevelsList_SelectionChanged" HorizontalAlignment="Center">
+                                        <ListBox.ItemsSource>
+                                            <Binding Path="Levels" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.Converter>
+                                                    <converter:NameConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </ListBox.ItemsSource>
+                                    </ListBox>
+                                </StackPanel>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Level">
+                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                    <Button Content="Delete Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
             </TabControl>
 
         </StackPanel>

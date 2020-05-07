@@ -240,6 +240,11 @@ namespace RuinsOfAlbertrizal.Editor
                     CreatedConsumablesList.SelectedIndex = -1;
                     CreateConsumableBtn.Content = "Create Consumable";
                     break;
+                case "Level":
+                    CreateLevelPrompt.CreatedLevel = new Level();
+                    Map.Levels.RemoveAt(CreatedLevelsList.SelectedIndex);
+                    CreatedLevelsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
                 default:
                     throw new ArgumentException("Tag missing or invalid");
             }
@@ -303,6 +308,11 @@ namespace RuinsOfAlbertrizal.Editor
                         CreateConsumablePrompt.CreatedConsumable = new Consumable();
                         Map.StoredConsumables.RemoveAt(CreatedConsumablesList.SelectedIndex);
                         CreatedConsumablesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                        break;
+                    case "Level":
+                        CreateLevelPrompt.CreatedLevel = new Level();
+                        Map.Levels.RemoveAt(CreatedLevelsList.SelectedIndex);
+                        CreatedLevelsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
                         break;
                     default:
                         throw new ArgumentException("Tag missing or invalid");
@@ -446,6 +456,19 @@ namespace RuinsOfAlbertrizal.Editor
             }
         }
 
+        private void CreatedLevelsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                CreateLevelPrompt.CreatedLevel = Map.Levels[CreatedLevelsList.SelectedIndex];
+                CreatedLevelBtn.Content = "Edit Level";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
             Map.IconLocation = FileHandler.SaveBitmap(Map, "icon");
@@ -457,5 +480,7 @@ namespace RuinsOfAlbertrizal.Editor
             messageSelect.ShowDialog();
             Map.IntroMessage = messageSelect.GetMessage();
         }
+
+
     }
 }

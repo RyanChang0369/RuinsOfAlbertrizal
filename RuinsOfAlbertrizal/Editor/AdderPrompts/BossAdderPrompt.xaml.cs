@@ -1,0 +1,107 @@
+﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Mechanics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace RuinsOfAlbertrizal.Editor.AdderPrompts
+{
+    /// <summary>
+    /// Interaction logic for BossAdderPrompt.xaml
+    /// </summary>
+    public partial class BossAdderPrompt : Window
+    {
+        public List<Boss> TargetBosses { get; set; }
+
+        private bool saved = false;
+
+        public BossAdderPrompt()
+        {
+            InitializeComponent();
+        }
+
+        public BossAdderPrompt(List<Boss> targetBosses)
+        {
+            InitializeComponent();
+
+            if (targetBosses == null)
+                TargetBosses = new List<Boss>();
+            else
+            {
+                TargetBosses = targetBosses;
+
+                for (int i = 0; i < TargetBosses.Count; i++)
+                {
+                    AddedBossesList.Items.Add(TargetBosses[i]);
+                }
+            }
+        }
+
+        private void AvailableBossesList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+
+            if (listBox.SelectedIndex < 0)
+                return;
+
+            Boss boss = CreateMapPrompt.Map.StoredBosses[listBox.SelectedIndex];
+
+            LevelSelect levelSelect = new LevelSelect("boss", boss.Name);
+            levelSelect.ShowDialog();
+
+            if (levelSelect.GetLevelValue() < 1)
+                return;
+
+            boss.Level = levelSelect.GetLevelValue();
+            TargetBosses.Add(boss);
+            AddedBossesList.Items.Add(boss);
+        }
+
+        private void AddedBossesList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ListBox listBox = (ListBox)sender;
+
+            if (listBox.SelectedIndex < 0)
+                return;
+
+            TargetBosses.RemoveAt(listBox.SelectedIndex);
+            listBox.Items.RemoveAt(listBox.SelectedIndex);
+        }
+
+        private void Quit(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            saved = true;
+            Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (saved)
+                return;
+
+            MessageBoxResult result = MessageBox.Show("Save before quitting?", "Unsaved Work", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {  }
+            else if (result == MessageBoxResult.Cancel)
+                e.Cancel = true;
+            else
+                TargetBosses = null;
+        }
+    }
+}

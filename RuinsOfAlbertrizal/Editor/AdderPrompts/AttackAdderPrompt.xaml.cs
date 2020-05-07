@@ -20,6 +20,8 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     /// </summary>
     public partial class AttackAdderPrompt : Window
     {
+        private bool saved = false;
+
         public List<Attack> TargetAttacks { get; set; }
 
         public AttackAdderPrompt()
@@ -49,6 +51,32 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetAttacks.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
+        }
+
+        private void Quit(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            saved = true;
+            Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (saved)
+                return;
+
+            MessageBoxResult result = MessageBox.Show("Save before quitting?", "Unsaved Work", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            { }
+            else if (result == MessageBoxResult.Cancel)
+                e.Cancel = true;
+            else
+                TargetAttacks = null;
         }
     }
 }

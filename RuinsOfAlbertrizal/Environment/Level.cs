@@ -8,16 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using RuinsOfAlbertrizal.Items;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class Level : ObjectOfAlbertrizal
+    public class Level : WorldMapObject
     {
-        Bitmap BackgroundImage { get; set; }
+        public Message IntroMessage { get; set; }
+
         /// <summary>
         /// The Enemies that can appear in this level.
         /// </summary>
-        public List<Enemy> Enemies { get; set; }
+        public List<Enemy> StoredEnemies { get; set; }
+
+        public List<Item> StoredItems { get; set; }
+
+        public List<Equiptment> StoredEquiptments { get; set; }
+
+        public List<Consumable> StoredConsumables { get; set; }
 
         /// <summary>
         /// Boss fight starts at next encounter if points is equal to or exceeds this.
@@ -27,9 +35,9 @@ namespace RuinsOfAlbertrizal.Environment
         public double Points { get; set; }
 
         /// <summary>
-        /// The boss that appears at the end of the level.
+        /// The boss(es) that appears at the end of the level. If there are multiple, they will apear at the same time.
         /// </summary>
-        public Boss Boss { get; set; }
+        public List<Boss> Bosses { get; set; }
 
         /// <summary>
         /// The win condition.
@@ -51,11 +59,26 @@ namespace RuinsOfAlbertrizal.Environment
                     case (int)WinConditions.None:
                         return false;
                     case (int)WinConditions.DefeatEnemies:
-                        return Boss.IsDead;
+                        foreach (Boss boss in Bosses)
+                        {
+                            if (!boss.IsDead)
+                                return false;
+                        }
+                        return true;
                     default:
                         return false;
                 }
             }
+        }
+
+        public Level()
+        {
+            Bosses = new List<Boss>();
+            StoredEnemies = new List<Enemy>();
+            StoredEquiptments = new List<Equiptment>();
+            StoredItems = new List<Item>();
+            StoredConsumables = new List<Consumable>();
+            IntroMessage = new Message();
         }
 
         /// <summary>

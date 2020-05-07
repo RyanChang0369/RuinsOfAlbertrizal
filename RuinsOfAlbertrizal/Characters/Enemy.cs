@@ -45,6 +45,15 @@ namespace RuinsOfAlbertrizal.Characters
             MessagesOnVictory = new List<Message>();
         }
 
+        /// <summary>
+        /// Use this to get the amount of XP gained from killing this enemy.
+        /// </summary>
+        /// <returns></returns>
+        public int GetXPGained()
+        {
+            return BattlePoints / 10;
+        }
+
         public override void Die()
         {
             throw new NotImplementedException("");

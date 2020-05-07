@@ -1,0 +1,42 @@
+﻿<Window x:Class="RuinsOfAlbertrizal.Editor.AdderPrompts.BossAdderPrompt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor.AdderPrompts"
+        xmlns:mapPrompts="clr-namespace:RuinsOfAlbertrizal.Editor"
+        mc:Ignorable="d"
+        Title="Add a Boss" Height="450" Width="800"
+        Closing="Window_Closing">
+    
+    <Window.Resources>
+        <mapPrompts:CreateMapPrompt x:Key="CreateMapPrompt"/>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <Label Content="Click To Add"/>
+                <ListBox x:Name="AvailableBossesList" Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="AvailableBossesList_PreviewMouseLeftButtonUp">
+                    <ListBox.ItemsSource>
+                        <Binding Path="Map.StoredBosses" UpdateSourceTrigger="PropertyChanged" Mode="OneTime" Source="{StaticResource CreateMapPrompt}"/>
+                    </ListBox.ItemsSource>
+                </ListBox>
+            </StackPanel>
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            
+            <StackPanel>
+                <Label Content="Click to Remove"/>
+                <ListBox x:Name="AddedBossesList" Width="200" FontSize="18" ToolTip="Click Item to Select" SelectionMode="Multiple" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="AddedBossesList_PreviewMouseLeftButtonUp"/>
+            </StackPanel>
+
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+            <StackPanel>
+                <Button Content="Quit" Click="Quit" Style="{StaticResource buttonSmallStretch}" IsCancel="True"/>
+                <Button Content="Save and exit" Click="Save" Style="{StaticResource buttonSmallStretch}" IsDefault="True"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -54,7 +54,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                int[] leveledStats = BaseStats;
+                int[] leveledStats = (int[])BaseStats.Clone();
 
                 for (int i = 0; i < leveledStats.Length; i++)
                 {
@@ -62,6 +62,27 @@ namespace RuinsOfAlbertrizal.Characters
                 }
 
                 return leveledStats;
+            }
+        }
+
+        /// <summary>
+        /// Stats with te current armor equipted
+        /// </summary>
+        [XmlIgnore]
+        public int[] ArmoredStats
+        {
+            get
+            {
+                int[] currentStats = { 0, 0, 0, 0, 0 };
+
+                currentStats = ArrayMethods.AddArrays(currentStats, LeveledStats);
+
+                foreach (Equiptment equiptment in CurrentEquiptments)
+                {
+                    currentStats = ArrayMethods.AddArrays(currentStats, equiptment.StatGain);
+                }
+
+                return currentStats;
             }
         }
 
@@ -76,16 +97,11 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 int[] currentStats = { 0, 0, 0, 0, 0 };
 
-                currentStats = ArrayMethods.AddArrays(currentStats, LeveledStats);
+                currentStats = ArrayMethods.AddArrays(currentStats, ArmoredStats);
 
                 foreach (Buff buff in CurrentBuffs)
                 {
                     currentStats = ArrayMethods.AddArrays(currentStats, buff.LeveledStatGain);
-                }
-
-                foreach (Equiptment equiptment in CurrentEquiptments)
-                {
-                    currentStats = ArrayMethods.AddArrays(currentStats, equiptment.StatGain);
                 }
 
                 currentStats = ArrayMethods.AddArrays(currentStats, AppliedStats);
@@ -126,6 +142,25 @@ namespace RuinsOfAlbertrizal.Characters
                 }
 
                 return currentBuffs;
+            }
+        }
+
+        [XmlIgnore]
+        /// <summary>
+        /// How strong the character is. Ignores any buffs.
+        /// </summary>
+        public int BattlePoints
+        {
+            get
+            {
+                int total = 0;
+
+                foreach (int i in ArmoredStats)
+                {
+                    total += i;
+                }
+
+                return total;
             }
         }
 
