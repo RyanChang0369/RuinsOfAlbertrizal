@@ -31,7 +31,7 @@ namespace RuinsOfAlbertrizal
                 return true;
         }
 
-        public static BitmapSource ToBitmapImage(this System.Drawing.Bitmap bitmap)
+        public static BitmapSource ToBitmapSource(this System.Drawing.Bitmap bitmap)
         {
             try
             {
