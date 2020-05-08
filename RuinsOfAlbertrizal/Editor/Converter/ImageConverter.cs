@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Media.Imaging;
 
 namespace RuinsOfAlbertrizal.Editor.Converter
 {
@@ -14,8 +15,7 @@ namespace RuinsOfAlbertrizal.Editor.Converter
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Bitmap bitmap = (Bitmap)value;
-
-            return bitmap.ToBitmapImage();
+            return bitmap.ToBitmapSource();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
