@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>Campaign</Name>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
-      <string>Stuff</string>
+      <string>Legends speak of a glorious castle that is now abandoned.</string>
+      <string>Mysterious creatures have been reported roam the hallways.</string>
+      <string>Mysterious creatures that exists nowhere else but here.</string>
+      <string>But you do not worry about them, for you have your trusty stick.</string>
     </Lines>
   </IntroMessage>
   <StoredPlayers>
