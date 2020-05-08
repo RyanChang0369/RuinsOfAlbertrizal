@@ -18,11 +18,11 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     /// <summary>
     /// Interaction logic for SimpleAdderPrompt.xaml
     /// </summary>
-    public partial class SimpleAdderPrompt : Window
+    public partial class SimpleAdderPrompt : BaseAdderPrompt
     {
-        private bool saved = false;
-
         public List<ObjectOfAlbertrizal> TargetObjects { get; set; }
+
+        private List<ObjectOfAlbertrizal> OriginalObjects { get; set; }
 
         public List<ObjectOfAlbertrizal> StoredObjects { get; set; }
 
@@ -36,10 +36,14 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             InitializeComponent();
 
             if (targetObjects == null)
+            {
                 TargetObjects = new List<ObjectOfAlbertrizal>();
+                OriginalObjects = new List<ObjectOfAlbertrizal>();
+            }
             else
             {
                 TargetObjects = targetObjects;
+                OriginalObjects = targetObjects;
 
                 for (int i = 0; i < TargetObjects.Count; i++)
                 {
@@ -73,6 +77,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetObjects.Add(objectOfAlbertrizal);
             AddedObjectsList.Items.Add(objectOfAlbertrizal);
+            ListChanged();
         }
 
         protected virtual void AddedObjectsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -84,32 +89,12 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetObjects.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
+            ListChanged();
         }
 
-        protected void Quit(object sender, RoutedEventArgs e)
+        protected override void ResetVariable()
         {
-            Close();
-        }
-
-        protected void Save(object sender, RoutedEventArgs e)
-        {
-            saved = true;
-            Close();
-        }
-
-        protected void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (saved)
-                return;
-
-            MessageBoxResult result = MessageBox.Show("Save before quitting?", "Unsaved Work", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
-            { }
-            else if (result == MessageBoxResult.Cancel)
-                e.Cancel = true;
-            else
-                TargetObjects = new List<ObjectOfAlbertrizal>();
+            StoredObjects = OriginalObjects;
         }
     }
 }

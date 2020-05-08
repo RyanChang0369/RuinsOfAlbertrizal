@@ -150,6 +150,15 @@ namespace RuinsOfAlbertrizal.Editor
                 StepsDone[9] = true;
             }
 
+            //Step 11: Level
+            if (CreateLevelPrompt.CreatedLevel != null)
+            {
+                if (!Map.Levels.Contains(CreateLevelPrompt.CreatedLevel))
+                    Map.Levels.Add(CreateLevelPrompt.CreatedLevel);
+
+                StepsDone[10] = true;
+            }
+
             //SaveBtn.IsEnabled = true;
             //GameBase.NewGame();
         }
@@ -241,9 +250,8 @@ namespace RuinsOfAlbertrizal.Editor
                     CreateConsumableBtn.Content = "Create Consumable";
                     break;
                 case "Level":
-                    CreateLevelPrompt.CreatedLevel = new Level();
-                    Map.Levels.RemoveAt(CreatedLevelsList.SelectedIndex);
-                    CreatedLevelsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    CreatedLevelsList.SelectedIndex = -1;
+                    CreatedLevelBtn.Content = "Create Consumable";
                     break;
                 default:
                     throw new ArgumentException("Tag missing or invalid");

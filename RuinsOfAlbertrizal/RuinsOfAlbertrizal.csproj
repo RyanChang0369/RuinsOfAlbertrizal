@@ -71,6 +71,7 @@
     </Compile>
     <Compile Include="Characters\Enemy.cs" />
     <Compile Include="Editor\AdderPrompts\AdderPrompt.cs" />
+    <Compile Include="Editor\AdderPrompts\BaseAdderPrompt.cs" />
     <Compile Include="Editor\AdderPrompts\BossAdderPrompt.xaml.cs">
       <DependentUpon>BossAdderPrompt.xaml</DependentUpon>
     </Compile>

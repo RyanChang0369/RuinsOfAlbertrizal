@@ -18,11 +18,11 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     /// <summary>
     /// Interaction logic for BuffAdderPrompt.xaml
     /// </summary>
-    public partial class BuffAdderPrompt : Window
+    public partial class BuffAdderPrompt : BaseAdderPrompt
     {
         public List<Buff> TargetBuffs { get; set; }
 
-        private bool saved = false;
+        private List<Buff> OriginalBuffs { get; set; }
 
         public BuffAdderPrompt()
         {
@@ -34,10 +34,14 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             InitializeComponent();
 
             if (targetBuffs == null)
+            {
                 TargetBuffs = new List<Buff>();
+                OriginalBuffs = new List<Buff>();
+            }
             else
             {
                 TargetBuffs = targetBuffs;
+                OriginalBuffs = targetBuffs;
 
                 for (int i = 0; i < TargetBuffs.Count; i++)
                 {
@@ -64,6 +68,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             buff.Level = levelSelect.GetLevelValue();
             TargetBuffs.Add(buff);
             AddedBuffsList.Items.Add(buff);
+            ListChanged();
         }
 
         private void AddedBuffsList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -75,32 +80,12 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetBuffs.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
+            ListChanged();
         }
 
-        private void Quit(object sender, RoutedEventArgs e)
+        protected override void ResetVariable()
         {
-            Close();
-        }
-
-        private void Save(object sender, RoutedEventArgs e)
-        {
-            saved = true;
-            Close();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (saved)
-                return;
-
-            MessageBoxResult result = MessageBox.Show("Save before quitting?", "Unsaved Work", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
-            {  }
-            else if (result == MessageBoxResult.Cancel)
-                e.Cancel = true;
-            else
-                TargetBuffs = null;
+            TargetBuffs = OriginalBuffs;
         }
     }
 }

@@ -19,11 +19,11 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     /// <summary>
     /// Interaction logic for BossAdderPrompt.xaml
     /// </summary>
-    public partial class BossAdderPrompt : Window
+    public partial class BossAdderPrompt : BaseAdderPrompt
     {
         public List<Boss> TargetBosses { get; set; }
 
-        private bool saved = false;
+        private List<Boss> OriginalBosses { get; set; }
 
         public BossAdderPrompt()
         {
@@ -35,10 +35,14 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             InitializeComponent();
 
             if (targetBosses == null)
+            {
                 TargetBosses = new List<Boss>();
+                OriginalBosses = new List<Boss>();
+            }
             else
             {
                 TargetBosses = targetBosses;
+                OriginalBosses = targetBosses;
 
                 for (int i = 0; i < TargetBosses.Count; i++)
                 {
@@ -65,6 +69,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             boss.Level = levelSelect.GetLevelValue();
             TargetBosses.Add(boss);
             AddedBossesList.Items.Add(boss);
+            ListChanged();
         }
 
         private void AddedBossesList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -76,32 +81,12 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetBosses.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
+            ListChanged();
         }
 
-        private void Quit(object sender, RoutedEventArgs e)
+        protected override void ResetVariable()
         {
-            Close();
-        }
-
-        private void Save(object sender, RoutedEventArgs e)
-        {
-            saved = true;
-            Close();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (saved)
-                return;
-
-            MessageBoxResult result = MessageBox.Show("Save before quitting?", "Unsaved Work", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
-            {  }
-            else if (result == MessageBoxResult.Cancel)
-                e.Cancel = true;
-            else
-                TargetBosses = null;
+            TargetBosses = OriginalBosses;
         }
     }
 }

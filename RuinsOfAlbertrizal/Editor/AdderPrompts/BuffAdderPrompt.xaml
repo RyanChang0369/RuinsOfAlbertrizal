@@ -1,4 +1,4 @@
-﻿<Window x:Class="RuinsOfAlbertrizal.Editor.AdderPrompts.BuffAdderPrompt"
+﻿<local:BaseAdderPrompt x:Class="RuinsOfAlbertrizal.Editor.AdderPrompts.BuffAdderPrompt"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -39,4 +39,4 @@
             </StackPanel>
         </StackPanel>
     </Grid>
-</Window>
+</local:BaseAdderPrompt>
