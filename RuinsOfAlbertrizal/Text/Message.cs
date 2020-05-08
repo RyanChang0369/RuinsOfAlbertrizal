@@ -2,13 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
+using System.Windows;
+using System.Windows.Controls;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Text
 {
     public class Message
     {
+        private System.Timers.Timer Timer = new System.Timers.Timer(100);
+
+        private TextBlock TextBlock = new TextBlock();
+
+        private int lineIndex;
+
+        private int charIndex;
+
         public List<string> Lines { get; set; }
 
         public Message()
@@ -25,9 +37,66 @@ namespace RuinsOfAlbertrizal.Text
             Lines = lines;
         }
 
+        public void InitializeTextBlock(TextBlock textBlock)
+        {
+            TextBlock = textBlock;
+            TextBlock.Text = "";
+        }
+
+        public bool IsDoneDisplaying()
+        {
+            try
+            {
+                _ = Lines[lineIndex];
+                _ = Lines[lineIndex].ToCharArray()[charIndex];
+            }
+            catch (NullReferenceException)
+            {
+                return true;
+            }
+            catch (IndexOutOfRangeException)
+            { return true; }
+
+            return false;
+        }
+
+        public char GetNextChar()
+        {
+            charIndex++;
+            return Lines[lineIndex].ToCharArray()[charIndex];
+        }
+
         public void Display()
         {
-            throw new NotImplementedException("Add display method in BaseGame");
+            Timer.Elapsed += new ElapsedEventHandler(SetTextBlockText);
+            Timer.Start();
+        }
+
+        private void SetTextBlockText(object sender, ElapsedEventArgs e)
+        {
+            if (TextBlock == null)
+                throw new NotImplementedException("TextBlock needs to be implemented");
+
+            App.Current.Dispatcher.Invoke(() =>
+            {
+                try
+                {
+                    TextBlock.Text += GetNextChar();
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    return;
+                }
+                catch (TaskCanceledException)
+                {
+                    return;
+                }
+            });
+        }
+
+        public void NextLine()
+        {
+            lineIndex++;
         }
 
         public override string ToString()

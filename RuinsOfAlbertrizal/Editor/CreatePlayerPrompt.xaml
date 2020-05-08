@@ -75,6 +75,9 @@
                             <Binding.Converter>
                                 <converter:ClassToBaseStatsConverter/>
                             </Binding.Converter>
+                            <Binding.ValidationRules>
+                                <validation:SelectedIndexValidation ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
                         </Binding>
                     </ComboBox.SelectedIndex>
                     <ComboBoxItem>Warrior</ComboBoxItem>

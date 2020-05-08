@@ -113,5 +113,10 @@ namespace RuinsOfAlbertrizal
         {
             this.NavigationService.Navigate(new Uri("IntroInterface.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        private void TestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavIntroInterface();
+        }
     }
 }

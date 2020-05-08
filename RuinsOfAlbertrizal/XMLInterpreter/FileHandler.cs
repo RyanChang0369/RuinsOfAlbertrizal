@@ -137,7 +137,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                     serializer.Serialize(writer, obj);
                 }
             }
-            catch (Exception)
+            catch (IOException)
             {
                 MessageBoxResult result = MessageBox.Show("File cannot be saved! Retry?", "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
 

@@ -20,7 +20,7 @@ namespace RuinsOfAlbertrizal.Editor.Converter
         /// <returns></returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (int)GameBase.GetClassType((int[])value);
+            return (int)GameBase.GetClassType((int[])value) - 1;
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace RuinsOfAlbertrizal.Editor.Converter
         /// <returns></returns>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return new int[5];
+            return GameBase.GetBaseValues((GameBase.ClassType)((int)value + 1));
         }
     }
 }

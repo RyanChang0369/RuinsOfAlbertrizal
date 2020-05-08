@@ -482,13 +482,16 @@ namespace RuinsOfAlbertrizal.Editor
             Map.IconLocation = FileHandler.SaveBitmap(Map, "icon");
         }
 
+        private void SelectWorldImgBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Map.WorldImgLocation = FileHandler.SaveBitmap(Map, "worldImg");
+        }
+
         private void AddIntroMessage_Click(object sender, RoutedEventArgs e)
         {
             MessageSelect messageSelect = new MessageSelect("Introduction Message", Map.IntroMessage);
             messageSelect.ShowDialog();
             Map.IntroMessage = messageSelect.GetMessage();
         }
-
-
     }
 }

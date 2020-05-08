@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class Map : IconedObjectOfAlbertrizal
+    public class Map : WorldMapObject
     {
         public Message IntroMessage { get; set; }
 

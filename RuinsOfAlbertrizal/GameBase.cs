@@ -22,7 +22,7 @@ namespace RuinsOfAlbertrizal
 
         public enum ClassType
         {
-            Warrior, Mage, Scout
+            None, Warrior, Mage, Scout
         }
 
         public static int[] GetBaseValues(ClassType classType)
@@ -73,7 +73,7 @@ namespace RuinsOfAlbertrizal
                 case 100:
                     return ClassType.Scout;
                 default:
-                    return ClassType.Warrior;
+                    return ClassType.None;
             }
         }
 

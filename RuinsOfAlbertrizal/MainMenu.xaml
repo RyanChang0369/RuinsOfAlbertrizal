@@ -18,14 +18,15 @@
         <Image Grid.Row="1" Source="assets/Other/TitleImage2.png"/>
         <StackPanel Grid.Row="2">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="NewCampaign" Click="NewCampaign_Click">Start New Campaign</Button>
-                <Button x:Name="ContinueCampaign" Click="ContinueCampaign_Click">Continue Campaign</Button>
+                <Button x:Name="NewCampaign" Click="NewCampaign_Click" Content="Start new Campaign"/>
+                <Button x:Name="ContinueCampaign" Click="ContinueCampaign_Click" Content="Continue Campaign"/>
+                <Button x:Name="TestBtn" Click="TestBtn_Click" Content="TestBtn"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Click="NewCustomMap">Create New Custom Map</Button>
-                <Button Click="EditCustomMap">Edit Custom Map</Button>
-                <Button Click="ContinueCustomMap">Continue Custom Map</Button>
+                <Button Click="NewCustomMap" Content="Create New Custom Map"/>
+                <Button Click="EditCustomMap" Content="Edit Custom Map"/>
+                <Button Click="ContinueCustomMap" Content="Continue Custom Map"/>
             </StackPanel>
         </StackPanel>
     </Grid>
