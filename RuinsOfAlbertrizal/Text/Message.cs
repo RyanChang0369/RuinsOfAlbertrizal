@@ -13,9 +13,15 @@ namespace RuinsOfAlbertrizal.Text
 {
     public class Message
     {
-        private System.Timers.Timer Timer = new System.Timers.Timer(100);
+        private System.Timers.Timer TimerChar = new System.Timers.Timer(100);
+
+        private System.Timers.Timer TimerLine = new System.Timers.Timer(2000);
 
         private TextBlock TextBlock = new TextBlock();
+
+        private Button NextBtn = new Button();
+
+        private Button SkipBtn = new Button();
 
         private int lineIndex;
 
@@ -37,13 +43,29 @@ namespace RuinsOfAlbertrizal.Text
             Lines = lines;
         }
 
-        public void InitializeTextBlock(TextBlock textBlock)
+        public void InitializeControls(TextBlock textBlock, Button nextButton, Button skipButton)
         {
             TextBlock = textBlock;
             TextBlock.Text = "";
+            NextBtn = nextButton;
+            NextBtn.Click += new RoutedEventHandler(NextBtn_Click); 
+            SkipBtn = skipButton;
+            SkipBtn.Click += new RoutedEventHandler(SkipBtn_Click);
         }
 
-        public bool IsDoneDisplaying()
+        private void NextBtn_Click(object sender, RoutedEventArgs e)
+        {
+            TimerChar.Stop();
+            NextLine();
+            Display();
+        }
+
+        private void SkipBtn_Click(object sender, RoutedEventArgs e)
+        {
+            TimerChar.Stop();
+        }
+
+        private bool IsDoneDisplaying()
         {
             try
             {
@@ -54,7 +76,7 @@ namespace RuinsOfAlbertrizal.Text
             {
                 return true;
             }
-            catch (IndexOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             { return true; }
 
             return false;
@@ -62,41 +84,61 @@ namespace RuinsOfAlbertrizal.Text
 
         public char GetNextChar()
         {
+            char c = Lines[lineIndex].ToCharArray()[charIndex];
             charIndex++;
-            return Lines[lineIndex].ToCharArray()[charIndex];
+            return c;
         }
 
         public void Display()
         {
-            Timer.Elapsed += new ElapsedEventHandler(SetTextBlockText);
-            Timer.Start();
+            if (IsDoneDisplaying())
+                return;
+
+            TimerChar.Elapsed += new ElapsedEventHandler(SetTextBlockText);
+
+            TimerChar.Start();
         }
 
         private void SetTextBlockText(object sender, ElapsedEventArgs e)
         {
             if (TextBlock == null)
-                throw new NotImplementedException("TextBlock needs to be implemented");
+                throw new ArgumentException("TextBlock needs to be implemented");
 
-            App.Current.Dispatcher.Invoke(() =>
+            try
             {
-                try
+                App.Current.Dispatcher.Invoke(() =>
                 {
-                    TextBlock.Text += GetNextChar();
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    return;
-                }
-                catch (TaskCanceledException)
-                {
-                    return;
-                }
-            });
+                    try
+                    {
+                        TextBlock.Text += GetNextChar();
+                    }
+                    catch (IndexOutOfRangeException)
+                    {
+                        return;
+                    }
+                    catch (TaskCanceledException)
+                    {
+                        return;
+                    }
+                });
+            }
+            catch (NullReferenceException)
+            {
+                return;
+            }
         }
 
         public void NextLine()
         {
+            charIndex = 0;
             lineIndex++;
+            TextBlock.Text = "";
+            TimerChar.Elapsed -= new ElapsedEventHandler(SetTextBlockText);
+        }
+
+        public void NextLine(object sender, ElapsedEventArgs e)
+        {
+            NextLine();
         }
 
         public override string ToString()

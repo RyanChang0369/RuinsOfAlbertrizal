@@ -24,12 +24,26 @@ namespace RuinsOfAlbertrizal
     {
         public IntroInterface()
         {
+            ForwardNavigation();
             InitializeComponent();
 
-            GameBase.CurrentGame.IntroMessage.InitializeTextBlock(IntroText);
-            GameBase.CurrentGame.IntroMessage.Display();
-
             DataContext = GameBase.CurrentGame;
+
+            if (!GameBase.CurrentGame.SeenIntroduction || true)
+            {
+                GameBase.CurrentGame.IntroMessage.InitializeControls(IntroText, NextBtn, SkipBtn);
+                GameBase.CurrentGame.IntroMessage.Display();
+
+                GameBase.CurrentGame.SeenIntroduction = true;
+            }
+        }
+
+        /// <summary>
+        /// All navigations point to the IntroInterface. Navigate players to the correct locations.
+        /// </summary>
+        private void ForwardNavigation()
+        {
+
         }
 
         private void NavAdventureInterface()
