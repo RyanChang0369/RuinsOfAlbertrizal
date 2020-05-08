@@ -10,6 +10,8 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class Map : WorldMapObject
     {
+        public bool SeenIntroduction { get; set; }
+
         public Message IntroMessage { get; set; }
 
         public List<Player> StoredPlayers { get; set; }
