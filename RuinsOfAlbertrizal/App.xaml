@@ -103,6 +103,11 @@
             <Setter Property="MinWidth" Value="400"/>
         </Style>
 
+        <!--Image Styles-->
+        <Style TargetType="Image">
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
+        </Style>
+        
         <!--Validation Templates and Styles-->
         <ControlTemplate x:Key="validationTemplate">
             <DockPanel>
