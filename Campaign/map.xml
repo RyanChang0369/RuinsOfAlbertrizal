@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>Campaign</Name>
+  <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
   <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
@@ -319,7 +320,9 @@
     <Level>
       <Name>Final Level</Name>
       <IntroMessage>
-        <Lines />
+        <Lines>
+          <string>This is it. The final floor. All you need to do now is escape.</string>
+        </Lines>
       </IntroMessage>
       <StoredEnemies />
       <StoredItems />

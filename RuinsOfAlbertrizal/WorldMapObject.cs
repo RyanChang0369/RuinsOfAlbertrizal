@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -37,9 +38,9 @@ namespace RuinsOfAlbertrizal
             {
                 try
                 {
-                    worldImg = new Bitmap(WorldImgLocation);
+                    worldImg = new Bitmap(Path.GetFullPath(WorldImgLocation));
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
 
                 }
