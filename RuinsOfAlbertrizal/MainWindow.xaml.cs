@@ -31,13 +31,13 @@ namespace RuinsOfAlbertrizal
             {
                 return;
             }
-            else if (GameBase.CurrentGame == null || !CreateMapPrompt.Map.Equals(GameBase.CurrentGame))
-            {
-                MessageBoxResult result = MessageBox.Show("You have unsaved data. Press OK to discard all changes.", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+            //else if (GameBase.CurrentGame == null || !CreateMapPrompt.Map.Equals(GameBase.CurrentGame))
+            //{
+            //    MessageBoxResult result = MessageBox.Show("You have unsaved data. Press OK to discard all changes.", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
 
-                if (result == MessageBoxResult.Cancel)
-                    e.Cancel = true;
-            }
+            //    if (result == MessageBoxResult.Cancel)
+            //        e.Cancel = true;
+            //}
         }
     }
 }

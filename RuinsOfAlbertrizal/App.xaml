@@ -56,6 +56,11 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="MinWidth" Value="500"/>
         </Style>
+        <Style x:Key="buttonStretch" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
         <Style x:Key="buttonSmall" TargetType="Button">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="10"/>
@@ -84,6 +89,11 @@
             <Setter Property="MinHeight" Value="100"/>
             <Setter Property="Margin" Value="10, 0"/>
         </Style>
+        <Style x:Key="introText" TargetType="TextBlock" BasedOn="{StaticResource defaultTextBlock}">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontFamily" Value="Monotype Corsiva"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
         
         <Style TargetType="TextBox" BasedOn="{StaticResource defaultTextBox}"/>
 
@@ -94,7 +104,7 @@
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="MinHeight" Value="100"/>
         </Style>
-        
+
         <!--ComboBox Styles-->
         <Style TargetType="ComboBox">
             <Setter Property="FontSize" Value="18"/>
@@ -106,6 +116,10 @@
         <!--Image Styles-->
         <Style TargetType="Image">
             <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="highQuality">
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
         </Style>
         
         <!--Validation Templates and Styles-->
