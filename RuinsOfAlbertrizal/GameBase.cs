@@ -67,7 +67,7 @@ namespace RuinsOfAlbertrizal
                     numericalValues[1] = 55;
                     numericalValues[2] = 2;
                     numericalValues[3] = 7;
-                    numericalValues[4] = 10;
+                    numericalValues[4] = 13;
                     break;
             }
 
