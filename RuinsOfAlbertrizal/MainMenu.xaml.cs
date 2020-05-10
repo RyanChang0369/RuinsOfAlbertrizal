@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Editor;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -127,6 +128,12 @@ namespace RuinsOfAlbertrizal
             {
                 
             }
+        }
+
+        private void Reference(object sender, RoutedEventArgs e)
+        {
+            HelpSection helpSection = new HelpSection();
+            helpSection.Show();
         }
     }
 }

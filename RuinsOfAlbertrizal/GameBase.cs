@@ -29,7 +29,7 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         public enum Stats
         {
-            HP, Mana, Def, Dmg, Spd, Jump
+            HP, Mana, Def, Dmg, Spd
         }
 
         public enum ClassType
@@ -51,23 +51,23 @@ namespace RuinsOfAlbertrizal
                 case 0: //Warrior
                     numericalValues[0] = 200;
                     numericalValues[1] = 20;
-                    numericalValues[2] = 10;
+                    numericalValues[2] = 20;
                     numericalValues[3] = 5;
-                    numericalValues[4] = 5;
+                    numericalValues[4] = 10;
                     break;
                 case 1: //Mage
                     numericalValues[0] = 150;
                     numericalValues[1] = 100;
                     numericalValues[2] = 2;
                     numericalValues[3] = 5;
-                    numericalValues[4] = 7;
+                    numericalValues[4] = 14;
                     break;
                 case 2: //Scout
                     numericalValues[0] = 100;
                     numericalValues[1] = 55;
                     numericalValues[2] = 2;
                     numericalValues[3] = 7;
-                    numericalValues[4] = 13;
+                    numericalValues[4] = 35;
                     break;
             }
 

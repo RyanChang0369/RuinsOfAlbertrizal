@@ -1,4 +1,4 @@
-﻿<Page x:Class="RuinsOfAlbertrizal.Editor.HelpSection"
+﻿<Window x:Class="RuinsOfAlbertrizal.Editor.HelpSection"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,7 +10,7 @@
 
     <Grid Background="WhiteSmoke">
         <FlowDocumentPageViewer>
-            <FlowDocument ColumnRuleWidth="760">
+            <FlowDocument ColumnWidth="400">
                 <Paragraph Style="{StaticResource titleP}">Reference for Editing</Paragraph>
                 <Paragraph Style="{StaticResource h1P}">Health</Paragraph>
                 <Paragraph>
@@ -21,6 +21,7 @@
                     For reference, a warrior's base health is 200, the mage's base health is 150, 
                     and the scout's health is 100.
                 </Paragraph>
+                
                 <Paragraph Style="{StaticResource h1P}">Mana</Paragraph>
                 <Paragraph>
                     Mana determies what attacks a character can use. When using an attack that uses mana,
@@ -31,9 +32,45 @@
                     restored and their turn is ended.
                 </Paragraph>
                 <Paragraph>
-                    For reference, a warrior has 20 mana, a mage has 100 mana, and a scout has 55 mana.
+                    For reference, a warrior has a base mana of 20, a mage has a base mana of 100, and a
+                    scout has a base mana of 55.
                 </Paragraph>
+
+                <Paragraph Style="{StaticResource h1P}">Defense</Paragraph>
+                <Paragraph>
+                    Defense is subtracted from oncoming damage. It does not negate damage recieved from
+                    buffs, or from any attacks with the tag
+                    <Italic>Is Magic.</Italic>
+                </Paragraph>
+                <Paragraph>
+                    For reference, a warrior has a base defense of 20, a mage has a base defense of 2,
+                    and a scout has a base defense of 2.
+                </Paragraph>
+
+                <Paragraph Style="{StaticResource h1P}">Damage</Paragraph>
+                <Paragraph>
+                    Damage is added to all damage dealt by the user. It does not affect damage dealt through
+                    buffs. If the
+                    <Italic>Is Magic</Italic>
+                    tag is true for an attack, then damage has no effect on that attack.
+                </Paragraph>
+                
+                <Paragraph Style="{StaticResource h1P}">Speed</Paragraph>
+                <Paragraph>
+                    Speed determines how fast a character can attack.
+                    Timers are set to the speed of the character with the most speed. When the timer
+                    reaches a speed value of a character, the character is able to make a move.
+                </Paragraph>
+                <Paragraph>
+                    In case of a tie, the order of attack is chosen randomly.
+                </Paragraph>
+                <Paragraph>
+                    For reference, a warrior has a base speed of 10, a mage has a base speed of 14, and
+                    a scout has a base speed of 35.
+                </Paragraph>
+
+
             </FlowDocument>
         </FlowDocumentPageViewer>
     </Grid>
-</Page>
+</Window>

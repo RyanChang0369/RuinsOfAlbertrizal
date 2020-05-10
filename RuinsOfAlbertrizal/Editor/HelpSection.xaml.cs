@@ -18,7 +18,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// <summary>
     /// Interaction logic for HelpSection.xaml
     /// </summary>
-    public partial class HelpSection : Page
+    public partial class HelpSection : Window
     {
         public HelpSection()
         {

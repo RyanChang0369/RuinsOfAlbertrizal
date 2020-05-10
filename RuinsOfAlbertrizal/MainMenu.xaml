@@ -10,16 +10,16 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="250"/>
         </Grid.RowDefinitions>
         <Label Style="{StaticResource title}" Panel.ZIndex="9">The Ruins of Albertrizal</Label>
-        <Image Source="assets/Other/TitleImage2.png" Style="{StaticResource highQuality}"/>
+        <Image Source="assets/Other/TitleImage2.png" Style="{StaticResource highQuality}" Grid.RowSpan="2" Stretch="UniformToFill"/>
         <StackPanel Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="NewCampaign" Click="NewCampaign_Click" Content="Start New Campaign"/>
                 <Button x:Name="ContinueCampaign" Click="ContinueCampaign_Click" Content="Continue Campaign"/>
-                <Button x:Name="TestBtn" Click="TestBtn_Click" Content="TestBtn"/>
+                <!--<Button x:Name="TestBtn" Click="TestBtn_Click" Content="TestBtn"/>-->
             </StackPanel>
 
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
@@ -27,13 +27,12 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Click="NewCustomMap" Content="Create New Custom Map"/>
                 <Button Click="EditCustomMap" Content="Edit Custom Map"/>
-                <Button Click="ResetCustomMap" Content="Reset/Export Custom Map" ToolTip="Resets your custom map so other can enjoy it."/>
+                <Button Click="ResetCustomMap" Content="Reset/Export Custom Map" ToolTip="Resets your custom map so others can enjoy it."/>
             </StackPanel>
 
-            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-
-            <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Click="ContinueCustomMap" Content="Continue Custom Map"/>
+                <Button Click="Reference" Content="Open Help Guide"/>
             </StackPanel>
         </StackPanel>
     </Grid>
