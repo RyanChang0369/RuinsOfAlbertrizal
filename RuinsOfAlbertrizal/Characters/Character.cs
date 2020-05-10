@@ -112,6 +112,9 @@ namespace RuinsOfAlbertrizal.Characters
 
         //public List<int> Abilities { get; set; }
 
+        /// <summary>
+        /// Use this to directly apply buffs
+        /// </summary>
         public List<Buff> AppliedBuffs { get; set; }
 
         [XmlIgnore]
@@ -279,5 +282,14 @@ namespace RuinsOfAlbertrizal.Characters
 
             }
         }
+
+        //public override void Reset()
+        //{
+        //    AppliedStats = new int[5];
+        //    AppliedBuffs = new List<Buff>();
+        //    IsCharging = false;
+        //    CurrentConsumables = new List<Consumable>();
+
+        //}
     }
 }

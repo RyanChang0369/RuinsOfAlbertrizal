@@ -16,8 +16,6 @@ namespace RuinsOfAlbertrizal.Text
     {
         private System.Timers.Timer TimerChar = new System.Timers.Timer(100);
 
-        private System.Timers.Timer TimerLine = new System.Timers.Timer(2000);
-
         private TextBlock TextBlock = new TextBlock();
 
         private Button NextBtn = new Button();
@@ -204,6 +202,16 @@ namespace RuinsOfAlbertrizal.Text
                 str = str.Substring(0, characters) + "...";
                 return str;
             }
+        }
+
+        public void Reset()
+        {
+            TimerChar = new System.Timers.Timer(100);
+            lineIndex = 0;
+            charIndex = 0;
+            TextBlock = new TextBlock();
+            NextBtn = new Button();
+            SkipBtn = new Button();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace RuinsOfAlbertrizal.Environment
         public Message IntroMessage { get; set; }
 
         /// <summary>
-        /// The Enemies that can appear in this level.
+        /// The enemies that can appear in this level.
         /// </summary>
         public List<Enemy> StoredEnemies { get; set; }
 
@@ -35,16 +35,16 @@ namespace RuinsOfAlbertrizal.Environment
         public double Points { get; set; }
 
         /// <summary>
-        /// The boss(es) that appears at the end of the level. If there are multiple, they will apear at the same time.
+        /// The boss(es) that appears at the end of the level. If there are multiple, they will appear at the same time.
         /// </summary>
         public List<Boss> Bosses { get; set; }
 
         /// <summary>
         /// The win condition.
         /// </summary>
-        public int WinCondition { get; set; }
+        public WinCondition TheWinCondition { get; set; }
 
-        public enum WinConditions
+        public enum WinCondition
         {
             None,
             DefeatEnemies
@@ -54,11 +54,11 @@ namespace RuinsOfAlbertrizal.Environment
         public bool HasWon {
             get
             {
-                switch (WinCondition)
+                switch (TheWinCondition)
                 {
-                    case (int)WinConditions.None:
+                    case WinCondition.None:
                         return false;
-                    case (int)WinConditions.DefeatEnemies:
+                    case WinCondition.DefeatEnemies:
                         foreach (Boss boss in Bosses)
                         {
                             if (!boss.IsDead)
@@ -94,5 +94,15 @@ namespace RuinsOfAlbertrizal.Environment
             //    }
             //}
         }
+
+        //public override void Reset()
+        //{
+        //    for (int i = 0; i < Bosses.Count; i++)
+        //    {
+        //        Bosses[i].Reset();
+        //    }
+        //    Points = 0;
+        //    IntroMessage.Reset();
+        //}
     }
 }

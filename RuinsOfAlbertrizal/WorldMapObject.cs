@@ -14,7 +14,7 @@ namespace RuinsOfAlbertrizal
     /// <summary>
     /// Has both an icon and a in-game image
     /// </summary>
-    public class WorldMapObject : IconedObjectOfAlbertrizal, INotifyPropertyChanged
+    public abstract class WorldMapObject : IconedObjectOfAlbertrizal, INotifyPropertyChanged
     {
         private string worldImgLocation;
 
@@ -54,5 +54,10 @@ namespace RuinsOfAlbertrizal
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(worldImgLocation));
         }
+
+        /// <summary>
+        /// Resets all applicable variables so that the game can be replayed.
+        /// </summary>
+        //public abstract void Reset();
     }
 }

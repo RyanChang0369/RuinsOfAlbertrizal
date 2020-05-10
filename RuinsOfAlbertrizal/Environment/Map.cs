@@ -16,14 +16,8 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Player> StoredPlayers { get; set; }
 
-        /// <summary>
-        /// For reference only
-        /// </summary>
         public List<Enemy> StoredEnemies { get; set; }
 
-        /// <summary>
-        /// For reference only
-        /// </summary>
         public List<Boss> StoredBosses { get; set; }
 
         public List<Buff> StoredBuffs { get; set; }
@@ -62,5 +56,17 @@ namespace RuinsOfAlbertrizal.Environment
             StoredBlocks = new List<Block>();
             Levels = new List<Level>();
         }
+
+        //public override void Reset()
+        //{
+        //    SeenIntroduction = false;
+        //    IntroMessage.Reset();
+        //    LevelsCompleted = 0;
+
+        //    for (int i = 0; i < Levels.Count; i++)
+        //    {
+        //        Levels[i].Reset();
+        //    }
+        //}
     }
 }
