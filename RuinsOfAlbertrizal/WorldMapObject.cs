@@ -38,9 +38,9 @@ namespace RuinsOfAlbertrizal
             {
                 try
                 {
-                    worldImg = new Bitmap(Path.GetFullPath(WorldImgLocation));
+                    worldImg = new Bitmap(Path.Combine(GameBase.CustomMapLocation, worldImgLocation));
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
                 }

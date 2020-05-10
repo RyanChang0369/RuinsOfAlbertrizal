@@ -1,4 +1,4 @@
-﻿using RuinsOfAlbertrizal.Text;
+﻿using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +35,7 @@ namespace RuinsOfAlbertrizal
                 GameBase.CurrentGame.IntroMessage.Display();
 
                 GameBase.CurrentGame.SeenIntroduction = true;
+                FileHandler.SaveCurrentMap();
             }
         }
 
@@ -43,7 +44,10 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         private void ForwardNavigation()
         {
+            if (GameBase.CurrentGame.SeenIntroduction)
+            {
 
+            }
         }
 
         private void NavAdventureInterface()
@@ -54,6 +58,12 @@ namespace RuinsOfAlbertrizal
         private void SkipBtn_Click(object sender, RoutedEventArgs e)
         {
             NavAdventureInterface();
+        }
+
+        private void NextBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (GameBase.CurrentGame.IntroMessage.NextBtnIsSkip())
+                NavAdventureInterface();
         }
     }
 }

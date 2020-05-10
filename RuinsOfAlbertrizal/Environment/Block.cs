@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -35,7 +36,7 @@ namespace RuinsOfAlbertrizal.Environment
             {
                 try
                 {
-                    tileImage = new Bitmap(TileImageLocation);
+                    tileImage = new Bitmap(Path.Combine(GameBase.CustomMapLocation, tileImageLocation));
                 }
                 catch (Exception)
                 {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Text
@@ -55,7 +56,12 @@ namespace RuinsOfAlbertrizal.Text
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            TimerChar.Stop();
+            if (IsDoneDisplaying(lineIndex + 1))
+            {
+                SkipBtn_Click(sender, e);
+                return;
+            }
+
             NextLine();
             Display();
         }
@@ -65,12 +71,20 @@ namespace RuinsOfAlbertrizal.Text
             TimerChar.Stop();
         }
 
-        private bool IsDoneDisplaying()
+        /// <summary>
+        /// Returns true when all messages are displayed
+        /// </summary>
+        /// <returns></returns>
+        public bool NextBtnIsSkip()
+        {
+            return IsDoneDisplaying(lineIndex + 1);
+        }
+
+        private bool IsDoneDisplaying(int index)
         {
             try
             {
-                _ = Lines[lineIndex];
-                _ = Lines[lineIndex].ToCharArray()[charIndex];
+                _ = Lines[index];
             }
             catch (NullReferenceException)
             {
@@ -91,7 +105,7 @@ namespace RuinsOfAlbertrizal.Text
 
         public void Display()
         {
-            if (IsDoneDisplaying())
+            if (IsDoneDisplaying(lineIndex))
                 return;
 
             TimerChar.Elapsed += new ElapsedEventHandler(SetTextBlockText);
@@ -114,10 +128,17 @@ namespace RuinsOfAlbertrizal.Text
                     }
                     catch (IndexOutOfRangeException)
                     {
+                        TimerChar.Elapsed -= new ElapsedEventHandler(SetTextBlockText);
+                        return;
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        TimerChar.Elapsed -= new ElapsedEventHandler(SetTextBlockText);
                         return;
                     }
                     catch (TaskCanceledException)
                     {
+                        TimerChar.Elapsed -= new ElapsedEventHandler(SetTextBlockText);
                         return;
                     }
                 });
@@ -130,15 +151,11 @@ namespace RuinsOfAlbertrizal.Text
 
         public void NextLine()
         {
+            TimerChar.Stop();
             charIndex = 0;
             lineIndex++;
             TextBlock.Text = "";
             TimerChar.Elapsed -= new ElapsedEventHandler(SetTextBlockText);
-        }
-
-        public void NextLine(object sender, ElapsedEventArgs e)
-        {
-            NextLine();
         }
 
         public override string ToString()

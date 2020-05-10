@@ -60,11 +60,9 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
 
             GameBase.CustomMapLocation = dialog.GetPath();
 
-            //CreateProjectDirectory(dialog.GetPath());
-
             GameBase.NewGame(new Map());
 
-            SaveObject(typeof(Map), GameBase.CurrentGame, GameBase.CustomMapLocation);
+            SaveCurrentMap();
         }
 
 
@@ -146,16 +144,10 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
-        /// <summary>
-        /// Saves the object in default directory
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="obj"></param>
-        /// <exception cref="ArgumentNullException"></exception>
-        //public static void SaveObject(Type type, object obj)
-        //{
-        //    SaveObject(type, obj, GameBase.CustomMapLocation);
-        //}
+        public static void SaveCurrentMap()
+        {
+            SaveObject(typeof(Map), GameBase.CurrentGame, GameBase.CustomMapLocation);
+        }
 
         public static Map LoadMap(string loadLocation)
         {
