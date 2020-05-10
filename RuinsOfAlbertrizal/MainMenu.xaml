@@ -27,7 +27,7 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Click="NewCustomMap" Content="Create New Custom Map"/>
                 <Button Click="EditCustomMap" Content="Edit Custom Map"/>
-                <Button Click="ResetCustomMap" Content="Reset/Export Custom Map" ToolTip="Resets your custom map so other can enjoy it." IsEnabled="False"/>
+                <Button Click="ResetCustomMap" Content="Reset/Export Custom Map" ToolTip="Resets your custom map so other can enjoy it."/>
             </StackPanel>
 
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>

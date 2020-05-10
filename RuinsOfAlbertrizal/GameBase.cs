@@ -1,6 +1,7 @@
 ﻿using RuinsOfAlbertrizal.Environment;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,19 @@ namespace RuinsOfAlbertrizal
 {
     public static class GameBase
     {
-        public static string CustomMapLocation { get; set; }
+        public static string CurrentMapLocation { get; set; }
+
+        public static string StaticMapLocation { get; set; }
+
+        /// <summary>
+        /// The game that is being played.
+        /// </summary>
         public static Map CurrentGame;
+
+        /// <summary>
+        /// The game that is opened for editing.
+        /// </summary>
+        public static Map StaticGame;
         
         /// <summary>
         /// Damage reduction through def = dmg/(def/10)
@@ -22,7 +34,7 @@ namespace RuinsOfAlbertrizal
 
         public enum ClassType
         {
-            None, Warrior, Mage, Scout
+            None = -1, Warrior, Mage, Scout
         }
 
         public static int[] GetBaseValues(ClassType classType)
@@ -77,9 +89,16 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        public static void NewGame(Map map)
+        public static void NewGame()
         {
-            CurrentGame = map;
+            CurrentGame = new Map();
+            StaticGame = new Map();
+        }
+
+        public static void ResetCurrentGame()
+        {
+            CurrentGame = null;
+
         }
     }
 }

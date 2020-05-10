@@ -36,7 +36,7 @@ namespace RuinsOfAlbertrizal.Environment
             {
                 try
                 {
-                    tileImage = new Bitmap(Path.Combine(GameBase.CustomMapLocation, tileImageLocation));
+                    tileImage = new Bitmap(Path.Combine(GameBase.CurrentMapLocation, tileImageLocation));
                 }
                 catch (Exception)
                 {

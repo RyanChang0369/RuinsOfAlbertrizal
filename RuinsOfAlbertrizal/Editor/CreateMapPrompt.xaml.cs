@@ -40,10 +40,10 @@ namespace RuinsOfAlbertrizal.Editor
         {
             InitializeComponent();
 
-            if (GameBase.CurrentGame == null)
+            if (GameBase.StaticGame == null)
                 Map = new Map();
             else
-                Map = GameBase.CurrentGame;
+                Map = GameBase.StaticGame;
 
             DataContext = Map;
             UpdateComponent();
@@ -168,19 +168,21 @@ namespace RuinsOfAlbertrizal.Editor
             NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.RelativeOrAbsolute));
             DoNotUpdate = true;
         }
+
         private void Save(object sender, RoutedEventArgs e)
         {
             StatusBar.Content = "Saving...";
-            GameBase.CurrentGame = Map;
-            FileHandler.SaveObject(typeof(Map), Map, GameBase.CustomMapLocation);
+            GameBase.StaticGame = Map;
+            FileHandler.SaveStaticMap();
             
             StatusBar.Content = "Saved!";
             HasSaved = true;
         }
+
         private void Load(object sender, RoutedEventArgs e)
         {
             FileHandler.LoadCustomCampaign();
-            Map = GameBase.CurrentGame;
+            Map = GameBase.StaticGame;
         }
 
         /// <summary>

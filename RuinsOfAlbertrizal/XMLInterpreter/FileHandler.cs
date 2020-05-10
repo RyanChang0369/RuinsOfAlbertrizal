@@ -58,16 +58,17 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         {
             FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Save, "XAML File|.xml", "map");
 
-            GameBase.CustomMapLocation = dialog.GetPath();
+            GameBase.CurrentMapLocation = dialog.GetPath();
+            GameBase.StaticMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
 
-            GameBase.NewGame(new Map());
+            GameBase.NewGame();
 
-            SaveCurrentMap();
+            SaveStaticMap();
         }
 
 
         /// <summary>
-        /// Opens a file dialog to load a custom map.
+        /// Opens a file dialog to load a custom map (loads current map).
         /// </summary>
         /// <exception cref="IOException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
@@ -75,9 +76,23 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         {
             FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "XAML File | map.xml");
 
-            GameBase.CustomMapLocation = dialog.GetPath();
+            GameBase.CurrentMapLocation = dialog.GetPath();
+            GameBase.StaticMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
 
-            GameBase.NewGame(LoadMap(dialog.GetPath()));
+            GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
+        }
+
+        /// <summary>
+        /// Loads a custom campaign for editing (loads static map).
+        /// </summary>
+        public static void EditCustomCampaign()
+        {
+            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "XAML File | map.xml");
+
+            GameBase.CurrentMapLocation = dialog.GetPath();
+            GameBase.StaticMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
+
+            GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
         }
 
         /// <summary>
@@ -144,9 +159,14 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
+        public static void SaveStaticMap()
+        {
+            SaveObject(typeof(Map), GameBase.StaticGame, GameBase.StaticMapLocation);
+        }
+
         public static void SaveCurrentMap()
         {
-            SaveObject(typeof(Map), GameBase.CurrentGame, GameBase.CustomMapLocation);
+            SaveObject(typeof(Map), GameBase.CurrentGame, GameBase.CurrentMapLocation);
         }
 
         public static Map LoadMap(string loadLocation)
@@ -189,7 +209,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             {
                 FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "PNG File | *.png");
                 string fullPath = CopyImageToProjectDirectory(dialog.GetPath(), fileNameAddition, obj);
-                string relativePath = GetRelativePath(fullPath, GameBase.CustomMapLocation);
+                string relativePath = GetRelativePath(fullPath, GameBase.CurrentMapLocation);
                 return relativePath;
             }
             catch (ArgumentNullException)
@@ -237,7 +257,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             string basetype = obj.GetType().ToString();
             basetype = basetype.Substring(basetype.LastIndexOf(".") + 1);
 
-            string saveLocation = $"{Path.GetDirectoryName(GameBase.CustomMapLocation)}\\{basetype}\\{obj.Name}_{fileNameAddition}.png";
+            string saveLocation = $"{Path.GetDirectoryName(GameBase.CurrentMapLocation)}\\{basetype}\\{obj.Name}_{fileNameAddition}.png";
             Directory.CreateDirectory(Path.GetDirectoryName(saveLocation));
 
             if (File.Exists(saveLocation))

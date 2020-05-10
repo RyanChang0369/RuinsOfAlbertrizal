@@ -44,7 +44,7 @@ namespace RuinsOfAlbertrizal
         {
             try
             {
-                XMLInterpreter.FileHandler.LoadCustomCampaign();
+                XMLInterpreter.FileHandler.EditCustomCampaign();
             }
             catch (ArgumentNullException)
             {
@@ -125,7 +125,7 @@ namespace RuinsOfAlbertrizal
 
             if (result == MessageBoxResult.Yes)
             {
-                //GameBase.CurrentGame.Reset();
+                
             }
         }
     }

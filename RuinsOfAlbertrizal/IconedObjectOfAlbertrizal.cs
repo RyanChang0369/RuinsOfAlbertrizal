@@ -34,7 +34,7 @@ namespace RuinsOfAlbertrizal
             {
                 try
                 {
-                    icon = new Bitmap(Path.Combine(GameBase.CustomMapLocation, iconLocation));
+                    icon = new Bitmap(Path.Combine(GameBase.CurrentMapLocation, iconLocation));
                 }
                 catch (Exception)
                 {
