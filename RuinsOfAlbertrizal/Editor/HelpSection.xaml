@@ -9,14 +9,31 @@
       Title="Reference">
 
     <Grid Background="WhiteSmoke">
-        <FlowDocumentReader>
-            <FlowDocument>
+        <FlowDocumentPageViewer>
+            <FlowDocument ColumnRuleWidth="760">
                 <Paragraph Style="{StaticResource titleP}">Reference for Editing</Paragraph>
                 <Paragraph Style="{StaticResource h1P}">Health</Paragraph>
                 <Paragraph>
-                    When a character's health reaches 0, the character dies. 
+                    When a character's health reaches 0, the character dies. Health is also refered to as
+                    <Italic>HP.</Italic>
+                </Paragraph>
+                <Paragraph>
+                    For reference, a warrior's base health is 200, the mage's base health is 150, 
+                    and the scout's health is 100.
+                </Paragraph>
+                <Paragraph Style="{StaticResource h1P}">Mana</Paragraph>
+                <Paragraph>
+                    Mana determies what attacks a character can use. When using an attack that uses mana,
+                    the attack's mana is subtracted from the player's mana pool.
+                </Paragraph>
+                <Paragraph>
+                    A character may choose to recover their mana. When they do, 30% of their max mana is
+                    restored and their turn is ended.
+                </Paragraph>
+                <Paragraph>
+                    For reference, a warrior has 20 mana, a mage has 100 mana, and a scout has 55 mana.
                 </Paragraph>
             </FlowDocument>
-        </FlowDocumentReader>
+        </FlowDocumentPageViewer>
     </Grid>
 </Page>
