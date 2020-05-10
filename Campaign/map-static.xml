@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Campaign</Name>
+  <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
+  <SeenIntroduction>true</SeenIntroduction>
+  <IntroMessage>
+    <Lines>
+      <string>Legends speak of a glorious castle that is now abandoned.</string>
+      <string>Mysterious creatures have been reported roam the hallways.</string>
+      <string>Mysterious creatures that exists nowhere else but here.</string>
+      <string>But you do not worry about them, for you have your trusty stick.</string>
+    </Lines>
+  </IntroMessage>
+  <StoredPlayers>
+    <Player>
+      <Name>Jerry</Name>
+      <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
+      <GeneralName>Human</GeneralName>
+      <Level>0</Level>
+      <AIStyle>Player</AIStyle>
+      <BaseStats>
+        <int>200</int>
+        <int>20</int>
+        <int>10</int>
+        <int>5</int>
+        <int>5</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
+    </Player>
+    <Player>
+      <Level>0</Level>
+      <AIStyle>Player</AIStyle>
+      <BaseStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
+    </Player>
+  </StoredPlayers>
+  <StoredEnemies>
+    <Enemy>
+      <Name>Slime</Name>
+      <Description>A small slime. Not much of a threat unless it has a shotgun.</Description>
+      <GeneralName>Green Slime</GeneralName>
+      <Level>0</Level>
+      <AIStyle>Beserk</AIStyle>
+      <BaseStats>
+        <int>10</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>2</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
+      <PointGainPerKill>0</PointGainPerKill>
+      <MessagesOnEncounter />
+      <MessagesOnAttack />
+      <MessagesOnDefeat />
+      <MessagesOnVictory />
+    </Enemy>
+  </StoredEnemies>
+  <StoredBosses>
+    <Boss>
+      <Name>Shotgun Slime</Name>
+      <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
+      <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
+      <GeneralName>Rare Green Slime</GeneralName>
+      <Level>10</Level>
+      <AIStyle>Beserk</AIStyle>
+      <BaseStats>
+        <int>2000</int>
+        <int>500</int>
+        <int>10</int>
+        <int>0</int>
+        <int>50</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <Attacks />
+      <IsCharging>false</IsCharging>
+      <PointGainPerKill>0</PointGainPerKill>
+      <MessagesOnEncounter>
+        <Message>
+          <Lines>
+            <string>*reloads shotgun*</string>
+          </Lines>
+        </Message>
+        <Message>
+          <Lines>
+            <string>*inserts 7 clips*</string>
+          </Lines>
+        </Message>
+      </MessagesOnEncounter>
+      <MessagesOnAttack />
+      <MessagesOnDefeat>
+        <Message>
+          <Lines>
+            <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+            <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+          </Lines>
+        </Message>
+      </MessagesOnDefeat>
+      <MessagesOnVictory />
+    </Boss>
+  </StoredBosses>
+  <StoredBuffs>
+    <Buff>
+      <Name>Paralysis</Name>
+      <Description>Cannot move!</Description>
+      <Duration>1</Duration>
+      <TurnsPassed>0</TurnsPassed>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <AIChange>NoAI</AIChange>
+      <Level>0</Level>
+    </Buff>
+    <Buff>
+      <Name>Poison</Name>
+      <Description>Losing health!</Description>
+      <Duration>1</Duration>
+      <TurnsPassed>0</TurnsPassed>
+      <StatGain>
+        <int>-5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <AIChange>Player</AIChange>
+      <Level>0</Level>
+    </Buff>
+  </StoredBuffs>
+  <StoredAttacks>
+    <Attack>
+      <Name>Stab</Name>
+      <Description>Basic stab attack.</Description>
+      <Buffs />
+      <StatLoss>
+        <int>5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>0</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+    </Attack>
+  </StoredAttacks>
+  <StoredItems />
+  <StoredEquiptments />
+  <StoredConsumables />
+  <StoredHazards>
+    <Hazard>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <TypeOfBlock>TangableBlock</TypeOfBlock>
+      <StatLoss>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <Buffs />
+      <DirectionOfDamage>None</DirectionOfDamage>
+    </Hazard>
+  </StoredHazards>
+  <StoredBlocks>
+    <Block>
+      <Name>error_block</Name>
+      <Description>Used as a placeholder.</Description>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <TypeOfBlock>TangableBlock</TypeOfBlock>
+    </Block>
+    <Block>
+      <Location>
+        <X>0</X>
+        <Y>0</Y>
+      </Location>
+      <TypeOfBlock>TangableBlock</TypeOfBlock>
+    </Block>
+  </StoredBlocks>
+  <Levels>
+    <Level>
+      <Name>Final Level</Name>
+      <IntroMessage>
+        <Lines>
+          <string>This is it. The final floor. All you need to do now is escape.</string>
+        </Lines>
+      </IntroMessage>
+      <StoredEnemies />
+      <StoredItems />
+      <StoredEquiptments />
+      <StoredConsumables />
+      <MaxPoints>0</MaxPoints>
+      <Points>0</Points>
+      <Bosses>
+        <Boss>
+          <Name>Shotgun Slime</Name>
+          <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
+          <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
+          <GeneralName>Rare Green Slime</GeneralName>
+          <Level>10</Level>
+          <AIStyle>Beserk</AIStyle>
+          <BaseStats>
+            <int>2000</int>
+            <int>500</int>
+            <int>10</int>
+            <int>0</int>
+            <int>50</int>
+          </BaseStats>
+          <AppliedStats>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </AppliedStats>
+          <AppliedBuffs />
+          <CurrentEquiptments>
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+          </CurrentEquiptments>
+          <CurrentConsumables />
+          <InventoryEquiptments />
+          <InventoryConsumables />
+          <InventoryItems />
+          <Attacks />
+          <IsCharging>false</IsCharging>
+          <PointGainPerKill>0</PointGainPerKill>
+          <MessagesOnEncounter>
+            <Message>
+              <Lines>
+                <string>*reloads shotgun*</string>
+              </Lines>
+            </Message>
+            <Message>
+              <Lines>
+                <string>*inserts 7 clips*</string>
+              </Lines>
+            </Message>
+          </MessagesOnEncounter>
+          <MessagesOnAttack />
+          <MessagesOnDefeat>
+            <Message>
+              <Lines>
+                <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+                <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+              </Lines>
+            </Message>
+          </MessagesOnDefeat>
+          <MessagesOnVictory />
+        </Boss>
+      </Bosses>
+      <TheWinCondition>None</TheWinCondition>
+    </Level>
+  </Levels>
+  <LevelsCompleted>0</LevelsCompleted>
+  <TurnsPassed>0</TurnsPassed>
+</Map>
