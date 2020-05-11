@@ -14,16 +14,16 @@
   <StoredPlayers>
     <Player>
       <Name>Jerry</Name>
-      <Description>Jerry did not sign up for this.</Description>
+      <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <GeneralName>Human</GeneralName>
       <Level>0</Level>
       <AIStyle>Player</AIStyle>
       <BaseStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
+        <int>200</int>
+        <int>20</int>
+        <int>10</int>
+        <int>5</int>
+        <int>5</int>
       </BaseStats>
       <AppliedStats>
         <int>0</int>
@@ -319,6 +319,8 @@
   <Levels>
     <Level>
       <Name>Final Level</Name>
+      <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
+      <SeenIntroduction>true</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>
@@ -402,7 +404,7 @@
           <MessagesOnVictory />
         </Boss>
       </Bosses>
-      <WinCondition>0</WinCondition>
+      <TheWinCondition>None</TheWinCondition>
     </Level>
   </Levels>
   <LevelsCompleted>0</LevelsCompleted>

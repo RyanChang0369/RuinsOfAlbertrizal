@@ -319,6 +319,8 @@
   <Levels>
     <Level>
       <Name>Final Level</Name>
+      <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>
