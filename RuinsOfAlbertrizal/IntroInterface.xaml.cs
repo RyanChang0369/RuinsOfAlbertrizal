@@ -50,20 +50,20 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        private void NavAdventureInterface()
+        private void NavLevelIntro()
         {
-            this.NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("LevelIntroInterface.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void SkipBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavAdventureInterface();
+            NavLevelIntro();
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             if (GameBase.CurrentGame.IntroMessage.NextBtnIsSkip())
-                NavAdventureInterface();
+                NavLevelIntro();
         }
     }
 }
