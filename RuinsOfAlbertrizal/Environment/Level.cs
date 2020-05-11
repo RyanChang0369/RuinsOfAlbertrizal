@@ -14,6 +14,8 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class Level : WorldMapObject
     {
+        public bool SeenIntroduction { get; set; }
+
         public Message IntroMessage { get; set; }
 
         /// <summary>

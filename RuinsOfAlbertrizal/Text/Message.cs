@@ -204,6 +204,15 @@ namespace RuinsOfAlbertrizal.Text
             }
         }
 
+        [XmlIgnore]
+        public string GetPreviewAsProperty
+        {
+            get
+            {
+                return GetPreview(40);
+            }
+        }
+
         public void Reset()
         {
             TimerChar = new System.Timers.Timer(100);

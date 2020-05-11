@@ -80,18 +80,6 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             GameBase.StaticMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
 
             GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
-        }
-
-        /// <summary>
-        /// Loads a custom campaign for editing (loads static map).
-        /// </summary>
-        public static void EditCustomCampaign()
-        {
-            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "XAML File | map.xml");
-
-            GameBase.CurrentMapLocation = dialog.GetPath();
-            GameBase.StaticMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
-
             GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
         }
 
