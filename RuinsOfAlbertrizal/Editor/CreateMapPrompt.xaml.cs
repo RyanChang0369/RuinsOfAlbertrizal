@@ -172,8 +172,19 @@ namespace RuinsOfAlbertrizal.Editor
         private void Save(object sender, RoutedEventArgs e)
         {
             StatusBar.Content = "Saving...";
+
+            MessageBoxResult result = MessageBox.Show("Saving this map will cause all of its progress to be erased. Continue?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+            {
+                StatusBar.Content = "Save Aborted";
+                return;
+            }
+
             GameBase.StaticGame = Map;
+            GameBase.CurrentGame = Map;
             FileHandler.SaveStaticMap();
+            FileHandler.SaveCurrentMap();
             
             StatusBar.Content = "Saved!";
             HasSaved = true;

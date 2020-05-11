@@ -65,7 +65,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="AddIntroMessage" Content="Add/Edit Message" Click="AddIntroMessage_Click" Style="{StaticResource buttonSmallStretch}"/>
-                            <Label Content="{Binding Path=IntroMessage, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Content="{Binding Path=IntroMessage.GetPreviewAsProperty, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
