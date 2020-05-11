@@ -46,7 +46,7 @@ namespace RuinsOfAlbertrizal
         {
             if (GameBase.CurrentGame.SeenIntroduction)
             {
-
+                NavLevelIntro();
             }
         }
 

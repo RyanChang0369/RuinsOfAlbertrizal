@@ -36,6 +36,8 @@ namespace RuinsOfAlbertrizal
                 GameBase.CurrentGame.CurrentLevel.SeenIntroduction = true;
                 FileHandler.SaveCurrentMap();
             }
+            else
+                NavAdventureInterface();
         }
 
         private void NavAdventureInterface()
