@@ -28,7 +28,7 @@ namespace RuinsOfAlbertrizal
 
             DataContext = GameBase.CurrentGame.CurrentLevel;
 
-            if (!GameBase.CurrentGame.CurrentLevel.SeenIntroduction || true)
+            if (!GameBase.CurrentGame.CurrentLevel.SeenIntroduction)
             {
                 GameBase.CurrentGame.CurrentLevel.IntroMessage.InitializeControls(IntroText, NextBtn, SkipBtn);
                 GameBase.CurrentGame.CurrentLevel.IntroMessage.Display();

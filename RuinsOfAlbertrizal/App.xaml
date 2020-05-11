@@ -121,11 +121,25 @@
         </Style>
 
         <Style TargetType="Image" x:Key="goodQuality">
-            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="Linear"/>
         </Style>
 
         <Style TargetType="Image" x:Key="fill" BasedOn="{StaticResource goodQuality}">
             <Setter Property="Stretch" Value="UniformToFill"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="blurred" BasedOn="{StaticResource fill}">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <BlurEffect Radius="10" KernelType="Gaussian" RenderingBias="Performance"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+                </Setter.Value>
+            </Setter>
         </Style>
         
         <!--Validation Templates and Styles-->

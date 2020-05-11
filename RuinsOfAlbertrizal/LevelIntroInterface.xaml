@@ -11,10 +11,10 @@
 
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Style="{StaticResource goodQuality}" x:Name="mainImage">
+        <Image Style="{StaticResource fill}" x:Name="mainImage">
             <Image.Source>
                 <Binding Path="WorldImg">
                     <Binding.Converter>
