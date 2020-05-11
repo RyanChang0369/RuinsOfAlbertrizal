@@ -62,7 +62,14 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectTileImageBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedHazard.TileImageLocation = FileHandler.SaveBitmap(CreatedHazard, "tile");
+            try
+            {
+                CreatedHazard.TileImageLocation = FileHandler.SaveBitmap(CreatedHazard, "tile");
+            }
+            catch (ArgumentException)
+            {
+
+            }
         }
 
         protected override void AddRequiredControls()

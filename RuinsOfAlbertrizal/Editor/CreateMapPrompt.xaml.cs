@@ -492,12 +492,26 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
-            Map.IconLocation = FileHandler.SaveBitmap(Map, "icon");
+            try
+            {
+                Map.IconLocation = FileHandler.SaveBitmap(Map, "icon");
+            }
+            catch (ArgumentException)
+            {
+
+            }
         }
 
         private void SelectWorldImgBtn_Click(object sender, RoutedEventArgs e)
         {
-            Map.WorldImgLocation = FileHandler.SaveBitmap(Map, "worldImg");
+            try
+            {
+                Map.WorldImgLocation = FileHandler.SaveBitmap(Map, "worldImg");
+            }
+            catch (ArgumentException)
+            {
+
+            }
         }
 
         private void AddIntroMessage_Click(object sender, RoutedEventArgs e)

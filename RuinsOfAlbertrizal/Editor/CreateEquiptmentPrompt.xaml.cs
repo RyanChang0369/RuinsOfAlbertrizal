@@ -64,7 +64,14 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedEquiptment.IconLocation = FileHandler.SaveBitmap(CreatedEquiptment, "icon");
+            try
+            {
+                CreatedEquiptment.IconLocation = FileHandler.SaveBitmap(CreatedEquiptment, "icon");
+            }
+            catch (ArgumentException)
+            {
+
+            }
         }
     }
 }

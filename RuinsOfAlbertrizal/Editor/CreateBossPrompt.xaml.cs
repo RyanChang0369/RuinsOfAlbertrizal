@@ -51,12 +51,26 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedBoss.IconLocation = FileHandler.SaveBitmap(CreatedBoss, "icon");
+            try
+            {
+                CreatedBoss.IconLocation = FileHandler.SaveBitmap(CreatedBoss, "icon");
+            }
+            catch (ArgumentException)
+            {
+
+            }
         }
 
         private void SelectWorldImgBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedBoss.WorldImgLocation = FileHandler.SaveBitmap(CreatedBoss, "worldImg");
+            try
+            {
+                CreatedBoss.WorldImgLocation = FileHandler.SaveBitmap(CreatedBoss, "worldImg");
+            }
+            catch (ArgumentException)
+            {
+
+            }
         }
 
         private void AddEncounterMessage_Click(object sender, RoutedEventArgs e)

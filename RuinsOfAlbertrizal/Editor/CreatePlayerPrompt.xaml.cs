@@ -42,12 +42,26 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedPlayer.IconLocation = FileHandler.SaveBitmap(CreatedPlayer, "icon");
+            try
+            {
+                CreatedPlayer.IconLocation = FileHandler.SaveBitmap(CreatedPlayer, "icon");
+            }
+            catch (ArgumentException)
+            {
+
+            }
         }
 
         private void SelectWorldImgBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedPlayer.WorldImgLocation = FileHandler.SaveBitmap(CreatedPlayer, "worldImg");
+            try
+            {
+                CreatedPlayer.WorldImgLocation = FileHandler.SaveBitmap(CreatedPlayer, "worldImg");
+            }
+            catch (ArgumentException)
+            {
+
+            }
         }
     }
 }
