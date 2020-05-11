@@ -52,7 +52,7 @@ namespace RuinsOfAlbertrizal
                     numericalValues[0] = 200;
                     numericalValues[1] = 20;
                     numericalValues[2] = 20;
-                    numericalValues[3] = 5;
+                    numericalValues[3] = 13;
                     numericalValues[4] = 10;
                     break;
                 case 1: //Mage
@@ -66,7 +66,7 @@ namespace RuinsOfAlbertrizal
                     numericalValues[0] = 100;
                     numericalValues[1] = 55;
                     numericalValues[2] = 2;
-                    numericalValues[3] = 7;
+                    numericalValues[3] = 17;
                     numericalValues[4] = 35;
                     break;
             }
