@@ -54,6 +54,10 @@
                     <Italic>Is Magic</Italic>
                     tag is true for an attack, then damage has no effect on that attack.
                 </Paragraph>
+                <Paragraph>
+                    For reference, a warrior has a base damage of 13, a mage has a base damage of 5, and a
+                    scout has a base damage of 17.
+                </Paragraph>
                 
                 <Paragraph Style="{StaticResource h1P}">Speed</Paragraph>
                 <Paragraph>
