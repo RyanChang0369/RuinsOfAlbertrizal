@@ -14,7 +14,7 @@
             <RowDefinition Height="250"/>
         </Grid.RowDefinitions>
         <Label Style="{StaticResource title}" Panel.ZIndex="9">The Ruins of Albertrizal</Label>
-        <Image Source="assets/Other/TitleImage2.png" Style="{StaticResource highQuality}" Grid.RowSpan="2" Stretch="UniformToFill"/>
+        <Image Source="assets/Other/TitleImage2.png" Style="{StaticResource goodQuality}" Grid.RowSpan="2" Stretch="UniformToFill"/>
         <StackPanel Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button x:Name="NewCampaign" Click="NewCampaign_Click" Content="Start New Campaign"/>

@@ -14,7 +14,7 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Style="{StaticResource highQuality}" x:Name="mainImage">
+        <Image Style="{StaticResource goodQuality}" x:Name="mainImage">
             <Image.Source>
                 <Binding Path="WorldImg">
                     <Binding.Converter>

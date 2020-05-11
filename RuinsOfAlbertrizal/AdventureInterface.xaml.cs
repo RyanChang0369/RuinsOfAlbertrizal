@@ -23,6 +23,17 @@ namespace RuinsOfAlbertrizal
         public AdventureInterface()
         {
             InitializeComponent();
+            DataContext = GameBase.CurrentGame.CurrentLevel;
+        }
+
+        private void ExploreBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InventoryBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

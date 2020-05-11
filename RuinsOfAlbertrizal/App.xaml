@@ -120,8 +120,12 @@
             <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
         </Style>
 
-        <Style TargetType="Image" x:Key="highQuality">
+        <Style TargetType="Image" x:Key="goodQuality">
             <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="fill" BasedOn="{StaticResource goodQuality}">
+            <Setter Property="Stretch" Value="UniformToFill"/>
         </Style>
         
         <!--Validation Templates and Styles-->
