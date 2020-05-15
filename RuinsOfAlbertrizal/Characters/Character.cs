@@ -101,8 +101,15 @@ namespace RuinsOfAlbertrizal.Characters
             get => appliedStats;
             set
             {
+                //Do not allow healing if character is dead
+                if (IsDead)
+                    return;
+
                 value = CapAppliedStats(value);
                 appliedStats = value;
+
+                if (IsDead)
+                    Die();
             }
         }
 
@@ -144,12 +151,23 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        //public List<int> Abilities { get; set; }
+        private List<Buff> appliedBuffs;
 
         /// <summary>
         /// Use this to directly apply buffs
         /// </summary>
-        public List<Buff> AppliedBuffs { get; set; }
+        public List<Buff> AppliedBuffs
+        {
+            get => appliedBuffs;
+            set
+            {
+                //Do not allow buffs to be added if character is dead.
+                if (!IsDead)
+                    appliedBuffs = value;
+                else
+                    Die();
+            }
+        }
 
         [XmlIgnore]
         public List<Buff> CurrentBuffs
@@ -324,7 +342,10 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        public void EndTurn()
+        /// <summary>
+        /// Both turns have ended. Hand control over to the next character.
+        /// </summary>
+        public void EndBothTurns()
         {
 
         }
