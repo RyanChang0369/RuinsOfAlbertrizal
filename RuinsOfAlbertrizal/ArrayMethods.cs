@@ -23,6 +23,16 @@ namespace RuinsOfAlbertrizal
             return a3;
         }
 
+        public static int AddMembersOfArray(this int[] a)
+        {
+            int total = 0;
+
+            foreach (int i in a)
+                total += i;
+
+            return total;
+        }
+
         public static string JoinArray(this string[] a, string delimiter)
         {
             try
