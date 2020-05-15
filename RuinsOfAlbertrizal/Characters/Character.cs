@@ -283,6 +283,11 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        public void EndTurn()
+        {
+            
+        }
+
         //public override void Reset()
         //{
         //    AppliedStats = new int[5];

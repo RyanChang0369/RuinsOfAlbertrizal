@@ -71,5 +71,10 @@ namespace RuinsOfAlbertrizal.Mechanics
         {
             
         }
+
+        public void EndTurn()
+        {
+            
+        }
     }
 }

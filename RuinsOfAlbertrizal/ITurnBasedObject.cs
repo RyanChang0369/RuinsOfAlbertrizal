@@ -14,5 +14,7 @@ namespace RuinsOfAlbertrizal
         void TurnEnded();
 
         void TurnStarted();
+
+        void EndTurn();
     }
 }

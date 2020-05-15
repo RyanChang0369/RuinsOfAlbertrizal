@@ -60,5 +60,10 @@ namespace RuinsOfAlbertrizal.Items
 
             }
         }
+
+        public void EndTurn()
+        {
+            
+        }
     }
 }
