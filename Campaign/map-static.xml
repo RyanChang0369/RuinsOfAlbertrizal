@@ -404,7 +404,7 @@
           <MessagesOnVictory />
         </Boss>
       </Bosses>
-      <TheWinCondition>None</TheWinCondition>
+      <TheWinCondition>Unwinnable</TheWinCondition>
     </Level>
   </Levels>
   <LevelsCompleted>0</LevelsCompleted>

@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -96,6 +97,7 @@
     <Compile Include="Editor\AdderPrompts\SlotAdderPrompt.xaml.cs">
       <DependentUpon>SlotAdderPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\Converter\EnumDescriptionConverter.cs" />
     <Compile Include="Editor\Converter\ListConverter.cs" />
     <Compile Include="Editor\Converter\EnumConverter.cs" />
     <Compile Include="Editor\Converter\ImageConverter.cs" />
@@ -144,11 +146,13 @@
     <Compile Include="Editor\HelpSection.xaml.cs">
       <DependentUpon>HelpSection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\Validator\DoubleValidation.cs" />
     <Compile Include="Editor\Validator\PercentValidation.cs" />
     <Compile Include="Editor\Validator\SelectedIndexValidation.cs" />
     <Compile Include="Editor\Validator\RequiredValidation.cs" />
     <Compile Include="Editor\Validator\NumberValidation.cs" />
     <Compile Include="EnumBindingSourceExtension.cs" />
+    <Compile Include="EnumExtension.cs" />
     <Compile Include="Environment\Block.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />

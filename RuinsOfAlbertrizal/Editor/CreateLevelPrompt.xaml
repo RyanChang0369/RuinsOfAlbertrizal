@@ -4,11 +4,22 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
+      xmlns:env="clr-namespace:RuinsOfAlbertrizal.Environment"
       xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
       xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Create Level">
+
+    <!--<Page.Resources>
+        <ObjectDataProvider MethodName="GetValues"
+                        ObjectType="{x:Type sys:Enum}"
+                        x:Key="WinConditionValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="HorizontalAlignment" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Page.Resources>-->
 
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
@@ -58,6 +69,35 @@
                             <Button x:Name="AddIntroMessage" Content="Add/Edit Message" Click="AddIntroMessage_Click" Style="{StaticResource buttonSmallStretch}"/>
                             <Label Content="{Binding Path=IntroMessage.GetPreviewAsProperty, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
+
+                        <Label Content="Win Condition*"/>
+                        <ComboBox>
+                            <ComboBox.ItemsSource>
+                                <Binding Path="TheWinCondition" UpdateSourceTrigger="PropertyChanged" Mode="OneTime">
+                                    <Binding.Converter>
+                                        <converter:EnumConverter/>
+                                    </Binding.Converter>
+                                </Binding>
+                            </ComboBox.ItemsSource>
+                            
+                            <ComboBox.SelectedItem>
+                                <Binding Path="TheWinCondition"/>
+                            </ComboBox.SelectedItem>
+                        </ComboBox>
+
+                        <StackPanel Orientation="Horizontal" ToolTip="The amount of points necessary to trigger the boss fight. When an enemy is defeated, the number of points increases by the difference between the enemy's battle index and the player's level + 1.">
+                            <Label Content="Boss Fight Trigger Index*"/>
+                            <Image Source="questionMark.png" Height="20" Margin="10"/>
+                        </StackPanel>
+                        <TextBox>
+                            <TextBox.Text>
+                                <Binding Path="MaxPoints">
+                                    <Binding.ValidationRules>
+                                        <validation:NumberValidation/>
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                     </StackPanel>
                 </TabItem>
 

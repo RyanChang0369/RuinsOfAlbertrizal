@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using RuinsOfAlbertrizal.Items;
+using System.ComponentModel.DataAnnotations;
 
 namespace RuinsOfAlbertrizal.Environment
 {
@@ -32,9 +33,9 @@ namespace RuinsOfAlbertrizal.Environment
         /// <summary>
         /// Boss fight starts at next encounter if points is equal to or exceeds this.
         /// </summary>
-        public double MaxPoints { get; set; }
+        public int MaxPoints { get; set; }
 
-        public double Points { get; set; }
+        public int Points { get; set; }
 
         /// <summary>
         /// The boss(es) that appears at the end of the level. If there are multiple, they will appear at the same time.
@@ -48,7 +49,9 @@ namespace RuinsOfAlbertrizal.Environment
 
         public enum WinCondition
         {
-            None,
+            [Display(Name="Cannot Win", Description = "There's no possible way to win this level.")]
+            Unwinnable,
+            [Display(Name ="Boss Fight", Description = "Defeat enemies until a boss spawns, then defeat boss to win.")]
             DefeatEnemies
         }
 
@@ -58,7 +61,7 @@ namespace RuinsOfAlbertrizal.Environment
             {
                 switch (TheWinCondition)
                 {
-                    case WinCondition.None:
+                    case WinCondition.Unwinnable:
                         return false;
                     case WinCondition.DefeatEnemies:
                         foreach (Boss boss in Bosses)

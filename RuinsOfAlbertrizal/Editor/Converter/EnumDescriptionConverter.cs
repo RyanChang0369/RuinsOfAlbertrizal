@@ -4,12 +4,11 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace RuinsOfAlbertrizal.Editor.Converter
 {
-    public class EnumConverter : IValueConverter
+    public class EnumDescriptionConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

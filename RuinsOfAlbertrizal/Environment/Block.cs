@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -53,22 +54,22 @@ namespace RuinsOfAlbertrizal.Environment
             /// <summary>
             /// Characters appear behind this hazard and can stand on it. 
             /// </summary>
-            [Description("Characters appear behind this hazard and can stand on it.")]
+            [Display(Name = "Tangable Block", Description = "Characters appear behind this hazard and can stand on it.")]
             TangableBlock,
             /// <summary>
             /// Characters appear ahead of this hazard and can stand on it.
             /// </summary>
-            [Description("Characters appear ahead of this hazard and can stand on it.")]
+            [Display(Name = "Tangable Wall", Description = "Characters appear ahead of this hazard and can stand on it.")]
             TangableWall,
             /// <summary>
             /// Characters appear behind this hazard and cannot stand on it. 
             /// </summary>
-            [Description("Characters appear behind this hazard and cannot stand on it.")]
+            [Display(Name = "Intangable Block", Description = "Characters appear behind this hazard and cannot stand on it.")]
             IntangableBlock,
             /// <summary>
             /// Characters appear ahead of this hazard and cannot stand on it.
             /// </summary>
-            [Description("Characters appear ahead of this hazard and cannot stand on it.")]
+            [Display(Name = "Intangable Wall", Description = "Characters appear ahead of this hazard and cannot stand on it.")]
             IntangableWall
         }
 

@@ -8,20 +8,20 @@ using System.Windows.Controls;
 
 namespace RuinsOfAlbertrizal.Editor.Validator
 {
-    public class NumberValidation : ValidationRule
+    public class DoubleValidation : ValidationRule
     {
         //public int DefaultValue { get; set; }
 
-        public NumberValidation()
+        public DoubleValidation()
         { }
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            int number = 0;
+            double number = 0;
 
             try
             {
                 if (((string)value).Length > 0)
-                    number = int.Parse((string)value);
+                    number = double.Parse((string)value);
             }
             catch (Exception)
             {
