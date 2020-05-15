@@ -45,7 +45,7 @@ namespace RuinsOfAlbertrizal.Characters
         /// <returns></returns>
         public int GetXPGained()
         {
-            return BattlePoints / 10;
+            return BattleIndex / 10;
         }
 
         public override void Die()

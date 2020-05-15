@@ -152,7 +152,7 @@ namespace RuinsOfAlbertrizal.Characters
         /// <summary>
         /// How strong the character is. Ignores any buffs.
         /// </summary>
-        public int BattlePoints
+        public int BattleIndex
         {
             get
             {
