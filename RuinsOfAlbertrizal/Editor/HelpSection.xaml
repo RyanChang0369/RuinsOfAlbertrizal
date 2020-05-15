@@ -6,13 +6,39 @@
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
+      WindowState="Maximized"
       Title="Reference">
 
     <Grid Background="WhiteSmoke">
         <FlowDocumentPageViewer>
             <FlowDocument ColumnWidth="400">
                 <Paragraph Style="{StaticResource titleP}">Reference for Editing</Paragraph>
-                <Paragraph Style="{StaticResource h1P}">Health</Paragraph>
+                <Paragraph Style="{StaticResource h1P}">Characters</Paragraph>
+                <Paragraph>A character is a enemy, player, or boss.</Paragraph>
+
+                <Paragraph Style="{StaticResource h2P}">Battle Index</Paragraph>
+                <Paragraph>
+                    The battle index is a measure of how powerful a character is. It is calculated by adding
+                    all of the character's armored stats (stats gained from armor plus basic stats).
+                </Paragraph>
+                <Paragraph x:Name="battleIndexForWarriorP"/>
+
+                <Paragraph Style="{StaticResource h2P}">Point Gain</Paragraph>
+                <Paragraph>
+                    When a enemy is slain, points get added to a counter in the current level.
+                    When the amount of points is greater than or equal to the user-defined max points, the
+                    boss fight for that level will start
+                </Paragraph>
+                <Paragraph>
+                    The amount of points gained from killing an enemy is equal to 1/10th the enemy's battle
+                    index.
+                </Paragraph>
+
+                <Paragraph Style="{StaticResource h1P}">Stats</Paragraph>
+                <Paragraph>Stats refers to the statistics of various aspects of a character.</Paragraph>
+                <Paragraph>Leveled stats is calculated by </Paragraph>
+                
+                <Paragraph Style="{StaticResource h2P}">Health</Paragraph>
                 <Paragraph>
                     When a character's health reaches 0, the character dies. Health is also refered to as
                     <Italic>HP.</Italic>
@@ -22,7 +48,7 @@
                     and the scout's health is 100.
                 </Paragraph>
                 
-                <Paragraph Style="{StaticResource h1P}">Mana</Paragraph>
+                <Paragraph Style="{StaticResource h2P}">Mana</Paragraph>
                 <Paragraph>
                     Mana determies what attacks a character can use. When using an attack that uses mana,
                     the attack's mana is subtracted from the player's mana pool.
@@ -36,7 +62,7 @@
                     scout has a base mana of 55.
                 </Paragraph>
 
-                <Paragraph Style="{StaticResource h1P}">Defense</Paragraph>
+                <Paragraph Style="{StaticResource h2P}">Defense</Paragraph>
                 <Paragraph>
                     Defense is subtracted from oncoming damage. It does not negate damage recieved from
                     buffs, or from any attacks with the tag
@@ -47,7 +73,7 @@
                     and a scout has a base defense of 2.
                 </Paragraph>
 
-                <Paragraph Style="{StaticResource h1P}">Damage</Paragraph>
+                <Paragraph Style="{StaticResource h2P}">Damage</Paragraph>
                 <Paragraph>
                     Damage is added to all damage dealt by the user. It does not affect damage dealt through
                     buffs. If the
@@ -59,7 +85,7 @@
                     scout has a base damage of 17.
                 </Paragraph>
                 
-                <Paragraph Style="{StaticResource h1P}">Speed</Paragraph>
+                <Paragraph Style="{StaticResource h2P}">Speed</Paragraph>
                 <Paragraph>
                     Speed determines how fast a character can attack.
                     Timers are set to the speed of the character with the most speed. When the timer
@@ -73,7 +99,23 @@
                     a scout has a base speed of 35.
                 </Paragraph>
 
-
+                <Paragraph Style="{StaticResource h1P}">Turns and Rounds</Paragraph>
+                <Paragraph>
+                    A turn is a unit of time where a character can perform one attack, movement, consumption
+                    of an item, or mana replenishment.
+                </Paragraph>
+                <Paragraph>
+                    A round is made up of two turns. After a character's round is up, control is passed on to
+                    the next character.
+                </Paragraph>
+                <Paragraph>
+                    The next character is determined by looking at their speed. A timer is first set up as 10 plus
+                    the speed of the fastest character. When the timer reaches the speed of a character, that character
+                    is chosen. In the case that two characters have the same speed, priority is first given to the player,
+                    then the boss, then the enemy. In the case that two characters of the same type have the same speed,
+                    the order is chosen randomly.
+                </Paragraph>
+                <Paragraph>The timer does not count down when a character is doing their move.</Paragraph>
             </FlowDocument>
         </FlowDocumentPageViewer>
     </Grid>

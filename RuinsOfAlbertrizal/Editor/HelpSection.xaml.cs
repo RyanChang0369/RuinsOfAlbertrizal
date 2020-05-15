@@ -23,6 +23,8 @@ namespace RuinsOfAlbertrizal.Editor
         public HelpSection()
         {
             InitializeComponent();
+            battleIndexForWarriorP.Inlines.Add("The battle index for a level 1 warrior is " +
+                $"{GameBase.GetBaseValues(GameBase.ClassType.Warrior).AddMembersOfArray()}.");
         }
     }
 }
