@@ -11,10 +11,8 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public interface ITurnBasedObject
     {
-        void TurnEnded();
-
-        void TurnStarted();
-
         void EndTurn();
+
+        void StartTurn();
     }
 }

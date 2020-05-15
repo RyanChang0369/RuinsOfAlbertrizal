@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +15,10 @@ namespace RuinsOfAlbertrizal.Characters
 {
     public abstract class Character : WorldMapObject, ITurnBasedObject
     {
+        public const int MaxTurns = 2;
+
+        public int TurnsPassed { get; set; }
+
         /// <summary>
         /// The species name, such as human or slime
         /// </summary>
@@ -86,13 +91,42 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        private int[] appliedStats;
+
         /// <summary>
         /// Use this to apply damage
         /// </summary>
-        public int[] AppliedStats { get; set; }
+        public int[] AppliedStats
+        {
+            get => appliedStats;
+            set
+            {
+                value = CapAppliedStats(value);
+                appliedStats = value;
+            }
+        }
+
+        /// <summary>
+        /// Caps the given 5 element array to the leveled stats.
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        private int[] CapAppliedStats(int[] arr)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (arr[i] > LeveledStats[i])
+                    arr[i] = LeveledStats[i];
+                else if (arr[i] < 0)
+                    arr[i] = 0;
+            }
+
+            return arr;
+        }
 
         [XmlIgnore]
-        public int[] CurrentStats {
+        public int[] CurrentStats
+        {
             get
             {
                 int[] currentStats = { 0, 0, 0, 0, 0 };
@@ -171,7 +205,7 @@ namespace RuinsOfAlbertrizal.Characters
         /// The equiptment the character has equipted
         /// </summary>
         public Equiptment[] CurrentEquiptments { get; set; }
-        
+
         /// <summary>
         /// The consumables the character has consumed
         /// </summary>
@@ -204,6 +238,7 @@ namespace RuinsOfAlbertrizal.Characters
             InventoryConsumables = new List<Consumable>();
             InventoryItems = new List<Item>();
             Attacks = new List<Attack>();
+            Level = 1;
         }
 
         /// <summary>
@@ -215,7 +250,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             Equiptment equiptment = InventoryEquiptments[index];
             Unequipt(index);
-            
+
             foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
             {
 
@@ -253,15 +288,21 @@ namespace RuinsOfAlbertrizal.Characters
             Attacks[attackIndex].BeginAttack(character);
         }
 
+        public void RecoverMana()
+        {
+            AppliedStats[1] += (int)Math.Round(LeveledStats[1] * 0.3);
+            EndTurn();
+        }
+
         public abstract void Die();
 
-        public void TurnEnded()
+        public void EndTurn()
         {
             if (IsDead)
                 Die();
         }
 
-        public void TurnStarted()
+        public void StartTurn()
         {
             if (IsDead)
                 Die();
@@ -274,7 +315,7 @@ namespace RuinsOfAlbertrizal.Characters
                     if (CurrentConsumables[i].HasEnded)
                     {
                         CurrentConsumables.RemoveAt(i);
-                    }    
+                    }
                 }
             }
             catch (Exception)
@@ -285,16 +326,7 @@ namespace RuinsOfAlbertrizal.Characters
 
         public void EndTurn()
         {
-            
+
         }
-
-        //public override void Reset()
-        //{
-        //    AppliedStats = new int[5];
-        //    AppliedBuffs = new List<Buff>();
-        //    IsCharging = false;
-        //    CurrentConsumables = new List<Consumable>();
-
-        //}
     }
 }

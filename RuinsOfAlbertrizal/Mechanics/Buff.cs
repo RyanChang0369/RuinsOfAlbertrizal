@@ -62,17 +62,12 @@ namespace RuinsOfAlbertrizal.Mechanics
             StatGain = new int[5];
         }
 
-        public void TurnEnded()
+        public void EndTurn()
         {
             TurnsPassed++;
         }
 
-        public void TurnStarted()
-        {
-            
-        }
-
-        public void EndTurn()
+        public void StartTurn()
         {
             
         }

@@ -38,12 +38,12 @@ namespace RuinsOfAlbertrizal.Items
         public Consumable()
         { }
 
-        public void TurnEnded()
+        public void EndTurn()
         {
             TurnsPassed++;
         }
 
-        public void TurnStarted()
+        public void StartTurn()
         {
             try
             {
@@ -59,11 +59,6 @@ namespace RuinsOfAlbertrizal.Items
             {
 
             }
-        }
-
-        public void EndTurn()
-        {
-            
         }
     }
 }
