@@ -85,7 +85,7 @@
                             </ComboBox.SelectedItem>
                         </ComboBox>
 
-                        <StackPanel Orientation="Horizontal" ToolTip="The amount of points necessary to trigger the boss fight. When an enemy is defeated, the number of points increases by the difference between the enemy's battle index and the player's level + 1.">
+                        <StackPanel Orientation="Horizontal" ToolTip="The amount of points necessary to trigger the boss fight. When an enemy is defeated, the number of points increases by 1/10th of the enemy's battle index.">
                             <Label Content="Boss Fight Trigger Index*"/>
                             <Image Source="questionMark.png" Height="20" Margin="10"/>
                         </StackPanel>

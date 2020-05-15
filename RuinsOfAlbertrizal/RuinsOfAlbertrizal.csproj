@@ -97,6 +97,7 @@
     <Compile Include="Editor\AdderPrompts\SlotAdderPrompt.xaml.cs">
       <DependentUpon>SlotAdderPrompt.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\ConstructComboBox.cs" />
     <Compile Include="Editor\Converter\EnumDescriptionConverter.cs" />
     <Compile Include="Editor\Converter\ListConverter.cs" />
     <Compile Include="Editor\Converter\EnumConverter.cs" />
