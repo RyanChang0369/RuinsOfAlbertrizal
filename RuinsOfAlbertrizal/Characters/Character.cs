@@ -71,23 +71,23 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Stats with te current armor equipted
+        /// Stats with the current armor equipted
         /// </summary>
         [XmlIgnore]
         public int[] ArmoredStats
         {
             get
             {
-                int[] currentStats = { 0, 0, 0, 0, 0 };
+                int[] armoredStats = { 0, 0, 0, 0, 0 };
 
-                currentStats = ArrayMethods.AddArrays(currentStats, LeveledStats);
+                armoredStats = ArrayMethods.AddArrays(armoredStats, LeveledStats);
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
-                    currentStats = ArrayMethods.AddArrays(currentStats, equiptment.StatGain);
+                    armoredStats = ArrayMethods.AddArrays(armoredStats, equiptment.StatGain);
                 }
 
-                return currentStats;
+                return armoredStats;
             }
         }
 
@@ -96,13 +96,13 @@ namespace RuinsOfAlbertrizal.Characters
         /// <summary>
         /// Use this to apply damage
         /// </summary>
-        public int[] AppliedStats
+        public int[] AppliedStats //ErrorMap 1
         {
             get => appliedStats;
             set
             {
-                //Do not allow healing if character is dead
-                if (IsDead)
+                //Do not allow healing if current map is null or if character is dead
+                if (!GameBase.Initialized() || IsDead)
                     return;
 
                 value = CapAppliedStats(value);
@@ -161,6 +161,9 @@ namespace RuinsOfAlbertrizal.Characters
             get => appliedBuffs;
             set
             {
+                if (!GameBase.Initialized())
+                    return;
+
                 //Do not allow buffs to be added if character is dead.
                 if (!IsDead)
                     appliedBuffs = value;
@@ -208,6 +211,9 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
+                if (this == null)
+                    return 0;
+
                 int total = 0;
 
                 foreach (int i in ArmoredStats)
