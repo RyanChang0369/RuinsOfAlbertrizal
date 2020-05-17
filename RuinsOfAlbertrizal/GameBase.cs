@@ -37,6 +37,9 @@ namespace RuinsOfAlbertrizal
             None = -1, Warrior, Mage, Scout
         }
 
+        public const int TickSpeed = 20;
+
+
         public static int[] GetBaseValues(ClassType classType)
         {
             return GetBaseValues((int)classType);
@@ -97,10 +100,13 @@ namespace RuinsOfAlbertrizal
             CurrentGame.SpawnAll();
         }
 
-        public static void ResetCurrentGame()
+        /// <summary>
+        /// Returns true if both the current and static games are properly initialized.
+        /// </summary>
+        /// <returns></returns>
+        public static bool Initialized()
         {
-            CurrentGame = null;
-
+            return CurrentGame != null && StaticGame != null;
         }
     }
 }
