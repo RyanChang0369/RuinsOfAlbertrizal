@@ -11,8 +11,6 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class Map : WorldMapObject
     {
-        public Timer SpeedTimer { get; set; }
-
         public bool SeenIntroduction { get; set; }
 
         public Message IntroMessage { get; set; }
@@ -30,19 +28,9 @@ namespace RuinsOfAlbertrizal.Environment
         public List<Enemy> AliveEnemies { get; set; }
 
         /// <summary>
-        /// The players with the same speed in queue to have their round started.
+        /// The characters with the same speed in queue to have their round started.
         /// </summary>
-        public List<Player> ConcurrentPlayers { get; set; }
-
-        /// <summary>
-        /// The bosses with the same speed in queue to have their round started.
-        /// </summary>
-        public List<Boss> ConcurrentBosses { get; set; }
-
-        /// <summary>
-        /// The enemies with the same speed in queue to have their round started.
-        /// </summary>
-        public List<Enemy> ConcurrentEnemies { get; set; }
+        public List<Character> ConcurrentCharacters { get; set; }
 
         public List<Buff> StoredBuffs { get; set; }
 
@@ -70,14 +58,16 @@ namespace RuinsOfAlbertrizal.Environment
         /// </summary>
         public int RoundsPassed { get; set; }
 
+        public int ElaspedTime { get; set; }
+
+        private Timer SpeedTimer { get; set; }
+
         public Map()
         {
             StoredPlayers = new List<Player>();
             StoredEnemies = new List<Enemy>();
             StoredBosses = new List<Boss>();
-            ConcurrentPlayers = new List<Player>();
-            ConcurrentEnemies = new List<Enemy>();
-            ConcurrentBosses = new List<Boss>();
+            ConcurrentCharacters = new List<Character>();
             AlivePlayers = new List<Player>();
             AliveEnemies = new List<Enemy>();
             AliveBosses = new List<Boss>();
@@ -105,28 +95,63 @@ namespace RuinsOfAlbertrizal.Environment
         {
             int fastestSpeed = 0;
 
+            ConcurrentCharacters.Clear();
+
             foreach (Player player in AlivePlayers)
             {
-                if (player.CurrentStats[4] > fastestSpeed)
+                if (player.CurrentStats[4] >= fastestSpeed)
                     fastestSpeed = player.CurrentStats[4];
             }
 
             foreach (Boss boss in AliveBosses)
             {
-                if (boss.CurrentStats[4] > fastestSpeed)
+                if (boss.CurrentStats[4] >= fastestSpeed)
                     fastestSpeed = boss.CurrentStats[4];
             }
 
             foreach (Enemy enemy in AliveEnemies)
             {
-                if (enemy.CurrentStats[4] > fastestSpeed)
+                if (enemy.CurrentStats[4] >= fastestSpeed)
                     fastestSpeed = enemy.CurrentStats[4];
             }
 
-            SpeedTimer = new Timer();
+            foreach (Player player in AlivePlayers)
+            {
+                if (player.CurrentStats[4] == fastestSpeed)
+                    ConcurrentCharacters.Add(player);
+            }
+
+            foreach (Boss boss in AliveBosses)
+            {
+                if (boss.CurrentStats[4] == fastestSpeed)
+                    ConcurrentCharacters.Add(boss);
+            }
+
+            foreach (Enemy enemy in AliveEnemies)
+            {
+                if (enemy.CurrentStats[4] == fastestSpeed)
+                    ConcurrentCharacters.Add(enemy);
+            }
+
+            SpeedTimer = new Timer(GameBase.TickSpeed);
+            SpeedTimer.Elapsed += new ElapsedEventHandler(Tick);
+            SpeedTimer.Start();
         }
 
-        public void StartRound()
+        private void Tick(object sender, ElapsedEventArgs e)
+        {
+            ElaspedTime++;
+
+            int fateSelector;
+
+            if (ConcurrentCharacters.Count > 0)
+            {
+                fateSelector = RNG.GetRandomInteger(ConcurrentCharacters.Count);
+                StartRound(ConcurrentCharacters[fateSelector]);
+            }
+        }
+
+        public void StartRound(Character character)
         {
             SpeedTimer.Stop();
         }
@@ -137,7 +162,7 @@ namespace RuinsOfAlbertrizal.Environment
         public void EndRound()
         {
             RoundsPassed++;
-            SpeedTimer.Start();
+            SetTimer();
         }
 
         public void StartTurn()
