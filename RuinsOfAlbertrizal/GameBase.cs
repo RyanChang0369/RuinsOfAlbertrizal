@@ -96,8 +96,6 @@ namespace RuinsOfAlbertrizal
         {
             CurrentGame = new Map();
             StaticGame = new Map();
-
-            CurrentGame.SpawnAll();
         }
 
         /// <summary>

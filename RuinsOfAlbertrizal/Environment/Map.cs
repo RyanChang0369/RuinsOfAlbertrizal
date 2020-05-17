@@ -2,9 +2,7 @@
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
-using System;
 using System.Collections.Generic;
-using System.Timers;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
@@ -20,17 +18,6 @@ namespace RuinsOfAlbertrizal.Environment
         public List<Boss> StoredBosses { get; set; }
 
         public List<Enemy> StoredEnemies { get; set; }
-
-        public List<Player> AlivePlayers { get; set; }
-
-        public List<Boss> AliveBosses { get; set; }
-
-        public List<Enemy> AliveEnemies { get; set; }
-
-        /// <summary>
-        /// The characters with the same speed in queue to have their round started.
-        /// </summary>
-        public List<Character> ConcurrentCharacters { get; set; }
 
         public List<Buff> StoredBuffs { get; set; }
 
@@ -53,24 +40,11 @@ namespace RuinsOfAlbertrizal.Environment
         [XmlIgnore]
         public Level CurrentLevel { get => Levels[LevelsCompleted]; }
 
-        /// <summary>
-        /// The number of rounds that has passed since the beginning of this map.
-        /// </summary>
-        public int RoundsPassed { get; set; }
-
-        public int ElaspedTime { get; set; }
-
-        private Timer SpeedTimer { get; set; }
-
         public Map()
         {
             StoredPlayers = new List<Player>();
             StoredEnemies = new List<Enemy>();
             StoredBosses = new List<Boss>();
-            ConcurrentCharacters = new List<Character>();
-            AlivePlayers = new List<Player>();
-            AliveEnemies = new List<Enemy>();
-            AliveBosses = new List<Boss>();
             StoredBuffs = new List<Buff>();
             StoredAttacks = new List<Attack>();
             StoredItems = new List<Item>();
@@ -79,95 +53,6 @@ namespace RuinsOfAlbertrizal.Environment
             StoredHazards = new List<Hazard>();
             StoredBlocks = new List<Block>();
             Levels = new List<Level>();
-        }
-
-        /// <summary>
-        /// Makes all the characters alive
-        /// </summary>
-        public void SpawnAll()
-        {
-            AlivePlayers = StoredPlayers;
-            AliveEnemies = StoredEnemies;
-            AliveBosses = StoredBosses;
-        }
-
-        public void SetTimer()
-        {
-            int fastestSpeed = 0;
-
-            ConcurrentCharacters.Clear();
-
-            foreach (Player player in AlivePlayers)
-            {
-                if (player.CurrentStats[4] >= fastestSpeed)
-                    fastestSpeed = player.CurrentStats[4];
-            }
-
-            foreach (Boss boss in AliveBosses)
-            {
-                if (boss.CurrentStats[4] >= fastestSpeed)
-                    fastestSpeed = boss.CurrentStats[4];
-            }
-
-            foreach (Enemy enemy in AliveEnemies)
-            {
-                if (enemy.CurrentStats[4] >= fastestSpeed)
-                    fastestSpeed = enemy.CurrentStats[4];
-            }
-
-            foreach (Player player in AlivePlayers)
-            {
-                if (player.CurrentStats[4] == fastestSpeed)
-                    ConcurrentCharacters.Add(player);
-            }
-
-            foreach (Boss boss in AliveBosses)
-            {
-                if (boss.CurrentStats[4] == fastestSpeed)
-                    ConcurrentCharacters.Add(boss);
-            }
-
-            foreach (Enemy enemy in AliveEnemies)
-            {
-                if (enemy.CurrentStats[4] == fastestSpeed)
-                    ConcurrentCharacters.Add(enemy);
-            }
-
-            SpeedTimer = new Timer(GameBase.TickSpeed);
-            SpeedTimer.Elapsed += new ElapsedEventHandler(Tick);
-            SpeedTimer.Start();
-        }
-
-        private void Tick(object sender, ElapsedEventArgs e)
-        {
-            ElaspedTime++;
-
-            int fateSelector;
-
-            if (ConcurrentCharacters.Count > 0)
-            {
-                fateSelector = RNG.GetRandomInteger(ConcurrentCharacters.Count);
-                StartRound(ConcurrentCharacters[fateSelector]);
-            }
-        }
-
-        public void StartRound(Character character)
-        {
-            SpeedTimer.Stop();
-        }
-
-        /// <summary>
-        /// Hand control over to the next character
-        /// </summary>
-        public void EndRound()
-        {
-            RoundsPassed++;
-            SetTimer();
-        }
-
-        public void StartTurn()
-        {
-            throw new NotImplementedException();
         }
     }
 }

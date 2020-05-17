@@ -154,6 +154,7 @@
     <Compile Include="Editor\Validator\NumberValidation.cs" />
     <Compile Include="EnumBindingSourceExtension.cs" />
     <Compile Include="EnumExtension.cs" />
+    <Compile Include="Environment\BattleField.cs" />
     <Compile Include="Environment\Block.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
