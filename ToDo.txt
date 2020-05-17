@@ -2,4 +2,4 @@ Items
 Images png's
 sprites
 Have equiptment drawn onto the characters.
-Add additional places where the icon can appear
+Implement ICloneable on Character class
