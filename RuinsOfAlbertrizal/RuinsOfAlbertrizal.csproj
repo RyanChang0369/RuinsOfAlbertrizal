@@ -175,6 +175,8 @@
     <Compile Include="Environment\Map.cs" />
     <Compile Include="MiscMethods.cs" />
     <Compile Include="ObjectOfAlbertrizal.cs" />
+    <Compile Include="RNG.cs" />
+    <Compile Include="Testing.cs" />
     <Compile Include="Text\Message.cs" />
     <Compile Include="ITurnBasedObject.cs" />
     <Compile Include="WorldMapObject.cs" />

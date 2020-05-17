@@ -26,6 +26,7 @@ namespace RuinsOfAlbertrizal
         public MainMenu()
         {
             InitializeComponent();
+            Testing.InitTest();
         }
 
         private void NewCustomMap(object sender, RoutedEventArgs e)
