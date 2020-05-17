@@ -31,7 +31,7 @@ namespace RuinsOfAlbertrizal
             {
                 return;
             }
-            //else if (GameBase.CurrentGame == null || !CreateMapPrompt.Map.Equals(GameBase.CurrentGame))
+            //else if (!GameBase.Initialized() || !CreateMapPrompt.Map.Equals(GameBase.CurrentGame))
             //{
             //    MessageBoxResult result = MessageBox.Show("You have unsaved data. Press OK to discard all changes.", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
 
