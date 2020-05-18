@@ -118,13 +118,13 @@
 
         <Style TargetType="ComboBox" BasedOn="{StaticResource defaultComboBox}"/>
 
-        <Style TargetType="ComboBox" BasedOn="{StaticResource defaultComboBox}" x:Key="boundComboBox">
+        <!--<Style TargetType="ComboBox" BasedOn="{StaticResource defaultComboBox}" x:Key="boundComboBox">
             <Setter Property="DataTemplate">
                 <Setter.Value>
                     <TextBlock editor:EnumExtension.MoreDetails="True"/>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>-->
 
         <!--Image Styles-->
         <Style TargetType="Image">

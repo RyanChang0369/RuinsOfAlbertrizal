@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
-    public abstract class Character : WorldMapObject, ITurnBasedObject
+    public abstract class Character : WorldMapObject, ITurnBasedObject, IUniqueBuffEffects
     {
         public const int MaxTurns = 2;
 
@@ -371,17 +371,18 @@ namespace RuinsOfAlbertrizal.Characters
 
         public void GetAttacked(Attack attack)
         {
-            if (CurrentStats[0] != 1)
+            foreach (Buff buff in CurrentBuffs)
             {
-                foreach (Buff buff in CurrentBuffs)
+                if (buff.TypeOfBuff == Buff.BuffType.LastHope && CurrentStats[0] != 1
+                    && (CurrentStats[0] - attack.StatLoss[0]) <= 0)
                 {
-                    if (buff.TypeOfBuff == Buff.BuffType.LastHope && (CurrentStats[0] - attack.StatLoss[0]) <= 0)
-                    {
-                        CurrentStats[0] = 1;
-                        return;
-                    }
+                    CurrentStats[0] = 1;
+                    return;
                 }
+                else if (buff.TypeOfBuff == Buff.BuffType.Invunerable)
+                    return;
             }
+            
 
             for (int i = 0; i < attack.StatLoss.Length; i++)
             {

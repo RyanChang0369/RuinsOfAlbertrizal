@@ -26,10 +26,5 @@ namespace RuinsOfAlbertrizal
         /// Removes all applied buffs. Static buffs unaffected
         /// </summary>
         void Cleanse();
-
-        /// <summary>
-        /// If health is above 1, then negate any lethal attack and set health to 1
-        /// </summary>
-        void LastHope();
     }
 }

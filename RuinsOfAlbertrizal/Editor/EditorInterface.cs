@@ -1,9 +1,11 @@
 ﻿using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -60,56 +62,32 @@ namespace RuinsOfAlbertrizal.Editor
 
         protected abstract void ClearVariable();
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <exception cref="ArgumentNullException"></exception>
-        ///// <returns></returns>
-        //protected static string GetBitmapPath()
-        //{
-        //    FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "PNG File | *.png");
-        //    return dialog.GetPath();
-        //}
+        protected void ComboBox_ChangeTooltip(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string tooltip = "";
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <exception cref="ArgumentException"></exception>
-        ///// <returns></returns>
-        //protected static Bitmap OpenBitmap()
-        //{
-        //    try
-        //    {
-        //        return (Bitmap)Bitmap.FromFile(GetBitmapPath());
-        //    }
-        //    catch (ArgumentNullException)
-        //    {
-        //        throw new ArgumentException();
-        //    }
-        //    catch (IOException)
-        //    {
-        //        MessageBox.Show("File cannot be read or is busy.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        throw new ArgumentException();
-        //    }
-        //}
+            try
+            {
+                //Fix
+                Enum enumValue = (Enum)comboBox.Items.SourceCollection;
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="width">The expected width of the bitmap.</param>
-        ///// <param name="height">The expected height of the bitmap.</param>
-        ///// <returns></returns>
-        //protected static Bitmap OpenBitmap(int width, int height)
-        //{
-        //    Bitmap bitmap = OpenBitmap();
+                FieldInfo fi = enumValue.GetType().GetField(enumValue.ToString());
 
-        //    if (bitmap.Width != width || bitmap.Height != height)
-        //    {
-        //        MessageBox.Show($"Dimentions of image is incorrect. Must be {width} pixels long and {height} pixels tall.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        //        throw new ArgumentException("Incorrect picture dimentions.");
-        //    }
-        //    else
-        //        return bitmap;
-        //}
+                DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
+                    typeof(DescriptionAttribute), false);
+
+                if (attributes != null && attributes.Length > 0)
+                    tooltip =  attributes[0].Description;
+                else
+                    tooltip = "Select item to view description";
+            }
+            catch (Exception)
+            {
+                tooltip = "Select item to view description";
+            }
+
+            comboBox.ToolTip = tooltip;
+        }
     }
 }
