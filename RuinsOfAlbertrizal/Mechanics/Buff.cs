@@ -31,6 +31,17 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         public int[] StatGain { get; set; }
 
+        public enum BuffType
+        {
+            None,
+            InstaKill,
+            Revive,
+            Cleanse,
+            LastHope
+        }
+
+        public BuffType TypeOfBuff { get; set; }
+
         [XmlIgnore]
         public int[] LeveledStatGain
         {
@@ -60,6 +71,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         public Buff()
         {
             StatGain = new int[5];
+            TypeOfBuff = new BuffType();
         }
 
         public void EndTurn()

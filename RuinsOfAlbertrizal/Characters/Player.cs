@@ -19,7 +19,6 @@ namespace RuinsOfAlbertrizal.Characters
         public override void Die()
         {
             MessageBox.Show("You have died...");
-            GameBase.CurrentGame.AlivePlayers.Remove(this);
             throw new NotImplementedException();
         }
 

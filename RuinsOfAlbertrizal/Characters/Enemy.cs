@@ -50,7 +50,6 @@ namespace RuinsOfAlbertrizal.Characters
 
         public override void Die()
         {
-            GameBase.CurrentGame.AliveEnemies.Remove(this);
             throw new NotImplementedException();
         }
     }

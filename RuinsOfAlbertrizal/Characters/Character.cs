@@ -108,8 +108,7 @@ namespace RuinsOfAlbertrizal.Characters
                 value = CapAppliedStats(value);
                 appliedStats = value;
 
-                if (IsDead)
-                    Die();
+                CheckIfDead();
             }
         }
 
@@ -131,6 +130,27 @@ namespace RuinsOfAlbertrizal.Characters
             return arr;
         }
 
+        /// <summary>
+        /// The stats from armor and buffs
+        /// </summary>
+        [XmlIgnore]
+        public int[] CurrentMaxStats
+        {
+            get
+            {
+                int[] currentMaxStats = new int[5];
+
+                currentMaxStats = ArrayMethods.AddArrays(currentMaxStats, ArmoredStats);
+
+                foreach (Buff buff in CurrentBuffs)
+                {
+                    currentMaxStats = ArrayMethods.AddArrays(currentMaxStats, buff.LeveledStatGain);
+                }
+
+                return currentMaxStats;
+            }
+        }
+
         [XmlIgnore]
         public int[] CurrentStats
         {
@@ -138,13 +158,7 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 int[] currentStats = { 0, 0, 0, 0, 0 };
 
-                currentStats = ArrayMethods.AddArrays(currentStats, ArmoredStats);
-
-                foreach (Buff buff in CurrentBuffs)
-                {
-                    currentStats = ArrayMethods.AddArrays(currentStats, buff.LeveledStatGain);
-                }
-
+                currentStats = ArrayMethods.AddArrays(currentStats, CurrentMaxStats);
                 currentStats = ArrayMethods.AddArrays(currentStats, AppliedStats);
 
                 return currentStats;
@@ -168,7 +182,10 @@ namespace RuinsOfAlbertrizal.Characters
                 if (!IsDead)
                     appliedBuffs = value;
                 else
+                {
                     Die();
+                    return;
+                }
             }
         }
 
@@ -322,14 +339,12 @@ namespace RuinsOfAlbertrizal.Characters
 
         public void EndTurn()
         {
-            if (IsDead)
-                Die();
+            CheckIfDead();
         }
 
         public void StartTurn()
         {
-            if (IsDead)
-                Die();
+            CheckIfDead();
 
             //Remove any expired consumables
             try
@@ -348,12 +363,45 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        /// <summary>
-        /// Both turns have ended. Hand control over to the next character.
-        /// </summary>
-        public void EndBothTurns()
+        public void CheckIfDead()
         {
+            if (IsDead)
+                Die();
+        }
 
+        public void GetAttacked(Attack attack)
+        {
+            if (CurrentStats[0] != 1)
+            {
+                foreach (Buff buff in CurrentBuffs)
+                {
+                    if (buff.TypeOfBuff == Buff.BuffType.LastHope && (CurrentStats[0] - attack.StatLoss[0]) <= 0)
+                    {
+                        CurrentStats[0] = 1;
+                        return;
+                    }
+                }
+            }
+
+            for (int i = 0; i < attack.StatLoss.Length; i++)
+            {
+                AppliedStats[i] -= attack.StatLoss[i];
+            }
+        }
+
+        public void InstaKill()
+        {
+            AppliedStats[0] -= CurrentStats[0] * 10;
+        }
+
+        public void Revive()
+        {
+            AppliedStats[0] += (int)Math.Round(LeveledStats[0] * 0.2);
+        }
+
+        public void Cleanse()
+        {
+            AppliedBuffs.Clear();
         }
     }
 }

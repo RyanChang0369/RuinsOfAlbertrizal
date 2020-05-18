@@ -4,6 +4,7 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib" 
              xmlns:ai="clr-namespace:RuinsOfAlbertrizal.AIs"
              xmlns:local="clr-namespace:RuinsOfAlbertrizal"
+             xmlns:editor="clr-namespace:RuinsOfAlbertrizal.Editor"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!--Generic FrameworkElement Styles-->
@@ -108,11 +109,21 @@
         </Style>
 
         <!--ComboBox Styles-->
-        <Style TargetType="ComboBox">
+        <Style TargetType="ComboBox" x:Key="defaultComboBox">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="10, 0"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="MinWidth" Value="400"/>
+        </Style>
+
+        <Style TargetType="ComboBox" BasedOn="{StaticResource defaultComboBox}"/>
+
+        <Style TargetType="ComboBox" BasedOn="{StaticResource defaultComboBox}" x:Key="boundComboBox">
+            <Setter Property="DataTemplate">
+                <Setter.Value>
+                    <TextBlock editor:EnumExtension.MoreDetails="True"/>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <!--Image Styles-->

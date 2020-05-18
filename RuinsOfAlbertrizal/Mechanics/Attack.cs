@@ -62,10 +62,7 @@ namespace RuinsOfAlbertrizal.Mechanics
                 TurnSinceAttacked = 0;
                 TurnsSinceBeginCharge = 0;
 
-                for (int i = 0; i < StatLoss.Length; i++)
-                {
-                    character.AppliedStats[i] -= StatLoss[i];
-                }
+                character.GetAttacked(this);
             }
             else if (!IsCharged)
             {

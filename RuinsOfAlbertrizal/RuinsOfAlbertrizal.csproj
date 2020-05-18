@@ -152,13 +152,14 @@
     <Compile Include="Editor\Validator\SelectedIndexValidation.cs" />
     <Compile Include="Editor\Validator\RequiredValidation.cs" />
     <Compile Include="Editor\Validator\NumberValidation.cs" />
-    <Compile Include="EnumBindingSourceExtension.cs" />
-    <Compile Include="EnumExtension.cs" />
+    <Compile Include="Editor\EnumExtension.cs" />
     <Compile Include="Environment\BattleField.cs" />
     <Compile Include="Environment\Block.cs" />
+    <Compile Include="Environment\EnivronmentEnums.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
     <Compile Include="IconedObjectOfAlbertrizal.cs" />
+    <Compile Include="IUniqueBuffEffects.cs" />
     <Compile Include="LevelIntroInterface.xaml.cs">
       <DependentUpon>LevelIntroInterface.xaml</DependentUpon>
     </Compile>

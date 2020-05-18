@@ -4,19 +4,11 @@ using System.Timers;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class BattleField
+    public class BattleField : ITurnBasedObject
     {
-        public List<Player> AlivePlayers { get; set; }
+        public List<Character> AliveCharacters { get; set; }
 
-        public List<Boss> AliveBosses { get; set; }
-
-        public List<Enemy> AliveEnemies { get; set; }
-
-        public List<Player> DeadPlayers { get; set; }
-
-        public List<Boss> DeadBosses { get; set; }
-
-        public List<Enemy> DeadEnemies { get; set; }
+        public List<Character> DeadCharacters { get; set; }
 
         /// <summary>
         /// The characters with the same speed in queue to have their round started.
@@ -35,13 +27,11 @@ namespace RuinsOfAlbertrizal.Environment
         public BattleField(List<Player> players, List<Boss> bosses, List<Enemy> enemies)
         {
             ConcurrentCharacters = new List<Character>();
-            DeadPlayers = new List<Player>();
-            DeadEnemies = new List<Enemy>();
-            DeadBosses = new List<Boss>();
+            DeadCharacters = new List<Character>();
 
-            AlivePlayers = players;
-            AliveBosses = bosses;
-            AliveEnemies = enemies;
+            AliveCharacters.AddRange(players);
+            AliveCharacters.AddRange(bosses);
+            AliveCharacters.AddRange(enemies);
         }
 
         public void SetTimer()
@@ -50,40 +40,16 @@ namespace RuinsOfAlbertrizal.Environment
 
             ConcurrentCharacters.Clear();
 
-            foreach (Player player in AlivePlayers)
+            foreach (Character character in AliveCharacters)
             {
-                if (player.CurrentStats[4] >= fastestSpeed)
-                    fastestSpeed = player.CurrentStats[4];
+                if (character.CurrentStats[4] >= fastestSpeed)
+                    fastestSpeed = character.CurrentStats[4];
             }
 
-            foreach (Boss boss in AliveBosses)
+            foreach (Character character in AliveCharacters)
             {
-                if (boss.CurrentStats[4] >= fastestSpeed)
-                    fastestSpeed = boss.CurrentStats[4];
-            }
-
-            foreach (Enemy enemy in AliveEnemies)
-            {
-                if (enemy.CurrentStats[4] >= fastestSpeed)
-                    fastestSpeed = enemy.CurrentStats[4];
-            }
-
-            foreach (Player player in AlivePlayers)
-            {
-                if (player.CurrentStats[4] == fastestSpeed)
-                    ConcurrentCharacters.Add(player);
-            }
-
-            foreach (Boss boss in AliveBosses)
-            {
-                if (boss.CurrentStats[4] == fastestSpeed)
-                    ConcurrentCharacters.Add(boss);
-            }
-
-            foreach (Enemy enemy in AliveEnemies)
-            {
-                if (enemy.CurrentStats[4] == fastestSpeed)
-                    ConcurrentCharacters.Add(enemy);
+                if (character.CurrentStats[4] == fastestSpeed)
+                    ConcurrentCharacters.Add(character);
             }
 
             SpeedTimer = new Timer(GameBase.TickSpeed);
@@ -121,7 +87,24 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void StartTurn()
         {
-            
+            RemoveDeadCharacters();
+        }
+
+        public void EndTurn()
+        {
+            RemoveDeadCharacters();
+        }
+
+        private void RemoveDeadCharacters()
+        {
+            foreach (Character character in AliveCharacters)
+            {
+                if (character.IsDead)
+                {
+                    AliveCharacters.Remove(character);
+                    DeadCharacters.Add(character);
+                }
+            }
         }
     }
 }

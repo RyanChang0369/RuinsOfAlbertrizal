@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:sys="clr-namespace:System;assembly=mscorlib" 
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
+      xmlns:editedObj="clr-namespace:RuinsOfAlbertrizal.Environment"
       xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
       xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
       xmlns:ai="clr-namespace:RuinsOfAlbertrizal.AIs"
@@ -14,6 +15,11 @@
 
     <Page.Resources>
         <local:CreateMapPrompt x:Key="CreateMapPrompt"/>
+        <!--<ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="DamageDirectionProvider">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="editedObj:Block+DamageDirection"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>-->
     </Page.Resources>
     
     <Grid Background="WhiteSmoke">
@@ -118,32 +124,10 @@
                     <Label Content="Direction of Damage *"/>
                     <Image Source="questionMark.png" Height="20" Margin="10"/>
                 </StackPanel>
-                <ComboBox Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10,0,0,0">
-                    <ComboBox.ItemsSource>
-                        <Binding Path="DirectionOfDamage" UpdateSourceTrigger="PropertyChanged" Mode="OneTime">
-                            <Binding.Converter>
-                                <converter:EnumConverter/>
-                            </Binding.Converter>
-                        </Binding>
-                    </ComboBox.ItemsSource>
-                    <ComboBox.SelectedItem>
-                        <Binding Path="DirectionOfDamage"/>
-                    </ComboBox.SelectedItem>
-                </ComboBox>
+                <ComboBox SelectedItem="{Binding Path=DirectionOfDamage, Mode=TwoWay}" local:EnumExtension.Enum="{x:Type editedObj:DamageDirection}"/>
 
                 <Label Content="Hazard Type *"/>
-                <ComboBox Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10,0,0,0">
-                    <ComboBox.ItemsSource>
-                        <Binding Path="TypeOfBlock" UpdateSourceTrigger="PropertyChanged" Mode="OneTime">
-                            <Binding.Converter>
-                                <converter:EnumConverter/>
-                            </Binding.Converter>
-                        </Binding>
-                    </ComboBox.ItemsSource>
-                    <ComboBox.SelectedItem>
-                        <Binding Path="TypeOfBlock"/>
-                    </ComboBox.SelectedItem>
-                </ComboBox>
+                <ComboBox SelectedItem="{Binding Path=TypeOfBlock, Mode=TwoWay}" local:EnumExtension.Enum="{x:Type editedObj:BlockType}"/>
             </StackPanel>
         </ScrollViewer>
 

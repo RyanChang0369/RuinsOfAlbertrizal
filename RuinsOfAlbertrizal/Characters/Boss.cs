@@ -21,7 +21,6 @@ namespace RuinsOfAlbertrizal.Characters
 
         public override void Die()
         {
-            GameBase.CurrentGame.AliveBosses.Remove(this);
             throw new NotImplementedException();
         }
     }
