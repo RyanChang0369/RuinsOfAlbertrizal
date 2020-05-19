@@ -130,7 +130,7 @@
                 </TextBox>
 
                 <Label Content="Change in AI *"/>
-                <ComboBox SelectionChanged="ComboBox_ChangeTooltip">
+                <ComboBox Loaded="ComboBox_Initialize">
                     <ComboBox.ItemsSource>
                         <Binding Path="AIChange" Mode="OneTime">
                             <Binding.Converter>
@@ -139,15 +139,12 @@
                         </Binding>
                     </ComboBox.ItemsSource>
                     <ComboBox.SelectedItem>
-                        <Binding Path="AIChange"/>
-                    </ComboBox.SelectedItem>
-                    <!--<ComboBox.ToolTip>
-                        <Binding Path="SelectedItem" RelativeSource="{RelativeSource Self}" Mode="TwoWay">
+                        <Binding Path="AIChange">
                             <Binding.Converter>
-                                <converter:TooltipConverter/>
+                                <converter:SelectedItemConverter/>
                             </Binding.Converter>
                         </Binding>
-                    </ComboBox.ToolTip>-->
+                    </ComboBox.SelectedItem>
                 </ComboBox>
             </StackPanel>
         </ScrollViewer>

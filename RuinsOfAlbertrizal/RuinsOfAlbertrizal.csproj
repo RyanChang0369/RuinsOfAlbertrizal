@@ -105,6 +105,7 @@
     <Compile Include="Editor\Converter\NameConverter.cs" />
     <Compile Include="Editor\Converter\ArrayConverter.cs" />
     <Compile Include="Editor\Converter\ClassToBaseStatsConverter.cs" />
+    <Compile Include="Editor\Converter\SelectedItemConverter.cs" />
     <Compile Include="Editor\Converter\TooltipConverter.cs" />
     <Compile Include="Editor\CreateAttackPrompt.xaml.cs">
       <DependentUpon>CreateAttackPrompt.xaml</DependentUpon>

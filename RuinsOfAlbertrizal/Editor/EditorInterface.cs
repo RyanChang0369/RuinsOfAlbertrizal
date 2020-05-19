@@ -1,4 +1,6 @@
-﻿using RuinsOfAlbertrizal.XMLInterpreter;
+﻿using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.Mechanics;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,32 +64,60 @@ namespace RuinsOfAlbertrizal.Editor
 
         protected abstract void ClearVariable();
 
+        protected void ComboBox_Initialize(object sender, RoutedEventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+
+            List<ComboBoxItem> comboBoxItems = new List<ComboBoxItem>();
+
+            foreach (Enum enumValue in comboBox.Items)
+            {
+                string tooltip = enumValue.GetDescription();
+
+                ComboBoxItem comboBoxItem = new ComboBoxItem
+                {
+                    Content = enumValue,
+                    ToolTip = tooltip
+                };
+
+                comboBoxItems.Add(comboBoxItem);
+            }
+
+
+            comboBox.ItemsSource = null;
+
+            foreach (ComboBoxItem item in comboBoxItems)
+            {
+                comboBox.Items.Add(item);
+            }
+        }
+
         protected void ComboBox_ChangeTooltip(object sender, SelectionChangedEventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             string tooltip = "";
 
-            try
-            {
-                //Fix
-                Enum enumValue = (Enum)comboBox.Items.SourceCollection;
+            //try
+            //{
+            //    //Fix
+            //    Enum enumValue = (Enum)comboBox.Items.SourceCollection;
 
-                FieldInfo fi = enumValue.GetType().GetField(enumValue.ToString());
+            //    FieldInfo fi = enumValue.GetType().GetField(enumValue.ToString());
 
-                DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
-                    typeof(DescriptionAttribute), false);
+            //    DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
+            //        typeof(DescriptionAttribute), false);
 
-                if (attributes != null && attributes.Length > 0)
-                    tooltip =  attributes[0].Description;
-                else
-                    tooltip = "Select item to view description";
-            }
-            catch (Exception)
-            {
-                tooltip = "Select item to view description";
-            }
+            //    if (attributes != null && attributes.Length > 0)
+            //        tooltip =  attributes[0].Description;
+            //    else
+            //        tooltip = "Select item to view description";
+            //}
+            //catch (Exception)
+            //{
+            //    tooltip = "Select item to view description";
+            //}
 
-            comboBox.ToolTip = tooltip;
+            //comboBox.ToolTip = tooltip;
         }
     }
 }

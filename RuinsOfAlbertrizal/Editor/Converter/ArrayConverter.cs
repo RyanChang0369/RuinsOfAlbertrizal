@@ -11,7 +11,7 @@ namespace RuinsOfAlbertrizal.Editor.Converter
     public class ArrayConverter : IValueConverter
     {
         /// <summary>
-        /// Message to string
+        /// Message to string array
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>
@@ -31,7 +31,7 @@ namespace RuinsOfAlbertrizal.Editor.Converter
         }
 
         /// <summary>
-        /// String to message
+        /// String array to message
         /// </summary>
         /// <param name="value"></param>
         /// <param name="targetType"></param>

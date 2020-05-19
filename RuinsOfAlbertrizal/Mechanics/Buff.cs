@@ -40,7 +40,7 @@ namespace RuinsOfAlbertrizal.Mechanics
             InstaKill,
             [Description("Revives the receiving character with 20% health.")]
             Revive,
-            [Description("Remoev all of the buffs of the receiving character.")]
+            [Description("Removes all of the buffs of the receiving character.")]
             Cleanse,
             [Description("If the receiving character's health is above 1, then negate any lethal attack and set health to 1.")]
             LastHope,
