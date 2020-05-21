@@ -131,7 +131,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Change in AI *"/>
-                    <Image Source="infoCircle.png"
+                    <Image Source="infoCircle.png" Height="20" Width="20"
                            Tag="{Binding Path=AIChange, Mode=OneTime, Converter={StaticResource EnumConverter}}"
                            Loaded="InfoLoaded_EnumDescription"/>
                 </StackPanel>
@@ -147,6 +147,16 @@
                         <Binding Path="AIChange"/>
                     </ComboBox.SelectedItem>
                 </ComboBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Special Buff Properties"/>
+                    <Image Source="infoCircle.png" Height="20" Width="20"
+                           Tag="{Binding Path=TypeOfBuff, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
+                <ComboBox 
+                    ItemsSource="{Binding Path=TypeOfBuff, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                    SelectedItem="{Binding Path=TypeOfBuff}"/>
             </StackPanel>
         </ScrollViewer>
 

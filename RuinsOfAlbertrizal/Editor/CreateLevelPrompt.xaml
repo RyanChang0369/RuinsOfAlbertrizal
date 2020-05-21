@@ -70,7 +70,12 @@
                             <Label Content="{Binding Path=IntroMessage.GetPreviewAsProperty, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
 
-                        <Label Content="Win Condition*"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Win Condition*"/>
+                            <Image Source="infoCircle.png" Height="20" Width="20"
+                               Tag="{Binding Path=TheWinCondition, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                               Loaded="InfoLoaded_EnumDescription"/>
+                        </StackPanel>
                         <ComboBox>
                             <ComboBox.ItemsSource>
                                 <Binding Path="TheWinCondition" UpdateSourceTrigger="PropertyChanged" Mode="OneTime">

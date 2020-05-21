@@ -72,7 +72,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Block Type *"/>
-                    <Image Source="infoCircle.png"
+                    <Image Source="infoCircle.png" Height="20" Width="20"
                            Tag="{Binding Path=TypeOfBlock, Mode=OneTime, Converter={StaticResource EnumConverter}}"
                            Loaded="InfoLoaded_EnumDescription"/>
                 </StackPanel>

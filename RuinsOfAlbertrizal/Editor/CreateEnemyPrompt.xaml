@@ -110,7 +110,12 @@
                 <Label Content="Abilities"/>
                 <TextBox x:Name="Abilities" IsEnabled="False"/>
 
-                <Label Content="AI *"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="AI *"/>
+                    <Image Source="infoCircle.png" Height="20" Width="20"
+                           Tag="{Binding Path=AIStyle, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
                 <ComboBox>
                     <ComboBox.ItemsSource>
                         <Binding Path="AIStyle" Mode="OneTime">
