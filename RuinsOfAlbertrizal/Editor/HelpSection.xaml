@@ -42,7 +42,7 @@
                 <Paragraph>
                     This error can be caused by the manual editing of the save files or by corruption of
                     the save files. If this error is caused after editing map.xml, reseting/exporting the
-                    map should fix the error. Otherwise, use the save file for the campaign as a templet
+                    map should fix the error. Otherwise, use the save file for the campaign as a template
                     for rebuilding your save file.
                 </Paragraph>
                 
