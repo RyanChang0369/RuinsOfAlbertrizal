@@ -37,6 +37,12 @@
                     </TextBox.Text>
                 </TextBox>
 
+                <StackPanel Orientation="Horizontal" ToolTip="If checked, then this attack will ignore defense.">
+                    <Label Content="Is Magic"/>
+                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                </StackPanel>
+                <CheckBox IsChecked="{Binding Path=IsMagic, Mode=TwoWay}" Margin="10"/>
+
                 <Label Content="HP Lost Per Hit *"/>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>

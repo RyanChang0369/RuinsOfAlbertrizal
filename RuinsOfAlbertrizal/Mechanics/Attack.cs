@@ -28,6 +28,8 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         public int TurnsSinceBeginCharge { get; set; }
 
+        public bool IsMagic { get; set; }
+
         public Attack()
         {
             StatLoss = new int[5];

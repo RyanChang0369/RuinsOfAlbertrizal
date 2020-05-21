@@ -159,7 +159,6 @@
     <Compile Include="Editor\EnumExtension.cs" />
     <Compile Include="Environment\BattleField.cs" />
     <Compile Include="Environment\Block.cs" />
-    <Compile Include="Environment\EnivronmentEnums.cs" />
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
     <Compile Include="IconedObjectOfAlbertrizal.cs" />
