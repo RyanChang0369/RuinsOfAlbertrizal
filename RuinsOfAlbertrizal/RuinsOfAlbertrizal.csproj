@@ -105,7 +105,6 @@
     <Compile Include="Editor\Converter\NameConverter.cs" />
     <Compile Include="Editor\Converter\ArrayConverter.cs" />
     <Compile Include="Editor\Converter\ClassToBaseStatsConverter.cs" />
-    <Compile Include="Editor\Converter\SelectedItemConverter.cs" />
     <Compile Include="Editor\Converter\TooltipConverter.cs" />
     <Compile Include="Editor\CreateAttackPrompt.xaml.cs">
       <DependentUpon>CreateAttackPrompt.xaml</DependentUpon>
@@ -146,6 +145,9 @@
     <Compile Include="Editor\EditorInterface.cs" />
     <Compile Include="Editor\EditorProperties.cs" />
     <Compile Include="Editor\EnemyProperties.cs" />
+    <Compile Include="Editor\EnumDescriptor.xaml.cs">
+      <DependentUpon>EnumDescriptor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Editor\HelpSection.xaml.cs">
       <DependentUpon>HelpSection.xaml</DependentUpon>
     </Compile>
@@ -316,6 +318,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Editor\EnumDescriptor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Editor\HelpSection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -356,6 +362,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Editor\questionMark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\infoCircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Editor\infoCircle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
