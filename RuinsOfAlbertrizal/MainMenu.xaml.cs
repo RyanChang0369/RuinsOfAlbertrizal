@@ -124,11 +124,16 @@ namespace RuinsOfAlbertrizal
 
         private void ResetCustomMap(object sender, RoutedEventArgs e)
         {
-            if (GameBase.CurrentMapLocation == null)
+            if (GameBase.CurrentMapLocation == null || GameBase.StaticMapLocation == null)
             {
                 try
                 {
-                    FileHandler.LoadCustomCampaign();
+                    FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "XAML File | map.xml");
+
+                    GameBase.CurrentMapLocation = dialog.GetPath();
+                    GameBase.StaticMapLocation = System.IO.Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
+
+                    GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
                 }
                 catch (ArgumentNullException)
                 {

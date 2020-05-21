@@ -12,6 +12,40 @@
     <Grid Background="WhiteSmoke">
         <FlowDocumentPageViewer>
             <FlowDocument ColumnWidth="400">
+                <Paragraph Style="{StaticResource titleP}">Craeting Your First Map</Paragraph>
+                <Paragraph Style="{StaticResource h1P}">Creating a Map</Paragraph>
+                <Paragraph>
+                    To create a map, click on the Create New Custom Map button located on the homepage.
+                    After you select a location to create the map, you will be redirected to the Map Creator
+                    where you can create your map. Remember to save the map before closing the editor.
+                </Paragraph>
+                <Paragraph Style="{StaticResource h2P}">Playing a Custom Map</Paragraph>
+                <Paragraph>
+                    To play a custom map, you must first reset/export your map by clicking on the
+                    Reset/Export button and selecting the map save file if necessary. This will reset
+                    the map to ensure any progress you make from testing the map does not make it
+                    into the final product.
+                </Paragraph>
+                <Paragraph>
+                    If you do want to play-test your map, edit the map.xml file to give your character
+                    items, buffs, ect.
+                </Paragraph>
+                <Paragraph Style="{StaticResource h1P}">Common Problems</Paragraph>
+                <Paragraph Style="{StaticResource h2P}">Why Are There Two Save Files?</Paragraph>
+                <Paragraph>
+                    One save file (map.xml) is used to track player progress in the game. The other
+                    (map-static.xml) is used for editing the map. Whenever a change is made in the Map
+                    Editor, the change is reflected in map-static.xml when the edited map is saved.
+                    When reseting/exporting the map, map.xml is overwritten by map-static.xml.
+                </Paragraph>
+                <Paragraph Style="{StaticResource h2P}">Error: Save file cannot be read!</Paragraph>
+                <Paragraph>
+                    This error can be caused by the manual editing of the save files or by corruption of
+                    the save files. If this error is caused after editing map.xml, reseting/exporting the
+                    map should fix the error. Otherwise, use the save file for the campaign as a templet
+                    for rebuilding your save file.
+                </Paragraph>
+                
                 <Paragraph Style="{StaticResource titleP}">Reference for Editing</Paragraph>
                 <Paragraph Style="{StaticResource h1P}">Characters</Paragraph>
                 <Paragraph>A character is a enemy, player, or boss.</Paragraph>
