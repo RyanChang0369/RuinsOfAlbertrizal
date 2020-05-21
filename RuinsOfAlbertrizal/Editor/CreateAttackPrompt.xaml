@@ -92,7 +92,7 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal"  ToolTip='Turns it takes for this attack to be used again after it is last used.'>
+                <StackPanel Orientation="Horizontal" ToolTip='Turns it takes for this attack to be used again after it is last used.'>
                     <Label Content="Cool Down *"/>
                     <Image Source="questionMark.png" Height="20" Margin="10"/>
                 </StackPanel>
@@ -106,7 +106,7 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal"  ToolTip='Turns it takes for this attack to deal damage.'>
+                <StackPanel Orientation="Horizontal" ToolTip='Turns it takes for this attack to deal damage.'>
                     <Label Content="Charge Up *"/>
                     <Image Source="questionMark.png" Height="20" Margin="10"/>
                 </StackPanel>
