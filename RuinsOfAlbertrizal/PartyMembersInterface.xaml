@@ -1,4 +1,4 @@
-﻿<Page x:Class="RuinsOfAlbertrizal.PartyMembersInterface"
+﻿<local:BasePage x:Class="RuinsOfAlbertrizal.PartyMembersInterface"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -28,8 +28,9 @@
                             <Label Content="20/20" Foreground="Blue" FontSize="18"/>
                         </StackPanel>
                     </Grid>
+                    <Button Content="Inventory" Style="{StaticResource buttonSmallStretch}" FontSize="24"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
     </Grid>
-</Page>
+</local:BasePage>

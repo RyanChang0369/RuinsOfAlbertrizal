@@ -1,35 +1,22 @@
 ﻿using RuinsOfAlbertrizal.Characters;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RuinsOfAlbertrizal
 {
     /// <summary>
     /// Interaction logic for PartyMembersInterface.xaml
     /// </summary>
-    public partial class PartyMembersInterface : Page
+    public partial class PartyMembersInterface : BasePage
     {
+        public static Player SelectedPlayer;
+
         public PartyMembersInterface()
         {
             InitializeComponent();
-        }
-
-        public PartyMembersInterface(List<Player> players)
-        {
-            InitializeComponent();
-            UpdatePartyMembersStackPanel(players);
+            UpdatePartyMembersStackPanel(GameBase.CurrentGame.StoredPlayers);
         }
 
         private void UpdatePartyMembersStackPanel(List<Player> players)
@@ -58,10 +45,6 @@ namespace RuinsOfAlbertrizal
 
             foreach (Player player in players)
             {
-                Label[] statTitles = new Label[5];
-                Label[] statNums = new Label[5];
-                StackPanel[] statPanels = new StackPanel[5];
-
                 Grid grid = new Grid();
                 grid.ColumnDefinitions.Add(columnDef);
                 grid.ColumnDefinitions.Add(columnDef);
@@ -81,27 +64,27 @@ namespace RuinsOfAlbertrizal
                     }
 
                     //Create statPanels
-                    statTitles[i] = new Label
+                    Label statTitle = new Label
                     {
                         Content = GameBase.StatNames[i]
                     };
 
-                    statNums[i] = new Label
+                    Label statNum = new Label
                     {
                         Content = $"{player.ArmoredStats[i]}/{player.CurrentStats[i]}",
                         FontSize = 18,
                         Foreground = statNumBrushes[i]
                     };
 
-                    statPanels[i] = new StackPanel();
-                    statPanels[i].Children.Add(statTitles[i]);
-                    statPanels[i].Children.Add(statNums[i]);
+                    StackPanel statPanel = new StackPanel();
+                    statPanel.Children.Add(statTitle);
+                    statPanel.Children.Add(statNum);
 
                     //Organize statPanels
                     col++;
-                    grid.Children.Add(statPanels[i]);
-                    statPanels[i].SetValue(Grid.RowProperty, row);
-                    statPanels[i].SetValue(Grid.ColumnProperty, col);
+                    grid.Children.Add(statPanel);
+                    statPanel.SetValue(Grid.RowProperty, row);
+                    statPanel.SetValue(Grid.ColumnProperty, col);
                 }
 
                 //Create playerNameLabel and image
@@ -115,14 +98,32 @@ namespace RuinsOfAlbertrizal
                     Source = player.WorldImg.ToBitmapSource()
                 };
 
+                Button inventoryBtn = new Button
+                {
+                    Content = "Inventory",
+                    Style = (Style)Application.Current.FindResource("buttonSmallStretch"),
+                    FontSize = 24,
+                    Tag = player
+                };
+
+                inventoryBtn.Click += InventoryBtn_Click;
+
                 //Shunt everything into a stackpanel
                 StackPanel containingStackPanel = new StackPanel();
                 containingStackPanel.Children.Add(playerNameLabel);
                 containingStackPanel.Children.Add(playerImage);
                 containingStackPanel.Children.Add(grid);
+                containingStackPanel.Children.Add(inventoryBtn);
 
                 PartyMembersStackPanel.Children.Add(containingStackPanel);
             }
+        }
+
+        private void InventoryBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            SelectedPlayer = (Player)btn.Tag;
+            Navigate("InventoryInterface.xaml");
         }
     }
 }

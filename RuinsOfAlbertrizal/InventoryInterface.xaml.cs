@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,33 @@ namespace RuinsOfAlbertrizal
         public ItemInterface()
         {
             InitializeComponent();
+            UpdateInventoryGrid(PartyMembersInterface.SelectedPlayer);
+        }
+
+        public void UpdateInventoryGrid(Player player)
+        {
+            InventoryGrid.Children.Clear();
+
+            Grid container = new Grid();
+
+            int row = 0;
+            int col = 0;
+
+            int maxRows = InventoryGrid.RowDefinitions.Count;
+            int maxCols = InventoryGrid.ColumnDefinitions.Count;
+
+            for (int i = 0; i < maxRows * maxCols; i++)
+            {
+                if (col == maxCols)
+                {
+                    col = 0;
+                    row++;
+                }
+
+                //Finish
+
+                col++;
+            }
         }
     }
 }

@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="AIs\AI.cs" />
     <Compile Include="ArrayMethods.cs" />
+    <Compile Include="BasePage.cs" />
     <Compile Include="Characters\Boss.cs" />
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Player.cs" />

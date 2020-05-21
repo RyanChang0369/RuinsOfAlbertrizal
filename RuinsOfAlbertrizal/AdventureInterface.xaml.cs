@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using RuinsOfAlbertrizal.XMLInterpreter;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RuinsOfAlbertrizal
@@ -6,7 +8,7 @@ namespace RuinsOfAlbertrizal
     /// <summary>
     /// Interaction logic for AdventureInterface.xaml
     /// </summary>
-    public partial class AdventureInterface : Page
+    public partial class AdventureInterface : BasePage
     {
         public AdventureInterface()
         {
@@ -14,14 +16,11 @@ namespace RuinsOfAlbertrizal
             DataContext = GameBase.CurrentGame.CurrentLevel;
         }
 
-        private void ExploreBtn_Click(object sender, RoutedEventArgs e)
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
+            FileHandler.SaveCurrentMap();
 
-        }
-
-        private void PartyMembersBtn_Click(object sender, RoutedEventArgs e)
-        {
-
+            MessageBox.Show("Game Saved!");
         }
     }
 }

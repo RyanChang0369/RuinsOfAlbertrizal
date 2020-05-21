@@ -54,62 +54,6 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
                     Slots.Add((SlotMode)(i + 1));
                 }
             }
-
-            //switch (checkBox.Name)
-            //{
-            //    case "HeadSlot":
-            //        slot = SlotMode.Head;
-            //        break;
-            //    case "NeckSlot":
-            //        slot = SlotMode.Neck;
-            //        break;
-            //    case "TorsoSlot":
-            //        slot = SlotMode.Torso;
-            //        break;
-            //    case "LeftHandSlot":
-            //        slot = SlotMode.Hand1;
-            //        break;
-            //    case "RightHandSlot":
-            //        slot = SlotMode.Hand2;
-            //        break;
-            //    case "LegsSlot":
-            //        slot = SlotMode.Legs;
-            //        break;
-            //    case "FeetSlot":
-            //        slot = SlotMode.Feet;
-            //        break;
-            //}
-
-            //// Is selected. Add slot.
-            //if (checkBox.IsChecked == true)
-            //{
-            //    Slots.Add(slot);
-            //}
-            //else
-            //{
-            //    Slots.Remove(slot);
-            //}
         }
-
-        ///// <summary>
-        ///// Returns false if sender is not selected
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <returns></returns>
-        //private bool ToggleButton(Button sender)
-        //{
-        //    if (sender.Tag == null || (string)sender.Tag == "")
-        //    {
-        //        sender.Background = new SolidColorBrush(Colors.Gray);
-        //        sender.Tag = "Selected";
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        sender.Background = new SolidColorBrush(Colors.LightGray);
-        //        sender.Tag = "";
-        //        return true;
-        //    }
-        //}
     }
 }

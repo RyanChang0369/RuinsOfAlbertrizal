@@ -8,7 +8,100 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="ItemInterface">
 
-    <Grid Background="WhiteSmoke">
-        
-    </Grid>
+    <StackPanel Background="WhiteSmoke" Orientation="Horizontal">
+        <StackPanel.Resources>
+            <Style TargetType="Button">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Width" Value="80"/>
+                <Setter Property="Height" Value="80"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Opacity" Value="0.7"/>
+                <Setter Property="Tag" Value=""/>
+                <Setter Property="Background" Value="LightGray"/>
+            </Style>
+            <Style TargetType="CheckBox">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Width" Value="80"/>
+                <Setter Property="Height" Value="80"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Opacity" Value="0.7"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="CheckBox">
+                            <Rectangle x:Name="CheckRectangle" Width="80" Height="80"/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="CheckRectangle" Property="Fill" Value="Gray"/>
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter TargetName="CheckRectangle" Property="Fill" Value="LightGray"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </StackPanel.Resources>
+
+        <Grid x:Name="InventoryGrid" VerticalAlignment="Center" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+        </Grid>
+
+        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" x:Name="SlotsContainer" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+            <CheckBox x:Name="HeadSlot" Grid.Column="2" ToolTip="Head Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox x:Name="NeckSlot" Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox x:Name="TorsoSlot" Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox x:Name="LeftHandSlot" Grid.Row="2" ToolTip="Left Hand Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1"/>
+            <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2"/>
+            <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3"/>
+            <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4"/>
+            <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5"/>
+            <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6"/>
+            <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7"/>
+            <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8"/>
+            <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9"/>
+            <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10"/>
+        </Grid>
+    </StackPanel>
 </Page>

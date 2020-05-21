@@ -204,7 +204,7 @@ namespace RuinsOfAlbertrizal.Editor
         }
 
         /// <summary>
-        /// Uses tag to navigate to correct editor page (relative uri).
+        /// Uses tags to navigate to correct editor page (relative uri).
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -219,8 +219,6 @@ namespace RuinsOfAlbertrizal.Editor
         {
             SelectedTab = MainTabControl.SelectedIndex;
         }
-
-
 
         private void ClearSelection(object sender, RoutedEventArgs e)
         {
