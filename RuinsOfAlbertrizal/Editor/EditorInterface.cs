@@ -1,17 +1,8 @@
-﻿using RuinsOfAlbertrizal.Environment;
-using RuinsOfAlbertrizal.Mechanics;
-using RuinsOfAlbertrizal.XMLInterpreter;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace RuinsOfAlbertrizal.Editor
 {
@@ -92,32 +83,56 @@ namespace RuinsOfAlbertrizal.Editor
             }
         }
 
-        protected void ComboBox_ChangeTooltip(object sender, SelectionChangedEventArgs e)
+        //protected void ComboBox_ChangeTooltip(object sender, SelectionChangedEventArgs e)
+        //{
+        //    ComboBox comboBox = (ComboBox)sender;
+        //    string tooltip = "";
+
+        //    //try
+        //    //{
+        //    //    //Fix
+        //    //    Enum enumValue = (Enum)comboBox.Items.SourceCollection;
+
+        //    //    FieldInfo fi = enumValue.GetType().GetField(enumValue.ToString());
+
+        //    //    DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
+        //    //        typeof(DescriptionAttribute), false);
+
+        //    //    if (attributes != null && attributes.Length > 0)
+        //    //        tooltip =  attributes[0].Description;
+        //    //    else
+        //    //        tooltip = "Select item to view description";
+        //    //}
+        //    //catch (Exception)
+        //    //{
+        //    //    tooltip = "Select item to view description";
+        //    //}
+
+        //    //comboBox.ToolTip = tooltip;
+        //}
+
+
+        protected void InfoLoaded_EnumDescription(object sender, RoutedEventArgs e)
         {
-            ComboBox comboBox = (ComboBox)sender;
-            string tooltip = "";
+            Image imgElement = (Image)sender;
+            imgElement.ToolTip = "Click to open description for the below Combo Box.";
 
-            //try
-            //{
-            //    //Fix
-            //    Enum enumValue = (Enum)comboBox.Items.SourceCollection;
+            imgElement.MouseUp += InfoMouseUp_EnumDescription;
+        }
 
-            //    FieldInfo fi = enumValue.GetType().GetField(enumValue.ToString());
+        private void InfoMouseUp_EnumDescription(object sender, MouseEventArgs e)
+        {
+            Image imgElement = (Image)sender;
 
-            //    DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
-            //        typeof(DescriptionAttribute), false);
+            if (e.LeftButton == MouseButtonState.Released)
+            {
+                //Array enumValues = Enum.GetValues(((Enum)imgElement.Tag).GetType());
 
-            //    if (attributes != null && attributes.Length > 0)
-            //        tooltip =  attributes[0].Description;
-            //    else
-            //        tooltip = "Select item to view description";
-            //}
-            //catch (Exception)
-            //{
-            //    tooltip = "Select item to view description";
-            //}
+                Type test = imgElement.Tag.GetType();
 
-            //comboBox.ToolTip = tooltip;
+                EnumDescriptor descriptor = new EnumDescriptor((Array)imgElement.Tag);
+                descriptor.Show();
+            }
         }
     }
 }

@@ -129,8 +129,13 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Change in AI *"/>
-                <ComboBox Loaded="ComboBox_Initialize">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Change in AI *"/>
+                    <Image Source="infoCircle.png"
+                           Tag="{Binding Path=AIChange, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
+                <ComboBox>
                     <ComboBox.ItemsSource>
                         <Binding Path="AIChange" Mode="OneTime">
                             <Binding.Converter>
@@ -140,9 +145,7 @@
                     </ComboBox.ItemsSource>
                     <ComboBox.SelectedItem>
                         <Binding Path="AIChange">
-                            <Binding.Converter>
-                                <converter:SelectedItemConverter/>
-                            </Binding.Converter>
+ 
                         </Binding>
                     </ComboBox.SelectedItem>
                 </ComboBox>
