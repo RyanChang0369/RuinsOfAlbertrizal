@@ -32,6 +32,8 @@ namespace RuinsOfAlbertrizal
             HP, Mana, Def, Dmg, Spd
         }
 
+        public static string[] StatNames = { "HP", "Mana", "Defense", "Damage", "Speed" };
+
         public enum ClassType
         {
             None = -1, Warrior, Mage, Scout
