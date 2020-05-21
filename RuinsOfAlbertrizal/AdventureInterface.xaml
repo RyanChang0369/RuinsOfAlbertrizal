@@ -9,7 +9,7 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="">
 
-    <Grid>
+    <Grid Background="Snow">
         <Image Style="{StaticResource blurred}" x:Name="mainImage">
             <Image.Source>
                 <Binding Path="WorldImg">
@@ -22,7 +22,9 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
                 <Button x:Name="ExploreBtn" Content="Explore" Click="ExploreBtn_Click"/>
-                <Button x:Name="InventoryBtn" Content="Inventory" Click="InventoryBtn_Click"/>
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="PartyMembersBtn" Content="Party Members" Click="PartyMembersBtn_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
