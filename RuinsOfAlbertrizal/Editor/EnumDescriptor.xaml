@@ -6,8 +6,10 @@
         xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
         mc:Ignorable="d"
         Title="EnumDescriptor" Height="450" Width="800">
-    <StackPanel x:Name="InfoPanel">
-        <TextBlock Text="Hover over an option to see its description." Margin="10" FontSize="32"/>
-        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="InfoPanel">
+            <TextBlock Text="Option Descriptions." Margin="10" FontSize="32"/>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

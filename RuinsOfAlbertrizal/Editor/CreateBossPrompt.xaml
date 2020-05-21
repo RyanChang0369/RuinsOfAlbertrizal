@@ -150,7 +150,12 @@
                 </StackPanel>
                 <Button x:Name="AddVictoryMessage" Content="Add/Edit Message" Click="AddVictoryMessage_Click" Style="{StaticResource buttonSmall}"/>
 
-                <Label Content="AI *"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="AI *"/>
+                    <Image Source="infoCircle.png"
+                           Tag="{Binding Path=AIStyle, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
                 <ComboBox>
                     <ComboBox.ItemsSource>
                         <Binding Path="AIStyle" Mode="OneTime">

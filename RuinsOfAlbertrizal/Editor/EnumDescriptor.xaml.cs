@@ -31,17 +31,28 @@ namespace RuinsOfAlbertrizal.Editor
             for (int i = 0; i < enumValues.Length; i++)
             {
                 Enum enumValue = (Enum)enumValues.GetValue(i);
-                string tooltip = enumValue.GetDescription();
+                string description = enumValue.GetDescription();
 
-                TextBlock textBlock = new TextBlock
+                TextBlock enumHeader = new TextBlock
                 {
                     Text = enumValue.ToString(),
-                    ToolTip = tooltip,
                     FontSize = 28,
                     Margin = new Thickness(10)
                 };
+                TextBlock enumDescription = new TextBlock
+                {
+                    Text = description,
+                    FontSize = 18,
+                    TextWrapping = TextWrapping.Wrap,
+                    Margin = new Thickness(20, 0, 0, 10)
+                };
 
-                InfoPanel.Children.Add(textBlock);
+
+                StackPanel enumPanel = new StackPanel();
+                enumPanel.Children.Add(enumHeader);
+                enumPanel.Children.Add(enumDescription);
+
+                InfoPanel.Children.Add(enumPanel);
             }
         }
     }

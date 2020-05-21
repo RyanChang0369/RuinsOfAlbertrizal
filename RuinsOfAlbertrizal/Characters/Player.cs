@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Environment;
+﻿using RuinsOfAlbertrizal.AIs;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace RuinsOfAlbertrizal.Characters
     {
         public Player()
         {
-
+            AIStyle = AI.AIStyle.Player;
         }
 
         public override void Die()
@@ -21,15 +22,5 @@ namespace RuinsOfAlbertrizal.Characters
             MessageBox.Show("You have died...");
             throw new NotImplementedException();
         }
-
-        //public override void Reset()
-        //{
-        //    base.Reset();
-        //    Level = 0;
-        //    CurrentEquiptments = new Equiptment[16];
-        //    InventoryEquiptments = new List<Equiptment>();
-        //    InventoryItems = new List<Item>();
-        //    InventoryConsumables = new List<Consumable>();
-        //}
     }
 }

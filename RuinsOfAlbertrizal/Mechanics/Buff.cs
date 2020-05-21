@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.AIs;
+using RuinsOfAlbertrizal.Characters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ namespace RuinsOfAlbertrizal.Mechanics
     /// <summary>
     /// Buffs and debuffs
     /// </summary>
-    public class Buff : IconedObjectOfAlbertrizal, ITurnBasedObject
+    public class Buff : IconedObjectOfAlbertrizal, IRoundBasedObject
     {
         /// <summary>
         /// How many turns will this last for?
@@ -22,10 +23,10 @@ namespace RuinsOfAlbertrizal.Mechanics
         [XmlIgnore]
         public int LeveledDuration { get => Duration * (1 + Level); }
 
-        public int TurnsPassed { get; set; }
+        public int RoundsPassed { get; set; }
 
         [XmlIgnore]
-        public bool HasEnded { get => TurnsPassed >= LeveledDuration; }
+        public bool HasEnded { get => RoundsPassed >= LeveledDuration; }
 
         /// <summary>
         /// See GameBase.Stats for values
@@ -78,18 +79,34 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public Buff()
         {
+            AIChange = AI.AIStyle.NoChange;
             StatGain = new int[5];
             TypeOfBuff = new BuffType();
         }
 
-        public void EndTurn()
+        public void StartRound()
         {
-            TurnsPassed++;
+
         }
 
-        public void StartTurn()
+        public void EndRound()
         {
-            
+            RoundsPassed++;
+        }
+
+        public void InstaKill(Character character)
+        {
+            character.AppliedStats[0] -= character.CurrentStats[0] * 10;
+        }
+
+        public void Revive(Character character)
+        {
+            character.AppliedStats[0] += (int)Math.Round(character.LeveledStats[0] * 0.2);
+        }
+
+        public void Cleanse(Character character)
+        {
+            character.AppliedBuffs.Clear();
         }
     }
 }

@@ -10,11 +10,6 @@ namespace RuinsOfAlbertrizal.AIs
 {
     public class AI
     {
-        /// <summary>
-        /// Determines how the AI acts
-        /// </summary>
-        public AIStyle Style { get; set; }
-
         public enum AIStyle
         {
             /// <summary>
@@ -22,14 +17,16 @@ namespace RuinsOfAlbertrizal.AIs
             /// Only works with a player character, and is treated as NoAI everywhere else
             /// </summary>
             [Description(
-                "The player controls this character. " +
-                "Only works with a player character, and is treated as NoAI everywhere else.")]
+                "The player controls this character." +
+                " Only works with a player character, and is treated as NoAI everywhere else.")]
             Player = 0,
+            [Description("A special AI that does nothing. Use when you do not want to change a character's AI in a buff.")]
+            NoChange = 1,
             /// <summary>
             /// No AI. Cannot Move.
             /// </summary>
             [Description("No AI. Cannot move, regenerate mana, or attack.")]
-            NoAI = 1,
+            NoAI = 2,
             /// <summary>
             /// Attacks player with the most damaging attacks possible.
             /// Moves so that its most damaging attack or attacks is in range of the player.

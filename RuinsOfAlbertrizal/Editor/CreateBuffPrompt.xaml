@@ -144,9 +144,7 @@
                         </Binding>
                     </ComboBox.ItemsSource>
                     <ComboBox.SelectedItem>
-                        <Binding Path="AIChange">
- 
-                        </Binding>
+                        <Binding Path="AIChange"/>
                     </ComboBox.SelectedItem>
                 </ComboBox>
             </StackPanel>

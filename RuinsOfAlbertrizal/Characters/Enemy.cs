@@ -30,9 +30,25 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         public List<Message> MessagesOnVictory { get; set; }
 
+        private AI.AIStyle aiStyle;
+
+        public override AI.AIStyle AIStyle
+        {
+            get => aiStyle;
+            set
+            {
+                if (value == AI.AIStyle.NoChange)
+                    return;
+                else if (value == AI.AIStyle.Player)
+                    aiStyle = AI.AIStyle.NoAI;
+
+                aiStyle = value;
+            }
+        }
+
         public Enemy()
         {
-            AIStyle = AIs.AI.AIStyle.NoAI;
+            AIStyle = AI.AIStyle.NoAI;
             MessagesOnAttack = new List<Message>();
             MessagesOnDefeat = new List<Message>();
             MessagesOnEncounter = new List<Message>();

@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Items
 {
-    public class Consumable : Item, ITurnBasedObject
+    public class Consumable : Item, IRoundBasedObject
     {
         public List<Buff> Buffs { get; set; }
 
@@ -30,20 +30,20 @@ namespace RuinsOfAlbertrizal.Items
             }
         }
 
-        public int TurnsPassed { get; set; }
+        public int RoundsPassed { get; set; }
 
         [XmlIgnore]
-        public bool HasEnded { get => TurnsPassed >= Duration; }
+        public bool HasEnded { get => RoundsPassed >= Duration; }
 
         public Consumable()
         { }
 
-        public void EndTurn()
+        public void EndRound()
         {
-            TurnsPassed++;
+            RoundsPassed++;
         }
 
-        public void StartTurn()
+        public void StartRound()
         {
             try
             {

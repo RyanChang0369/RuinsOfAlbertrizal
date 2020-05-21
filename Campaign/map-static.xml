@@ -202,7 +202,7 @@
       <Name>Paralysis</Name>
       <Description>Cannot move!</Description>
       <Duration>1</Duration>
-      <TurnsPassed>0</TurnsPassed>
+      <RoundsPassed>0</RoundsPassed>
       <StatGain>
         <int>0</int>
         <int>0</int>
@@ -218,7 +218,7 @@
       <Name>Poison</Name>
       <Description>Losing health!</Description>
       <Duration>1</Duration>
-      <TurnsPassed>0</TurnsPassed>
+      <RoundsPassed>0</RoundsPassed>
       <StatGain>
         <int>-5</int>
         <int>0</int>

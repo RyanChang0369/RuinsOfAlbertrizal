@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Mechanics
 {
-    public class Attack : ObjectOfAlbertrizal
+    public class Attack : ObjectOfAlbertrizal, ITurnBasedObject
     {
         public List<Buff> Buffs { get; set; }
 
@@ -39,7 +39,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         {
             get
             {
-                return (CoolDown <= TurnSinceAttacked && IsCharged);
+                return (CoolDown <= TurnSinceAttacked) && IsCharged;
             }
         }
 
@@ -55,6 +55,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// <summary>
         /// Starts the attack.
         /// </summary>
+        /// <param name="character">The character being attacked</param>
         public void BeginAttack(Character character)
         {
             if (CanAttack)
@@ -66,8 +67,19 @@ namespace RuinsOfAlbertrizal.Mechanics
             }
             else if (!IsCharged)
             {
+                //Begin charge
                 TurnsSinceBeginCharge++;
             }
+        }
+
+        public void EndTurn()
+        {
+            TurnSinceAttacked++;
+        }
+
+        public void StartTurn()
+        {
+            
         }
     }
 }

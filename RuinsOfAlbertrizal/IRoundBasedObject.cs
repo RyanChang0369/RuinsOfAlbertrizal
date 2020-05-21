@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace RuinsOfAlbertrizal
 {
     /// <summary>
-    /// Any object that has to reply to EndTurn and/or StartTurn
+    /// Any object that has to respond to StartRound and/or EndRound
     /// </summary>
-    public interface ITurnBasedObject
+    public interface IRoundBasedObject
     {
-        void EndTurn();
+        void StartRound();
 
-        void StartTurn();
+        void EndRound();
     }
 }

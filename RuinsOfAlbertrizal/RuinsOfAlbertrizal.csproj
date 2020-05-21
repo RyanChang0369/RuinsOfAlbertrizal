@@ -163,7 +163,7 @@
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
     <Compile Include="IconedObjectOfAlbertrizal.cs" />
-    <Compile Include="IUniqueBuffEffects.cs" />
+    <Compile Include="IRoundBasedObject.cs" />
     <Compile Include="LevelIntroInterface.xaml.cs">
       <DependentUpon>LevelIntroInterface.xaml</DependentUpon>
     </Compile>

@@ -126,10 +126,6 @@ namespace RuinsOfAlbertrizal.Editor
 
             if (e.LeftButton == MouseButtonState.Released)
             {
-                //Array enumValues = Enum.GetValues(((Enum)imgElement.Tag).GetType());
-
-                Type test = imgElement.Tag.GetType();
-
                 EnumDescriptor descriptor = new EnumDescriptor((Array)imgElement.Tag);
                 descriptor.Show();
             }

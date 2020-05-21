@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
-    public abstract class Character : WorldMapObject, ITurnBasedObject, IUniqueBuffEffects
+    public abstract class Character : WorldMapObject, ITurnBasedObject
     {
         public const int MaxTurns = 2;
 
@@ -26,7 +26,19 @@ namespace RuinsOfAlbertrizal.Characters
 
         public int Level { get; set; }
 
-        public AI.AIStyle AIStyle { get; set; }
+        private AI.AIStyle aiStyle;
+
+        public virtual AI.AIStyle AIStyle
+        {
+            get => aiStyle;
+            set
+            {
+                if (value == AI.AIStyle.NoChange)
+                    return;
+
+                aiStyle = value;
+            }
+        }
 
         [XmlIgnore]
         public Hitbox Hitbox
@@ -345,7 +357,10 @@ namespace RuinsOfAlbertrizal.Characters
         public void StartTurn()
         {
             CheckIfDead();
+        }
 
+        public void StartRound()
+        {
             //Remove any expired consumables
             try
             {
@@ -361,6 +376,11 @@ namespace RuinsOfAlbertrizal.Characters
             {
 
             }
+        }
+        
+        public void EndRound()
+        {
+
         }
 
         public void CheckIfDead()
@@ -388,21 +408,6 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 AppliedStats[i] -= attack.StatLoss[i];
             }
-        }
-
-        public void InstaKill()
-        {
-            AppliedStats[0] -= CurrentStats[0] * 10;
-        }
-
-        public void Revive()
-        {
-            AppliedStats[0] += (int)Math.Round(LeveledStats[0] * 0.2);
-        }
-
-        public void Cleanse()
-        {
-            AppliedBuffs.Clear();
         }
     }
 }
