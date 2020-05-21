@@ -70,8 +70,13 @@
                     </Image>
                 </StackPanel>
 
-                <Label Content="Block Type *"/>
-                <ComboBox Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Block Type *"/>
+                    <Image Source="infoCircle.png"
+                           Tag="{Binding Path=TypeOfBlock, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
+                <ComboBox>
                     <ComboBox.ItemsSource>
                         <Binding Path="TypeOfBlock" UpdateSourceTrigger="PropertyChanged" Mode="OneTime">
                             <Binding.Converter>

@@ -50,7 +50,7 @@
                             <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal"  ToolTip="The background as displayed on the intro screen.">
+                        <StackPanel Orientation="Horizontal" ToolTip="The background as displayed on the intro screen.">
                             <Label Content="Background *"/>
                             <Image Source="questionMark.png" Height="20" Margin="10"/>
                         </StackPanel>

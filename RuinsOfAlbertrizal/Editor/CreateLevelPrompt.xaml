@@ -52,7 +52,7 @@
                             </TextBox.Text>
                         </TextBox>
 
-                        <StackPanel Orientation="Horizontal"  ToolTip="The background of this level.">
+                        <StackPanel Orientation="Horizontal" ToolTip="The background of this level.">
                             <Label Content="Background *"/>
                             <Image Source="questionMark.png" Height="20" Margin="10"/>
                         </StackPanel>

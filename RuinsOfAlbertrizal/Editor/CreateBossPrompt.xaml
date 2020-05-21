@@ -19,7 +19,7 @@
         <Label Style="{StaticResource title}" Content="Create Boss"/>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
-                <StackPanel Orientation="Horizontal"  ToolTip='The proper name, such as Bob or Robert'>
+                <StackPanel Orientation="Horizontal" ToolTip='The proper name, such as Bob or Robert'>
                     <Label Content="Name *"/>
                     <Image Source="questionMark.png" Height="20" Margin="10"/>
                 </StackPanel>
@@ -33,7 +33,7 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal"  ToolTip='The name of the "species", such as human or orc'>
+                <StackPanel Orientation="Horizontal" ToolTip='The name of the "species", such as human or orc'>
                     <Label Content="Species Name"/>
                     <Image Source="questionMark.png" Height="20" Margin="10"/>
                 </StackPanel>
@@ -59,7 +59,7 @@
                     <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal"  ToolTip="The boss as it appears on the battle screen.">
+                <StackPanel Orientation="Horizontal" ToolTip="The boss as it appears on the battle screen.">
                     <Label Content="Image on Map *"/>
                     <Image Source="questionMark.png" Height="20" Margin="10"/>
                 </StackPanel>

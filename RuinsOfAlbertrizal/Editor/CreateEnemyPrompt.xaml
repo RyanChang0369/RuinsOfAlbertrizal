@@ -53,7 +53,7 @@
                     <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal"  ToolTip="The enemy as it appears on the battle screen.">
+                <StackPanel Orientation="Horizontal" ToolTip="The enemy as it appears on the battle screen.">
                     <Label Content="Image on Map *"/>
                     <Image Source="questionMark.png" Height="20" Margin="10"/>
                 </StackPanel>
