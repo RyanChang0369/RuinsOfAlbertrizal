@@ -126,7 +126,19 @@ namespace RuinsOfAlbertrizal
         {
             if (GameBase.CurrentMapLocation == null)
             {
-                FileHandler.LoadCustomCampaign();
+                try
+                {
+                    FileHandler.LoadCustomCampaign();
+                }
+                catch (ArgumentNullException)
+                {
+                    return;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Project File Cannot Be Read!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             }
 
             MessageBoxResult result = MessageBox.Show("Are you sure you want to reset the map? This action cannot be undone.", "Confirm Reset", MessageBoxButton.YesNo, MessageBoxImage.Warning);

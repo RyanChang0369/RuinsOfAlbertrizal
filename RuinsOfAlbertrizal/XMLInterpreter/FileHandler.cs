@@ -72,6 +72,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         /// </summary>
         /// <exception cref="IOException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public static void LoadCustomCampaign()
         {
             FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "XAML File | map.xml");
@@ -79,8 +80,16 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             GameBase.CurrentMapLocation = dialog.GetPath();
             GameBase.StaticMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
 
-            GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
-            GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
+            try
+            {
+                GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
+                GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
+            }
+            catch (InvalidOperationException)
+            {
+
+                throw;
+            }
         }
 
         /// <summary>
@@ -157,12 +166,29 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             SaveObject(typeof(Map), GameBase.CurrentGame, GameBase.CurrentMapLocation);
         }
 
+        /// <summary>
+        /// Loads a map from a save file.
+        /// </summary>
+        /// <param name="loadLocation">The location of the save file.</param>
+        /// <exception cref="InvalidOperationException"></exception>
+        /// <returns>The loaded map</returns>
         public static Map LoadMap(string loadLocation)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Map));
             using (FileStream fs = new FileStream(loadLocation, FileMode.Open))
             {
-                return (Map)serializer.Deserialize(fs);
+                try
+                {
+                    return (Map)serializer.Deserialize(fs);
+                }
+                catch (InvalidOperationException e)
+                {
+                    MessageBox.Show(
+                        $"Error: Save file cannot be read! Advanced error message:\r\n{e}",
+                        "Error: Save file cannot be read!",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                    throw;
+                }
             }
         }
 

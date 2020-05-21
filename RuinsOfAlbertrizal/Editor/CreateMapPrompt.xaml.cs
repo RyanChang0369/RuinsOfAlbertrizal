@@ -192,8 +192,15 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void Load(object sender, RoutedEventArgs e)
         {
-            FileHandler.LoadCustomCampaign();
-            Map = GameBase.StaticGame;
+            try
+            {
+                FileHandler.LoadCustomCampaign();
+                Map = GameBase.StaticGame;
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         /// <summary>
