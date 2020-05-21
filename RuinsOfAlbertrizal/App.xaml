@@ -5,6 +5,8 @@
              xmlns:ai="clr-namespace:RuinsOfAlbertrizal.AIs"
              xmlns:local="clr-namespace:RuinsOfAlbertrizal"
              xmlns:editor="clr-namespace:RuinsOfAlbertrizal.Editor"
+             xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
+             xmlns:validator="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <!--Generic FrameworkElement Styles-->
@@ -172,5 +174,10 @@
         </Style>
 
         <ai:AI x:Key="AI"/>
+        
+        <!--Converter Resources-->
+        <converter:ArrayConverter x:Key="ArrayConverter"/>
+        <converter:ListConverter x:Key="ListConverter"/>
+        <converter:EnumConverter x:Key="EnumConverter"/>
     </Application.Resources>
 </Application>
