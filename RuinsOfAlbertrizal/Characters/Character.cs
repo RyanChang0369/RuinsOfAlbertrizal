@@ -83,7 +83,7 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Stats with the current armor equipted
+        /// Stats with the current armor equipted. Can be considered the max stats.
         /// </summary>
         [XmlIgnore]
         public int[] ArmoredStats
@@ -146,20 +146,20 @@ namespace RuinsOfAlbertrizal.Characters
         /// The stats from armor and buffs
         /// </summary>
         [XmlIgnore]
-        public int[] CurrentMaxStats
+        public int[] ArmorAndBuffStats
         {
             get
             {
-                int[] currentMaxStats = new int[5];
+                int[] armorAndBuffStats = new int[5];
 
-                currentMaxStats = ArrayMethods.AddArrays(currentMaxStats, ArmoredStats);
+                armorAndBuffStats = ArrayMethods.AddArrays(armorAndBuffStats, ArmoredStats);
 
                 foreach (Buff buff in CurrentBuffs)
                 {
-                    currentMaxStats = ArrayMethods.AddArrays(currentMaxStats, buff.LeveledStatGain);
+                    armorAndBuffStats = ArrayMethods.AddArrays(armorAndBuffStats, buff.LeveledStatGain);
                 }
 
-                return currentMaxStats;
+                return armorAndBuffStats;
             }
         }
 
@@ -170,7 +170,7 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 int[] currentStats = { 0, 0, 0, 0, 0 };
 
-                currentStats = ArrayMethods.AddArrays(currentStats, CurrentMaxStats);
+                currentStats = ArrayMethods.AddArrays(currentStats, ArmorAndBuffStats);
                 currentStats = ArrayMethods.AddArrays(currentStats, AppliedStats);
 
                 return currentStats;

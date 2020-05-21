@@ -180,6 +180,9 @@
     <Compile Include="Environment\Map.cs" />
     <Compile Include="MiscMethods.cs" />
     <Compile Include="ObjectOfAlbertrizal.cs" />
+    <Compile Include="PartyMembersInterface.xaml.cs">
+      <DependentUpon>PartyMembersInterface.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RNG.cs" />
     <Compile Include="Testing.cs" />
     <Compile Include="Text\Message.cs" />
@@ -192,8 +195,8 @@
     <Compile Include="BattleInterface.xaml.cs">
       <DependentUpon>BattleInterface.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ItemInterface.xaml.cs">
-      <DependentUpon>ItemInterface.xaml</DependentUpon>
+    <Compile Include="InventoryInterface.xaml.cs">
+      <DependentUpon>InventoryInterface.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -333,7 +336,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ItemInterface.xaml">
+    <Page Include="InventoryInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -344,6 +347,10 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="PartyMembersInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
