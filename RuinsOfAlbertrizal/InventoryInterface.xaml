@@ -10,7 +10,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="inventoryItemTemplate">
-            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}"/>
+            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}" MouseUp="InventoryTextBlock_MouseUp"/>
         </DataTemplate>
     </Page.Resources>
     
@@ -46,6 +46,7 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+                <EventSetter Event="Checked" Handler="InventoryCheckBox_Checked"/>
             </Style>
         </StackPanel.Resources>
 
@@ -71,17 +72,17 @@
             <TabControl>
                 <TabItem Header="Equiptment">
                     <ScrollViewer>
-                        <ListBox ItemsSource="{Binding Path=InventoryEquiptments, Mode=TwoWay}"/>
+                        <ListBox ItemsSource="{Binding Path=InventoryEquiptments, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryItemTemplate}"/>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Consumables">
                     <ScrollViewer>
-                        <ListBox ItemsSource="{Binding Path=InventoryConsumables, Mode=TwoWay}"/>
+                        <ListBox ItemsSource="{Binding Path=InventoryConsumables, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryItemTemplate}"/>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Other Items">
                     <ScrollViewer>
-                        <ListBox ItemsSource="{Binding Path=InventoryItems, Mode=TwoWay}"/>
+                        <ListBox ItemsSource="{Binding Path=InventoryItems, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryItemTemplate}"/>
                     </ScrollViewer>
                 </TabItem>
             </TabControl>
@@ -109,13 +110,13 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <CheckBox x:Name="HeadSlot" Grid.Column="2" ToolTip="Head Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="NeckSlot" Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="TorsoSlot" Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="LeftHandSlot" Grid.Row="2" ToolTip="Left Hand Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot" Click="SelectSlot_Clicked"/>
+            <CheckBox x:Name="HeadSlot" Grid.Column="2" ToolTip="Head Slot"/>
+            <CheckBox x:Name="NeckSlot" Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot"/>
+            <CheckBox x:Name="TorsoSlot" Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot"/>
+            <CheckBox x:Name="LeftHandSlot" Grid.Row="2" ToolTip="Left Hand Slot"/>
+            <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot"/>
+            <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot"/>
+            <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot"/>
             <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1"/>
             <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2"/>
             <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3"/>

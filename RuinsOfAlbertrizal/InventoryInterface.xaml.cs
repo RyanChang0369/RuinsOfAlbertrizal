@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public partial class ItemInterface : Page
     {
+        public Item SelectedItem;
+
         public ItemInterface()
         {
             InitializeComponent();
@@ -105,6 +108,20 @@ namespace RuinsOfAlbertrizal
 
                 }
             }
+        }
+
+        private void InventoryCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (SelectedItem == null)
+                return;
+
+
+        }
+
+        private void InventoryTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = (TextBlock)sender;
+            SelectedItem = (Item)textBlock.DataContext;
         }
     }
 }
