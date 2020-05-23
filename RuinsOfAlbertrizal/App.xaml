@@ -155,6 +155,11 @@
             </Setter>
         </Style>
         
+        <!--Tab Item Styles-->
+        <Style TargetType="TabItem">
+            <Setter Property="FontSize" Value="36"/>
+        </Style>
+        
         <!--Validation Templates and Styles-->
         <ControlTemplate x:Key="validationTemplate">
             <DockPanel>
