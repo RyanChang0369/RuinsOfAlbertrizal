@@ -25,10 +25,10 @@ namespace RuinsOfAlbertrizal
         {
             InitializeComponent();
             DataContext = PartyMembersInterface.SelectedPlayer;
-            UpdateInventoryGrid(PartyMembersInterface.SelectedPlayer);
+            //UpdateInventoryGrid(PartyMembersInterface.SelectedPlayer);
         }
 
-        public void UpdateInventoryGrid(Player player)
+        private void UpdateInventoryGrid(Player player)
         {
             InventoryGrid.Children.Clear();
 

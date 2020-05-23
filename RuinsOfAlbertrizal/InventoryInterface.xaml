@@ -8,6 +8,12 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="ItemInterface">
 
+    <Page.Resources>
+        <DataTemplate x:Key="inventoryItemTemplate">
+            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}"/>
+        </DataTemplate>
+    </Page.Resources>
+    
     <StackPanel Background="WhiteSmoke" Orientation="Horizontal">
         <StackPanel.Resources>
             <Style TargetType="Button">
@@ -43,8 +49,8 @@
             </Style>
         </StackPanel.Resources>
 
-        <Grid x:Name="InventoryGrid" VerticalAlignment="Center" Margin="10">
-            <Grid.ColumnDefinitions>
+        <Grid x:Name="InventoryGrid" Margin="10">
+            <!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition Width="100"/>
@@ -60,7 +66,25 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
-            </Grid.RowDefinitions>
+            </Grid.RowDefinitions>-->
+
+            <TabControl>
+                <TabItem Header="Equiptment">
+                    <ScrollViewer>
+                        <ListBox ItemsSource="{Binding Path=InventoryEquiptments, Mode=TwoWay}"/>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Consumables">
+                    <ScrollViewer>
+                        <ListBox ItemsSource="{Binding Path=InventoryConsumables, Mode=TwoWay}"/>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Other Items">
+                    <ScrollViewer>
+                        <ListBox ItemsSource="{Binding Path=InventoryItems, Mode=TwoWay}"/>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
         </Grid>
 
         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
