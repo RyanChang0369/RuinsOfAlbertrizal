@@ -24,6 +24,7 @@ namespace RuinsOfAlbertrizal
         public ItemInterface()
         {
             InitializeComponent();
+            DataContext = PartyMembersInterface.SelectedPlayer;
             UpdateInventoryGrid(PartyMembersInterface.SelectedPlayer);
         }
 
@@ -38,7 +39,21 @@ namespace RuinsOfAlbertrizal
 
             int maxRows = InventoryGrid.RowDefinitions.Count;
             int maxCols = InventoryGrid.ColumnDefinitions.Count;
+            int numStoredItems = player.InventoryConsumables.Count + player.InventoryEquiptments.Count + player.InventoryItems.Count;
+            int numPages = (int)Math.Ceiling((double)numStoredItems / (maxRows * maxCols));
 
+            //Create a tab control to store the items in
+            TabControl inventoryTabControl = new TabControl();
+
+            for (int i = 0; i < numPages; i++)
+            {
+                TabItem tabItem = new TabItem
+                {
+                    Header = $"Page {i + 1}"
+                };
+            }
+
+            //For one page, create an array with all the checkboxes
             for (int i = 0; i < maxRows * maxCols; i++)
             {
                 if (col == maxCols)
@@ -47,9 +62,48 @@ namespace RuinsOfAlbertrizal
                     row++;
                 }
 
-                //Finish
+                CheckBox checkBox = new CheckBox();
+                checkBox.SetValue(Grid.RowProperty, row);
+                checkBox.SetValue(Grid.ColumnProperty, col);
 
                 col++;
+
+                try
+                {
+                    checkBox.ToolTip = player.InventoryEquiptments[i];
+                    checkBox.Tag = player.InventoryEquiptments[i];
+                    continue;
+                }
+                catch (Exception)
+                {
+
+                }
+
+                int invIndex = player.InventoryEquiptments.Count + i;
+
+                try
+                {
+                    checkBox.ToolTip = player.InventoryConsumables[invIndex];
+                    checkBox.Tag = player.InventoryConsumables[invIndex];
+                    continue;
+                }
+                catch (Exception)
+                {
+
+                }
+
+                invIndex += player.InventoryConsumables.Count;
+
+                try
+                {
+                    checkBox.ToolTip = player.InventoryItems[invIndex];
+                    checkBox.Tag = player.InventoryItems[invIndex];
+                    continue;
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
     }
