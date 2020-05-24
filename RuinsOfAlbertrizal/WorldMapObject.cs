@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
@@ -48,16 +49,17 @@ namespace RuinsOfAlbertrizal
             }
         }
 
+        [XmlIgnore]
+        public BitmapSource WorldImgAsBitmapSource
+        {
+            get => WorldImg.ToBitmapSource();
+        }
+
         public new event PropertyChangedEventHandler PropertyChanged;
 
         public new void OnPropertyChanged([CallerMemberName] string worldImgLocation = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(worldImgLocation));
         }
-
-        /// <summary>
-        /// Resets all applicable variables so that the game can be replayed.
-        /// </summary>
-        //public abstract void Reset();
     }
 }

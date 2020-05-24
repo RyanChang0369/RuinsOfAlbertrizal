@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
@@ -42,6 +43,12 @@ namespace RuinsOfAlbertrizal
                 }
                 return icon;
             }
+        }
+
+        [XmlIgnore]
+        public BitmapSource IconAsBitmapSource
+        {
+            get => Icon.ToBitmapSource();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
