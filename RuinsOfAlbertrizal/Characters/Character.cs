@@ -96,6 +96,9 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
+                    if (equiptment == null)
+                        continue;
+
                     armoredStats = ArrayMethods.AddArrays(armoredStats, equiptment.StatGain);
                 }
 
@@ -103,7 +106,7 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        private int[] appliedStats;
+        private int[] appliedStats = new int[5];
 
         /// <summary>
         /// Use this to apply damage
@@ -156,6 +159,9 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Buff buff in CurrentBuffs)
                 {
+                    if (buff == null)
+                        continue;
+
                     armorAndBuffStats = ArrayMethods.AddArrays(armorAndBuffStats, buff.LeveledStatGain);
                 }
 
@@ -177,7 +183,7 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        private List<Buff> appliedBuffs;
+        private List<Buff> appliedBuffs = new List<Buff>();
 
         /// <summary>
         /// Use this to directly apply buffs
@@ -214,6 +220,9 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
+                    if (equiptment == null)
+                        continue;
+
                     foreach (Buff buff in equiptment.BuffImmunities)
                     {
                         currentBuffs.Add(buff);
@@ -282,16 +291,14 @@ namespace RuinsOfAlbertrizal.Characters
 
         public Character()
         {
-            BaseStats = new int[5];
-            AppliedStats = new int[5];
-            AppliedBuffs = new List<Buff>();
+            Level = 1;
             CurrentEquiptments = new Equiptment[16];        //16 possible slots for equiptment
             InventoryEquiptments = new List<Equiptment>();
             CurrentConsumables = new List<Consumable>();
             InventoryConsumables = new List<Consumable>();
             InventoryItems = new List<Item>();
             Attacks = new List<Attack>();
-            Level = 1;
+            BaseStats = new int[5];
         }
 
         /// <summary>
@@ -396,7 +403,7 @@ namespace RuinsOfAlbertrizal.Characters
                 if (buff.TypeOfBuff == Buff.BuffType.LastHope && CurrentStats[0] != 1
                     && (CurrentStats[0] - attack.StatLoss[0]) <= 0)
                 {
-                    CurrentStats[0] = 1;
+                    AppliedStats[0] = (-1 * CurrentStats[0]) + 1;
                     return;
                 }
                 else if (buff.TypeOfBuff == Buff.BuffType.Invunerable)

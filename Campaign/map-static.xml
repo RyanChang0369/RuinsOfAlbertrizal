@@ -2,7 +2,7 @@
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>Campaign</Name>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -26,6 +26,14 @@
         <int>5</int>
         <int>5</int>
       </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -62,6 +70,14 @@
         <int>0</int>
         <int>0</int>
       </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -104,6 +120,14 @@
         <int>0</int>
         <int>50</int>
       </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -167,6 +191,14 @@
         <int>0</int>
         <int>2</int>
       </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -247,6 +279,7 @@
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IsMagic>false</IsMagic>
     </Attack>
   </StoredAttacks>
   <StoredItems />
@@ -320,6 +353,14 @@
             <int>0</int>
             <int>50</int>
           </BaseStats>
+          <AppliedStats>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </AppliedStats>
+          <AppliedBuffs />
           <CurrentEquiptments>
             <Equiptment xsi:nil="true" />
             <Equiptment xsi:nil="true" />

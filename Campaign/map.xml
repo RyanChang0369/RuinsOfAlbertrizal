@@ -26,6 +26,14 @@
         <int>5</int>
         <int>5</int>
       </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -62,6 +70,14 @@
         <int>0</int>
         <int>0</int>
       </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -104,6 +120,14 @@
         <int>0</int>
         <int>50</int>
       </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -167,6 +191,14 @@
         <int>0</int>
         <int>2</int>
       </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -202,7 +234,7 @@
       <Name>Paralysis</Name>
       <Description>Cannot move!</Description>
       <Duration>1</Duration>
-      <TurnsPassed>0</TurnsPassed>
+      <RoundsPassed>0</RoundsPassed>
       <StatGain>
         <int>0</int>
         <int>0</int>
@@ -218,7 +250,7 @@
       <Name>Poison</Name>
       <Description>Losing health!</Description>
       <Duration>1</Duration>
-      <TurnsPassed>0</TurnsPassed>
+      <RoundsPassed>0</RoundsPassed>
       <StatGain>
         <int>-5</int>
         <int>0</int>
@@ -247,6 +279,7 @@
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IsMagic>false</IsMagic>
     </Attack>
   </StoredAttacks>
   <StoredItems />
@@ -320,6 +353,14 @@
             <int>0</int>
             <int>50</int>
           </BaseStats>
+          <AppliedStats>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </AppliedStats>
+          <AppliedBuffs />
           <CurrentEquiptments>
             <Equiptment xsi:nil="true" />
             <Equiptment xsi:nil="true" />
