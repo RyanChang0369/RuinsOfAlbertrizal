@@ -11,7 +11,7 @@ namespace RuinsOfAlbertrizal.Text
 {
     public class Message
     {
-        private System.Timers.Timer TimerChar = new System.Timers.Timer(100);
+        private Timer TimerChar = new Timer(50);
 
         private TextBlock TextBlock = new TextBlock();
 
