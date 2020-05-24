@@ -41,7 +41,7 @@ namespace RuinsOfAlbertrizal
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (GameBase.CurrentGame.CurrentLevel.IntroMessage.NextBtnIsSkip())
+            if (GameBase.CurrentGame.CurrentLevel.IntroMessage.NextBtnIsNavigate())
                 NavAdventureInterface();
         }
     }

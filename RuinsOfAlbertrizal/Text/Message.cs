@@ -70,7 +70,7 @@ namespace RuinsOfAlbertrizal.Text
         /// Returns true when all messages are displayed
         /// </summary>
         /// <returns></returns>
-        public bool NextBtnIsSkip()
+        public bool NextBtnIsNavigate()
         {
             return IsDoneDisplaying(lineIndex + 1);
         }

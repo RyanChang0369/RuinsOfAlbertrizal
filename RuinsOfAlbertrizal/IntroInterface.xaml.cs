@@ -35,17 +35,6 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        /// <summary>
-        /// All navigations point to the IntroInterface. Navigate players to the correct locations.
-        /// </summary>
-        private void ForwardNavigation()
-        {
-            if (GameBase.CurrentGame.SeenIntroduction)
-            {
-                NavLevelIntro();
-            }
-        }
-
         private void NavLevelIntro()
         {
             NavigationService.Navigate(new Uri("LevelIntroInterface.xaml", UriKind.RelativeOrAbsolute));
@@ -58,7 +47,7 @@ namespace RuinsOfAlbertrizal
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (GameBase.CurrentGame.IntroMessage.NextBtnIsSkip())
+            if (GameBase.CurrentGame.IntroMessage.NextBtnIsNavigate())
                 NavLevelIntro();
         }
 
