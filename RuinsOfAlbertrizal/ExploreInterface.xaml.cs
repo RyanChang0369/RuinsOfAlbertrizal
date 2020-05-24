@@ -34,19 +34,42 @@ namespace RuinsOfAlbertrizal
 
         private void ExploreBtn_Click(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation animation = new DoubleAnimation
-            {
-                Duration = new Duration(TimeSpan.FromSeconds(3))
-            };
+            //DoubleAnimation animation = new DoubleAnimation
+            //{
+            //    Duration = new Duration(TimeSpan.FromSeconds(3)),
+            //    From = 1.1,
+            //    To = 4.0
+            //};
 
-            mainImage.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, animation);
-            mainImage.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
+            //imgZoomTimer.Start();
+            //ExploreBtn.IsEnabled = false;
+
+            //mainImage.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, animation);
+            //mainImage.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
         }
 
         private void ZoomImg(object sender, ElapsedEventArgs e)
         {
-            
-            //mainImage.RenderTransform.SetCurrentValue(ScaleTransform, )
+            try
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    ScaleTransform scaleTransform = (ScaleTransform)mainImage.RenderTransform;
+
+                    scaleTransform.ScaleX += 0.05;
+                    scaleTransform.ScaleY += 0.05;
+
+                    if (scaleTransform.ScaleX >= 4.0)
+                    {
+                        imgZoomTimer.Stop();
+                        ExploreBtn.IsEnabled = true;
+                    }
+                });
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

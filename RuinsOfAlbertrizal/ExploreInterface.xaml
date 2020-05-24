@@ -10,7 +10,6 @@
       Title="Exploration">
 
     <Grid Background="WhiteSmoke">
-
         <Image Style="{StaticResource blurred}" x:Name="mainImage">
             <Image.Source>
                 <Binding Path="WorldImg">
