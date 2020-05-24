@@ -160,6 +160,9 @@
     <Compile Include="Editor\EnumExtension.cs" />
     <Compile Include="Environment\BattleField.cs" />
     <Compile Include="Environment\Block.cs" />
+    <Compile Include="ExploreInterface.xaml.cs">
+      <DependentUpon>ExploreInterface.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
     <Compile Include="IconedObjectOfAlbertrizal.cs" />
@@ -326,6 +329,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Editor\HelpSection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExploreInterface.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

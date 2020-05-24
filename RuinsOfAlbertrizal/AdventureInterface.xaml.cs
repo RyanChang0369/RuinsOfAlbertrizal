@@ -15,12 +15,5 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
             DataContext = GameBase.CurrentGame.CurrentLevel;
         }
-
-        private void SaveBtn_Click(object sender, RoutedEventArgs e)
-        {
-            FileHandler.SaveCurrentMap();
-
-            MessageBox.Show("Game Saved!");
-        }
     }
 }

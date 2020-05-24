@@ -1,4 +1,4 @@
-﻿<local:BasePage x:Class="RuinsOfAlbertrizal.AdventureInterface"
+﻿<local:BasePage x:Class="RuinsOfAlbertrizal.ExploreInterface"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,9 +7,10 @@
       xmlns:local="clr-namespace:RuinsOfAlbertrizal"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="">
+      Title="Exploration">
 
     <Grid Background="WhiteSmoke">
+
         <Image Style="{StaticResource blurred}" x:Name="mainImage">
             <Image.Source>
                 <Binding Path="WorldImg">
@@ -19,14 +20,14 @@
                 </Binding>
             </Image.Source>
         </Image>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-            <StackPanel>
-                <Button x:Name="ExploreBtn" Content="Explore" Click="Navigate" Tag="ExploreInterface.xaml"/>
-                <Button x:Name="PartyMembersBtn" Content="Party Members" Click="Navigate" Tag="PartyMembersInterface.xaml"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="ExploreBtn" Content="Explore" Click="ExploreBtn_Click"/>
+                <Button Content="Party Members" Click="Navigate" Tag="PartyMembersInterface.xaml"/>
             </StackPanel>
-            <StackPanel>
-                <Button x:Name="SaveBtn" Content="Save" Click="SaveCurrentGame"/>
-                <Button x:Name="ReservedBtn" Content="[RESERVED]"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Save" Click="SaveCurrentGame"/>
+                <Button Content="Back" Click="Navigate" Tag="AdventureInterface.xaml"/>
             </StackPanel>
         </StackPanel>
     </Grid>

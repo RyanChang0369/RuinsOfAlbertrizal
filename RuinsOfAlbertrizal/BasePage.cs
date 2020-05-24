@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.XMLInterpreter;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -25,6 +26,18 @@ namespace RuinsOfAlbertrizal
         public void Navigate(Uri location)
         {
             NavigationService.Navigate(location);
+        }
+
+        public void SaveCurrentGame(object sender, RoutedEventArgs e)
+        {
+            FileHandler.SaveCurrentMap();
+            MessageBox.Show("Game Saved!");
+        }
+
+        public void SaveStaticGame(object sender, RoutedEventArgs e)
+        {
+            FileHandler.SaveStaticMap();
+            MessageBox.Show("Game Saved!");
         }
     }
 }
