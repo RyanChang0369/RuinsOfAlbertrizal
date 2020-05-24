@@ -14,20 +14,19 @@ namespace RuinsOfAlbertrizal
         public LevelIntroInterface()
         {
             InitializeComponent();
-
             DataContext = GameBase.CurrentGame.CurrentLevel;
+        }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
             if (!GameBase.CurrentGame.CurrentLevel.SeenIntroduction)
             {
                 GameBase.CurrentGame.CurrentLevel.IntroMessage.InitializeControls(IntroText, NextBtn, SkipBtn);
                 GameBase.CurrentGame.CurrentLevel.IntroMessage.Display();
-
-                GameBase.CurrentGame.CurrentLevel.SeenIntroduction = true;
-                FileHandler.SaveCurrentMap();
             }
             else
                 NavAdventureInterface();
-        }
+        }    
 
         private void NavAdventureInterface()
         {
@@ -36,13 +35,15 @@ namespace RuinsOfAlbertrizal
 
         private void SkipBtn_Click(object sender, RoutedEventArgs e)
         {
+            GameBase.CurrentGame.CurrentLevel.SeenIntroduction = true;
+            FileHandler.SaveCurrentMap();
             NavAdventureInterface();
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             if (GameBase.CurrentGame.CurrentLevel.IntroMessage.NextBtnIsNavigate())
-                NavAdventureInterface();
+                SkipBtn_Click(sender, e);
         }
     }
 }
