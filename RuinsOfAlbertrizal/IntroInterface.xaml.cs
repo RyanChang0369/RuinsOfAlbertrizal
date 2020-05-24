@@ -25,9 +25,6 @@ namespace RuinsOfAlbertrizal
             {
                 GameBase.CurrentGame.IntroMessage.InitializeControls(IntroText, NextBtn, SkipBtn);
                 GameBase.CurrentGame.IntroMessage.Display();
-
-                GameBase.CurrentGame.SeenIntroduction = true;
-                FileHandler.SaveCurrentMap();
             }
             else
             {
@@ -42,13 +39,15 @@ namespace RuinsOfAlbertrizal
 
         private void SkipBtn_Click(object sender, RoutedEventArgs e)
         {
+            GameBase.CurrentGame.SeenIntroduction = true;
+            FileHandler.SaveCurrentMap();
             NavLevelIntro();
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             if (GameBase.CurrentGame.IntroMessage.NextBtnIsNavigate())
-                NavLevelIntro();
+                SkipBtn_Click(sender, e);
         }
 
     }
