@@ -16,7 +16,8 @@ namespace RuinsOfAlbertrizal
         public PartyMembersInterface()
         {
             InitializeComponent();
-            //UpdatePartyMembersStackPanel(GameBase.CurrentGame.StoredPlayers);
+            UpdatePartyMembersStackPanel(GameBase.CurrentGame.StoredPlayers);
+            DataContext = GameBase.CurrentGame.StoredPlayers;
         }
 
         private void UpdatePartyMembersStackPanel(List<Player> players)
@@ -46,11 +47,11 @@ namespace RuinsOfAlbertrizal
             foreach (Player player in players)
             {
                 Grid grid = new Grid();
-                grid.ColumnDefinitions.Add(columnDef);
-                grid.ColumnDefinitions.Add(columnDef);
-                grid.RowDefinitions.Add(rowDef);
-                grid.RowDefinitions.Add(rowDef);
-                grid.RowDefinitions.Add(rowDef);
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
+                grid.RowDefinitions.Add(new RowDefinition());
 
                 int col = 0;
                 int row = 0;
@@ -81,10 +82,10 @@ namespace RuinsOfAlbertrizal
                     statPanel.Children.Add(statNum);
 
                     //Organize statPanels
-                    col++;
                     grid.Children.Add(statPanel);
                     statPanel.SetValue(Grid.RowProperty, row);
                     statPanel.SetValue(Grid.ColumnProperty, col);
+                    col++;
                 }
 
                 //Create playerNameLabel and image

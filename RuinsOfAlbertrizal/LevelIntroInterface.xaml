@@ -29,7 +29,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="128"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="IntroText" Text="Test test test" Style="{StaticResource introText}"/>
+                <TextBlock x:Name="IntroText" Text="Loading..." Style="{StaticResource introText}"/>
                 <StackPanel Grid.Column="1">
                     <Button x:Name="NextBtn" Content="Next" Style="{StaticResource buttonStretch}" Click="NextBtn_Click"/>
                     <Button x:Name="SkipBtn" Content="Skip" Style="{StaticResource buttonStretch}" Click="SkipBtn_Click"/>

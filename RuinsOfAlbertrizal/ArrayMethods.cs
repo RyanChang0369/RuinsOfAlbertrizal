@@ -17,13 +17,13 @@ namespace RuinsOfAlbertrizal
 
             for (int i = 0; i < a3.Length; i++)
             {
-                a3[i] = a3[1] + a3[2];
+                a3[i] = a1[i] + a2[i];
             }
 
             return a3;
         }
 
-        public static int AddMembersOfArray(this int[] a)
+        public static int ArrayTotal(this int[] a)
         {
             int total = 0;
 

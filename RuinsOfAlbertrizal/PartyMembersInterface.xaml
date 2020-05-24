@@ -8,28 +8,43 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Party Members">
 
+    <Page.Resources>
+        <DataTemplate x:Key="partyMembersTemplate">
+            <StackPanel Width="200" HorizontalAlignment="Left">
+                <Label Content="{Binding Path=Name}"/>
+                <Image Source="{Binding Path=WorldImgAsBitmapSource}" Height="200" HorizontalAlignment="Center"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <Label Content="HP"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Path=ArmoredStats[0]}" Foreground="Red" FontSize="18"/>
+                            <Label Content="/" Foreground="Red" FontSize="18"/>
+                            <Label Content="{Binding Path=CurrentStats[0]}" Foreground="Red" FontSize="18"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Label Content="Mana"/>
+                        <Label Content="20/20" Foreground="Blue" FontSize="18"/>
+                    </StackPanel>
+                </Grid>
+                <Button Content="Inventory" Style="{StaticResource buttonSmallStretch}" FontSize="24"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
     <Grid Background="DarkGray">
-        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-            <StackPanel x:Name="PartyMembersStackPanel">
-                <StackPanel Width="200" HorizontalAlignment="Left">
-                    <Label Content="TestPlayer"/>
-                    <Image Source="assets/error.png" Height="200" HorizontalAlignment="Center"/>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel>
-                            <Label Content="HP"/>
-                            <Label Content="100/100" Foreground="Red" FontSize="18"/>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
-                            <Label Content="Mana"/>
-                            <Label Content="20/20" Foreground="Blue" FontSize="18"/>
-                        </StackPanel>
-                    </Grid>
-                    <Button Content="Inventory" Style="{StaticResource buttonSmallStretch}" FontSize="24"/>
-                </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="PartyMembersStackPanel" Orientation="Horizontal">
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

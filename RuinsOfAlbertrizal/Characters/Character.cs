@@ -57,7 +57,7 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Image as it appears on the map. Determies hitbox size.
+        /// Image as it appears on the map. Determines hitbox size.
         /// </summary>
         public Bitmap MapImage { get; set; }
 
