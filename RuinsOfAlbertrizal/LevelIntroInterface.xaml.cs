@@ -15,6 +15,7 @@ namespace RuinsOfAlbertrizal
         {
             InitializeComponent();
             DataContext = GameBase.CurrentGame.CurrentLevel;
+            Title = "Introduction: " + GameBase.CurrentGame.CurrentLevel.Name;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

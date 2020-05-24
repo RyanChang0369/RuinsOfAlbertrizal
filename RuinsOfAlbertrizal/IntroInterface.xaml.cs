@@ -14,9 +14,8 @@ namespace RuinsOfAlbertrizal
         public IntroInterface()
         {
             InitializeComponent();
-            //ForwardNavigation();
-
             DataContext = GameBase.CurrentGame;
+            Title = "Introduction: " + GameBase.CurrentGame.Name;
         }
         
         private void Page_Loaded(object sender, RoutedEventArgs e)
