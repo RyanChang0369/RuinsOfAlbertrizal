@@ -122,6 +122,12 @@
                 <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=BuffImmunities, Mode=TwoWay}"/>
 
                 <StackPanel Orientation="Horizontal">
+                    <Label Content="Granted Buffs"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character who equipts this equiptment will recieve the following permanent buffs."/>
+                </StackPanel>
+                <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=GrantedBuffs, Mode=TwoWay}"/>
+
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Permanent Buffs"/>
                 </StackPanel>
 
