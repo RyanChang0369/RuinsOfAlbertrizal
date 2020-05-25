@@ -3,6 +3,7 @@ using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -25,6 +26,18 @@ namespace RuinsOfAlbertrizal.Characters
         public string GeneralName { get; set; }
 
         public int Level { get; set; }
+
+        public enum ModelStyle
+        { 
+            [Description("Armor and weapons are shown. The world image should be a multiple of [x] by [y] pixels. See help page for more information.")]
+            Humanoid,
+            [Description("Helmet and weapons are shown. The world image should be a multiple of [x] by [y] pixels. See help page for more information.")]
+            Slime,
+            [Description("No armor or weapons are shown.")]
+            Other
+        }
+
+        public ModelStyle StyleOfModel { get; set; }
 
         private AI.AIStyle aiStyle;
 
@@ -183,10 +196,20 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        /// <summary>
+        /// This character will recieve the following buffs.
+        /// </summary>
+        public List<Buff> PermanentBuffs { get; set; }
+
+        /// <summary>
+        /// This character is immune to the following buffs of the same name. Permanent buffs are ignored.
+        /// </summary>
+        public List<Buff> BuffImmunities { get; set; }
+
         private List<Buff> appliedBuffs = new List<Buff>();
 
         /// <summary>
-        /// Use this to directly apply buffs
+        /// Use this to directly apply buffs. These buffs will expire.
         /// </summary>
         public List<Buff> AppliedBuffs
         {
@@ -237,13 +260,23 @@ namespace RuinsOfAlbertrizal.Characters
                     }
                 }
 
+                foreach (Buff buff in BuffImmunities)
+                {
+                    currentBuffs.RemoveAll(item => item.Name == buff.Name);
+                }
+
+                foreach (Buff buff in PermanentBuffs)
+                {
+                    currentBuffs.Add(buff);
+                }
+
                 return currentBuffs;
             }
         }
 
         [XmlIgnore]
         /// <summary>
-        /// How strong the character is. Ignores any buffs.
+        /// How strong the character is. Ignores any non-static buffs.
         /// </summary>
         public int BattleIndex
         {
@@ -299,6 +332,7 @@ namespace RuinsOfAlbertrizal.Characters
             InventoryItems = new List<Item>();
             Attacks = new List<Attack>();
             BaseStats = new int[5];
+            PermanentBuffs = new List<Buff>();
         }
 
         /// <summary>
@@ -368,21 +402,9 @@ namespace RuinsOfAlbertrizal.Characters
 
         public void StartRound()
         {
-            //Remove any expired consumables
-            try
-            {
-                for (int i = 0; i < CurrentConsumables.Count; i++)
-                {
-                    if (CurrentConsumables[i].HasEnded)
-                    {
-                        CurrentConsumables.RemoveAt(i);
-                    }
-                }
-            }
-            catch (Exception)
-            {
-
-            }
+            //Remove all expired consumables and buffs
+            CurrentConsumables.RemoveAll(item => item.HasEnded);
+            AppliedBuffs.RemoveAll(item => item.HasEnded);
         }
         
         public void EndRound()
