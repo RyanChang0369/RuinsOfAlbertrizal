@@ -37,18 +37,18 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="The item as it appears in the inventory.">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Icon *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The item as it appears in the inventory."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy.">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Drop Chance *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy or from exploring."/>
                 </StackPanel>
                 <TextBox x:Name="DropChance">
                     <TextBox.Text>
@@ -115,15 +115,19 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="When equipted, what buffs is the user immune to?">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Buff Immunities"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character who equipts this equiptment is immune to the listed buffs. Permanent buffs are not affected."/>
                 </StackPanel>
                 <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
 
-                <StackPanel Orientation="Horizontal" ToolTip="What slots in the inventory can this be equipted to?">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Permanent Buffs"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Slots *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="What slots in the inventory can this be equipted to?"/>
                 </StackPanel>
                 <Button x:Name="SelectSlotsBtn" Content="Select Slots" Click="SelectSlotsBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
             </StackPanel>

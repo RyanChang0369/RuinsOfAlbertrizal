@@ -11,16 +11,6 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Create Level">
 
-    <!--<Page.Resources>
-        <ObjectDataProvider MethodName="GetValues"
-                        ObjectType="{x:Type sys:Enum}"
-                        x:Key="WinConditionValues">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="HorizontalAlignment" />
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-    </Page.Resources>-->
-
     <Grid Background="WhiteSmoke">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -52,18 +42,18 @@
                             </TextBox.Text>
                         </TextBox>
 
-                        <StackPanel Orientation="Horizontal" ToolTip="The background of this level.">
+                        <StackPanel Orientation="Horizontal">
                             <Label Content="Background *"/>
-                            <Image Source="questionMark.png" Height="20" Margin="10"/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The background of this level."/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                             <Label Content="{Binding Path=WorldImgLocation, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" ToolTip="The introduction to the game. Shown to player at the start of the game.">
+                        <StackPanel Orientation="Horizontal">
                             <Label Content="Intro Text"/>
-                            <Image Source="questionMark.png" Height="20" Margin="10"/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The introduction to the game. Shown to player at the start of the game."/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="AddIntroMessage" Content="Add/Edit Message" Click="AddIntroMessage_Click" Style="{StaticResource buttonSmallStretch}"/>
@@ -72,7 +62,7 @@
 
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Win Condition*"/>
-                            <Image Source="infoCircle.png" Height="20" Width="20"
+                            <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
                                Tag="{Binding Path=TheWinCondition, Mode=OneTime, Converter={StaticResource EnumConverter}}"
                                Loaded="InfoLoaded_EnumDescription"/>
                         </StackPanel>
@@ -84,15 +74,14 @@
                                     </Binding.Converter>
                                 </Binding>
                             </ComboBox.ItemsSource>
-                            
                             <ComboBox.SelectedItem>
                                 <Binding Path="TheWinCondition"/>
                             </ComboBox.SelectedItem>
                         </ComboBox>
 
-                        <StackPanel Orientation="Horizontal" ToolTip="The amount of points necessary to trigger the boss fight. When an enemy is defeated, the number of points increases by 1/10th of the enemy's battle index.">
+                        <StackPanel Orientation="Horizontal">
                             <Label Content="Boss Fight Trigger Index*"/>
-                            <Image Source="questionMark.png" Height="20" Margin="10"/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The amount of points necessary to trigger the boss fight. When an enemy is defeated, the number of points increases by 1/10th of the enemy's battle index."/>
                         </StackPanel>
                         <TextBox>
                             <TextBox.Text>

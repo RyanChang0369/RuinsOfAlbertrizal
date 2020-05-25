@@ -37,18 +37,18 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="The item as it appears in the inventory.">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Icon *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The item as it appears in the inventory."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy.">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Drop Chance *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy."/>
                 </StackPanel>
                 <TextBox x:Name="DropChance">
                     <TextBox.Text>
@@ -60,9 +60,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Buffs applied to consumer of consumable.">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Buffs"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Buffs applied to consumer of consumable."/>
                 </StackPanel>
                 <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
             </StackPanel>

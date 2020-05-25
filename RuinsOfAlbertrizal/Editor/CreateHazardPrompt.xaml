@@ -44,9 +44,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="How the tile looks like on the map">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Tile Image *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="How the tile looks like on the map."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectTileImageBtn" Click="SelectTileImageBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
@@ -109,16 +109,16 @@
                 </TextBox>
 
 
-                <StackPanel Orientation="Horizontal" ToolTip="What buff does this hazard inflict on the player, enemy, or boss?">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Buffs on Contact"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="What buff does this hazard inflict on the player, enemy, or boss?"/>
                 </StackPanel>
-                <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
+                <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=Buffs, Mode=TwoWay}"/>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Which direction does the character have to be traveling in order to be damaged by this hazard?">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Direction of Damage *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
-                    <Image Source="infoCircle.png" Height="20" Width="20"
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Which direction does the character have to be traveling in order to be damaged by this hazard?"/>
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
                            Tag="{Binding Path=DirectionOfDamage, Mode=OneTime, Converter={StaticResource EnumConverter}}"
                            Loaded="InfoLoaded_EnumDescription"/>
                 </StackPanel>
@@ -128,7 +128,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Hazard Type *"/>
-                    <Image Source="infoCircle.png" Height="20" Width="20"
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
                            Tag="{Binding Path=TypeOfBlock, Mode=OneTime, Converter={StaticResource EnumConverter}}"
                            Loaded="InfoLoaded_EnumDescription"/>
                 </StackPanel>

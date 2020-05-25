@@ -44,23 +44,62 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="The icon of the enemy as it appears on the HUD.">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Icon *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The icon of the enemy as it appears on the HUD."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" ToolTip="The enemy as it appears on the battle screen.">
-                    <Label Content="Image on Map *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="World Image *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The enemy as it appears on the battle screen."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <Label Content="{Binding Path=WorldImgLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Character Model Style *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}"/>
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
+                           Tag="{Binding Path=StyleOfModel, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
+                <ComboBox>
+                    <ComboBox.ItemsSource>
+                        <Binding Path="StyleOfModel" Mode="OneTime">
+                            <Binding.Converter>
+                                <converter:EnumConverter/>
+                            </Binding.Converter>
+                        </Binding>
+                    </ComboBox.ItemsSource>
+                    <ComboBox.SelectedItem>
+                        <Binding Path="StyleOfModel"/>
+                    </ComboBox.SelectedItem>
+                </ComboBox>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="AI Style *"/>
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
+                           Tag="{Binding Path=AIStyle, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
+                <ComboBox>
+                    <ComboBox.ItemsSource>
+                        <Binding Path="AIStyle" Mode="OneTime">
+                            <Binding.Converter>
+                                <converter:EnumConverter/>
+                            </Binding.Converter>
+                        </Binding>
+                    </ComboBox.ItemsSource>
+                    <ComboBox.SelectedItem>
+                        <Binding Path="AIStyle"/>
+                    </ComboBox.SelectedItem>
+                </ComboBox>
 
                 <Label Content="HP *"/>
                 <TextBox x:Name="BaseHP" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
@@ -107,27 +146,8 @@
                     </Binding>
                 </TextBox>
                 
-                <Label Content="Abilities"/>
-                <TextBox x:Name="Abilities" IsEnabled="False"/>
-
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="AI *"/>
-                    <Image Source="infoCircle.png" Height="20" Width="20"
-                           Tag="{Binding Path=AIStyle, Mode=OneTime, Converter={StaticResource EnumConverter}}"
-                           Loaded="InfoLoaded_EnumDescription"/>
-                </StackPanel>
-                <ComboBox>
-                    <ComboBox.ItemsSource>
-                        <Binding Path="AIStyle" Mode="OneTime">
-                            <Binding.Converter>
-                                <converter:EnumConverter/>
-                            </Binding.Converter>
-                        </Binding>
-                    </ComboBox.ItemsSource>
-                    <ComboBox.SelectedItem>
-                        <Binding Path="AIStyle"/>
-                    </ComboBox.SelectedItem>
-                </ComboBox>
+                <!--<Label Content="Abilities"/>
+                <TextBox x:Name="Abilities" IsEnabled="False"/>-->
             </StackPanel>
         </ScrollViewer>
         

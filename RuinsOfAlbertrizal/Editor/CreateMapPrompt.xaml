@@ -41,27 +41,27 @@
                             </TextBox.Text>
                         </TextBox>
 
-                        <StackPanel Orientation="Horizontal" ToolTip="Used as icon in tooltip. Recommended dimentions are 48 x 48.">
+                        <StackPanel Orientation="Horizontal">
                             <Label Content="Icon *"/>
-                            <Image Source="questionMark.png" Height="20" Margin="10"/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Used as the application's icon. Recommended dimentions are 48 x 48."/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmallStretch}"/>
                             <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" ToolTip="The background as displayed on the intro screen.">
+                        <StackPanel Orientation="Horizontal">
                             <Label Content="Background *"/>
-                            <Image Source="questionMark.png" Height="20" Margin="10"/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The background as displayed on the introduction and exploration screens."/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                             <Label Content="{Binding Path=WorldImgLocation, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
 
-                        <StackPanel Orientation="Horizontal" ToolTip="The introduction to the game. Shown to player at the start of the game.">
+                        <StackPanel Orientation="Horizontal">
                             <Label Content="Intro Text"/>
-                            <Image Source="questionMark.png" Height="20" Margin="10"/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The introduction to the game. Shown to player at the start of the game."/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Button x:Name="AddIntroMessage" Content="Add/Edit Message" Click="AddIntroMessage_Click" Style="{StaticResource buttonSmallStretch}"/>

@@ -46,12 +46,5 @@ namespace RuinsOfAlbertrizal.Editor
         {
             RequiredControls.Add(AttackName);
         }
-
-        private void EditBuffBtn_Click(object sender, RoutedEventArgs e)
-        {
-            BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedAttack.Buffs);
-            buffAdderPrompt.ShowDialog();
-            CreatedAttack.Buffs = buffAdderPrompt.TargetBuffs;
-        }
     }
 }

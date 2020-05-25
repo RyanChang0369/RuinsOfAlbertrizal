@@ -44,9 +44,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="How the tile looks like on the map">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Tile Image *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="How the tile looks like on the map."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectTileImageBtn" Click="SelectTileImageBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
@@ -72,7 +72,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Block Type *"/>
-                    <Image Source="infoCircle.png" Height="20" Width="20"
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
                            Tag="{Binding Path=TypeOfBlock, Mode=OneTime, Converter={StaticResource EnumConverter}}"
                            Loaded="InfoLoaded_EnumDescription"/>
                 </StackPanel>

@@ -19,9 +19,9 @@
         <Label Style="{StaticResource title}">Create Player</Label>
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="Form">
-                <StackPanel Orientation="Horizontal" ToolTip='The proper name, such as Bob or Robert'>
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Name *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip='The proper name, such as Bob or Robert.'/>
                 </StackPanel>
                 <TextBox x:Name="PlayerName" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
@@ -33,9 +33,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip='The name of the "species", such as human or orc'>
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Species Name"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip='The name of the "species", such as human or orc.'/>
                 </StackPanel>
                 <TextBox x:Name="GeneralName">
                     <TextBox.Text>
@@ -50,24 +50,44 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="The icon of the player as it appears on the HUD.">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Icon *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The icon of the player as it appears on the HUD."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <Label Content="{Binding Path=IconLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" ToolTip="The player as it appears on the battle screen.">
-                    <Label Content="Image on Map *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="World Image *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The player as it appears on the battle screen."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
                     <Label Content="{Binding Path=WorldImgLocation, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
 
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Character Model Style *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}"/>
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
+                           Tag="{Binding Path=StyleOfModel, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
+                <ComboBox>
+                    <ComboBox.ItemsSource>
+                        <Binding Path="StyleOfModel" Mode="OneTime">
+                            <Binding.Converter>
+                                <converter:EnumConverter/>
+                            </Binding.Converter>
+                        </Binding>
+                    </ComboBox.ItemsSource>
+                    <ComboBox.SelectedItem>
+                        <Binding Path="StyleOfModel"/>
+                    </ComboBox.SelectedItem>
+                </ComboBox>
+                
                 <Label Content="Class *"/>
                 <ComboBox x:Name="Class">
                     <ComboBox.SelectedIndex>

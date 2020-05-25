@@ -45,9 +45,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="The duration of the buff, which is also affected by the level of the buff.">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Duration *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The duration of the buff, which is also affected by the level of the buff."/>
                 </StackPanel>
                 <TextBox x:Name="Duration">
                     <TextBox.Text>
@@ -59,9 +59,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="HP Gain *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
                 </StackPanel>
                 <TextBox x:Name="HPGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for HP Loss">
                     <TextBox.Text>
@@ -73,9 +73,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Mana Gain *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
                 </StackPanel>
                 <TextBox x:Name="ManaGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Mana Loss">
                     <TextBox.Text>
@@ -87,9 +87,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Defense Gain *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
                 </StackPanel>
                 <TextBox x:Name="DefGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Defense Loss">
                     <TextBox.Text>
@@ -101,9 +101,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Damage Gain *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
                 </StackPanel>
                 <TextBox x:Name="DmgGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Speed Loss">
                     <TextBox.Text>
@@ -115,9 +115,9 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <StackPanel Orientation="Horizontal" ToolTip="Affected by level (increased by 20% per level)">
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Speed Gain *"/>
-                    <Image Source="questionMark.png" Height="20" Margin="10"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
                 </StackPanel>
                 <TextBox x:Name="SpdGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Speed Loss">
                     <TextBox.Text>
@@ -131,7 +131,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Change in AI *"/>
-                    <Image Source="infoCircle.png" Height="20" Width="20"
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
                            Tag="{Binding Path=AIChange, Mode=OneTime, Converter={StaticResource EnumConverter}}"
                            Loaded="InfoLoaded_EnumDescription"/>
                 </StackPanel>
@@ -150,7 +150,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Special Buff Properties"/>
-                    <Image Source="infoCircle.png" Height="20" Width="20"
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
                            Tag="{Binding Path=TypeOfBuff, Mode=OneTime, Converter={StaticResource EnumConverter}}"
                            Loaded="InfoLoaded_EnumDescription"/>
                 </StackPanel>
