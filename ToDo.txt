@@ -1,5 +1,5 @@
-Items
-Images png's
-sprites
 Have equiptment drawn onto the characters.
-Implement ICloneable on Character class
+
+Add character model enum to characters.
+This will tell the game how to draw armor onto the characters.
+
