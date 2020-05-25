@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Editor.AdderPrompts;
+using RuinsOfAlbertrizal.Mechanics;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,6 +57,15 @@ namespace RuinsOfAlbertrizal.Editor
 
         protected abstract void ClearVariable();
 
+        protected void EditBuffBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Control control = (Control)sender;
+            List<Buff> buffs = (List<Buff>)control.Tag;
+            BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(buffs);
+            buffAdderPrompt.ShowDialog();
+            buffs = buffAdderPrompt.TargetBuffs;
+        }
+
         protected void ComboBox_Initialize(object sender, RoutedEventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
@@ -82,34 +93,6 @@ namespace RuinsOfAlbertrizal.Editor
                 comboBox.Items.Add(item);
             }
         }
-
-        //protected void ComboBox_ChangeTooltip(object sender, SelectionChangedEventArgs e)
-        //{
-        //    ComboBox comboBox = (ComboBox)sender;
-        //    string tooltip = "";
-
-        //    //try
-        //    //{
-        //    //    //Fix
-        //    //    Enum enumValue = (Enum)comboBox.Items.SourceCollection;
-
-        //    //    FieldInfo fi = enumValue.GetType().GetField(enumValue.ToString());
-
-        //    //    DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(
-        //    //        typeof(DescriptionAttribute), false);
-
-        //    //    if (attributes != null && attributes.Length > 0)
-        //    //        tooltip =  attributes[0].Description;
-        //    //    else
-        //    //        tooltip = "Select item to view description";
-        //    //}
-        //    //catch (Exception)
-        //    //{
-        //    //    tooltip = "Select item to view description";
-        //    //}
-
-        //    //comboBox.ToolTip = tooltip;
-        //}
 
 
         protected void InfoLoaded_EnumDescription(object sender, RoutedEventArgs e)
