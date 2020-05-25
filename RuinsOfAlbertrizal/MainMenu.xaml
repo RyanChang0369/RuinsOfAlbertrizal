@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RuinsOfAlbertrizal"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="MainMenu">
+      Title="Main Menu">
 
     <Grid>
         <Grid.RowDefinitions>
