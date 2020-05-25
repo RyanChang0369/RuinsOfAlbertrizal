@@ -22,7 +22,15 @@ namespace RuinsOfAlbertrizal.Items
 
         public int[] StatGain { get; set; }
 
+        /// <summary>
+        /// The character who equipts this equiptment is immune to the listed buffs. Permanent buffs are not affected.
+        /// </summary>
         public List<Buff> BuffImmunities { get; set; }
+
+        /// <summary>
+        /// The character who equipts this equiptment will recieve the following permanent buffs.
+        /// </summary>
+        public List<Buff> GrantedBuffs { get; set; }
 
         public List<Attack> Attacks { get; set; }
 
