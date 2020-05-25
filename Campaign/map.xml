@@ -2,7 +2,7 @@
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>Campaign</Name>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -33,6 +33,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
+      <PermanentBuffs />
+      <BuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -83,6 +85,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
+      <PermanentBuffs />
+      <BuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -154,6 +158,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
+      <PermanentBuffs />
+      <BuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -216,7 +222,7 @@
       </StatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
       <AIChange>Player</AIChange>
-      <Level>0</Level>
+      <Level>1</Level>
     </Buff>
   </StoredBuffs>
   <StoredAttacks>
@@ -226,6 +232,40 @@
       <Buffs />
       <StatLoss>
         <int>5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>0</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IsMagic>false</IsMagic>
+    </Attack>
+    <Attack>
+      <Name>Poison Stab</Name>
+      <Description>A stab with a bit more flair.</Description>
+      <Buffs>
+        <Buff>
+          <Name>Poison</Name>
+          <Description>Losing health!</Description>
+          <Duration>1</Duration>
+          <RoundsPassed>0</RoundsPassed>
+          <StatGain>
+            <int>-5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatGain>
+          <TypeOfBuff>Normal</TypeOfBuff>
+          <AIChange>Player</AIChange>
+          <Level>1</Level>
+        </Buff>
+      </Buffs>
+      <StatLoss>
+        <int>6</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
@@ -281,7 +321,7 @@
     <Level>
       <Name>Final Level</Name>
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>true</SeenIntroduction>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>
@@ -316,6 +356,8 @@
             <int>0</int>
             <int>0</int>
           </AppliedStats>
+          <PermanentBuffs />
+          <BuffImmunities />
           <AppliedBuffs />
           <CurrentEquiptments>
             <Equiptment xsi:nil="true" />
