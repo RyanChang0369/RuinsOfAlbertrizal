@@ -154,6 +154,20 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <Style TargetType="Image" x:Key="circleImg" BasedOn="{StaticResource goodQuality}">
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="questionCircle" BasedOn="{StaticResource circleImg}">
+            <Setter Property="Cursor" Value="Help"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="infoCircle" BasedOn="{StaticResource circleImg}">
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
         
         <!--Tab Item Styles-->
         <Style TargetType="TabItem">
