@@ -119,7 +119,7 @@
                     <Label Content="Buff Immunities"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character who equipts this equiptment is immune to the listed buffs. Permanent buffs are not affected."/>
                 </StackPanel>
-                <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
+                <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=BuffImmunities, Mode=TwoWay}"/>
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Permanent Buffs"/>

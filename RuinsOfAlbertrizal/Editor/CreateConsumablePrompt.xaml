@@ -64,7 +64,7 @@
                     <Label Content="Buffs"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Buffs applied to consumer of consumable."/>
                 </StackPanel>
-                <Button x:Name="EditBuffBtn" Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" HorizontalAlignment="Left"/>
+                <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=Buffs, Mode=TwoWay}"/>
             </StackPanel>
         </ScrollViewer>
 

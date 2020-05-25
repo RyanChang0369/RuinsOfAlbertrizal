@@ -49,13 +49,6 @@ namespace RuinsOfAlbertrizal.Editor
             RequiredControls.Add(DropChance);
         }
 
-        private void EditBuffBtn_Click(object sender, RoutedEventArgs e)
-        {
-            BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedConsumable.Buffs);
-            buffAdderPrompt.ShowDialog();
-            CreatedConsumable.Buffs = buffAdderPrompt.TargetBuffs;
-        }
-
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
         {
             try

@@ -48,13 +48,6 @@ namespace RuinsOfAlbertrizal.Editor
             RequiredControls.Add(EquiptmentName);
         }
 
-        private void EditBuffBtn_Click(object sender, RoutedEventArgs e)
-        {
-            BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(CreatedEquiptment.BuffImmunities);
-            buffAdderPrompt.ShowDialog();
-            CreatedEquiptment.BuffImmunities = buffAdderPrompt.TargetBuffs;
-        }
-
         private void SelectSlotsBtn_Click(object sender, RoutedEventArgs e)
         {
             SlotAdderPrompt slotAdderPrompt = new SlotAdderPrompt(CreatedEquiptment.Slots);
