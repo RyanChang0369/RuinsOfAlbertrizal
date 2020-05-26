@@ -141,13 +141,13 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Caps the given 5 element array to the leveled stats.
+        /// Caps the given 10 element array to the leveled stats.
         /// </summary>
         /// <param name="arr"></param>
         /// <returns></returns>
         private int[] CapAppliedStats(int[] arr)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 if (arr[i] > LeveledStats[i])
                     arr[i] = LeveledStats[i];

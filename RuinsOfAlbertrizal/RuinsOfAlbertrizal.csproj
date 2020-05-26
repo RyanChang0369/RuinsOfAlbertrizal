@@ -74,9 +74,6 @@
     <Compile Include="Characters\Enemy.cs" />
     <Compile Include="Editor\AdderPrompts\AdderPrompt.cs" />
     <Compile Include="Editor\AdderPrompts\BaseAdderPrompt.cs" />
-    <Compile Include="Editor\AdderPrompts\PlayerSelectorPrompt.xaml.cs">
-      <DependentUpon>PlayerSelectorPrompt.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Editor\AdderPrompts\BossAdderPrompt.xaml.cs">
       <DependentUpon>BossAdderPrompt.xaml</DependentUpon>
     </Compile>
@@ -191,6 +188,9 @@
     <Compile Include="PartyMembersInterface.xaml.cs">
       <DependentUpon>PartyMembersInterface.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlayerChooser.xaml.cs">
+      <DependentUpon>PlayerChooser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RNG.cs" />
     <Compile Include="Testing.cs" />
     <Compile Include="Text\Message.cs" />
@@ -245,10 +245,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BattleInterface.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Editor\AdderPrompts\PlayerSelectorPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -365,6 +361,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PartyMembersInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerChooser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

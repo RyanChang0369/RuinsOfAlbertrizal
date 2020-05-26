@@ -18,15 +18,22 @@
       <TurnsPassed>0</TurnsPassed>
       <GeneralName>Human</GeneralName>
       <Level>1</Level>
+      <StyleOfModel>Humanoid</StyleOfModel>
       <AIStyle>Player</AIStyle>
       <BaseStats>
         <int>200</int>
         <int>20</int>
+        <int>20</int>
+        <int>13</int>
         <int>10</int>
-        <int>5</int>
-        <int>5</int>
+        <int>20</int>
       </BaseStats>
       <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
@@ -70,6 +77,7 @@
       <TurnsPassed>0</TurnsPassed>
       <GeneralName>Rare Green Slime</GeneralName>
       <Level>10</Level>
+      <StyleOfModel>Humanoid</StyleOfModel>
       <AIStyle>Beserk</AIStyle>
       <BaseStats>
         <int>2000</int>
@@ -77,8 +85,18 @@
         <int>10</int>
         <int>0</int>
         <int>50</int>
+        <int>2</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
       </BaseStats>
       <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
@@ -143,6 +161,7 @@
       <TurnsPassed>0</TurnsPassed>
       <GeneralName>Green Slime</GeneralName>
       <Level>0</Level>
+      <StyleOfModel>Humanoid</StyleOfModel>
       <AIStyle>Beserk</AIStyle>
       <BaseStats>
         <int>10</int>
@@ -150,8 +169,18 @@
         <int>0</int>
         <int>0</int>
         <int>2</int>
+        <int>2</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
       </BaseStats>
       <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
@@ -203,6 +232,11 @@
         <int>0</int>
         <int>0</int>
         <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
       </StatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
       <AIChange>NoAI</AIChange>
@@ -215,6 +249,11 @@
       <RoundsPassed>0</RoundsPassed>
       <StatGain>
         <int>-5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
@@ -232,6 +271,11 @@
       <Buffs />
       <StatLoss>
         <int>5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
@@ -258,14 +302,24 @@
             <int>0</int>
             <int>0</int>
             <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
           </StatGain>
           <TypeOfBuff>Normal</TypeOfBuff>
-          <AIChange>Player</AIChange>
+          <AIChange>NoChange</AIChange>
           <Level>1</Level>
         </Buff>
       </Buffs>
       <StatLoss>
         <int>6</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
@@ -289,6 +343,11 @@
       </Location>
       <TypeOfBlock>TangableBlock</TypeOfBlock>
       <StatLoss>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
         <int>0</int>
         <int>0</int>
         <int>0</int>
@@ -341,6 +400,7 @@
           <TurnsPassed>0</TurnsPassed>
           <GeneralName>Rare Green Slime</GeneralName>
           <Level>10</Level>
+          <StyleOfModel>Humanoid</StyleOfModel>
           <AIStyle>Beserk</AIStyle>
           <BaseStats>
             <int>2000</int>
@@ -348,8 +408,18 @@
             <int>10</int>
             <int>0</int>
             <int>50</int>
+            <int>2</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
           </BaseStats>
           <AppliedStats>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
             <int>0</int>
             <int>0</int>
             <int>0</int>
