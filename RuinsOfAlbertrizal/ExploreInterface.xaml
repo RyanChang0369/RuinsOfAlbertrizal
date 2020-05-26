@@ -21,7 +21,7 @@
         </Image>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="ExploreBtn" Content="Explore" Click="ExploreBtn_Click"/>
+                <Button x:Name="ExploreBtn" Content="Select Player for Explore" Click="ExploreBtn_Click"/>
                 <Button Content="Party Members" Click="Navigate" Tag="PartyMembersInterface.xaml"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">

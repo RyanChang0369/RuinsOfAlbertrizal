@@ -1,6 +1,9 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Characters;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -22,53 +25,42 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public partial class ExploreInterface : BasePage
     {
-        private Timer imgZoomTimer = new Timer(10);
+        public List<Player> ProvidedPlayers { get; set; }
+
+        private Player selectedPlayer;
+
+        public Player SelectedPlayer
+        {
+            get { return selectedPlayer; }
+            set
+            {
+                selectedPlayer = value;
+
+                if (selectedPlayer == null)
+                    ExploreBtn.Content = "Select Player for Explore";
+                else
+                    ExploreBtn.Content = "Explore";
+            }
+        }
 
         public ExploreInterface()
         {
             InitializeComponent();
             DataContext = GameBase.CurrentGame.CurrentLevel;
             Title = $"Exploring {GameBase.CurrentGame.CurrentLevel.Name}";
-            imgZoomTimer.Elapsed += ZoomImg;
         }
 
         private void ExploreBtn_Click(object sender, RoutedEventArgs e)
         {
-            //DoubleAnimation animation = new DoubleAnimation
-            //{
-            //    Duration = new Duration(TimeSpan.FromSeconds(3)),
-            //    From = 1.1,
-            //    To = 4.0
-            //};
-
-            //imgZoomTimer.Start();
-            //ExploreBtn.IsEnabled = false;
-
-            //mainImage.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, animation);
-            //mainImage.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
-        }
-
-        private void ZoomImg(object sender, ElapsedEventArgs e)
-        {
-            try
+            if (SelectedPlayer == null)
             {
-                this.Dispatcher.Invoke(() =>
-                {
-                    ScaleTransform scaleTransform = (ScaleTransform)mainImage.RenderTransform;
-
-                    scaleTransform.ScaleX += 0.05;
-                    scaleTransform.ScaleY += 0.05;
-
-                    if (scaleTransform.ScaleX >= 4.0)
-                    {
-                        imgZoomTimer.Stop();
-                        ExploreBtn.IsEnabled = true;
-                    }
-                });
+                PlayerChooser chooser = new PlayerChooser("Select a player", ProvidedPlayers);
+                chooser.ShowDialog();
+                SelectedPlayer = chooser.SelectedPlayer;
             }
-            catch (Exception)
+            else
             {
-
+                //Do explore
             }
         }
     }

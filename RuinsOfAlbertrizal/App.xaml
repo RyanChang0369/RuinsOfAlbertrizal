@@ -198,5 +198,6 @@
         <converter:ArrayConverter x:Key="ArrayConverter"/>
         <converter:ListConverter x:Key="ListConverter"/>
         <converter:EnumConverter x:Key="EnumConverter"/>
+        <converter:NotNullToBoolConverter x:Key="NotNullToBoolConverter"/>
     </Application.Resources>
 </Application>
