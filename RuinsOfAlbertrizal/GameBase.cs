@@ -29,10 +29,11 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         public enum Stats
         {
-            HP, Mana, Def, Dmg, Spd
+            HP, Mana, Def, Dmg, Spd, Int, r1, r2, r3, r4, r5
         }
 
-        public static string[] StatNames = { "HP", "Mana", "Defense", "Damage", "Speed" };
+        public static string[] StatNames = { "HP", "Mana", "Defense", "Damage", "Speed", "Intellegence",
+                    "Reserved1", "Reserved2", "Reserved3", "Reserved4", "Reserved5"};
 
         public enum ClassType
         {
@@ -49,7 +50,7 @@ namespace RuinsOfAlbertrizal
 
         public static int[] GetBaseValues(int selectedIndex)
         {
-            int[] numericalValues = new int[5];
+            int[] numericalValues = new int[10];
 
             switch (selectedIndex)
             {
@@ -59,6 +60,7 @@ namespace RuinsOfAlbertrizal
                     numericalValues[2] = 20;
                     numericalValues[3] = 13;
                     numericalValues[4] = 10;
+                    numericalValues[5] = 20;
                     break;
                 case 1: //Mage
                     numericalValues[0] = 150;
@@ -66,6 +68,7 @@ namespace RuinsOfAlbertrizal
                     numericalValues[2] = 2;
                     numericalValues[3] = 5;
                     numericalValues[4] = 14;
+                    numericalValues[5] = 100;
                     break;
                 case 2: //Scout
                     numericalValues[0] = 100;
@@ -73,6 +76,7 @@ namespace RuinsOfAlbertrizal
                     numericalValues[2] = 2;
                     numericalValues[3] = 17;
                     numericalValues[4] = 35;
+                    numericalValues[5] = 55;
                     break;
             }
 

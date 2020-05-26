@@ -98,6 +98,17 @@
                     </TextBox.Text>
                 </TextBox>
 
+                <Label Content="Intellect Lost Per Hit *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatLoss[5]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Cool Down *"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip='Turns it takes for this attack to be used again after it is last used.'/>

@@ -60,7 +60,7 @@ namespace RuinsOfAlbertrizal
             }
             else
             {
-                //Do explore
+                
             }
         }
     }

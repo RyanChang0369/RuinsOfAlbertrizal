@@ -103,7 +103,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                int[] armoredStats = { 0, 0, 0, 0, 0 };
+                int[] armoredStats = new int[10];
 
                 armoredStats = ArrayMethods.AddArrays(armoredStats, LeveledStats);
 
@@ -119,7 +119,7 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        private int[] appliedStats = new int[5];
+        private int[] appliedStats = new int[10];
 
         /// <summary>
         /// Use this to apply damage
@@ -166,7 +166,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                int[] armorAndBuffStats = new int[5];
+                int[] armorAndBuffStats = new int[10];
 
                 armorAndBuffStats = ArrayMethods.AddArrays(armorAndBuffStats, ArmoredStats);
 
@@ -187,7 +187,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                int[] currentStats = { 0, 0, 0, 0, 0 };
+                int[] currentStats = new int[10];
 
                 currentStats = ArrayMethods.AddArrays(currentStats, ArmorAndBuffStats);
                 currentStats = ArrayMethods.AddArrays(currentStats, AppliedStats);
@@ -331,7 +331,7 @@ namespace RuinsOfAlbertrizal.Characters
             InventoryConsumables = new List<Consumable>();
             InventoryItems = new List<Item>();
             Attacks = new List<Attack>();
-            BaseStats = new int[5];
+            BaseStats = new int[10];
             PermanentBuffs = new List<Buff>();
         }
 

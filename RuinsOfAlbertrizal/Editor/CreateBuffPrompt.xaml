@@ -130,6 +130,20 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
+                    <Label Content="Intellect Gain *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Intellect Loss">
+                    <TextBox.Text>
+                        <Binding Path="StatGain[5]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Change in AI *"/>
                     <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
                            Tag="{Binding Path=AIChange, Mode=OneTime, Converter={StaticResource EnumConverter}}"

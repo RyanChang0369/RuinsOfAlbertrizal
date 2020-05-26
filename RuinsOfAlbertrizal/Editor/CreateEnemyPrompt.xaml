@@ -157,7 +157,18 @@
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
-                
+
+                <Label Content="Intellect *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="BaseStats[5]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
                 <!--<Label Content="Abilities"/>
                 <TextBox x:Name="Abilities" IsEnabled="False"/>-->
             </StackPanel>

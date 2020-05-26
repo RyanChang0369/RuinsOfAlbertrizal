@@ -32,7 +32,7 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public Attack()
         {
-            StatLoss = new int[5];
+            StatLoss = new int[10];
             Buffs = new List<Buff>();
         }
 

@@ -115,6 +115,17 @@
                     </TextBox.Text>
                 </TextBox>
 
+                <Label Content="Intellect Gain *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatGain[5]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Buff Immunities"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character who equipts this equiptment is immune to the listed buffs. Permanent buffs are not affected."/>

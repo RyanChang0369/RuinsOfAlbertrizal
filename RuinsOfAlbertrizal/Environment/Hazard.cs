@@ -58,7 +58,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         public Hazard()
         {
-            StatLoss = new int[5];
+            StatLoss = new int[10];
             Buffs = new List<Buff>();
             DirectionOfDamage = new DamageDirection();
             TypeOfBlock = new BlockType();

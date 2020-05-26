@@ -52,7 +52,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         {
             get
             {
-                int[] leveledStats = new int[5];
+                int[] leveledStats = new int[10];
 
                 for (int i = 0; i < StatGain.Length; i++)
                 {
@@ -76,7 +76,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         public Buff()
         {
             AIChange = AI.AIStyle.NoChange;
-            StatGain = new int[5];
+            StatGain = new int[10];
             TypeOfBuff = new BuffType();
         }
 

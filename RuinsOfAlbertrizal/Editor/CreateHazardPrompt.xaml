@@ -108,6 +108,16 @@
                     </TextBox.Text>
                 </TextBox>
 
+                <Label Content="Intellect Lost On Touch *"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatLoss[5]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Buffs on Contact"/>
