@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,52 @@ namespace RuinsOfAlbertrizal
     /// <summary>
     /// Interaction logic for BattleInterface.xaml
     /// </summary>
-    public partial class BattleInterface : Page
+    public partial class BattleInterface : BasePage
     {
+        private List<Enemy> Enemies { get; set; }
+
+        private List<Enemy> AliveEnemies
+        {
+            get
+            {
+                List<Enemy> enemies = new List<Enemy>();
+
+                foreach (Enemy enemy in enemies)
+                {
+                    if (!enemy.IsDead)
+                        enemies.Add(enemy);
+                }
+
+                return enemies;
+            }
+        }
+
+        private List<Enemy> DeadEnemies
+        {
+            get
+            {
+                List<Enemy> enemies = new List<Enemy>();
+
+                foreach (Enemy enemy in enemies)
+                {
+                    if (enemy.IsDead)
+                        enemies.Add(enemy);
+                }
+
+                return enemies;
+            }
+        }
+
         public BattleInterface()
         {
             InitializeComponent();
+            DataContext = GameBase.CurrentGame.CurrentLevel;
+            UpdateComponent();
+        }
+
+        private void UpdateComponent()
+        {
+            
         }
     }
 }

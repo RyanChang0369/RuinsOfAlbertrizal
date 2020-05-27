@@ -52,7 +52,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Icon *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The icon of the boss as it appears on the HUD."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The icon of the boss as it appears on the HUD (facing right)."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectIconBtn" Click="SelectIconBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>
@@ -61,7 +61,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="World Image *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The boss as it appears on the battle screen."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The boss as it appears on the battle screen (facing right)."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="SelectWorldImgBtn" Click="SelectWorldImgBtn_Click" Content="Select an image." Style="{StaticResource buttonSmall}"/>

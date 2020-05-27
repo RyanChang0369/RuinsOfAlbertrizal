@@ -11,7 +11,7 @@
       <string>But you do not worry about them, for you have your trusty stick.</string>
     </Lines>
   </IntroMessage>
-  <StoredPlayers>
+  <Players>
     <Player>
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
@@ -27,6 +27,10 @@
         <int>13</int>
         <int>10</int>
         <int>20</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
       </BaseStats>
       <AppliedStats>
         <int>0</int>
@@ -68,7 +72,7 @@
       <Attacks />
       <IsCharging>false</IsCharging>
     </Player>
-  </StoredPlayers>
+  </Players>
   <StoredBosses>
     <Boss>
       <Name>Shotgun Slime</Name>
@@ -387,9 +391,6 @@
         </Lines>
       </IntroMessage>
       <StoredEnemies />
-      <StoredItems />
-      <StoredEquiptments />
-      <StoredConsumables />
       <MaxPoints>0</MaxPoints>
       <Points>0</Points>
       <Bosses>

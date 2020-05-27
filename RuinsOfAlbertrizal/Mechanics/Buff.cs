@@ -24,18 +24,23 @@ namespace RuinsOfAlbertrizal.Mechanics
         [XmlIgnore]
         public bool HasEnded { get => RoundsPassed >= LeveledDuration; }
 
+        public bool IgnoresArmor { get; set; }
+
         /// <summary>
         /// See GameBase.Stats for values
         /// </summary>
         public int[] StatGain { get; set; }
 
+        /// <summary>
+        /// If this value is set, then ignore StatGain
+        /// </summary>
+        public double[] PercentStatGain { get; set; }
+
         public enum BuffType
         {
             [Description("Normal buff type. No special features.")]
             Normal,
-            [Description("Kills the character receiving this buff by dealing damage equal to its remaining health times 10.")]
-            InstaKill,
-            [Description("Revives the receiving character with 20% health.")]
+            [Description("Revives the receiving character and heals 1 health.")]
             Revive,
             [Description("Removes all of the buffs of the receiving character.")]
             Cleanse,
@@ -77,6 +82,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         {
             AIChange = AI.AIStyle.NoChange;
             StatGain = new int[10];
+            PercentStatGain = new double[10];
             TypeOfBuff = new BuffType();
         }
 
@@ -90,14 +96,9 @@ namespace RuinsOfAlbertrizal.Mechanics
             RoundsPassed++;
         }
 
-        public void InstaKill(Character character)
-        {
-            character.AppliedStats[0] -= character.CurrentStats[0] * 10;
-        }
-
         public void Revive(Character character)
         {
-            character.AppliedStats[0] += (int)Math.Round(character.LeveledStats[0] * 0.2);
+            character.AppliedStats[0] = 1;
         }
 
         public void Cleanse(Character character)
