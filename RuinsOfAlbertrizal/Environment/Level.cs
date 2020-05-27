@@ -24,12 +24,6 @@ namespace RuinsOfAlbertrizal.Environment
         /// </summary>
         public List<Enemy> StoredEnemies { get; set; }
 
-        public List<Item> StoredItems { get; set; }
-
-        public List<Equiptment> StoredEquiptments { get; set; }
-
-        public List<Consumable> StoredConsumables { get; set; }
-
         /// <summary>
         /// Boss fight starts at next encounter if points is equal to or exceeds this.
         /// </summary>
@@ -80,9 +74,6 @@ namespace RuinsOfAlbertrizal.Environment
         {
             Bosses = new List<Boss>();
             StoredEnemies = new List<Enemy>();
-            StoredEquiptments = new List<Equiptment>();
-            StoredItems = new List<Item>();
-            StoredConsumables = new List<Consumable>();
             IntroMessage = new Message();
         }
 
