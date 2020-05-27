@@ -272,7 +272,7 @@
                                     <Label Content="Created Players"/>
                                     <ListBox x:Name="CreatedPlayersList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedPlayersList_SelectionChanged" HorizontalAlignment="Center">
                                         <ListBox.ItemsSource>
-                                            <Binding Path="StoredPlayers" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="Players" UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.Converter>
                                                     <converter:NameConverter/>
                                                 </Binding.Converter>

@@ -16,8 +16,8 @@ namespace RuinsOfAlbertrizal
         public PartyMembersInterface()
         {
             InitializeComponent();
-            UpdatePartyMembersStackPanel(GameBase.CurrentGame.StoredPlayers);
-            DataContext = GameBase.CurrentGame.StoredPlayers;
+            UpdatePartyMembersStackPanel(GameBase.CurrentGame.Players);
+            DataContext = GameBase.CurrentGame.Players;
         }
 
         private void UpdatePartyMembersStackPanel(List<Player> players)

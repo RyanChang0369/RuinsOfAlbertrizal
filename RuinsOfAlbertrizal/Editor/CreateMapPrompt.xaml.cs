@@ -63,8 +63,8 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 1: Player
             if (CreatePlayerPrompt.CreatedPlayer != null)
             {
-                if (!Map.StoredPlayers.Contains(CreatePlayerPrompt.CreatedPlayer))
-                    Map.StoredPlayers.Add(CreatePlayerPrompt.CreatedPlayer);
+                if (!Map.Players.Contains(CreatePlayerPrompt.CreatedPlayer))
+                    Map.Players.Add(CreatePlayerPrompt.CreatedPlayer);
 
                 StepsDone[0] = true;
             }
@@ -108,8 +108,8 @@ namespace RuinsOfAlbertrizal.Editor
             //Step 6: Players
             if (CreatePlayerPrompt.CreatedPlayer != null)
             {
-                if (!Map.StoredPlayers.Contains(CreatePlayerPrompt.CreatedPlayer))
-                    Map.StoredPlayers.Add(CreatePlayerPrompt.CreatedPlayer);
+                if (!Map.Players.Contains(CreatePlayerPrompt.CreatedPlayer))
+                    Map.Players.Add(CreatePlayerPrompt.CreatedPlayer);
 
                 StepsDone[5] = true;
             }
@@ -307,7 +307,7 @@ namespace RuinsOfAlbertrizal.Editor
                         break;
                     case "Player":
                         CreatePlayerPrompt.CreatedPlayer = new Player();
-                        Map.StoredPlayers.RemoveAt(CreatedPlayersList.SelectedIndex);
+                        Map.Players.RemoveAt(CreatedPlayersList.SelectedIndex);
                         CreatedPlayersList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
                         break;
                     case "Hazard":
@@ -408,7 +408,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             try
             {
-                CreatePlayerPrompt.CreatedPlayer = Map.StoredPlayers[CreatedPlayersList.SelectedIndex];
+                CreatePlayerPrompt.CreatedPlayer = Map.Players[CreatedPlayersList.SelectedIndex];
                 CreatePlayerBtn.Content = "Edit Player";
             }
             catch (Exception)
