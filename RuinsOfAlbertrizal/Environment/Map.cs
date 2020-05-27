@@ -13,7 +13,41 @@ namespace RuinsOfAlbertrizal.Environment
 
         public Message IntroMessage { get; set; }
 
-        public List<Player> StoredPlayers { get; set; }
+        public List<Player> Players { get; set; }
+
+        [XmlIgnore]
+        public List<Player> AlivePlayers
+        {
+            get
+            {
+                List<Player> players = new List<Player>();
+                
+                foreach (Player player in Players)
+                {
+                    if (!player.IsDead)
+                        players.Add(player);
+                }
+
+                return players;
+            }
+        }
+
+        [XmlIgnore]
+        public List<Player> DeadPlayers
+        {
+            get
+            {
+                List<Player> players = new List<Player>();
+
+                foreach (Player player in Players)
+                {
+                    if (player.IsDead)
+                        players.Add(player);
+                }
+
+                return players;
+            }
+        }
 
         public List<Boss> StoredBosses { get; set; }
 
@@ -40,9 +74,18 @@ namespace RuinsOfAlbertrizal.Environment
         [XmlIgnore]
         public Level CurrentLevel { get => Levels[LevelsCompleted]; }
 
+        /// <summary>
+        /// True if there are no moer alive players
+        /// </summary>
+        [XmlIgnore]
+        public bool GameOver
+        {
+            get => AlivePlayers.Count == 0;
+        }
+
         public Map()
         {
-            StoredPlayers = new List<Player>();
+            Players = new List<Player>();
             StoredEnemies = new List<Enemy>();
             StoredBosses = new List<Boss>();
             StoredBuffs = new List<Buff>();
