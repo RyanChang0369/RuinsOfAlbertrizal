@@ -25,12 +25,31 @@ namespace RuinsOfAlbertrizal
 
         public static int ArrayTotal(this int[] a)
         {
-            int total = 0;
+            try
+            {
+                return a.ToList().ListTotal();
+            }
+            catch (ArgumentNullException)
+            {
+                return 0;
+            }
+        }
 
-            foreach (int i in a)
-                total += i;
+        public static int ListTotal(this List<int> a)
+        {
+            try
+            {
+                int total = 0;
 
-            return total;
+                foreach (int i in a)
+                    total += i;
+
+                return total;
+            }
+            catch (ArgumentNullException)
+            {
+                return 0;
+            }
         }
 
         public static string JoinArray(this string[] a, string delimiter)
