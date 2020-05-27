@@ -9,7 +9,7 @@ namespace RuinsOfAlbertrizal
     public class Testing
     {
         public static bool IsReleaseVersion;
-        public static bool Debugging = true;
+        public static bool Debugging = false;
 
         private static void Test()
         {
