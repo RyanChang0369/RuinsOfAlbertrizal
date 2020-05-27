@@ -12,72 +12,50 @@ namespace RuinsOfAlbertrizal.AIs
     {
         public enum AIStyle
         {
-            /// <summary>
-            /// The player controls this character.
-            /// Only works with a player character, and is treated as NoAI everywhere else
-            /// </summary>
             [Description(
                 "The player controls this character." +
                 " Only works with a player character, and is treated as NoAI everywhere else.")]
             Player = 0,
             [Description("A special AI that does nothing. Use when you do not want to change a character's AI in a buff.")]
             NoChange = 1,
-            /// <summary>
-            /// No AI. Cannot Move.
-            /// </summary>
             [Description("No AI. Cannot move, regenerate mana, or attack.")]
             NoAI = 2,
-            /// <summary>
-            /// Attacks player with the most damaging attacks possible.
-            /// Moves so that its most damaging attack or attacks is in range of the player.
-            /// Attacks twice if doing so will deal the most damage to the player.
-            /// No regard to health.
-            /// Recovers only if unable to attack.
-            /// Cannot use items.
-            /// </summary>
             [Description(
                 "Attacks player with the most damaging attacks possible." + 
-                " Moves so that its most damaging attack or attacks is in range of the player." + 
+                //" Moves so that its most damaging attack or attacks is in range of the player." + 
                 " Attacks twice if doing so will deal the most damage to the player." +
                 " No regard to health." +
                 " Recovers mana only if unable to attack." +
                 " Cannot use items.")]
             Beserk = 10,
-            /// <summary>
-            /// Attacks player with the most damaging attacks possible.
-            /// Moves so that its most damaging attack or attacks is in range of the player.
-            /// Attacks twice if doing so will deal the most damage to the player.
-            /// Heals with healing items and/or spells if below 25% health or if received 50% damage in one attack.
-            /// Recovers only if unable to attack.
-            /// Uses items to recover health.
-            /// </summary>
             [Description(
                 "Attacks player with the most damaging attacks possible." +
-                " Moves so that its most damaging attack or attacks is in range of the player." +
+                //" Moves so that its most damaging attack or attacks is in range of the player." +
                 " Attacks twice if doing so will deal the most damage to the player." +
                 " Heals with healing items and/or spells if below 25% health or if received 50% damage in one attack." +
                 " Recovers mana only if unable to attack." +
                 " Uses items to recover health and mana.")]
             Beserk_UseItem = 11,
-            /// <summary>
-            /// Tries to stay above the player.
-            /// Attacks player with the most damaging attacks possible.
-            /// If has attacked, move so it is out of range of player.
-            /// Attacks twice only if player is very far away (twice the range of the player).
-            /// Heals with healing items and/or spells if below 25% health or if received 50% damage in one attack. Only heals if out of range of player.
-            /// Recovers when unable to attack and player is out of range or when player is very far away (twice the player's movement range).
-            /// Uses items when unable to attack and player is out of range or when player is very far away (twice the player's movement range).
-            /// </summary>
             [Description(
-                "Tries to stay above the player. " +
-                "Attacks player with the most damaging attacks possible. " +
-                "If has attacked, move so it is out of range of player. " +
-                "Attacks twice only if player is very far away (twice the range of the player). " +
-                "Heals with healing items and/or spells if below 25% health or if received 50% damage in one attack. Only heals if out of range of player. " +
-                "Recovers when unable to attack and player is out of range or when player is very far away (twice the player's movement range). " +
-                "Uses items when unable to attack and player is out of range or when player is very far away (twice the player's movement range). " +
-                "")]
-            Flying = 20,
+                "Similar to beserk. " +
+                "Heals with healing items and/or spells if below 50% health or if received 20% damage in one attack")]
+            Timid = 20,
+            [Description(
+                "Similar to Timid. " +
+                "Heals other enemies if they are below 75% health. Identical to Timid otherwise.")]
+            Healer = 30,
+            [Description(
+            //"Tries to stay above the player. " +
+            "Similar to Timid, but hovers above the ground (visual difference)."
+            //"Moves so it is out of range of player. Moves on its first turn. " +
+            //"Attacks twice only if player is very far away (twice the range of the player). " +
+            //"Only heals if out of range of player. " +
+            //"Recovers when unable to attack and player is out of range or when player is very far away (twice the player's movement range). " +
+            //"Uses items when unable to attack and player is out of range or when player is very far away (twice the player's movement range). "
+            )]
+            Flying = 40,
+            [Description("Similar to Healer, but hovers above the ground (visual difference).")]
+            Flying_Healer = 41
         }
 
         [XmlIgnore]
