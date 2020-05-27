@@ -4,3 +4,5 @@ Add character model enum to characters.
 This will tell the game how to draw armor onto the characters.
 
 Have method that sets the application's icon with the icon of the current map.
+
+Introduce a cap on the number of players
