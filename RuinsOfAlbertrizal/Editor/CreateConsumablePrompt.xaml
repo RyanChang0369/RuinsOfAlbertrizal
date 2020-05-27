@@ -48,7 +48,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Drop Chance *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy or from exploring. The higher the chance, the more likely this even will happen."/>
                 </StackPanel>
                 <TextBox x:Name="DropChance">
                     <TextBox.Text>
