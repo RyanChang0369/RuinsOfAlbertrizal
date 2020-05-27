@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Items;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,8 +26,6 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public partial class ExploreInterface : BasePage
     {
-        public List<Player> ProvidedPlayers { get; set; }
-
         private Player selectedPlayer;
 
         public Player SelectedPlayer
@@ -54,14 +53,93 @@ namespace RuinsOfAlbertrizal
         {
             if (SelectedPlayer == null)
             {
-                PlayerChooser chooser = new PlayerChooser("Select a player", ProvidedPlayers);
+                PlayerChooser chooser = new PlayerChooser("Select a player", GameBase.CurrentGame.AlivePlayers);
                 chooser.ShowDialog();
                 SelectedPlayer = chooser.SelectedPlayer;
             }
             else
             {
-                
+                DoRandomEvent();
             }
+        }
+
+        private void DoRandomEvent()
+        {
+            List<RandomEvent> randomEvents = new List<RandomEvent>
+            {
+                new RandomEvent("Find Item", 0.2),
+                new RandomEvent("Enemy Encounter", 0.2),
+                new RandomEvent("Find Team Member", 0.1),
+                new RandomEvent("Nothing", 0.5)
+            };
+
+            RandomEventChooser randomEventChooser = new RandomEventChooser(randomEvents);
+
+            RandomEvent choosenEvent = randomEventChooser.GetSelectedRandomEvent();
+
+            switch(choosenEvent.Tag)
+            {
+                case "Find Item":
+                    DoFindItem();
+                    break;
+                case "Enemy Encounter":
+                    DoRandomEncounter();
+                    break;
+                case "Find Team Member":
+                    DoFindTeamMember();
+                    break;
+                case "Nothing":
+
+                    break;
+            }
+        }
+
+        private void DoFindItem()
+        {
+            //Check if these items affect the stored items.
+            List<RandomEvent> randomEventsItems = new List<RandomEvent>();
+            foreach (Item item in GameBase.CurrentGame.StoredItems)
+            {
+                randomEventsItems.Add(new RandomEvent(item, item.DropChance));
+            }
+            Item selectedItem = (Item)new RandomEventChooser(randomEventsItems).GetSelectedTag();
+
+            List<RandomEvent> randomEventsEquiptments = new List<RandomEvent>();
+            foreach (Equiptment equiptment in GameBase.CurrentGame.StoredEquiptments)
+            {
+                randomEventsEquiptments.Add(new RandomEvent(equiptment, equiptment.DropChance));
+            }
+            Equiptment selectedEquiptment = (Equiptment)new RandomEventChooser(randomEventsEquiptments).GetSelectedTag();
+
+            List<RandomEvent> randomEventsConsumables = new List<RandomEvent>();
+            foreach (Consumable consumable in GameBase.CurrentGame.StoredConsumables)
+            {
+                randomEventsConsumables.Add(new RandomEvent(consumable, consumable.DropChance));
+            }
+            Consumable selectedConsumable = (Consumable)new RandomEventChooser(randomEventsConsumables).GetSelectedTag();
+
+            switch (RNG.GetRandomInteger(3))
+            {
+                case 0:
+                    SelectedPlayer.ObtainItem(selectedItem);
+                    break;
+                case 1:
+                    SelectedPlayer.ObtainEquiptment(selectedEquiptment);
+                    break;
+                case 2:
+                    SelectedPlayer.ObtainConsumable(selectedConsumable);
+                    break;
+            }
+        }
+
+        private void DoRandomEncounter()
+        {
+
+        }
+
+        private void DoFindTeamMember()
+        {
+
         }
     }
 }
