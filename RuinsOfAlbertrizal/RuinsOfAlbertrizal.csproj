@@ -167,6 +167,9 @@
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
     <Compile Include="IconedObjectOfAlbertrizal.cs" />
+    <Compile Include="IconedObjectPrompt.xaml.cs">
+      <DependentUpon>IconedObjectPrompt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IRoundBasedObject.cs" />
     <Compile Include="LevelIntroInterface.xaml.cs">
       <DependentUpon>LevelIntroInterface.xaml</DependentUpon>
@@ -191,6 +194,8 @@
     <Compile Include="PlayerChooser.xaml.cs">
       <DependentUpon>PlayerChooser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RandomEvent.cs" />
+    <Compile Include="RandomEventChooser.cs" />
     <Compile Include="RNG.cs" />
     <Compile Include="Testing.cs" />
     <Compile Include="Text\Message.cs" />
@@ -337,6 +342,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExploreInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="IconedObjectPrompt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
