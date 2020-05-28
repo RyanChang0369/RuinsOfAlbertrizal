@@ -24,8 +24,6 @@ namespace RuinsOfAlbertrizal.Mechanics
         [XmlIgnore]
         public bool HasEnded { get => RoundsPassed >= LeveledDuration; }
 
-        public bool IgnoresArmor { get; set; }
-
         /// <summary>
         /// See GameBase.Stats for values
         /// </summary>
@@ -40,13 +38,16 @@ namespace RuinsOfAlbertrizal.Mechanics
         {
             [Description("Normal buff type. No special features.")]
             Normal,
-            [Description("Revives the receiving character and heals 1 health.")]
+            [Description("Revives the receiving character and heals to 1 health.")]
             Revive,
             [Description("Removes all of the buffs of the receiving character.")]
             Cleanse,
-            [Description("If the receiving character's health is above 1, then negate any lethal attack and set health to 1.")]
+            [Description("If the receiving character's health is above 1, then negate any lethal attack and set health to 1." +
+                "If an attack causes this buff, then this buff will come into effect if the receiving character's health " +
+                "drops below 0.")]
             LastHope,
-            [Description("The receiving character cannot take any damage or receive any buffs.")]
+            [Description("The receiving character cannot take any damage or receive any buffs. " +
+                "However, if an attack causes this buff, then the receiving character WILL take damage from the attack.")]
             Invunerable
         }
 
@@ -86,6 +87,21 @@ namespace RuinsOfAlbertrizal.Mechanics
             TypeOfBuff = new BuffType();
         }
 
+
+        public void DealStats(Character character)
+        {
+            for (int i = 0; i < GameBase.NumStats; i++)
+            {
+                character.AppliedStats[i] += StatGain[i];
+                character.AppliedStats[i] += (int)Math.Round(character.AppliedStats[i] * PercentStatGain[i]);
+            }
+
+            if (TypeOfBuff == BuffType.Revive && character.IsDead)
+                Revive(character);
+            else if (TypeOfBuff == BuffType.Cleanse)
+                Cleanse(character);
+        }
+
         public void StartRound()
         {
 
@@ -96,12 +112,12 @@ namespace RuinsOfAlbertrizal.Mechanics
             RoundsPassed++;
         }
 
-        public void Revive(Character character)
+        private void Revive(Character character)
         {
             character.AppliedStats[0] = 1;
         }
 
-        public void Cleanse(Character character)
+        private void Cleanse(Character character)
         {
             character.AppliedBuffs.Clear();
         }

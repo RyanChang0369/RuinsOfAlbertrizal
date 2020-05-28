@@ -60,10 +60,10 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="HP Gain *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
+                    <Label Content="HP Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level). Enter a negative value for HP loss."/>
                 </StackPanel>
-                <TextBox x:Name="HPGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for HP Loss">
+                <TextBox x:Name="HPGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatGain[0]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -74,10 +74,10 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Mana Gain *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
+                    <Label Content="Mana Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level). Enter a negative value for mana loss."/>
                 </StackPanel>
-                <TextBox x:Name="ManaGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Mana Loss">
+                <TextBox x:Name="ManaGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatGain[1]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -88,10 +88,10 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Defense Gain *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
+                    <Label Content="Defense Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level). Enter a negative value for defense loss."/>
                 </StackPanel>
-                <TextBox x:Name="DefGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Defense Loss">
+                <TextBox x:Name="DefGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatGain[2]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -102,10 +102,10 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Damage Gain *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
+                    <Label Content="Damage Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level). Enter a negative value for damage loss."/>
                 </StackPanel>
-                <TextBox x:Name="DmgGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Speed Loss">
+                <TextBox x:Name="DmgGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatGain[3]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -116,10 +116,10 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Speed Gain *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
+                    <Label Content="Speed Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level). Enter a negative value for speed loss."/>
                 </StackPanel>
-                <TextBox x:Name="SpdGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Speed Loss">
+                <TextBox x:Name="SpdGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatGain[4]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -130,10 +130,10 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Intellect Gain *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level)"/>
+                    <Label Content="Intellect Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level). Enter a negative value for intellect loss."/>
                 </StackPanel>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}" ToolTip="Negative Value for Intellect Loss">
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatGain[5]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -142,7 +142,91 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Percent HP Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level). Enter a negative value for HP loss."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatGain[0]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Percent Mana Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for mana loss."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="PercentStatGain[1]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Percent Defense Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for defense loss."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="PercentStatGain[2]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Percent Damage Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for damage loss."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="PercentStatGain[3]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Percent Speed Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for speed loss."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="PercentStatGain[4]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Percent Intellect Gain for Target *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for intellect loss."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="PercentStatGain[5]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Change in AI *"/>
                     <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
