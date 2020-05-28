@@ -74,6 +74,26 @@ namespace RuinsOfAlbertrizal.Mechanics
             }
         }
 
+        /// <summary>
+        /// Deals damage
+        /// </summary>
+        /// <param name="character"></param>
+        public void DealStats(Character character)
+        {
+            for (int i = 0; i < StatLoss.Length; i++)
+            {
+                character.AppliedStats[i] -= StatLoss[i]; 
+            }
+        }
+
+        public void DealBuffs(Character character)
+        {
+            foreach (Buff buff in Buffs)
+            {
+                character.AppliedBuffs.Add(buff);
+            }
+        }
+
         public void EndTurn()
         {
             TurnSinceAttacked++;
