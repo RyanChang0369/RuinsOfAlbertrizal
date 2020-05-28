@@ -50,26 +50,9 @@ namespace RuinsOfAlbertrizal.Environment
         }
 
         /// <summary>
-        /// The players that can attack. Also is the first 4 players in the Players list.
+        /// The players that can attack.
         /// </summary>
-        [XmlIgnore]
-        public List<Player> ActivePlayers
-        {
-            get
-            {
-                List<Player> players = new List<Player>();
-
-                for (int i = 0; i < Players.Count; i++)
-                {
-                    if (i > 3)
-                        break;
-
-                    players.Add(Players[i]);
-                }
-
-                return players;
-            }
-        }
+        public List<Player> ActivePlayers { get; set; }
 
         public List<Boss> StoredBosses { get; set; }
 

@@ -15,6 +15,12 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         public const int NumStats = 10;
 
+        /// <summary>
+        /// The maximum number of characters per side that can be active at once
+        /// (4 players and 4 enemies)
+        /// </summary>
+        public const int NumActiveCharacters = 4;
+
         public static string CurrentMapLocation { get; set; }
 
         public static string StaticMapLocation { get; set; }

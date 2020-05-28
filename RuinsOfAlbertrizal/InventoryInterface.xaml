@@ -10,7 +10,7 @@
 
     <Page.Resources>
         <DataTemplate x:Key="inventoryItemTemplate">
-            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}" MouseUp="InventoryTextBlock_MouseUp"/>
+            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}" MouseUp="InventoryTextBlock_MouseUp" Cursor="Hand"/>
         </DataTemplate>
     </Page.Resources>
     
@@ -110,23 +110,23 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <CheckBox x:Name="HeadSlot" Grid.Column="2" ToolTip="Head Slot"/>
-            <CheckBox x:Name="NeckSlot" Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot"/>
-            <CheckBox x:Name="TorsoSlot" Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot"/>
-            <CheckBox x:Name="LeftHandSlot" Grid.Row="2" ToolTip="Left Hand Slot"/>
-            <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot"/>
-            <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot"/>
-            <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot"/>
-            <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1"/>
-            <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2"/>
-            <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3"/>
-            <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4"/>
-            <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5"/>
-            <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6"/>
-            <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7"/>
-            <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8"/>
-            <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9"/>
-            <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10"/>
+            <CheckBox x:Name="HeadSlot" Grid.Column="2" ToolTip="Head Slot" Checked="Slot_Checked"/>
+            <CheckBox x:Name="NeckSlot" Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot" Checked="Slot_Checked"/>
+            <CheckBox x:Name="TorsoSlot" Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot" Checked="Slot_Checked"/>
+            <CheckBox x:Name="LeftHandSlot" Grid.Row="2" ToolTip="Left Hand Slot" Checked="Slot_Checked"/>
+            <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot" Checked="Slot_Checked"/>
+            <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot" Checked="Slot_Checked"/>
+            <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9" Checked="Slot_Checked"/>
+            <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10" Checked="Slot_Checked"/>
         </Grid>
     </StackPanel>
 </Page>

@@ -8,6 +8,13 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="BattleInterface">
 
+    <Page.Resources>
+        <ListBox x:Key="options_Player" Width="112">
+            <Button Content="Heal" Style="{StaticResource toolTipBtn}" Click="Heal_Click"/>
+            <Button Content="Food" Style="{StaticResource toolTipBtn}" Click="Food_Click"/>
+        </ListBox>
+    </Page.Resources>
+    
     <Grid Background="WhiteSmoke">
         <Image Source="{Binding Path=WorldImgAsBitmapSource, Mode=OneTime}" Style="{StaticResource fill}"/>
         <Grid>
@@ -36,12 +43,13 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/> <!--Used as spacer-->
                     </Grid.RowDefinitions>
-                    <Image Margin="10" Grid.Row="1"/>
-                    <Image Margin="10" Grid.Column="1" Grid.Row="2"/>
-                    <Image Margin="10" Grid.Column="2" Grid.Row="1"/>
-                    <Image Margin="10" Grid.Column="3" Grid.Row="2"/>
+                    <Image x:Name="player3" Margin="10" Grid.Row="1"/>
+                    <Image x:Name="player2" Margin="10" Grid.Column="1" Grid.Row="2"/>
+                    <Image x:Name="player1" Margin="10" Grid.Column="2" Grid.Row="1"/>
+                    <Image x:Name="player0" Margin="10" Grid.Column="3" Grid.Row="2"/>
+                    
                 </Grid>
-
+                <Border Child="{StaticResource options_Player}" Grid.Column="1"/>
                 <Grid x:Name="EnemiesGrid" Grid.Column="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -50,17 +58,15 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <!--Used as spacer-->
+                        <RowDefinition Height="*"/> <!--Used as spacer-->
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
-                        <RowDefinition Height="*"/>
-                        <!--Used as spacer-->
+                        <RowDefinition Height="*"/> <!--Used as spacer-->
                     </Grid.RowDefinitions>
-                    <Image Margin="10" Grid.Row="2"/>
-                    <Image Margin="10" Grid.Column="1" Grid.Row="1"/>
-                    <Image Margin="10" Grid.Column="2" Grid.Row="2"/>
-                    <Image Margin="10" Grid.Column="3" Grid.Row="1"/>
+                    <Image x:Name="enemy3" Margin="10" Grid.Row="2"/>
+                    <Image x:Name="enemy2" Margin="10" Grid.Column="1" Grid.Row="1"/>
+                    <Image x:Name="enemy1" Margin="10" Grid.Column="2" Grid.Row="2"/>
+                    <Image x:Name="enemy0" Margin="10" Grid.Column="3" Grid.Row="1"/>
                 </Grid>
             </Grid>
         </Grid>

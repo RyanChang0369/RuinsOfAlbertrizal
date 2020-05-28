@@ -123,5 +123,19 @@ namespace RuinsOfAlbertrizal
             TextBlock textBlock = (TextBlock)sender;
             SelectedItem = (Item)textBlock.DataContext;
         }
+
+        private void Slot_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            
+            if (checkBox.Tag == null)
+            {
+                //Add equiptment
+            }
+            else
+            {
+                List<CheckBox> checkBoxes = 
+            }
+        }
     }
 }

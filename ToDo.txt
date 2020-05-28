@@ -5,6 +5,10 @@ This will tell the game how to draw armor onto the characters.
 
 Have method that sets the application's icon with the icon of the current map.
 
-Introduce a cap on the number of players
+Introduce a cap on the number of players?
 
-Implement PercentStatGain
+Finish and test inventory
+
+Create a pop up inventory
+
+Finish and test battle screen
