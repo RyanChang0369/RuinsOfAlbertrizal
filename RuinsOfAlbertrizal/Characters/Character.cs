@@ -122,41 +122,44 @@ namespace RuinsOfAlbertrizal.Characters
         private int[] appliedStats = new int[10];
 
         /// <summary>
-        /// Use this to apply damage
+        /// Use this to apply damage or regen stats. 
         /// </summary>
-        public int[] AppliedStats //ErrorMap 1
+        public int[] AppliedStats
         {
             get => appliedStats;
             set
             {
-                //Do not allow healing if current map is null or if character is dead
-                if (!GameBase.Initialized() || IsDead)
+                if (!GameBase.Initialized())
                     return;
 
-                value = CapAppliedStats(value);
+                //If invunerable, do not apply stats.
+                if (IsInvunerable())
+                    return;
+
+                //value = CapAppliedStats(value);
                 appliedStats = value;
 
                 CheckIfDead();
             }
         }
 
-        /// <summary>
-        /// Caps the given 10 element array to the leveled stats.
-        /// </summary>
-        /// <param name="arr"></param>
-        /// <returns></returns>
-        private int[] CapAppliedStats(int[] arr)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                if (arr[i] > LeveledStats[i])
-                    arr[i] = LeveledStats[i];
-                else if (arr[i] < 0)
-                    arr[i] = 0;
-            }
+        ///// <summary>
+        ///// Caps the given 10 element array to the leveled stats.
+        ///// </summary>
+        ///// <param name="arr"></param>
+        ///// <returns></returns>
+        //private int[] CapAppliedStats(int[] arr)
+        //{
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        if (arr[i] > LeveledStats[i])
+        //            arr[i] = LeveledStats[i];
+        //        else if (arr[i] < 0)
+        //            arr[i] = 0;
+        //    }
 
-            return arr;
-        }
+        //    return arr;
+        //}
 
         /// <summary>
         /// The stats from armor and buffs
@@ -219,14 +222,11 @@ namespace RuinsOfAlbertrizal.Characters
                 if (!GameBase.Initialized())
                     return;
 
-                //Do not allow buffs to be added if character is dead.
-                if (!IsDead)
-                    appliedBuffs = value;
-                else
-                {
-                    Die();
+                //Do not allow buffs to be applied if player is invunerable
+                if (IsInvunerable())
                     return;
-                }
+
+                appliedBuffs = value;
             }
         }
 
@@ -388,6 +388,17 @@ namespace RuinsOfAlbertrizal.Characters
             EndTurn();
         }
 
+        public bool IsInvunerable()
+        {
+            foreach (Buff buff in CurrentBuffs)
+            {
+                if (buff.TypeOfBuff == Buff.BuffType.Invunerable)
+                    return true;
+            }
+
+            return false;
+        }
+
         public abstract void Die();
 
         public void EndTurn()
@@ -409,7 +420,9 @@ namespace RuinsOfAlbertrizal.Characters
         
         public void EndRound()
         {
-
+            //Get dealt any stats from buffs
+            foreach (Buff buff in CurrentBuffs)
+                buff.DealStats(this);
         }
 
         public void CheckIfDead()
@@ -420,22 +433,21 @@ namespace RuinsOfAlbertrizal.Characters
 
         public void GetAttacked(Attack attack)
         {
+
+
+            bool canUseLastHope = CurrentStats[0] != 1;
+
+            attack.DealStats(this);
+            attack.DealBuffs(this);
+
             foreach (Buff buff in CurrentBuffs)
             {
-                if (buff.TypeOfBuff == Buff.BuffType.LastHope && CurrentStats[0] != 1
-                    && (CurrentStats[0] - attack.StatLoss[0]) <= 0)
+                if (buff.TypeOfBuff == Buff.BuffType.LastHope && canUseLastHope
+                    && CurrentStats[0] <= 0)
                 {
-                    AppliedStats[0] = (-1 * CurrentStats[0]) + 1;
+                    appliedStats[0] = (-1 * CurrentStats[0]) + 1;
                     return;
                 }
-                else if (buff.TypeOfBuff == Buff.BuffType.Invunerable)
-                    return;
-            }
-            
-
-            for (int i = 0; i < attack.StatLoss.Length; i++)
-            {
-                AppliedStats[i] -= attack.StatLoss[i];
             }
         }
     }
