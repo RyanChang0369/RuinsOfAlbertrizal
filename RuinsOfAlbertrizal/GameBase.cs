@@ -10,6 +10,11 @@ namespace RuinsOfAlbertrizal
 {
     public static class GameBase
     {
+        /// <summary>
+        /// The number of elements in the stats array
+        /// </summary>
+        public const int NumStats = 10;
+
         public static string CurrentMapLocation { get; set; }
 
         public static string StaticMapLocation { get; set; }
