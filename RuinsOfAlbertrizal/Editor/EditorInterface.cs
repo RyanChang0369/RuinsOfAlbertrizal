@@ -2,6 +2,7 @@
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,11 +16,28 @@ namespace RuinsOfAlbertrizal.Editor
         protected void Save(object sender, RoutedEventArgs e)
         {
             RequiredControls = new List<Control>();
+
+            //Panel mainContainer = (Panel)this.Content;
+
+            //StackPanel form = (StackPanel)mainContainer.FindName("Form");
+
+            //if (form == null)
+            //    throw new ArgumentException("There must exists a stackpanel of name form within any page that uses editor interface");
+
+            //List<TextBox> allTextBoxes = form.Children.OfType<TextBox>().ToList();
+
+            //foreach (TextBox textBox in allTextBoxes)
+            //{
+            //    if (textBox.Style.Equals(Resources["validationError"]))
+            //        RequiredControls.Add(textBox);
+            //}
+
+
             AddRequiredControls();
 
             if (!FormIsValid())
             {
-                MessageBox.Show("Please fill out all required forms", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please fill out all required forms and check the requirements of each form.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             SafelyExit();

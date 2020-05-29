@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
@@ -103,7 +104,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                int[] armoredStats = new int[10];
+                int[] armoredStats = new int[GameBase.NumStats];
 
                 armoredStats = ArrayMethods.AddArrays(armoredStats, LeveledStats);
 
@@ -119,7 +120,7 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        private int[] appliedStats = new int[10];
+        private int[] appliedStats = new int[GameBase.NumStats];
 
         /// <summary>
         /// Use this to apply damage or regen stats. 
@@ -169,7 +170,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                int[] armorAndBuffStats = new int[10];
+                int[] armorAndBuffStats = new int[GameBase.NumStats];
 
                 armorAndBuffStats = ArrayMethods.AddArrays(armorAndBuffStats, ArmoredStats);
 
@@ -190,7 +191,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                int[] currentStats = new int[10];
+                int[] currentStats = new int[GameBase.NumStats];
 
                 currentStats = ArrayMethods.AddArrays(currentStats, ArmorAndBuffStats);
                 currentStats = ArrayMethods.AddArrays(currentStats, AppliedStats);
@@ -302,6 +303,31 @@ namespace RuinsOfAlbertrizal.Characters
         public Equiptment[] CurrentEquiptments { get; set; }
 
         /// <summary>
+        /// Remember to update this field before using it.
+        /// </summary>
+        [XmlIgnore]
+        public BitmapSource[] CurrentSlotBitmapSources { get; set; }
+
+        public void UpdateSlotBitmapSources()
+        {
+            BitmapSource[] slotSources = new BitmapSource[CurrentEquiptments.Length];
+
+            for (int i = 0; i < CurrentEquiptments.Length; i++)
+            {
+                try
+                {
+                    slotSources[i] = CurrentEquiptments[i].IconAsBitmapSource;
+                }
+                catch (Exception)
+                {
+                    slotSources[i] = new BitmapImage();
+                }
+            }
+
+            CurrentSlotBitmapSources = slotSources;
+        }
+
+        /// <summary>
         /// The consumables the character has consumed
         /// </summary>
         public List<Consumable> CurrentConsumables { get; set; }
@@ -331,7 +357,7 @@ namespace RuinsOfAlbertrizal.Characters
             InventoryConsumables = new List<Consumable>();
             InventoryItems = new List<Item>();
             Attacks = new List<Attack>();
-            BaseStats = new int[10];
+            BaseStats = new int[GameBase.NumStats];
             PermanentBuffs = new List<Buff>();
         }
 
@@ -340,14 +366,16 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         /// <param name="index">The index of the item in InventoryEquiptments</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public void Equipt(int index)
+        public void Equipt(Equiptment equiptment)
         {
-            Equiptment equiptment = InventoryEquiptments[index];
-            Unequipt(index);
+            //Unequipt all slots that this new equiptment will take up
+            foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
+            {
+                Unequipt((int)slotMode);
+            }
 
             foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
             {
-
                 CurrentEquiptments[(int)slotMode] = equiptment;
             }
         }
@@ -364,6 +392,8 @@ namespace RuinsOfAlbertrizal.Characters
             }
             InventoryEquiptments.Add(CurrentEquiptments[index]);
         }
+
+        
 
         /// <summary>
         /// Consumes an consumable

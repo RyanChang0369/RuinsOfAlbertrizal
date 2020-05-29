@@ -50,7 +50,7 @@
                     <Label Content="Drop Chance *"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy or by exploring."/>
                 </StackPanel>
-                <TextBox x:Name="DropChance">
+                <TextBox x:Name="DropChance" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="DropChance" Mode="TwoWay">
                             <Binding.ValidationRules>

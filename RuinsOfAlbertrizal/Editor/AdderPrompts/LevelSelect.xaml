@@ -9,7 +9,7 @@
         Title="Select a Level" Height="200" Width="400">
     <StackPanel>
         <Label x:Name="HeaderLabel"/>
-        <TextBox x:Name="ValueTextBox" Margin="10,0,0,0" Width="372">
+        <TextBox x:Name="ValueTextBox" Margin="10,0,0,0" Width="100" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
             <TextBox.Text>
                 <Binding Path="TextboxText" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>

@@ -2,7 +2,7 @@
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Name>Campaign</Name>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -11,7 +11,7 @@
       <string>But you do not worry about them, for you have your trusty stick.</string>
     </Lines>
   </IntroMessage>
-  <StoredPlayers>
+  <Players>
     <Player>
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
@@ -72,7 +72,8 @@
       <Attacks />
       <IsCharging>false</IsCharging>
     </Player>
-  </StoredPlayers>
+  </Players>
+  <ActivePlayers />
   <StoredBosses>
     <Boss>
       <Name>Shotgun Slime</Name>
@@ -242,6 +243,18 @@
         <int>0</int>
         <int>0</int>
       </StatGain>
+      <PercentStatGain>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
       <AIChange>NoAI</AIChange>
       <Level>0</Level>
@@ -263,6 +276,18 @@
         <int>0</int>
         <int>0</int>
       </StatGain>
+      <PercentStatGain>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
       <AIChange>Player</AIChange>
       <Level>1</Level>
@@ -312,6 +337,18 @@
             <int>0</int>
             <int>0</int>
           </StatGain>
+          <PercentStatGain>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+          </PercentStatGain>
           <TypeOfBuff>Normal</TypeOfBuff>
           <AIChange>NoChange</AIChange>
           <Level>1</Level>
@@ -336,7 +373,14 @@
       <IsMagic>false</IsMagic>
     </Attack>
   </StoredAttacks>
-  <StoredItems />
+  <StoredItems>
+    <Item>
+      <Name>Test Item</Name>
+      <Description>For testing purposes</Description>
+      <IconLocation>..\Item\Test Item_icon.png</IconLocation>
+      <DropChance>0.69</DropChance>
+    </Item>
+  </StoredItems>
   <StoredEquiptments />
   <StoredConsumables />
   <StoredHazards>
@@ -384,7 +428,7 @@
     <Level>
       <Name>Final Level</Name>
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>true</SeenIntroduction>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>

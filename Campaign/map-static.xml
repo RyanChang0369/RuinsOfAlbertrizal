@@ -73,6 +73,7 @@
       <IsCharging>false</IsCharging>
     </Player>
   </Players>
+  <ActivePlayers />
   <StoredBosses>
     <Boss>
       <Name>Shotgun Slime</Name>
@@ -242,6 +243,18 @@
         <int>0</int>
         <int>0</int>
       </StatGain>
+      <PercentStatGain>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
       <AIChange>NoAI</AIChange>
       <Level>0</Level>
@@ -263,6 +276,18 @@
         <int>0</int>
         <int>0</int>
       </StatGain>
+      <PercentStatGain>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
       <AIChange>Player</AIChange>
       <Level>1</Level>
@@ -312,6 +337,18 @@
             <int>0</int>
             <int>0</int>
           </StatGain>
+          <PercentStatGain>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+          </PercentStatGain>
           <TypeOfBuff>Normal</TypeOfBuff>
           <AIChange>NoChange</AIChange>
           <Level>1</Level>
@@ -336,7 +373,14 @@
       <IsMagic>false</IsMagic>
     </Attack>
   </StoredAttacks>
-  <StoredItems />
+  <StoredItems>
+    <Item>
+      <Name>Test Item</Name>
+      <Description>For testing purposes</Description>
+      <IconLocation>..\Item\Test Item_icon.png</IconLocation>
+      <DropChance>0.69</DropChance>
+    </Item>
+  </StoredItems>
   <StoredEquiptments />
   <StoredConsumables />
   <StoredHazards>

@@ -50,7 +50,7 @@
                     <Label Content="Drop Chance *"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy or from exploring. The higher the chance, the more likely this even will happen."/>
                 </StackPanel>
-                <TextBox x:Name="DropChance">
+                <TextBox x:Name="DropChance" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="DropChance" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -116,7 +116,7 @@
                 </TextBox>
 
                 <Label Content="Intellect Gain *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <TextBox x:Name="IntGain" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatGain[5]" Mode="TwoWay">
                             <Binding.ValidationRules>

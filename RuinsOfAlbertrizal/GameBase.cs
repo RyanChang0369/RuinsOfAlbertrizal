@@ -61,7 +61,7 @@ namespace RuinsOfAlbertrizal
 
         public static int[] GetBaseValues(int selectedIndex)
         {
-            int[] numericalValues = new int[10];
+            int[] numericalValues = new int[GameBase.NumStats];
 
             switch (selectedIndex)
             {

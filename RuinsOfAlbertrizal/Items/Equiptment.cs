@@ -32,6 +32,7 @@ namespace RuinsOfAlbertrizal.Items
 
         public Equiptment()
         {
+            StatGain = new int[GameBase.NumStats];
             BuffImmunities = new List<Buff>();
             Attacks = new List<Attack>();
             Slots = new List<SlotMode>();

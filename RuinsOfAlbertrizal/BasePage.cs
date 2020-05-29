@@ -28,6 +28,11 @@ namespace RuinsOfAlbertrizal
             NavigationService.Navigate(location);
         }
 
+        public void Navigate(Page page)
+        {
+            NavigationService.Navigate(page);
+        }
+
         public void SaveCurrentGame(object sender, RoutedEventArgs e)
         {
             FileHandler.SaveCurrentMap();

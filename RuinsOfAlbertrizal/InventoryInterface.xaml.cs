@@ -18,17 +18,26 @@ using System.Windows.Shapes;
 namespace RuinsOfAlbertrizal
 {
     /// <summary>
-    /// Interaction logic for ItemInterface.xaml
+    /// Interaction logic for InventoryInterface.xaml
     /// </summary>
-    public partial class ItemInterface : Page
+    public partial class InventoryInterface : Page
     {
+        public Player SelectedPlayer;
+
         public Item SelectedItem;
 
-        public ItemInterface()
+        public InventoryInterface()
         {
+            PartyMembersInterface.SelectedPlayer.UpdateSlotBitmapSources();
             InitializeComponent();
-            DataContext = PartyMembersInterface.SelectedPlayer;
-            //UpdateInventoryGrid(PartyMembersInterface.SelectedPlayer);
+        }
+
+        public InventoryInterface(Player player)
+        {
+            PartyMembersInterface.SelectedPlayer.UpdateSlotBitmapSources();
+            InitializeComponent();
+            DataContext = player;
+            SelectedPlayer = player;
         }
 
         private void UpdateInventoryGrid(Player player)
@@ -115,27 +124,24 @@ namespace RuinsOfAlbertrizal
             if (SelectedItem == null)
                 return;
 
-
-        }
-
-        private void InventoryTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            TextBlock textBlock = (TextBlock)sender;
-            SelectedItem = (Item)textBlock.DataContext;
-        }
-
-        private void Slot_Checked(object sender, RoutedEventArgs e)
-        {
             CheckBox checkBox = (CheckBox)sender;
-            
+
             if (checkBox.Tag == null)
             {
                 //Add equiptment
             }
             else
             {
-                List<CheckBox> checkBoxes = 
+                List<CheckBox> checkBoxes = SlotsContainer.Children.OfType<CheckBox>().ToList();
             }
+
+            PartyMembersInterface.SelectedPlayer.UpdateSlotBitmapSources();
+        }
+
+        private void InventoryTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = (TextBlock)sender;
+            SelectedItem = (Item)textBlock.DataContext;
         }
     }
 }

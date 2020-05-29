@@ -175,7 +175,7 @@
                 </TextBox>
 
                 <Label Content="Intellect *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <TextBox x:Name="BaseInt" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="BaseStats[5]" Mode="TwoWay">
                             <Binding.ValidationRules>
