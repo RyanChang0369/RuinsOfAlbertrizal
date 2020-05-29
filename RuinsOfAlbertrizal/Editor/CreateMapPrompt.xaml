@@ -85,15 +85,7 @@
                             <Grid>
                                 <StackPanel>
                                     <Label>Created Buffs</Label>
-                                    <ListBox x:Name="CreatedBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBuffsList_SelectionChanged">
-                                        <ListBox.ItemsSource>
-                                            <Binding Path="StoredBuffs" UpdateSourceTrigger="PropertyChanged">
-                                                <Binding.Converter>
-                                                    <converter:NameConverter/>
-                                                </Binding.Converter>
-                                            </Binding>
-                                        </ListBox.ItemsSource>
-                                    </ListBox>
+                                    <ListBox x:Name="CreatedBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBuffsList_SelectionChanged" DisplayMemberPath="Name" ItemsSource="{Binding Path=StoredBuffs, UpdateSourceTrigger=PropertyChanged}"/>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Buff">
                                     <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>

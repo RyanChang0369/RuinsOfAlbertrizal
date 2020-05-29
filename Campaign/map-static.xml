@@ -403,10 +403,18 @@
         <int>0</int>
       </StatGain>
       <BuffImmunities />
+      <GrantedBuffs />
       <Attacks />
     </Equiptment>
   </StoredEquiptments>
-  <StoredConsumables />
+  <StoredConsumables>
+    <Consumable>
+      <Name>Test Consumable</Name>
+      <IconLocation>..\Consumable\Test_icon.png</IconLocation>
+      <DropChance>0</DropChance>
+      <RoundsPassed>0</RoundsPassed>
+    </Consumable>
+  </StoredConsumables>
   <StoredHazards>
     <Hazard>
       <Location>

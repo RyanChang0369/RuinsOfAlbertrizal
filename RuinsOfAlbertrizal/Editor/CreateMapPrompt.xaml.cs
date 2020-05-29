@@ -150,14 +150,24 @@ namespace RuinsOfAlbertrizal.Editor
                 StepsDone[9] = true;
             }
 
-            //Step 11: Level
+            //Step 11: Consumable
+            if (CreateConsumablePrompt.CreatedConsumable != null)
+            {
+                if (!Map.StoredConsumables.Contains(CreateConsumablePrompt.CreatedConsumable))
+                    Map.StoredConsumables.Add(CreateConsumablePrompt.CreatedConsumable);
+
+                StepsDone[10] = true;
+            }
+
+            //Step 12: Level
             if (CreateLevelPrompt.CreatedLevel != null)
             {
                 if (!Map.Levels.Contains(CreateLevelPrompt.CreatedLevel))
                     Map.Levels.Add(CreateLevelPrompt.CreatedLevel);
 
-                StepsDone[10] = true;
+                StepsDone[11] = true;
             }
+            
 
             //SaveBtn.IsEnabled = true;
             //GameBase.NewGame();

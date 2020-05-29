@@ -139,10 +139,6 @@
                 <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=GrantedBuffs, Mode=TwoWay}"/>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Permanent Buffs"/>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
                     <Label Content="Slots *"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="What slots in the inventory can this be equipted to?"/>
                 </StackPanel>
