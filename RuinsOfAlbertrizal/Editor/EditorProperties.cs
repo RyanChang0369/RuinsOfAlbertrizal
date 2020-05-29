@@ -20,16 +20,6 @@ namespace RuinsOfAlbertrizal.Editor
 
         }
 
-        //public EditorProperties(string title, TextBox[] requiredTextBoxes, TextBox[] numericalTextBoxes,
-        //    ComboBox[] requiredComboBoxes)
-        //{
-        //    Title = title;
-
-        //    RequiredComboBoxes = requiredComboBoxes;
-        //    NumericalTextBoxes = numericalTextBoxes;
-        //    RequiredTextBoxes = requiredTextBoxes;
-        //}
-
         public void Save()
         {
 
