@@ -178,6 +178,11 @@
             <Setter Property="FontSize" Value="36"/>
         </Style>
         
+        <!--List Box Styles-->
+        <Style TargetType="ListBox">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        
         <!--Validation Templates and Styles-->
         <ControlTemplate x:Key="validationTemplate">
             <DockPanel>

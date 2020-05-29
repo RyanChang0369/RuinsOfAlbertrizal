@@ -381,7 +381,31 @@
       <DropChance>0.69</DropChance>
     </Item>
   </StoredItems>
-  <StoredEquiptments />
+  <StoredEquiptments>
+    <Equiptment>
+      <Name>Test Helmet</Name>
+      <Description>A helmet for testing</Description>
+      <IconLocation>..\Equiptment\Test Helmet_icon.png</IconLocation>
+      <DropChance>0.13</DropChance>
+      <Slots>
+        <SlotMode>Head</SlotMode>
+      </Slots>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>5</int>
+        <int>0</int>
+        <int>-1</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <BuffImmunities />
+      <Attacks />
+    </Equiptment>
+  </StoredEquiptments>
   <StoredConsumables />
   <StoredHazards>
     <Hazard>

@@ -19,7 +19,7 @@
         <Label Style="{StaticResource title}">Create Map</Label>
         <StackPanel Grid.Row="1">
             <TabControl x:Name="MainTabControl" MinHeight="500">
-                <TabItem Header="Step 1" FontSize="48">
+                <TabItem Header="Basic Information" FontSize="48">
                     <StackPanel Background="#FFE5E5E5">
                         <Label Style="{StaticResource h2}" Content="Create Map"/>
 
@@ -72,7 +72,7 @@
                 
                 
                 
-                <TabItem Header="Step 2" FontSize="48">
+                <TabItem Header="Buffs/Attacks" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
                             <Label Style="{StaticResource h2}" Content="Create Buffs and Attacks"/>
@@ -126,7 +126,7 @@
                 </TabItem>
 
 
-                <TabItem Header="Step 3" FontSize="48">
+                <TabItem Header="Items" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
                             <Label Style="{StaticResource h2}" Content="Create Items"/>
@@ -160,7 +160,7 @@
 
                         <Grid>
                             <StackPanel>
-                                <Label Content="Created Equiptments"/>
+                                <Label Content="Created Equiptment"/>
                                 <ListBox x:Name="CreatedEquiptmentsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedEquiptmentsList_SelectionChanged">
                                     <ListBox.ItemsSource>
                                         <Binding Path="StoredEquiptments" UpdateSourceTrigger="PropertyChanged">
@@ -202,7 +202,7 @@
                 
 
                 
-                <TabItem Header="Step 4" FontSize="48">
+                <TabItem Header="Blocks" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
                             <Label Style="{StaticResource h2}" Content="Create Blocks"/>
@@ -256,7 +256,7 @@
                 
                 
                 
-                <TabItem Header="Step 5" FontSize="48">
+                <TabItem Header="Characters" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
                             <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
@@ -332,10 +332,10 @@
                 </TabItem>
 
 
-                <TabItem Header="Step 6" FontSize="48">
+                <TabItem Header="Levels" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
-                            <Label Style="{StaticResource h2}">Create Players and Enemies</Label>
+                            <Label Style="{StaticResource h2}" Content="Create Levels"/>
                             <Button x:Name="CreatedLevelBtn" Click="Navigate" Content="Create Level" HorizontalAlignment="Left" Tag="Editor/CreateLevelPrompt.xaml"/>
                         </StackPanel>
 
