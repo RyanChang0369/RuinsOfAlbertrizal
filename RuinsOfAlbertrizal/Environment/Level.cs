@@ -25,6 +25,12 @@ namespace RuinsOfAlbertrizal.Environment
         public List<Enemy> StoredEnemies { get; set; }
 
         /// <summary>
+        /// This number will be multiplied by the difficulty set for the map to determine the difficulty for the level.
+        /// Set to 1.0 for "completely" fair gameplay.
+        /// </summary>
+        public double Difficulty { get; set; }
+
+        /// <summary>
         /// Boss fight starts at next encounter if points is equal to or exceeds this.
         /// </summary>
         public int MaxPoints { get; set; }
@@ -90,15 +96,5 @@ namespace RuinsOfAlbertrizal.Environment
             //    }
             //}
         }
-
-        //public override void Reset()
-        //{
-        //    for (int i = 0; i < Bosses.Count; i++)
-        //    {
-        //        Bosses[i].Reset();
-        //    }
-        //    Points = 0;
-        //    IntroMessage.Reset();
-        //}
     }
 }

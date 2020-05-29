@@ -51,6 +51,15 @@ namespace RuinsOfAlbertrizal
             get => Icon.ToBitmapSource();
         }
 
+        [XmlIgnore]
+        public bool IconIsValid
+        {
+            get
+            {
+                return File.Exists(Path.Combine(GameBase.CurrentMapLocation, iconLocation));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string iconLocation = null)

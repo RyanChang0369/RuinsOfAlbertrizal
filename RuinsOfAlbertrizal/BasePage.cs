@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace RuinsOfAlbertrizal
 {
@@ -43,6 +44,12 @@ namespace RuinsOfAlbertrizal
         {
             FileHandler.SaveStaticMap();
             MessageBox.Show("Game Saved!");
+        }
+
+        public void Animate(string storyboardName, FrameworkElement element)
+        {
+            Storyboard storyboard = (Storyboard)Resources[storyboardName];
+            storyboard.Begin(element);
         }
     }
 }

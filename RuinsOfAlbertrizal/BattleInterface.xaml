@@ -13,6 +13,20 @@
             <Button Content="Heal" Style="{StaticResource toolTipBtn}" Click="Heal_Click"/>
             <Button Content="Food" Style="{StaticResource toolTipBtn}" Click="Food_Click"/>
         </ListBox>
+
+        <Storyboard x:Key="playerSlideIn">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300, 10, 10, 10" To="10" DecelerationRatio=".9" Duration="0:0:2"/>
+        </Storyboard>
+        <Storyboard x:Key="playerSlideOut">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10" To="-300, 10, 10, 10" DecelerationRatio=".9" Duration="0:0:2"/>
+        </Storyboard>
+
+        <Storyboard x:Key="enemySlideIn">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10, 10, -300, 10" To="10" DecelerationRatio=".9" Duration="0:0:2"/>
+        </Storyboard>
+        <Storyboard x:Key="enemySlideOut">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10" To="10, 10, -300, 10" DecelerationRatio=".9" Duration="0:0:2"/>
+        </Storyboard>
     </Page.Resources>
     
     <Grid Background="WhiteSmoke">
@@ -43,10 +57,10 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/> <!--Used as spacer-->
                     </Grid.RowDefinitions>
-                    <Image x:Name="player3" Margin="10" Grid.Row="1"/>
-                    <Image x:Name="player2" Margin="10" Grid.Column="1" Grid.Row="2"/>
-                    <Image x:Name="player1" Margin="10" Grid.Column="2" Grid.Row="1"/>
-                    <Image x:Name="player0" Margin="10" Grid.Column="3" Grid.Row="2"/>
+                    <Image x:Name="player3" Margin="-300,10,10,10" Grid.Row="1"/>
+                    <Image x:Name="player2" Margin="-300,10,10,10" Grid.Column="1" Grid.Row="2"/>
+                    <Image x:Name="player1" Margin="-300,10,10,10" Grid.Column="2" Grid.Row="1"/>
+                    <Image x:Name="player0" Margin="-300,10,10,10" Grid.Column="3" Grid.Row="2"/>
                     
                 </Grid>
                 <Border Child="{StaticResource options_Player}" Grid.Column="1"/>
@@ -63,10 +77,10 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/> <!--Used as spacer-->
                     </Grid.RowDefinitions>
-                    <Image x:Name="enemy3" Margin="10" Grid.Row="2"/>
-                    <Image x:Name="enemy2" Margin="10" Grid.Column="1" Grid.Row="1"/>
-                    <Image x:Name="enemy1" Margin="10" Grid.Column="2" Grid.Row="2"/>
-                    <Image x:Name="enemy0" Margin="10" Grid.Column="3" Grid.Row="1"/>
+                    <Image x:Name="enemy3" Margin="10, 10, -300, 10" Grid.Row="2"/>
+                    <Image x:Name="enemy2" Margin="10, 10, -300, 10" Grid.Column="1" Grid.Row="1"/>
+                    <Image x:Name="enemy1" Margin="10, 10, -300, 10" Grid.Column="2" Grid.Row="2"/>
+                    <Image x:Name="enemy0" Margin="10, 10, -300, 10" Grid.Column="3" Grid.Row="1"/>
                 </Grid>
             </Grid>
         </Grid>

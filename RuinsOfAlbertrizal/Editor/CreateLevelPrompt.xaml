@@ -20,7 +20,7 @@
         <Label Style="{StaticResource title}" Content="Create Level"/>
         <StackPanel Grid.Row="1">
             <TabControl x:Name="MainTabControl" MinHeight="500">
-                <TabItem Header="Step 1" FontSize="48">
+                <TabItem Header="Basic Infomation" FontSize="48">
                     <StackPanel Background="#FFE5E5E5">
                         <Label Style="{StaticResource h2}" Content="Create Level"/>
 
@@ -39,6 +39,20 @@
                         <TextBox x:Name="Description" Style="{StaticResource paragraphTextBox}">
                             <TextBox.Text>
                                 <Binding Path="Description" Mode="TwoWay"/>
+                            </TextBox.Text>
+                        </TextBox>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Level Difficulty *"/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip='This number will be multiplied by the difficulty set for the map to determine the difficulty for the level. Set to 1.0 for "completely" fair gameplay.'/>
+                        </StackPanel>
+                        <TextBox x:Name="Difficulty" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                            <TextBox.Text>
+                                <Binding Path="Difficulty" Mode="TwoWay">
+                                    <Binding.ValidationRules>
+                                        <validation:DoubleValidation ValidatesOnTargetUpdated="True"/>
+                                    </Binding.ValidationRules>
+                                </Binding>
                             </TextBox.Text>
                         </TextBox>
 
@@ -81,7 +95,7 @@
 
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Boss Fight Trigger Index*"/>
-                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The amount of points necessary to trigger the boss fight. When an enemy is defeated, the number of points increases by 1/10th of the enemy's battle index."/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The amount of map points necessary to trigger the boss fight. When an enemy is defeated, the number of points increases by 1/10th of the enemy's battle index."/>
                         </StackPanel>
                         <TextBox>
                             <TextBox.Text>
@@ -151,7 +165,7 @@
 
 
 
-                <TabItem Header="Step 2" FontSize="48">
+                <TabItem Header="Add Enemies" FontSize="48">
                     <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
                         <StackPanel>
                             <Label Style="{StaticResource h2}" Content="Add/Remove Enemies"/>

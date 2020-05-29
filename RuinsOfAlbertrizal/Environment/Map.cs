@@ -72,6 +72,21 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Block> StoredBlocks { get; set; }
 
+        /// <summary>
+        /// The higher this number is, the more difficult the enemy encounters will be. Ranges from 0.0 to infinity.
+        /// Set to 1.0 for "completely" fair gameplay.
+        /// </summary>
+        public double Difficulty { get; set; }
+
+        /// <summary>
+        /// The total difficulty equal to the map's difficulty times the level's
+        /// </summary>
+        [XmlIgnore]
+        public double TotalDifficulty
+        {
+            get => Difficulty * CurrentLevel.Difficulty;
+        }
+
         public List<Level> Levels { get; set; }
 
         public int LevelsCompleted { get; set; }

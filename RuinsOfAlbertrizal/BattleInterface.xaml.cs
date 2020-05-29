@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -86,6 +87,9 @@ namespace RuinsOfAlbertrizal
             DataContext = GameBase.CurrentGame.CurrentLevel;
             UpdateImageLists();
             UpdateGrid();
+            InitialAnimation();
+
+            //For animation help: http://www.codescratcher.com/wpf/sliding-panel-in-wpf/
         }
 
         public BattleInterface(List<Enemy> enemies)
@@ -96,13 +100,27 @@ namespace RuinsOfAlbertrizal
             DataContext = GameBase.CurrentGame.CurrentLevel;
             UpdateImageLists();
             UpdateGrid();
+            InitialAnimation();
+        }
+
+        private void SummonEnemies()
+        {
+            int totalPlayerBI = 0;
+            int totalEnemyBI = 0;
+
+            foreach (Player player in GameBase.CurrentGame.AlivePlayers)
+            {
+                totalPlayerBI += player.BattleIndex;
+            }
+
+            while (totalEnemyBI < totalPlayerBI * GameBase.CurrentGame.TotalDifficulty)
+            {
+
+            }
         }
 
         private void UpdateImageLists()
         {
-            ListBox optionsListBox_Player = new ListBox();
-            ListBox optionsListBox_Enemy = new ListBox();
-
             playerImages = new List<Image>
             {
                 player0, player1, player2, player3
@@ -112,15 +130,6 @@ namespace RuinsOfAlbertrizal
             {
                 enemy0, enemy1, enemy2, enemy3
             };
-
-            foreach (Image img in playerImages)
-            {
-                
-            }
-
-            foreach (Image img in enemyImages)
-            {
-            }
         }
 
         private void UpdateGrid()
@@ -129,7 +138,11 @@ namespace RuinsOfAlbertrizal
             {
                 try
                 {
-                    playerImages[i].Source = GameBase.CurrentGame.ActivePlayers[i].WorldImgAsBitmapSource;
+                    if (GameBase.CurrentGame.ActivePlayers[i].WorldImgIsValid)
+                        playerImages[i].Source = GameBase.CurrentGame.ActivePlayers[i].WorldImgAsBitmapSource;
+                    else
+                        playerImages[i].Source = new BitmapImage();
+
                     playerImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
                 }
                 catch (IndexOutOfRangeException)
@@ -139,13 +152,32 @@ namespace RuinsOfAlbertrizal
 
                 try
                 {
-                    enemyImages[i].Source = ActiveEnemies[i].WorldImgAsBitmapSource;
+                    if (Enemies[i].WorldImgIsValid)
+                        enemyImages[i].Source = Enemies[i].WorldImgAsBitmapSource;
+                    else
+                        enemyImages[i].Source = new BitmapImage();
+
                     enemyImages[i].Tag = ActiveEnemies[i];
                 }
                 catch (IndexOutOfRangeException)
                 {
 
                 }
+            }
+        }
+
+        private void InitialAnimation()
+        {
+            foreach (Image image in playerImages)
+            {
+                Animate("playerSlideIn", image);
+                Thread.Sleep(50);
+            }
+            
+            foreach (Image image in enemyImages)
+            {
+                Animate("enemySlideIn", image);
+                Thread.Sleep(50);
             }
         }
 
@@ -177,6 +209,11 @@ namespace RuinsOfAlbertrizal
         private void Food_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void AwardPoints()
+        {
+            throw new NotImplementedException();
         }
     }
 }

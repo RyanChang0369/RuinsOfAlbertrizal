@@ -55,6 +55,15 @@ namespace RuinsOfAlbertrizal
             get => WorldImg.ToBitmapSource();
         }
 
+        [XmlIgnore]
+        public bool WorldImgIsValid
+        {
+            get
+            {
+                return File.Exists(Path.Combine(GameBase.CurrentMapLocation, worldImgLocation));
+            }
+        }
+
         public new event PropertyChangedEventHandler PropertyChanged;
 
         public new void OnPropertyChanged([CallerMemberName] string worldImgLocation = null)

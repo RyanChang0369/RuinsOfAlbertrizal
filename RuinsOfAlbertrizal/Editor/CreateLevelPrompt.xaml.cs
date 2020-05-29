@@ -47,6 +47,7 @@ namespace RuinsOfAlbertrizal.Editor
         protected override void AddRequiredControls()
         {
             RequiredControls.Add(LevelName);
+            RequiredControls.Add(Difficulty);
         }
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
