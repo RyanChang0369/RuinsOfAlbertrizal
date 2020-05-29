@@ -87,7 +87,6 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
             catch (InvalidOperationException)
             {
-
                 throw;
             }
         }

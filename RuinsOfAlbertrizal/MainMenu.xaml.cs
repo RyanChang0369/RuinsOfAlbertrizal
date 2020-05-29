@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Editor;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
@@ -78,48 +79,51 @@ namespace RuinsOfAlbertrizal
                 return;
             }
             
-            NavIntroInterface();
+            NavIntroInterface(GameBase.CurrentGame);
         }
 
         private void NewCampaign_Click(object sender, RoutedEventArgs e)
         {
+            //try
+            //{
+            //    GameLoader.NewCampaign();
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Program files not found.", "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    return;
+            //}
 
-            try
-            {
-                GameLoader.NewCampaign();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Program files not found.", "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            
-            NavIntroInterface();
+            //NavIntroInterface();
+
+            throw new NotImplementedException();
         }
 
         private void ContinueCampaign_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                GameLoader.LoadCampaign();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Program files not found.", "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            
-            NavIntroInterface();
+            //try
+            //{
+            //    GameLoader.LoadCampaign();
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Program files not found.", "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    return;
+            //}
+
+            //NavIntroInterface();
+
+            throw new NotImplementedException();
         }
 
-        private void NavIntroInterface()
+        private void NavIntroInterface(Map currentMap)
         {
-            NavigationService.Navigate(new Uri("IntroInterface.xaml", UriKind.RelativeOrAbsolute));
-        }
-
-        private void TestBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NavIntroInterface();
+            if (currentMap.SeenIntroduction && currentMap.CurrentLevel.SeenIntroduction)
+                NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
+            else if (currentMap.SeenIntroduction)
+                NavigationService.Navigate(new Uri("LevelIntroInterface"), UriKind.RelativeOrAbsolute);
+            else
+                NavigationService.Navigate(new Uri("IntroInterface.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void ResetCustomMap(object sender, RoutedEventArgs e)

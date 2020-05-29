@@ -20,13 +20,8 @@ namespace RuinsOfAlbertrizal
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!GameBase.CurrentGame.CurrentLevel.SeenIntroduction)
-            {
-                GameBase.CurrentGame.CurrentLevel.IntroMessage.InitializeControls(IntroText, NextBtn, SkipBtn);
-                GameBase.CurrentGame.CurrentLevel.IntroMessage.Display();
-            }
-            else
-                NavAdventureInterface();
+            GameBase.CurrentGame.CurrentLevel.IntroMessage.InitializeControls(IntroText, NextBtn, SkipBtn);
+            GameBase.CurrentGame.CurrentLevel.IntroMessage.Display();
         }    
 
         private void NavAdventureInterface()
