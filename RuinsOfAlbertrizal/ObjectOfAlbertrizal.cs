@@ -8,10 +8,24 @@ using System.Threading.Tasks;
 namespace RuinsOfAlbertrizal
 {
     /// <summary>
-    /// Everything must have a name and description in this world.
+    /// Everything must have a name, description, and GUID in this world.
     /// </summary>
     public abstract class ObjectOfAlbertrizal
     {
+        private Guid globalID;
+
+        public Guid GlobalID
+        {
+            get
+            {
+                if (globalID == null || globalID == Guid.Empty)
+                    globalID = Guid.NewGuid();
+
+                return globalID;
+            }
+            set => globalID = value;
+        }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -52,6 +66,11 @@ namespace RuinsOfAlbertrizal
             }
 
             return -1;
+        }
+
+        public bool IsSameObjectAs(ObjectOfAlbertrizal obj)
+        {
+            return GlobalID.Equals(obj.GlobalID);
         }
     }
 }

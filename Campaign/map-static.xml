@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GlobalID>94b2c76d-7603-406c-9f2b-e6aa0a5acc6d</GlobalID>
   <Name>Campaign</Name>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
   <SeenIntroduction>false</SeenIntroduction>
@@ -13,6 +14,7 @@
   </IntroMessage>
   <Players>
     <Player>
+      <GlobalID>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</GlobalID>
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <TurnsPassed>0</TurnsPassed>
@@ -76,6 +78,7 @@
   <ActivePlayers />
   <StoredBosses>
     <Boss>
+      <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
       <Name>Shotgun Slime</Name>
       <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
       <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
@@ -161,6 +164,7 @@
   </StoredBosses>
   <StoredEnemies>
     <Enemy>
+      <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
       <Name>Slime</Name>
       <Description>A small slime. Not much of a threat unless it has a shotgun.</Description>
       <TurnsPassed>0</TurnsPassed>
@@ -227,6 +231,7 @@
   </StoredEnemies>
   <StoredBuffs>
     <Buff>
+      <GlobalID>b563ce00-8c7b-4c03-9bd9-1b531d0a7c42</GlobalID>
       <Name>Paralysis</Name>
       <Description>Cannot move!</Description>
       <Duration>1</Duration>
@@ -260,6 +265,7 @@
       <Level>0</Level>
     </Buff>
     <Buff>
+      <GlobalID>36015ecc-b4ea-42ca-aea6-f0a2e5fd4dac</GlobalID>
       <Name>Poison</Name>
       <Description>Losing health!</Description>
       <Duration>1</Duration>
@@ -295,6 +301,7 @@
   </StoredBuffs>
   <StoredAttacks>
     <Attack>
+      <GlobalID>1e4af09f-dcf6-465a-aa08-5f5ef088fe40</GlobalID>
       <Name>Stab</Name>
       <Description>Basic stab attack.</Description>
       <Buffs />
@@ -317,10 +324,12 @@
       <IsMagic>false</IsMagic>
     </Attack>
     <Attack>
+      <GlobalID>deefeb9f-d585-42e6-9aa9-fa4ba375eb8a</GlobalID>
       <Name>Poison Stab</Name>
       <Description>A stab with a bit more flair.</Description>
       <Buffs>
         <Buff>
+          <GlobalID>2be854ae-b493-4e49-9405-9bbb0a06abf1</GlobalID>
           <Name>Poison</Name>
           <Description>Losing health!</Description>
           <Duration>1</Duration>
@@ -375,6 +384,7 @@
   </StoredAttacks>
   <StoredItems>
     <Item>
+      <GlobalID>38b9d7d7-bd4c-4437-92ff-cdc092f582ae</GlobalID>
       <Name>Test Item</Name>
       <Description>For testing purposes</Description>
       <IconLocation>..\Item\Test Item_icon.png</IconLocation>
@@ -383,6 +393,7 @@
   </StoredItems>
   <StoredEquiptments>
     <Equiptment>
+      <GlobalID>aff7b21b-5a97-436a-b537-362614f50782</GlobalID>
       <Name>Test Helmet</Name>
       <Description>A helmet for testing</Description>
       <IconLocation>..\Equiptment\Test Helmet_icon.png</IconLocation>
@@ -409,14 +420,17 @@
   </StoredEquiptments>
   <StoredConsumables>
     <Consumable>
+      <GlobalID>4453bb4c-38ca-4272-afe3-cc434a9d483f</GlobalID>
       <Name>Test Consumable</Name>
       <IconLocation>..\Consumable\Test_icon.png</IconLocation>
       <DropChance>0</DropChance>
+      <Buffs />
       <RoundsPassed>0</RoundsPassed>
     </Consumable>
   </StoredConsumables>
   <StoredHazards>
     <Hazard>
+      <GlobalID>87292532-1e97-4592-a5ae-6d66d24fd503</GlobalID>
       <Location>
         <X>0</X>
         <Y>0</Y>
@@ -440,6 +454,7 @@
   </StoredHazards>
   <StoredBlocks>
     <Block>
+      <GlobalID>485ca330-961f-4525-9371-b2a987214ce7</GlobalID>
       <Name>error_block</Name>
       <Description>Used as a placeholder.</Description>
       <Location>
@@ -449,6 +464,7 @@
       <TypeOfBlock>TangableBlock</TypeOfBlock>
     </Block>
     <Block>
+      <GlobalID>4913d3a4-1a3a-4ffc-a016-168f7fe58e79</GlobalID>
       <Location>
         <X>0</X>
         <Y>0</Y>
@@ -458,6 +474,7 @@
   </StoredBlocks>
   <Levels>
     <Level>
+      <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
       <Name>Final Level</Name>
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
       <SeenIntroduction>false</SeenIntroduction>
@@ -471,6 +488,7 @@
       <Points>0</Points>
       <Bosses>
         <Boss>
+          <GlobalID>0a8da988-88e9-4c13-8a81-a2e90194e44c</GlobalID>
           <Name>Shotgun Slime</Name>
           <Description>It is a slime that seems to have found a shotgun. For some reason, this increases its health.</Description>
           <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
