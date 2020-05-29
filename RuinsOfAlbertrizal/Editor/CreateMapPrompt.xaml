@@ -1,8 +1,9 @@
-﻿<Page x:Class="RuinsOfAlbertrizal.Editor.CreateMapPrompt"
+﻿<main:BasePage x:Class="RuinsOfAlbertrizal.Editor.CreateMapPrompt"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:main="clr-namespace:RuinsOfAlbertrizal"
       xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor"
       xmlns:converter="clr-namespace:RuinsOfAlbertrizal.Editor.Converter"
       xmlns:validation="clr-namespace:RuinsOfAlbertrizal.Editor.Validator"
@@ -85,7 +86,15 @@
                             <Grid>
                                 <StackPanel>
                                     <Label>Created Buffs</Label>
-                                    <ListBox x:Name="CreatedBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBuffsList_SelectionChanged" DisplayMemberPath="Name" ItemsSource="{Binding Path=StoredBuffs, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <ListBox x:Name="CreatedBuffsList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBuffsList_SelectionChanged">
+                                        <ListBox.ItemsSource>
+                                            <Binding Path="StoredBuffs" UpdateSourceTrigger="PropertyChanged">
+                                                <Binding.Converter>
+                                                    <converter:NameConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </ListBox.ItemsSource>
+                                    </ListBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Buff">
                                     <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
@@ -366,4 +375,4 @@
             <Label x:Name="StatusBar" Height="32" Grid.Row="1" VerticalAlignment="Bottom" FontSize="18"/>
         </Grid>
     </Grid>
-</Page>
+</main:BasePage>

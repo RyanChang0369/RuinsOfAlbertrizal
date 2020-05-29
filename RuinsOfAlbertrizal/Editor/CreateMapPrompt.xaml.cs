@@ -24,7 +24,7 @@ namespace RuinsOfAlbertrizal.Editor
     /// <summary>
     /// Interaction logic for CreateMapPrompt.xaml
     /// </summary>
-    public partial class CreateMapPrompt : Page
+    public partial class CreateMapPrompt : BasePage
     {
         public static Map Map { get; set; }
 
@@ -211,18 +211,6 @@ namespace RuinsOfAlbertrizal.Editor
             {
 
             }
-        }
-
-        /// <summary>
-        /// Uses tags to navigate to correct editor page (relative uri).
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Navigate(object sender, RoutedEventArgs e)
-        {
-            Button btn = (Button)sender;
-            NavigationService.Navigate(new Uri((string)btn.Tag, UriKind.RelativeOrAbsolute));
-            HasSaved = false;
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
