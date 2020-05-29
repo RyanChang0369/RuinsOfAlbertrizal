@@ -60,13 +60,6 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             Boss boss = CreateMapPrompt.Map.StoredBosses[listBox.SelectedIndex];
 
-            LevelSelect levelSelect = new LevelSelect("boss", boss.Name);
-            levelSelect.ShowDialog();
-
-            if (levelSelect.GetLevelValue() < 1)
-                return;
-
-            boss.Level = levelSelect.GetLevelValue();
             TargetBosses.Add(boss);
             AddedBossesList.Items.Add(boss);
             ListChanged();

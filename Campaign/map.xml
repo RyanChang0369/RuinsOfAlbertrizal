@@ -84,7 +84,7 @@
       <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
       <GeneralName>Rare Green Slime</GeneralName>
-      <Level>10</Level>
+      <Level>1</Level>
       <StyleOfModel>Humanoid</StyleOfModel>
       <AIStyle>Beserk</AIStyle>
       <BaseStats>
@@ -329,7 +329,7 @@
       <Description>A stab with a bit more flair.</Description>
       <Buffs>
         <Buff>
-          <GlobalID>2be854ae-b493-4e49-9405-9bbb0a06abf1</GlobalID>
+          <GlobalID>36015ecc-b4ea-42ca-aea6-f0a2e5fd4dac</GlobalID>
           <Name>Poison</Name>
           <Description>Losing health!</Description>
           <Duration>1</Duration>
@@ -359,7 +359,7 @@
             <double>0</double>
           </PercentStatGain>
           <TypeOfBuff>Normal</TypeOfBuff>
-          <AIChange>NoChange</AIChange>
+          <AIChange>Player</AIChange>
           <Level>1</Level>
         </Buff>
       </Buffs>
@@ -484,17 +484,17 @@
         </Lines>
       </IntroMessage>
       <StoredEnemies />
-      <MaxPoints>0</MaxPoints>
+      <MaxPoints>9000</MaxPoints>
       <Points>0</Points>
       <Bosses>
         <Boss>
-          <GlobalID>0a8da988-88e9-4c13-8a81-a2e90194e44c</GlobalID>
+          <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
           <Name>Shotgun Slime</Name>
-          <Description>It is a slime that seems to have found a shotgun. For some reason, this increases its health.</Description>
+          <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
           <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
           <TurnsPassed>0</TurnsPassed>
           <GeneralName>Rare Green Slime</GeneralName>
-          <Level>10</Level>
+          <Level>1</Level>
           <StyleOfModel>Humanoid</StyleOfModel>
           <AIStyle>Beserk</AIStyle>
           <BaseStats>
@@ -572,7 +572,7 @@
           <MessagesOnVictory />
         </Boss>
       </Bosses>
-      <TheWinCondition>Unwinnable</TheWinCondition>
+      <TheWinCondition>DefeatEnemies</TheWinCondition>
     </Level>
   </Levels>
   <LevelsCompleted>0</LevelsCompleted>
