@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Mechanics;
 using System.Collections.Generic;
 using System.Timers;
 
@@ -6,9 +7,79 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class BattleField : ITurnBasedObject
     {
-        public List<Character> AliveCharacters { get; set; }
+        public List<Enemy> Enemies { get; set; }
 
-        public List<Character> DeadCharacters { get; set; }
+        public List<Enemy> AliveEnemies
+        {
+            get
+            {
+                List<Enemy> enemies = new List<Enemy>();
+
+                foreach (Enemy enemy in enemies)
+                {
+                    if (!enemy.IsDead)
+                        enemies.Add(enemy);
+                }
+
+                return enemies;
+            }
+        }
+
+        public List<Enemy> DeadEnemies
+        {
+            get
+            {
+                List<Enemy> enemies = new List<Enemy>();
+
+                foreach (Enemy enemy in enemies)
+                {
+                    if (enemy.IsDead)
+                        enemies.Add(enemy);
+                }
+
+                return enemies;
+            }
+        }
+
+        public List<Enemy> ActiveEnemies
+        {
+            get
+            {
+                List<Enemy> enemies = new List<Enemy>();
+
+                for (int i = 0; i < Enemies.Count; i++)
+                {
+                    if (i > GameBase.NumActiveCharacters - 1)
+                        break;
+
+                    enemies.Add(Enemies[i]);
+                }
+
+                return enemies;
+            }
+        }
+
+        public List<Character> AliveCharacters
+        {
+            get
+            {
+                List<Character> characters = new List<Character>();
+                characters.AddRange(GameBase.CurrentGame.AlivePlayers);
+                characters.AddRange(AliveEnemies);
+                return characters;
+            }
+        }
+
+        public List<Character> DeadCharacters
+        {
+            get
+            {
+                List<Character> characters = new List<Character>();
+                characters.AddRange(GameBase.CurrentGame.DeadPlayers);
+                characters.AddRange(DeadEnemies);
+                return characters;
+            }
+        }
 
         /// <summary>
         /// The characters with the same speed in queue to have their round started.
@@ -24,14 +95,75 @@ namespace RuinsOfAlbertrizal.Environment
 
         private Timer SpeedTimer { get; set; }
 
-        public BattleField(List<Player> players, List<Boss> bosses, List<Enemy> enemies)
-        {
-            ConcurrentCharacters = new List<Character>();
-            DeadCharacters = new List<Character>();
+        //public BattleField(List<Player> players, List<Boss> bosses, List<Enemy> enemies)
+        //{
+        //    ConcurrentCharacters = new List<Character>();
+        //    DeadCharacters = new List<Character>();
+        //}
 
-            AliveCharacters.AddRange(players);
-            AliveCharacters.AddRange(bosses);
-            AliveCharacters.AddRange(enemies);
+        /// <summary>
+        /// Creates a new battlefield using the players in GameBase.CurrentGame
+        /// </summary>
+        public BattleField()
+        {
+
+        }
+
+        private List<Enemy> SummonEnemies(List<Player> players)
+        {
+            List<Enemy> enemies = new List<Enemy>();
+            int totalPlayerBI = 0;
+            int totalEnemyBI = 0;
+
+            foreach (Player player in players)
+            {
+                totalPlayerBI += player.BattleIndex;
+            }
+
+            while (totalEnemyBI < totalPlayerBI * GameBase.CurrentGame.TotalDifficulty)
+            {
+
+            }
+        }
+
+        private List<Enemy> SummonEnemiesPath1(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
+        {
+
+        }
+
+        private List<Enemy> SummonEnemiesPath2(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
+        {
+
+        }
+
+        private List<Enemy> SummonEnemiesPath3(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
+        {
+
+        }
+
+        private List<Enemy> SummonEnemiesPath4(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
+        {
+
+        }
+
+        private bool IsTargetable(Character target, Attack attack)
+        {
+            if (target.IsInvunerable())
+                return false;
+
+            bool ignoreDeathCheck = false;
+
+            //Dead characters are only targetable if the attack can revive them.
+            foreach (Buff buff in attack.Buffs)
+            {
+                if (buff.TypeOfBuff == Buff.BuffType.Revive)
+                    ignoreDeathCheck = true;
+            }
+
+            if (!ignoreDeathCheck && target.IsDead)
+                return false;
+
+            return true;
         }
 
         public void SetTimer()
@@ -87,24 +219,12 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void StartTurn()
         {
-            RemoveDeadCharacters();
+            //RemoveDeadCharacters();
         }
 
         public void EndTurn()
         {
-            RemoveDeadCharacters();
-        }
-
-        private void RemoveDeadCharacters()
-        {
-            foreach (Character character in AliveCharacters)
-            {
-                if (character.IsDead)
-                {
-                    AliveCharacters.Remove(character);
-                    DeadCharacters.Add(character);
-                }
-            }
+            //RemoveDeadCharacters();
         }
     }
 }
