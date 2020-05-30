@@ -10,6 +10,7 @@ using System.Windows;
 
 namespace RuinsOfAlbertrizal.Characters
 {
+    [Serializable]
     public class Player : Character
     {
         public Player()

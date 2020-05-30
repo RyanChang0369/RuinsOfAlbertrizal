@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Mechanics
 {
+    [Serializable]
     public class Attack : ObjectOfAlbertrizal, ITurnBasedObject
     {
         public List<Buff> Buffs { get; set; }

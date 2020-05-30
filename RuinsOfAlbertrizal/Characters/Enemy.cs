@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal.Characters
 {
+    [Serializable]
     public class Enemy : Character
     {
         /// <summary>

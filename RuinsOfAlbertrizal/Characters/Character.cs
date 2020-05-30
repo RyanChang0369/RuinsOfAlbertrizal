@@ -15,6 +15,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
+    [Serializable]
     public abstract class Character : WorldMapObject, ITurnBasedObject
     {
         public const int MaxTurns = 2;

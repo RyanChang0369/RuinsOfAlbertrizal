@@ -1,6 +1,7 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Mechanics;
 using System.Collections.Generic;
+using System.Linq;
 using System.Timers;
 
 namespace RuinsOfAlbertrizal.Environment
@@ -120,30 +121,130 @@ namespace RuinsOfAlbertrizal.Environment
                 totalPlayerBI += player.BattleIndex;
             }
 
-            while (totalEnemyBI < totalPlayerBI * GameBase.CurrentGame.TotalDifficulty)
-            {
+            int fateSelector = RNG.GetRandomInteger(3);
 
+            switch (fateSelector)
+            {
+                case 0:
+                    enemies = SummonEnemiesPath1(players, totalEnemyBI, (int)(totalPlayerBI * GameBase.CurrentGame.TotalDifficulty));
+                    break;
+                case 1:
+                    enemies = SummonEnemiesPath2(players, totalEnemyBI, (int)(totalPlayerBI * GameBase.CurrentGame.TotalDifficulty));
+                    break;
+                case 2:
+                    enemies = SummonEnemiesPath3(players, totalEnemyBI, (int)(totalPlayerBI * GameBase.CurrentGame.TotalDifficulty));
+                    break;
             }
+
+            return enemies;
         }
 
+        /// <summary>
+        /// Summon enemies at random
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="totalEnemyBI"></param>
+        /// <param name="adjustedPlayerBI"></param>
+        /// <returns></returns>
         private List<Enemy> SummonEnemiesPath1(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
         {
+            List<Enemy> enemies = new List<Enemy>();
 
+            while (totalEnemyBI < adjustedPlayerBI)
+            {
+                enemies.Add(GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies));
+            }
+
+            return enemies;
         }
 
+        /// <summary>
+        /// Prefer a few stronger enemies
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="totalEnemyBI"></param>
+        /// <param name="adjustedPlayerBI"></param>
+        /// <returns></returns>
         private List<Enemy> SummonEnemiesPath2(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
         {
+            List<Enemy> enemies = new List<Enemy>();
 
+            int averageBI = totalEnemyBI / GameBase.CurrentGame.CurrentLevel.StoredEnemies.Count;
+
+            while (totalEnemyBI < adjustedPlayerBI * 0.75)
+            {
+                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+
+                if (enemy.BattleIndex > averageBI)
+                {
+                    enemies.Add(enemy);
+                }
+            }
+
+            while (totalEnemyBI < adjustedPlayerBI * 0.25)
+                enemies.Add(GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies));
+
+            return enemies;
         }
 
+        /// <summary>
+        /// Prefer many weaker enemies
+        /// </summary>
+        /// <param name="players"></param>
+        /// <param name="totalEnemyBI"></param>
+        /// <param name="adjustedPlayerBI"></param>
+        /// <returns></returns>
         private List<Enemy> SummonEnemiesPath3(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
         {
+            List<Enemy> enemies = new List<Enemy>();
 
+            int averageBI = totalEnemyBI / GameBase.CurrentGame.CurrentLevel.StoredEnemies.Count;
+
+            while (totalEnemyBI < adjustedPlayerBI * 0.75)
+            {
+                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+
+                if (enemy.BattleIndex < averageBI)
+                {
+                    enemies.Add(enemy);
+                }
+            }
+
+            while (totalEnemyBI < adjustedPlayerBI * 0.25)
+                enemies.Add(GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies));
+
+            return enemies;
         }
 
-        private List<Enemy> SummonEnemiesPath4(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
-        {
+        //private List<Enemy> SummonEnemiesPath4(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
+        //{
+        //    while (totalEnemyBI < adjustedPlayerBI)
+        //    {
 
+        //    }
+        //}
+
+        private Enemy GetRandomEnemy(List<Player> players, List<Enemy> enemies)
+        {
+            int fateSelector = RNG.GetRandomInteger(enemies.Count);
+            Enemy enemy = enemies[fateSelector].DeepClone();
+            enemy.Level = GetAdjustedLevel(players);
+            return enemy;
+        }
+
+        private int GetAdjustedLevel(List<Player> players)
+        {
+            int averageLevel = 0;
+            int totalLevel = 0;
+
+            foreach (Player player in players)
+            {
+                totalLevel = player.Level;
+            }
+
+            averageLevel = totalLevel / players.Count;
+
+            return averageLevel + RNG.GetRandomInteger(-2, 3);
         }
 
         private bool IsTargetable(Character target, Attack attack)

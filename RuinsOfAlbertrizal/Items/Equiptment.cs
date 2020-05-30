@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace RuinsOfAlbertrizal.Items
 {
+    [Serializable]
     public class Equiptment : Item
     {
         /// <summary>
