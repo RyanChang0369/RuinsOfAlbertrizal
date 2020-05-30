@@ -14,6 +14,8 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public int[] StatLoss { get; set; }
 
+        public int[] StatCostToUser { get; set; }
+
         public int CoolDown { get; set; }
 
         public int ChargeUp { get; set; }
@@ -33,6 +35,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         public Attack()
         {
             StatLoss = new int[GameBase.NumStats];
+            StatCostToUser = new int[GameBase.NumStats];
             Buffs = new List<Buff>();
         }
 

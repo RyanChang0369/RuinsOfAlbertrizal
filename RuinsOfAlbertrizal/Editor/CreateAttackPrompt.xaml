@@ -43,19 +43,25 @@
                 </StackPanel>
                 <CheckBox IsChecked="{Binding Path=IsMagic, Mode=TwoWay}" Margin="10"/>
 
-                <Label Content="HP Lost Per Hit *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="HP Lost Per Hit *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character recieving this attack will lose this much HP."/>
+                </StackPanel>
+                <TextBox x:Name="StatLoss0" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatLoss[0]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <validation:RequiredValidation ValidatesOnTargetUpdated="True"/>
+                                <validation:NumberValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Mana Lost Per Hit *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Mana Lost Per Hit *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character recieving this attack will lose this much mana."/>
+                </StackPanel>
+                <TextBox x:Name="StatLoss1" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatLoss[1]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -65,8 +71,11 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Defense Lost Per Hit *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Defense Lost Per Hit *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character recieving this attack will lose this much defense."/>
+                </StackPanel>
+                <TextBox x:Name="StatLoss2" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatLoss[2]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -76,8 +85,11 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Damage Lost Per Hit *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Damage Lost Per Hit *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character recieving this attack will lose this much damage."/>
+                </StackPanel>
+                <TextBox x:Name="StatLoss3" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatLoss[3]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -87,8 +99,11 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Speed Lost Per Hit *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Speed Lost Per Hit *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character recieving this attack will lost this much speed."/>
+                </StackPanel>
+                <TextBox x:Name="StatLoss4" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatLoss[4]" Mode="TwoWay">
                             <Binding.ValidationRules>
@@ -98,10 +113,97 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Label Content="Intellect Lost Per Hit *"/>
-                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Intellect Lost Per Hit *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character recieving this attack will lost this much intellect."/>
+                </StackPanel>
+                <TextBox x:Name="StatLoss5" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="StatLoss[5]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="HP Cost *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character casting this attack will lose this much HP."/>
+                </StackPanel>
+                <TextBox x:Name="StatCost0" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatCostToUser[0]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Mana Cost *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character casting this attack will lose this much mana."/>
+                </StackPanel>
+                <TextBox x:Name="StatCost1" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatCostToUser[1]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Defense Cost *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character casting this attack will lose this much defense."/>
+                </StackPanel>
+                <TextBox x:Name="StatCost2" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatCostToUser[2]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Damage Cost *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character casting this attack will lose this much damage."/>
+                </StackPanel>
+                <TextBox x:Name="StatCost3" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatCostToUser[3]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Speed Cost *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character casting this attack will lost this much speed."/>
+                </StackPanel>
+                <TextBox x:Name="StatCost4" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatCostToUser[4]" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Intellect Cost *"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character casting this attack will lost this much intellect."/>
+                </StackPanel>
+                <TextBox x:Name="StatCost5" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="StatCostToUser[5]" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
