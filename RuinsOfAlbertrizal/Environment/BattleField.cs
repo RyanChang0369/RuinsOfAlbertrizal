@@ -114,12 +114,6 @@ namespace RuinsOfAlbertrizal.Environment
 
         private Timer SpeedTimer { get; set; }
 
-        //public BattleField(List<Player> players, List<Boss> bosses, List<Enemy> enemies)
-        //{
-        //    ConcurrentCharacters = new List<Character>();
-        //    DeadCharacters = new List<Character>();
-        //}
-
         /// <summary>
         /// Creates a new battlefield using the players in GameBase.CurrentGame
         /// </summary>
