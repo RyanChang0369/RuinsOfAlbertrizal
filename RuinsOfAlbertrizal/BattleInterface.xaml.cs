@@ -125,10 +125,5 @@ namespace RuinsOfAlbertrizal
         {
 
         }
-
-        private void AwardPoints()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

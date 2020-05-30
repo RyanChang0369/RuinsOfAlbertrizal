@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Mechanics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
@@ -277,6 +278,18 @@ namespace RuinsOfAlbertrizal.Environment
                 return false;
 
             return true;
+        }
+
+        private void AwardPoints()
+        {
+            int points = 0;
+
+            foreach (Enemy enemy in DeadEnemies)
+            {
+                points += (int)Math.Round(enemy.BattleIndex / 10.0);
+            }
+
+            GameBase.CurrentGame.CurrentLevel.Points += points;
         }
 
         public void SetTimer()
