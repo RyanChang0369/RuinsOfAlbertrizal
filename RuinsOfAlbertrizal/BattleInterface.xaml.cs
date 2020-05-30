@@ -24,7 +24,7 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public partial class BattleInterface : BasePage
     {
-        private BattleField battleField;
+        private BattleField battleField = GameBase.CurrentGame.BattleField;
 
         private List<Image> playerImages = new List<Image>();
 

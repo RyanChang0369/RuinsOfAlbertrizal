@@ -87,6 +87,8 @@ namespace RuinsOfAlbertrizal.Environment
             get => Difficulty * CurrentLevel.Difficulty;
         }
 
+        public BattleField BattleField { get; set; }
+
         public List<Level> Levels { get; set; }
 
         public int LevelsCompleted { get; set; }

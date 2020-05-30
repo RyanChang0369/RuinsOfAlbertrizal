@@ -3,6 +3,7 @@ using RuinsOfAlbertrizal.Mechanics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Timers;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
@@ -10,6 +11,7 @@ namespace RuinsOfAlbertrizal.Environment
     {
         public List<Enemy> Enemies { get; set; }
 
+        [XmlIgnore]
         public List<Enemy> AliveEnemies
         {
             get
@@ -26,6 +28,7 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
+        [XmlIgnore]
         public List<Enemy> DeadEnemies
         {
             get
@@ -42,6 +45,7 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
+        [XmlIgnore]
         public List<Enemy> ActiveEnemies
         {
             get
@@ -60,6 +64,7 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
+        [XmlIgnore]
         public List<Character> AliveCharacters
         {
             get
@@ -71,6 +76,7 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
+        [XmlIgnore]
         public List<Character> DeadCharacters
         {
             get
@@ -80,6 +86,18 @@ namespace RuinsOfAlbertrizal.Environment
                 characters.AddRange(DeadEnemies);
                 return characters;
             }
+        }
+
+        [XmlIgnore]
+        public bool PlayerHasWon
+        {
+            get => AliveEnemies.Count < 1;
+        }
+
+        [XmlIgnore]
+        public bool PlayerHasLost
+        {
+            get => GameBase.CurrentGame.GameOver;
         }
 
         /// <summary>
@@ -107,7 +125,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// </summary>
         public BattleField()
         {
-
+            Enemies = SummonEnemies(GameBase.CurrentGame.Players);
         }
 
         private List<Enemy> SummonEnemies(List<Player> players)
