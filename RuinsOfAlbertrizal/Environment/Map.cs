@@ -95,7 +95,7 @@ namespace RuinsOfAlbertrizal.Environment
         public Level CurrentLevel { get => Levels[LevelsCompleted]; }
 
         /// <summary>
-        /// True if there are no moer alive players
+        /// True if there are no more alive players
         /// </summary>
         [XmlIgnore]
         public bool GameOver
