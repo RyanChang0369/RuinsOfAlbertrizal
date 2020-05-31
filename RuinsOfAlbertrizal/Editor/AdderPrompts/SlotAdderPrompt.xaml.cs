@@ -55,5 +55,10 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
                 }
             }
         }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

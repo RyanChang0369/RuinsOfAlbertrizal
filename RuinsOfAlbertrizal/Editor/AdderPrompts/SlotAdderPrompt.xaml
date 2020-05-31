@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="Add Slots" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" x:Name="SlotsContainer">
             <Grid.Resources>
                 <Style TargetType="Button">
@@ -78,5 +82,6 @@
             <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9" Click="SelectSlot_Clicked"/>
             <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10" Click="SelectSlot_Clicked"/>
         </Grid>
+        <Button x:Name="ExitBtn" Grid.Row="1" Content="Exit" Click="ExitBtn_Click"/>
     </Grid>
 </Window>
