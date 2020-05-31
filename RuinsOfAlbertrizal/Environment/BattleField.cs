@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Mechanics;
+using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class BattleField : ITurnBasedObject
     {
-        public List<string> StoredMessages { get; set; }
+        public Message StoredMessages { get; set; }
 
         public List<Enemy> Enemies { get; set; }
 
@@ -123,6 +124,7 @@ namespace RuinsOfAlbertrizal.Environment
         public BattleField()
         {
             Enemies = SummonEnemies(GameBase.CurrentGame.Players);
+            StoredMessages = new Message();
         }
 
         private List<Enemy> SummonEnemies(List<Player> players)

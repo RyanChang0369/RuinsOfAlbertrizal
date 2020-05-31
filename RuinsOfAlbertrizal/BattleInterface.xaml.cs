@@ -1,6 +1,7 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Mechanics;
+using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,10 @@ namespace RuinsOfAlbertrizal
 
         private List<Image> enemyImages = new List<Image>();
 
+        private List<Image> playerTargetImages = new List<Image>();
+
+        private List<Image> enemyTargetImages = new List<Image>();
+
         public BattleInterface()
         {
             battleField = new BattleField();
@@ -54,6 +59,16 @@ namespace RuinsOfAlbertrizal
             {
                 enemy0, enemy1, enemy2, enemy3
             };
+
+            playerTargetImages = new List<Image>
+            {
+                targetPlayer0, targetPlayer1, targetPlayer2, targetPlayer3
+            };
+
+            enemyTargetImages = new List<Image>
+            {
+                targetEnemy0, targetEnemy1, targetEnemy2, targetEnemy3
+            };
         }
 
         private void UpdateGrid()
@@ -68,6 +83,7 @@ namespace RuinsOfAlbertrizal
                         playerImages[i].Source = new BitmapImage();
 
                     playerImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
+                    playerTargetImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -82,11 +98,38 @@ namespace RuinsOfAlbertrizal
                         enemyImages[i].Source = new BitmapImage();
 
                     enemyImages[i].Tag = battleField.ActiveEnemies[i];
+                    enemyTargetImages[i].Tag = battleField.ActiveEnemies[i];
                 }
                 catch (IndexOutOfRangeException)
                 {
 
                 }
+            }
+        }
+
+        private void ShowTargets()
+        {
+            foreach (Image image in playerTargetImages)
+            {
+                Animate("targetFadeIn", image);
+            }
+
+            foreach (Image image in enemyTargetImages)
+            {
+                Animate("targetFadeIn", image);
+            }
+        }
+
+        private void HideTargets()
+        {
+            foreach (Image image in playerTargetImages)
+            {
+                Animate("targetFadeOut", image);
+            }
+
+            foreach (Image image in enemyTargetImages)
+            {
+                Animate("targetFadeOut", image);
             }
         }
 
@@ -97,7 +140,7 @@ namespace RuinsOfAlbertrizal
                 Animate("playerSlideIn", image);
                 Thread.Sleep(50);
             }
-            
+
             foreach (Image image in enemyImages)
             {
                 Animate("enemySlideIn", image);
@@ -105,12 +148,17 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        private void Heal_Click(object sender, RoutedEventArgs e)
+        private void Attack_Click(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private void Food_Click(object sender, RoutedEventArgs e)
+        private void Inventory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Flee_Click(object sender, RoutedEventArgs e)
         {
 
         }

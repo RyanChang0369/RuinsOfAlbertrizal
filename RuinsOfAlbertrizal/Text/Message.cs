@@ -23,11 +23,14 @@ namespace RuinsOfAlbertrizal.Text
 
         private int charIndex;
 
+        public int MaxLines { get; set; }
+
         public List<string> Lines { get; set; }
 
         public Message()
         {
             Lines = new List<string>();
+            MaxLines = int.MaxValue;
         }
 
         /// <summary>
@@ -37,6 +40,22 @@ namespace RuinsOfAlbertrizal.Text
         public Message(List<string> lines)
         {
             Lines = lines;
+            MaxLines = int.MaxValue;
+        }
+
+        public Message(int maxLines)
+        {
+            MaxLines = maxLines;
+        }
+
+        public void Add(string line)
+        {
+            Lines.Add(line);
+
+            if (Lines.Count > MaxLines)
+            {
+                Lines.RemoveAt(Lines.Count - 1);
+            }
         }
 
         public void InitializeControls(TextBlock textBlock, Button nextButton, Button skipButton)
