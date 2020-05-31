@@ -231,14 +231,6 @@ namespace RuinsOfAlbertrizal.Environment
             return enemies;
         }
 
-        //private List<Enemy> SummonEnemiesPath4(List<Player> players, int totalEnemyBI, int adjustedPlayerBI)
-        //{
-        //    while (totalEnemyBI < adjustedPlayerBI)
-        //    {
-
-        //    }
-        //}
-
         private Enemy GetRandomEnemy(List<Player> players, List<Enemy> enemies)
         {
             int fateSelector = RNG.GetRandomInteger(enemies.Count);
@@ -262,7 +254,7 @@ namespace RuinsOfAlbertrizal.Environment
             return averageLevel + RNG.GetRandomInteger(-2, 3);
         }
 
-        private bool IsTargetable(Character target, Attack attack)
+        public bool IsTargetable(Character target, Attack attack)
         {
             if (target.IsInvunerable())
                 return false;

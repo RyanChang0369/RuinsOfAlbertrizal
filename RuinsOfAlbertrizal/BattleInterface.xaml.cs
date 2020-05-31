@@ -43,17 +43,6 @@ namespace RuinsOfAlbertrizal
             //For animation help: http://www.codescratcher.com/wpf/sliding-panel-in-wpf/
         }
 
-        //public BattleInterface(List<Enemy> enemies)
-        //{
-        //    Enemies = enemies;
-
-        //    InitializeComponent();
-        //    DataContext = GameBase.CurrentGame.CurrentLevel;
-        //    UpdateImageLists();
-        //    UpdateGrid();
-        //    InitialAnimation();
-        //}
-
         private void UpdateImageLists()
         {
             playerImages = new List<Image>
