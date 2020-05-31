@@ -274,16 +274,43 @@ namespace RuinsOfAlbertrizal.Environment
             return true;
         }
 
+        private void PlayerWins()
+        {
+            AwardPoints();
+            AwardXP();
+        }
+
         private void AwardPoints()
         {
             int points = 0;
 
             foreach (Enemy enemy in DeadEnemies)
             {
-                points += (int)Math.Round(enemy.BattleIndex / 10.0);
+                points += enemy.GetPointsGained();
             }
 
             GameBase.CurrentGame.CurrentLevel.Points += points;
+        }
+
+        /// <summary>
+        /// Gives XP for each player. Dead players recieve half the XP.
+        /// </summary>
+        private void AwardXP()
+        {
+            int totalXP = 0;
+
+            foreach (Enemy enemy in DeadEnemies)
+            {
+                totalXP += enemy.GetXPGained();
+            }
+
+            foreach (Player player in GameBase.CurrentGame.Players)
+            {
+                if (player.IsDead)
+                    player.XP += (int)Math.Round(totalXP / 2.0);
+                else
+                    player.XP += totalXP;
+            }
         }
 
         public void SetTimer()
@@ -344,7 +371,8 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void EndTurn()
         {
-            //RemoveDeadCharacters();
+            if (PlayerHasWon)
+                PlayerWins();
         }
     }
 }

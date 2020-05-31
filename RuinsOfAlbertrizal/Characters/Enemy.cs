@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.AIs;
+using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,12 @@ namespace RuinsOfAlbertrizal.Characters
     [Serializable]
     public class Enemy : Character
     {
+        public List<Equiptment> InventoryEquiptments { get; set; }
+
+        public List<Consumable> InventoryConsumables { get; set; }
+
+        public List<Item> InventoryItems { get; set; }
+
         /// <summary>
         /// A message is selected randomly from this list. Which enemy plays this message is determined by its Battle Index.
         /// </summary>
@@ -47,13 +54,17 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        public Enemy()
+        public Enemy() : base()
         {
             AIStyle = AI.AIStyle.NoAI;
             MessagesOnAttack = new List<Message>();
             MessagesOnDefeat = new List<Message>();
             MessagesOnEncounter = new List<Message>();
             MessagesOnVictory = new List<Message>();
+            InventoryEquiptments = new List<Equiptment>();
+            CurrentConsumables = new List<Consumable>();
+            InventoryConsumables = new List<Consumable>();
+            InventoryItems = new List<Item>();
         }
 
         /// <summary>
@@ -62,12 +73,21 @@ namespace RuinsOfAlbertrizal.Characters
         /// <returns></returns>
         public int GetXPGained()
         {
-            return BattleIndex / 10;
+            return (int)Math.Round(BattleIndex / 10.0);
+        }
+
+        /// <summary>
+        /// Use this to get the amount of level points gained from killing this enemy
+        /// </summary>
+        /// <returns></returns>
+        public int GetPointsGained()
+        {
+            return GetXPGained();
         }
 
         public override void Die()
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

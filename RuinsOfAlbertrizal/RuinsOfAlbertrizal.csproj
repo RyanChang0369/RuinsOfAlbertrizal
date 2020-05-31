@@ -400,5 +400,8 @@
   <ItemGroup>
     <Resource Include="Editor\infoCircle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\target.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,3 +14,5 @@ Create a pop up inventory
 Finish and test battle screen
 
 Create a screen allowing players to create their characters and select a map difficulty.
+
+Add more ItemFindMessages for GetItemFindMessage(Item item)

@@ -333,12 +333,6 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         public List<Consumable> CurrentConsumables { get; set; }
 
-        public List<Equiptment> InventoryEquiptments { get; set; }
-
-        public List<Consumable> InventoryConsumables { get; set; }
-
-        public List<Item> InventoryItems { get; set; }
-
         public List<Attack> Attacks { get; set; }
 
         /// <summary>
@@ -353,10 +347,6 @@ namespace RuinsOfAlbertrizal.Characters
         {
             Level = 1;
             CurrentEquiptments = new Equiptment[16];        //16 possible slots for equiptment
-            InventoryEquiptments = new List<Equiptment>();
-            CurrentConsumables = new List<Consumable>();
-            InventoryConsumables = new List<Consumable>();
-            InventoryItems = new List<Item>();
             Attacks = new List<Attack>();
             BaseStats = new int[GameBase.NumStats];
             PermanentBuffs = new List<Buff>();
@@ -391,7 +381,7 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 CurrentEquiptments[(int)slotMode] = null;
             }
-            InventoryEquiptments.Add(CurrentEquiptments[index]);
+            GameBase.CurrentGame.PlayerInventory.Add(CurrentEquiptments[index]);
         }
 
         
@@ -399,12 +389,12 @@ namespace RuinsOfAlbertrizal.Characters
         /// <summary>
         /// Consumes an consumable
         /// </summary>
-        /// <param name="index">The index of the item in InventoryConsumables</param>
+        /// <param name="index">The index of the item in PlayerConsumables</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public void Consume(int index)
         {
-            Consumable consumable = InventoryConsumables[index];
-            InventoryConsumables.RemoveAt(index);
+            Consumable consumable = GameBase.CurrentGame.PlayerConsumables[index];
+            GameBase.CurrentGame.PlayerConsumables.RemoveAt(index);
             CurrentConsumables.Add(consumable);
         }
 

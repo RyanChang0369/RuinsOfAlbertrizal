@@ -72,6 +72,39 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Block> StoredBlocks { get; set; }
 
+        [XmlIgnore]
+        public List<Item> PlayerItems { get; set; }
+
+        [XmlIgnore]
+        public List<Consumable> PlayerConsumables { get; set; }
+
+        [XmlIgnore]
+        public List<Equiptment> PlayerEquiptments { get; set; }
+
+        public List<Item> PlayerInventory
+        {
+            get
+            {
+                List<Item> items = new List<Item>();
+                items.AddRange(PlayerItems);
+                items.AddRange(PlayerConsumables);
+                items.AddRange(PlayerEquiptments);
+                return items;
+            }
+            set
+            {
+                foreach (Item item in value)
+                {
+                    if (item is Item)
+                        PlayerItems.Add(item);
+                    else if (item is Equiptment)
+                        PlayerEquiptments.Add((Equiptment)item);
+                    else
+                        PlayerConsumables.Add((Consumable)item);
+                }
+            }
+        }
+
         /// <summary>
         /// The higher this number is, the more difficult the enemy encounters will be. Ranges from 0.0 to infinity.
         /// Set to 1.0 for "completely" fair gameplay.

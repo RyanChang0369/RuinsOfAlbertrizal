@@ -40,84 +40,84 @@ namespace RuinsOfAlbertrizal
             SelectedPlayer = player;
         }
 
-        private void UpdateInventoryGrid(Player player)
-        {
-            InventoryGrid.Children.Clear();
+        //private void UpdateInventoryGrid(Player player)
+        //{
+        //    InventoryGrid.Children.Clear();
 
-            Grid container = new Grid();
+        //    Grid container = new Grid();
 
-            int row = 0;
-            int col = 0;
+        //    int row = 0;
+        //    int col = 0;
 
-            int maxRows = InventoryGrid.RowDefinitions.Count;
-            int maxCols = InventoryGrid.ColumnDefinitions.Count;
-            int numStoredItems = player.InventoryConsumables.Count + player.InventoryEquiptments.Count + player.InventoryItems.Count;
-            int numPages = (int)Math.Ceiling((double)numStoredItems / (maxRows * maxCols));
+        //    int maxRows = InventoryGrid.RowDefinitions.Count;
+        //    int maxCols = InventoryGrid.ColumnDefinitions.Count;
+        //    int numStoredItems = player.InventoryConsumables.Count + player.InventoryEquiptments.Count + player.InventoryItems.Count;
+        //    int numPages = (int)Math.Ceiling((double)numStoredItems / (maxRows * maxCols));
 
-            //Create a tab control to store the items in
-            TabControl inventoryTabControl = new TabControl();
+        //    //Create a tab control to store the items in
+        //    TabControl inventoryTabControl = new TabControl();
 
-            for (int i = 0; i < numPages; i++)
-            {
-                TabItem tabItem = new TabItem
-                {
-                    Header = $"Page {i + 1}"
-                };
-            }
+        //    for (int i = 0; i < numPages; i++)
+        //    {
+        //        TabItem tabItem = new TabItem
+        //        {
+        //            Header = $"Page {i + 1}"
+        //        };
+        //    }
 
-            //For one page, create an array with all the checkboxes
-            for (int i = 0; i < maxRows * maxCols; i++)
-            {
-                if (col == maxCols)
-                {
-                    col = 0;
-                    row++;
-                }
+        //    //For one page, create an array with all the checkboxes
+        //    for (int i = 0; i < maxRows * maxCols; i++)
+        //    {
+        //        if (col == maxCols)
+        //        {
+        //            col = 0;
+        //            row++;
+        //        }
 
-                CheckBox checkBox = new CheckBox();
-                checkBox.SetValue(Grid.RowProperty, row);
-                checkBox.SetValue(Grid.ColumnProperty, col);
+        //        CheckBox checkBox = new CheckBox();
+        //        checkBox.SetValue(Grid.RowProperty, row);
+        //        checkBox.SetValue(Grid.ColumnProperty, col);
 
-                col++;
+        //        col++;
 
-                try
-                {
-                    checkBox.ToolTip = player.InventoryEquiptments[i];
-                    checkBox.Tag = player.InventoryEquiptments[i];
-                    continue;
-                }
-                catch (Exception)
-                {
+        //        try
+        //        {
+        //            checkBox.ToolTip = player.InventoryEquiptments[i];
+        //            checkBox.Tag = player.InventoryEquiptments[i];
+        //            continue;
+        //        }
+        //        catch (Exception)
+        //        {
 
-                }
+        //        }
 
-                int invIndex = player.InventoryEquiptments.Count + i;
+        //        int invIndex = player.InventoryEquiptments.Count + i;
 
-                try
-                {
-                    checkBox.ToolTip = player.InventoryConsumables[invIndex];
-                    checkBox.Tag = player.InventoryConsumables[invIndex];
-                    continue;
-                }
-                catch (Exception)
-                {
+        //        try
+        //        {
+        //            checkBox.ToolTip = player.InventoryConsumables[invIndex];
+        //            checkBox.Tag = player.InventoryConsumables[invIndex];
+        //            continue;
+        //        }
+        //        catch (Exception)
+        //        {
 
-                }
+        //        }
 
-                invIndex += player.InventoryConsumables.Count;
+        //        invIndex += player.InventoryConsumables.Count;
 
-                try
-                {
-                    checkBox.ToolTip = player.InventoryItems[invIndex];
-                    checkBox.Tag = player.InventoryItems[invIndex];
-                    continue;
-                }
-                catch (Exception)
-                {
+        //        try
+        //        {
+        //            checkBox.ToolTip = player.InventoryItems[invIndex];
+        //            checkBox.Tag = player.InventoryItems[invIndex];
+        //            continue;
+        //        }
+        //        catch (Exception)
+        //        {
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void InventoryCheckBox_Checked(object sender, RoutedEventArgs e)
         {

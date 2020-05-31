@@ -7,14 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
     [Serializable]
     public class Player : Character
     {
-        public Player()
+        [XmlIgnore]
+        public List<Item> InventoryItems
         {
+            get => GameBase.CurrentGame.PlayerItems;
+            set => GameBase.CurrentGame.PlayerItems = value;
+        }
+
+        [XmlIgnore]
+        public List<Equiptment> InventoryEquiptments
+        {
+            get => GameBase.CurrentGame.PlayerEquiptments;
+            set => GameBase.CurrentGame.PlayerEquiptments = value;
+        }
+
+        [XmlIgnore]
+        public List<Consumable> InventoryConsumables
+        {
+            get => GameBase.CurrentGame.PlayerConsumables;
+            set => GameBase.CurrentGame.PlayerConsumables = value;
+        }
+
+        public int XP { get; set; }
+
+        public Player() : base()
+        {
+            XP = 0;
             AIStyle = AI.AIStyle.Player;
         }
 
@@ -30,11 +55,11 @@ namespace RuinsOfAlbertrizal.Characters
         /// <param name="item"></param>
         public void ObtainItem(Item item)
         {
-            IconedObjectPrompt prompt = new IconedObjectPrompt("You found an item!", $"Out of the corner of your eye, you spot a {item.Name}", item, "Keep", "Discard");
+            IconedObjectPrompt prompt = new IconedObjectPrompt("You found an item!", GetItemFindMessage(item), item, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
-                InventoryItems.Add(item.DeepClone());
+                GameBase.CurrentGame.PlayerInventory.Add(item.DeepClone());
             }
         }
 
@@ -44,11 +69,11 @@ namespace RuinsOfAlbertrizal.Characters
         /// <param name="equiptment"></param>
         public void ObtainEquiptment(Equiptment equiptment)
         {
-            IconedObjectPrompt prompt = new IconedObjectPrompt("You found an equiptment!", $"Out of the corner of your eye, you spot a {equiptment.Name}", equiptment, "Keep", "Discard");
+            IconedObjectPrompt prompt = new IconedObjectPrompt("You found an equiptment!", GetItemFindMessage(equiptment), equiptment, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
-                InventoryItems.Add(equiptment.DeepClone());
+                GameBase.CurrentGame.PlayerInventory.Add(equiptment.DeepClone());
             }
         }
 
@@ -58,12 +83,17 @@ namespace RuinsOfAlbertrizal.Characters
         /// <param name="consumable"></param>
         public void ObtainConsumable(Consumable consumable)
         {
-            IconedObjectPrompt prompt = new IconedObjectPrompt("You found a consumable!", $"Out of the corner of your eye, you spot a {consumable.Name}", consumable, "Keep", "Discard");
+            IconedObjectPrompt prompt = new IconedObjectPrompt("You found a consumable!", GetItemFindMessage(consumable), consumable, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
-                InventoryItems.Add(consumable.DeepClone());
+                GameBase.CurrentGame.PlayerInventory.Add(consumable.DeepClone());
             }
+        }
+
+        private string GetItemFindMessage(Item item)
+        {
+            return $"Out of the corner of your eye, you spot a {item.Name}.";
         }
     }
 }

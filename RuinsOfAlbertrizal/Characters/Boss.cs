@@ -10,7 +10,7 @@ namespace RuinsOfAlbertrizal.Characters
     [Serializable]
     public class Boss : Enemy
     {
-        public Boss()
+        public Boss() : base()
         {
 
         }
