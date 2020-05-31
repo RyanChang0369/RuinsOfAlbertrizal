@@ -16,16 +16,20 @@
 
         <Storyboard x:Key="playerSlideIn">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300, 10, 10, 10" To="10" DecelerationRatio=".9" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="100" Duration="0:0:2"/>
         </Storyboard>
         <Storyboard x:Key="playerSlideOut">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10" To="-300, 10, 10, 10" DecelerationRatio=".9" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="100" To="0" Duration="0:0:2"/>
         </Storyboard>
 
         <Storyboard x:Key="enemySlideIn">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10, 10, -300, 10" To="10" DecelerationRatio=".9" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="100" Duration="0:0:2"/>
         </Storyboard>
         <Storyboard x:Key="enemySlideOut">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10" To="10, 10, -300, 10" DecelerationRatio=".9" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="100" To="0" Duration="0:0:2"/>
         </Storyboard>
     </Page.Resources>
     
@@ -83,6 +87,8 @@
                     <Image x:Name="enemy0" Margin="10, 10, -300, 10" Grid.Column="3" Grid.Row="1"/>
                 </Grid>
             </Grid>
+
+            <TextBlock x:Name="InfoBlock" Grid.Row="2" FontSize="24" Text="Player Blimmy deals 42 points of damage to Bod the Dob!"/>
         </Grid>
     </Grid>
 </local:BasePage>

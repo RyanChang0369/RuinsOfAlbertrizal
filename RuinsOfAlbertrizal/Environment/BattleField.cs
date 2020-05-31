@@ -10,6 +10,8 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class BattleField : ITurnBasedObject
     {
+        public List<string> StoredMessages { get; set; }
+
         public List<Enemy> Enemies { get; set; }
 
         [XmlIgnore]
