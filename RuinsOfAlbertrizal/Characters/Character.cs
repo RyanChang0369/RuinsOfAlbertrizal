@@ -459,8 +459,6 @@ namespace RuinsOfAlbertrizal.Characters
 
         public void GetAttacked(Attack attack)
         {
-
-
             bool canUseLastHope = CurrentStats[0] != 1;
 
             attack.DealStats(this);
