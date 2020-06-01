@@ -28,8 +28,6 @@ namespace RuinsOfAlbertrizal.Environment
 
         protected Bitmap tileImage = Properties.Resources.error;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
         [XmlIgnore]
         public Bitmap TileImage
         {
@@ -82,11 +80,6 @@ namespace RuinsOfAlbertrizal.Environment
         public Block()
         {
             TypeOfBlock = new BlockType();
-        }
-
-        public void OnPropertyChanged([CallerMemberName] string tileImgLocation = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(tileImgLocation));
         }
     }
 }

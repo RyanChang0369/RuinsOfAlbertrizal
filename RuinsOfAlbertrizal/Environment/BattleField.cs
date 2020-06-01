@@ -11,7 +11,7 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class BattleField : ITurnBasedObject
     {
-        public Message StoredMessages { get; set; }
+        public Message StoredMessage { get; set; }
 
         public List<Enemy> Enemies { get; set; }
 
@@ -124,7 +124,7 @@ namespace RuinsOfAlbertrizal.Environment
         public BattleField()
         {
             Enemies = SummonEnemies(GameBase.CurrentGame.Players);
-            StoredMessages = new Message();
+            StoredMessage = new Message();
         }
 
         private List<Enemy> SummonEnemies(List<Player> players)
@@ -243,7 +243,6 @@ namespace RuinsOfAlbertrizal.Environment
 
         private int GetAdjustedLevel(List<Player> players)
         {
-            int averageLevel = 0;
             int totalLevel = 0;
 
             foreach (Player player in players)
@@ -251,7 +250,7 @@ namespace RuinsOfAlbertrizal.Environment
                 totalLevel = player.Level;
             }
 
-            averageLevel = totalLevel / players.Count;
+            int averageLevel = totalLevel / players.Count;
 
             return averageLevel + RNG.GetRandomInteger(-2, 3);
         }

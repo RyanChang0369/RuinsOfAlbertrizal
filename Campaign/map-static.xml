@@ -68,11 +68,9 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <InventoryEquiptments />
-      <InventoryConsumables />
-      <InventoryItems />
       <Attacks />
       <IsCharging>false</IsCharging>
+      <XP>0</XP>
     </Player>
   </Players>
   <ActivePlayers />
@@ -133,11 +131,11 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
+      <Attacks />
+      <IsCharging>false</IsCharging>
       <InventoryEquiptments />
       <InventoryConsumables />
       <InventoryItems />
-      <Attacks />
-      <IsCharging>false</IsCharging>
       <MessagesOnEncounter>
         <Message>
           <Lines>
@@ -218,11 +216,11 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
+      <Attacks />
+      <IsCharging>false</IsCharging>
       <InventoryEquiptments />
       <InventoryConsumables />
       <InventoryItems />
-      <Attacks />
-      <IsCharging>false</IsCharging>
       <MessagesOnEncounter />
       <MessagesOnAttack />
       <MessagesOnDefeat />
@@ -317,6 +315,18 @@
         <int>0</int>
         <int>0</int>
       </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
       <CoolDown>0</CoolDown>
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
@@ -375,6 +385,18 @@
         <int>0</int>
         <int>0</int>
       </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
       <CoolDown>0</CoolDown>
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
@@ -472,6 +494,8 @@
       <TypeOfBlock>TangableBlock</TypeOfBlock>
     </Block>
   </StoredBlocks>
+  <PlayerInventory />
+  <Difficulty>0</Difficulty>
   <Levels>
     <Level>
       <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
@@ -484,6 +508,7 @@
         </Lines>
       </IntroMessage>
       <StoredEnemies />
+      <Difficulty>0</Difficulty>
       <MaxPoints>9000</MaxPoints>
       <Points>0</Points>
       <Bosses>
@@ -543,11 +568,11 @@
             <Equiptment xsi:nil="true" />
           </CurrentEquiptments>
           <CurrentConsumables />
+          <Attacks />
+          <IsCharging>false</IsCharging>
           <InventoryEquiptments />
           <InventoryConsumables />
           <InventoryItems />
-          <Attacks />
-          <IsCharging>false</IsCharging>
           <MessagesOnEncounter>
             <Message>
               <Lines>

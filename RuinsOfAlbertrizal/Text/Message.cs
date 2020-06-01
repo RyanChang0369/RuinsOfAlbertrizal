@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
@@ -23,14 +24,24 @@ namespace RuinsOfAlbertrizal.Text
 
         private int charIndex;
 
-        public int MaxLines { get; set; }
-
         public List<string> Lines { get; set; }
+
+        public string FormattedLines
+        {
+            get
+            {
+                string lines = "";
+
+                foreach (string str in Lines)
+                    lines = $"{lines}\r\n{str}";
+
+                return lines;
+            }
+        }
 
         public Message()
         {
             Lines = new List<string>();
-            MaxLines = int.MaxValue;
         }
 
         /// <summary>
@@ -40,22 +51,11 @@ namespace RuinsOfAlbertrizal.Text
         public Message(List<string> lines)
         {
             Lines = lines;
-            MaxLines = int.MaxValue;
-        }
-
-        public Message(int maxLines)
-        {
-            MaxLines = maxLines;
         }
 
         public void Add(string line)
         {
             Lines.Add(line);
-
-            if (Lines.Count > MaxLines)
-            {
-                Lines.RemoveAt(Lines.Count - 1);
-            }
         }
 
         public void InitializeControls(TextBlock textBlock, Button nextButton, Button skipButton)
@@ -67,6 +67,52 @@ namespace RuinsOfAlbertrizal.Text
             SkipBtn = skipButton;
             SkipBtn.Click += new RoutedEventHandler(SkipBtn_Click);
         }
+
+        ///// <summary>
+        ///// Initializes a TextBlock so that it automatically updates when Lines get updated.
+        ///// </summary>
+        ///// <param name="textBlock"></param>
+        //public void IntializeControls(TextBlock textBlock)
+        //{
+        //    TextBlock = textBlock;
+        //    TextBlock.Text = "";
+        //}
+
+        //private void LinesChanged()
+        //{
+        //    if (TextBlock == null)
+        //        return;
+
+        //    try
+        //    {
+        //        App.Current.Dispatcher.Invoke(() =>
+        //        {
+        //            try
+        //            {
+        //                TextBlock.Text += GetNextChar();
+        //            }
+        //            catch (IndexOutOfRangeException)
+        //            {
+        //                TimerChar.Elapsed -= new ElapsedEventHandler(SetTextBlockText);
+        //                return;
+        //            }
+        //            catch (ArgumentOutOfRangeException)
+        //            {
+        //                TimerChar.Elapsed -= new ElapsedEventHandler(SetTextBlockText);
+        //                return;
+        //            }
+        //            catch (TaskCanceledException)
+        //            {
+        //                TimerChar.Elapsed -= new ElapsedEventHandler(SetTextBlockText);
+        //                return;
+        //            }
+        //        });
+        //    }
+        //    catch (NullReferenceException)
+        //    {
+        //        return;
+        //    }
+        //}
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {

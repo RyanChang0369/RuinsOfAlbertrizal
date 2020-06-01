@@ -86,15 +86,22 @@ namespace RuinsOfAlbertrizal.Environment
             get
             {
                 List<Item> items = new List<Item>();
-                items.AddRange(PlayerItems);
-                items.AddRange(PlayerConsumables);
-                items.AddRange(PlayerEquiptments);
+                if (PlayerItems != null)
+                    items.AddRange(PlayerItems);
+                if (PlayerConsumables != null)
+                    items.AddRange(PlayerConsumables);
+                if (PlayerEquiptments != null)
+                    items.AddRange(PlayerEquiptments);
+
                 return items;
             }
             set
             {
                 foreach (Item item in value)
                 {
+                    if (item == null)
+                        continue;
+
                     if (item is Item)
                         PlayerItems.Add(item);
                     else if (item is Equiptment)

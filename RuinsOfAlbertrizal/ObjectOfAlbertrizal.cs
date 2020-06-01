@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,8 +12,10 @@ namespace RuinsOfAlbertrizal
     /// <summary>
     /// Everything must have a name, description, and GUID in this world.
     /// </summary>
-    public abstract class ObjectOfAlbertrizal
+    public abstract class ObjectOfAlbertrizal : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         private Guid globalID;
 
         public Guid GlobalID
@@ -71,6 +75,11 @@ namespace RuinsOfAlbertrizal
         public bool IsSameObjectAs(ObjectOfAlbertrizal obj)
         {
             return GlobalID.Equals(obj.GlobalID);
+        }
+
+        public void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }

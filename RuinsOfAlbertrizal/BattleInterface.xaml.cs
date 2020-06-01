@@ -40,7 +40,7 @@ namespace RuinsOfAlbertrizal
             battleField = new BattleField();
 
             InitializeComponent();
-            DataContext = GameBase.CurrentGame.CurrentLevel;
+            DataContext = battleField;
             UpdateImageLists();
             UpdateGrid();
             InitialAnimation();

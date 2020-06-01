@@ -59,12 +59,5 @@ namespace RuinsOfAlbertrizal
                 return File.Exists(Path.Combine(GameBase.CurrentMapLocation, iconLocation));
             }
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged([CallerMemberName] string iconLocation = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(iconLocation));
-        }
     }
 }
