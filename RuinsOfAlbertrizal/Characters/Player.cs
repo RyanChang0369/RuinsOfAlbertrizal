@@ -96,5 +96,42 @@ namespace RuinsOfAlbertrizal.Characters
         {
             return $"Out of the corner of your eye, you spot a {item.Name}.";
         }
+
+        /// <summary>
+        /// Equipts an equiptable
+        /// </summary>
+        /// <param name="index">The index of the item in InventoryEquiptments</param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        public void Equipt(Equiptment equiptment)
+        {
+            //Unequipt all slots that this new equiptment will take up
+            foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
+            {
+                Unequipt((int)slotMode);
+            }
+
+            foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
+            {
+                CurrentEquiptments[(int)slotMode] = equiptment;
+            }
+
+            InventoryEquiptments.Remove(equiptment);
+        }
+
+        /// <summary>
+        /// Removes this equiptment and any of the slots it may have occupied.
+        /// </summary>
+        /// <param name="index"></param>
+        public void Unequipt(int index)
+        {
+            if (CurrentEquiptments[index] == null)
+                return;
+
+            foreach (Equiptment.SlotMode slotMode in CurrentEquiptments[index].Slots)
+            {
+                CurrentEquiptments[(int)slotMode] = null;
+            }
+            GameBase.CurrentGame.PlayerEquiptments.Add(CurrentEquiptments[index]);
+        }
     }
 }

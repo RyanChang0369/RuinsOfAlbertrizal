@@ -3,12 +3,17 @@ using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class Map : WorldMapObject
+    public class Map : WorldMapObject, INotifyPropertyChanged
     {
+        private List<Item> playerItems;
+        private List<Consumable> playerConsumables;
+        private List<Equiptment> playerEquiptments;
+
         public bool SeenIntroduction { get; set; }
 
         public Message IntroMessage { get; set; }
@@ -21,7 +26,7 @@ namespace RuinsOfAlbertrizal.Environment
             get
             {
                 List<Player> players = new List<Player>();
-                
+
                 foreach (Player player in Players)
                 {
                     if (!player.IsDead)
@@ -72,11 +77,35 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Block> StoredBlocks { get; set; }
 
-        public List<Item> PlayerItems { get; set; }
+        public List<Item> PlayerItems
+        {
+            get => playerItems;
+            set
+            {
+                playerItems = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public List<Consumable> PlayerConsumables { get; set; }
+        public List<Consumable> PlayerConsumables
+        {
+            get => playerConsumables;
+            set
+            {
+                playerConsumables = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public List<Equiptment> PlayerEquiptments { get; set; }
+        public List<Equiptment> PlayerEquiptments
+        {
+            get => playerEquiptments;
+            set
+            {
+                playerEquiptments = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// The higher this number is, the more difficult the enemy encounters will be. Ranges from 0.0 to infinity.

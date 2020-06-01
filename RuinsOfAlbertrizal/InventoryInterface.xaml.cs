@@ -129,16 +129,12 @@ namespace RuinsOfAlbertrizal
 
             CheckBox checkBox = (CheckBox)sender;
 
-            if (checkBox.Tag == null)
-            {
-                //Add equiptment
-            }
-            else
-            {
-                List<CheckBox> checkBoxes = SlotsContainer.Children.OfType<CheckBox>().ToList();
-            }
+            SelectedPlayer.Equipt((Equiptment)SelectedItem);
+
+            //List<CheckBox> checkBoxes = SlotsContainer.Children.OfType<CheckBox>().ToList();
 
             PartyMembersInterface.SelectedPlayer.UpdateSlotBitmapSources();
+            SelectedItem = null;
         }
 
         private void InventoryTextBlock_MouseUp(object sender, MouseButtonEventArgs e)

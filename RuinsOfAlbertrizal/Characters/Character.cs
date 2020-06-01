@@ -16,7 +16,7 @@ using System.Xml.Serialization;
 namespace RuinsOfAlbertrizal.Characters
 {
     [Serializable]
-    public abstract class Character : WorldMapObject, ITurnBasedObject
+    public abstract class Character : WorldMapObject, ITurnBasedObject, INotifyPropertyChanged
     {
         public const int MaxTurns = 2;
 
@@ -298,16 +298,36 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        private Equiptment[] currentEquiptment;
+
         /// <summary>
         /// The equiptment the character has equipted
         /// </summary>
-        public Equiptment[] CurrentEquiptments { get; set; }
+        public Equiptment[] CurrentEquiptments
+        {
+            get => currentEquiptment;
+            set
+            {
+                currentEquiptment = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private BitmapSource[] currentSlotBitmapSources;
 
         /// <summary>
         /// Remember to update this field before using it.
         /// </summary>
         [XmlIgnore]
-        public BitmapSource[] CurrentSlotBitmapSources { get; set; }
+        public BitmapSource[] CurrentSlotBitmapSources
+        {
+            get => currentSlotBitmapSources;
+            set
+            {
+                currentSlotBitmapSources = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void UpdateSlotBitmapSources()
         {
@@ -328,10 +348,20 @@ namespace RuinsOfAlbertrizal.Characters
             CurrentSlotBitmapSources = slotSources;
         }
 
+        private List<Consumable> currentConsumables;
+
         /// <summary>
         /// The consumables the character has consumed
         /// </summary>
-        public List<Consumable> CurrentConsumables { get; set; }
+        public List<Consumable> CurrentConsumables
+        {
+            get => currentConsumables;
+            set
+            {
+                currentConsumables = value;
+                OnPropertyChanged();
+            }
+        }
 
         public List<Attack> Attacks { get; set; }
 
@@ -350,41 +380,7 @@ namespace RuinsOfAlbertrizal.Characters
             Attacks = new List<Attack>();
             BaseStats = new int[GameBase.NumStats];
             PermanentBuffs = new List<Buff>();
-        }
-
-        /// <summary>
-        /// Equipts an equiptable
-        /// </summary>
-        /// <param name="index">The index of the item in InventoryEquiptments</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public void Equipt(Equiptment equiptment)
-        {
-            //Unequipt all slots that this new equiptment will take up
-            foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
-            {
-                Unequipt((int)slotMode);
-            }
-
-            foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
-            {
-                CurrentEquiptments[(int)slotMode] = equiptment;
-            }
-        }
-
-        /// <summary>
-        /// Removes this equiptment and any of the slots it may have occupied.
-        /// </summary>
-        /// <param name="index"></param>
-        public void Unequipt(int index)
-        {
-            foreach (Equiptment.SlotMode slotMode in CurrentEquiptments[index].Slots)
-            {
-                CurrentEquiptments[(int)slotMode] = null;
-            }
-            GameBase.CurrentGame.PlayerEquiptments.Add(CurrentEquiptments[index]);
-        }
-
-        
+        }        
 
         /// <summary>
         /// Consumes an consumable

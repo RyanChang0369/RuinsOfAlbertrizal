@@ -68,17 +68,17 @@
                 <TabControl>
                     <TabItem Header="Equiptment">
                         <ScrollViewer>
-                            <ListBox ItemsSource="{Binding Path=InventoryEquiptments, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryEquiptmentTemplate}" Style="{StaticResource inventoryListBox}"/>
+                            <ListBox ItemsSource="{Binding Path=InventoryEquiptments, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryEquiptmentTemplate}" Style="{StaticResource inventoryListBox}"/>
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="Consumables">
                         <ScrollViewer>
-                            <ListBox ItemsSource="{Binding Path=InventoryConsumables, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryConsumableTemplate}" Style="{StaticResource inventoryListBox}"/>
+                            <ListBox ItemsSource="{Binding Path=InventoryConsumables, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryConsumableTemplate}" Style="{StaticResource inventoryListBox}"/>
                         </ScrollViewer>
                     </TabItem>
                     <TabItem Header="Other Items">
                         <ScrollViewer>
-                            <ListBox ItemsSource="{Binding Path=InventoryItems, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryItemTemplate}" Style="{StaticResource inventoryListBox}"/>
+                            <ListBox ItemsSource="{Binding Path=InventoryItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryItemTemplate}" Style="{StaticResource inventoryListBox}"/>
                         </ScrollViewer>
                     </TabItem>
                 </TabControl>
@@ -110,23 +110,23 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            <CheckBox x:Name="HeadSlot" Grid.Column="2" ToolTip="Head Slot" Content="{Binding Path=InventoryEquiptment[0]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox x:Name="NeckSlot" Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot" Content="{Binding Path=InventoryEquiptment[1]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox x:Name="TorsoSlot" Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot" Content="{Binding Path=InventoryEquiptment[2]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox x:Name="LeftHandSlot" Grid.Row="2" ToolTip="Left Hand Slot" Content="{Binding Path=InventoryEquiptment[3]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot" Content="{Binding Path=InventoryEquiptment[4]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot" Content="{Binding Path=InventoryEquiptment[5]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot" Content="{Binding Path=InventoryEquiptment[6]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1" Content="{Binding Path=InventoryEquiptment[7]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2" Content="{Binding Path=InventoryEquiptment[8]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3" Content="{Binding Path=InventoryEquiptment[9]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4" Content="{Binding Path=InventoryEquiptment[10]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5" Content="{Binding Path=InventoryEquiptment[11]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6" Content="{Binding Path=InventoryEquiptment[12]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7" Content="{Binding Path=InventoryEquiptment[13]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8" Content="{Binding Path=InventoryEquiptment[14]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9" Content="{Binding Path=InventoryEquiptment[15]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
-            <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10" Content="{Binding Path=InventoryEquiptment[16]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox x:Name="HeadSlot" Grid.Column="2" ToolTip="Head Slot" Content="{Binding Path=InventoryEquiptment[1], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox x:Name="NeckSlot" Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot" Content="{Binding Path=InventoryEquiptment[2], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox x:Name="TorsoSlot" Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot" Content="{Binding Path=InventoryEquiptment[3], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox x:Name="LeftHandSlot" Grid.Row="2" ToolTip="Left Hand Slot" Content="{Binding Path=InventoryEquiptment[4], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot" Content="{Binding Path=InventoryEquiptment[5], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot" Content="{Binding Path=InventoryEquiptment[6], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot" Content="{Binding Path=InventoryEquiptment[7], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1" Content="{Binding Path=InventoryEquiptment[8], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2" Content="{Binding Path=InventoryEquiptment[9], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3" Content="{Binding Path=InventoryEquiptment[10], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4" Content="{Binding Path=InventoryEquiptment[11], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5" Content="{Binding Path=InventoryEquiptment[12], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6" Content="{Binding Path=InventoryEquiptment[13], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7" Content="{Binding Path=InventoryEquiptment[14], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8" Content="{Binding Path=InventoryEquiptment[15], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9" Content="{Binding Path=InventoryEquiptment[16], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
+            <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10" Content="{Binding Path=InventoryEquiptment[17], UpdateSourceTrigger=PropertyChanged}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
         </Grid>
     </StackPanel>
 </local:BasePage>
