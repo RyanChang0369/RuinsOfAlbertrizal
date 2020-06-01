@@ -42,10 +42,15 @@
     </Page.Resources>
     
     <Grid Background="DarkGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition MaxHeight="70"/>
+        </Grid.RowDefinitions>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="PartyMembersStackPanel" Orientation="Horizontal">
-
-            </StackPanel>
+            <StackPanel x:Name="PartyMembersStackPanel" Orientation="Horizontal"/>
         </ScrollViewer>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <Button Content="Back" Tag="AdventureInterface.xaml" Click="Navigate"/>
+        </StackPanel>
     </Grid>
 </local:BasePage>

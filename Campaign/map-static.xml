@@ -293,7 +293,7 @@
         <double>0</double>
       </PercentStatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
-      <AIChange>Player</AIChange>
+      <AIChange>NoChange</AIChange>
       <Level>1</Level>
     </Buff>
   </StoredBuffs>
@@ -369,7 +369,7 @@
             <double>0</double>
           </PercentStatGain>
           <TypeOfBuff>Normal</TypeOfBuff>
-          <AIChange>Player</AIChange>
+          <AIChange>NoChange</AIChange>
           <Level>1</Level>
         </Buff>
       </Buffs>

@@ -3,7 +3,7 @@
   <GlobalID>94b2c76d-7603-406c-9f2b-e6aa0a5acc6d</GlobalID>
   <Name>Campaign</Name>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <SeenIntroduction>false</SeenIntroduction>
+  <SeenIntroduction>true</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -293,7 +293,7 @@
         <double>0</double>
       </PercentStatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
-      <AIChange>Player</AIChange>
+      <AIChange>NoChange</AIChange>
       <Level>1</Level>
     </Buff>
   </StoredBuffs>
@@ -369,7 +369,7 @@
             <double>0</double>
           </PercentStatGain>
           <TypeOfBuff>Normal</TypeOfBuff>
-          <AIChange>Player</AIChange>
+          <AIChange>NoChange</AIChange>
           <Level>1</Level>
         </Buff>
       </Buffs>
@@ -501,7 +501,7 @@
       <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
       <Name>Final Level</Name>
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>false</SeenIntroduction>
+      <SeenIntroduction>true</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>
