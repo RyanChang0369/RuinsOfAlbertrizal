@@ -381,7 +381,7 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 CurrentEquiptments[(int)slotMode] = null;
             }
-            GameBase.CurrentGame.PlayerInventory.Add(CurrentEquiptments[index]);
+            GameBase.CurrentGame.PlayerEquiptments.Add(CurrentEquiptments[index]);
         }
 
         

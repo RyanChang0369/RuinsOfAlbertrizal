@@ -60,7 +60,7 @@ namespace RuinsOfAlbertrizal.Characters
 
             if ((bool)prompt.DialogResult)
             {
-                GameBase.CurrentGame.PlayerInventory.Add(item.DeepClone());
+                GameBase.CurrentGame.PlayerItems.Add(item.DeepClone());
             }
         }
 
@@ -74,7 +74,7 @@ namespace RuinsOfAlbertrizal.Characters
 
             if ((bool)prompt.DialogResult)
             {
-                GameBase.CurrentGame.PlayerInventory.Add(equiptment.DeepClone());
+                GameBase.CurrentGame.PlayerEquiptments.Add(equiptment.DeepClone());
             }
         }
 
@@ -88,7 +88,7 @@ namespace RuinsOfAlbertrizal.Characters
 
             if ((bool)prompt.DialogResult)
             {
-                GameBase.CurrentGame.PlayerInventory.Add(consumable.DeepClone());
+                GameBase.CurrentGame.PlayerConsumables.Add(consumable.DeepClone());
             }
         }
 

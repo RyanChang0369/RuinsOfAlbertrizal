@@ -14,6 +14,7 @@ namespace RuinsOfAlbertrizal
         {
             InitializeComponent();
             DataContext = GameBase.CurrentGame.CurrentLevel;
+            Testing.AdventureInterfaceTest();
         }
     }
 }

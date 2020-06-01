@@ -33,5 +33,12 @@ namespace RuinsOfAlbertrizal
                 Console.Beep(700, 100);
             }
         }
+
+        public static void AdventureInterfaceTest()
+        {
+            GameBase.CurrentGame.PlayerItems.Add(GameBase.CurrentGame.StoredItems[0]);
+            GameBase.CurrentGame.PlayerItems.Add(GameBase.CurrentGame.StoredItems[0]);
+            GameBase.CurrentGame.PlayerItems.Add(GameBase.CurrentGame.StoredItems[0]);
+        }
     }
 }

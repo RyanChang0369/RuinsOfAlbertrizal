@@ -494,7 +494,9 @@
       <TypeOfBlock>TangableBlock</TypeOfBlock>
     </Block>
   </StoredBlocks>
-  <PlayerInventory />
+  <PlayerItems />
+  <PlayerConsumables />
+  <PlayerEquiptments />
   <Difficulty>0</Difficulty>
   <Levels>
     <Level>

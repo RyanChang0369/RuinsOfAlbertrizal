@@ -54,13 +54,14 @@
         </Style>
 
         <!--Button Styles-->
-        <Style TargetType="Button">
+        <Style TargetType="Button" x:Key="defaultButton">
             <Setter Property="FontSize" Value="36"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="MinWidth" Value="500"/>
         </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource defaultButton}"/>
         <Style x:Key="buttonStretch" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="FontSize" Value="36"/>
@@ -97,6 +98,14 @@
             <Setter Property="Background" Value="WhiteSmoke"/>
             <Setter Property="MinHeight" Value="100"/>
             <Setter Property="Margin" Value="10, 0"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="inventoryTextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Background" Value="#FFE5E5E5"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="20, 10"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"
+/>
         </Style>
         <Style x:Key="introText" TargetType="TextBlock" BasedOn="{StaticResource defaultTextBlock}">
             <Setter Property="FontSize" Value="36"/>
@@ -181,6 +190,10 @@
         <!--List Box Styles-->
         <Style TargetType="ListBox">
             <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style TargetType="ListBox" x:Key="inventoryListBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         </Style>
         
         <!--Validation Templates and Styles-->

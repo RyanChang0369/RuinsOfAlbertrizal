@@ -1,4 +1,4 @@
-﻿<Page x:Class="RuinsOfAlbertrizal.InventoryInterface"
+﻿<local:BasePage x:Class="RuinsOfAlbertrizal.InventoryInterface"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,7 +10,13 @@
 
     <Page.Resources>
         <DataTemplate x:Key="inventoryItemTemplate">
-            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}" MouseUp="InventoryTextBlock_MouseUp" Cursor="Hand"/>
+            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}" MouseUp="InventoryTextBlock_MouseUp" Cursor="Hand" Style="{StaticResource inventoryTextBlock}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="inventoryConsumableTemplate">
+            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}" MouseUp="InventoryTextBlock_MouseUp" Cursor="Hand" Style="{StaticResource inventoryTextBlock}"/>
+        </DataTemplate>
+        <DataTemplate x:Key="inventoryEquiptmentTemplate">
+            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Description}" MouseUp="InventoryTextBlock_MouseUp" Cursor="Hand" Style="{StaticResource inventoryTextBlock}"/>
         </DataTemplate>
 
         <DataTemplate x:Key="equiptmentItemTemplate">
@@ -53,42 +59,33 @@
     </Page.Resources>
 
     <StackPanel Background="WhiteSmoke" Orientation="Horizontal">
-        <Grid x:Name="InventoryGrid" Margin="10">
-            <!--<Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
-            </Grid.RowDefinitions>-->
-
-            <TabControl>
-                <TabItem Header="Equiptment">
-                    <ScrollViewer>
-                        <ListBox ItemsSource="{Binding Path=InventoryEquiptments, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryItemTemplate}"/>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Header="Consumables">
-                    <ScrollViewer>
-                        <ListBox ItemsSource="{Binding Path=InventoryConsumables, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryItemTemplate}"/>
-                    </ScrollViewer>
-                </TabItem>
-                <TabItem Header="Other Items">
-                    <ScrollViewer>
-                        <ListBox ItemsSource="{Binding Path=InventoryItems, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryItemTemplate}"/>
-                    </ScrollViewer>
-                </TabItem>
-            </TabControl>
+                <RowDefinition Height="*"/>
+                <RowDefinition MaxHeight="70"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="InventoryGrid" Margin="10">
+                <TabControl>
+                    <TabItem Header="Equiptment">
+                        <ScrollViewer>
+                            <ListBox ItemsSource="{Binding Path=InventoryEquiptments, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryEquiptmentTemplate}" Style="{StaticResource inventoryListBox}"/>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="Consumables">
+                        <ScrollViewer>
+                            <ListBox ItemsSource="{Binding Path=InventoryConsumables, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryConsumableTemplate}" Style="{StaticResource inventoryListBox}"/>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem Header="Other Items">
+                        <ScrollViewer>
+                            <ListBox ItemsSource="{Binding Path=InventoryItems, Mode=TwoWay}" ItemTemplate="{StaticResource inventoryItemTemplate}" Style="{StaticResource inventoryListBox}"/>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+                <Button Content="Back" Click="Navigate" Tag="[back]" Style="{StaticResource defaultButton}"/>
+            </StackPanel>
         </Grid>
 
         <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
@@ -132,4 +129,4 @@
             <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10" Content="{Binding Path=InventoryEquiptment[16]}" ContentTemplate="{StaticResource equiptmentItemTemplate}"/>
         </Grid>
     </StackPanel>
-</Page>
+</local:BasePage>

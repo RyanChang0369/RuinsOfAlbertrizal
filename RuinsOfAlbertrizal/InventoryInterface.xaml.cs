@@ -20,7 +20,7 @@ namespace RuinsOfAlbertrizal
     /// <summary>
     /// Interaction logic for InventoryInterface.xaml
     /// </summary>
-    public partial class InventoryInterface : Page
+    public partial class InventoryInterface : BasePage
     {
         public Player SelectedPlayer;
 
@@ -30,14 +30,17 @@ namespace RuinsOfAlbertrizal
         {
             PartyMembersInterface.SelectedPlayer.UpdateSlotBitmapSources();
             InitializeComponent();
+            SelectedPlayer = PartyMembersInterface.SelectedPlayer;
+            DataContext = SelectedPlayer;
+
         }
 
         public InventoryInterface(Player player)
         {
-            PartyMembersInterface.SelectedPlayer.UpdateSlotBitmapSources();
+            player.UpdateSlotBitmapSources();
             InitializeComponent();
-            DataContext = player;
             SelectedPlayer = player;
+            DataContext = SelectedPlayer;
         }
 
         //private void UpdateInventoryGrid(Player player)
@@ -121,7 +124,7 @@ namespace RuinsOfAlbertrizal
 
         private void InventoryCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (SelectedItem == null)
+            if (SelectedItem == null || SelectedItem.GetType() != typeof(Equiptment))
                 return;
 
             CheckBox checkBox = (CheckBox)sender;

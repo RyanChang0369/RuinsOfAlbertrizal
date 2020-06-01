@@ -16,7 +16,23 @@ namespace RuinsOfAlbertrizal
         public void Navigate(object sender, RoutedEventArgs e)
         {
             Control ctrl = (Control)sender;
-            Navigate((string)ctrl.Tag);
+
+            string path = (string)ctrl.Tag;
+
+            switch (path)
+            {
+                case "[back]":
+                    if (NavigationService.CanGoBack)
+                        NavigationService.GoBack();
+                    break;
+                case "[forward]":
+                    if (NavigationService.CanGoForward)
+                        NavigationService.GoForward();
+                    break;
+                default:
+                    Navigate(path);
+                    break;
+            }
         }
 
         public void Navigate(string location)

@@ -50,7 +50,7 @@
             <StackPanel x:Name="PartyMembersStackPanel" Orientation="Horizontal"/>
         </ScrollViewer>
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <Button Content="Back" Tag="AdventureInterface.xaml" Click="Navigate"/>
+            <Button Content="Back" Tag="[back]" Click="Navigate"/>
         </StackPanel>
     </Grid>
 </local:BasePage>
