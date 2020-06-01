@@ -61,15 +61,21 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// <summary>
         /// Starts the attack.
         /// </summary>
-        /// <param name="character">The character being attacked</param>
-        public void BeginAttack(Character character)
+        /// <param name="attacker">The character doing the attacking.</param>
+        /// <param name="target">The character being attacked.</param>
+        public void BeginAttack(Character attacker, Character target)
         {
             if (CanAttack)
             {
                 TurnSinceAttacked = 0;
                 TurnsSinceBeginCharge = 0;
 
-                character.GetAttacked(this);
+                for (int i = 0; i < StatCostToUser.Length; i++)
+                {
+                    attacker.AppliedStats[i] -= StatCostToUser[i];
+                }
+
+                target.GetAttacked(this);
             }
             else if (!IsCharged)
             {
@@ -81,20 +87,20 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// <summary>
         /// Deals damage
         /// </summary>
-        /// <param name="character"></param>
-        public void DealStats(Character character)
+        /// <param name="target"></param>
+        public void DealStats(Character target)
         {
             for (int i = 0; i < StatLoss.Length; i++)
             {
-                character.AppliedStats[i] -= StatLoss[i]; 
+                target.AppliedStats[i] -= StatLoss[i]; 
             }
         }
 
-        public void DealBuffs(Character character)
+        public void DealBuffs(Character target)
         {
             foreach (Buff buff in Buffs)
             {
-                character.AppliedBuffs.Add(buff);
+                target.AppliedBuffs.Add(buff);
             }
         }
 

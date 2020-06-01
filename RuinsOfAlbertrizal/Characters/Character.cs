@@ -398,9 +398,14 @@ namespace RuinsOfAlbertrizal.Characters
             CurrentConsumables.Add(consumable);
         }
 
-        public void Attack(int attackIndex, Character character)
+        /// <summary>
+        /// Do an attack with the atter being this character.
+        /// </summary>
+        /// <param name="attackIndex"></param>
+        /// <param name="target"></param>
+        public void Attack(int attackIndex, Character target)
         {
-            Attacks[attackIndex].BeginAttack(character);
+            Attacks[attackIndex].BeginAttack(this, target);
         }
 
         public void RecoverMana()
