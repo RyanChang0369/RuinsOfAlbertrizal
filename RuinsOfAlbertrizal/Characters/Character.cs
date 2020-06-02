@@ -399,7 +399,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             CurrentConsumables.Add(consumable);
             GameBase.CurrentGame.PlayerConsumables.Remove(consumable);
-            MessageBox.Show($"You ingested the {consumable}");
+            MessageBox.Show($"You ingested the {consumable.DisplayName}");
         }
 
         /// <summary>
