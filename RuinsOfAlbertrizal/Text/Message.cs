@@ -53,6 +53,11 @@ namespace RuinsOfAlbertrizal.Text
             Lines = lines;
         }
 
+        public bool IsEmpty()
+        {
+            return Lines.Count == 0;
+        }
+
         public void Add(string line)
         {
             Lines.Add(line);

@@ -118,7 +118,12 @@ namespace RuinsOfAlbertrizal
 
         private void NavIntroInterface(Map currentMap)
         {
-            if (currentMap.SeenIntroduction && currentMap.CurrentLevel.SeenIntroduction)
+            if ((currentMap.IntroMessage == null || currentMap.IntroMessage.IsEmpty()) &&
+                (currentMap.CurrentLevel.IntroMessage == null || currentMap.CurrentLevel.IntroMessage.IsEmpty()))
+                NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
+            else if (currentMap.IntroMessage == null || currentMap.IntroMessage.IsEmpty())
+                NavigationService.Navigate(new Uri("LevelIntroInterface"), UriKind.RelativeOrAbsolute);
+            else if (currentMap.SeenIntroduction && currentMap.CurrentLevel.SeenIntroduction)
                 NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
             else if (currentMap.SeenIntroduction)
                 NavigationService.Navigate(new Uri("LevelIntroInterface"), UriKind.RelativeOrAbsolute);
