@@ -313,40 +313,41 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        private BitmapSource[] currentSlotBitmapSources;
+        //private BitmapSource[] currentSlotBitmapSources;
 
-        /// <summary>
-        /// Remember to update this field before using it.
-        /// </summary>
-        [XmlIgnore]
-        public BitmapSource[] CurrentSlotBitmapSources
-        {
-            get => currentSlotBitmapSources;
-            set
-            {
-                currentSlotBitmapSources = value;
-                OnPropertyChanged();
-            }
-        }
+        ///// <summary>
+        ///// Remember to update this field before using it.
+        ///// </summary>
+        //[XmlIgnore]
+        //public BitmapSource[] CurrentSlotBitmapSources
+        //{
+        //    get => currentSlotBitmapSources;
+        //    set
+        //    {
+        //        currentSlotBitmapSources = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
-        public void UpdateSlotBitmapSources()
-        {
-            BitmapSource[] slotSources = new BitmapSource[CurrentEquiptments.Length];
+        //public void UpdateSlotBitmapSources()
+        //{
+        //    BitmapSource[] slotSources = new BitmapSource[CurrentEquiptments.Length];
 
-            for (int i = 0; i < CurrentEquiptments.Length; i++)
-            {
-                try
-                {
-                    slotSources[i] = CurrentEquiptments[i].IconAsBitmapSource;
-                }
-                catch (Exception)
-                {
-                    slotSources[i] = new BitmapImage();
-                }
-            }
+        //    for (int i = 0; i < CurrentEquiptments.Length; i++)
+        //    {
+        //        try
+        //        {
+        //            slotSources[i] = CurrentEquiptments[i].IconAsBitmapSource;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            slotSources[i] = new BitmapImage();
+        //        }
+        //    }
 
-            CurrentSlotBitmapSources = slotSources;
-        }
+        //    CurrentSlotBitmapSources = slotSources;
+        //    OnPropertyChanged("CurrentSlotBitmapSources");
+        //}
 
         private List<Consumable> currentConsumables;
 
@@ -376,7 +377,7 @@ namespace RuinsOfAlbertrizal.Characters
         public Character()
         {
             Level = 1;
-            CurrentEquiptments = new Equiptment[16];        //16 possible slots for equiptment
+            CurrentEquiptments = new Equiptment[GameBase.NumCurrentEquiptment];
             Attacks = new List<Attack>();
             BaseStats = new int[GameBase.NumStats];
             PermanentBuffs = new List<Buff>();
@@ -392,6 +393,13 @@ namespace RuinsOfAlbertrizal.Characters
             Consumable consumable = GameBase.CurrentGame.PlayerConsumables[index];
             GameBase.CurrentGame.PlayerConsumables.RemoveAt(index);
             CurrentConsumables.Add(consumable);
+        }
+
+        public void Consume(Consumable consumable)
+        {
+            CurrentConsumables.Add(consumable);
+            GameBase.CurrentGame.PlayerConsumables.Remove(consumable);
+            MessageBox.Show($"You ingested the {consumable}");
         }
 
         /// <summary>

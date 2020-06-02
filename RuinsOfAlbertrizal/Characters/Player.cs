@@ -4,6 +4,7 @@ using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,27 +14,39 @@ using System.Xml.Serialization;
 namespace RuinsOfAlbertrizal.Characters
 {
     [Serializable]
-    public class Player : Character
+    public class Player : Character, INotifyPropertyChanged
     {
         [XmlIgnore]
         public List<Item> InventoryItems
         {
             get => GameBase.CurrentGame.PlayerItems;
-            set => GameBase.CurrentGame.PlayerItems = value;
+            set
+            {
+                GameBase.CurrentGame.PlayerItems = value;
+                OnPropertyChanged();
+            }
         }
 
         [XmlIgnore]
         public List<Equiptment> InventoryEquiptments
         {
             get => GameBase.CurrentGame.PlayerEquiptments;
-            set => GameBase.CurrentGame.PlayerEquiptments = value;
+            set
+            {
+                GameBase.CurrentGame.PlayerEquiptments = value;
+                OnPropertyChanged();
+            }
         }
 
         [XmlIgnore]
         public List<Consumable> InventoryConsumables
         {
             get => GameBase.CurrentGame.PlayerConsumables;
-            set => GameBase.CurrentGame.PlayerConsumables = value;
+            set
+            {
+                GameBase.CurrentGame.PlayerConsumables = value;
+                OnPropertyChanged();
+            }
         }
 
         public int XP { get; set; }
@@ -107,12 +120,12 @@ namespace RuinsOfAlbertrizal.Characters
             //Unequipt all slots that this new equiptment will take up
             foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
             {
-                Unequipt((int)slotMode);
+                Unequipt((int)slotMode - 1);
             }
 
             foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
             {
-                CurrentEquiptments[(int)slotMode] = equiptment;
+                CurrentEquiptments[(int)slotMode - 1] = equiptment;
             }
 
             InventoryEquiptments.Remove(equiptment);
@@ -127,11 +140,27 @@ namespace RuinsOfAlbertrizal.Characters
             if (CurrentEquiptments[index] == null)
                 return;
 
+            Equiptment equiptment = CurrentEquiptments[index];
+
             foreach (Equiptment.SlotMode slotMode in CurrentEquiptments[index].Slots)
             {
-                CurrentEquiptments[(int)slotMode] = null;
+                CurrentEquiptments[(int)slotMode - 1] = null;
             }
-            GameBase.CurrentGame.PlayerEquiptments.Add(CurrentEquiptments[index]);
+            GameBase.CurrentGame.PlayerEquiptments.Add(equiptment);
+        }
+
+        /// <summary>
+        /// Removes this equiptment and any of the slots it may have occupied. Throws ArgumentException if 
+        /// equiptment is not found within CurrentEquiptments.
+        /// </summary>
+        /// <param name="equiptment"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public void Unequipt(Equiptment equiptment)
+        {
+            if (!CurrentEquiptments.Contains(equiptment))
+                throw new ArgumentException($"Equiptment {equiptment.Name} not found within CurrentEquiptments");
+
+            Unequipt(Array.IndexOf(CurrentEquiptments, equiptment));
         }
     }
 }

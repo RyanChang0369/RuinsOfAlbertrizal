@@ -36,7 +36,7 @@ namespace RuinsOfAlbertrizal
 
         public static void AdventureInterfaceTest()
         {
-            GameBase.CurrentGame.PlayerEquiptments.Add(GameBase.CurrentGame.StoredEquiptments[0]);
+            GameBase.CurrentGame.PlayerConsumables.Add(GameBase.CurrentGame.StoredConsumables[0]);
         }
     }
 }

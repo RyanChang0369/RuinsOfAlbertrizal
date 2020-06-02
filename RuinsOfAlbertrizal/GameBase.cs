@@ -21,6 +21,8 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         public const int NumActiveCharacters = 4;
 
+        public const int NumCurrentEquiptment = 17;
+
         public static string CurrentMapLocation { get; set; }
 
         public static string StaticMapLocation { get; set; }

@@ -100,12 +100,10 @@
             <Setter Property="Margin" Value="10, 0"/>
         </Style>
         <Style TargetType="TextBlock" x:Key="inventoryTextBlock">
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Background" Value="#FFE5E5E5"/>
+            <Setter Property="FontSize" Value="24"/>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="Padding" Value="20, 10"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"
-/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style x:Key="introText" TargetType="TextBlock" BasedOn="{StaticResource defaultTextBlock}">
             <Setter Property="FontSize" Value="36"/>
@@ -121,6 +119,15 @@
             <Setter Property="SpellCheck.IsEnabled" Value="True"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="MinHeight" Value="100"/>
+        </Style>
+
+        <!--StackPanel Styles-->
+        <Style x:Key="inventoryStackPanel" TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Background" Value="#FFE5E5E5"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
         <!--ComboBox Styles-->
@@ -180,6 +187,18 @@
 
         <Style TargetType="Image" x:Key="infoCircle" BasedOn="{StaticResource circleImg}">
             <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="inventoryIcon" TargetType="Image">
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="80"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
+        </Style>
+
+        <Style x:Key="iconSmall" TargetType="Image" BasedOn="{StaticResource inventoryIcon}">
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Margin" Value="5"/>
         </Style>
         
         <!--Tab Item Styles-->

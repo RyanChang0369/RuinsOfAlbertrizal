@@ -66,6 +66,7 @@
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
       <Attacks />
@@ -113,6 +114,7 @@
       <BuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -198,6 +200,7 @@
       <BuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -439,6 +442,39 @@
       <GrantedBuffs />
       <Attacks />
     </Equiptment>
+    <Equiptment>
+      <GlobalID>d4051d96-b702-4f90-a25b-55d0d4a44c5f</GlobalID>
+      <Name>Test Multi Slot</Name>
+      <Description>For testing the multislot functionality.</Description>
+      <IconLocation>..\Equiptment\Test Multi Slot_icon.png</IconLocation>
+      <DropChance>0</DropChance>
+      <Slots>
+        <SlotMode>Finger1</SlotMode>
+        <SlotMode>Finger6</SlotMode>
+        <SlotMode>Finger2</SlotMode>
+        <SlotMode>Finger7</SlotMode>
+        <SlotMode>Finger3</SlotMode>
+        <SlotMode>Finger8</SlotMode>
+        <SlotMode>Finger4</SlotMode>
+        <SlotMode>Finger9</SlotMode>
+        <SlotMode>Finger5</SlotMode>
+        <SlotMode>Finger10</SlotMode>
+      </Slots>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <BuffImmunities />
+      <Attacks />
+    </Equiptment>
   </StoredEquiptments>
   <StoredConsumables>
     <Consumable>
@@ -552,6 +588,7 @@
           <BuffImmunities />
           <AppliedBuffs />
           <CurrentEquiptments>
+            <Equiptment xsi:nil="true" />
             <Equiptment xsi:nil="true" />
             <Equiptment xsi:nil="true" />
             <Equiptment xsi:nil="true" />

@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Items;
+using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,119 +29,102 @@ namespace RuinsOfAlbertrizal
 
         public InventoryInterface()
         {
-            PartyMembersInterface.SelectedPlayer.UpdateSlotBitmapSources();
-            InitializeComponent();
             SelectedPlayer = PartyMembersInterface.SelectedPlayer;
             DataContext = SelectedPlayer;
-
+            InitializeComponent();
         }
 
         public InventoryInterface(Player player)
         {
-            player.UpdateSlotBitmapSources();
-            InitializeComponent();
             SelectedPlayer = player;
             DataContext = SelectedPlayer;
+            InitializeComponent();
         }
-
-        //private void UpdateInventoryGrid(Player player)
-        //{
-        //    InventoryGrid.Children.Clear();
-
-        //    Grid container = new Grid();
-
-        //    int row = 0;
-        //    int col = 0;
-
-        //    int maxRows = InventoryGrid.RowDefinitions.Count;
-        //    int maxCols = InventoryGrid.ColumnDefinitions.Count;
-        //    int numStoredItems = player.InventoryConsumables.Count + player.InventoryEquiptments.Count + player.InventoryItems.Count;
-        //    int numPages = (int)Math.Ceiling((double)numStoredItems / (maxRows * maxCols));
-
-        //    //Create a tab control to store the items in
-        //    TabControl inventoryTabControl = new TabControl();
-
-        //    for (int i = 0; i < numPages; i++)
-        //    {
-        //        TabItem tabItem = new TabItem
-        //        {
-        //            Header = $"Page {i + 1}"
-        //        };
-        //    }
-
-        //    //For one page, create an array with all the checkboxes
-        //    for (int i = 0; i < maxRows * maxCols; i++)
-        //    {
-        //        if (col == maxCols)
-        //        {
-        //            col = 0;
-        //            row++;
-        //        }
-
-        //        CheckBox checkBox = new CheckBox();
-        //        checkBox.SetValue(Grid.RowProperty, row);
-        //        checkBox.SetValue(Grid.ColumnProperty, col);
-
-        //        col++;
-
-        //        try
-        //        {
-        //            checkBox.ToolTip = player.InventoryEquiptments[i];
-        //            checkBox.Tag = player.InventoryEquiptments[i];
-        //            continue;
-        //        }
-        //        catch (Exception)
-        //        {
-
-        //        }
-
-        //        int invIndex = player.InventoryEquiptments.Count + i;
-
-        //        try
-        //        {
-        //            checkBox.ToolTip = player.InventoryConsumables[invIndex];
-        //            checkBox.Tag = player.InventoryConsumables[invIndex];
-        //            continue;
-        //        }
-        //        catch (Exception)
-        //        {
-
-        //        }
-
-        //        invIndex += player.InventoryConsumables.Count;
-
-        //        try
-        //        {
-        //            checkBox.ToolTip = player.InventoryItems[invIndex];
-        //            checkBox.Tag = player.InventoryItems[invIndex];
-        //            continue;
-        //        }
-        //        catch (Exception)
-        //        {
-
-        //        }
-        //    }
-        //}
 
         private void InventoryCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (SelectedItem == null || SelectedItem.GetType() != typeof(Equiptment))
+            Button button = (Button)sender;
+            int index = Array.IndexOf(SlotsContainer.Children.OfType<Button>().ToArray(), button);
+
+            if (SelectedItem == null && button.Content != null)
+            {
+                SelectedPlayer.Unequipt(index);
+            }
+            else if (SelectedItem == null) //Nothing selected and button.Content is null
+            {
+                MessageBox.Show("To equipt a piece of equiptment, click on an equiptment in the Equiptment tab and click on the appropriate slot.");
                 return;
+            }
+            else if (SelectedItem.GetType() != typeof(Equiptment))
+                return;
+            else if (!((Equiptment)SelectedItem).Slots.Contains((Equiptment.SlotMode)(index + 1)))
+            {
+                string selectedItemSlotsList = "";
 
-            CheckBox checkBox = (CheckBox)sender;
+                for (int i = 0; i < ((Equiptment)SelectedItem).Slots.Count; i++)
+                {
+                    Equiptment.SlotMode slot = ((Equiptment)SelectedItem).Slots[i];
 
-            SelectedPlayer.Equipt((Equiptment)SelectedItem);
+                    selectedItemSlotsList = $"{selectedItemSlotsList}" +
+                        $"{MiscMethods.GetSeperator(i, ((Equiptment)SelectedItem).Slots.Count)} " +
+                        $"{slot.GetDescription()}".Trim();
+                }
 
-            //List<CheckBox> checkBoxes = SlotsContainer.Children.OfType<CheckBox>().ToList();
+                MessageBox.Show($"The {SelectedItem.Name} only fits on slots {selectedItemSlotsList}.");
+                return;
+            }
+            else
+            {
+                SelectedPlayer.Equipt((Equiptment)SelectedItem);
+                SelectedItem = null;
+            }
 
-            PartyMembersInterface.SelectedPlayer.UpdateSlotBitmapSources();
-            SelectedItem = null;
+            foreach (Button btn in SlotsContainer.Children.OfType<Button>().ToArray())
+            {
+                btn.GetBindingExpression(Button.ContentProperty).UpdateTarget();
+            }
+            
+            ForceInventoryUpdate(equiptmentsList);
         }
 
-        private void InventoryTextBlock_MouseUp(object sender, MouseButtonEventArgs e)
+        private void ForceInventoryUpdate()
         {
-            TextBlock textBlock = (TextBlock)sender;
-            SelectedItem = (Item)textBlock.DataContext;
+            ForceInventoryUpdate(equiptmentsList);
+            ForceInventoryUpdate(consumablesList);
+            ForceInventoryUpdate(itemsList);
+        }
+
+        private void ForceInventoryUpdate(ListBox listBox)
+        {
+            listBox.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+            listBox.Items.Refresh();
+        }
+
+        private void EquiptmentStackPanel_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            FrameworkElement element = (FrameworkElement)sender;
+            SelectedItem = (Item)element.DataContext;
+        }
+
+        private void ConsumableStackPanel_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            EquiptmentStackPanel_MouseUp(sender, e);
+
+            string message = $"You will gain the following buffs from eating the {SelectedItem.Name}: \r\n";
+
+            for (int i = 0; i < ((Consumable)SelectedItem).Buffs.Count; i++)
+            {
+                message = $"{message}{MiscMethods.GetSeperator(i, ((Consumable)SelectedItem).Buffs.Count)} " +
+                    $"{((Consumable)SelectedItem).Buffs[i].Name}";
+            }
+
+            MessageBoxResult result = MessageBox.Show(message, "", MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.Cancel)
+                return;
+
+            SelectedPlayer.Consume((Consumable)SelectedItem);
+            ForceInventoryUpdate(consumablesList);
         }
     }
 }

@@ -93,5 +93,21 @@ namespace RuinsOfAlbertrizal
                 return (T)formatter.Deserialize(ms);
             }
         }
+
+        public static string GetSeperator(int i, int max)
+        {
+            string seperator = "";
+            if (i > 0)
+            {
+                if (max - i == 1)
+                {
+                    seperator = ", and";
+                }
+                else
+                    seperator = ",";
+            }
+
+            return seperator;
+        }
     }
 }

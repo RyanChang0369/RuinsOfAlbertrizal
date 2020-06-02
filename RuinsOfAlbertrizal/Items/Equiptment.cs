@@ -1,6 +1,7 @@
 ﻿using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace RuinsOfAlbertrizal.Items
 {
@@ -14,7 +15,42 @@ namespace RuinsOfAlbertrizal.Items
 
         public enum SlotMode
         {
-            None, Head, Neck, Torso, Hand1, Hand2, Legs, Feet, Finger1, Finger2, Finger3, Finger4, Finger5, Finger6, Finger7, Finger8, Finger9, Finger10
+            [Description("No Slot")]
+            None,
+            [Description("Head")]
+            Head,
+            [Description("Neck")]
+            Neck,
+            [Description("Torso")]
+            Torso,
+            [Description("Left Hand")]
+            Hand1,
+            [Description("Right Hand")]
+            Hand2,
+            [Description("Legs")]
+            Legs,
+            [Description("Feet")]
+            Feet,
+            [Description("Accessory 1")]
+            Finger1,
+            [Description("Accessory 2")]
+            Finger2,
+            [Description("Accessory 3")]
+            Finger3,
+            [Description("Accessory 4")]
+            Finger4,
+            [Description("Accessory 5")]
+            Finger5,
+            [Description("Accessory 6")]
+            Finger6,
+            [Description("Accessory 7")]
+            Finger7,
+            [Description("Accessory 8")]
+            Finger8,
+            [Description("Accessory 9")]
+            Finger9,
+            [Description("Accessory 10")]
+            Finger10
         }
 
         public int[] StatGain { get; set; }
