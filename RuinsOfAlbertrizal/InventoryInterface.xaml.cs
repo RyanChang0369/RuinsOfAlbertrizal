@@ -115,7 +115,7 @@ namespace RuinsOfAlbertrizal
             for (int i = 0; i < ((Consumable)SelectedItem).Buffs.Count; i++)
             {
                 message = $"{message}{MiscMethods.GetSeperator(i, ((Consumable)SelectedItem).Buffs.Count)} " +
-                    $"{((Consumable)SelectedItem).Buffs[i].Name}";
+                    $"{((Consumable)SelectedItem).Buffs[i].DisplayName}";
             }
 
             MessageBoxResult result = MessageBox.Show(message, "", MessageBoxButton.OKCancel);

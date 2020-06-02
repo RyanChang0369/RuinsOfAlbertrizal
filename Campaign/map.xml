@@ -3,7 +3,7 @@
   <GlobalID>94b2c76d-7603-406c-9f2b-e6aa0a5acc6d</GlobalID>
   <Name>Campaign</Name>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -263,7 +263,7 @@
       </PercentStatGain>
       <TypeOfBuff>Normal</TypeOfBuff>
       <AIChange>NoAI</AIChange>
-      <Level>0</Level>
+      <Level>100</Level>
     </Buff>
     <Buff>
       <GlobalID>36015ecc-b4ea-42ca-aea6-f0a2e5fd4dac</GlobalID>
@@ -483,7 +483,42 @@
       <Name>Test Consumable</Name>
       <IconLocation>..\Consumable\Test_icon.png</IconLocation>
       <DropChance>0</DropChance>
-      <Buffs />
+      <Buffs>
+        <Buff>
+          <GlobalID>b563ce00-8c7b-4c03-9bd9-1b531d0a7c42</GlobalID>
+          <Name>Paralysis</Name>
+          <Description>Cannot move!</Description>
+          <Duration>1</Duration>
+          <RoundsPassed>0</RoundsPassed>
+          <StatGain>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatGain>
+          <PercentStatGain>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+          </PercentStatGain>
+          <TypeOfBuff>Normal</TypeOfBuff>
+          <AIChange>NoAI</AIChange>
+          <Level>100</Level>
+        </Buff>
+      </Buffs>
       <RoundsPassed>0</RoundsPassed>
     </Consumable>
   </StoredConsumables>
@@ -540,7 +575,7 @@
       <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
       <Name>Final Level</Name>
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>true</SeenIntroduction>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>

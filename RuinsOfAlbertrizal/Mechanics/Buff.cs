@@ -11,6 +11,14 @@ namespace RuinsOfAlbertrizal.Mechanics
     /// </summary>
     public class Buff : IconedObjectOfAlbertrizal, IRoundBasedObject
     {
+        public override string DisplayName
+        {
+            get
+            {
+                return $"Level {Level} {Name}";
+            }
+        }
+
         /// <summary>
         /// How many turns will this last for?
         /// </summary>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
 {
@@ -31,6 +32,9 @@ namespace RuinsOfAlbertrizal
         }
 
         public string Name { get; set; }
+
+        [XmlIgnore]
+        public virtual string DisplayName { get => Name; }
 
         public string Description { get; set; }
 
