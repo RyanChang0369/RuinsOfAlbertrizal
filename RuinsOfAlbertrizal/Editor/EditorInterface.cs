@@ -41,7 +41,11 @@ namespace RuinsOfAlbertrizal.Editor
                 return;
             }
             SafelyExit();
-            NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
+
+            if (NavigationService.CanGoBack)
+                NavigationService.GoBack();
+            else
+                NavigationService.Navigate(new Uri("Editor/CreateMapPrompt.xaml", UriKind.RelativeOrAbsolute));
         }
 
         protected void Quit(object sender, RoutedEventArgs e)

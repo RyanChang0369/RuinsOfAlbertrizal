@@ -145,13 +145,13 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Percent HP Gain for Target *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affected by level (increased by 20% per level). Enter a negative value for HP loss."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for HP loss. Enter 100% as 1.0."/>
                 </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
-                        <Binding Path="StatGain[0]" Mode="TwoWay">
+                        <Binding Path="PercentStatGain[0]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <validation:NumberValidation/>
+                                <validation:DoubleValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -159,13 +159,13 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Percent Mana Gain for Target *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for mana loss."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for mana loss. Enter 100% as 1.0."/>
                 </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="PercentStatGain[1]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <validation:NumberValidation/>
+                                <validation:DoubleValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -173,13 +173,13 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Percent Defense Gain for Target *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for defense loss."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for defense loss. Enter 100% as 1.0."/>
                 </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="PercentStatGain[2]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <validation:NumberValidation/>
+                                <validation:DoubleValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -187,13 +187,13 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Percent Damage Gain for Target *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for damage loss."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for damage loss. Enter 100% as 1.0."/>
                 </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="PercentStatGain[3]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <validation:NumberValidation/>
+                                <validation:DoubleValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -201,13 +201,13 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Percent Speed Gain for Target *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for speed loss."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for speed loss. Enter 100% as 1.0."/>
                 </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="PercentStatGain[4]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <validation:NumberValidation/>
+                                <validation:DoubleValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -215,13 +215,13 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Percent Intellect Gain for Target *"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for intellect loss."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Not affected by level. Enter a negative value for intellect loss. Enter 100% as 1.0."/>
                 </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>
                         <Binding Path="PercentStatGain[5]" Mode="TwoWay">
                             <Binding.ValidationRules>
-                                <validation:NumberValidation/>
+                                <validation:DoubleValidation/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
