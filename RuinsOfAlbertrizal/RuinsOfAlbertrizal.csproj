@@ -195,6 +195,9 @@
     <Compile Include="PlayerChooser.xaml.cs">
       <DependentUpon>PlayerChooser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlayerCreatePage.xaml.cs">
+      <DependentUpon>PlayerCreatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RandomEvent.cs" />
     <Compile Include="RandomEventChooser.cs" />
     <Compile Include="RNG.cs" />
@@ -375,6 +378,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PlayerChooser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerCreatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -301,6 +301,39 @@
       <AIChange>NoChange</AIChange>
       <Level>1</Level>
     </Buff>
+    <Buff>
+      <GlobalID>a5a315a7-e53e-4b10-8fff-a59ca1fd9463</GlobalID>
+      <Name>Death</Name>
+      <Duration>1</Duration>
+      <RoundsPassed>0</RoundsPassed>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <PercentStatGain>
+        <double>-5</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
+      <TypeOfBuff>Normal</TypeOfBuff>
+      <AIChange>NoChange</AIChange>
+      <Level>0</Level>
+    </Buff>
   </StoredBuffs>
   <StoredAttacks>
     <Attack>

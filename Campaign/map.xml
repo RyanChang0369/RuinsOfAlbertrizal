@@ -5,7 +5,7 @@
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
   <PlayerCreated>false</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -301,6 +301,39 @@
       <AIChange>NoChange</AIChange>
       <Level>1</Level>
     </Buff>
+    <Buff>
+      <GlobalID>a5a315a7-e53e-4b10-8fff-a59ca1fd9463</GlobalID>
+      <Name>Death</Name>
+      <Duration>1</Duration>
+      <RoundsPassed>0</RoundsPassed>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <PercentStatGain>
+        <double>-5</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
+      <TypeOfBuff>Normal</TypeOfBuff>
+      <AIChange>NoChange</AIChange>
+      <Level>0</Level>
+    </Buff>
   </StoredBuffs>
   <StoredAttacks>
     <Attack>
@@ -577,7 +610,7 @@
       <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
       <Name>Final Level</Name>
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>true</SeenIntroduction>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>

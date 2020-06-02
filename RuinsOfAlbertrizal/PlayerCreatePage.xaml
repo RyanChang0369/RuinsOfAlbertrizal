@@ -1,0 +1,40 @@
+﻿<local:BasePage x:Class="RuinsOfAlbertrizal.PlayerCreatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RuinsOfAlbertrizal"
+      mc:Ignorable="d" 
+      d:DesignHeight="1000" d:DesignWidth="1600"
+      Title="PlayerCreatePage">
+
+    <Page.Resources>
+        <DataTemplate x:Key="playerDisplayer">
+            <StackPanel Orientation="Horizontal" Style="{StaticResource inventoryStackPanel}">
+                <TextBlock Text="{Binding Path=DisplayName}" Style="{StaticResource inventoryTextBlock}"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid Background="Snow">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="List of Chums" Style="{StaticResource h1}"/>
+        
+        <ScrollViewer Grid.Row="1">
+            <ListBox ItemsSource="{Binding Path=Players}" ItemTemplate="{StaticResource playerDisplayer}"/>
+        </ScrollViewer>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button Content="Create New Player" Click="Navigate" Tag="Editor/CreatePlayerPrompt.xaml"/>
+        </StackPanel>
+    </Grid>
+</local:BasePage>

@@ -118,7 +118,9 @@ namespace RuinsOfAlbertrizal
 
         private void NavIntroInterface(Map currentMap)
         {
-            if ((currentMap.IntroMessage == null || currentMap.IntroMessage.IsEmpty()) &&
+            if (!currentMap.PlayerCreated && currentMap.AllowForPlayerCreation)
+                NavigationService.Navigate(new Uri("PlayerCreatePage.xaml", UriKind.RelativeOrAbsolute));
+            else if ((currentMap.IntroMessage == null || currentMap.IntroMessage.IsEmpty()) &&
                 (currentMap.CurrentLevel.IntroMessage == null || currentMap.CurrentLevel.IntroMessage.IsEmpty()))
                 NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
             else if (currentMap.IntroMessage == null || currentMap.IntroMessage.IsEmpty())

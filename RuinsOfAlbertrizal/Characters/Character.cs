@@ -22,6 +22,11 @@ namespace RuinsOfAlbertrizal.Characters
 
         public int TurnsPassed { get; set; }
 
+        public override string DisplayName
+        {
+            get => $"{Name} the {GeneralName}";
+        }
+
         /// <summary>
         /// The species name, such as human or slime
         /// </summary>
