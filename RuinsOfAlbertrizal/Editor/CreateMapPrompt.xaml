@@ -43,6 +43,14 @@
                         </TextBox>
 
                         <StackPanel Orientation="Horizontal">
+                            <Label Content="Allow for Player Creation"/>
+                            <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="If true, then people playing the game for the first time will be allowed to create their own characters."/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding Path=AllowForPlayerCreation, Mode=TwoWay}" Style="{StaticResource default}"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal">
                             <Label Content="Icon *"/>
                             <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Used as the application's icon. Recommended dimentions are 48 x 48."/>
                         </StackPanel>

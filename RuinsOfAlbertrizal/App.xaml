@@ -147,7 +147,7 @@
                 </Setter.Value>
             </Setter>
         </Style>-->
-
+        
         <!--Image Styles-->
         <Style TargetType="Image">
             <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>

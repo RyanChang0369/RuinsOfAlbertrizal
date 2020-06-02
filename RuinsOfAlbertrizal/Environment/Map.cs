@@ -14,6 +14,10 @@ namespace RuinsOfAlbertrizal.Environment
         private List<Consumable> playerConsumables;
         private List<Equiptment> playerEquiptments;
 
+        public bool PlayerCreated { get; set; }
+
+        public bool AllowForPlayerCreation { get; set; }
+
         public bool SeenIntroduction { get; set; }
 
         public Message IntroMessage { get; set; }
@@ -142,6 +146,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         public Map()
         {
+            AllowForPlayerCreation = true;
             Players = new List<Player>();
             StoredEnemies = new List<Enemy>();
             StoredBosses = new List<Boss>();
