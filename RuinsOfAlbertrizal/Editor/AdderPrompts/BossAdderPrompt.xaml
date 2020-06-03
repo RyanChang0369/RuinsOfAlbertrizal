@@ -24,14 +24,14 @@
                 </ListBox>
             </StackPanel>
 
-            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            <Separator/>
             
             <StackPanel>
                 <Label Content="Click to Remove"/>
                 <ListBox x:Name="AddedBossesList" Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="AddedBossesList_PreviewMouseLeftButtonUp"/>
             </StackPanel>
 
-            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+            <Separator/>
 
             <StackPanel>
                 <Button Content="Quit" Click="Quit" Style="{StaticResource buttonSmallStretch}" IsCancel="True"/>

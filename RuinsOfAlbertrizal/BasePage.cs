@@ -67,5 +67,14 @@ namespace RuinsOfAlbertrizal
             Storyboard storyboard = (Storyboard)Resources[storyboardName];
             storyboard.Begin(element);
         }
+
+        /// <summary>
+        /// Forces the ItemsSource property of the listbox to update
+        /// </summary>
+        public static void ForceListBoxUpdate(ListBox listBox)
+        {
+            listBox.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+            listBox.Items.Refresh();
+        }
     }
 }

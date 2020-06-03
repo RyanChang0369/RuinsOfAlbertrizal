@@ -24,7 +24,13 @@ namespace RuinsOfAlbertrizal.Characters
 
         public override string DisplayName
         {
-            get => $"{Name} the {GeneralName}";
+            get
+            {
+                if (String.IsNullOrWhiteSpace(GeneralName))
+                    return Name;
+                else
+                    return $"{Name} the {GeneralName}";
+            }
         }
 
         /// <summary>

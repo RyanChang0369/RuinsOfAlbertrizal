@@ -83,21 +83,15 @@ namespace RuinsOfAlbertrizal
             {
                 btn.GetBindingExpression(Button.ContentProperty).UpdateTarget();
             }
-            
-            ForceInventoryUpdate(equiptmentsList);
+
+            ForceListBoxUpdate(equiptmentsList);
         }
 
         private void ForceInventoryUpdate()
         {
-            ForceInventoryUpdate(equiptmentsList);
-            ForceInventoryUpdate(consumablesList);
-            ForceInventoryUpdate(itemsList);
-        }
-
-        private void ForceInventoryUpdate(ListBox listBox)
-        {
-            listBox.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-            listBox.Items.Refresh();
+            ForceListBoxUpdate(equiptmentsList);
+            ForceListBoxUpdate(consumablesList);
+            ForceListBoxUpdate(itemsList);
         }
 
         private void EquiptmentStackPanel_MouseUp(object sender, MouseButtonEventArgs e)
@@ -124,7 +118,7 @@ namespace RuinsOfAlbertrizal
                 return;
 
             SelectedPlayer.Consume((Consumable)SelectedItem);
-            ForceInventoryUpdate(consumablesList);
+            ForceListBoxUpdate(consumablesList);
         }
     }
 }

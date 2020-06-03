@@ -90,7 +90,7 @@
                         </StackPanel>
                         
                         <StackPanel Orientation="Horizontal">
-                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Separator/>
                             <Grid>
                                 <StackPanel>
                                     <Label>Created Buffs</Label>
@@ -110,7 +110,7 @@
                                 </StackPanel>
                             </Grid>
 
-                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Separator/>
 
                             <Grid>
                                 <StackPanel>
@@ -144,7 +144,7 @@
                             <Button x:Name="CreateConsumableBtn" Click="Navigate" Content="Create Consumable" HorizontalAlignment="Left" Tag="Editor/CreateConsumablePrompt.xaml"/>
                         </StackPanel>
 
-                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                        <Separator/>
 
                         <Grid>
                             <StackPanel>
@@ -165,7 +165,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                        <Separator/>
 
                         <Grid>
                             <StackPanel>
@@ -186,7 +186,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                        <Separator/>
 
                         <Grid>
                             <StackPanel>
@@ -219,7 +219,7 @@
                             <Button x:Name="CreateHazardBtn" Click="Navigate" Content="Create Hazard" HorizontalAlignment="Left" Tag="Editor/CreateHazardPrompt.xaml"/>
                         </StackPanel>
                         
-                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                        <Separator/>
 
                         <Grid>
                             <StackPanel>
@@ -240,7 +240,7 @@
                             </StackPanel>
                         </Grid>
 
-                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                        <Separator/>
                         
                         <Grid>
                             <StackPanel>
@@ -275,7 +275,7 @@
                         </StackPanel>
                         
                         <StackPanel Orientation="Horizontal">
-                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Separator/>
                             <Grid>
                                 <StackPanel>
                                     <Label Content="Created Players"/>
@@ -295,7 +295,7 @@
                                 </StackPanel>
                             </Grid>
 
-                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Separator/>
 
                             <Grid>
                                 <StackPanel>
@@ -316,7 +316,7 @@
                                 </StackPanel>
                             </Grid>
 
-                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Separator/>
                             
                             <Grid>
                                 <StackPanel>
@@ -349,7 +349,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal">
-                            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+                            <Separator/>
                             <Grid>
                                 <StackPanel>
                                     <Label Content="Created Levels"/>

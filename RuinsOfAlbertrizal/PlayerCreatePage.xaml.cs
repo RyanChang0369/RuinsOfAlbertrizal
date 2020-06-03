@@ -1,4 +1,6 @@
-﻿using RuinsOfAlbertrizal.Editor;
+﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Editor;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +23,38 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public partial class PlayerCreatePage : BasePage
     {
+        public static List<Player> CreatedPlayers { get; set; }
+
         public PlayerCreatePage()
         {
             InitializeComponent();
 
             DataContext = GameBase.CurrentGame;
 
+            if (CreatedPlayers == null)
+                CreatedPlayers = new List<Player>();
+
             if (CreatePlayerPrompt.CreatedPlayer != null)
             {
-                GameBase.CurrentGame.Players.Add(CreatePlayerPrompt.CreatedPlayer);
+                CreatedPlayers.Add(CreatePlayerPrompt.CreatedPlayer);
             }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (listOfChums.SelectedIndex < 0)
+                return;
+
+            CreatedPlayers.Remove((Player)listOfChums.SelectedItem);
+            ForceListBoxUpdate(listOfChums);
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            GameBase.CurrentGame.Players.AddRange(CreatedPlayers);
+            GameBase.CurrentGame.PlayerCreated = true;
+            FileHandler.SaveCurrentMap();
+            Navigate("IntroInterface.xaml");
         }
     }
 }

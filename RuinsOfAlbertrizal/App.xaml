@@ -99,6 +99,11 @@
             <Setter Property="MinHeight" Value="100"/>
             <Setter Property="Margin" Value="10, 0"/>
         </Style>
+        <Style x:Key="contentTextBlock" TargetType="TextBlock" BasedOn="{StaticResource default}">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Padding" Value="10"/>
+        </Style>
         <Style TargetType="TextBlock" x:Key="inventoryTextBlock">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="Margin" Value="0"/>
@@ -215,6 +220,9 @@
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         </Style>
         
+        <!--Separator Styles-->
+        <Style TargetType="Separator" BasedOn="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+
         <!--Validation Templates and Styles-->
         <ControlTemplate x:Key="validationTemplate">
             <DockPanel>

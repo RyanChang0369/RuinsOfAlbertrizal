@@ -122,7 +122,7 @@
             </StackPanel>
         </Grid>
 
-        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+        <Separator/>
 
         <Grid VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" x:Name="SlotsContainer" Margin="10">
             <Grid.ColumnDefinitions>

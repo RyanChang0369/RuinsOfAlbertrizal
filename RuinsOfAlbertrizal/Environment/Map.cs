@@ -147,6 +147,7 @@ namespace RuinsOfAlbertrizal.Environment
         public Map()
         {
             AllowForPlayerCreation = true;
+            Difficulty = 1.0;
             Players = new List<Player>();
             StoredEnemies = new List<Enemy>();
             StoredBosses = new List<Boss>();
