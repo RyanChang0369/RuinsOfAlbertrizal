@@ -190,5 +190,10 @@ namespace RuinsOfAlbertrizal
         {
 
         }
+
+        private void Exit()
+        {
+            Navigate("[back]");
+        }
     }
 }

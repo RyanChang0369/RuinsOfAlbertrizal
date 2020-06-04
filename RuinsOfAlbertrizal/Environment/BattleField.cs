@@ -252,12 +252,14 @@ namespace RuinsOfAlbertrizal.Environment
         {
             AwardPoints();
             AwardXP();
+            //Get loot here
         }
 
         private void PlayerLoses()
         {
 
         }
+
 
         private void AwardPoints()
         {
@@ -320,11 +322,9 @@ namespace RuinsOfAlbertrizal.Environment
         {
             ElaspedTime++;
 
-            int fateSelector;
-
             if (ConcurrentCharacters.Count > 0)
             {
-                fateSelector = RNG.GetRandomInteger(ConcurrentCharacters.Count);
+                int fateSelector = RNG.GetRandomInteger(ConcurrentCharacters.Count);
                 StartRound(ConcurrentCharacters[fateSelector]);
             }
         }
@@ -332,6 +332,21 @@ namespace RuinsOfAlbertrizal.Environment
         public void StartRound(Character character)
         {
             SpeedTimer.Stop();
+
+            if (character.GetType() == typeof(Player))
+                PlayerTurn((Player)character);
+            else
+                EnemyTurn((Enemy)character);
+        }
+
+        private void EnemyTurn(Enemy enemy)
+        {
+
+        }
+
+        private void PlayerTurn(Player player)
+        {
+
         }
 
         /// <summary>

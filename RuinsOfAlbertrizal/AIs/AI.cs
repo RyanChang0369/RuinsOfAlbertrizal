@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Characters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace RuinsOfAlbertrizal.AIs
                 "The player controls this character." +
                 " Only works with a player character, and is treated as NoAI everywhere else.")]
             Player = 0,
-            [Description("A special AI that does nothing. Use when you do not want to change a character's AI in a buff.")]
+            [Description("A special AI that does nothing. Use when you do not want to change a character's AI in a buff. Is treated as NoAI everywhere else.")]
             NoChange = 1,
             [Description("No AI. Cannot move, regenerate mana, or attack.")]
             NoAI = 2,
@@ -32,7 +33,7 @@ namespace RuinsOfAlbertrizal.AIs
                 "Attacks player with the most damaging attacks possible." +
                 //" Moves so that its most damaging attack or attacks is in range of the player." +
                 " Attacks twice if doing so will deal the most damage to the player." +
-                " Heals with healing items and/or spells if below 25% health or if received 50% damage in one attack." +
+                " Heals with healing items and/or spells if below 40% health." +
                 " Recovers mana only if unable to attack." +
                 " Uses items to recover health and mana.")]
             Beserk_UseItem = 11,
@@ -67,10 +68,35 @@ namespace RuinsOfAlbertrizal.AIs
             }
         }
 
-        //[XmlIgnore]
-        //public static string[] AIStyleTooltips =
-        //{
-            
-        //};
+        /// <summary>
+        /// Returns the character the character will target. Returns null if it did not target any.
+        /// </summary>
+        /// <param name="aiStyle"></param>
+        /// <param name="attacker"></param>
+        /// <param name="activePlayers"></param>
+        /// <param name="activeEnemies"></param>
+        /// <exception cref="ArgumentException"></exception>
+        /// <returns></returns>
+        public static Character GetTarget(AIStyle aiStyle, Character attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        {
+            switch (aiStyle)
+            {
+                case AIStyle.NoAI:
+                case AIStyle.NoChange:
+                case AIStyle.Player:
+                    throw new ArgumentException("The current AIStyle forbids attacking");
+                case AIStyle.Beserk:
+                    //Select weapon and attack here
+
+                    if (attacker.PreviousTargets.Count < 1)
+                    {
+
+                    }
+                    else
+                    {
+                        while ()
+                    }
+            }
+        }
     }
 }

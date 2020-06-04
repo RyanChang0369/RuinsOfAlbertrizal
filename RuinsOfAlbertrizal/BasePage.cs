@@ -19,7 +19,12 @@ namespace RuinsOfAlbertrizal
 
             string path = (string)ctrl.Tag;
 
-            switch (path)
+            Navigate(path);
+        }
+
+        public void Navigate(string location)
+        {
+            switch (location)
             {
                 case "[back]":
                     if (NavigationService.CanGoBack)
@@ -30,14 +35,9 @@ namespace RuinsOfAlbertrizal
                         NavigationService.GoForward();
                     break;
                 default:
-                    Navigate(path);
+                    Navigate(new Uri(location, UriKind.RelativeOrAbsolute));
                     break;
             }
-        }
-
-        public void Navigate(string location)
-        {
-            Navigate(new Uri(location, UriKind.RelativeOrAbsolute));
         }
 
         public void Navigate(Uri location)

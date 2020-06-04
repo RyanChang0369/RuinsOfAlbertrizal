@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Items
 {
@@ -92,6 +93,19 @@ namespace RuinsOfAlbertrizal.Items
                 return;
 
             throw new NotImplementedException();
+        }
+
+        public static List<Equiptment> GetAttackableEquiptment(List<Equiptment> allEquiptments)
+        {
+            List<Equiptment> equiptments = new List<Equiptment>();
+            
+            foreach (Equiptment equiptment in allEquiptments)
+            {
+                if (equiptment.CanAttack())
+                    equiptments.Add(equiptment);
+            }
+
+            return equiptments;
         }
     }
 }

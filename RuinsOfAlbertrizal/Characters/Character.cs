@@ -373,12 +373,15 @@ namespace RuinsOfAlbertrizal.Characters
         [XmlIgnore]
         public bool IsDead { get => CurrentStats[0] <= 0; }
 
+        public List<Character> PreviousTargets { get; set; }
+
         public Character() : base()
         {
             Level = 1;
             CurrentEquiptments = new Equiptment[GameBase.NumCurrentEquiptment];
             CurrentConsumables = new List<Consumable>();
             //AppliedBuffs = new List<Buff>();
+            PreviousTargets = new List<Character>();
             BuffImmunities = new List<Buff>();
             PermanentBuffs = new List<Buff>();
             Attacks = new List<Attack>();
