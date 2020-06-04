@@ -193,6 +193,20 @@ namespace RuinsOfAlbertrizal
 
                 foreach (Buff buff in player.AppliedBuffs)
                 {
+                    bool playerIsImmune = false;
+
+                    foreach (Buff immunity in player.AllBuffImmunities)
+                    {
+                        if (buff.HasSameGlobalIDAs(immunity))
+                        {
+                            playerIsImmune = true;
+                            break;
+                        }
+                    }
+
+                    if (playerIsImmune)
+                        continue;
+
                     ListBoxItem item = new ListBoxItem
                     {
                         Content = buff.DisplayName,
