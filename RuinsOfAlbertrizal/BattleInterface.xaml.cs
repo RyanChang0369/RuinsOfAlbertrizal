@@ -107,29 +107,57 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        private void ShowTargets()
+        /// <summary>
+        /// Targets or untargets enemies
+        /// </summary>
+        /// <param name="attack">The attack selected</param>
+        /// <param name="untarget">If true, then untarget instead of target</param>
+        private void ToggleTargets(Attack attack, bool untarget)
         {
-            foreach (Image image in playerTargetImages)
+            List<int> playerTargetIndexes = new List<int>();
+            List<int> enemyTargetIndexes = new List<int>();
+
+
+
+            if (untarget)
+                HideTargets(playerTargetIndexes, enemyTargetIndexes);
+            else
+                ShowTargets(playerTargetIndexes, enemyTargetIndexes);
+        }
+
+        /// <summary>
+        /// Fades in the target symbols.
+        /// </summary>
+        /// <param name="playerTargetIndexes">The indexes of targetable players in ActivePlayers</param>
+        /// <param name="enemyTargetIndexes">The indexes of targetable enemies in ActiveEnemies</param>
+        private void ShowTargets(List<int> playerTargetIndexes, List<int> enemyTargetIndexes)
+        {
+            foreach (int i in playerTargetIndexes)
             {
-                Animate("targetFadeIn", image);
+                Animate("targetFadeIn", playerTargetImages[i]);
             }
 
-            foreach (Image image in enemyTargetImages)
+            foreach (int i in enemyTargetIndexes)
             {
-                Animate("targetFadeIn", image);
+                Animate("targetFadeIn", enemyTargetImages[i]);
             }
         }
 
-        private void HideTargets()
+        /// <summary>
+        /// Fades out the target symbols.
+        /// </summary>
+        /// <param name="playerTargetIndexes">The indexes of targetable players in ActivePlayers</param>
+        /// <param name="enemyTargetIndexes">The indexes of targetable enemies in ActiveEnemies</param>
+        private void HideTargets(List<int> playerTargetIndexes, List<int> enemyTargetIndexes)
         {
-            foreach (Image image in playerTargetImages)
+            foreach (int i in playerTargetIndexes)
             {
-                Animate("targetFadeOut", image);
+                Animate("targetFadeOut", playerTargetImages[i]);
             }
 
-            foreach (Image image in enemyTargetImages)
+            foreach (int i in enemyTargetIndexes)
             {
-                Animate("targetFadeOut", image);
+                Animate("targetFadeOut", enemyTargetImages[i]);
             }
         }
 

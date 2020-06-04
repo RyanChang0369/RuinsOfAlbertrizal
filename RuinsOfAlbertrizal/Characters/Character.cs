@@ -222,6 +222,30 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         public List<Buff> BuffImmunities { get; set; }
 
+        [XmlIgnore]
+        public List<Buff> AllBuffImmunities
+        {
+            get
+            {
+                List<Buff> buffImmunities = new List<Buff>();
+
+                foreach (Equiptment equiptment in CurrentEquiptments)
+                {
+                    foreach (Buff buff in equiptment.BuffImmunities)
+                    {
+                        buffImmunities.Add(buff);
+                    }
+                }
+
+                foreach (Buff buff in BuffImmunities)
+                {
+                    BuffImmunities.Add(buff);
+                }
+
+                return buffImmunities;
+            }
+        }
+
         private List<Buff> appliedBuffs = new List<Buff>();
 
         /// <summary>
@@ -273,9 +297,9 @@ namespace RuinsOfAlbertrizal.Characters
                     }
                 }
 
-                foreach (Buff buff in BuffImmunities)
+                foreach (Buff buff in AllBuffImmunities)
                 {
-                    currentBuffs.RemoveAll(item => item.Name == buff.Name);
+                    currentBuffs.RemoveAll(item => buff.HasSameGlobalIDAs(item));
                 }
 
                 foreach (Buff buff in PermanentBuffs)

@@ -14,6 +14,11 @@
                 <Label Content="{Binding Path=Name}"/>
                 <Image Source="{Binding Path=WorldImgAsBitmapSource}" Height="200" HorizontalAlignment="Center"/>
                 <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="FontSize" Value="18"/>
+                        </Style>
+                    </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -26,9 +31,9 @@
                     <StackPanel>
                         <Label Content="HP"/>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Path=ArmoredStats[0]}" Foreground="Red" FontSize="18"/>
-                            <Label Content="/" Foreground="Red" FontSize="18"/>
-                            <Label Content="{Binding Path=CurrentStats[0]}" Foreground="Red" FontSize="18"/>
+                            <Label Content="{Binding Path=ArmoredStats[0]}" Foreground="Red"/>
+                            <Label Content="/" Foreground="Red"/>
+                            <Label Content="{Binding Path=CurrentStats[0]}" Foreground="Red"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
@@ -40,7 +45,7 @@
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
-    
+
     <Grid Background="DarkGray">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

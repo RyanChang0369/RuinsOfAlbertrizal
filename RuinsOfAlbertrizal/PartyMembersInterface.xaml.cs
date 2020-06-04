@@ -1,4 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Items;
+using RuinsOfAlbertrizal.Mechanics;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -91,7 +93,9 @@ namespace RuinsOfAlbertrizal
                 //Create playerNameLabel and image
                 Label playerNameLabel = new Label
                 {
-                    Content = player.Name
+                    Content = player.Name,
+                    FontSize = 28,
+                    FontFamily = new FontFamily("Script MT Bold")
                 };
 
                 Label speciesNameLabel = new Label
@@ -103,6 +107,104 @@ namespace RuinsOfAlbertrizal
                 Image playerImage = new Image
                 {
                     Source = player.WorldImg.ToBitmapSource()
+                };
+
+                ListBox debuffsListBox = new ListBox
+                {
+                    Style = (Style)Resources["inventoryListBox"],
+                    Height = 300
+                };
+
+                foreach (Buff buff in player.PermanentBuffs)
+                {
+                    ListBoxItem item = new ListBoxItem
+                    {
+                        Content = buff.DisplayName,
+                        Background = new SolidColorBrush(Colors.DarkSlateGray),
+                        Foreground = new SolidColorBrush(Colors.Snow),
+                        ToolTip = "Buffs or debuffs fixed to this player. These are not affected by buff immunities."
+                    };
+
+                    debuffsListBox.Items.Add(item);
+                }
+
+                foreach (Equiptment equiptment in player.CurrentEquiptments)
+                {
+                    if (equiptment == null)
+                        continue;
+
+                    foreach (Buff buff in equiptment.GrantedBuffs)
+                    {
+                        bool playerIsImmune = false;
+
+                        foreach (Buff immunity in player.AllBuffImmunities)
+                        {
+                            if (buff.HasSameGlobalIDAs(immunity))
+                            {
+                                playerIsImmune = true;
+                                break;
+                            }
+                        }
+
+                        if (playerIsImmune)
+                            continue;
+
+                        ListBoxItem item = new ListBoxItem
+                        {
+                            Content = buff.DisplayName,
+                            Background = new SolidColorBrush(Colors.DimGray),
+                            Foreground = new SolidColorBrush(Colors.Snow),
+                            ToolTip = "Buffs or debuffs granted by current equiptment"
+                        };
+
+                        debuffsListBox.Items.Add(item);
+                    }
+                }
+
+                foreach (Consumable consumable in player.CurrentConsumables)
+                {
+                    foreach (Buff buff in consumable.Buffs)
+                    {
+                        bool playerIsImmune = false;
+
+                        foreach (Buff immunity in player.AllBuffImmunities)
+                        {
+                            if (buff.HasSameGlobalIDAs(immunity))
+                            {
+                                playerIsImmune = true;
+                                break;
+                            }
+                        }
+
+                        if (playerIsImmune)
+                            continue;
+
+                        ListBoxItem item = new ListBoxItem
+                        {
+                            Content = buff.DisplayName,
+                            Background = new SolidColorBrush(Colors.DarkGray),
+                            Foreground = new SolidColorBrush(Colors.Snow),
+                            ToolTip = "Buffs or debuffs granted by consumables"
+                        };
+
+                        debuffsListBox.Items.Add(item);
+                    }
+                }
+
+                foreach (Buff buff in player.AppliedBuffs)
+                {
+                    ListBoxItem item = new ListBoxItem
+                    {
+                        Content = buff.DisplayName,
+                        ToolTip = "Buffs or debuffs gained from being attacked or being buffed by a teammate"
+                    };
+
+                    debuffsListBox.Items.Add(item);
+                }
+
+                ScrollViewer scrollViewer = new ScrollViewer
+                {
+                    Content = debuffsListBox
                 };
 
                 Button inventoryBtn = new Button
@@ -120,6 +222,7 @@ namespace RuinsOfAlbertrizal
                 containingStackPanel.Children.Add(playerNameLabel);
                 containingStackPanel.Children.Add(playerImage);
                 containingStackPanel.Children.Add(grid);
+                containingStackPanel.Children.Add(scrollViewer);
                 containingStackPanel.Children.Add(inventoryBtn);
 
                 PartyMembersStackPanel.Children.Add(containingStackPanel);

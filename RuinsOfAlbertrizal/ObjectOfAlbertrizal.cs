@@ -82,7 +82,7 @@ namespace RuinsOfAlbertrizal
             return -1;
         }
 
-        public bool IsSameObjectAs(ObjectOfAlbertrizal obj)
+        public bool HasSameGlobalIDAs(ObjectOfAlbertrizal obj)
         {
             return GlobalID.Equals(obj.GlobalID);
         }
