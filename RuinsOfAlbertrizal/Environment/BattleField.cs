@@ -22,7 +22,7 @@ namespace RuinsOfAlbertrizal.Environment
             {
                 List<Enemy> enemies = new List<Enemy>();
 
-                foreach (Enemy enemy in enemies)
+                foreach (Enemy enemy in Enemies)
                 {
                     if (!enemy.IsDead)
                         enemies.Add(enemy);
@@ -39,7 +39,7 @@ namespace RuinsOfAlbertrizal.Environment
             {
                 List<Enemy> enemies = new List<Enemy>();
 
-                foreach (Enemy enemy in enemies)
+                foreach (Enemy enemy in Enemies)
                 {
                     if (enemy.IsDead)
                         enemies.Add(enemy);
@@ -49,24 +49,7 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
-        [XmlIgnore]
-        public List<Enemy> ActiveEnemies
-        {
-            get
-            {
-                List<Enemy> enemies = new List<Enemy>();
-
-                for (int i = 0; i < Enemies.Count; i++)
-                {
-                    if (i > GameBase.NumActiveCharacters - 1)
-                        break;
-
-                    enemies.Add(Enemies[i]);
-                }
-
-                return enemies;
-            }
-        }
+        public Enemy[] ActiveEnemies { get; set; }
 
         [XmlIgnore]
         public List<Character> AliveCharacters
@@ -124,7 +107,17 @@ namespace RuinsOfAlbertrizal.Environment
         public BattleField()
         {
             Enemies = SummonEnemies(GameBase.CurrentGame.Players);
+
+            Random rnd = new Random();
+            Enemies = Enemies.OrderBy(x => rnd.Next()).ToList();
+
             StoredMessage = new Message();
+            ActiveEnemies = new Enemy[GameBase.NumActiveCharacters];
+
+            for (int i = 0; i < Math.Min(Enemies.Count, GameBase.NumActiveCharacters); i++)
+            {
+                ActiveEnemies[i] = Enemies[i];
+            }
         }
 
         private List<Enemy> SummonEnemies(List<Player> players)
@@ -255,30 +248,15 @@ namespace RuinsOfAlbertrizal.Environment
             return averageLevel + RNG.GetRandomInteger(-2, 3);
         }
 
-        public bool IsTargetable(Character target, Attack attack)
-        {
-            if (target.IsInvunerable())
-                return false;
-
-            bool ignoreDeathCheck = false;
-
-            //Dead characters are only targetable if the attack can revive them.
-            foreach (Buff buff in attack.Buffs)
-            {
-                if (buff.TypeOfBuff == Buff.BuffType.Revive)
-                    ignoreDeathCheck = true;
-            }
-
-            if (!ignoreDeathCheck && target.IsDead)
-                return false;
-
-            return true;
-        }
-
         private void PlayerWins()
         {
             AwardPoints();
             AwardXP();
+        }
+
+        private void PlayerLoses()
+        {
+
         }
 
         private void AwardPoints()

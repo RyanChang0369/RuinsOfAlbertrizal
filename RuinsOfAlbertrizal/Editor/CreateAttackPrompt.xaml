@@ -38,10 +38,20 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Is Magic"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="If checked, then this attack will ignore defense. This does NOT affect mana consumption."/>
+                    <Label Content="Ignores Armor"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="If checked, then this attack will ignore defense."/>
                 </StackPanel>
-                <CheckBox IsChecked="{Binding Path=IsMagic, Mode=TwoWay}" Margin="10"/>
+                <CheckBox IsChecked="{Binding Path=IgnoresArmor, Mode=TwoWay}" Margin="10"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Target Type"/>
+                    <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"
+                           Tag="{Binding Path=TypeOfTarget, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
+                <ComboBox 
+                    ItemsSource="{Binding Path=TypeOfTarget, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                    SelectedItem="{Binding Path=TypeOfTarget}"/>
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="HP Lost Per Hit *"/>

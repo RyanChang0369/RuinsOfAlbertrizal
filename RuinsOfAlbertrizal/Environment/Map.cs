@@ -61,7 +61,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <summary>
         /// The players that can attack.
         /// </summary>
-        public List<Player> ActivePlayers { get; set; }
+        public Player[] ActivePlayers { get; set; }
 
         public List<Boss> StoredBosses { get; set; }
 
@@ -149,6 +149,7 @@ namespace RuinsOfAlbertrizal.Environment
             AllowForPlayerCreation = true;
             Difficulty = 1.0;
             Players = new List<Player>();
+            ActivePlayers = new Player[GameBase.NumActiveCharacters];
             StoredEnemies = new List<Enemy>();
             StoredBosses = new List<Boss>();
             StoredBuffs = new List<Buff>();

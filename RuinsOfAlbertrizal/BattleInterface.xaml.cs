@@ -112,12 +112,12 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         /// <param name="attack">The attack selected</param>
         /// <param name="untarget">If true, then untarget instead of target</param>
-        private void ToggleTargets(Attack attack, bool untarget)
+        private void ToggleTargets(Character attacker, Attack attack, bool untarget)
         {
-            List<int> playerTargetIndexes = new List<int>();
-            List<int> enemyTargetIndexes = new List<int>();
+            List<int>[] targetIndexes = attack.GetAttackIndexes(attacker, GameBase.CurrentGame.ActivePlayers, battleField.ActiveEnemies);
 
-
+            List<int> playerTargetIndexes = targetIndexes[0];
+            List<int> enemyTargetIndexes = targetIndexes[1];
 
             if (untarget)
                 HideTargets(playerTargetIndexes, enemyTargetIndexes);
