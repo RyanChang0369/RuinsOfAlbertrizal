@@ -40,7 +40,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedHazard = new Hazard();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedHazard = new Hazard();
         }

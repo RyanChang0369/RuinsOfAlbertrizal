@@ -39,7 +39,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedBoss = new Boss();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedBoss = new Boss();
         }

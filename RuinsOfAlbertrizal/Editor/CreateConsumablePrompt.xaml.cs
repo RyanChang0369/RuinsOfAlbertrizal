@@ -38,7 +38,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedConsumable = new Consumable();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedConsumable = new Consumable();
         }

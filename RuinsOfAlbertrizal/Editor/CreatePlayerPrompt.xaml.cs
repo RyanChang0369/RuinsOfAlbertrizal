@@ -29,7 +29,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedPlayer = new Player();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedPlayer = new Player();
         }

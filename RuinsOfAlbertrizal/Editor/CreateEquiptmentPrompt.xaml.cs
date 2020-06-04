@@ -38,7 +38,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedEquiptment = new Equiptment();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedEquiptment = new Equiptment();
         }

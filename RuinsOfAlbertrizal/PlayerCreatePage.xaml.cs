@@ -38,6 +38,10 @@ namespace RuinsOfAlbertrizal
             {
                 CreatedPlayers.Add(CreatePlayerPrompt.CreatedPlayer);
             }
+            else
+            {
+                CreatePlayerPrompt.CreatedPlayer = new Player();
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)

@@ -38,7 +38,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedEnemy = new Enemy();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedEnemy = new Enemy();
         }

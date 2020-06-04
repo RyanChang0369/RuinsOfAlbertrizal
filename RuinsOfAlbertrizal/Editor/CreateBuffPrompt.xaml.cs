@@ -36,7 +36,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedBuff = new Buff();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedBuff = new Buff();
         }

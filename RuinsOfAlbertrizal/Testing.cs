@@ -1,5 +1,7 @@
+using RuinsOfAlbertrizal.Characters;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace RuinsOfAlbertrizal
 {
@@ -9,11 +11,11 @@ namespace RuinsOfAlbertrizal
     public class Testing
     {
         public static bool IsReleaseVersion;
-        public static bool Debugging = false;
+        public static bool Debugging = true;
 
         private static void Test()
         {
-            
+            //Player player = new Player();
         }
 
         public static void InitTest()
@@ -36,6 +38,9 @@ namespace RuinsOfAlbertrizal
 
         public static void AdventureInterfaceTest()
         {
+            if (!Debugging)
+                return;
+
             GameBase.CurrentGame.PlayerConsumables.Add(GameBase.CurrentGame.StoredConsumables[0]);
         }
     }

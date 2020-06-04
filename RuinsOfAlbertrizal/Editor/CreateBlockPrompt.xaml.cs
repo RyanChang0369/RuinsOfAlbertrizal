@@ -38,7 +38,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedBlock = new Block();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedBlock = new Block();
         }

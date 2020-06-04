@@ -55,6 +55,11 @@ namespace RuinsOfAlbertrizal
             get => WorldImg.ToBitmapSource();
         }
 
+        public WorldMapObject() : base()
+        {
+
+        }
+
         [XmlIgnore]
         public bool WorldImgIsValid
         {

@@ -15,8 +15,8 @@ namespace RuinsOfAlbertrizal
     public abstract class IconedObjectOfAlbertrizal : ObjectOfAlbertrizal, INotifyPropertyChanged
     {
         private string iconLocation;
-        
-        public string IconLocation 
+
+        public string IconLocation
         {
             get => iconLocation;
             set
@@ -49,6 +49,11 @@ namespace RuinsOfAlbertrizal
         public BitmapSource IconAsBitmapSource
         {
             get => Icon.ToBitmapSource();
+        }
+
+        public IconedObjectOfAlbertrizal() : base()
+        {
+
         }
 
         [XmlIgnore]

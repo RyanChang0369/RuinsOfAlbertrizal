@@ -37,7 +37,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedAttack = new Attack();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedAttack = new Attack();
         }

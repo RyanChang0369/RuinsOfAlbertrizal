@@ -94,6 +94,12 @@ namespace RuinsOfAlbertrizal
                     Content = player.Name
                 };
 
+                Label speciesNameLabel = new Label
+                {
+                    Content = player.GeneralName,
+                    FontSize = 18
+                };
+
                 Image playerImage = new Image
                 {
                     Source = player.WorldImg.ToBitmapSource()

@@ -324,42 +324,6 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        //private BitmapSource[] currentSlotBitmapSources;
-
-        ///// <summary>
-        ///// Remember to update this field before using it.
-        ///// </summary>
-        //[XmlIgnore]
-        //public BitmapSource[] CurrentSlotBitmapSources
-        //{
-        //    get => currentSlotBitmapSources;
-        //    set
-        //    {
-        //        currentSlotBitmapSources = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-        //public void UpdateSlotBitmapSources()
-        //{
-        //    BitmapSource[] slotSources = new BitmapSource[CurrentEquiptments.Length];
-
-        //    for (int i = 0; i < CurrentEquiptments.Length; i++)
-        //    {
-        //        try
-        //        {
-        //            slotSources[i] = CurrentEquiptments[i].IconAsBitmapSource;
-        //        }
-        //        catch (Exception)
-        //        {
-        //            slotSources[i] = new BitmapImage();
-        //        }
-        //    }
-
-        //    CurrentSlotBitmapSources = slotSources;
-        //    OnPropertyChanged("CurrentSlotBitmapSources");
-        //}
-
         private List<Consumable> currentConsumables;
 
         /// <summary>
@@ -385,10 +349,14 @@ namespace RuinsOfAlbertrizal.Characters
         [XmlIgnore]
         public bool IsDead { get => CurrentStats[0] <= 0; }
 
-        public Character()
+        public Character() : base()
         {
             Level = 1;
             CurrentEquiptments = new Equiptment[GameBase.NumCurrentEquiptment];
+            CurrentConsumables = new List<Consumable>();
+            //AppliedBuffs = new List<Buff>();
+            BuffImmunities = new List<Buff>();
+            PermanentBuffs = new List<Buff>();
             Attacks = new List<Attack>();
             BaseStats = new int[GameBase.NumStats];
             PermanentBuffs = new List<Buff>();

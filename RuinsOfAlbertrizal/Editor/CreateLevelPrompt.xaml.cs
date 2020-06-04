@@ -39,7 +39,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreatedLevel = new Level();
         }
 
-        protected override void ClearVariable()
+        public override void ClearVariable()
         {
             CreatedLevel = new Level();
         }

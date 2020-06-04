@@ -77,7 +77,7 @@ namespace RuinsOfAlbertrizal.Editor
             return true;
         }
 
-        protected abstract void ClearVariable();
+        public abstract void ClearVariable();
 
         protected void EditBuffBtn_Click(object sender, RoutedEventArgs e)
         {

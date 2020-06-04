@@ -38,6 +38,12 @@ namespace RuinsOfAlbertrizal
 
         public string Description { get; set; }
 
+        public ObjectOfAlbertrizal()
+        {
+            Name = "";
+            Description = "";
+        }
+
         /// <summary>
         /// Gets the names of all members of a list of ObjectsOfAlbertrizal
         /// </summary>
