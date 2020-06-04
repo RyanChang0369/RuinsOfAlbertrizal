@@ -91,44 +91,44 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             }
         }
 
-        /// <summary>
-        /// Creates a project file with a path.
-        /// </summary>
-        /// <param name="path"></param>
-        /// <exception cref="IOException"></exception>
-        public static void CreateProjectDirectory(string path)
-        {
-            string directory = Path.GetDirectoryName(path);
+        ///// <summary>
+        ///// Creates a project file with a path.
+        ///// </summary>
+        ///// <param name="path"></param>
+        ///// <exception cref="IOException"></exception>
+        //public static void CreateProjectDirectory(string path)
+        //{
+        //    string directory = Path.GetDirectoryName(path);
 
-            Directory.CreateDirectory(directory + "/Character");
-            Directory.CreateDirectory(directory + "/Environment");
-            Directory.CreateDirectory(directory + "/Items");
-            Directory.CreateDirectory(directory + "/Mechanics");
-            Directory.CreateDirectory(directory + "/Text");
-        }
+        //    Directory.CreateDirectory(directory + "/Character");
+        //    Directory.CreateDirectory(directory + "/Environment");
+        //    Directory.CreateDirectory(directory + "/Items");
+        //    Directory.CreateDirectory(directory + "/Mechanics");
+        //    Directory.CreateDirectory(directory + "/Text");
+        //}
 
-        public static object LoadObject()
-        {
-            string path = "";
-            try
-            {
-                path = new FileDialog(FileDialog.DialogOptions.Load).GetPath();
-            }
-            catch (ArgumentNullException)
-            {
-                return null;
-            }
-            return LoadObject(path);
-        }
+        //public static object LoadObject()
+        //{
+        //    string path = "";
+        //    try
+        //    {
+        //        path = new FileDialog(FileDialog.DialogOptions.Load).GetPath();
+        //    }
+        //    catch (ArgumentNullException)
+        //    {
+        //        return null;
+        //    }
+        //    return LoadObject(path);
+        //}
 
-        public static object LoadObject(string path)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(Map));
-            using (FileStream fs = new FileStream(path, FileMode.Open))
-            {
-                return serializer.Deserialize(fs);
-            }
-        }
+        //public static object LoadObject(string path)
+        //{
+        //    XmlSerializer serializer = new XmlSerializer(typeof(Map));
+        //    using (FileStream fs = new FileStream(path, FileMode.Open))
+        //    {
+        //        return serializer.Deserialize(fs);
+        //    }
+        //}
 
         /// <summary>
         /// Saves an object
@@ -239,19 +239,6 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                     return "";
             }
         }
-
-        ///// <summary>
-        ///// When something is renamed, reflect that change in the file directories.
-        ///// </summary>
-        ///// <param name="oldName"></param>
-        ///// <param name="newName"></param>
-        //public static void AlertRename(string oldName, string newName, ObjectOfAlbertrizal obj)
-        //{
-        //    if (oldName == newName)
-        //        return;
-
-        //    string imageLocation = 
-        //}
 
         /// <summary>
         /// Copies an image to the project directory.
