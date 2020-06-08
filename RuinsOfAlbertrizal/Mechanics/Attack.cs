@@ -153,6 +153,8 @@ namespace RuinsOfAlbertrizal.Mechanics
                     attacker.AppliedStats[i] -= StatCostToUser[i];
                 }
 
+                GameBase.CurrentBattleField.NotifyAttackBegin(this, attacker);
+
                 foreach (Character target in targets)
                     target.GetAttacked(this);
             }
@@ -160,7 +162,23 @@ namespace RuinsOfAlbertrizal.Mechanics
             {
                 //Begin charge
                 TurnsSinceBeginCharge++;
+                GameBase.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
             }
+        }
+
+        /// <summary>
+        /// Starts the attack
+        /// </summary>
+        /// <param name="attacker"></param>
+        /// <param name="target"></param>
+        public void BeginAttack(Character attacker, Character target)
+        {
+            List<Character> temp = new List<Character>
+            {
+                target
+            };
+
+            BeginAttack(attacker, temp);
         }
 
         /// <summary>

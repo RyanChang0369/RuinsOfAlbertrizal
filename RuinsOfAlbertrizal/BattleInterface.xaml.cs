@@ -35,6 +35,8 @@ namespace RuinsOfAlbertrizal
 
         private List<Image> enemyTargetImages = new List<Image>();
 
+        public int CurrentPlayerIndex { get; set; }
+
         public BattleInterface()
         {
             BattleField = new BattleField();
@@ -204,6 +206,21 @@ namespace RuinsOfAlbertrizal
         private void Exit()
         {
             Navigate("[back]");
+        }
+
+        //public void NotifyStoredMessageChanged(Message message)
+        //{
+            
+        //}
+
+        public void NotifyAttackBegin(Attack attack, Character attacker)
+        {
+            //Do animation
+        }
+
+        public void NotifyAttackHit(Attack attack, Character target)
+        {
+            //Do animation
         }
     }
 }

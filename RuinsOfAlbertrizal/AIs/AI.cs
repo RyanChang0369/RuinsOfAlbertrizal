@@ -129,6 +129,8 @@ namespace RuinsOfAlbertrizal.AIs
                 //Attack weakest player with strongest attack
                 attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP);
             }
+
+            attacker.Attack(attack, target);
         }
     }
 }

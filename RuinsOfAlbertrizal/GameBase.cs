@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
 {
@@ -26,6 +27,16 @@ namespace RuinsOfAlbertrizal
         public static string CurrentMapLocation { get; set; }
 
         public static string StaticMapLocation { get; set; }
+
+        /// <summary>
+        /// A shortcut for CurrentGame.CurrentBattleInterface.BattleField
+        /// </summary>
+        [XmlIgnore]
+        public static BattleField CurrentBattleField
+        {
+            get => CurrentGame.CurrentBattleInterface.BattleField;
+            set => CurrentGame.CurrentBattleInterface.BattleField = value;
+        }
 
         /// <summary>
         /// The game that is being played.

@@ -368,5 +368,17 @@ namespace RuinsOfAlbertrizal.Environment
             if (PlayerHasWon)
                 PlayerWins();
         }
+
+        public void NotifyAttackBegin(Attack attack, Character attacker)
+        {
+            StoredMessage.Add($"{attacker.DisplayName} attacked with {attack.DisplayName}!");
+            GameBase.CurrentGame.CurrentBattleInterface.NotifyAttackBegin(attack, attacker);
+        }
+
+        public void NotifyAttackHit(Attack attack, Character target)
+        {
+            StoredMessage.Add($"{target.DisplayName} received {attack.StatLoss[0]} points of damage!");
+            GameBase.CurrentGame.CurrentBattleInterface.NotifyAttackHit(attack, target);
+        }
     }
 }

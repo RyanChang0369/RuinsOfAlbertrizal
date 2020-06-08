@@ -41,7 +41,7 @@ namespace RuinsOfAlbertrizal.Characters
         public int Level { get; set; }
 
         public enum ModelStyle
-        { 
+        {
             [Description("Armor and weapons are shown. The world image should be a multiple of [x] by [y] pixels. See help page for more information.")]
             Humanoid,
             [Description("Helmet and weapons are shown. The world image should be a multiple of [x] by [y] pixels. See help page for more information.")]
@@ -422,7 +422,7 @@ namespace RuinsOfAlbertrizal.Characters
             BoundAttacks = new List<Attack>();
             BaseStats = new int[GameBase.NumStats];
             PermanentBuffs = new List<Buff>();
-        }        
+        }
 
         /// <summary>
         /// Consumes an consumable
@@ -447,10 +447,20 @@ namespace RuinsOfAlbertrizal.Characters
         /// Do an attack with the attacker being this character
         /// </summary>
         /// <param name="attack"></param>
-        /// <param name="target"></param>
+        /// <param name="targets"></param>
         public void Attack(Attack attack, List<Character> targets)
         {
             attack.BeginAttack(this, targets);
+        }
+
+        /// <summary>
+        /// Do an attack with the attacker being this character
+        /// </summary>
+        /// <param name="attack"></param>
+        /// <param name="target"></param>
+        public void Attack(Attack attack, Character target)
+        {
+            attack.BeginAttack(this, target);
         }
 
         public void RecoverMana()
@@ -518,6 +528,8 @@ namespace RuinsOfAlbertrizal.Characters
                     return;
                 }
             }
+
+            GameBase.CurrentBattleField.NotifyAttackHit(attack, this);
         }
 
         public List<Attack> GetMultiTargetAttacks()
