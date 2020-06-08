@@ -89,6 +89,9 @@ namespace RuinsOfAlbertrizal.AIs
                 case AIStyle.Beserk:
                     AIStyle_Berzerk(attacker, activePlayers, activeEnemies);
                     break;
+                case AIStyle.Beserk_UseItem:
+
+                    break;
             }
         }
 

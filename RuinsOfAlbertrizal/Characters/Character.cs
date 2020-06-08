@@ -424,24 +424,19 @@ namespace RuinsOfAlbertrizal.Characters
             PermanentBuffs = new List<Buff>();
         }
 
-        /// <summary>
-        /// Consumes an consumable
-        /// </summary>
-        /// <param name="index">The index of the item in PlayerConsumables</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public void Consume(int index)
-        {
-            Consumable consumable = GameBase.CurrentGame.PlayerConsumables[index];
-            GameBase.CurrentGame.PlayerConsumables.RemoveAt(index);
-            CurrentConsumables.Add(consumable);
-        }
+        ///// <summary>
+        ///// Consumes an consumable
+        ///// </summary>
+        ///// <param name="index">The index of the item in PlayerConsumables</param>
+        ///// <exception cref="ArgumentOutOfRangeException"></exception>
+        //public void Consume(int index)
+        //{
+        //    Consumable consumable = GameBase.CurrentGame.PlayerConsumables[index];
+        //    GameBase.CurrentGame.PlayerConsumables.RemoveAt(index);
+        //    CurrentConsumables.Add(consumable);
+        //}
 
-        public void Consume(Consumable consumable)
-        {
-            CurrentConsumables.Add(consumable);
-            GameBase.CurrentGame.PlayerConsumables.Remove(consumable);
-            MessageBox.Show($"You ingested the {consumable.DisplayName}");
-        }
+        public abstract void Consume(Consumable consumable);
 
         /// <summary>
         /// Do an attack with the attacker being this character

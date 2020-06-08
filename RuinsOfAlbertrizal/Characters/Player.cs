@@ -110,6 +110,14 @@ namespace RuinsOfAlbertrizal.Characters
             return $"Out of the corner of your eye, you spot a {item.Name}.";
         }
 
+        public override void Consume(Consumable consumable)
+        {
+            CurrentConsumables.Add(consumable);
+            GameBase.CurrentGame.PlayerConsumables.Remove(consumable);
+            MessageBox.Show($"You ingested the {consumable.DisplayName}");
+            GameBase.CurrentBattleField.NotifyItemUsed(consumable, this);
+        }
+
         /// <summary>
         /// Equipts an equiptable
         /// </summary>
@@ -129,6 +137,7 @@ namespace RuinsOfAlbertrizal.Characters
             }
 
             InventoryEquiptments.Remove(equiptment);
+            GameBase.CurrentBattleField.NotifyItemUsed(equiptment, this);
         }
 
         /// <summary>

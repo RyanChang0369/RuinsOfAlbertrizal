@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
 using System;
@@ -221,6 +222,11 @@ namespace RuinsOfAlbertrizal
         public void NotifyAttackHit(Attack attack, Character target)
         {
             //Do animation
+        }
+
+        public void NotifyItemUsed(Item item, Character user)
+        {
+            //update sprites
         }
     }
 }

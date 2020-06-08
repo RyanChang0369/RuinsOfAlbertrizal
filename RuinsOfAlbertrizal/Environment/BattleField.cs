@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
 using System;
@@ -379,6 +380,15 @@ namespace RuinsOfAlbertrizal.Environment
         {
             StoredMessage.Add($"{target.DisplayName} received {attack.StatLoss[0]} points of damage!");
             GameBase.CurrentGame.CurrentBattleInterface.NotifyAttackHit(attack, target);
+        }
+
+        public void NotifyItemUsed(Item item, Character user)
+        {
+            if (item.GetType() == typeof(Consumable))
+                StoredMessage.Add($"{user.DisplayName} has consumed {item.DisplayName}.");
+            else if (item.GetType() == typeof(Equiptment))
+                StoredMessage.Add($"{user.DisplayName} has equipted {item.DisplayName}.");
+            GameBase.CurrentGame.CurrentBattleInterface.NotifyItemUsed(item, user);
         }
     }
 }

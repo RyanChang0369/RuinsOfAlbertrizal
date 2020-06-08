@@ -85,6 +85,13 @@ namespace RuinsOfAlbertrizal.Characters
             return GetXPGained();
         }
 
+        public override void Consume(Consumable consumable)
+        {
+            CurrentConsumables.Add(consumable);
+            InventoryConsumables.Remove(consumable);
+            GameBase.CurrentBattleField.NotifyItemUsed(consumable, this);
+        }
+
         public override void Die()
         {
             
