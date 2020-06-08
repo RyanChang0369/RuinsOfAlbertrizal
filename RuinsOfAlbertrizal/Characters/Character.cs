@@ -212,6 +212,22 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        [XmlIgnore]
+        public double[] PercentStats
+        {
+            get
+            {
+                double[] percentStats = new double[GameBase.NumStats];
+
+                for (int i = 0; i < GameBase.NumStats; i++)
+                {
+                    percentStats[i] = CurrentStats[i] / (double)ArmoredStats[i];
+                }
+
+                return percentStats;
+            }
+        }
+
         /// <summary>
         /// This character will recieve the following buffs.
         /// </summary>
@@ -363,7 +379,26 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        public List<Attack> Attacks { get; set; }
+        /// <summary>
+        /// Attacks bound to the character
+        /// </summary>
+        public List<Attack> BoundAttacks { get; set; }
+
+        [XmlIgnore]
+        public List<Attack> AllAttacks
+        {
+            get
+            {
+                List<Attack> attacks = BoundAttacks;
+
+                foreach (Equiptment equiptment in Equiptment.GetAttackableEquiptment(CurrentEquiptments.ToList()))
+                {
+                    attacks.AddRange(equiptment.Attacks);
+                }
+
+                return attacks;
+            }
+        }
 
         /// <summary>
         /// True if character is charging an attack, false otherwise.
@@ -384,7 +419,7 @@ namespace RuinsOfAlbertrizal.Characters
             PreviousTargets = new List<Character>();
             BuffImmunities = new List<Buff>();
             PermanentBuffs = new List<Buff>();
-            Attacks = new List<Attack>();
+            BoundAttacks = new List<Attack>();
             BaseStats = new int[GameBase.NumStats];
             PermanentBuffs = new List<Buff>();
         }        
@@ -409,23 +444,13 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Do an attack with the attacker being this character.
-        /// </summary>
-        /// <param name="attackIndex"></param>
-        /// <param name="target"></param>
-        public void Attack(int attackIndex, Character target)
-        {
-            Attacks[attackIndex].BeginAttack(this, target);
-        }
-
-        /// <summary>
         /// Do an attack with the attacker being this character
         /// </summary>
         /// <param name="attack"></param>
         /// <param name="target"></param>
-        public void Attack(Attack attack, Character target)
+        public void Attack(Attack attack, List<Character> targets)
         {
-            attack.BeginAttack(this, target);
+            attack.BeginAttack(this, targets);
         }
 
         public void RecoverMana()
@@ -493,6 +518,21 @@ namespace RuinsOfAlbertrizal.Characters
                     return;
                 }
             }
+        }
+
+        public List<Attack> GetMultiTargetAttacks()
+        {
+            List<Attack> multiTargetAttacks = new List<Attack>();
+
+            foreach (Attack attack in AllAttacks)
+            {
+                if (attack.MultiTarget)
+                {
+                    multiTargetAttacks.Add(attack); 
+                }
+            }
+
+            return multiTargetAttacks;
         }
     }
 }

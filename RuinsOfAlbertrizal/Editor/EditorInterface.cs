@@ -16,23 +16,6 @@ namespace RuinsOfAlbertrizal.Editor
         protected void Save(object sender, RoutedEventArgs e)
         {
             RequiredControls = new List<Control>();
-
-            //Panel mainContainer = (Panel)this.Content;
-
-            //StackPanel form = (StackPanel)mainContainer.FindName("Form");
-
-            //if (form == null)
-            //    throw new ArgumentException("There must exists a stackpanel of name form within any page that uses editor interface");
-
-            //List<TextBox> allTextBoxes = form.Children.OfType<TextBox>().ToList();
-
-            //foreach (TextBox textBox in allTextBoxes)
-            //{
-            //    if (textBox.Style.Equals(Resources["validationError"]))
-            //        RequiredControls.Add(textBox);
-            //}
-
-
             AddRequiredControls();
 
             if (!FormIsValid())
@@ -85,7 +68,16 @@ namespace RuinsOfAlbertrizal.Editor
             List<Buff> buffs = (List<Buff>)control.Tag;
             BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(buffs);
             buffAdderPrompt.ShowDialog();
-            buffs = buffAdderPrompt.TargetBuffs;
+            control.Tag = buffAdderPrompt.TargetBuffs;
+        }
+
+        protected void EditAttackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Control control = (Control)sender;
+            List<Attack> attacks = (List<Attack>)control.Tag;
+            AttackAdderPrompt attackAdderPrompt = new AttackAdderPrompt(attacks);
+            attackAdderPrompt.ShowDialog();
+            control.Tag = attackAdderPrompt.TargetAttacks;
         }
 
         protected void ComboBox_Initialize(object sender, RoutedEventArgs e)

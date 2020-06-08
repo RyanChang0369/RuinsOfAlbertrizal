@@ -136,9 +136,10 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// to determine the stat gain from PercentStatGain</param>
         /// <param name="statIndex">The index of the stat to evaluate</param>
         /// <returns></returns>
-        public int GetLifetimeStatGain(Character target, int statIndex)
+        public int GetLifetimeStatGain(Character target, GameBase.Stats stat)
         {
             int total = 0;
+            int statIndex = (int)stat;
 
             total += StatGain[statIndex];
             total += (int)Math.Round(PercentStatGain[statIndex] * target.CurrentStats[statIndex]);

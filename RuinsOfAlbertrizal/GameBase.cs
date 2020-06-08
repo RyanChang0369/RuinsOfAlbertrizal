@@ -37,9 +37,6 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         public static Map StaticGame;
         
-        /// <summary>
-        /// Damage reduction through def = dmg/(def/10)
-        /// </summary>
         public enum Stats
         {
             HP, Mana, Def, Dmg, Spd, Int, r1, r2, r3, r4, r5

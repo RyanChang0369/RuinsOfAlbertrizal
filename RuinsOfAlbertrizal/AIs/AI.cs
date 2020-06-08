@@ -70,17 +70,6 @@ namespace RuinsOfAlbertrizal.AIs
         }
 
         /// <summary>
-        /// Finds most damaging attack that the attacker can use.
-        /// </summary>
-        public static Attack FindMostDamagingAttack(Character attacker, Character target)
-        {
-            int mostDamage;
-            Attack mostDamagingAttack = new Attack();
-
-
-        }
-
-        /// <summary>
         /// Selects a target and attacks it.
         /// </summary>
         /// <param name="aiStyle"></param>
@@ -107,14 +96,38 @@ namespace RuinsOfAlbertrizal.AIs
         {
             //Select weapon and attack here
 
-            if (attacker.PreviousTargets.Count > 0 && !attacker.PreviousTargets[attacker.PreviousTargets.Count - 1].IsDead)
+            //Find player with lowest hp and select that as target
+            Player target = activePlayers[0];
+
+            foreach (Player player in activePlayers)
             {
-                //Attack last enemy
-                attacker.Attack()
+                if (player.CurrentStats[0] < target.CurrentStats[0])
+                    target = player;
+            }
+
+            double fateSelector = RNG.GetRandomDouble();
+
+            Attack attack;
+
+            if (fateSelector < 0.5 && target.PercentStats[0] < 0.35)
+            {
+                //50% chance that the enemy will use the strongest multitargeting attack instead of the strongest single attack
+                //if target is below 35% health
+
+                attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP,
+                    attacker.GetMultiTargetAttacks());
+            }
+            else if (fateSelector < 0.1)
+            {
+                //10% chance that the enemy will use the strongest multitargeting attack anyways
+
+                attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP,
+                    attacker.GetMultiTargetAttacks());
             }
             else
             {
-                while ()
+                //Attack weakest player with strongest attack
+                attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP);
             }
         }
     }

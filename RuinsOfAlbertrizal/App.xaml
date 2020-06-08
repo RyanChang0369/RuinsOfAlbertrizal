@@ -248,7 +248,8 @@
         <converter:ListConverter x:Key="ListConverter"/>
         <converter:EnumConverter x:Key="EnumConverter"/>
         <converter:NotNullToBoolConverter x:Key="NotNullToBoolConverter"/>
-        
+        <converter:ProperNameConverter x:Key="ProperNameConverter"/>
+
         <!--Validator Resources-->
         <validator:DoubleValidation x:Key="DoubleValidation"/>
     </Application.Resources>

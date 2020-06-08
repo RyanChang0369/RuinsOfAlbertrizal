@@ -101,6 +101,12 @@
                     </ComboBox.SelectedItem>
                 </ComboBox>
 
+                <Label Content="Attacks"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Add or Remove Attacks" Click="EditAttackBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=BoundAttacks, Mode=TwoWay}"/>
+                    <Label Content="{Binding Path=BoundAttacks, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ProperNameConverter}}"/>
+                </StackPanel>
+
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Buff Immunities"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="This character is immune to the following buffs of the same name. Permanent buffs are ignored."/>

@@ -126,6 +126,12 @@
                     </TextBox.Text>
                 </TextBox>
 
+                <Label Content="Attacks"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Add or Remove Attacks" Click="EditAttackBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=Attacks, Mode=TwoWay}"/>
+                    <Label Content="{Binding Path=Attacks, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ProperNameConverter}}"/>
+                </StackPanel>
+                
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Buff Immunities"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The character who equipts this equiptment is immune to the listed buffs. Permanent buffs are not affected."/>

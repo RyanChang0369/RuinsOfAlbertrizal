@@ -34,6 +34,11 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public bool IgnoresArmor { get; set; }
 
+        /// <summary>
+        /// Can target multiple characters
+        /// </summary>
+        public bool MultiTarget { get; set; }
+
         public enum TargetType
         {
             [Description("Cannot target friendly characters")]
@@ -72,7 +77,12 @@ namespace RuinsOfAlbertrizal.Mechanics
             }
         }
 
-        public bool CanCharacterAttack(Character character)
+        /// <summary>
+        /// Returns true if the attack can be used by the provided character (has enough mana, etc)
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
+        public bool CanBeUsedBy(Character character)
         {
             if (character.CurrentStats[1] - StatCostToUser[1] < 0)
                 return false;
@@ -86,9 +96,9 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// <param name="target">The character whose CurrentStats will be evaluated
         /// to determine the stat gain from PercentStatGain</param>
         /// <returns></returns>
-        public int[] GetLifetimeStatGain(Character target)
+        public int[] GetLifetimeStatLoss(Character target)
         {
-            int[] totalStatLoss = StatLoss;
+            int[] totalStatLoss = (int[])StatLoss.Clone();
             int[] buffStatGain = new int[GameBase.NumStats];
 
             foreach (Buff buff in Buffs)
@@ -101,22 +111,27 @@ namespace RuinsOfAlbertrizal.Mechanics
                 buffStatGain[i] = buffStatGain[i] * -1;
             }
 
-            return totalStatLoss;
+            return ArrayMethods.AddArrays(totalStatLoss, buffStatGain);
         }
 
         /// <summary>
-        /// Gets the amount of a specified stat gained over the lifespan of this buff
+        /// Gets the amount of a specified stat lost over the lifespan of this attack and its buffs
         /// </summary>
         /// <param name="target">The character whose CurrentStats will be evaluated
         /// to determine the stat gain from PercentStatGain</param>
         /// <param name="statIndex">The index of the stat to evaluate</param>
         /// <returns></returns>
-        public int GetLifetimeStatGain(Character target, int statIndex)
+        public int GetLifetimeStatLoss(Character target, GameBase.Stats stat)
         {
             int total = 0;
+            int statIndex = (int)stat;
 
-            total += StatGain[statIndex];
-            total += (int)Math.Round(PercentStatGain[statIndex] * target.CurrentStats[statIndex]);
+            total += StatLoss[statIndex];
+            
+            foreach (Buff buff in Buffs)
+            {
+                total -= buff.GetLifetimeStatGain(target, stat);
+            }
 
             return total;
         }
@@ -125,10 +140,10 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// Starts the attack.
         /// </summary>
         /// <param name="attacker">The character doing the attacking.</param>
-        /// <param name="target">The character being attacked.</param>
-        public void BeginAttack(Character attacker, Character target)
+        /// <param name="targets">The character being attacked.</param>
+        public void BeginAttack(Character attacker, List<Character> targets)
         {
-            if (CanCharacterAttack(attacker))
+            if (CanBeUsedBy(attacker))
             {
                 TurnSinceAttacked = 0;
                 TurnsSinceBeginCharge = 0;
@@ -138,7 +153,8 @@ namespace RuinsOfAlbertrizal.Mechanics
                     attacker.AppliedStats[i] -= StatCostToUser[i];
                 }
 
-                target.GetAttacked(this);
+                foreach (Character target in targets)
+                    target.GetAttacked(this);
             }
             else if (!IsCharged)
             {
@@ -228,6 +244,36 @@ namespace RuinsOfAlbertrizal.Mechanics
                 default:
                     throw new ArgumentException("TypeOfTarget not a value of TargetType.");
             }
+        }
+
+        /// <summary>
+        /// Finds most damaging attack, in terms of the given stat, that the attacker can use.
+        /// </summary>
+        public static Attack FindStrongestAttack(Character attacker, Character target, GameBase.Stats stat)
+        {
+            return FindStrongestAttack(attacker, target, stat, attacker.AllAttacks);
+        }
+
+        /// <summary>
+        /// Finds most damaging attack that the attacker can use from a list of provided attacks.
+        /// </summary>
+        public static Attack FindStrongestAttack(Character attacker, Character target, GameBase.Stats stat, List<Attack> attacks)
+        {
+            Attack strongestAttack = attacks[0];
+            int strongestStat = strongestAttack.GetLifetimeStatLoss(target, stat);
+
+            foreach (Attack attack in attacks)
+            {
+                if (!attack.CanBeUsedBy(attacker))
+                    continue;
+                else if (attack.GetLifetimeStatLoss(target, stat) > strongestStat)
+                {
+                    strongestAttack = attack;
+                    strongestStat = strongestAttack.GetLifetimeStatLoss(target, stat);
+                }
+            }
+
+            return strongestAttack;
         }
 
         public void EndTurn()
