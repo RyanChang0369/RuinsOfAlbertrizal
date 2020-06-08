@@ -1,7 +1,4 @@
-Have equiptment drawn onto the characters.
-
-Add character model enum to characters.
-This will tell the game how to draw armor onto the characters.
+Have equipment drawn onto the characters.
 
 Have method that sets the application's icon with the icon of the current map.
 
@@ -16,3 +13,5 @@ Finish and test battle screen
 Create a screen allowing players to create their characters and select a map difficulty.
 
 Add more ItemFindMessages for GetItemFindMessage(Item item)
+
+Test line 21 of ProperNameConverter
