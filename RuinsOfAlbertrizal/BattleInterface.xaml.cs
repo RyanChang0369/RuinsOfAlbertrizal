@@ -38,11 +38,10 @@ namespace RuinsOfAlbertrizal
 
         public int CurrentPlayerIndex { get; set; }
 
-        public BattleInterface()
+        public BattleInterface(BattleField battleField)
         {
-            BattleField = new BattleField();
-
             InitializeComponent();
+            BattleField = battleField;
             DataContext = BattleField;
             UpdateImageLists();
             UpdateGrid();

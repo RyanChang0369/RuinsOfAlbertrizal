@@ -72,68 +72,9 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <Attacks />
+      <BoundAttacks />
       <IsCharging>false</IsCharging>
-      <XP>0</XP>
-    </Player>
-    <Player>
-      <GlobalID>c6e5c787-8c31-408a-bd9b-632e4e68ea1e</GlobalID>
-      <Name>Bob</Name>
-      <Description />
-      <TurnsPassed>0</TurnsPassed>
-      <GeneralName>Builder</GeneralName>
-      <Level>1</Level>
-      <StyleOfModel>Humanoid</StyleOfModel>
-      <AIStyle>Player</AIStyle>
-      <BaseStats>
-        <int>150</int>
-        <int>100</int>
-        <int>2</int>
-        <int>5</int>
-        <int>14</int>
-        <int>100</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </BaseStats>
-      <AppliedStats>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
-      <AppliedBuffs />
-      <CurrentEquiptments>
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
-      </CurrentEquiptments>
-      <CurrentConsumables />
-      <Attacks />
-      <IsCharging>false</IsCharging>
+      <PreviousTargets />
       <XP>0</XP>
     </Player>
   </Players>
@@ -196,8 +137,9 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <Attacks />
+      <BoundAttacks />
       <IsCharging>false</IsCharging>
+      <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
       <InventoryItems />
@@ -282,8 +224,9 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <Attacks />
+      <BoundAttacks />
       <IsCharging>false</IsCharging>
+      <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
       <InventoryItems />
@@ -431,7 +374,9 @@
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
-      <IsMagic>false</IsMagic>
+      <IgnoresArmor>false</IgnoresArmor>
+      <MultiTarget>false</MultiTarget>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
       <GlobalID>deefeb9f-d585-42e6-9aa9-fa4ba375eb8a</GlobalID>
@@ -501,7 +446,9 @@
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
-      <IsMagic>false</IsMagic>
+      <IgnoresArmor>false</IgnoresArmor>
+      <MultiTarget>false</MultiTarget>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
   </StoredAttacks>
   <StoredItems>
@@ -746,8 +693,9 @@
             <Equiptment xsi:nil="true" />
           </CurrentEquiptments>
           <CurrentConsumables />
-          <Attacks />
+          <BoundAttacks />
           <IsCharging>false</IsCharging>
+          <PreviousTargets />
           <InventoryEquiptments />
           <InventoryConsumables />
           <InventoryItems />

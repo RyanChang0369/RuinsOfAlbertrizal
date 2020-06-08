@@ -12,6 +12,9 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class BattleField : ITurnBasedObject
     {
+        [XmlIgnore]
+        public BattleInterface BattleInterface { get; set; }
+
         public Message StoredMessage { get; set; }
 
         public List<Enemy> Enemies { get; set; }
@@ -103,7 +106,7 @@ namespace RuinsOfAlbertrizal.Environment
         private Timer SpeedTimer { get; set; }
 
         /// <summary>
-        /// Creates a new battlefield using the players in GameBase.CurrentGame
+        /// Creates a new battlefield using the players in GameBase.CurrentGame. Navigate to BattleInterface to show the interface.
         /// </summary>
         public BattleField()
         {
@@ -119,6 +122,8 @@ namespace RuinsOfAlbertrizal.Environment
             {
                 ActiveEnemies[i] = Enemies[i];
             }
+
+            BattleInterface = new BattleInterface(this);
         }
 
         private List<Enemy> SummonEnemies(List<Player> players)
@@ -373,13 +378,13 @@ namespace RuinsOfAlbertrizal.Environment
         public void NotifyAttackBegin(Attack attack, Character attacker)
         {
             StoredMessage.Add($"{attacker.DisplayName} attacked with {attack.DisplayName}!");
-            GameBase.CurrentGame.CurrentBattleInterface.NotifyAttackBegin(attack, attacker);
+            BattleInterface.NotifyAttackBegin(attack, attacker);
         }
 
         public void NotifyAttackHit(Attack attack, Character target)
         {
             StoredMessage.Add($"{target.DisplayName} received {attack.StatLoss[0]} points of damage!");
-            GameBase.CurrentGame.CurrentBattleInterface.NotifyAttackHit(attack, target);
+            BattleInterface.NotifyAttackHit(attack, target);
         }
 
         public void NotifyItemUsed(Item item, Character user)
@@ -388,7 +393,7 @@ namespace RuinsOfAlbertrizal.Environment
                 StoredMessage.Add($"{user.DisplayName} has consumed {item.DisplayName}.");
             else if (item.GetType() == typeof(Equiptment))
                 StoredMessage.Add($"{user.DisplayName} has equipted {item.DisplayName}.");
-            GameBase.CurrentGame.CurrentBattleInterface.NotifyItemUsed(item, user);
+            BattleInterface.NotifyItemUsed(item, user);
         }
     }
 }

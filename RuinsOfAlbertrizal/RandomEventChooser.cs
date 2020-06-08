@@ -15,15 +15,20 @@ namespace RuinsOfAlbertrizal
 
         public RandomEventChooser(List<RandomEvent> randomEvents)
         {
+            //Avoids a StackOverflowException
+            randomEvents.RemoveAll(x => x.Chance <= 0);
             RandomEvents = randomEvents;
         }
 
         /// <summary>
-        /// Gets the selected random event
+        /// Returns the selected random event or returns null if there are no events
         /// </summary>
         /// <returns></returns>
         public RandomEvent GetSelectedRandomEvent()
         {
+            if (RandomEvents.Count < 1)
+                return null;
+
             List<RandomEvent> selectedEvents = new List<RandomEvent>();
 
             foreach (RandomEvent randomEvent in RandomEvents)

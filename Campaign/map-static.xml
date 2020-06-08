@@ -72,8 +72,9 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <Attacks />
+      <BoundAttacks />
       <IsCharging>false</IsCharging>
+      <PreviousTargets />
       <XP>0</XP>
     </Player>
   </Players>
@@ -136,8 +137,9 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <Attacks />
+      <BoundAttacks />
       <IsCharging>false</IsCharging>
+      <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
       <InventoryItems />
@@ -222,8 +224,9 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <Attacks />
+      <BoundAttacks />
       <IsCharging>false</IsCharging>
+      <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
       <InventoryItems />
@@ -371,7 +374,9 @@
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
-      <IsMagic>false</IsMagic>
+      <IgnoresArmor>false</IgnoresArmor>
+      <MultiTarget>false</MultiTarget>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
       <GlobalID>deefeb9f-d585-42e6-9aa9-fa4ba375eb8a</GlobalID>
@@ -441,7 +446,9 @@
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
-      <IsMagic>false</IsMagic>
+      <IgnoresArmor>false</IgnoresArmor>
+      <MultiTarget>false</MultiTarget>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
   </StoredAttacks>
   <StoredItems>
@@ -686,8 +693,9 @@
             <Equiptment xsi:nil="true" />
           </CurrentEquiptments>
           <CurrentConsumables />
-          <Attacks />
+          <BoundAttacks />
           <IsCharging>false</IsCharging>
+          <PreviousTargets />
           <InventoryEquiptments />
           <InventoryConsumables />
           <InventoryItems />

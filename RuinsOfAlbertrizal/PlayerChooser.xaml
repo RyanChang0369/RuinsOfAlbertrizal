@@ -9,7 +9,7 @@
     <StackPanel>
         <Label Content="Choose a Player"/>
         <ComboBox ItemsSource="{Binding Path=ProvidedPlayers, Mode=OneTime}"
-                  SelectedItem="{Binding Path=SelectedPlayer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                  SelectedItem="{Binding Path=SelectedPlayer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="DisplayName"/>
 
         <Button Click="Exit" Style="{StaticResource buttonSmall}" Content="Done"/>
     </StackPanel>

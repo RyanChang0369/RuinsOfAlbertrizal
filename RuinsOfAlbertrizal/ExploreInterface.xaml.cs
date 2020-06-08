@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using System;
 using System.Collections.Generic;
@@ -89,7 +90,7 @@ namespace RuinsOfAlbertrizal
                     DoFindTeamMember();
                     break;
                 case "Nothing":
-
+                    MessageBox.Show("After wandering the surrounding area for a few minutes, you find nothing.");
                     break;
             }
         }
@@ -134,7 +135,8 @@ namespace RuinsOfAlbertrizal
 
         private void DoRandomEncounter()
         {
-
+            GameBase.CurrentGame.CurrentBattleField = new BattleField();
+            Navigate(GameBase.CurrentGame.CurrentBattleField.BattleInterface);
         }
 
         private void DoFindTeamMember()

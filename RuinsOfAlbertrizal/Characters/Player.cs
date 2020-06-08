@@ -115,7 +115,7 @@ namespace RuinsOfAlbertrizal.Characters
             CurrentConsumables.Add(consumable);
             GameBase.CurrentGame.PlayerConsumables.Remove(consumable);
             MessageBox.Show($"You ingested the {consumable.DisplayName}");
-            GameBase.CurrentBattleField.NotifyItemUsed(consumable, this);
+            GameBase.CurrentGame.CurrentBattleField.NotifyItemUsed(consumable, this);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace RuinsOfAlbertrizal.Characters
             }
 
             InventoryEquiptments.Remove(equiptment);
-            GameBase.CurrentBattleField.NotifyItemUsed(equiptment, this);
+            GameBase.CurrentGame.CurrentBattleField.NotifyItemUsed(equiptment, this);
         }
 
         /// <summary>

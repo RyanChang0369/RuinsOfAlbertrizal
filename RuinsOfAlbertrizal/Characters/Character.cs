@@ -247,6 +247,9 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
+                    if (equiptment == null)
+                        continue;
+
                     foreach (Buff buff in equiptment.BuffImmunities)
                     {
                         buffImmunities.Add(buff);
@@ -524,7 +527,7 @@ namespace RuinsOfAlbertrizal.Characters
                 }
             }
 
-            GameBase.CurrentBattleField.NotifyAttackHit(attack, this);
+            GameBase.CurrentGame.CurrentBattleField.NotifyAttackHit(attack, this);
         }
 
         public List<Attack> GetMultiTargetAttacks()

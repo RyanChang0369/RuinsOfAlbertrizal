@@ -89,7 +89,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             CurrentConsumables.Add(consumable);
             InventoryConsumables.Remove(consumable);
-            GameBase.CurrentBattleField.NotifyItemUsed(consumable, this);
+            GameBase.CurrentGame.CurrentBattleField.NotifyItemUsed(consumable, this);
         }
 
         public override void Die()
