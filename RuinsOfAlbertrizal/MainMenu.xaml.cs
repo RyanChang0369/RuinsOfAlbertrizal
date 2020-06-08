@@ -157,6 +157,8 @@ namespace RuinsOfAlbertrizal
                 }
             }
 
+            GameValidator.Validate(GameBase.StaticGame);
+
             MessageBoxResult result = MessageBox.Show("Are you sure you want to reset the map? This action cannot be undone.", "Confirm Reset", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
