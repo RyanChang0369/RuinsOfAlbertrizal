@@ -56,22 +56,11 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public TargetType TypeOfTarget { get; set; }
 
-        
-
         public Attack()
         {
             StatLoss = new int[GameBase.NumStats];
             StatCostToUser = new int[GameBase.NumStats];
             Buffs = new List<Buff>();
-        }
-
-        [XmlIgnore]
-        public bool CanAttack
-        {
-            get
-            {
-                return (CoolDown <= TurnSinceAttacked) && IsCharged;
-            }
         }
 
         [XmlIgnore]
@@ -83,6 +72,55 @@ namespace RuinsOfAlbertrizal.Mechanics
             }
         }
 
+        public bool CanCharacterAttack(Character character)
+        {
+            if (character.CurrentStats[1] - StatCostToUser[1] < 0)
+                return false;
+            else
+                return (CoolDown <= TurnSinceAttacked) && IsCharged;
+        }
+
+        /// <summary>
+        /// Gets the amount of stats lost over the lifespan of this attack plus its buffs
+        /// </summary>
+        /// <param name="target">The character whose CurrentStats will be evaluated
+        /// to determine the stat gain from PercentStatGain</param>
+        /// <returns></returns>
+        public int[] GetLifetimeStatGain(Character target)
+        {
+            int[] totalStatLoss = StatLoss;
+            int[] buffStatGain = new int[GameBase.NumStats];
+
+            foreach (Buff buff in Buffs)
+            {
+                buffStatGain = ArrayMethods.AddArrays(buffStatGain, buff.GetLifetimeStatGain(target));
+            }
+
+            for (int i = 0; i < GameBase.NumStats; i++)
+            {
+                buffStatGain[i] = buffStatGain[i] * -1;
+            }
+
+            return totalStatLoss;
+        }
+
+        /// <summary>
+        /// Gets the amount of a specified stat gained over the lifespan of this buff
+        /// </summary>
+        /// <param name="target">The character whose CurrentStats will be evaluated
+        /// to determine the stat gain from PercentStatGain</param>
+        /// <param name="statIndex">The index of the stat to evaluate</param>
+        /// <returns></returns>
+        public int GetLifetimeStatGain(Character target, int statIndex)
+        {
+            int total = 0;
+
+            total += StatGain[statIndex];
+            total += (int)Math.Round(PercentStatGain[statIndex] * target.CurrentStats[statIndex]);
+
+            return total;
+        }
+
         /// <summary>
         /// Starts the attack.
         /// </summary>
@@ -90,7 +128,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// <param name="target">The character being attacked.</param>
         public void BeginAttack(Character attacker, Character target)
         {
-            if (CanAttack)
+            if (CanCharacterAttack(attacker))
             {
                 TurnSinceAttacked = 0;
                 TurnsSinceBeginCharge = 0;

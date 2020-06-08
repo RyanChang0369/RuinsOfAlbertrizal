@@ -126,7 +126,7 @@ namespace RuinsOfAlbertrizal.Environment
             get => Difficulty * CurrentLevel.Difficulty;
         }
 
-        public BattleField BattleField { get; set; }
+        public BattleInterface CurrentBattleInterface { get; set; }
 
         public List<Level> Levels { get; set; }
 
@@ -163,6 +163,7 @@ namespace RuinsOfAlbertrizal.Environment
             PlayerItems = new List<Item>();
             PlayerConsumables = new List<Consumable>();
             PlayerEquiptments = new List<Equiptment>();
+            CurrentBattleInterface = new BattleInterface();
         }
     }
 }

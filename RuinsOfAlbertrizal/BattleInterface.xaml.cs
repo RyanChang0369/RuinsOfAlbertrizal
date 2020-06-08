@@ -25,7 +25,7 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public partial class BattleInterface : BasePage
     {
-        private BattleField battleField = GameBase.CurrentGame.BattleField;
+        public BattleField BattleField { get; set; }
 
         private List<Image> playerImages = new List<Image>();
 
@@ -37,10 +37,10 @@ namespace RuinsOfAlbertrizal
 
         public BattleInterface()
         {
-            battleField = new BattleField();
+            BattleField = new BattleField();
 
             InitializeComponent();
-            DataContext = battleField;
+            DataContext = BattleField;
             UpdateImageLists();
             UpdateGrid();
             InitialAnimation();
@@ -92,13 +92,13 @@ namespace RuinsOfAlbertrizal
 
                 try
                 {
-                    if (battleField.Enemies[i].WorldImgIsValid)
-                        enemyImages[i].Source = battleField.Enemies[i].WorldImgAsBitmapSource;
+                    if (BattleField.Enemies[i].WorldImgIsValid)
+                        enemyImages[i].Source = BattleField.Enemies[i].WorldImgAsBitmapSource;
                     else
                         enemyImages[i].Source = new BitmapImage();
 
-                    enemyImages[i].Tag = battleField.ActiveEnemies[i];
-                    enemyTargetImages[i].Tag = battleField.ActiveEnemies[i];
+                    enemyImages[i].Tag = BattleField.ActiveEnemies[i];
+                    enemyTargetImages[i].Tag = BattleField.ActiveEnemies[i];
                 }
                 catch (IndexOutOfRangeException)
                 {
@@ -107,19 +107,29 @@ namespace RuinsOfAlbertrizal
             }
         }
 
+        public void DoAttack(Character attacker, List<Character> targets)
+        {
+
+        }
+
+        private void PreparePlayerAttack(Player attacker, Attack selectedAttack)
+        {
+            ToggleTargets(attacker, selectedAttack);
+        }
+
         /// <summary>
         /// Targets or untargets enemies
         /// </summary>
         /// <param name="attack">The attack selected</param>
-        /// <param name="untarget">If true, then untarget instead of target</param>
-        private void ToggleTargets(Character attacker, Attack attack, bool untarget)
+        /// <param name="hideTargets">If true, then hide targets instead of showing targets</param>
+        private void ToggleTargets(Character attacker, Attack attack, bool hideTargets = false)
         {
-            List<int>[] targetIndexes = attack.GetAttackIndexes(attacker, GameBase.CurrentGame.ActivePlayers, battleField.ActiveEnemies);
+            List<int>[] targetIndexes = attack.GetAttackIndexes(attacker, GameBase.CurrentGame.ActivePlayers, BattleField.ActiveEnemies);
 
             List<int> playerTargetIndexes = targetIndexes[0];
             List<int> enemyTargetIndexes = targetIndexes[1];
 
-            if (untarget)
+            if (hideTargets)
                 HideTargets(playerTargetIndexes, enemyTargetIndexes);
             else
                 ShowTargets(playerTargetIndexes, enemyTargetIndexes);

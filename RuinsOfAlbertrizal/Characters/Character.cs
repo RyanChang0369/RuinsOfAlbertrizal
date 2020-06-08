@@ -409,13 +409,23 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Do an attack with the atter being this character.
+        /// Do an attack with the attacker being this character.
         /// </summary>
         /// <param name="attackIndex"></param>
         /// <param name="target"></param>
         public void Attack(int attackIndex, Character target)
         {
             Attacks[attackIndex].BeginAttack(this, target);
+        }
+
+        /// <summary>
+        /// Do an attack with the attacker being this character
+        /// </summary>
+        /// <param name="attack"></param>
+        /// <param name="target"></param>
+        public void Attack(Attack attack, Character target)
+        {
+            attack.BeginAttack(this, target);
         }
 
         public void RecoverMana()

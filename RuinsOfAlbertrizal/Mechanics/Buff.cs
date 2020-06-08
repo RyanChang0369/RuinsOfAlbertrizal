@@ -110,6 +110,42 @@ namespace RuinsOfAlbertrizal.Mechanics
                 Cleanse(character);
         }
 
+        /// <summary>
+        /// Gets the amount of stats gained over the lifespan of this buff
+        /// </summary>
+        /// <param name="target">The character whose CurrentStats will be evaluated
+        /// to determine the stat gain from PercentStatGain</param>
+        /// <returns></returns>
+        public int[] GetLifetimeStatGain(Character target)
+        {
+            int[] totalStatGain = new int[GameBase.NumStats];
+
+            for (int i = 0; i < GameBase.NumStats; i++)
+            {
+                totalStatGain[i] += StatGain[i];
+                totalStatGain[i] += (int)Math.Round(PercentStatGain[i] * target.CurrentStats[i]);
+            }
+
+            return totalStatGain;
+        }
+
+        /// <summary>
+        /// Gets the amount of a specified stat gained over the lifespan of this buff
+        /// </summary>
+        /// <param name="target">The character whose CurrentStats will be evaluated
+        /// to determine the stat gain from PercentStatGain</param>
+        /// <param name="statIndex">The index of the stat to evaluate</param>
+        /// <returns></returns>
+        public int GetLifetimeStatGain(Character target, int statIndex)
+        {
+            int total = 0;
+
+            total += StatGain[statIndex];
+            total += (int)Math.Round(PercentStatGain[statIndex] * target.CurrentStats[statIndex]);
+
+            return total;
+        }
+
         public void StartRound()
         {
 

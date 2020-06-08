@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,7 +70,18 @@ namespace RuinsOfAlbertrizal.AIs
         }
 
         /// <summary>
-        /// Returns the character the character will target. Returns null if it did not target any.
+        /// Finds most damaging attack that the attacker can use.
+        /// </summary>
+        public static Attack FindMostDamagingAttack(Character attacker, Character target)
+        {
+            int mostDamage;
+            Attack mostDamagingAttack = new Attack();
+
+
+        }
+
+        /// <summary>
+        /// Selects a target and attacks it.
         /// </summary>
         /// <param name="aiStyle"></param>
         /// <param name="attacker"></param>
@@ -77,7 +89,7 @@ namespace RuinsOfAlbertrizal.AIs
         /// <param name="activeEnemies"></param>
         /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
-        public static Character GetTarget(AIStyle aiStyle, Character attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        public static void SelectTarget(AIStyle aiStyle, Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
         {
             switch (aiStyle)
             {
@@ -86,16 +98,23 @@ namespace RuinsOfAlbertrizal.AIs
                 case AIStyle.Player:
                     throw new ArgumentException("The current AIStyle forbids attacking");
                 case AIStyle.Beserk:
-                    //Select weapon and attack here
+                    AIStyle_Berzerk(attacker, activePlayers, activeEnemies);
+                    break;
+            }
+        }
 
-                    if (attacker.PreviousTargets.Count < 1)
-                    {
+        public static void AIStyle_Berzerk(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        {
+            //Select weapon and attack here
 
-                    }
-                    else
-                    {
-                        while ()
-                    }
+            if (attacker.PreviousTargets.Count > 0 && !attacker.PreviousTargets[attacker.PreviousTargets.Count - 1].IsDead)
+            {
+                //Attack last enemy
+                attacker.Attack()
+            }
+            else
+            {
+                while ()
             }
         }
     }
