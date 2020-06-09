@@ -279,75 +279,69 @@ namespace RuinsOfAlbertrizal.Editor
             Button button = (Button)sender;
             StackPanel stackPanel = (StackPanel)VisualTreeHelper.GetParent(button);
 
-            try
-            {
-                switch (stackPanel.Tag)
-                {
-                    case "Enemy":
-                        CreateEnemyPrompt.CreatedEnemy = new Enemy();
-                        Map.StoredEnemies.RemoveAt(CreatedEnemiesList.SelectedIndex);
-                        CreatedEnemiesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Boss":
-                        CreateBossPrompt.CreatedBoss = new Boss();
-                        Map.StoredBosses.RemoveAt(CreatedBossesList.SelectedIndex);
-                        CreatedBossesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Buff":
-                        CreateBuffPrompt.CreatedBuff = new Buff();
-                        Map.StoredBuffs.RemoveAt(CreatedBuffsList.SelectedIndex);
-                        CreatedBuffsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Attack":
-                        CreateAttackPrompt.CreatedAttack = new Attack();
-                        Map.StoredAttacks.RemoveAt(CreatedAttacksList.SelectedIndex);
-                        CreatedAttacksList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Player":
-                        CreatePlayerPrompt.CreatedPlayer = new Player();
-                        Map.Players.RemoveAt(CreatedPlayersList.SelectedIndex);
-                        CreatedPlayersList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Hazard":
-                        CreateHazardPrompt.CreatedHazard = new Hazard();
-                        Map.StoredHazards.RemoveAt(CreatedHazardsList.SelectedIndex);
-                        CreatedHazardsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Block":
-                        CreateBlockPrompt.CreatedBlock = new Environment.Block();
-                        Map.StoredBlocks.RemoveAt(CreatedBlocksList.SelectedIndex);
-                        CreatedBlocksList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Item":
-                        CreateItemPrompt.CreatedItem = new Item();
-                        Map.StoredItems.RemoveAt(CreatedItemsList.SelectedIndex);
-                        CreatedItemsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Equiptment":
-                        CreateEquiptmentPrompt.CreatedEquiptment = new Equiptment();
-                        Map.StoredEquiptments.RemoveAt(CreatedEquiptmentsList.SelectedIndex);
-                        CreatedEquiptmentsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Consumable":
-                        CreateConsumablePrompt.CreatedConsumable = new Consumable();
-                        Map.StoredConsumables.RemoveAt(CreatedConsumablesList.SelectedIndex);
-                        CreatedConsumablesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    case "Level":
-                        CreateLevelPrompt.CreatedLevel = new Level();
-                        Map.Levels.RemoveAt(CreatedLevelsList.SelectedIndex);
-                        CreatedLevelsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-                        break;
-                    default:
-                        throw new ArgumentException("Tag missing or invalid");
-                }
 
-                ClearSelection(sender, null);
-            }
-            catch (IndexOutOfRangeException)
+            switch (stackPanel.Tag)
             {
-
+                case "Enemy":
+                    CreateEnemyPrompt.CreatedEnemy = new Enemy();
+                    Map.StoredEnemies.TryRemoveAt(CreatedEnemiesList.SelectedIndex);
+                    CreatedEnemiesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Boss":
+                    CreateBossPrompt.CreatedBoss = new Boss();
+                    Map.StoredBosses.TryRemoveAt(CreatedBossesList.SelectedIndex);
+                    CreatedBossesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Buff":
+                    CreateBuffPrompt.CreatedBuff = new Buff();
+                    Map.StoredBuffs.TryRemoveAt(CreatedBuffsList.SelectedIndex);
+                    CreatedBuffsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Attack":
+                    CreateAttackPrompt.CreatedAttack = new Attack();
+                    Map.StoredAttacks.TryRemoveAt(CreatedAttacksList.SelectedIndex);
+                    CreatedAttacksList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Player":
+                    CreatePlayerPrompt.CreatedPlayer = new Player();
+                    Map.Players.TryRemoveAt(CreatedPlayersList.SelectedIndex);
+                    CreatedPlayersList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Hazard":
+                    CreateHazardPrompt.CreatedHazard = new Hazard();
+                    Map.StoredHazards.TryRemoveAt(CreatedHazardsList.SelectedIndex);
+                    CreatedHazardsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Block":
+                    CreateBlockPrompt.CreatedBlock = new Environment.Block();
+                    Map.StoredBlocks.TryRemoveAt(CreatedBlocksList.SelectedIndex);
+                    CreatedBlocksList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Item":
+                    CreateItemPrompt.CreatedItem = new Item();
+                    Map.StoredItems.TryRemoveAt(CreatedItemsList.SelectedIndex);
+                    CreatedItemsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Equiptment":
+                    CreateEquiptmentPrompt.CreatedEquiptment = new Equiptment();
+                    Map.StoredEquiptments.TryRemoveAt(CreatedEquiptmentsList.SelectedIndex);
+                    CreatedEquiptmentsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Consumable":
+                    CreateConsumablePrompt.CreatedConsumable = new Consumable();
+                    Map.StoredConsumables.TryRemoveAt(CreatedConsumablesList.SelectedIndex);
+                    CreatedConsumablesList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                case "Level":
+                    CreateLevelPrompt.CreatedLevel = new Level();
+                    Map.Levels.TryRemoveAt(CreatedLevelsList.SelectedIndex);
+                    CreatedLevelsList.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
+                    break;
+                default:
+                    throw new ArgumentException("Tag missing or invalid");
             }
+
+            ClearSelection(sender, null);
         }
 
         private void CreatedEnemiesList_SelectionChanged(object sender, SelectionChangedEventArgs e)

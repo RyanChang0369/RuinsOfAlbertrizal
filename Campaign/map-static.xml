@@ -618,7 +618,7 @@
   <PlayerItems />
   <PlayerConsumables />
   <PlayerEquiptments />
-  <Difficulty>0</Difficulty>
+  <Difficulty>1.0</Difficulty>
   <Levels>
     <Level>
       <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
@@ -631,8 +631,76 @@
           <string>This is it. The final floor. All you need to do now is escape.</string>
         </Lines>
       </IntroMessage>
-      <StoredEnemies />
-      <Difficulty>0</Difficulty>
+      <StoredEnemies>
+        <Enemy>
+          <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
+          <Name>Slime</Name>
+          <Description>A small slime. Not much of a threat unless it has a shotgun.</Description>
+          <TurnsPassed>0</TurnsPassed>
+          <GeneralName>Green Slime</GeneralName>
+          <Level>0</Level>
+          <StyleOfModel>Humanoid</StyleOfModel>
+          <AIStyle>Beserk</AIStyle>
+          <BaseStats>
+            <int>10</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>2</int>
+            <int>2</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </BaseStats>
+          <AppliedStats>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </AppliedStats>
+          <PermanentBuffs />
+          <BuffImmunities />
+          <AppliedBuffs />
+          <CurrentEquiptments>
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+          </CurrentEquiptments>
+          <CurrentConsumables />
+          <BoundAttacks />
+          <IsCharging>false</IsCharging>
+          <PreviousTargets />
+          <InventoryEquiptments />
+          <InventoryConsumables />
+          <InventoryItems />
+          <MessagesOnEncounter />
+          <MessagesOnAttack />
+          <MessagesOnDefeat />
+          <MessagesOnVictory />
+        </Enemy>
+      </StoredEnemies>
+      <Difficulty>2.0</Difficulty>
       <MaxPoints>9000</MaxPoints>
       <Points>0</Points>
       <Bosses>

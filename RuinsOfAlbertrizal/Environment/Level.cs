@@ -81,6 +81,7 @@ namespace RuinsOfAlbertrizal.Environment
             Bosses = new List<Boss>();
             StoredEnemies = new List<Enemy>();
             IntroMessage = new Message();
+            Difficulty = 1.0;
         }
 
         /// <summary>

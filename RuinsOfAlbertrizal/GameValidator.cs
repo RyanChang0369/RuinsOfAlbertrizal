@@ -27,6 +27,10 @@ namespace RuinsOfAlbertrizal
 
                 if (level.Bosses.Count < 1)
                     AlertUser($"The level titled {level.Name} does not have any stored bosses.");
+
+                if (level.Difficulty <= 0)
+                    AlertUser($"The level titled {level.Name} has a difficulty less than or equal to 0. " +
+                        $"This will cause only one enemy to spawn per encounter.");
             }
 
         }

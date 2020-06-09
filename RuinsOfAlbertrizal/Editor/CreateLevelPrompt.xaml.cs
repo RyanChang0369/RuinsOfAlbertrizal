@@ -85,7 +85,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             SimpleAdderPrompt simpleAdderPrompt = new SimpleAdderPrompt(CreatedLevel.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), CreateMapPrompt.Map.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Enemies");
             simpleAdderPrompt.ShowDialog();
-            CreatedLevel.Bosses = simpleAdderPrompt.StoredObjects.Cast<Boss>().ToList();
+            CreatedLevel.StoredEnemies = simpleAdderPrompt.StoredObjects.Cast<Enemy>().ToList();
         }
 
         private void AddIntroMessage_Click(object sender, RoutedEventArgs e)

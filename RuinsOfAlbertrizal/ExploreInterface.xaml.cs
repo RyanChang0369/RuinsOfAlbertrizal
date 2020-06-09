@@ -68,10 +68,10 @@ namespace RuinsOfAlbertrizal
         {
             List<RandomEvent> randomEvents = new List<RandomEvent>
             {
-                new RandomEvent("Find Item", 0.2),
-                new RandomEvent("Enemy Encounter", 0.2),
-                new RandomEvent("Find Team Member", 0.1),
-                new RandomEvent("Nothing", 0.5)
+                new RandomEvent("Find Item", 0.0),          //Original value: 0.2
+                new RandomEvent("Enemy Encounter", 0.2),    //Original value: 0.2
+                new RandomEvent("Find Team Member", 0.0),   //Original value: 0.1
+                new RandomEvent("Nothing", 0.0)             //Original value: 0.5
             };
 
             RandomEventChooser randomEventChooser = new RandomEventChooser(randomEvents);

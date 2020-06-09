@@ -75,5 +75,22 @@ namespace RuinsOfAlbertrizal
                 return "";
             }
         }
+
+        /// <summary>
+        /// Tries to remove the 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        public static void TryRemoveAt<T>(this List<T> list, int index)
+        {
+            try
+            {
+                list.RemoveAt(index);
+            }
+            catch (IndexOutOfRangeException)
+            {
+
+            }
+        }
     }
 }

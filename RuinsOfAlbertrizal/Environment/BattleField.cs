@@ -152,6 +152,10 @@ namespace RuinsOfAlbertrizal.Environment
                     break;
             }
 
+            //Failsafe
+            if (enemies.Count < 1)
+                enemies.Add(GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies));
+
             return enemies;
         }
 
@@ -185,13 +189,20 @@ namespace RuinsOfAlbertrizal.Environment
         {
             List<Enemy> enemies = new List<Enemy>();
 
-            int averageBI = totalEnemyBI / GameBase.CurrentGame.CurrentLevel.StoredEnemies.Count;
+            int allEnemyBI = 0;
+
+            foreach (Enemy enemy in GameBase.CurrentGame.CurrentLevel.StoredEnemies)
+            {
+                allEnemyBI += enemy.BattleIndex;
+            }
+
+            int averageBI = allEnemyBI / GameBase.CurrentGame.CurrentLevel.StoredEnemies.Count;
 
             while (totalEnemyBI < adjustedPlayerBI * 0.75)
             {
                 Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
 
-                if (enemy.BattleIndex > averageBI)
+                if (enemy.BattleIndex >= averageBI)
                 {
                     enemies.Add(enemy);
                 }
@@ -214,13 +225,20 @@ namespace RuinsOfAlbertrizal.Environment
         {
             List<Enemy> enemies = new List<Enemy>();
 
-            int averageBI = totalEnemyBI / GameBase.CurrentGame.CurrentLevel.StoredEnemies.Count;
+            int allEnemyBI = 0;
+
+            foreach (Enemy enemy in GameBase.CurrentGame.CurrentLevel.StoredEnemies)
+            {
+                allEnemyBI += enemy.BattleIndex;
+            }
+
+            int averageBI = allEnemyBI / GameBase.CurrentGame.CurrentLevel.StoredEnemies.Count;
 
             while (totalEnemyBI < adjustedPlayerBI * 0.75)
             {
                 Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
 
-                if (enemy.BattleIndex < averageBI)
+                if (enemy.BattleIndex <= averageBI)
                 {
                     enemies.Add(enemy);
                 }
@@ -232,10 +250,10 @@ namespace RuinsOfAlbertrizal.Environment
             return enemies;
         }
 
-        private Enemy GetRandomEnemy(List<Player> players, List<Enemy> enemies)
+        private Enemy GetRandomEnemy(List<Player> players, List<Enemy> storedEnemies)
         {
-            int fateSelector = RNG.GetRandomInteger(enemies.Count);
-            Enemy enemy = enemies[fateSelector].DeepClone();
+            int fateSelector = RNG.GetRandomInteger(storedEnemies.Count);
+            Enemy enemy = storedEnemies[fateSelector].DeepClone();
             enemy.Level = GetAdjustedLevel(players);
             return enemy;
         }
