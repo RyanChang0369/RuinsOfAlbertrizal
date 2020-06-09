@@ -115,6 +115,32 @@ namespace RuinsOfAlbertrizal
 
         }
 
+        private void SwapEnemy(Enemy oldEnemy, Enemy newEnemy)
+        {
+            int index = Array.IndexOf(BattleField.ActiveEnemies, oldEnemy);
+
+            if (index == -1)
+                throw new ArgumentOutOfRangeException($"{oldEnemy.DisplayName} not found within ActiveEnemies");
+
+            Animate("enemySlideOut", enemyImages[index]);
+            enemyImages[index].Source = newEnemy.WorldImgAsBitmapSource;
+            BattleField.ActiveEnemies[index] = newEnemy;
+            Animate("enemySlideIn", enemyImages[index]);
+        }
+
+        private void SwapPlayer(Player oldPlayer, Player newPlayer)
+        {
+            int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayers, oldPlayer);
+
+            if (index == -1)
+                throw new ArgumentOutOfRangeException($"{oldPlayer.DisplayName} not found within ActivePlayers");
+
+            Animate("enemySlideOut", playerImages[index]);
+            playerImages[index].Source = newPlayer.WorldImgAsBitmapSource;
+            GameBase.CurrentGame.ActivePlayers[index] = newPlayer;
+            Animate("enemySlideIn", playerImages[index]);
+        }
+
         private void PreparePlayerAttack(Player attacker, Attack selectedAttack)
         {
             ToggleTargets(attacker, selectedAttack);

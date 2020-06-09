@@ -62,6 +62,10 @@
             <Setter Property="MinWidth" Value="500"/>
         </Style>
         <Style TargetType="Button" BasedOn="{StaticResource defaultButton}"/>
+        <Style x:Key="buttonMedium" TargetType="Button" BasedOn="{StaticResource defaultButton}">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="MinWidth" Value="200"/>
+        </Style>
         <Style x:Key="buttonStretch" TargetType="Button">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="FontSize" Value="36"/>

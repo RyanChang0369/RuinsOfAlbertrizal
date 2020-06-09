@@ -99,17 +99,23 @@
                 </Grid>
             </Grid>
 
-            <TextBlock x:Name="InfoBlock" Grid.Row="1" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}"/>
-            <StackPanel x:Name="ActionPanel" Background="Snow" Grid.Row="1" Visibility="Hidden">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Attack" Click="Attack_Click"/>
-                    <Button Content="[RESERVED]"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="InfoBlock" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}"/>
+                <StackPanel Grid.Column="1" x:Name="ActionPanel" Background="Snow">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Attack" Click="Attack_Click" Style="{StaticResource buttonMedium}"/>
+                        <Button Content="[RESERVED]" Style="{StaticResource buttonMedium}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Inventory" Click="Inventory_Click" Style="{StaticResource buttonMedium}"/>
+                        <Button Content="Flee" Click="Flee_Click" Style="{StaticResource buttonMedium}"/>
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Inventory" Click="Inventory_Click"/>
-                    <Button Content="Flee" Click="Flee_Click"/>
-                </StackPanel>
-            </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </local:BasePage>
