@@ -216,9 +216,20 @@ namespace RuinsOfAlbertrizal
                     debuffsListBox.Items.Add(item);
                 }
 
-                ScrollViewer scrollViewer = new ScrollViewer
+                ScrollViewer buffScrollViewer = new ScrollViewer
                 {
                     Content = debuffsListBox
+                };
+
+                Separator separator = new Separator
+                {
+                    MinHeight = 50,
+                    Background = new SolidColorBrush(Colors.Transparent)
+                };
+
+                Label buffLabel = new Label
+                {
+                    Content = "Buffs and Debuffs"
                 };
 
                 Button inventoryBtn = new Button
@@ -236,7 +247,9 @@ namespace RuinsOfAlbertrizal
                 containingStackPanel.Children.Add(playerNameLabel);
                 containingStackPanel.Children.Add(playerImage);
                 containingStackPanel.Children.Add(grid);
-                containingStackPanel.Children.Add(scrollViewer);
+                containingStackPanel.Children.Add(separator);
+                containingStackPanel.Children.Add(buffLabel);
+                containingStackPanel.Children.Add(buffScrollViewer);
                 containingStackPanel.Children.Add(inventoryBtn);
 
                 PartyMembersStackPanel.Children.Add(containingStackPanel);
