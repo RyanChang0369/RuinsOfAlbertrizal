@@ -172,7 +172,9 @@ namespace RuinsOfAlbertrizal.Environment
 
             while (totalEnemyBI < adjustedPlayerBI)
             {
-                enemies.Add(GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies));
+                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+                enemies.Add(enemy);
+                totalEnemyBI += enemy.BattleIndex;
             }
 
             return enemies;
@@ -205,11 +207,16 @@ namespace RuinsOfAlbertrizal.Environment
                 if (enemy.BattleIndex >= averageBI)
                 {
                     enemies.Add(enemy);
+                    totalEnemyBI += enemy.BattleIndex;
                 }
             }
 
             while (totalEnemyBI < adjustedPlayerBI * 0.25)
-                enemies.Add(GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies));
+            {
+                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+                enemies.Add(enemy);
+                totalEnemyBI += enemy.BattleIndex;
+            }
 
             return enemies;
         }
@@ -241,11 +248,16 @@ namespace RuinsOfAlbertrizal.Environment
                 if (enemy.BattleIndex <= averageBI)
                 {
                     enemies.Add(enemy);
+                    totalEnemyBI += enemy.BattleIndex;
                 }
             }
 
             while (totalEnemyBI < adjustedPlayerBI * 0.25)
-                enemies.Add(GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies));
+            {
+                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+                enemies.Add(enemy);
+                totalEnemyBI += enemy.BattleIndex;
+            }
 
             return enemies;
         }

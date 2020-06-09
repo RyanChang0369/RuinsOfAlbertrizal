@@ -62,6 +62,9 @@ namespace RuinsOfAlbertrizal
         {
             get
             {
+                if (iconLocation == null)
+                    return false;
+
                 return File.Exists(Path.Combine(GameBase.CurrentMapLocation, iconLocation));
             }
         }
