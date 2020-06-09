@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Items
 {
-    [Serializable]
+    
     public class Consumable : Item, IRoundBasedObject
     {
         public List<Buff> Buffs { get; set; }

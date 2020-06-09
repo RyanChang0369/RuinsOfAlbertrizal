@@ -4,9 +4,9 @@
   <Name>Campaign</Name>
   <Description>The main storyline of this game.</Description>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <PlayerCreated>false</PlayerCreated>
+  <PlayerCreated>true</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
-  <SeenIntroduction>false</SeenIntroduction>
+  <SeenIntroduction>true</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -175,7 +175,7 @@
       <TurnsPassed>0</TurnsPassed>
       <GeneralName>Green Slime</GeneralName>
       <Level>0</Level>
-      <StyleOfModel>Humanoid</StyleOfModel>
+      <StyleOfModel>Slime</StyleOfModel>
       <AIStyle>Beserk</AIStyle>
       <BaseStats>
         <int>10</int>
@@ -617,7 +617,7 @@
       <Name>Final Level</Name>
       <Description />
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>false</SeenIntroduction>
+      <SeenIntroduction>true</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>

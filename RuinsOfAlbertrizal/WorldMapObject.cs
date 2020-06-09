@@ -15,6 +15,7 @@ namespace RuinsOfAlbertrizal
     /// <summary>
     /// Has both an icon and a in-game image
     /// </summary>
+    
     public abstract class WorldMapObject : IconedObjectOfAlbertrizal, INotifyPropertyChanged
     {
         private string worldImgLocation;

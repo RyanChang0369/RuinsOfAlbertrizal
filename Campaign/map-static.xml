@@ -175,7 +175,7 @@
       <TurnsPassed>0</TurnsPassed>
       <GeneralName>Green Slime</GeneralName>
       <Level>0</Level>
-      <StyleOfModel>Humanoid</StyleOfModel>
+      <StyleOfModel>Slime</StyleOfModel>
       <AIStyle>Beserk</AIStyle>
       <BaseStats>
         <int>10</int>

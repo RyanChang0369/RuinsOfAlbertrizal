@@ -13,6 +13,7 @@ namespace RuinsOfAlbertrizal
     /// <summary>
     /// Everything must have a name, description, and GUID in this world.
     /// </summary>
+    
     public abstract class ObjectOfAlbertrizal : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

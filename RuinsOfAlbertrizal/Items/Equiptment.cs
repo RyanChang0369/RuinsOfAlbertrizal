@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Items
 {
-    [Serializable]
+    
     public class Equiptment : Item
     {
         /// <summary>

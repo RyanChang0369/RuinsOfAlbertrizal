@@ -12,6 +12,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
 {
+    
     public abstract class IconedObjectOfAlbertrizal : ObjectOfAlbertrizal, INotifyPropertyChanged
     {
         private string iconLocation;

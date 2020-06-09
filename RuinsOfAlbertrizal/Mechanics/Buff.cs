@@ -9,6 +9,7 @@ namespace RuinsOfAlbertrizal.Mechanics
     /// <summary>
     /// Buffs and debuffs
     /// </summary>
+    
     public class Buff : IconedObjectOfAlbertrizal, IRoundBasedObject
     {
         public override string DisplayName

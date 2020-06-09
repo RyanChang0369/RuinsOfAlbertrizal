@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace RuinsOfAlbertrizal.Characters
 {
-    [Serializable]
+    
     public class Boss : Enemy
     {
         public Boss() : base()

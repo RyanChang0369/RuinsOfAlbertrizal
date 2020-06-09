@@ -202,6 +202,7 @@
     <Compile Include="RandomEvent.cs" />
     <Compile Include="RandomEventChooser.cs" />
     <Compile Include="RNG.cs" />
+    <Compile Include="RoAMethods.cs" />
     <Compile Include="Testing.cs" />
     <Compile Include="Text\Message.cs" />
     <Compile Include="ITurnBasedObject.cs" />

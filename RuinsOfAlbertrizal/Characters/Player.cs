@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
-    [Serializable]
+    
     public class Player : Character, INotifyPropertyChanged
     {
         [XmlIgnore]
@@ -73,7 +73,7 @@ namespace RuinsOfAlbertrizal.Characters
 
             if ((bool)prompt.DialogResult)
             {
-                GameBase.CurrentGame.PlayerItems.Add(item.DeepClone());
+                GameBase.CurrentGame.PlayerItems.Add(item);
             }
         }
 
@@ -87,7 +87,7 @@ namespace RuinsOfAlbertrizal.Characters
 
             if ((bool)prompt.DialogResult)
             {
-                GameBase.CurrentGame.PlayerEquiptments.Add(equiptment.DeepClone());
+                GameBase.CurrentGame.PlayerEquiptments.Add(equiptment);
             }
         }
 
@@ -101,7 +101,7 @@ namespace RuinsOfAlbertrizal.Characters
 
             if ((bool)prompt.DialogResult)
             {
-                GameBase.CurrentGame.PlayerConsumables.Add(consumable.DeepClone());
+                GameBase.CurrentGame.PlayerConsumables.Add(consumable);
             }
         }
 

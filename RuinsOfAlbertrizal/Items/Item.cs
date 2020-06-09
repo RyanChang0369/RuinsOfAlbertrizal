@@ -2,7 +2,7 @@
 
 namespace RuinsOfAlbertrizal.Items
 {
-    [Serializable]
+    
     public class Item : IconedObjectOfAlbertrizal
     {
         /// <summary>

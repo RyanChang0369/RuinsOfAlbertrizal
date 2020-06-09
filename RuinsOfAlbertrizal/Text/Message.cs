@@ -10,6 +10,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Text
 {
+    
     public class Message
     {
         private Timer TimerChar = new Timer(50);
