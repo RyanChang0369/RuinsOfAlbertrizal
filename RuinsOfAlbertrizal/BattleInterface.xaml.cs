@@ -78,35 +78,44 @@ namespace RuinsOfAlbertrizal
         {
             for (int i = 0; i < GameBase.NumActiveCharacters; i++)
             {
-                try
-                {
-                    if (GameBase.CurrentGame.ActivePlayers[i].WorldImgIsValid)
-                        playerImages[i].Source = GameBase.CurrentGame.ActivePlayers[i].WorldImgAsBitmapSource;
-                    else
-                        playerImages[i].Source = new BitmapImage();
+                UpdatePlayerImage(i);
+                UpdateEnemyImage(i);
+            }
+        }
 
-                    playerImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
-                    playerTargetImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
-                }
-                catch (IndexOutOfRangeException)
-                {
+        private void UpdatePlayerImage(int i)
+        {
+            try
+            {
+                if (GameBase.CurrentGame.ActivePlayers[i].WorldImgIsValid)
+                    playerImages[i].Source = GameBase.CurrentGame.ActivePlayers[i].WorldImgAsBitmapSource;
+                else
+                    playerImages[i].Source = new BitmapImage();
 
-                }
+                playerImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
+                playerTargetImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
+            }
+            catch (IndexOutOfRangeException)
+            {
 
-                try
-                {
-                    if (BattleField.Enemies[i].WorldImgIsValid)
-                        enemyImages[i].Source = BattleField.Enemies[i].WorldImgAsBitmapSource;
-                    else
-                        enemyImages[i].Source = new BitmapImage();
+            }
+        }
 
-                    enemyImages[i].Tag = BattleField.ActiveEnemies[i];
-                    enemyTargetImages[i].Tag = BattleField.ActiveEnemies[i];
-                }
-                catch (IndexOutOfRangeException)
-                {
+        private void UpdateEnemyImage(int i)
+        {
+            try
+            {
+                if (BattleField.Enemies[i].WorldImgIsValid)
+                    enemyImages[i].Source = BattleField.Enemies[i].WorldImgAsBitmapSource;
+                else
+                    enemyImages[i].Source = new BitmapImage();
 
-                }
+                enemyImages[i].Tag = BattleField.ActiveEnemies[i];
+                enemyTargetImages[i].Tag = BattleField.ActiveEnemies[i];
+            }
+            catch (IndexOutOfRangeException)
+            {
+
             }
         }
 
@@ -123,8 +132,8 @@ namespace RuinsOfAlbertrizal
                 throw new ArgumentOutOfRangeException($"{oldEnemy.DisplayName} not found within ActiveEnemies");
 
             Animate("enemySlideOut", enemyImages[index]);
-            enemyImages[index].Source = newEnemy.WorldImgAsBitmapSource;
             BattleField.ActiveEnemies[index] = newEnemy;
+            UpdateEnemyImage(index);
             Animate("enemySlideIn", enemyImages[index]);
         }
 
@@ -136,8 +145,8 @@ namespace RuinsOfAlbertrizal
                 throw new ArgumentOutOfRangeException($"{oldPlayer.DisplayName} not found within ActivePlayers");
 
             Animate("enemySlideOut", playerImages[index]);
-            playerImages[index].Source = newPlayer.WorldImgAsBitmapSource;
             GameBase.CurrentGame.ActivePlayers[index] = newPlayer;
+            UpdatePlayerImage(index);
             Animate("enemySlideIn", playerImages[index]);
         }
 

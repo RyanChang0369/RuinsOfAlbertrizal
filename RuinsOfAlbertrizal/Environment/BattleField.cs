@@ -369,6 +369,8 @@ namespace RuinsOfAlbertrizal.Environment
         {
             SpeedTimer.Stop();
 
+            StoredMessage.Add($"{character.DisplayName} is up.");
+
             if (character.GetType() == typeof(Player))
                 PlayerTurn((Player)character);
             else
@@ -403,6 +405,8 @@ namespace RuinsOfAlbertrizal.Environment
         {
             if (PlayerHasWon)
                 PlayerWins();
+            else if (PlayerHasLost)
+                PlayerLoses();
         }
 
         public void NotifyAttackBegin(Attack attack, Character attacker)
