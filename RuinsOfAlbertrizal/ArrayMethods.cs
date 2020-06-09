@@ -77,7 +77,7 @@ namespace RuinsOfAlbertrizal
         }
 
         /// <summary>
-        /// Tries to remove the 
+        /// Tries to remove the element at the index. Catches ArgumentOutOfRangeException.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list"></param>
