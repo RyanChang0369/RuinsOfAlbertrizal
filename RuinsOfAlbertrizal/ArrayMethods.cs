@@ -87,7 +87,7 @@ namespace RuinsOfAlbertrizal
             {
                 list.RemoveAt(index);
             }
-            catch (IndexOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
 
             }
