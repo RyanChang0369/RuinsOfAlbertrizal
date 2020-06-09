@@ -18,11 +18,11 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     /// <summary>
     /// Interaction logic for AttackAdderPrompt.xaml
     /// </summary>
-    public partial class AttackAdderPrompt : Window
+    public partial class AttackAdderPrompt : BaseAdderPrompt
     {
-        private bool saved = false;
-
         public List<Attack> TargetAttacks { get; set; }
+
+        public List<Attack> OriginalAttacks { get; set; }
 
         public AttackAdderPrompt()
         {
@@ -33,6 +33,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
         {
             InitializeComponent();
             TargetAttacks = targetAttacks;
+            OriginalAttacks = targetAttacks;
         }
 
         private void AvailableAttacksList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -53,30 +54,9 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             listBox.Items.RemoveAt(listBox.SelectedIndex);
         }
 
-        private void Quit(object sender, RoutedEventArgs e)
+        protected override void ResetVariable()
         {
-            Close();
-        }
-
-        private void Save(object sender, RoutedEventArgs e)
-        {
-            saved = true;
-            Close();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (saved)
-                return;
-
-            MessageBoxResult result = MessageBox.Show("Save before quitting?", "Unsaved Work", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
-
-            if (result == MessageBoxResult.Yes)
-            { }
-            else if (result == MessageBoxResult.Cancel)
-                e.Cancel = true;
-            else
-                TargetAttacks = null;
+            TargetAttacks = OriginalAttacks;
         }
     }
 }

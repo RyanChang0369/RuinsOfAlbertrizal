@@ -18,7 +18,12 @@ namespace RuinsOfAlbertrizal.Editor.Converter
             }
             catch (InvalidCastException)
             {
-                return ((List<ObjectOfAlbertrizal>)value)[((List<ObjectOfAlbertrizal>)value).Count - 1].DisplayName;
+                List<ObjectOfAlbertrizal> objects = new List<ObjectOfAlbertrizal>((IEnumerable<ObjectOfAlbertrizal>)value);
+
+                if (objects.Count > 1)
+                    return objects[objects.Count - 1].DisplayName;
+                else
+                    return "";
             }
         }
 

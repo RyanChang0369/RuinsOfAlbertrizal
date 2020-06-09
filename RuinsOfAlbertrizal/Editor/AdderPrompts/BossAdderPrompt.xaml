@@ -35,7 +35,7 @@
 
             <StackPanel>
                 <Button Content="Quit" Click="Quit" Style="{StaticResource buttonSmallStretch}" IsCancel="True"/>
-                <Button Content="Save and exit" Click="Save" Style="{StaticResource buttonSmallStretch}" IsDefault="True"/>
+                <Button Content="Save and Exit" Click="Save" Style="{StaticResource buttonSmallStretch}" IsDefault="True"/>
             </StackPanel>
         </StackPanel>
     </Grid>

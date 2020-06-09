@@ -2,7 +2,7 @@
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GlobalID>94b2c76d-7603-406c-9f2b-e6aa0a5acc6d</GlobalID>
   <Name>Campaign</Name>
-  <Description />
+  <Description>The main storyline of this game.</Description>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
   <PlayerCreated>false</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
@@ -224,7 +224,45 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <BoundAttacks />
+      <BoundAttacks>
+        <Attack>
+          <GlobalID>1e4af09f-dcf6-465a-aa08-5f5ef088fe40</GlobalID>
+          <Name>Stab</Name>
+          <Description>Basic stab attack.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <MultiTarget>false</MultiTarget>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+      </BoundAttacks>
       <IsCharging>false</IsCharging>
       <PreviousTargets />
       <InventoryEquiptments />
@@ -567,58 +605,12 @@
       <RoundsPassed>0</RoundsPassed>
     </Consumable>
   </StoredConsumables>
-  <StoredHazards>
-    <Hazard>
-      <GlobalID>87292532-1e97-4592-a5ae-6d66d24fd503</GlobalID>
-      <Name />
-      <Description />
-      <Location>
-        <X>0</X>
-        <Y>0</Y>
-      </Location>
-      <TypeOfBlock>TangableBlock</TypeOfBlock>
-      <StatLoss>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </StatLoss>
-      <Buffs />
-      <DirectionOfDamage>None</DirectionOfDamage>
-    </Hazard>
-  </StoredHazards>
-  <StoredBlocks>
-    <Block>
-      <GlobalID>485ca330-961f-4525-9371-b2a987214ce7</GlobalID>
-      <Name>error_block</Name>
-      <Description>Used as a placeholder.</Description>
-      <Location>
-        <X>0</X>
-        <Y>0</Y>
-      </Location>
-      <TypeOfBlock>TangableBlock</TypeOfBlock>
-    </Block>
-    <Block>
-      <GlobalID>4913d3a4-1a3a-4ffc-a016-168f7fe58e79</GlobalID>
-      <Name />
-      <Description />
-      <Location>
-        <X>0</X>
-        <Y>0</Y>
-      </Location>
-      <TypeOfBlock>TangableBlock</TypeOfBlock>
-    </Block>
-  </StoredBlocks>
+  <StoredHazards />
+  <StoredBlocks />
   <PlayerItems />
   <PlayerConsumables />
   <PlayerEquiptments />
-  <Difficulty>1.0</Difficulty>
+  <Difficulty>1</Difficulty>
   <Levels>
     <Level>
       <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
@@ -700,7 +692,7 @@
           <MessagesOnVictory />
         </Enemy>
       </StoredEnemies>
-      <Difficulty>2.0</Difficulty>
+      <Difficulty>2</Difficulty>
       <MaxPoints>9000</MaxPoints>
       <Points>0</Points>
       <Bosses>
