@@ -211,7 +211,7 @@ namespace RuinsOfAlbertrizal.Environment
                 }
             }
 
-            while (totalEnemyBI < adjustedPlayerBI * 0.25)
+            while (totalEnemyBI < adjustedPlayerBI)
             {
                 Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
                 enemies.Add(enemy);
@@ -252,7 +252,7 @@ namespace RuinsOfAlbertrizal.Environment
                 }
             }
 
-            while (totalEnemyBI < adjustedPlayerBI * 0.25)
+            while (totalEnemyBI < adjustedPlayerBI)
             {
                 Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
                 enemies.Add(enemy);
