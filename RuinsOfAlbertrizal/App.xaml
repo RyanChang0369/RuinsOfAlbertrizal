@@ -180,6 +180,14 @@
             </Setter>
         </Style>
 
+        <Style TargetType="Image" x:Key="blurredAndZoomed" BasedOn="{StaticResource blurred}">
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="2.2" ScaleY='2.2'/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style TargetType="Image" x:Key="circleImg" BasedOn="{StaticResource goodQuality}">
             <Setter Property="Width" Value="20"/>
             <Setter Property="Height" Value="20"/>

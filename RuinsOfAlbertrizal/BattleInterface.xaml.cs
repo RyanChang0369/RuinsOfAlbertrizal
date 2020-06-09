@@ -43,6 +43,7 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
             BattleField = battleField;
             DataContext = BattleField;
+            BackgroundImg.Source = GameBase.CurrentGame.CurrentLevel.WorldImgAsBitmapSource;
             UpdateImageLists();
             UpdateGrid();
             InitialAnimation();
