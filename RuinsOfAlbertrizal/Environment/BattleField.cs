@@ -57,6 +57,25 @@ namespace RuinsOfAlbertrizal.Environment
         public Enemy[] ActiveEnemies { get; set; }
 
         [XmlIgnore]
+        public Player[] ActivePlayers
+        {
+            get => GameBase.CurrentGame.ActivePlayers;
+            set => GameBase.CurrentGame.ActivePlayers = value;
+        }
+
+        [XmlIgnore]
+        public List<Character> AllCharacters
+        {
+            get
+            {
+                List<Character> characters = new List<Character>();
+                characters.AddRange(GameBase.CurrentGame.Players);
+                characters.AddRange(Enemies);
+                return characters;
+            }
+        }
+
+        [XmlIgnore]
         public List<Character> AliveCharacters
         {
             get
@@ -77,6 +96,18 @@ namespace RuinsOfAlbertrizal.Environment
                 characters.AddRange(GameBase.CurrentGame.DeadPlayers);
                 characters.AddRange(DeadEnemies);
                 return characters;
+            }
+        }
+
+        [XmlIgnore]
+        public int MaxSpeed
+        {
+            get
+            {
+                int max = int.MinValue;
+                foreach (Character character in AliveCharacters)
+                    max += character.CurrentStats[4];
+                return max;
             }
         }
 
@@ -333,21 +364,9 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void SetTimer()
         {
-            int fastestSpeed = 0;
+            
 
-            ConcurrentCharacters.Clear();
-
-            foreach (Character character in AliveCharacters)
-            {
-                if (character.CurrentStats[4] >= fastestSpeed)
-                    fastestSpeed = character.CurrentStats[4];
-            }
-
-            foreach (Character character in AliveCharacters)
-            {
-                if (character.CurrentStats[4] == fastestSpeed)
-                    ConcurrentCharacters.Add(character);
-            }
+            
 
             SpeedTimer = new Timer(GameBase.TickSpeed);
             SpeedTimer.Elapsed += new ElapsedEventHandler(Tick);
@@ -359,16 +378,22 @@ namespace RuinsOfAlbertrizal.Environment
         {
             ElaspedTime++;
 
-            if (ConcurrentCharacters.Count > 0)
+            ConcurrentCharacters.Clear();
+
+            foreach (Character character in AliveCharacters)
             {
-                int fateSelector = RNG.GetRandomInteger(ConcurrentCharacters.Count);
-                StartRound(ConcurrentCharacters[fateSelector]);
+                character.TurnTicks += character.CurrentStats[4];
             }
+
+            for (int i = 0; i < ConcurrentCharacters.Count; i++)
+                StartRound(ConcurrentCharacters[i]);
         }
 
         public void StartRound(Character character)
         {
             SpeedTimer.Stop();
+
+            character.TurnTicks = 0;
 
             StoredMessage.Add($"{character.DisplayName} is up.");
 

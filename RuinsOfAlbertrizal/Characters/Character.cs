@@ -22,6 +22,8 @@ namespace RuinsOfAlbertrizal.Characters
 
         public int TurnsPassed { get; set; }
 
+        public int TurnTicks { get; set; }
+
         public override string DisplayName
         {
             get
