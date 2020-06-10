@@ -29,7 +29,7 @@ namespace RuinsOfAlbertrizal.AIs
                 " No regard to health." +
                 " Recovers mana only if unable to attack." +
                 " Cannot use items.")]
-            Beserk = 10,
+            Berserk = 10,
             [Description(
                 "Attacks player with the most damaging attacks possible." +
                 //" Moves so that its most damaging attack or attacks is in range of the player." +
@@ -37,7 +37,7 @@ namespace RuinsOfAlbertrizal.AIs
                 " Heals with healing items and/or spells if below 40% health." +
                 " Recovers mana only if unable to attack." +
                 " Uses items to recover health and mana.")]
-            Beserk_UseItem = 11,
+            Berserk_UseItem = 11,
             [Description(
                 "Similar to beserk. " +
                 "Heals with healing items and/or spells if below 50% health or if received 20% damage in one attack")]
@@ -86,16 +86,16 @@ namespace RuinsOfAlbertrizal.AIs
                 case AIStyle.NoChange:
                 case AIStyle.Player:
                     throw new ArgumentException("The current AIStyle forbids attacking");
-                case AIStyle.Beserk:
-                    AIStyle_Berzerk(attacker, activePlayers, activeEnemies);
+                case AIStyle.Berserk:
+                    AIStyle_Berserk(attacker, activePlayers, activeEnemies);
                     break;
-                case AIStyle.Beserk_UseItem:
+                case AIStyle.Berserk_UseItem:
 
                     break;
             }
         }
 
-        public static void AIStyle_Berzerk(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        public static void AIStyle_Berserk(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
         {
             //Select weapon and attack here
 
@@ -134,6 +134,11 @@ namespace RuinsOfAlbertrizal.AIs
             }
 
             attacker.Attack(attack, target);
+        }
+
+        public static void AIStyle_BerserkUseItem(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        {
+            
         }
     }
 }

@@ -89,7 +89,7 @@
       <GeneralName>Rare Green Slime</GeneralName>
       <Level>1</Level>
       <StyleOfModel>Humanoid</StyleOfModel>
-      <AIStyle>Beserk</AIStyle>
+      <AIStyle>Berserk</AIStyle>
       <BaseStats>
         <int>2000</int>
         <int>500</int>
@@ -165,6 +165,7 @@
         </Message>
       </MessagesOnDefeat>
       <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
     </Boss>
   </StoredBosses>
   <StoredEnemies>
@@ -176,7 +177,7 @@
       <GeneralName>Green Slime</GeneralName>
       <Level>0</Level>
       <StyleOfModel>Slime</StyleOfModel>
-      <AIStyle>Beserk</AIStyle>
+      <AIStyle>Berserk</AIStyle>
       <BaseStats>
         <int>10</int>
         <int>0</int>
@@ -272,6 +273,7 @@
       <MessagesOnAttack />
       <MessagesOnDefeat />
       <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
     </Enemy>
   </StoredEnemies>
   <StoredBuffs>
@@ -632,7 +634,7 @@
           <GeneralName>Green Slime</GeneralName>
           <Level>0</Level>
           <StyleOfModel>Humanoid</StyleOfModel>
-          <AIStyle>Beserk</AIStyle>
+          <AIStyle>Berserk</AIStyle>
           <BaseStats>
             <int>10</int>
             <int>0</int>
@@ -690,6 +692,7 @@
           <MessagesOnAttack />
           <MessagesOnDefeat />
           <MessagesOnVictory />
+          <SpawnChance>1</SpawnChance>
         </Enemy>
       </StoredEnemies>
       <Difficulty>2</Difficulty>
@@ -705,7 +708,7 @@
           <GeneralName>Rare Green Slime</GeneralName>
           <Level>1</Level>
           <StyleOfModel>Humanoid</StyleOfModel>
-          <AIStyle>Beserk</AIStyle>
+          <AIStyle>Berserk</AIStyle>
           <BaseStats>
             <int>2000</int>
             <int>500</int>
@@ -781,6 +784,7 @@
             </Message>
           </MessagesOnDefeat>
           <MessagesOnVictory />
+          <SpawnChance>1</SpawnChance>
         </Boss>
       </Bosses>
       <TheWinCondition>DefeatEnemies</TheWinCondition>
