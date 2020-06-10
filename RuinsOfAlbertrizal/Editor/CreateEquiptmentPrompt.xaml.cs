@@ -46,6 +46,11 @@ namespace RuinsOfAlbertrizal.Editor
         protected override void AddRequiredControls()
         {
             RequiredControls.Add(EquiptmentName);
+            RequiredControls.Add(HPGain);
+            RequiredControls.Add(ManaGain);
+            RequiredControls.Add(DefGain);
+            RequiredControls.Add(SpdGain);
+            RequiredControls.Add(IntGain);
         }
 
         private void SelectSlotsBtn_Click(object sender, RoutedEventArgs e)
