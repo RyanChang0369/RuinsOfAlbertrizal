@@ -47,6 +47,11 @@ namespace RuinsOfAlbertrizal.Editor
         {
             RequiredControls.Add(ConsumableName);
             RequiredControls.Add(DropChance);
+            RequiredControls.Add(HPGain);
+            RequiredControls.Add(ManaGain);
+            RequiredControls.Add(DefGain);
+            RequiredControls.Add(SpdGain);
+            RequiredControls.Add(IntGain);
         }
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)

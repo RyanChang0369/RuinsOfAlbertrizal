@@ -14,6 +14,8 @@ namespace RuinsOfAlbertrizal.Items
     {
         public List<Buff> Buffs { get; set; }
 
+        public int[] StatGain { get; set; }
+
         [XmlIgnore]
         public int Duration
         {
@@ -37,7 +39,10 @@ namespace RuinsOfAlbertrizal.Items
         public bool HasEnded { get => RoundsPassed >= Duration; }
 
         public Consumable()
-        { }
+        {
+            Buffs = new List<Buff>();
+            StatGain = new int[GameBase.NumStats];
+        }
 
         public void EndRound()
         {
