@@ -46,6 +46,13 @@ namespace RuinsOfAlbertrizal.Editor
         protected override void AddRequiredControls()
         {
             RequiredControls.Add(EnemyName);
+            RequiredControls.Add(BaseHP);
+            RequiredControls.Add(BaseMana);
+            RequiredControls.Add(BaseSpd);
+            RequiredControls.Add(BaseDef);
+            RequiredControls.Add(BaseDmg);
+            RequiredControls.Add(BaseInt);
+            RequiredControls.Add(SpawnChance);
         }
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)

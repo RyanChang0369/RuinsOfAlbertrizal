@@ -40,6 +40,8 @@ namespace RuinsOfAlbertrizal.Characters
 
         private AI.AIStyle aiStyle;
 
+        public double SpawnChance { get; set; }
+
         public override AI.AIStyle AIStyle
         {
             get => aiStyle;
@@ -57,6 +59,7 @@ namespace RuinsOfAlbertrizal.Characters
         public Enemy() : base()
         {
             AIStyle = AI.AIStyle.NoAI;
+            SpawnChance = 1.0;
             MessagesOnAttack = new List<Message>();
             MessagesOnDefeat = new List<Message>();
             MessagesOnEncounter = new List<Message>();
