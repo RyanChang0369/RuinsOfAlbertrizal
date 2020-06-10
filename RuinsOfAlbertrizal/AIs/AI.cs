@@ -73,13 +73,12 @@ namespace RuinsOfAlbertrizal.AIs
         /// <summary>
         /// Selects a target and attacks it.
         /// </summary>
-        /// <param name="aiStyle"></param>
         /// <param name="attacker"></param>
         /// <param name="activePlayers"></param>
         /// <param name="activeEnemies"></param>
         /// <exception cref="ArgumentException"></exception>
         /// <returns></returns>
-        public static void SelectTarget(AIStyle aiStyle, Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        public static void SelectTarget(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
         {
             //If charging an attack, let it charge.
             try
@@ -96,9 +95,9 @@ namespace RuinsOfAlbertrizal.AIs
             if (attacker.AllAttacks.Count < 1)
             {
                 attacker.Run();
-            }    
+            }
 
-            switch (aiStyle)
+            switch (attacker.AIStyle)
             {
                 case AIStyle.NoAI:
                 case AIStyle.NoChange:

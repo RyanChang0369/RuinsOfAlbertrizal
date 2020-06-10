@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Characters;
+﻿using RuinsOfAlbertrizal.AIs;
+using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
@@ -379,7 +380,9 @@ namespace RuinsOfAlbertrizal.Environment
 
         private void EnemyTurn(Enemy enemy)
         {
-
+            //Selects target twice as each character has two turns
+            AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
+            AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
         }
 
         private void PlayerTurn(Player player)
