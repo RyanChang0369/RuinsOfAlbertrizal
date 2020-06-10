@@ -229,7 +229,7 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// This character will recieve the following buffs.
+        /// This character will receive the following buffs.
         /// </summary>
         public List<Buff> PermanentBuffs { get; set; }
 

@@ -310,7 +310,7 @@ namespace RuinsOfAlbertrizal.Environment
         }
 
         /// <summary>
-        /// Gives XP for each player. Dead players recieve half the XP.
+        /// Gives XP for each player. Dead players receive half the XP.
         /// </summary>
         private void AwardXP()
         {

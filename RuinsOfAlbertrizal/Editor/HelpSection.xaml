@@ -98,7 +98,7 @@
 
                 <Paragraph Style="{StaticResource h2P}">Defense</Paragraph>
                 <Paragraph>
-                    Defense is subtracted from oncoming damage. It does not negate damage recieved from
+                    Defense is subtracted from oncoming damage. It does not negate damage received from
                     buffs, or from any attacks with the tag
                     <Italic>Is Magic.</Italic>
                 </Paragraph>

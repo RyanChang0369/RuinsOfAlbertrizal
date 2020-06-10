@@ -121,7 +121,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Permanent Buffs"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="This character will recieve the following permanent buffs."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="This character will receive the following permanent buffs."/>
                 </StackPanel>
                 <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=PermanentBuffs, Mode=TwoWay}"/>
                 

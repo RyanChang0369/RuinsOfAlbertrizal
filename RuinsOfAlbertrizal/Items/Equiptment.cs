@@ -62,7 +62,7 @@ namespace RuinsOfAlbertrizal.Items
         public List<Buff> BuffImmunities { get; set; }
 
         /// <summary>
-        /// The character who equipts this equiptment will recieve the following permanent buffs.
+        /// The character who equipts this equiptment will receive the following permanent buffs.
         /// </summary>
         public List<Buff> GrantedBuffs { get; set; }
 
