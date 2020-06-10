@@ -19,3 +19,5 @@ Test line 21 of ProperNameConverter
 Implement death and running
 
 Implement fear, which is determined by the inventory quantity, amount of stats depleted, and whether or not an enemy with a large BI has died.
+
+Improve AI for Berserk
