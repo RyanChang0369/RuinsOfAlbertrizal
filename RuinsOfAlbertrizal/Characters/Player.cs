@@ -63,6 +63,11 @@ namespace RuinsOfAlbertrizal.Characters
             throw new NotImplementedException();
         }
 
+        public override void Run()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Prompts the user to keep or discard the item. Creates a deep clone of the item.
         /// </summary>

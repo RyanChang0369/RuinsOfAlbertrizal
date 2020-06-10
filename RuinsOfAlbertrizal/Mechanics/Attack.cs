@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Mechanics
 {
-    
+
     public class Attack : ObjectOfAlbertrizal, ITurnBasedObject
     {
         public List<Buff> Buffs { get; set; }
@@ -127,7 +127,7 @@ namespace RuinsOfAlbertrizal.Mechanics
             int statIndex = (int)stat;
 
             total += StatLoss[statIndex];
-            
+
             foreach (Buff buff in Buffs)
             {
                 total -= buff.GetLifetimeStatGain(target, stat);
@@ -141,28 +141,39 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         /// <param name="attacker">The character doing the attacking.</param>
         /// <param name="targets">The character being attacked.</param>
-        public void BeginAttack(Character attacker, List<Character> targets)
+        /// <param name="useStatCost">If false, then do not use StatCostToUser</param>
+        /// <exception cref="ArgumentException"></exception>
+        public void BeginAttack(Character attacker, List<Character> targets, bool useStatCost = true)
         {
             if (CanBeUsedBy(attacker))
             {
                 TurnSinceAttacked = 0;
                 TurnsSinceBeginCharge = 0;
 
-                for (int i = 0; i < StatCostToUser.Length; i++)
+                if (useStatCost)
                 {
-                    attacker.AppliedStats[i] -= StatCostToUser[i];
+                    for (int i = 0; i < StatCostToUser.Length; i++)
+                    {
+                        attacker.AppliedStats[i] -= StatCostToUser[i];
+                    }
                 }
 
                 GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker);
 
                 foreach (Character target in targets)
-                    target.GetAttacked(this);
+                {
+                    if (!CanTargetCharacter(attacker, target))
+                        throw new ArgumentException($"Character {attacker.DisplayName} cannot target {target.DisplayName}.");
+                    else
+                        target.GetAttacked(this);
+                }
             }
             else if (!IsCharged)
             {
-                //Begin charge
+                //Begin/Continue charge
                 TurnsSinceBeginCharge++;
                 GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
+                attacker.AttackToCharge = this;
             }
         }
 
@@ -171,14 +182,37 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         /// <param name="attacker"></param>
         /// <param name="target"></param>
-        public void BeginAttack(Character attacker, Character target)
+        /// <param name="useStatCost">If false, then do not use StatCostToUser</param>
+        /// <exception cref="ArgumentException"></exception>
+        public void BeginAttack(Character attacker, Character target, bool useStatCost = true)
         {
-            List<Character> temp = new List<Character>
-            {
-                target
-            };
+            if (!CanTargetCharacter(attacker, target))
+                throw new ArgumentException($"Character {attacker.DisplayName} cannot target {target.DisplayName}.");
 
-            BeginAttack(attacker, temp);
+            if (CanBeUsedBy(attacker))
+            {
+                TurnSinceAttacked = 0;
+                TurnsSinceBeginCharge = 0;
+
+                if (useStatCost)
+                {
+                    for (int i = 0; i < StatCostToUser.Length; i++)
+                    {
+                        attacker.AppliedStats[i] -= StatCostToUser[i];
+                    }
+                }
+
+                GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker);
+
+                target.GetAttacked(this);
+            }
+            else if (!IsCharged)
+            {
+                //Begin/Continue charge
+                TurnsSinceBeginCharge++;
+                GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
+                attacker.AttackToCharge = this;
+            }
         }
 
         /// <summary>
@@ -189,7 +223,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         {
             for (int i = 0; i < StatLoss.Length; i++)
             {
-                target.AppliedStats[i] -= StatLoss[i]; 
+                target.AppliedStats[i] -= StatLoss[i];
             }
         }
 
@@ -211,7 +245,7 @@ namespace RuinsOfAlbertrizal.Mechanics
 
             List<int> playerTargetIndexes = new List<int>();
             List<int> enemyTargetIndexes = new List<int>();
-            
+
             for (int i = 0; i < GameBase.NumActiveCharacters; i++)
             {
                 if (CanTargetCharacter(attacker, activePlayers[i]))
@@ -265,7 +299,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         }
 
         /// <summary>
-        /// Finds most damaging attack, in terms of the given stat, that the attacker can use.
+        /// Finds most damaging attack, in terms of the given stat, that the attacker can use, or returns null if no such attack can be found.
         /// </summary>
         public static Attack FindStrongestAttack(Character attacker, Character target, GameBase.Stats stat)
         {
@@ -273,16 +307,16 @@ namespace RuinsOfAlbertrizal.Mechanics
         }
 
         /// <summary>
-        /// Finds most damaging attack that the attacker can use from a list of provided attacks.
+        /// Finds most damaging attack that the attacker can use from a list of provided attacks, or returns null if no such attack can be found.
         /// </summary>
         public static Attack FindStrongestAttack(Character attacker, Character target, GameBase.Stats stat, List<Attack> attacks)
         {
-            Attack strongestAttack = attacks[0];
-            int strongestStat = strongestAttack.GetLifetimeStatLoss(target, stat);
+            Attack strongestAttack = null;
+            int strongestStat = 0;
 
             foreach (Attack attack in attacks)
             {
-                if (!attack.CanBeUsedBy(attacker))
+                if (!attack.CanBeUsedBy(attacker) || !attack.CanTargetCharacter(attacker, target))
                     continue;
                 else if (attack.GetLifetimeStatLoss(target, stat) > strongestStat)
                 {
@@ -292,6 +326,45 @@ namespace RuinsOfAlbertrizal.Mechanics
             }
 
             return strongestAttack;
+        }
+
+        /// <summary>
+        /// Finds the attack that heals the most, or returns null if no healing attacks can be found.
+        /// </summary>
+        /// <param name="healer"></param>
+        /// <param name="target"></param>
+        /// <param name="stat"></param>
+        /// <returns></returns>
+        public static Attack FindBestHealingAttack(Character healer, Character target, GameBase.Stats stat)
+        {
+            return FindBestHealingAttack(healer, target, stat, healer.AllAttacks);
+        }
+
+        /// <summary>
+        /// Finds the attack that heals the most, or returns null if no healing attacks can be found.
+        /// </summary>
+        /// <param name="healer"></param>
+        /// <param name="target"></param>
+        /// <param name="stat"></param>
+        /// <param name="attacks"></param>
+        /// <returns></returns>
+        public static Attack FindBestHealingAttack(Character healer, Character target, GameBase.Stats stat, List<Attack> attacks)
+        {
+            Attack mostHealyAttack = null;
+            int weakestStat = 0;
+
+            foreach (Attack attack in attacks)
+            {
+                if (!attack.CanBeUsedBy(healer) || !attack.CanTargetCharacter(healer, target))
+                    continue;
+                else if (attack.GetLifetimeStatLoss(target, stat) < weakestStat)
+                {
+                    mostHealyAttack = attack;
+                    weakestStat = mostHealyAttack.GetLifetimeStatLoss(target, stat);
+                }
+            }
+
+            return mostHealyAttack;
         }
 
         public void EndTurn()

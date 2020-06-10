@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace RuinsOfAlbertrizal.AIs
             Berserk_UseItem = 11,
             [Description(
                 "Similar to beserk. " +
-                "Heals with healing items and/or spells if below 50% health or if received 20% damage in one attack")]
+                "Heals with healing items and/or spells if below 60% health.")]
             Timid = 20,
             [Description(
                 "Similar to Timid. " +
@@ -48,7 +49,7 @@ namespace RuinsOfAlbertrizal.AIs
             Healer = 30,
             [Description(
             //"Tries to stay above the player. " +
-            "Similar to Timid, but hovers above the ground (visual difference)."
+            "Same as timid."
             //"Moves so it is out of range of player. Moves on its first turn. " +
             //"Attacks twice only if player is very far away (twice the range of the player). " +
             //"Only heals if out of range of player. " +
@@ -56,7 +57,7 @@ namespace RuinsOfAlbertrizal.AIs
             //"Uses items when unable to attack and player is out of range or when player is very far away (twice the player's movement range). "
             )]
             Flying = 40,
-            [Description("Similar to Healer, but hovers above the ground (visual difference).")]
+            [Description("Same as healer.")]
             Flying_Healer = 41
         }
 
@@ -65,7 +66,7 @@ namespace RuinsOfAlbertrizal.AIs
         {
             get
             {
-                return Enum.GetValues(typeof(AIStyle)).Cast<AIStyle>().ToList<AIStyle>();
+                return Enum.GetValues(typeof(AIStyle)).Cast<AIStyle>().ToList();
             }
         }
 
@@ -80,6 +81,23 @@ namespace RuinsOfAlbertrizal.AIs
         /// <returns></returns>
         public static void SelectTarget(AIStyle aiStyle, Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
         {
+            //If charging an attack, let it charge.
+            try
+            {
+                attacker.TryContinueCharge();
+                return;
+            }
+            catch (ArgumentException)
+            {
+
+            }
+
+            //If enemy has no attacks, try to run
+            if (attacker.AllAttacks.Count < 1)
+            {
+                attacker.Run();
+            }    
+
             switch (aiStyle)
             {
                 case AIStyle.NoAI:
@@ -87,18 +105,86 @@ namespace RuinsOfAlbertrizal.AIs
                 case AIStyle.Player:
                     throw new ArgumentException("The current AIStyle forbids attacking");
                 case AIStyle.Berserk:
-                    AIStyle_Berserk(attacker, activePlayers, activeEnemies);
+                    AIStyle_Berserk(attacker, activePlayers);
                     break;
                 case AIStyle.Berserk_UseItem:
-
+                    AIStyle_BerserkUseItem(attacker, activePlayers);
+                    break;
+                case AIStyle.Timid:
+                case AIStyle.Flying:
+                    AIStyle_Timid(attacker, activePlayers);
+                    break;
+                case AIStyle.Healer:
+                case AIStyle.Flying_Healer:
+                    AIStyle_Healer(attacker, activePlayers, activeEnemies);
                     break;
             }
         }
 
-        public static void AIStyle_Berserk(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        public static void UseItem(Enemy user, GameBase.Stats stat)
         {
-            //Select weapon and attack here
+            if (user.InventoryConsumables.Count < 1)
+                return;
 
+            int statToRecover = user.ArmoredStats[(int)stat] - user.CurrentStats[(int)stat];
+            int minimumDifference = int.MaxValue;
+            Consumable selectedConsumable = null;
+
+            //Find the consumable that completly heals the user without wasting very good consumables
+            foreach (Consumable consumable in user.InventoryConsumables)
+            {
+                //The higher the user's intellect, the less likely they will use a potion with more negative side effects.
+                //This check is ignored if the potion's util is above or equal to 10
+                if (user.ArmoredStats[(int)GameBase.Stats.Int] > consumable.GetUtils(user) && consumable.GetUtils(user) < 10)
+                {
+                    continue;
+                }
+
+                int hpGain = consumable.GetLifetimeStatGain(user, stat);
+                if (hpGain > statToRecover)
+                {
+                    if (statToRecover - hpGain < minimumDifference)
+                    {
+                        selectedConsumable = consumable;
+                        minimumDifference = statToRecover - hpGain;
+                    }
+                }
+            }
+
+            //Consumable that can fully replenish does not exist.
+            if (selectedConsumable == null)
+            {
+                int maxStat = 0;
+
+                foreach (Consumable consumable in user.InventoryConsumables)
+                {
+                    //The higher the user's intellect, the less likely they will use a potion with more negative side effects.
+                    //This check is ignored if the potion's util is above or equal to 10
+                    if (user.ArmoredStats[(int)GameBase.Stats.Int] > consumable.GetUtils(user) && consumable.GetUtils(user) < 10)
+                    {
+                        continue;
+                    }
+                    else if (consumable.GetLifetimeStatGain(user, stat) > maxStat)
+                    {
+                        selectedConsumable = consumable;
+                        maxStat = consumable.GetLifetimeStatGain(user, stat);
+                    }
+                }
+            }
+
+            //If recovering mana is better, just recover mana
+            if (selectedConsumable != null && stat == GameBase.Stats.Mana && (int)Math.Round(user.LeveledStats[1] * 0.3) > selectedConsumable.GetLifetimeStatGain(user, GameBase.Stats.Mana))
+                user.RecoverMana();
+            //Else consume the item if it is not null
+            else if (selectedConsumable != null)
+                user.Consume(selectedConsumable);
+            //Else recover
+            else
+                user.RecoverMana();
+        }
+
+        public static void AIStyle_Berserk(Enemy attacker, Player[] activePlayers)
+        {
             //Find player with lowest hp and select that as target
             Player target = activePlayers[0];
 
@@ -112,7 +198,12 @@ namespace RuinsOfAlbertrizal.AIs
 
             Attack attack;
 
-            if (fateSelector < 0.5 && target.PercentStats[0] < 0.35)
+            if (attacker.GetMultiTargetAttacks().Count < 1)
+            {
+                //Attacker does not multitarget attacks
+                attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP);
+            }
+            else if (fateSelector < 0.5 && target.PercentStats[0] < 0.35)
             {
                 //50% chance that the enemy will use the strongest multitargeting attack instead of the strongest single attack
                 //if target is below 35% health
@@ -133,12 +224,74 @@ namespace RuinsOfAlbertrizal.AIs
                 attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP);
             }
 
+            //If cannot use attack due to mana, recover
+            if (attack.StatCostToUser[1] > attacker.CurrentStats[1])
+            {
+                attacker.RecoverMana();
+                return;
+            }
+
             attacker.Attack(attack, target);
         }
 
-        public static void AIStyle_BerserkUseItem(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        public static void AIStyle_BerserkUseItem(Enemy attacker, Player[] activePlayers)
         {
+            if (attacker.PercentStats[0] < 0.4)
+                UseItem(attacker, GameBase.Stats.HP);
+            else
+                AIStyle_Berserk(attacker, activePlayers);
+        }
+
+        public static void AIStyle_Timid(Enemy attacker, Player[] activePlayers)
+        {
+            if (attacker.PercentStats[0] < 0.6)
+                UseItem(attacker, GameBase.Stats.HP);
+            else if (attacker.PercentStats[2] < 0.3)
+                UseItem(attacker, GameBase.Stats.Def);
+            else if (attacker.PercentStats[4] < 0.4)
+                UseItem(attacker, GameBase.Stats.Spd);
+            else if (attacker.PercentStats[5] < 0.25)
+                UseItem(attacker, GameBase.Stats.Int);
+            else if (attacker.PercentStats[3] < 0.25)
+                UseItem(attacker, GameBase.Stats.Dmg);
+            else
+                AIStyle_Berserk(attacker, activePlayers);
+        }
+
+        public static void AIStyle_Healer(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        {
+            List<Enemy> woundedAllies = new List<Enemy>();
+
+            //If self is critically wounded, then just heal self
+            if (attacker.PercentStats[0] < 0.2)
+                UseItem(attacker, GameBase.Stats.HP);
+
+            foreach (Enemy enemy in activeEnemies)
+            {
+                if (enemy.PercentStats[0] < 0.75)
+                {
+                    woundedAllies.Add(enemy);
+                }
+            }
+
             
+
+            if (woundedAllies.Count > 0)
+            {
+                //Heal wounded allies
+                Enemy mostWounded = woundedAllies[0];
+
+                foreach (Enemy enemy in woundedAllies)
+                {
+                    if (enemy.CurrentStats[0] < mostWounded.CurrentStats[0])
+                        mostWounded = enemy;
+                }
+
+                Attack attack = Attack.FindBestHealingAttack(attacker, mostWounded, GameBase.Stats.HP);
+                attacker.Attack(attack, mostWounded);
+            }
+            else
+                AIStyle_Timid(attacker, activePlayers);
         }
     }
 }

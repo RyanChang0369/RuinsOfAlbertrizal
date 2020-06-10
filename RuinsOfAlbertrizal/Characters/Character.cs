@@ -406,7 +406,12 @@ namespace RuinsOfAlbertrizal.Characters
         /// <summary>
         /// True if character is charging an attack, false otherwise.
         /// </summary>
-        public bool IsCharging { get; set; }
+        [XmlIgnore]
+        public bool IsCharging { get => AttackToCharge != null && CharacterTargetedByCharge != null && !CharacterTargetedByCharge.IsDead; }
+
+        public Attack AttackToCharge { get; set; }
+
+        public Character CharacterTargetedByCharge { get; set; }
 
         [XmlIgnore]
         public bool IsDead { get => CurrentStats[0] <= 0; }
@@ -445,20 +450,37 @@ namespace RuinsOfAlbertrizal.Characters
         /// Do an attack with the attacker being this character
         /// </summary>
         /// <param name="attack"></param>
-        /// <param name="targets"></param>
-        public void Attack(Attack attack, List<Character> targets)
-        {
-            attack.BeginAttack(this, targets);
-        }
-
-        /// <summary>
-        /// Do an attack with the attacker being this character
-        /// </summary>
-        /// <param name="attack"></param>
         /// <param name="target"></param>
         public void Attack(Attack attack, Character target)
         {
-            attack.BeginAttack(this, target);
+            try
+            {
+                attack.BeginAttack(this, target);
+            }
+            catch (ArgumentException)
+            {
+                throw;
+            }
+            EndTurn();
+        }
+
+        /// <summary>
+        /// Tries to continues charge.
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
+        public void TryContinueCharge()
+        {
+            if (!IsCharging)
+                throw new ArgumentException("Character must be charging an attack.");
+
+            try
+            {
+                AttackToCharge.BeginAttack(this, CharacterTargetedByCharge, false);
+            }
+            catch (ArgumentException)
+            {
+                throw;
+            }
         }
 
         public void RecoverMana()
@@ -479,6 +501,8 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         public abstract void Die();
+
+        public abstract void Run();
 
         public void EndTurn()
         {

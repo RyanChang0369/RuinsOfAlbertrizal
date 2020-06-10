@@ -66,5 +66,38 @@ namespace RuinsOfAlbertrizal.Items
 
             }
         }
+
+        public int[] GetLifetimeStatGain(Character target)
+        {
+            int[] statGain = new int[GameBase.NumStats];
+            foreach (Buff buff in Buffs)
+                statGain = ArrayMethods.AddArrays(statGain, buff.GetLifetimeStatGain(target));
+
+            return ArrayMethods.AddArrays(statGain, StatGain);
+        }
+
+        public int GetLifetimeStatGain(Character target, GameBase.Stats stat)
+        {
+            int total = StatGain[(int)stat];
+            foreach (Buff buff in Buffs)
+                total += buff.GetLifetimeStatGain(target, stat);
+
+            return total;
+        }
+
+        /// <summary>
+        /// The higher this number, the more "beneficial" this consumable is.
+        /// </summary>
+        /// <param name="user">The character using this consumable.</param>
+        public int GetUtils(Character user)
+        {
+            int[] lifetimeStats = GetLifetimeStatGain(user);
+            int utils = 0;
+
+            foreach (int i in lifetimeStats)
+                utils += i;
+
+            return utils;
+        }
     }
 }

@@ -99,5 +99,10 @@ namespace RuinsOfAlbertrizal.Characters
         {
             
         }
+
+        public override void Run()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
