@@ -71,7 +71,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             try
             {
-                CreatedEnemy.WorldImgLocation = FileHandler.SaveBitmap(CreatedEnemy, "icon");
+                CreatedEnemy.WorldImgLocation = FileHandler.SaveBitmap(CreatedEnemy, "worldImg");
             }
             catch (ArgumentException)
             {
