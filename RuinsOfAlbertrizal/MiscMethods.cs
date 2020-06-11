@@ -97,5 +97,10 @@ namespace RuinsOfAlbertrizal
 
             return seperator;
         }
+
+        public async static Task TaskDelay(int milliseconds)
+        {
+            await Task.Delay(milliseconds);
+        }
     }
 }

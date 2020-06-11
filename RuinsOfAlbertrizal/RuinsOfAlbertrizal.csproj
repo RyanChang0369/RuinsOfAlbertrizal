@@ -193,6 +193,9 @@
     <Compile Include="PartyMembersInterface.xaml.cs">
       <DependentUpon>PartyMembersInterface.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PartySlotSelector.xaml.cs">
+      <DependentUpon>PartySlotSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PlayerChooser.xaml.cs">
       <DependentUpon>PlayerChooser.xaml</DependentUpon>
     </Compile>
@@ -376,6 +379,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="PartyMembersInterface.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PartySlotSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

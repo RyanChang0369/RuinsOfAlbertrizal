@@ -244,10 +244,10 @@ namespace RuinsOfAlbertrizal
             Navigate("[back]");
         }
 
-        //public void NotifyStoredMessageChanged(Message message)
-        //{
-            
-        //}
+        private void BasePage_Loaded(object sender, RoutedEventArgs e)
+        {
+            BattleField.SetTimer();
+        }
 
         public void NotifyAttackBegin(Attack attack, Character attacker)
         {
@@ -272,6 +272,11 @@ namespace RuinsOfAlbertrizal
         public void NotifyPlayerAttacking(Player player)
         {
             ActionPanel.Visibility = Visibility.Hidden;
+        }
+
+        public void NotifyTick()
+        {
+            
         }
     }
 }

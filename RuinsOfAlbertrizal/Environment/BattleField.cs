@@ -390,7 +390,8 @@ namespace RuinsOfAlbertrizal.Environment
         public void SetTimer()
         {
             SpeedTimer = new System.Timers.Timer(GameBase.TickSpeed);
-            SpeedTimer.Elapsed += new ElapsedEventHandler(Tick);
+            SpeedTimer.Elapsed += Tick;
+            SpeedTimer.AutoReset = true;
             SpeedTimer.Start();
         }
 
@@ -420,7 +421,7 @@ namespace RuinsOfAlbertrizal.Environment
                     ConcurrentCharacters.Add(character);
             }
 
-            //Order concurrent characters by value
+            BattleInterface.NotifyTick();
 
             for (int i = 0; i < ConcurrentCharacters.Count; i++)
                 StartRound(ConcurrentCharacters[i]);
@@ -440,11 +441,13 @@ namespace RuinsOfAlbertrizal.Environment
                 EnemyTurn((Enemy)character);
         }
 
-        private void EnemyTurn(Enemy enemy)
+        private async void EnemyTurn(Enemy enemy)
         {
             //Selects target twice as each character has two turns
             AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
+            await MiscMethods.TaskDelay(500);
             AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
+            await MiscMethods.TaskDelay(500);
         }
 
         private void PlayerTurn(Player player)
@@ -458,7 +461,6 @@ namespace RuinsOfAlbertrizal.Environment
         public void EndRound()
         {
             RoundsPassed++;
-            SetTimer();
         }
 
         public void StartTurn()

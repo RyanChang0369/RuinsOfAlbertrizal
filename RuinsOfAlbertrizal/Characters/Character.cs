@@ -23,10 +23,20 @@ namespace RuinsOfAlbertrizal.Characters
 
         public int TurnsPassed { get; set; }
 
+        private int turnTicks;
+
         /// <summary>
         /// Once this value reaches the maximum speed, this character will start a round.
         /// </summary>
-        public int TurnTicks { get; set; }
+        public int TurnTicks
+        {
+            get => turnTicks;
+            set
+            {
+                turnTicks = value;
+                OnPropertyChanged();
+            }
+        }
 
         public override string DisplayName
         {

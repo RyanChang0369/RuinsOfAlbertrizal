@@ -2,6 +2,7 @@
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System.Collections.Generic;
+using System.Security.Principal;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -240,7 +241,17 @@ namespace RuinsOfAlbertrizal
                     Tag = player
                 };
 
+                Button setActiveBtn = new Button
+                {
+                    Content = "Set as Active",
+                    Style = (Style)Application.Current.FindResource("buttonSmallStretch"),
+                    FontSize = 24,
+                    Tag = player,
+                    ToolTip = "Click put this player on the front lines."
+                };
+
                 inventoryBtn.Click += InventoryBtn_Click;
+                setActiveBtn.Click += SetActiveBtn_Click;
 
                 //Shunt everything into a stackpanel
                 StackPanel containingStackPanel = new StackPanel();
@@ -251,6 +262,7 @@ namespace RuinsOfAlbertrizal
                 containingStackPanel.Children.Add(buffLabel);
                 containingStackPanel.Children.Add(buffScrollViewer);
                 containingStackPanel.Children.Add(inventoryBtn);
+                containingStackPanel.Children.Add(setActiveBtn);
 
                 PartyMembersStackPanel.Children.Add(containingStackPanel);
             }
@@ -261,6 +273,19 @@ namespace RuinsOfAlbertrizal
             Button btn = (Button)sender;
             SelectedPlayer = (Player)btn.Tag;
             Navigate("InventoryInterface.xaml");
+        }
+
+        private void SetActiveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            PartySlotSelector selector = new PartySlotSelector((Player)btn.Tag, GameBase.CurrentGame.ActivePlayers);
+            selector.ShowDialog();
+            int index = selector.SelectedIndex;
+
+            if (index < 0)
+                return;
+            else
+                GameBase.CurrentGame.ActivePlayers[index] = (Player)btn.Tag;
         }
     }
 }
