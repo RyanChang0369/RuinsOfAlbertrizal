@@ -83,19 +83,19 @@
     <Boss>
       <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
       <Name>Shotgun Slime</Name>
-      <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
+      <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
       <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Rare Green Slime</GeneralName>
       <Level>1</Level>
-      <StyleOfModel>Humanoid</StyleOfModel>
+      <StyleOfModel>Slime</StyleOfModel>
       <AIStyle>Berserk</AIStyle>
       <BaseStats>
         <int>2000</int>
         <int>500</int>
         <int>10</int>
-        <int>0</int>
+        <int>10</int>
         <int>50</int>
         <int>2</int>
         <int>0</int>
@@ -172,19 +172,21 @@
     <Enemy>
       <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
       <Name>Green Slime</Name>
-      <Description>A small slime. Not much of a threat unless it has a shotgun.</Description>
+      <Description>A fairly common sight around here. Not much of a threat unless it has a shotgun.</Description>
+      <IconLocation>..\Enemy\Green Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Green Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
       <Level>0</Level>
       <StyleOfModel>Slime</StyleOfModel>
-      <AIStyle>Berserk</AIStyle>
+      <AIStyle>Timid</AIStyle>
       <BaseStats>
+        <int>25</int>
         <int>10</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>2</int>
+        <int>3</int>
+        <int>3</int>
+        <int>10</int>
         <int>2</int>
         <int>0</int>
         <int>0</int>
@@ -265,6 +267,146 @@
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
+      <PreviousTargets />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <MessagesOnEncounter />
+      <MessagesOnAttack />
+      <MessagesOnDefeat />
+      <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
+    </Enemy>
+    <Enemy>
+      <GlobalID>8b03134d-450d-4ea2-b37d-19b8f931edb3</GlobalID>
+      <Name>Blue Slime</Name>
+      <Description>Knows a bit about magic.</Description>
+      <IconLocation>..\Enemy\Blue Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Blue Slime_worldImg.png</WorldImgLocation>
+      <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
+      <GeneralName>Slime</GeneralName>
+      <Level>1</Level>
+      <StyleOfModel>Slime</StyleOfModel>
+      <AIStyle>Healer</AIStyle>
+      <BaseStats>
+        <int>25</int>
+        <int>25</int>
+        <int>0</int>
+        <int>0</int>
+        <int>10</int>
+        <int>5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <PermanentBuffs />
+      <BuffImmunities />
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <BoundAttacks />
+      <PreviousTargets />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <MessagesOnEncounter />
+      <MessagesOnAttack />
+      <MessagesOnDefeat />
+      <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
+    </Enemy>
+    <Enemy>
+      <GlobalID>848a829e-1a48-46c2-be84-1314d72632b7</GlobalID>
+      <Name>Red Slime</Name>
+      <Description>Arguably the most aggressive of all the slimes.</Description>
+      <IconLocation>..\Enemy\Red Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Red Slime_worldImg.png</WorldImgLocation>
+      <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
+      <GeneralName>Slime</GeneralName>
+      <Level>1</Level>
+      <StyleOfModel>Slime</StyleOfModel>
+      <AIStyle>Berserk</AIStyle>
+      <BaseStats>
+        <int>50</int>
+        <int>3</int>
+        <int>10</int>
+        <int>8</int>
+        <int>13</int>
+        <int>2</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <PermanentBuffs />
+      <BuffImmunities />
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <BoundAttacks />
       <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
