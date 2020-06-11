@@ -21,3 +21,7 @@ Implement death and running
 Implement fear, which is determined by the inventory quantity, amount of stats depleted, and whether or not an enemy with a large BI has died.
 
 Improve AI for Berserk
+
+Test Enemy.Run(). Make sure the enemy is removed from the thing.
+
+Test Battlefield.Tick at extremely high numbers of characters.

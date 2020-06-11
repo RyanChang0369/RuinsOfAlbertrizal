@@ -6,6 +6,7 @@ using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Timers;
 using System.Xml.Serialization;
 
@@ -57,11 +58,21 @@ namespace RuinsOfAlbertrizal.Environment
         public Enemy[] ActiveEnemies { get; set; }
 
         [XmlIgnore]
+        public List<Player> Players
+        {
+            get => GameBase.CurrentGame.Players;
+            set => GameBase.CurrentGame.Players = value;
+        }
+
+        [XmlIgnore]
         public Player[] ActivePlayers
         {
             get => GameBase.CurrentGame.ActivePlayers;
             set => GameBase.CurrentGame.ActivePlayers = value;
         }
+
+        [XmlIgnore]
+        public List<Player> AlivePlayers => GameBase.CurrentGame.AlivePlayers;
 
         [XmlIgnore]
         public List<Character> AllCharacters
@@ -135,7 +146,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         public int ElaspedTime { get; set; }
 
-        private Timer SpeedTimer { get; set; }
+        private System.Timers.Timer SpeedTimer { get; set; }
 
         /// <summary>
         /// Creates a new battlefield using the players in GameBase.CurrentGame. Navigate to BattleInterface to show the interface.
@@ -321,6 +332,8 @@ namespace RuinsOfAlbertrizal.Environment
             AwardPoints();
             AwardXP();
             //Get loot here
+
+            BattleEnd();
         }
 
         private void PlayerLoses()
@@ -328,6 +341,18 @@ namespace RuinsOfAlbertrizal.Environment
 
         }
 
+        public void PlayerRunsAway()
+        {
+            StoredMessage.Add("You ran away!");
+            BattleEnd();
+        }
+
+        private void BattleEnd()
+        {
+            StoredMessage.Add("Exiting battle...");
+            Thread.Sleep(1738);
+            BattleInterface.Exit();
+        }
 
         private void AwardPoints()
         {
@@ -364,11 +389,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void SetTimer()
         {
-            
-
-            
-
-            SpeedTimer = new Timer(GameBase.TickSpeed);
+            SpeedTimer = new System.Timers.Timer(GameBase.TickSpeed);
             SpeedTimer.Elapsed += new ElapsedEventHandler(Tick);
             SpeedTimer.Start();
         }
@@ -376,23 +397,39 @@ namespace RuinsOfAlbertrizal.Environment
 
         private void Tick(object sender, ElapsedEventArgs e)
         {
+            //Avoid conflicting ticks by stopping timer during a tick
+            SpeedTimer.Stop();
+
             ElaspedTime++;
 
             ConcurrentCharacters.Clear();
 
+            int maxTicks = MaxSpeed;
+
             foreach (Character character in AliveCharacters)
             {
                 character.TurnTicks += character.CurrentStats[4];
+
+                if (character.TurnTicks > maxTicks)
+                    maxTicks = character.TurnTicks;
             }
+
+            foreach (Character character in AliveCharacters)
+            {
+                if (character.TurnTicks == maxTicks)
+                    ConcurrentCharacters.Add(character);
+            }
+
+            //Order concurrent characters by value
 
             for (int i = 0; i < ConcurrentCharacters.Count; i++)
                 StartRound(ConcurrentCharacters[i]);
+
+            SpeedTimer.Start();
         }
 
         public void StartRound(Character character)
         {
-            SpeedTimer.Stop();
-
             character.TurnTicks = 0;
 
             StoredMessage.Add($"{character.DisplayName} is up.");
@@ -412,7 +449,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         private void PlayerTurn(Player player)
         {
-
+            BattleInterface.NotifyPlayerIsReady(player);
         }
 
         /// <summary>
@@ -426,7 +463,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void StartTurn()
         {
-            //RemoveDeadCharacters();
+            
         }
 
         public void EndTurn()

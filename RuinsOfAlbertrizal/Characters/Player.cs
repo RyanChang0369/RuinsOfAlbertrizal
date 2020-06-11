@@ -63,9 +63,41 @@ namespace RuinsOfAlbertrizal.Characters
             throw new NotImplementedException();
         }
 
-        public override void Run()
+        public static void Run(BattleField battleField)
         {
-            throw new NotImplementedException();
+            int aveEnemySpd = 0;
+            int avePlayerSpd = 0;
+
+            foreach (Enemy enemy in battleField.AliveEnemies)
+            {
+                aveEnemySpd += enemy.CurrentStats[4];
+            }
+
+            foreach (Player player in battleField.Players)
+            {
+                //If player is dead, their speed is quartered
+                if (player.IsDead)
+                    avePlayerSpd += player.CurrentStats[4] / 4;
+                else
+                    avePlayerSpd += player.CurrentStats[4];
+            }
+
+            //Find the averages of speed
+            aveEnemySpd /= battleField.AliveEnemies.Count;
+            avePlayerSpd /= battleField.Players.Count;
+
+            if (avePlayerSpd > aveEnemySpd) //If player speed is greater than enemy speed, then run success
+                battleField.PlayerRunsAway();
+            else if (GameBase.CurrentGame.TotalDifficulty <= 0) //Go easy on noobs
+                battleField.PlayerRunsAway();
+            else
+            {
+                int fateSelector = RNG.GetRandomPercent() - (int)Math.Round(GameBase.CurrentGame.TotalDifficulty * 10.0);
+                int spdDiff = aveEnemySpd - avePlayerSpd;
+
+                if (fateSelector > spdDiff)
+                    battleField.PlayerRunsAway();
+            }
         }
 
         /// <summary>

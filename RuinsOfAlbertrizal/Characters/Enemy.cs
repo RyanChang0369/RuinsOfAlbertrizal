@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.AIs;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Text;
 using System;
@@ -100,9 +101,23 @@ namespace RuinsOfAlbertrizal.Characters
             
         }
 
-        public override void Run()
+        public void Run(BattleField battleField)
         {
-            throw new NotImplementedException();
+            int avePlayerSpd = 0;
+
+            foreach (Player player in battleField.AlivePlayers)
+            {
+                avePlayerSpd += player.CurrentStats[4];
+            }
+
+            if (CurrentStats[4] > avePlayerSpd)
+            {
+                battleField.ActiveEnemies[Array.IndexOf(battleField.ActiveEnemies, this)] = null;
+                battleField.Enemies.Remove(this);
+                battleField.StoredMessage.Add($"Enemy {DisplayName} ran away!");
+            }
+            else
+                battleField.StoredMessage.Add($"Enemy {DisplayName} failed to run away!");
         }
     }
 }

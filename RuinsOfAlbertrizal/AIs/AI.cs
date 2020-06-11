@@ -94,7 +94,7 @@ namespace RuinsOfAlbertrizal.AIs
             //If enemy has no attacks, try to run
             if (attacker.AllAttacks.Count < 1)
             {
-                attacker.Run();
+                attacker.Run(GameBase.CurrentGame.CurrentBattleField);
             }
 
             switch (attacker.AIStyle)

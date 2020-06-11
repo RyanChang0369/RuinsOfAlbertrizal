@@ -77,7 +77,7 @@
                     <StackPanel Orientation="Horizontal" Style="{StaticResource center}">
                         <ProgressBar x:Name="player0_ProgressBar" Style="{StaticResource playerProgressBar}" 
                                  ToolTip="{Binding Path=ActivePlayers[0].DisplayName}"
-                                     Value="{Binding Path=ActivePlayers[0].}"
+                                     Value="{Binding Path=ActivePlayers[0].TurnTicks}"
                                      Maximum="{Binding Path=MaxSpeed}"/>
                         <ProgressBar x:Name="player1_ProgressBar" Style="{StaticResource playerProgressBar}"
                                  ToolTip="{Binding Path=ActivePlayers[1].DisplayName}"/>

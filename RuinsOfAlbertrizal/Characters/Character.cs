@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.AIs;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
@@ -22,6 +23,9 @@ namespace RuinsOfAlbertrizal.Characters
 
         public int TurnsPassed { get; set; }
 
+        /// <summary>
+        /// Once this value reaches the maximum speed, this character will start a round.
+        /// </summary>
         public int TurnTicks { get; set; }
 
         public override string DisplayName
@@ -503,8 +507,6 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         public abstract void Die();
-
-        public abstract void Run();
 
         public void EndTurn()
         {

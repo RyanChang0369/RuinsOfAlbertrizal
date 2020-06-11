@@ -236,10 +236,10 @@ namespace RuinsOfAlbertrizal
 
         private void Flee_Click(object sender, RoutedEventArgs e)
         {
-
+            Player.Run(BattleField);
         }
 
-        private void Exit()
+        public void Exit()
         {
             Navigate("[back]");
         }
@@ -262,6 +262,16 @@ namespace RuinsOfAlbertrizal
         public void NotifyItemUsed(Item item, Character user)
         {
             //update sprites
+        }
+
+        public void NotifyPlayerIsReady(Player player)
+        {
+            ActionPanel.Visibility = Visibility.Visible;
+        }
+
+        public void NotifyPlayerAttacking(Player player)
+        {
+            ActionPanel.Visibility = Visibility.Hidden;
         }
     }
 }
