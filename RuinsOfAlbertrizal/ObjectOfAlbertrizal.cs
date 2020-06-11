@@ -111,11 +111,11 @@ namespace RuinsOfAlbertrizal
             return null;
         }
 
-        public static List<Guid> ToGuidList(List<ObjectOfAlbertrizal> objects)
+        public static List<Guid> ToGuidList<T>(List<T> objects) where T : ObjectOfAlbertrizal
         {
             List<Guid> guids = new List<Guid>();
 
-            foreach (ObjectOfAlbertrizal thing in objects)
+            foreach (T thing in objects)
                 guids.Add(thing.GlobalID);
 
             return guids;

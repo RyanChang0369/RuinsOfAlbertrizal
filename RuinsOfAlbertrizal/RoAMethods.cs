@@ -8,16 +8,16 @@ namespace RuinsOfAlbertrizal
 {
     public static class RoAMethods
     {
-        public static List<Guid> ToGuidList(this List<ObjectOfAlbertrizal> objects)
+        public static List<Guid> ToGuidList<T>(this List<T> objects) where T : ObjectOfAlbertrizal
         {
             return ObjectOfAlbertrizal.ToGuidList(objects);
         }
 
-        public static List<ObjectOfAlbertrizal> FilterByGuid(this List<ObjectOfAlbertrizal> objects, List<Guid> guids)
+        public static List<T> FilterByGuid<T>(this List<T> objects, List<Guid> guids) where T : ObjectOfAlbertrizal
         {
-            List<ObjectOfAlbertrizal> filteredList = new List<ObjectOfAlbertrizal>();
+            List<T> filteredList = new List<T>();
 
-            foreach (ObjectOfAlbertrizal thing in objects)
+            foreach (T thing in objects)
             {
                 if (guids.Contains(thing.GlobalID))
                     filteredList.Add(thing);
