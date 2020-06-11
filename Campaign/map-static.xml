@@ -527,6 +527,43 @@
       <MultiTarget>false</MultiTarget>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
+    <Attack>
+      <GlobalID>838f77ef-e8db-45b9-90ef-52d7c48422f5</GlobalID>
+      <Name>Mega Boop</Name>
+      <Description>Another attack that most slimes have. This attack causes more damage at the price of a short charge-up.</Description>
+      <Buffs />
+      <StatLoss>
+        <int>15</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>1</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IgnoresArmor>false</IgnoresArmor>
+      <MultiTarget>false</MultiTarget>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+    </Attack>
   </StoredAttacks>
   <StoredItems>
     <Item>

@@ -218,6 +218,13 @@ namespace RuinsOfAlbertrizal.Editor
             SelectedTab = MainTabControl.SelectedIndex;
         }
 
+        private void CreateNew(object sender, RoutedEventArgs e)
+        {
+            ClearSelection(sender, e);
+
+            Navigate(sender, e);
+        }
+
         private void ClearSelection(object sender, RoutedEventArgs e)
         {
             Button button = (Button)sender;
@@ -228,57 +235,46 @@ namespace RuinsOfAlbertrizal.Editor
                 case "Enemy":
                     CreatedEnemiesList.SelectedIndex = -1;
                     CreateEnemyPrompt.CreatedEnemy = null;
-                    CreateEnemyBtn.Content = "Create Enemy";
                     break;
                 case "Boss":
                     CreatedBossesList.SelectedIndex = -1;
                     CreateBossPrompt.CreatedBoss = null;
-                    CreateBossBtn.Content = "Create Boss";
                     break;
                 case "Buff":
                     CreatedBuffsList.SelectedIndex = -1;
                     CreateBuffPrompt.CreatedBuff = null;
-                    CreateBuffBtn.Content = "Create Buff";
                     break;
                 case "Attack":
                     CreatedAttacksList.SelectedIndex = -1;
                     CreateAttackPrompt.CreatedAttack = null;
-                    CreateAttackBtn.Content = "Create Attack";
                     break;
                 case "Player":
                     CreatedPlayersList.SelectedIndex = -1;
                     CreatePlayerPrompt.CreatedPlayer = null;
-                    CreatePlayerBtn.Content = "Create Player";
                     break;
                 case "Hazard":
                     CreatedHazardsList.SelectedIndex = -1;
                     CreateHazardPrompt.CreatedHazard = null;
-                    CreateHazardBtn.Content = "Create Hazard";
                     break;
                 case "Block":
                     CreatedBlocksList.SelectedIndex = -1;
                     CreateBlockPrompt.CreatedBlock = null;
-                    CreateBlockBtn.Content = "Create Block";
                     break;
                 case "Item":
                     CreatedItemsList.SelectedIndex = -1;
                     CreateItemPrompt.CreatedItem = null;
-                    CreateItemBtn.Content = "Create Item";
                     break;
                 case "Equiptment":
                     CreatedEquiptmentsList.SelectedIndex = -1;
                     CreateEquiptmentPrompt.CreatedEquiptment = null;
-                    CreateEquiptmentBtn.Content = "Create Equiptment";
                     break;
                 case "Consumable":
                     CreatedConsumablesList.SelectedIndex = -1;
                     CreateConsumablePrompt.CreatedConsumable = null;
-                    CreateConsumableBtn.Content = "Create Consumable";
                     break;
                 case "Level":
                     CreatedLevelsList.SelectedIndex = -1;
                     CreateLevelPrompt.CreatedLevel = null;
-                    CreatedLevelBtn.Content = "Create Level";
                     break;
                 default:
                     throw new ArgumentException("Tag missing or invalid");
@@ -360,7 +356,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateEnemyPrompt.CreatedEnemy = Map.StoredEnemies[CreatedEnemiesList.SelectedIndex];
-                CreateEnemyBtn.Content = "Edit Enemy";
             }
             catch (Exception)
             {
@@ -373,7 +368,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateBossPrompt.CreatedBoss = Map.StoredBosses[CreatedBossesList.SelectedIndex];
-                CreateBossBtn.Content = "Edit Boss";
             }
             catch (Exception)
             {
@@ -386,7 +380,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateBuffPrompt.CreatedBuff = Map.StoredBuffs[CreatedBuffsList.SelectedIndex];
-                CreateBuffBtn.Content = "Edit Buff";
             }
             catch (Exception)
             {
@@ -399,7 +392,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateAttackPrompt.CreatedAttack = Map.StoredAttacks[CreatedAttacksList.SelectedIndex];
-                CreateAttackBtn.Content = "Edit Attack";
             }
             catch (Exception)
             {
@@ -412,7 +404,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreatePlayerPrompt.CreatedPlayer = Map.Players[CreatedPlayersList.SelectedIndex];
-                CreatePlayerBtn.Content = "Edit Player";
             }
             catch (Exception)
             {
@@ -425,7 +416,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateHazardPrompt.CreatedHazard = Map.StoredHazards[CreatedHazardsList.SelectedIndex];
-                CreateHazardBtn.Content = "Edit Hazard";
             }
             catch (Exception)
             {
@@ -438,7 +428,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateBlockPrompt.CreatedBlock = Map.StoredBlocks[CreatedBlocksList.SelectedIndex];
-                CreateBlockBtn.Content = "Edit Block";
             }
             catch (Exception)
             {
@@ -451,7 +440,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateItemPrompt.CreatedItem = Map.StoredItems[CreatedItemsList.SelectedIndex];
-                CreateItemBtn.Content = "Edit Item";
             }
             catch (Exception)
             {
@@ -464,7 +452,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateEquiptmentPrompt.CreatedEquiptment = Map.StoredEquiptments[CreatedEquiptmentsList.SelectedIndex];
-                CreateEquiptmentBtn.Content = "Edit Equiptment";
             }
             catch (Exception)
             {
@@ -477,7 +464,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateConsumablePrompt.CreatedConsumable = Map.StoredConsumables[CreatedConsumablesList.SelectedIndex];
-                CreateConsumableBtn.Content = "Edit Consumable";
             }
             catch (Exception)
             {
@@ -490,7 +476,6 @@ namespace RuinsOfAlbertrizal.Editor
             try
             {
                 CreateLevelPrompt.CreatedLevel = Map.Levels[CreatedLevelsList.SelectedIndex];
-                CreatedLevelBtn.Content = "Edit Level";
             }
             catch (Exception)
             {
