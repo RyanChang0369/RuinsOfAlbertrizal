@@ -21,6 +21,7 @@
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
       <GeneralName>Human</GeneralName>
       <Level>1</Level>
       <StyleOfModel>Humanoid</StyleOfModel>
@@ -73,7 +74,6 @@
       </CurrentEquiptments>
       <CurrentConsumables />
       <BoundAttacks />
-      <IsCharging>false</IsCharging>
       <PreviousTargets />
       <XP>0</XP>
     </Player>
@@ -86,6 +86,7 @@
       <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
       <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
       <GeneralName>Rare Green Slime</GeneralName>
       <Level>1</Level>
       <StyleOfModel>Humanoid</StyleOfModel>
@@ -138,7 +139,6 @@
       </CurrentEquiptments>
       <CurrentConsumables />
       <BoundAttacks />
-      <IsCharging>false</IsCharging>
       <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
@@ -171,10 +171,11 @@
   <StoredEnemies>
     <Enemy>
       <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
-      <Name>Slime</Name>
+      <Name>Green Slime</Name>
       <Description>A small slime. Not much of a threat unless it has a shotgun.</Description>
       <TurnsPassed>0</TurnsPassed>
-      <GeneralName>Green Slime</GeneralName>
+      <TurnTicks>0</TurnTicks>
+      <GeneralName>Slime</GeneralName>
       <Level>0</Level>
       <StyleOfModel>Slime</StyleOfModel>
       <AIStyle>Berserk</AIStyle>
@@ -264,7 +265,6 @@
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
-      <IsCharging>false</IsCharging>
       <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
@@ -604,6 +604,18 @@
           <Level>100</Level>
         </Buff>
       </Buffs>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
       <RoundsPassed>0</RoundsPassed>
     </Consumable>
   </StoredConsumables>
@@ -631,6 +643,7 @@
           <Name>Slime</Name>
           <Description>A small slime. Not much of a threat unless it has a shotgun.</Description>
           <TurnsPassed>0</TurnsPassed>
+          <TurnTicks>0</TurnTicks>
           <GeneralName>Green Slime</GeneralName>
           <Level>0</Level>
           <StyleOfModel>Humanoid</StyleOfModel>
@@ -683,7 +696,6 @@
           </CurrentEquiptments>
           <CurrentConsumables />
           <BoundAttacks />
-          <IsCharging>false</IsCharging>
           <PreviousTargets />
           <InventoryEquiptments />
           <InventoryConsumables />
@@ -705,6 +717,7 @@
           <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
           <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
           <TurnsPassed>0</TurnsPassed>
+          <TurnTicks>0</TurnTicks>
           <GeneralName>Rare Green Slime</GeneralName>
           <Level>1</Level>
           <StyleOfModel>Humanoid</StyleOfModel>
@@ -757,7 +770,6 @@
           </CurrentEquiptments>
           <CurrentConsumables />
           <BoundAttacks />
-          <IsCharging>false</IsCharging>
           <PreviousTargets />
           <InventoryEquiptments />
           <InventoryConsumables />
