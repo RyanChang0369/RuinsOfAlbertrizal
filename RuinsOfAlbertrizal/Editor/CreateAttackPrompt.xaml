@@ -48,7 +48,13 @@
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="If checked, then this attack will affect all opposing or friendly characters, depending on the target type (see below)."/>
                 </StackPanel>
                 <CheckBox IsChecked="{Binding Path=MultiTarget, Mode=TwoWay}" Margin="10"/>
-                
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Is Ranged"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affects the animation of the attack. Does not affect range."/>
+                </StackPanel>
+                <CheckBox IsChecked="{Binding Path=IsRanged, Mode=TwoWay}" Margin="10"/>
+
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Target Type"/>
                     <Image Source="infoCircle.png" Style="{StaticResource infoCircle}"

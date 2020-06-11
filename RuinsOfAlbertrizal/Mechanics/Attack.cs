@@ -18,6 +18,11 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public int[] StatCostToUser { get; set; }
 
+        /// <summary>
+        /// Affects the animation of the attack. Does not affect range.
+        /// </summary>
+        public bool IsRanged { get; set; }
+
         public int CoolDown { get; set; }
 
         public int ChargeUp { get; set; }
