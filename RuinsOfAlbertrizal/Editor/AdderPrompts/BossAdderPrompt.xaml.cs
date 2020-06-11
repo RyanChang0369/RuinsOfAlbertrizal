@@ -62,6 +62,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetBosses.Add(boss);
             AddedBossesList.Items.Add(boss);
+            listBox.SelectedIndex = -1;
             ListChanged();
         }
 
@@ -74,6 +75,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetBosses.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
+            listBox.SelectedIndex = -1;
             ListChanged();
         }
 

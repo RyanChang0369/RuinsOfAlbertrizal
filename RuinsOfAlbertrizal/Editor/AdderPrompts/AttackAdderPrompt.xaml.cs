@@ -44,6 +44,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetAttacks.Add(attack);
             AddedAttacksList.Items.Add(attack);
+            ListChanged();
         }
 
         private void AddedAttacksList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -52,6 +53,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
             TargetAttacks.RemoveAt(listBox.SelectedIndex);
             listBox.Items.RemoveAt(listBox.SelectedIndex);
+            ListChanged();
         }
 
         protected override void ResetVariable()

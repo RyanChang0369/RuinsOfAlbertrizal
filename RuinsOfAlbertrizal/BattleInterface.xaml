@@ -76,23 +76,44 @@
                 <Grid Grid.Column="1">
                     <StackPanel Orientation="Horizontal" Style="{StaticResource center}">
                         <ProgressBar x:Name="player0_ProgressBar" Style="{StaticResource playerProgressBar}" 
-                                 ToolTip="{Binding Path=ActivePlayers[0].DisplayName}"
-                                     Value="{Binding Path=ActivePlayers[0].TurnTicks}"
-                                     Maximum="{Binding Path=MaxSpeed}"/>
+                                ToolTip="{Binding Path=ActivePlayers[0].DisplayName}"
+                                Value="{Binding Path=ActivePlayers[0].TurnTicks}"
+                                Maximum="{Binding Path=MaxSpeed}"/>
+                        
                         <ProgressBar x:Name="player1_ProgressBar" Style="{StaticResource playerProgressBar}"
-                                 ToolTip="{Binding Path=ActivePlayers[1].DisplayName}"/>
+                                ToolTip="{Binding Path=ActivePlayers[1].DisplayName}"
+                                Value="{Binding Path=ActivePlayers[1].TurnTicks}"
+                                Maximum="{Binding Path=MaxSpeed}"/>
+                        
                         <ProgressBar x:Name="player2_ProgressBar" Style="{StaticResource playerProgressBar}"
-                                 ToolTip="{Binding Path=ActivePlayers[2].DisplayName}"/>
+                                ToolTip="{Binding Path=ActivePlayers[2].DisplayName}"
+                                Value="{Binding Path=ActivePlayers[2].TurnTicks}"
+                                Maximum="{Binding Path=MaxSpeed}"/>
+                        
                         <ProgressBar x:Name="player3_ProgressBar" Style="{StaticResource playerProgressBar}"
-                                 ToolTip="{Binding Path=ActivePlayers[3].DisplayName}"/>
+                                ToolTip="{Binding Path=ActivePlayers[3].DisplayName}"
+                                Value="{Binding Path=ActivePlayers[3].TurnTicks}"
+                                Maximum="{Binding Path=MaxSpeed}"/>
+                        
                         <ProgressBar x:Name="enemy0_ProgressBar" Style="{StaticResource enemyProgressBar}"
-                                  ToolTip="{Binding Path=ActiveEnemies[0].DisplayName}"/>
+                                ToolTip="{Binding Path=ActiveEnemies[0].DisplayName}"
+                                Value="{Binding Path=ActiveEnemies[0].TurnTicks}"
+                                Maximum="{Binding Path=MaxSpeed}"/>
+                        
                         <ProgressBar x:Name="enemy1_ProgressBar" Style="{StaticResource enemyProgressBar}"
-                                  ToolTip="{Binding Path=ActiveEnemies[1].DisplayName}"/>
+                                ToolTip="{Binding Path=ActiveEnemies[1].DisplayName}"
+                                Value="{Binding Path=ActiveEnemies[1].TurnTicks}"
+                                Maximum="{Binding Path=MaxSpeed}"/>
+                        
                         <ProgressBar x:Name="enemy2_ProgressBar" Style="{StaticResource enemyProgressBar}"
-                                  ToolTip="{Binding Path=ActiveEnemies[2].DisplayName}"/>
+                                ToolTip="{Binding Path=ActiveEnemies[2].DisplayName}"
+                                Value="{Binding Path=ActiveEnemies[2].TurnTicks}"
+                                Maximum="{Binding Path=MaxSpeed}"/>
+                        
                         <ProgressBar x:Name="enemy3_ProgressBar" Style="{StaticResource enemyProgressBar}"
-                                  ToolTip="{Binding Path=ActiveEnemies[3].DisplayName}"/>
+                                ToolTip="{Binding Path=ActiveEnemies[3].DisplayName}"
+                                Value="{Binding Path=ActiveEnemies[3].TurnTicks}"
+                                Maximum="{Binding Path=MaxSpeed}"/>
                     </StackPanel>
                 </Grid>
 

@@ -4,9 +4,9 @@
   <Name>Campaign</Name>
   <Description>The main storyline of this game.</Description>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <PlayerCreated>false</PlayerCreated>
+  <PlayerCreated>true</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
-  <SeenIntroduction>false</SeenIntroduction>
+  <SeenIntroduction>true</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -258,6 +258,7 @@
             <int>0</int>
             <int>0</int>
           </StatCostToUser>
+          <IsRanged>false</IsRanged>
           <CoolDown>0</CoolDown>
           <ChargeUp>0</ChargeUp>
           <TurnSinceAttacked>0</TurnSinceAttacked>
@@ -552,6 +553,7 @@
         <int>0</int>
         <int>0</int>
       </StatCostToUser>
+      <IsRanged>false</IsRanged>
       <CoolDown>0</CoolDown>
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
@@ -624,6 +626,7 @@
         <int>0</int>
         <int>0</int>
       </StatCostToUser>
+      <IsRanged>false</IsRanged>
       <CoolDown>0</CoolDown>
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
@@ -661,6 +664,7 @@
         <int>0</int>
         <int>0</int>
       </StatCostToUser>
+      <IsRanged>false</IsRanged>
       <CoolDown>0</CoolDown>
       <ChargeUp>0</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
@@ -698,6 +702,7 @@
         <int>0</int>
         <int>0</int>
       </StatCostToUser>
+      <IsRanged>false</IsRanged>
       <CoolDown>0</CoolDown>
       <ChargeUp>1</ChargeUp>
       <TurnSinceAttacked>0</TurnSinceAttacked>
@@ -847,7 +852,7 @@
       <Name>Final Level</Name>
       <Description />
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>false</SeenIntroduction>
+      <SeenIntroduction>true</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>
