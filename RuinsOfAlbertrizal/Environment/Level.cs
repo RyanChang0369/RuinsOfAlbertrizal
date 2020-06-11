@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using RuinsOfAlbertrizal.Items;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace RuinsOfAlbertrizal.Environment
 {
@@ -19,9 +20,12 @@ namespace RuinsOfAlbertrizal.Environment
 
         public Message IntroMessage { get; set; }
 
+        public List<Guid> StoredEnemyGuids { get; set; }
+
         /// <summary>
         /// The enemies that can appear in this level.
         /// </summary>
+        [XmlIgnore]
         public List<Enemy> StoredEnemies { get; set; }
 
         /// <summary>
@@ -37,9 +41,12 @@ namespace RuinsOfAlbertrizal.Environment
 
         public int Points { get; set; }
 
+        public List<Guid> BossGuids { get; set; }
+
         /// <summary>
         /// The boss(es) that appears at the end of the level. If there are multiple, they will appear at the same time.
         /// </summary>
+        [XmlIgnore]
         public List<Boss> Bosses { get; set; }
 
         /// <summary>
@@ -50,8 +57,10 @@ namespace RuinsOfAlbertrizal.Environment
         public enum WinCondition
         {
             [Display(Name="Cannot Win", Description = "There's no possible way to win this level.")]
+            [Description("There is no possible way to win this level.")]
             Unwinnable,
             [Display(Name ="Boss Fight", Description = "Defeat enemies until a boss spawns, then defeat boss to win.")]
+            [Description("Defeat enemies until a boss spawns, then defeat the boss to win.")]
             DefeatEnemies
         }
 
@@ -78,10 +87,25 @@ namespace RuinsOfAlbertrizal.Environment
 
         public Level()
         {
+            StoredEnemyGuids = new List<Guid>();
+            BossGuids = new List<Guid>();
             Bosses = new List<Boss>();
             StoredEnemies = new List<Enemy>();
             IntroMessage = new Message();
             Difficulty = 1.0;
+        }
+
+        /// <summary>
+        /// Bosses and enemies bound to this level will be refreshed/created based on Guid filtering.
+        /// Run this method when you want Bosses or StoredEnemies to be recreated.
+        /// </summary>
+        public void RefreshStoredItems()
+        {
+            if (!GameBase.Initialized())
+                throw new ArgumentException("Cannot run method if GameBase is not initalized.");
+
+            Bosses = GameBase.CurrentGame.StoredBosses.FilterByGuid(BossGuids);
+            StoredEnemies = GameBase.CurrentGame.StoredEnemies.FilterByGuid(StoredEnemyGuids);
         }
 
         /// <summary>

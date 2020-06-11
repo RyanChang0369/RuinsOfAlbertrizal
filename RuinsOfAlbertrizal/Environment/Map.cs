@@ -2,6 +2,7 @@
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Serialization;
@@ -163,6 +164,25 @@ namespace RuinsOfAlbertrizal.Environment
             PlayerItems = new List<Item>();
             PlayerConsumables = new List<Consumable>();
             PlayerEquiptments = new List<Equiptment>();
+        }
+
+        public void RefreshAllLevels()
+        {
+            foreach (Level level in Levels)
+                level.RefreshStoredItems();
+        }
+
+        public void NextLevel()
+        {
+            LevelsCompleted++;
+
+            if (LevelsCompleted >= Levels.Count)
+                WinGame();
+        }
+
+        public void WinGame()
+        {
+            throw new NotImplementedException();
         }
     }
 }

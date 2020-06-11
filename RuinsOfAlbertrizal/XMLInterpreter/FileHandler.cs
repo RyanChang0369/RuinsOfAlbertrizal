@@ -84,51 +84,15 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             {
                 GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
                 GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
+
+                GameBase.CurrentGame.RefreshAllLevels();
+                GameBase.StaticGame.RefreshAllLevels();     //Just in case we decide to use staticgame's variables to clone currentgame's
             }
             catch (InvalidOperationException)
             {
                 throw;
             }
         }
-
-        ///// <summary>
-        ///// Creates a project file with a path.
-        ///// </summary>
-        ///// <param name="path"></param>
-        ///// <exception cref="IOException"></exception>
-        //public static void CreateProjectDirectory(string path)
-        //{
-        //    string directory = Path.GetDirectoryName(path);
-
-        //    Directory.CreateDirectory(directory + "/Character");
-        //    Directory.CreateDirectory(directory + "/Environment");
-        //    Directory.CreateDirectory(directory + "/Items");
-        //    Directory.CreateDirectory(directory + "/Mechanics");
-        //    Directory.CreateDirectory(directory + "/Text");
-        //}
-
-        //public static object LoadObject()
-        //{
-        //    string path = "";
-        //    try
-        //    {
-        //        path = new FileDialog(FileDialog.DialogOptions.Load).GetPath();
-        //    }
-        //    catch (ArgumentNullException)
-        //    {
-        //        return null;
-        //    }
-        //    return LoadObject(path);
-        //}
-
-        //public static object LoadObject(string path)
-        //{
-        //    XmlSerializer serializer = new XmlSerializer(typeof(Map));
-        //    using (FileStream fs = new FileStream(path, FileMode.Open))
-        //    {
-        //        return serializer.Deserialize(fs);
-        //    }
-        //}
 
         /// <summary>
         /// Saves an object

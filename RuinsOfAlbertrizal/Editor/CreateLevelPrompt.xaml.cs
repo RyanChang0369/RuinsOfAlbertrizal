@@ -78,14 +78,16 @@ namespace RuinsOfAlbertrizal.Editor
         {
             BossAdderPrompt bossAdderPrompt = new BossAdderPrompt(CreatedLevel.Bosses);
             bossAdderPrompt.ShowDialog();
-            CreatedLevel.Bosses = bossAdderPrompt.TargetBosses;
+            CreatedLevel.BossGuids = bossAdderPrompt.TargetBosses.ToGuidList();
+            CreatedLevel.RefreshStoredItems();
         }
 
         private void AddEnemyBtn_Click(object sender, RoutedEventArgs e)
         {
             SimpleAdderPrompt simpleAdderPrompt = new SimpleAdderPrompt(CreatedLevel.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), CreateMapPrompt.Map.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Enemies");
             simpleAdderPrompt.ShowDialog();
-            CreatedLevel.StoredEnemies = simpleAdderPrompt.TargetObjects.Cast<Enemy>().ToList();
+            CreatedLevel.StoredEnemyGuids = simpleAdderPrompt.TargetObjects.Cast<Enemy>().ToList().ToGuidList();
+            CreatedLevel.RefreshStoredItems();
         }
 
         private void AddIntroMessage_Click(object sender, RoutedEventArgs e)

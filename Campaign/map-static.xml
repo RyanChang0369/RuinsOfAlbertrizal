@@ -858,168 +858,17 @@
           <string>This is it. The final floor. All you need to do now is escape.</string>
         </Lines>
       </IntroMessage>
-      <StoredEnemies>
-        <Enemy>
-          <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
-          <Name>Slime</Name>
-          <Description>A small slime. Not much of a threat unless it has a shotgun.</Description>
-          <TurnsPassed>0</TurnsPassed>
-          <TurnTicks>0</TurnTicks>
-          <GeneralName>Green Slime</GeneralName>
-          <Level>0</Level>
-          <StyleOfModel>Humanoid</StyleOfModel>
-          <AIStyle>Berserk</AIStyle>
-          <BaseStats>
-            <int>10</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>2</int>
-            <int>2</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </BaseStats>
-          <AppliedStats>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </AppliedStats>
-          <PermanentBuffs />
-          <BuffImmunities />
-          <AppliedBuffs />
-          <CurrentEquiptments>
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-          </CurrentEquiptments>
-          <CurrentConsumables />
-          <BoundAttacks />
-          <PreviousTargets />
-          <InventoryEquiptments />
-          <InventoryConsumables />
-          <InventoryItems />
-          <MessagesOnEncounter />
-          <MessagesOnAttack />
-          <MessagesOnDefeat />
-          <MessagesOnVictory />
-          <SpawnChance>1</SpawnChance>
-        </Enemy>
-      </StoredEnemies>
+      <StoredEnemyGuids>
+        <guid>70aa32f8-221d-4cad-8dea-1f1659bf6a54</guid>
+        <guid>8b03134d-450d-4ea2-b37d-19b8f931edb3</guid>
+        <guid>848a829e-1a48-46c2-be84-1314d72632b7</guid>
+      </StoredEnemyGuids>
       <Difficulty>2</Difficulty>
       <MaxPoints>9000</MaxPoints>
       <Points>0</Points>
-      <Bosses>
-        <Boss>
-          <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
-          <Name>Shotgun Slime</Name>
-          <Description>It is a slime that seems to have found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
-          <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
-          <TurnsPassed>0</TurnsPassed>
-          <TurnTicks>0</TurnTicks>
-          <GeneralName>Rare Green Slime</GeneralName>
-          <Level>1</Level>
-          <StyleOfModel>Humanoid</StyleOfModel>
-          <AIStyle>Berserk</AIStyle>
-          <BaseStats>
-            <int>2000</int>
-            <int>500</int>
-            <int>10</int>
-            <int>0</int>
-            <int>50</int>
-            <int>2</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </BaseStats>
-          <AppliedStats>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </AppliedStats>
-          <PermanentBuffs />
-          <BuffImmunities />
-          <AppliedBuffs />
-          <CurrentEquiptments>
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-            <Equiptment xsi:nil="true" />
-          </CurrentEquiptments>
-          <CurrentConsumables />
-          <BoundAttacks />
-          <PreviousTargets />
-          <InventoryEquiptments />
-          <InventoryConsumables />
-          <InventoryItems />
-          <MessagesOnEncounter>
-            <Message>
-              <Lines>
-                <string>*reloads shotgun*</string>
-              </Lines>
-            </Message>
-            <Message>
-              <Lines>
-                <string>*inserts 7 clips*</string>
-              </Lines>
-            </Message>
-          </MessagesOnEncounter>
-          <MessagesOnAttack />
-          <MessagesOnDefeat>
-            <Message>
-              <Lines>
-                <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
-                <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
-              </Lines>
-            </Message>
-          </MessagesOnDefeat>
-          <MessagesOnVictory />
-          <SpawnChance>1</SpawnChance>
-        </Boss>
-      </Bosses>
+      <BossGuids>
+        <guid>4a80723a-427f-4706-b3d1-ce7abf264f40</guid>
+      </BossGuids>
       <TheWinCondition>DefeatEnemies</TheWinCondition>
     </Level>
   </Levels>
