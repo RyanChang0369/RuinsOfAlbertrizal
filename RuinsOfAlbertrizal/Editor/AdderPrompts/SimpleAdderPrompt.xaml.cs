@@ -24,7 +24,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
         private List<ObjectOfAlbertrizal> OriginalObjects { get; set; }
 
-        public List<ObjectOfAlbertrizal> StoredObjects { get; set; }
+        private List<ObjectOfAlbertrizal> StoredObjects { get; set; }
 
         public SimpleAdderPrompt()
         {

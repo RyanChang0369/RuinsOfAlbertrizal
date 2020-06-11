@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,6 +92,33 @@ namespace RuinsOfAlbertrizal
         public void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        /// <summary>
+        /// Looks up an object by Guid. Returns null if guid is not found.
+        /// </summary>
+        /// <param name="lookupList">List of objects of look in.</param>
+        /// <param name="guid">The guid to look for.</param>
+        /// <returns></returns>
+        public static ObjectOfAlbertrizal LookUpByGuid(List<ObjectOfAlbertrizal> lookupList, Guid guid)
+        {
+            foreach (ObjectOfAlbertrizal thing in lookupList)
+            {
+                if (guid.Equals(thing.GlobalID))
+                    return thing;
+            }
+
+            return null;
+        }
+
+        public static List<Guid> ToGuidList(List<ObjectOfAlbertrizal> objects)
+        {
+            List<Guid> guids = new List<Guid>();
+
+            foreach (ObjectOfAlbertrizal thing in objects)
+                guids.Add(thing.GlobalID);
+
+            return guids;
         }
     }
 }
