@@ -95,6 +95,7 @@ namespace RuinsOfAlbertrizal.AIs
             if (attacker.AllAttacks.Count < 1)
             {
                 attacker.Run(GameBase.CurrentGame.CurrentBattleField);
+                return;
             }
 
             switch (attacker.AIStyle)
@@ -189,7 +190,7 @@ namespace RuinsOfAlbertrizal.AIs
 
             foreach (Player player in activePlayers)
             {
-                if (player.CurrentStats[0] < target.CurrentStats[0])
+                if (player != null && player.CurrentStats[0] < target.CurrentStats[0])
                     target = player;
             }
 
