@@ -20,7 +20,7 @@ namespace RuinsOfAlbertrizal.Editor.Converter
             {
                 List<ObjectOfAlbertrizal> objects = new List<ObjectOfAlbertrizal>((IEnumerable<ObjectOfAlbertrizal>)value);
 
-                if (objects.Count > 1)
+                if (objects.Count > 0)
                     return objects[objects.Count - 1].DisplayName;
                 else
                     return "";
