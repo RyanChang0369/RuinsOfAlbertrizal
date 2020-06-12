@@ -95,7 +95,7 @@ namespace RuinsOfAlbertrizal
                 playerImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
                 playerTargetImages[i].Tag = GameBase.CurrentGame.ActivePlayers[i];
             }
-            catch (IndexOutOfRangeException)
+            catch (Exception)
             {
 
             }
@@ -113,7 +113,7 @@ namespace RuinsOfAlbertrizal
                 enemyImages[i].Tag = BattleField.ActiveEnemies[i];
                 enemyTargetImages[i].Tag = BattleField.ActiveEnemies[i];
             }
-            catch (IndexOutOfRangeException)
+            catch (Exception)
             {
 
             }
