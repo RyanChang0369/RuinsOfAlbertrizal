@@ -10,8 +10,6 @@ Create a pop up inventory
 
 Finish and test battle screen
 
-Create a screen allowing players to create their characters and select a map difficulty.
-
 Add more ItemFindMessages for GetItemFindMessage(Item item)
 
 Test line 21 of ProperNameConverter
@@ -21,6 +19,8 @@ Implement death and running
 Implement fear, which is determined by the inventory quantity, amount of stats depleted, and whether or not an enemy with a large BI has died.
 
 Improve AI for Berserk
+
+Have some way of differentiation active party memebers.
 
 Test Enemy.Run(). Make sure the enemy is removed from the thing.
 
