@@ -16,11 +16,7 @@
         <StackPanel Orientation="Horizontal">
             <StackPanel>
                 <Label Content="Click To Add"/>
-                <ListBox x:Name="AvailableObjectsList" Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="AvailableObjectsList_PreviewMouseLeftButtonUp">
-                    <ListBox.ItemsSource>
-                        <Binding Path="StoredObjects" UpdateSourceTrigger="PropertyChanged" Mode="OneTime" Source="{StaticResource CreateMapPrompt}"/>
-                    </ListBox.ItemsSource>
-                </ListBox>
+                <ListBox x:Name="AvailableObjectsList" Width="200" FontSize="18" ToolTip="Click Item to Select" HorizontalAlignment="Left" Margin="10" DisplayMemberPath="Name" PreviewMouseLeftButtonUp="AvailableObjectsList_PreviewMouseLeftButtonUp"/>
             </StackPanel>
 
             <Separator/>
