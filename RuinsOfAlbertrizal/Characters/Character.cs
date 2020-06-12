@@ -412,6 +412,9 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in Equiptment.GetAttackableEquiptment(CurrentEquiptments.ToList()))
                 {
+                    if (equiptment == null)
+                        continue;
+
                     attacks.AddRange(equiptment.Attacks);
                 }
 
