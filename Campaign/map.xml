@@ -4,9 +4,9 @@
   <Name>Campaign</Name>
   <Description>The main storyline of this game.</Description>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <PlayerCreated>true</PlayerCreated>
+  <PlayerCreated>false</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -79,7 +79,7 @@
     </Player>
   </Players>
   <ActivePlayerGuids>
-    <guid>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
@@ -234,44 +234,6 @@
       </CurrentEquiptments>
       <CurrentConsumables />
       <BoundAttacks>
-        <Attack>
-          <GlobalID>1e4af09f-dcf6-465a-aa08-5f5ef088fe40</GlobalID>
-          <Name>Stab</Name>
-          <Description>Basic stab attack.</Description>
-          <Buffs />
-          <StatLoss>
-            <int>5</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </StatLoss>
-          <StatCostToUser>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </StatCostToUser>
-          <IsRanged>false</IsRanged>
-          <CoolDown>0</CoolDown>
-          <ChargeUp>0</ChargeUp>
-          <TurnSinceAttacked>0</TurnSinceAttacked>
-          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
-          <IgnoresArmor>false</IgnoresArmor>
-          <MultiTarget>false</MultiTarget>
-          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
-        </Attack>
         <Attack>
           <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
           <Name>Boop</Name>
@@ -1011,7 +973,7 @@
       <Name>Final Level</Name>
       <Description />
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>true</SeenIntroduction>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>

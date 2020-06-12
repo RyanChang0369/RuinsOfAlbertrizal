@@ -235,44 +235,6 @@
       <CurrentConsumables />
       <BoundAttacks>
         <Attack>
-          <GlobalID>1e4af09f-dcf6-465a-aa08-5f5ef088fe40</GlobalID>
-          <Name>Stab</Name>
-          <Description>Basic stab attack.</Description>
-          <Buffs />
-          <StatLoss>
-            <int>5</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </StatLoss>
-          <StatCostToUser>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </StatCostToUser>
-          <IsRanged>false</IsRanged>
-          <CoolDown>0</CoolDown>
-          <ChargeUp>0</ChargeUp>
-          <TurnSinceAttacked>0</TurnSinceAttacked>
-          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
-          <IgnoresArmor>false</IgnoresArmor>
-          <MultiTarget>false</MultiTarget>
-          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
-        </Attack>
-        <Attack>
           <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
           <Name>Boop</Name>
           <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
