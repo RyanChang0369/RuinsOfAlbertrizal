@@ -101,7 +101,7 @@ namespace RuinsOfAlbertrizal.Items
             
             foreach (Equiptment equiptment in allEquiptments)
             {
-                if (equiptment.CanAttack())
+                if (equiptment != null && equiptment.CanAttack())
                     equiptments.Add(equiptment);
             }
 
