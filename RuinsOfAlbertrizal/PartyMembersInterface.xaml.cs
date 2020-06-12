@@ -309,6 +309,7 @@ namespace RuinsOfAlbertrizal
             {
                 GameBase.CurrentGame.ActivePlayerGuids[index] = ((Player)btn.Tag).GlobalID;
                 FileHandler.SaveCurrentMap();
+                UpdatePartyMembersStackPanel(GameBase.CurrentGame.Players);
             }
         }
 
@@ -317,6 +318,8 @@ namespace RuinsOfAlbertrizal
             Button btn = (Button)sender;
             int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayerGuids, ((Player)btn.Tag).GlobalID);
             GameBase.CurrentGame.ActivePlayerGuids[index] = Guid.Empty;
+            FileHandler.SaveCurrentMap();
+            UpdatePartyMembersStackPanel(GameBase.CurrentGame.Players);
         }
     }
 }
