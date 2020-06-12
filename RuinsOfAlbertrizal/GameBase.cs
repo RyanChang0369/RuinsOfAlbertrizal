@@ -51,7 +51,7 @@ namespace RuinsOfAlbertrizal
             None = -1, Warrior, Mage, Scout
         }
 
-        public const int TickSpeed = 50;
+        public const int TickSpeed = 100;
 
 
         public static int[] GetBaseValues(ClassType classType)
