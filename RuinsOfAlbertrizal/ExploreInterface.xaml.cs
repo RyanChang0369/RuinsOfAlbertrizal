@@ -1,25 +1,8 @@
-﻿using RuinsOfAlbertrizal.Characters;
-using RuinsOfAlbertrizal.Environment;
+﻿using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.XMLInterpreter;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RuinsOfAlbertrizal
 {
@@ -33,6 +16,24 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
             DataContext = GameBase.CurrentGame.CurrentLevel;
             Title = $"Exploring {GameBase.CurrentGame.CurrentLevel.Name}";
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Would you like to save before exiting?", "Save?", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    FileHandler.SaveCurrentMap();
+                    Navigate("[back]");
+                    break;
+                case MessageBoxResult.No:
+                    Navigate("[back]");
+                    break;
+                default:
+                    return;
+            }
         }
 
         private void ExploreBtn_Click(object sender, RoutedEventArgs e)
