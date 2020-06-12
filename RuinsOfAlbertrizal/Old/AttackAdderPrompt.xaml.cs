@@ -27,6 +27,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
         public AttackAdderPrompt()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         public AttackAdderPrompt(List<Attack> targetAttacks)
@@ -34,6 +35,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             InitializeComponent();
             TargetAttacks = targetAttacks;
             OriginalAttacks = targetAttacks;
+            DataContext = this;
         }
 
         private void AvailableAttacksList_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)

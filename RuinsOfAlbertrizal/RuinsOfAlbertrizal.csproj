@@ -74,14 +74,8 @@
     </Compile>
     <Compile Include="Characters\Enemy.cs" />
     <Compile Include="Editor\AdderPrompts\BaseAdderPrompt.cs" />
-    <Compile Include="Editor\AdderPrompts\BossAdderPrompt.xaml.cs">
-      <DependentUpon>BossAdderPrompt.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Editor\AdderPrompts\SimpleAdderPrompt.xaml.cs">
       <DependentUpon>SimpleAdderPrompt.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Editor\AdderPrompts\AttackAdderPrompt.xaml.cs">
-      <DependentUpon>AttackAdderPrompt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Editor\AdderPrompts\BuffAdderPrompt.xaml.cs">
       <DependentUpon>BuffAdderPrompt.xaml</DependentUpon>
@@ -262,15 +256,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Editor\AdderPrompts\BossAdderPrompt.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Editor\AdderPrompts\SimpleAdderPrompt.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Editor\AdderPrompts\AttackAdderPrompt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

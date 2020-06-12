@@ -64,6 +64,7 @@ namespace RuinsOfAlbertrizal.Editor
 
         protected void EditBuffBtn_Click(object sender, RoutedEventArgs e)
         {
+            //Buff prompt cannot be removed as it asks the user for a level.
             Control control = (Control)sender;
             List<Buff> buffs = (List<Buff>)control.Tag;
             BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(buffs);
@@ -75,9 +76,11 @@ namespace RuinsOfAlbertrizal.Editor
         {
             Control control = (Control)sender;
             List<Attack> attacks = (List<Attack>)control.Tag;
-            AttackAdderPrompt attackAdderPrompt = new AttackAdderPrompt(attacks);
-            attackAdderPrompt.ShowDialog();
-            control.Tag = attackAdderPrompt.TargetAttacks;
+            SimpleAdderPrompt prompt = new SimpleAdderPrompt(attacks.Cast<ObjectOfAlbertrizal>().ToList(),
+                CreateMapPrompt.Map.StoredAttacks.Cast<ObjectOfAlbertrizal>().ToList(),
+                "Add/Remove Attacks");
+            prompt.ShowDialog();
+            control.Tag = prompt.GetSelectedValue<Attack>();
         }
 
         protected void ComboBox_Initialize(object sender, RoutedEventArgs e)

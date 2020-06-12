@@ -20,17 +20,28 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     /// </summary>
     public partial class SimpleAdderPrompt : BaseAdderPrompt
     {
-        public List<ObjectOfAlbertrizal> TargetObjects { get; set; }
+        private List<ObjectOfAlbertrizal> StoredObjects { get; set; }
+
+        private List<ObjectOfAlbertrizal> TargetObjects { get; set; }
 
         private List<ObjectOfAlbertrizal> OriginalObjects { get; set; }
-
-        private List<ObjectOfAlbertrizal> StoredObjects { get; set; }
 
         public SimpleAdderPrompt()
         {
             InitializeComponent();
         }
 
+        public List<T> GetSelectedValue<T>() where T : ObjectOfAlbertrizal
+        {
+            return TargetObjects.Cast<T>().ToList();
+        }
+
+        /// <summary>
+        /// Creates a new simple adder prompt.
+        /// </summary>
+        /// <param name="targetObjects">The objects that will be added to. Appears under "Click to Remove".</param>
+        /// <param name="storedObjects">The objects that will be referenced to add to targetObjects. Appears under "Click to Add".</param>
+        /// <param name="title"></param>
         public SimpleAdderPrompt(List<ObjectOfAlbertrizal> targetObjects, List<ObjectOfAlbertrizal> storedObjects, string title)
         {
             InitializeComponent();

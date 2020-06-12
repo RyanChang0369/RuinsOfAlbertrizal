@@ -76,9 +76,10 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void AddBossBtn_Click(object sender, RoutedEventArgs e)
         {
-            BossAdderPrompt bossAdderPrompt = new BossAdderPrompt(CreatedLevel.Bosses);
-            bossAdderPrompt.ShowDialog();
-            CreatedLevel.BossGuids = bossAdderPrompt.TargetBosses.ToGuidList();
+            SimpleAdderPrompt prompt = new SimpleAdderPrompt(CreatedLevel.Bosses.Cast<ObjectOfAlbertrizal>().ToList(),
+                CreateMapPrompt.Map.StoredBosses.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Bosses");
+            prompt.ShowDialog();
+            CreatedLevel.BossGuids = prompt.GetSelectedValue<Boss>().ToGuidList();
             CreatedLevel.RefreshStoredItems();
         }
 
@@ -86,7 +87,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             SimpleAdderPrompt simpleAdderPrompt = new SimpleAdderPrompt(CreatedLevel.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), CreateMapPrompt.Map.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Enemies");
             simpleAdderPrompt.ShowDialog();
-            CreatedLevel.StoredEnemyGuids = simpleAdderPrompt.TargetObjects.Cast<Enemy>().ToList().ToGuidList();
+            CreatedLevel.StoredEnemyGuids = simpleAdderPrompt.GetSelectedValue<Enemy>().ToGuidList();
             CreatedLevel.RefreshStoredItems();
         }
 
