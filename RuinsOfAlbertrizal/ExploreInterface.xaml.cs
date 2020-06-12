@@ -33,6 +33,12 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
             DataContext = GameBase.CurrentGame.CurrentLevel;
             Title = $"Exploring {GameBase.CurrentGame.CurrentLevel.Name}";
+
+            if (GameBase.CurrentGame.ActivePlayers.IsAllNull())
+            {
+                MessageBox.Show("Please select at least one player to be in your party.", "Insufficient party members", MessageBoxButton.OK, MessageBoxImage.Error);
+                ExploreBtn.IsEnabled = false;
+            }
         }
 
         private void ExploreBtn_Click(object sender, RoutedEventArgs e)
