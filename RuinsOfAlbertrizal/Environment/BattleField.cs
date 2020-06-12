@@ -146,7 +146,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         public int ElaspedTime { get; set; }
 
-        private System.Timers.Timer SpeedTimer { get; set; }
+        private System.Threading.Timer SpeedTimer { get; set; }
 
         /// <summary>
         /// Creates a new battlefield using the players in GameBase.CurrentGame. Navigate to BattleInterface to show the interface.
@@ -389,21 +389,18 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void SetTimer()
         {
-            SpeedTimer = new System.Timers.Timer(GameBase.TickSpeed);
-            SpeedTimer.Elapsed += Tick;
-            SpeedTimer.AutoReset = true;
-            SpeedTimer.Start();
+            SpeedTimer = new System.Threading.Timer(Tick, null, 3000, GameBase.TickSpeed);
         }
 
 
-        private void Tick(object sender, ElapsedEventArgs e)
+        private void Tick(object sender)
         {
             //Avoid conflicting ticks by stopping timer during a tick
-            SpeedTimer.Stop();
+            SpeedTimer.Change(Timeout.Infinite, Timeout.Infinite);
 
             ElaspedTime++;
 
-            ConcurrentCharacters.Clear();
+            ConcurrentCharacters = new List<Character>();
 
             int maxTicks = MaxSpeed;
 
@@ -426,7 +423,7 @@ namespace RuinsOfAlbertrizal.Environment
             for (int i = 0; i < ConcurrentCharacters.Count; i++)
                 StartRound(ConcurrentCharacters[i]);
 
-            SpeedTimer.Start();
+            SpeedTimer.Change(0, GameBase.TickSpeed);
         }
 
         public void StartRound(Character character)
