@@ -122,11 +122,11 @@ namespace RuinsOfAlbertrizal
                 NavigationService.Navigate(new Uri("PlayerCreatePage.xaml", UriKind.RelativeOrAbsolute));
             else if ((currentMap.IntroMessage == null || currentMap.IntroMessage.IsEmpty()) &&
                 (currentMap.CurrentLevel.IntroMessage == null || currentMap.CurrentLevel.IntroMessage.IsEmpty()))
-                NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(new Uri("ExploreInterface.xaml", UriKind.RelativeOrAbsolute));
             else if (currentMap.IntroMessage == null || currentMap.IntroMessage.IsEmpty())
                 NavigationService.Navigate(new Uri("LevelIntroInterface"), UriKind.RelativeOrAbsolute);
             else if (currentMap.SeenIntroduction && currentMap.CurrentLevel.SeenIntroduction)
-                NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(new Uri("ExploreInterface.xaml", UriKind.RelativeOrAbsolute));
             else if (currentMap.SeenIntroduction)
                 NavigationService.Navigate(new Uri("LevelIntroInterface"), UriKind.RelativeOrAbsolute);
             else
