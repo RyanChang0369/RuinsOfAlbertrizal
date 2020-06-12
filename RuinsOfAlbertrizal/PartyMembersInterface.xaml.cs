@@ -1,7 +1,10 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
+using RuinsOfAlbertrizal.XMLInterpreter;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Principal;
 using System.Windows;
 using System.Windows.Controls;
@@ -241,17 +244,30 @@ namespace RuinsOfAlbertrizal
                     Tag = player
                 };
 
+
+
                 Button setActiveBtn = new Button
                 {
-                    Content = "Set as Active",
                     Style = (Style)Application.Current.FindResource("buttonSmallStretch"),
                     FontSize = 24,
                     Tag = player,
-                    ToolTip = "Click put this player on the front lines."
                 };
 
+                if (GameBase.CurrentGame.ActivePlayers.Contains(player))
+                {
+                    setActiveBtn.Content = "Set as Active";
+                    setActiveBtn.ToolTip = "Click to put this player on the front lines";
+                    setActiveBtn.Click += SetActiveBtn_Click;
+                }
+                else
+                {
+                    setActiveBtn.Content = "Remove from Active";
+                    setActiveBtn.ToolTip = "Click to remove this player from the front lines";
+                    setActiveBtn.Click += SetActiveBtn_Click_Remove;
+                }
+
                 inventoryBtn.Click += InventoryBtn_Click;
-                setActiveBtn.Click += SetActiveBtn_Click;
+                
 
                 //Shunt everything into a stackpanel
                 StackPanel containingStackPanel = new StackPanel();
@@ -285,7 +301,17 @@ namespace RuinsOfAlbertrizal
             if (index < 0)
                 return;
             else
+            {
                 GameBase.CurrentGame.ActivePlayers[index] = (Player)btn.Tag;
+                FileHandler.SaveCurrentMap();
+            }
+        }
+
+        private void SetActiveBtn_Click_Remove(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayers, (Player)btn.Tag);
+            GameBase.CurrentGame.ActivePlayers[index] = null;
         }
     }
 }
