@@ -28,22 +28,6 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public partial class ExploreInterface : BasePage
     {
-        private Player selectedPlayer;
-
-        public Player SelectedPlayer
-        {
-            get { return selectedPlayer; }
-            set
-            {
-                selectedPlayer = value;
-
-                if (selectedPlayer == null)
-                    ExploreBtn.Content = "Select Player for Explore";
-                else
-                    ExploreBtn.Content = "Explore";
-            }
-        }
-
         public ExploreInterface()
         {
             InitializeComponent();
@@ -53,16 +37,7 @@ namespace RuinsOfAlbertrizal
 
         private void ExploreBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (SelectedPlayer == null)
-            {
-                PlayerChooser chooser = new PlayerChooser("Select a player", GameBase.CurrentGame.AlivePlayers);
-                chooser.ShowDialog();
-                SelectedPlayer = chooser.SelectedPlayer;
-            }
-            else
-            {
-                DoRandomEvent();
-            }
+            DoRandomEvent();
         }
 
         private void DoRandomEvent()
