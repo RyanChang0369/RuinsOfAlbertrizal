@@ -92,5 +92,23 @@ namespace RuinsOfAlbertrizal
 
             }
         }
+
+        /// <summary>
+        /// Returns true if the array is null, has a length of 0, or is composed entirely of null values.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        public static bool IsAllNull<T>(this T[] array)
+        {
+            if (array == null || array.Length < 1)
+                return true;
+
+            foreach (T thing in array)
+                if (thing != null)
+                    return false;
+
+            return true;
+        }
     }
 }
