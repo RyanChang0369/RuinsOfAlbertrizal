@@ -139,15 +139,15 @@ namespace RuinsOfAlbertrizal
 
         private void SwapPlayer(Player oldPlayer, Player newPlayer)
         {
-            int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayers, oldPlayer);
+            int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayerGuids, oldPlayer.GlobalID);
 
             if (index == -1)
                 throw new ArgumentOutOfRangeException($"{oldPlayer.DisplayName} not found within ActivePlayers");
 
-            Animate("enemySlideOut", playerImages[index]);
-            GameBase.CurrentGame.ActivePlayers[index] = newPlayer;
+            Animate("playerSlideOut", playerImages[index]);
+            GameBase.CurrentGame.ActivePlayerGuids[index] = newPlayer.GlobalID;
             UpdatePlayerImage(index);
-            Animate("enemySlideIn", playerImages[index]);
+            Animate("playerSlideIn", playerImages[index]);
         }
 
         private void PreparePlayerAttack(Player attacker, Attack selectedAttack)

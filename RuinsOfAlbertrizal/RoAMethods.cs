@@ -25,5 +25,33 @@ namespace RuinsOfAlbertrizal
 
             return filteredList;
         }
+
+        /// <summary>
+        /// Filters an array of objects. The location of objects is preserved. Empty Guids will be interpreted as null.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objects"></param>
+        /// <param name="guids"></param>
+        /// <returns></returns>
+        public static T[] FilterByGuid<T>(this T[] objects, Guid[] guids) where T : ObjectOfAlbertrizal
+        {
+            T[] filteredArr = new T[guids.Length];
+
+            for (int i = 0; i < guids.Length; i++)
+            {
+                if (guids[i] == null || guids[i].Equals(Guid.Empty))
+                {
+                    continue;
+                }
+
+                foreach (T thing in objects)
+                {
+                    if (thing.GlobalID.Equals(guids[i]))
+                        filteredArr[i] = thing;
+                }
+            }
+
+            return filteredArr;
+        }
     }
 }

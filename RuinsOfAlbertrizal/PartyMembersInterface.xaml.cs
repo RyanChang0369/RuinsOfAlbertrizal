@@ -244,7 +244,7 @@ namespace RuinsOfAlbertrizal
                     Tag = player
                 };
 
-
+                inventoryBtn.Click += InventoryBtn_Click;
 
                 Button setActiveBtn = new Button
                 {
@@ -253,21 +253,25 @@ namespace RuinsOfAlbertrizal
                     Tag = player,
                 };
 
-                if (GameBase.CurrentGame.ActivePlayers.Contains(player))
+                Label isActiveLbl = new Label
+                {
+                    FontWeight = FontWeights.UltraBold
+                };
+
+                if (!GameBase.CurrentGame.ActivePlayerGuids.Contains(player.GlobalID))
                 {
                     setActiveBtn.Content = "Set as Active";
                     setActiveBtn.ToolTip = "Click to put this player on the front lines";
                     setActiveBtn.Click += SetActiveBtn_Click;
+                    isActiveLbl.Content = "";
                 }
                 else
                 {
                     setActiveBtn.Content = "Remove from Active";
                     setActiveBtn.ToolTip = "Click to remove this player from the front lines";
                     setActiveBtn.Click += SetActiveBtn_Click_Remove;
+                    isActiveLbl.Content = "Currently Active";
                 }
-
-                inventoryBtn.Click += InventoryBtn_Click;
-                
 
                 //Shunt everything into a stackpanel
                 StackPanel containingStackPanel = new StackPanel();
@@ -279,6 +283,7 @@ namespace RuinsOfAlbertrizal
                 containingStackPanel.Children.Add(buffScrollViewer);
                 containingStackPanel.Children.Add(inventoryBtn);
                 containingStackPanel.Children.Add(setActiveBtn);
+                containingStackPanel.Children.Add(isActiveLbl);
 
                 PartyMembersStackPanel.Children.Add(containingStackPanel);
             }
@@ -294,7 +299,7 @@ namespace RuinsOfAlbertrizal
         private void SetActiveBtn_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            PartySlotSelector selector = new PartySlotSelector((Player)btn.Tag, GameBase.CurrentGame.ActivePlayers);
+            PartySlotSelector selector = new PartySlotSelector();
             selector.ShowDialog();
             int index = selector.SelectedIndex;
 
@@ -302,7 +307,7 @@ namespace RuinsOfAlbertrizal
                 return;
             else
             {
-                GameBase.CurrentGame.ActivePlayers[index] = (Player)btn.Tag;
+                GameBase.CurrentGame.ActivePlayerGuids[index] = ((Player)btn.Tag).GlobalID;
                 FileHandler.SaveCurrentMap();
             }
         }
@@ -310,8 +315,8 @@ namespace RuinsOfAlbertrizal
         private void SetActiveBtn_Click_Remove(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayers, (Player)btn.Tag);
-            GameBase.CurrentGame.ActivePlayers[index] = null;
+            int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayerGuids, ((Player)btn.Tag).GlobalID);
+            GameBase.CurrentGame.ActivePlayerGuids[index] = Guid.Empty;
         }
     }
 }

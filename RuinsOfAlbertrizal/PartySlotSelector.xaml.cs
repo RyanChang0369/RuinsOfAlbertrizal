@@ -27,10 +27,10 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
         }
 
-        public PartySlotSelector(Player selectedPlayer, Player[] activePlayers)
-        {
-            InitializeComponent();
-        }
+        //public PartySlotSelector(Player selectedPlayer, Player[] activePlayers)
+        //{
+        //    InitializeComponent();
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

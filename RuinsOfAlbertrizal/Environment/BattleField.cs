@@ -65,11 +65,7 @@ namespace RuinsOfAlbertrizal.Environment
         }
 
         [XmlIgnore]
-        public Player[] ActivePlayers
-        {
-            get => GameBase.CurrentGame.ActivePlayers;
-            set => GameBase.CurrentGame.ActivePlayers = value;
-        }
+        public Player[] ActivePlayers => GameBase.CurrentGame.ActivePlayers;
 
         [XmlIgnore]
         public List<Player> AlivePlayers => GameBase.CurrentGame.AlivePlayers;

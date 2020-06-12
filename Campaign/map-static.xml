@@ -21,6 +21,7 @@
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <TurnsPassed>0</TurnsPassed>
+      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Human</GeneralName>
       <Level>1</Level>
@@ -78,7 +79,12 @@
       <XP>0</XP>
     </Player>
   </Players>
-  <ActivePlayers />
+  <ActivePlayerGuids>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+  </ActivePlayerGuids>
   <StoredBosses>
     <Boss>
       <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
@@ -86,6 +92,7 @@
       <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
       <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
+      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Rare Green Slime</GeneralName>
       <Level>1</Level>
@@ -176,6 +183,7 @@
       <IconLocation>..\Enemy\Green Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Green Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
+      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
       <Level>0</Level>
@@ -285,6 +293,7 @@
       <IconLocation>..\Enemy\Blue Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Blue Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
+      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
       <Level>1</Level>
@@ -355,6 +364,7 @@
       <IconLocation>..\Enemy\Red Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Red Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
+      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
       <Level>1</Level>

@@ -5,6 +5,7 @@ using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
@@ -59,10 +60,19 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
+        public Guid[] ActivePlayerGuids { get; set; }
+
         /// <summary>
-        /// The players that can attack.
+        /// The players that can attack. Consider using ActivePlayerGuids for better performance.
         /// </summary>
-        public Player[] ActivePlayers { get; set; }
+        [XmlIgnore]
+        public Player[] ActivePlayers
+        {
+            get
+            {
+                return Players.ToArray().FilterByGuid(ActivePlayerGuids);
+            }
+        }
 
         public List<Boss> StoredBosses { get; set; }
 
@@ -190,7 +200,7 @@ namespace RuinsOfAlbertrizal.Environment
             AllowForPlayerCreation = true;
             Difficulty = 1.0;
             Players = new List<Player>();
-            ActivePlayers = new Player[GameBase.NumActiveCharacters];
+            ActivePlayerGuids = new Guid[GameBase.NumActiveCharacters];
             StoredEnemies = new List<Enemy>();
             StoredBosses = new List<Boss>();
             StoredBuffs = new List<Buff>();
