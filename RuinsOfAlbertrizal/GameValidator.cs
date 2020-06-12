@@ -22,10 +22,10 @@ namespace RuinsOfAlbertrizal
             
             foreach (Level level in map.Levels)
             {
-                if (level.StoredEnemies.Count < 1)
+                if (level.StoredEnemyGuids.Count < 1)
                     AlertUser($"The level titled {level.Name} does not have any stored enemies.");
 
-                if (level.Bosses.Count < 1)
+                if (level.BossGuids.Count < 1)
                     AlertUser($"The level titled {level.Name} does not have any stored bosses.");
 
                 if (level.Difficulty <= 0)
