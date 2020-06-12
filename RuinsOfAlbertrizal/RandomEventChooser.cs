@@ -47,7 +47,7 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        public object GetSelectedTag()
+        public object GetSelected()
         {
             return GetSelectedRandomEvent().Tag;
         }
