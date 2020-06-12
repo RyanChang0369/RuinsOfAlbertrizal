@@ -21,7 +21,6 @@
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <TurnsPassed>0</TurnsPassed>
-      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Human</GeneralName>
       <Level>1</Level>
@@ -92,7 +91,6 @@
       <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
       <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
-      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Rare Green Slime</GeneralName>
       <Level>1</Level>
@@ -183,7 +181,6 @@
       <IconLocation>..\Enemy\Green Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Green Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
-      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
       <Level>0</Level>
@@ -275,6 +272,44 @@
           <MultiTarget>false</MultiTarget>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
+        <Attack>
+          <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <Name>Boop</Name>
+          <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <MultiTarget>false</MultiTarget>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
       </BoundAttacks>
       <PreviousTargets />
       <InventoryEquiptments />
@@ -293,7 +328,6 @@
       <IconLocation>..\Enemy\Blue Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Blue Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
-      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
       <Level>1</Level>
@@ -346,7 +380,46 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <BoundAttacks />
+      <BoundAttacks>
+        <Attack>
+          <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <Name>Boop</Name>
+          <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <MultiTarget>false</MultiTarget>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+      </BoundAttacks>
       <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
@@ -364,7 +437,6 @@
       <IconLocation>..\Enemy\Red Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Red Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
-      <IsActive>false</IsActive>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
       <Level>1</Level>
@@ -417,7 +489,84 @@
         <Equiptment xsi:nil="true" />
       </CurrentEquiptments>
       <CurrentConsumables />
-      <BoundAttacks />
+      <BoundAttacks>
+        <Attack>
+          <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <Name>Boop</Name>
+          <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <MultiTarget>false</MultiTarget>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+        <Attack>
+          <GlobalID>838f77ef-e8db-45b9-90ef-52d7c48422f5</GlobalID>
+          <Name>Mega Boop</Name>
+          <Description>Another attack that most slimes have. This attack causes more damage at the price of a short charge-up.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>15</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>1</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <MultiTarget>false</MultiTarget>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+      </BoundAttacks>
       <PreviousTargets />
       <InventoryEquiptments />
       <InventoryConsumables />
