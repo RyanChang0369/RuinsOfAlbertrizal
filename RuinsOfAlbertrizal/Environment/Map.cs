@@ -78,6 +78,46 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Consumable> StoredConsumables { get; set; }
 
+        /// <summary>
+        /// A list of all stored items, consumables, and equipment
+        /// </summary>
+        [XmlIgnore]
+        public List<Item> AllItems
+        {
+            get
+            {
+                List<Item> allItems = new List<Item>();
+
+                try
+                {
+                    allItems.AddRange(GameBase.CurrentGame.StoredItems);
+
+                }
+                catch (ArgumentNullException)
+                {
+
+                }
+                try
+                {
+                    allItems.AddRange(GameBase.CurrentGame.StoredEquiptments);
+                }
+                catch (ArgumentNullException)
+                {
+
+                }
+                try
+                {
+                    allItems.AddRange(GameBase.CurrentGame.StoredConsumables);
+                }
+                catch (ArgumentNullException)
+                {
+
+                }
+
+                return allItems;
+            }
+        }
+
         public List<Hazard> StoredHazards { get; set; }
 
         public List<Block> StoredBlocks { get; set; }
@@ -183,6 +223,63 @@ namespace RuinsOfAlbertrizal.Environment
         public void WinGame()
         {
             throw new NotImplementedException();
+        }
+
+        public void PlayerObtainObject(Item item)
+        {
+            if (item.GetType() == typeof(Equiptment))
+                ObtainEquiptment((Equiptment)item);
+            else if (item.GetType() == typeof(Consumable))
+                ObtainConsumable((Consumable)item);
+            else
+                ObtainItem(item);
+        }
+
+        /// <summary>
+        /// Prompts the user to keep or discard the item.
+        /// </summary>
+        /// <param name="item"></param>
+        public void ObtainItem(Item item)
+        {
+            IconedObjectPrompt prompt = new IconedObjectPrompt("You found an item!", GetItemFindMessage(item), item, "Keep", "Discard");
+
+            if ((bool)prompt.DialogResult)
+            {
+                GameBase.CurrentGame.PlayerItems.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Prompts the user to keep or discard the equiptment.
+        /// </summary>
+        /// <param name="equiptment"></param>
+        public void ObtainEquiptment(Equiptment equiptment)
+        {
+            IconedObjectPrompt prompt = new IconedObjectPrompt("You found an equiptment!", GetItemFindMessage(equiptment), equiptment, "Keep", "Discard");
+
+            if ((bool)prompt.DialogResult)
+            {
+                GameBase.CurrentGame.PlayerEquiptments.Add(equiptment);
+            }
+        }
+
+        /// <summary>
+        /// Prompts the user to keep or discard the consumable.
+        /// </summary>
+        /// <param name="consumable"></param>
+        public void ObtainConsumable(Consumable consumable)
+        {
+            IconedObjectPrompt prompt = new IconedObjectPrompt("You found a consumable!", GetItemFindMessage(consumable), consumable, "Keep", "Discard");
+
+            if ((bool)prompt.DialogResult)
+            {
+                GameBase.CurrentGame.PlayerConsumables.Add(consumable);
+            }
+        }
+
+        private string GetItemFindMessage(Item item)
+        {
+            return $"Out of the corner of your eye, you spot a {item.Name}.";
         }
     }
 }
