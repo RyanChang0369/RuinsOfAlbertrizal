@@ -24,16 +24,16 @@ namespace RuinsOfAlbertrizal
             GameBase.CurrentGame.CurrentLevel.IntroMessage.Display();
         }    
 
-        private void NavAdventureInterface()
+        private void NavExploreInterface()
         {
-            NavigationService.Navigate(new Uri("AdventureInterface.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("ExploreInterface.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void SkipBtn_Click(object sender, RoutedEventArgs e)
         {
             GameBase.CurrentGame.CurrentLevel.SeenIntroduction = true;
             FileHandler.SaveCurrentMap();
-            NavAdventureInterface();
+            NavExploreInterface();
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)

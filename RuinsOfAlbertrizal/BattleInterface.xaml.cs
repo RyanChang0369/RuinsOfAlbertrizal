@@ -41,6 +41,7 @@ namespace RuinsOfAlbertrizal
         public BattleInterface(BattleField battleField)
         {
             InitializeComponent();
+            ActionPanel.Visibility = Visibility.Hidden;
             BattleField = battleField;
             DataContext = BattleField;
             BackgroundImg.Source = GameBase.CurrentGame.CurrentLevel.WorldImgAsBitmapSource;
