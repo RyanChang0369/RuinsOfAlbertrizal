@@ -156,6 +156,7 @@
     <Compile Include="Editor\EnumExtension.cs" />
     <Compile Include="Environment\BattleField.cs" />
     <Compile Include="Environment\Block.cs" />
+    <Compile Include="Exceptions\NotEnoughManaException.cs" />
     <Compile Include="ExploreInterface.xaml.cs">
       <DependentUpon>ExploreInterface.xaml</DependentUpon>
     </Compile>

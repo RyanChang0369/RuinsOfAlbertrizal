@@ -267,12 +267,18 @@ namespace RuinsOfAlbertrizal
 
         public void NotifyPlayerIsReady(Player player)
         {
-            ActionPanel.Visibility = Visibility.Visible;
+            Dispatcher.Invoke(() =>
+            {
+                ActionPanel.Visibility = Visibility.Visible;
+            });
         }
 
         public void NotifyPlayerAttacking(Player player)
         {
-            ActionPanel.Visibility = Visibility.Hidden;
+            Dispatcher.Invoke(() =>
+            {
+                ActionPanel.Visibility = Visibility.Hidden;
+            });
         }
 
         public void NotifyTick()

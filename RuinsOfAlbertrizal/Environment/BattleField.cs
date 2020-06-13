@@ -436,11 +436,12 @@ namespace RuinsOfAlbertrizal.Environment
 
         private async void EnemyTurn(Enemy enemy)
         {
+            Console.WriteLine(ElaspedTime);
             //Selects target twice as each character has two turns
             AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
-            await MiscMethods.TaskDelay(500);
-            AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
-            await MiscMethods.TaskDelay(500);
+            //await MiscMethods.TaskDelay(500);
+            //AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
+            //await MiscMethods.TaskDelay(500);
         }
 
         private void PlayerTurn(Player player)

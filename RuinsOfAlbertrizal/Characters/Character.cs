@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.AIs;
 using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.Exceptions;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
@@ -472,6 +473,9 @@ namespace RuinsOfAlbertrizal.Characters
         /// <param name="target"></param>
         public void Attack(Attack attack, Character target)
         {
+            if (attack.StatCostToUser[1] > CurrentStats[1])
+                throw new NotEnoughManaException($"Character {DisplayName} does not have the required amount of mana to use this attack.");
+
             try
             {
                 attack.BeginAttack(this, target);

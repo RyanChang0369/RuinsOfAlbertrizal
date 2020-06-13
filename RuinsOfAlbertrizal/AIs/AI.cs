@@ -1,9 +1,11 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Exceptions;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,8 @@ namespace RuinsOfAlbertrizal.AIs
 {
     public class AI
     {
+        public static int counter = 0;
+
         public enum AIStyle
         {
             [Description(
@@ -80,6 +84,7 @@ namespace RuinsOfAlbertrizal.AIs
         /// <returns></returns>
         public static void SelectTarget(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
         {
+            counter++;
             //If charging an attack, let it charge.
             try
             {
@@ -224,14 +229,19 @@ namespace RuinsOfAlbertrizal.AIs
                 attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP);
             }
 
-            //If cannot use attack due to mana, recover
-            if (attack.StatCostToUser[1] > attacker.CurrentStats[1])
+            if (attack == null)
             {
-                attacker.RecoverMana();
-                return;
+
             }
 
-            attacker.Attack(attack, target);
+            try
+            {
+                attacker.Attack(attack, target);
+            }
+            catch (NotEnoughManaException)
+            {
+                attacker.RecoverMana();
+            }
         }
 
         public static void AIStyle_BerserkUseItem(Enemy attacker, Player[] activePlayers)
@@ -268,7 +278,7 @@ namespace RuinsOfAlbertrizal.AIs
 
             foreach (Enemy enemy in activeEnemies)
             {
-                if (enemy.PercentStats[0] < 0.75)
+                if (enemy != null && enemy.PercentStats[0] < 0.75)
                 {
                     woundedAllies.Add(enemy);
                 }

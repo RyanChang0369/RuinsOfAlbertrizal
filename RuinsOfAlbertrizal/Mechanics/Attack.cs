@@ -73,26 +73,38 @@ namespace RuinsOfAlbertrizal.Mechanics
             Buffs = new List<Buff>();
         }
 
-        [XmlIgnore]
-        public bool IsCharged
+        public bool IsCharged()
         {
-            get
-            {
-                return ChargeUp <= TurnsSinceBeginCharge;
-            }
+            return ChargeUp <= TurnsSinceBeginCharge;
+        }
+
+        public bool IsCooledDown()
+        {
+            return CoolDown <= TurnsSinceBeginCharge;
         }
 
         /// <summary>
-        /// Returns true if the attack can be used by the provided character (has enough mana, etc)
+        /// Returns true if the attack can be used by the provided character (has enough mana, etc).
         /// </summary>
         /// <param name="character"></param>
         /// <returns></returns>
         public bool CanBeUsedBy(Character character)
         {
+            return IsReadyForUse(character) && IsCharged();
+        }
+
+        /// <summary>
+        /// Returns true if the attack can be used by the provided character (has enough mana, etc).
+        /// Returns true even if not charged, as an enemy will be allowed to charge it.
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
+        public bool IsReadyForUse(Character character)
+        {
             if (character.CurrentStats[1] - StatCostToUser[1] < 0)
                 return false;
             else
-                return (CoolDown <= TurnSinceAttacked) && IsCharged;
+                return IsCooledDown();
         }
 
         /// <summary>
@@ -141,46 +153,46 @@ namespace RuinsOfAlbertrizal.Mechanics
             return total;
         }
 
-        /// <summary>
-        /// Starts the attack.
-        /// </summary>
-        /// <param name="attacker">The character doing the attacking.</param>
-        /// <param name="targets">The character being attacked.</param>
-        /// <param name="useStatCost">If false, then do not use StatCostToUser</param>
-        /// <exception cref="ArgumentException"></exception>
-        public void BeginAttack(Character attacker, List<Character> targets, bool useStatCost = true)
-        {
-            if (CanBeUsedBy(attacker))
-            {
-                TurnSinceAttacked = 0;
-                TurnsSinceBeginCharge = 0;
+        ///// <summary>
+        ///// Starts the attack.
+        ///// </summary>
+        ///// <param name="attacker">The character doing the attacking.</param>
+        ///// <param name="targets">The character being attacked.</param>
+        ///// <param name="useStatCost">If false, then do not use StatCostToUser</param>
+        ///// <exception cref="ArgumentException"></exception>
+        //public void BeginAttack(Character attacker, List<Character> targets, bool useStatCost = true)
+        //{
+        //    if (CanBeUsedBy(attacker))
+        //    {
+        //        TurnSinceAttacked = 0;
+        //        TurnsSinceBeginCharge = 0;
 
-                if (useStatCost)
-                {
-                    for (int i = 0; i < StatCostToUser.Length; i++)
-                    {
-                        attacker.AppliedStats[i] -= StatCostToUser[i];
-                    }
-                }
+        //        if (useStatCost)
+        //        {
+        //            for (int i = 0; i < StatCostToUser.Length; i++)
+        //            {
+        //                attacker.AppliedStats[i] -= StatCostToUser[i];
+        //            }
+        //        }
 
-                GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker);
+        //        GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker);
 
-                foreach (Character target in targets)
-                {
-                    if (!CanTargetCharacter(attacker, target))
-                        throw new ArgumentException($"Character {attacker.DisplayName} cannot target {target.DisplayName}.");
-                    else
-                        target.GetAttacked(this);
-                }
-            }
-            else if (!IsCharged)
-            {
-                //Begin/Continue charge
-                TurnsSinceBeginCharge++;
-                GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
-                attacker.AttackToCharge = this;
-            }
-        }
+        //        foreach (Character target in targets)
+        //        {
+        //            if (!CanTargetCharacter(attacker, target))
+        //                throw new ArgumentException($"Character {attacker.DisplayName} cannot target {target.DisplayName}.");
+        //            else
+        //                target.GetAttacked(this);
+        //        }
+        //    }
+        //    else if (!IsCharged)
+        //    {
+        //        //Begin/Continue charge
+        //        TurnsSinceBeginCharge++;
+        //        GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
+        //        attacker.AttackToCharge = this;
+        //    }
+        //}
 
         /// <summary>
         /// Starts the attack
@@ -211,7 +223,7 @@ namespace RuinsOfAlbertrizal.Mechanics
 
                 target.GetAttacked(this);
             }
-            else if (!IsCharged)
+            else if (!IsCharged())
             {
                 //Begin/Continue charge
                 TurnsSinceBeginCharge++;
@@ -321,7 +333,7 @@ namespace RuinsOfAlbertrizal.Mechanics
 
             foreach (Attack attack in attacks)
             {
-                if (!attack.CanBeUsedBy(attacker) || !attack.CanTargetCharacter(attacker, target))
+                if (!attack.IsCooledDown() || !attack.CanTargetCharacter(attacker, target))
                     continue;
                 else if (attack.GetLifetimeStatLoss(target, stat) > strongestStat)
                 {
@@ -360,7 +372,7 @@ namespace RuinsOfAlbertrizal.Mechanics
 
             foreach (Attack attack in attacks)
             {
-                if (!attack.CanBeUsedBy(healer) || !attack.CanTargetCharacter(healer, target))
+                if (!attack.IsCooledDown() || !attack.CanTargetCharacter(healer, target))
                     continue;
                 else if (attack.GetLifetimeStatLoss(target, stat) < weakestStat)
                 {
