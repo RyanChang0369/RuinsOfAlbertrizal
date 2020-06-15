@@ -235,6 +235,10 @@ namespace RuinsOfAlbertrizal.Environment
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Obtains an item. This assumes that the item is already cloned.
+        /// </summary>
+        /// <param name="item"></param>
         public void PlayerObtainObject(Item item)
         {
             if (item.GetType() == typeof(Equiptment))

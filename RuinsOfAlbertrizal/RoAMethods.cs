@@ -1,9 +1,11 @@
 ﻿using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
 {
@@ -56,12 +58,12 @@ namespace RuinsOfAlbertrizal
         }
 
         /// <summary>
-        /// Uses static map to clone a single ObjectOfAlbertrizal. Slow because it uses Xml serialzation
+        /// Uses static map to clone a single ObjectOfAlbertrizal.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="objectOfAlbertrizal">An object from static map.</param>
         /// <returns></returns>
-        public static T SlowClone<T>(this T objectOfAlbertrizal) where T : ObjectOfAlbertrizal
+        public static T StaticMapClone<T>(this T objectOfAlbertrizal) where T : ObjectOfAlbertrizal
         {
             if (!GameBase.Initialized())
                 throw new Exception("Both static and current maps must be initialized");
@@ -72,6 +74,21 @@ namespace RuinsOfAlbertrizal
             GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
 
             return thing;
+        }
+
+        /// <summary>
+        /// Clones an object without needing a static map.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectOfAlbertrizal">Any ObjectOfAlbertrizal</param>
+        /// <returns></returns>
+        public static T MemoryClone<T>(this T objectOfAlbertrizal) where T : ObjectOfAlbertrizal
+        {
+            XmlSerializer serializer = new XmlSerializer(objectOfAlbertrizal.GetType());
+            MemoryStream memoryStream = new MemoryStream();
+            serializer.Serialize(memoryStream, objectOfAlbertrizal);
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            return (T)serializer.Deserialize(memoryStream);
         }
     }
 }
