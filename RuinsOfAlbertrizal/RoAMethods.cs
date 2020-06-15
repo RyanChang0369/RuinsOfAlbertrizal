@@ -1,6 +1,7 @@
 ﻿using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -58,7 +59,7 @@ namespace RuinsOfAlbertrizal
         }
 
         /// <summary>
-        /// Uses static map to clone a single ObjectOfAlbertrizal.
+        /// Uses StaticMap to clone a single ObjectOfAlbertrizal.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="objectOfAlbertrizal">An object from static map.</param>
@@ -74,6 +75,23 @@ namespace RuinsOfAlbertrizal
             GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
 
             return thing;
+        }
+
+        /// <summary>
+        /// Uses StaticMap to clone an entire list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static List<T> StaticMapClone<T>(this List<T> listOfObjects) where T : ObjectOfAlbertrizal
+        {
+            if (!GameBase.Initialized())
+                throw new Exception("Both static and current maps must be initialized");
+
+
+            GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
+
+            return listOfObjects;
         }
 
         /// <summary>
