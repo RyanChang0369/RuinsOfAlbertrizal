@@ -69,12 +69,10 @@ namespace RuinsOfAlbertrizal
             if (!GameBase.Initialized())
                 throw new Exception("Both static and current maps must be initialized");
 
-            T thing = objectOfAlbertrizal;
-
             //Break link
             GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
 
-            return thing;
+            return objectOfAlbertrizal;
         }
 
         /// <summary>
