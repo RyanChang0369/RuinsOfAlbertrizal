@@ -99,5 +99,15 @@ namespace RuinsOfAlbertrizal.Items
 
             return utils;
         }
+
+        public void EndTurn()
+        {
+            
+        }
+
+        public void StartTurn()
+        {
+            
+        }
     }
 }

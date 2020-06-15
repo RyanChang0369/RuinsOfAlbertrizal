@@ -167,5 +167,15 @@ namespace RuinsOfAlbertrizal.Mechanics
         {
             character.AppliedBuffs.Clear();
         }
+
+        public void EndTurn()
+        {
+            
+        }
+
+        public void StartTurn()
+        {
+            
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                if (String.IsNullOrWhiteSpace(GeneralName))
+                if (string.IsNullOrWhiteSpace(GeneralName))
                     return Name;
                 else
                     return $"{Name} the {GeneralName}";
@@ -537,6 +537,9 @@ namespace RuinsOfAlbertrizal.Characters
 
         public void StartRound()
         {
+            //Reset TurnTicks
+            TurnTicks = 0;
+
             //Remove all expired consumables and buffs
             CurrentConsumables.RemoveAll(item => item.HasEnded);
             AppliedBuffs.RemoveAll(item => item.HasEnded);

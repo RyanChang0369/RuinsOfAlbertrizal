@@ -14,8 +14,6 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class BattleField : IRoundBasedObject
     {
-        [XmlIgnore]
-        public RoundBasedItemKeeper RoundKeeper { get; set; }
 
         [XmlIgnore]
         public BattleInterface BattleInterface { get; set; }
@@ -86,12 +84,29 @@ namespace RuinsOfAlbertrizal.Environment
         }
 
         [XmlIgnore]
+        public List<Character> ActiveCharacters
+        {
+            get
+            {
+                List<Character> characters = new List<Character>();
+                for (int i = 0; i < GameBase.NumActiveCharacters; i++)
+                {
+                    if (ActivePlayers[i] != null)
+                        characters.Add(ActivePlayers[i]);
+                    if (ActiveEnemies[i] != null)
+                        characters.Add(ActiveEnemies[i]);
+                }
+                return characters;
+            }
+        }
+
+        [XmlIgnore]
         public List<Character> AliveCharacters
         {
             get
             {
                 List<Character> characters = new List<Character>();
-                characters.AddRange(GameBase.CurrentGame.AlivePlayers);
+                characters.AddRange(AlivePlayers);
                 characters.AddRange(AliveEnemies);
                 return characters;
             }
@@ -114,7 +129,7 @@ namespace RuinsOfAlbertrizal.Environment
         {
             get
             {
-                int max = int.MinValue;
+                int max = 0;
                 foreach (Character character in AliveCharacters)
                     max += character.CurrentStats[4];
                 return max;
@@ -167,24 +182,24 @@ namespace RuinsOfAlbertrizal.Environment
 
             BattleInterface = new BattleInterface(this);
 
-            RoundKeeper = new RoundBasedItemKeeper();
-            RoundKeeper.Add(Players);                       //Convert to ActivePlayers if performance issues
-            RoundKeeper.Add(Enemies);                       //Convert to ActiveEnemies if performance issues
-            RoundKeeper.Add(this);
+            //RoundKeeper = new RoundKeeper();
+            //RoundKeeper.Add(Players);                       //Convert to ActivePlayers if performance issues
+            //RoundKeeper.Add(Enemies);                       //Convert to ActiveEnemies if performance issues
+            //RoundKeeper.Add(this);
 
-            foreach (Player player in Players)
-            {
-                RoundKeeper.Add(player.CurrentBuffs);
-                RoundKeeper.Add(player.CurrentConsumables);
-                RoundKeeper.Add(player.AllAttacks);
-            }
+            //foreach (Player player in Players)
+            //{
+            //    RoundKeeper.Add(player.CurrentBuffs);
+            //    RoundKeeper.Add(player.CurrentConsumables);
+            //    RoundKeeper.Add(player.AllAttacks);
+            //}
 
-            foreach (Enemy enemy in Enemies)
-            {
-                RoundKeeper.Add(enemy.CurrentBuffs);
-                RoundKeeper.Add(enemy.CurrentConsumables);
-                RoundKeeper.Add(enemy.AllAttacks);
-            }
+            //foreach (Enemy enemy in Enemies)
+            //{
+            //    RoundKeeper.Add(enemy.CurrentBuffs);
+            //    RoundKeeper.Add(enemy.CurrentConsumables);
+            //    RoundKeeper.Add(enemy.AllAttacks);
+            //}
         }
 
         private List<Enemy> SummonEnemies(List<Player> players)
@@ -215,7 +230,7 @@ namespace RuinsOfAlbertrizal.Environment
 
             //Failsafe
             if (enemies.Count < 1)
-                enemies.Add(GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies));
+                enemies.Add(GetRandomEnemy(players));
 
             return enemies;
         }
@@ -233,7 +248,7 @@ namespace RuinsOfAlbertrizal.Environment
 
             while (totalEnemyBI < adjustedPlayerBI)
             {
-                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+                Enemy enemy = GetRandomEnemy(players);
                 enemies.Add(enemy);
                 totalEnemyBI += enemy.BattleIndex;
             }
@@ -263,7 +278,7 @@ namespace RuinsOfAlbertrizal.Environment
 
             while (totalEnemyBI < adjustedPlayerBI * 0.75)
             {
-                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+                Enemy enemy = GetRandomEnemy(players);
 
                 if (enemy.BattleIndex >= averageBI)
                 {
@@ -274,7 +289,7 @@ namespace RuinsOfAlbertrizal.Environment
 
             while (totalEnemyBI < adjustedPlayerBI)
             {
-                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+                Enemy enemy = GetRandomEnemy(players);
                 enemies.Add(enemy);
                 totalEnemyBI += enemy.BattleIndex;
             }
@@ -304,7 +319,7 @@ namespace RuinsOfAlbertrizal.Environment
 
             while (totalEnemyBI < adjustedPlayerBI * 0.75)
             {
-                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+                Enemy enemy = GetRandomEnemy(players);
 
                 if (enemy.BattleIndex <= averageBI)
                 {
@@ -315,7 +330,7 @@ namespace RuinsOfAlbertrizal.Environment
 
             while (totalEnemyBI < adjustedPlayerBI)
             {
-                Enemy enemy = GetRandomEnemy(players, GameBase.CurrentGame.CurrentLevel.StoredEnemies);
+                Enemy enemy = GetRandomEnemy(players);
                 enemies.Add(enemy);
                 totalEnemyBI += enemy.BattleIndex;
             }
@@ -323,10 +338,12 @@ namespace RuinsOfAlbertrizal.Environment
             return enemies;
         }
 
-        private Enemy GetRandomEnemy(List<Player> players, List<Enemy> storedEnemies)
+        private Enemy GetRandomEnemy(List<Player> players)
         {
+            List<Enemy> storedEnemies = GameBase.StaticGame.StoredEnemies;
+
             int fateSelector = RNG.GetRandomInteger(storedEnemies.Count);
-            Enemy enemy = storedEnemies[fateSelector];
+            Enemy enemy = storedEnemies[fateSelector].SlowClone();
             enemy.Level = GetAdjustedLevel(players);
             return enemy;
         }
@@ -356,7 +373,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         private void PlayerLoses()
         {
-
+            throw new NotImplementedException();
         }
 
         public void PlayerRunsAway()
@@ -422,31 +439,36 @@ namespace RuinsOfAlbertrizal.Environment
 
             int maxTicks = MaxSpeed;
 
-            foreach (Character character in AliveCharacters)
+            foreach (Character character in ActiveCharacters)
             {
                 character.TurnTicks += character.CurrentStats[4];
-
-                if (character.TurnTicks > maxTicks)
-                    maxTicks = character.TurnTicks;
             }
 
-            foreach (Character character in AliveCharacters)
+            foreach (Character character in ActiveCharacters)
             {
-                if (character.TurnTicks == maxTicks)
+                if (character.TurnTicks >= maxTicks)
                     ConcurrentCharacters.Add(character);
             }
 
             BattleInterface.NotifyTick();
 
-            for (int i = 0; i < ConcurrentCharacters.Count; i++)
-                StartRound(ConcurrentCharacters[i]);
+            if (ConcurrentCharacters.Count > 0)
+            {
+                for (int i = 0; i < ConcurrentCharacters.Count; i++)
+                    StartCharacterRound(ConcurrentCharacters[i]);
+            }
+            else
+                RoundKeeper.RoundEnd(this);
         }
 
         
 
-        public void StartRound(Character character)
+        public void StartCharacterRound(Character character)
         {
-            character.TurnTicks = 0;
+            RoundKeeper.RoundStart(this);
+            RoundKeeper.RoundStart(character);
+            RoundKeeper.RoundStart(character.CurrentConsumables);
+            RoundKeeper.RoundStart(character.AllAttacks);
 
             StoredMessage.Add($"{character.DisplayName} is up.");
 
@@ -456,20 +478,40 @@ namespace RuinsOfAlbertrizal.Environment
                 EnemyTurn((Enemy)character);
         }
 
+        public void EndCharacterRound(Character character)
+        {
+            RoundKeeper.RoundEnd(character);
+            RoundKeeper.RoundEnd(character.CurrentConsumables);
+            RoundKeeper.RoundEnd(character.AllAttacks);
+            RoundKeeper.RoundEnd(this);
+        }
+
+        public void EndCharacterTurn(Character character)
+        {
+            RoundKeeper.TurnEnd(character);
+            RoundKeeper.TurnEnd(character.CurrentConsumables);
+            RoundKeeper.TurnEnd(character.AllAttacks);
+            RoundKeeper.TurnEnd(this);
+        }
+
         private async void EnemyTurn(Enemy enemy)
         {
             Console.WriteLine(ElaspedTime);
             //Selects target twice as each character has two turns
             AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
             await MiscMethods.TaskDelay(500);
-            //AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
-            //await MiscMethods.TaskDelay(500);
-            SpeedTimer.Change(0, GameBase.TickSpeed);
+            EndCharacterTurn(enemy);
+            AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
+            await MiscMethods.TaskDelay(500);
+            EndCharacterRound(enemy);
         }
 
         private void PlayerTurn(Player player)
         {
             BattleInterface.NotifyPlayerIsReady(player);
+            EndCharacterTurn(player);
+            BattleInterface.NotifyPlayerIsReady(player);
+            //EndCharacterRound(player);
         }
 
         public void StartRound()
@@ -480,6 +522,7 @@ namespace RuinsOfAlbertrizal.Environment
         public void EndRound()
         {
             RoundsPassed++;
+            SpeedTimer.Change(0, GameBase.TickSpeed);
         }
 
         public void StartTurn()

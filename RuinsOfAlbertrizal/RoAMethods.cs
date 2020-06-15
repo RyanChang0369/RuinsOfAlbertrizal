@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.XMLInterpreter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,6 +53,25 @@ namespace RuinsOfAlbertrizal
             }
 
             return filteredArr;
+        }
+
+        /// <summary>
+        /// Uses static map to clone a single ObjectOfAlbertrizal. Slow because it uses Xml serialzation
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectOfAlbertrizal">An object from static map.</param>
+        /// <returns></returns>
+        public static T SlowClone<T>(this T objectOfAlbertrizal) where T : ObjectOfAlbertrizal
+        {
+            if (!GameBase.Initialized())
+                throw new Exception("Both static and current maps must be initialized");
+
+            T thing = objectOfAlbertrizal;
+
+            //Break link
+            GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
+
+            return thing;
         }
     }
 }
