@@ -236,11 +236,13 @@ namespace RuinsOfAlbertrizal.Environment
         }
 
         /// <summary>
-        /// Obtains an item. This assumes that the item is already cloned.
+        /// Obtains and clones an item.
         /// </summary>
         /// <param name="item"></param>
         public void PlayerObtainObject(Item item)
         {
+            item = item.MemoryClone();
+
             if (item.GetType() == typeof(Equiptment))
                 ObtainEquiptment((Equiptment)item);
             else if (item.GetType() == typeof(Consumable))
