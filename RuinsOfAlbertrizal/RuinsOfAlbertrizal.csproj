@@ -204,6 +204,7 @@
     <Compile Include="Testing.cs" />
     <Compile Include="Text\Message.cs" />
     <Compile Include="ITurnBasedObject.cs" />
+    <Compile Include="RoundBasedItemKeeper.cs" />
     <Compile Include="WorldMapObject.cs" />
     <Compile Include="XMLInterpreter\FileDialog.cs" />
     <Compile Include="XMLInterpreter\FileHandler.cs" />

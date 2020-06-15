@@ -18,7 +18,7 @@ using System.Xml.Serialization;
 namespace RuinsOfAlbertrizal.Characters
 {
     
-    public abstract class Character : WorldMapObject, ITurnBasedObject, INotifyPropertyChanged
+    public abstract class Character : WorldMapObject, IRoundBasedObject, INotifyPropertyChanged
     {
         public const int MaxTurns = 2;
 

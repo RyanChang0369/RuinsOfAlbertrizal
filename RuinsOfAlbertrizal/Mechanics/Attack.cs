@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 namespace RuinsOfAlbertrizal.Mechanics
 {
 
-    public class Attack : ObjectOfAlbertrizal, ITurnBasedObject
+    public class Attack : ObjectOfAlbertrizal, IRoundBasedObject
     {
         public List<Buff> Buffs { get; set; }
 
@@ -390,6 +390,16 @@ namespace RuinsOfAlbertrizal.Mechanics
         }
 
         public void StartTurn()
+        {
+            
+        }
+
+        public void StartRound()
+        {
+            
+        }
+
+        public void EndRound()
         {
             
         }

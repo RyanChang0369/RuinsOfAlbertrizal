@@ -12,8 +12,11 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class BattleField : ITurnBasedObject
+    public class BattleField : IRoundBasedObject
     {
+        [XmlIgnore]
+        public RoundBasedItemKeeper RoundKeeper { get; set; }
+
         [XmlIgnore]
         public BattleInterface BattleInterface { get; set; }
 
@@ -163,6 +166,25 @@ namespace RuinsOfAlbertrizal.Environment
             }
 
             BattleInterface = new BattleInterface(this);
+
+            RoundKeeper = new RoundBasedItemKeeper();
+            RoundKeeper.Add(Players);                       //Convert to ActivePlayers if performance issues
+            RoundKeeper.Add(Enemies);                       //Convert to ActiveEnemies if performance issues
+            RoundKeeper.Add(this);
+
+            foreach (Player player in Players)
+            {
+                RoundKeeper.Add(player.CurrentBuffs);
+                RoundKeeper.Add(player.CurrentConsumables);
+                RoundKeeper.Add(player.AllAttacks);
+            }
+
+            foreach (Enemy enemy in Enemies)
+            {
+                RoundKeeper.Add(enemy.CurrentBuffs);
+                RoundKeeper.Add(enemy.CurrentConsumables);
+                RoundKeeper.Add(enemy.AllAttacks);
+            }
         }
 
         private List<Enemy> SummonEnemies(List<Player> players)
@@ -418,9 +440,9 @@ namespace RuinsOfAlbertrizal.Environment
 
             for (int i = 0; i < ConcurrentCharacters.Count; i++)
                 StartRound(ConcurrentCharacters[i]);
-
-            SpeedTimer.Change(0, GameBase.TickSpeed);
         }
+
+        
 
         public void StartRound(Character character)
         {
@@ -439,9 +461,10 @@ namespace RuinsOfAlbertrizal.Environment
             Console.WriteLine(ElaspedTime);
             //Selects target twice as each character has two turns
             AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
-            //await MiscMethods.TaskDelay(500);
+            await MiscMethods.TaskDelay(500);
             //AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
             //await MiscMethods.TaskDelay(500);
+            SpeedTimer.Change(0, GameBase.TickSpeed);
         }
 
         private void PlayerTurn(Player player)
@@ -449,9 +472,11 @@ namespace RuinsOfAlbertrizal.Environment
             BattleInterface.NotifyPlayerIsReady(player);
         }
 
-        /// <summary>
-        /// Hand control over to the next character
-        /// </summary>
+        public void StartRound()
+        {
+
+        }
+
         public void EndRound()
         {
             RoundsPassed++;
