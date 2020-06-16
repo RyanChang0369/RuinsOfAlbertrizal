@@ -40,8 +40,6 @@ namespace RuinsOfAlbertrizal
         {
             if (!Debugging)
                 return;
-
-            GameBase.CurrentGame.PlayerConsumables.Add(GameBase.CurrentGame.StoredConsumables[0]);
         }
     }
 }

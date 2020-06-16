@@ -13,11 +13,12 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Content="{Binding Path=DisplayName}"/>
+                <Label Content="{Binding Path=Name}"/>
                 <StackPanel Grid.Column="1" Orientation="Horizontal">
                     <Separator/>
                     <Label Content="Duration: "/>
                     <Label Content="{Binding Path=Duration}"/>
+                    <Label Content=" Turn(s)"/>
                     <Separator/>
                     <Label Content="Buff Type: "/>
                     <Label Content="{Binding Path=TypeOfBuff}"/>
