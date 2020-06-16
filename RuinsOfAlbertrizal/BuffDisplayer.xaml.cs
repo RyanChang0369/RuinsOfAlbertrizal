@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Mechanics;
+﻿using RuinsOfAlbertrizal.Editor;
+using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,24 @@ namespace RuinsOfAlbertrizal
         {
             InitializeComponent();
             DataContext = buffs;
+        }
+        private void InfoLoaded_EnumDescription(object sender, RoutedEventArgs e)
+        {
+            Image imgElement = (Image)sender;
+            imgElement.ToolTip = "Click to open description for the below Combo Box.";
+
+            imgElement.MouseUp += InfoMouseUp_EnumDescription;
+        }
+
+        private void InfoMouseUp_EnumDescription(object sender, MouseEventArgs e)
+        {
+            Image imgElement = (Image)sender;
+
+            if (e.LeftButton == MouseButtonState.Released)
+            {
+                EnumDescriptor descriptor = new EnumDescriptor((Array)imgElement.Tag);
+                descriptor.Show();
+            }
         }
     }
 }

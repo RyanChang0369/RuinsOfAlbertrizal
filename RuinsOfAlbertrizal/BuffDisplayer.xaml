@@ -8,8 +8,24 @@
         Title="Buffs" Height="700" Width="1200">
     <Window.Resources>
         <DataTemplate x:Key="buffsListTemplate">
-            <Label Content="{Binding Path=DisplayName}"/>
-            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="{Binding Path=DisplayName}"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Separator/>
+                    <Label Content="Duration: "/>
+                    <Label Content="{Binding Path=Duration}"/>
+                    <Separator/>
+                    <Label Content="Buff Type: "/>
+                    <Label Content="{Binding Path=TypeOfBuff}"/>
+                    <Image Source="assets/infoCircle.png" Style="{StaticResource infoCircle}"
+                           Tag="{Binding Path=TypeOfBuff, Mode=OneTime, Converter={StaticResource EnumConverter}}"
+                           Loaded="InfoLoaded_EnumDescription"/>
+                </StackPanel>
+            </Grid>
         </DataTemplate>
     </Window.Resources>
     <Grid>
