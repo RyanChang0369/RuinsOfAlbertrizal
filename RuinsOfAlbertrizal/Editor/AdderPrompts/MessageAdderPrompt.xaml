@@ -17,12 +17,11 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <StackPanel>
                 <Button x:Name="AddMessageBtn" Content="Click to Add" Click="AddMessageBtn_Click"/>
+                <Button x:Name="RemoveSelectionBtn" Content="Remove Selection" Click="RemoveSelectionBtn_Click"/>
+                <Separator/>
                 <Button Click="Back" Content="Back"/>
             </StackPanel>
-            <StackPanel>
-                <ListBox x:Name="AddedMessagesListBox" Width="200" FontSize="18" ToolTip="Click Item to Select" Margin="10"/>
-                <Button x:Name="RemoveSelectionBtn" Content="Remove Selection" Click="RemoveSelectionBtn_Click" Style="{StaticResource buttonSmallStretch}"/>
-            </StackPanel>
+            <ListBox x:Name="AddedMessagesListBox" Width="200" FontSize="18" ToolTip="Click Item to Select" Margin="10"/>
         </StackPanel>
     </StackPanel>
 </Window>
