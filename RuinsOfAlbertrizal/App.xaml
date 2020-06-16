@@ -309,6 +309,7 @@
         <converter:EnumConverter x:Key="EnumConverter"/>
         <converter:NotNullToBoolConverter x:Key="NotNullToBoolConverter"/>
         <converter:ProperNameConverter x:Key="ProperNameConverter"/>
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
 
         <!--Validator Resources-->
         <validator:DoubleValidation x:Key="DoubleValidation"/>
