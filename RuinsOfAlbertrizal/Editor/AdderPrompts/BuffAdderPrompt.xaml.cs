@@ -26,7 +26,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
         public List<Buff> GetSelected()
         {
-            return TargetBuffs.MemoryClone();
+            return TargetBuffs;
         }
 
         public BuffAdderPrompt()
