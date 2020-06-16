@@ -79,7 +79,7 @@ namespace RuinsOfAlbertrizal.Editor
             SimpleAdderPrompt prompt = new SimpleAdderPrompt(CreatedLevel.Bosses.Cast<ObjectOfAlbertrizal>().ToList(),
                 CreateMapPrompt.Map.StoredBosses.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Bosses");
             prompt.ShowDialog();
-            CreatedLevel.BossGuids = prompt.GetSelectedValue<Boss>().ToGuidList();
+            CreatedLevel.BossGuids = prompt.GetSelected<Boss>().ToGuidList();
             CreatedLevel.RefreshStoredItems();
         }
 
@@ -87,7 +87,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             SimpleAdderPrompt simpleAdderPrompt = new SimpleAdderPrompt(CreatedLevel.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), CreateMapPrompt.Map.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Enemies");
             simpleAdderPrompt.ShowDialog();
-            CreatedLevel.StoredEnemyGuids = simpleAdderPrompt.GetSelectedValue<Enemy>().ToGuidList();
+            CreatedLevel.StoredEnemyGuids = simpleAdderPrompt.GetSelected<Enemy>().ToGuidList();
             CreatedLevel.RefreshStoredItems();
         }
 
