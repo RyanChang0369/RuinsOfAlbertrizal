@@ -22,6 +22,29 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Enemy> Enemies { get; set; }
 
+        public int TurnNum { get; set; }
+
+        /// <summary>
+        /// The index of the player in ActivePlayers that is having a turn.
+        /// </summary>
+        public int SelectedPlayerIndex { get; set; }
+
+        [XmlIgnore]
+        public Player SelectedPlayer
+        {
+            get
+            {
+                try
+                {
+                    return ActivePlayers[SelectedPlayerIndex];
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
         [XmlIgnore]
         public List<Enemy> AliveEnemies
         {
@@ -167,6 +190,8 @@ namespace RuinsOfAlbertrizal.Environment
         /// </summary>
         public BattleField()
         {
+            SelectedPlayerIndex = -1;
+
             Enemies = SummonEnemies(GameBase.CurrentGame.Players);
 
             Random rnd = new Random();
@@ -181,25 +206,6 @@ namespace RuinsOfAlbertrizal.Environment
             }
 
             BattleInterface = new BattleInterface(this);
-
-            //RoundKeeper = new RoundKeeper();
-            //RoundKeeper.Add(Players);                       //Convert to ActivePlayers if performance issues
-            //RoundKeeper.Add(Enemies);                       //Convert to ActiveEnemies if performance issues
-            //RoundKeeper.Add(this);
-
-            //foreach (Player player in Players)
-            //{
-            //    RoundKeeper.Add(player.CurrentBuffs);
-            //    RoundKeeper.Add(player.CurrentConsumables);
-            //    RoundKeeper.Add(player.AllAttacks);
-            //}
-
-            //foreach (Enemy enemy in Enemies)
-            //{
-            //    RoundKeeper.Add(enemy.CurrentBuffs);
-            //    RoundKeeper.Add(enemy.CurrentConsumables);
-            //    RoundKeeper.Add(enemy.AllAttacks);
-            //}
         }
 
         private List<Enemy> SummonEnemies(List<Player> players)
@@ -503,15 +509,13 @@ namespace RuinsOfAlbertrizal.Environment
             EndCharacterTurn(enemy);
             AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
             await MiscMethods.TaskDelay(500);
-            EndCharacterRound(enemy);
+            //EndCharacterRound(enemy);
         }
 
         private void PlayerTurn(Player player)
         {
-            BattleInterface.NotifyPlayerIsReady(player);
-            EndCharacterTurn(player);
-            BattleInterface.NotifyPlayerIsReady(player);
-            //EndCharacterRound(player);
+            SelectedPlayerIndex = Array.IndexOf(ActivePlayers, player);
+            BattleInterface.NotifyPlayerIsReady(player, 0);
         }
 
         public void StartRound()
@@ -521,6 +525,8 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void EndRound()
         {
+            SelectedPlayerIndex = -1;
+            TurnNum = 0;
             RoundsPassed++;
             SpeedTimer.Change(0, GameBase.TickSpeed);
         }
@@ -532,6 +538,8 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void EndTurn()
         {
+            TurnNum++;
+
             if (PlayerHasWon)
                 PlayerWins();
             else if (PlayerHasLost)

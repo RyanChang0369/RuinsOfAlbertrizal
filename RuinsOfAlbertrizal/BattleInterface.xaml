@@ -33,6 +33,15 @@
         <Storyboard x:Key="targetFadeOut">
             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.4" To="0.0"/>
         </Storyboard>
+
+        <DataTemplate x:Key="attackDataTemplate">
+            <StackPanel Style="{StaticResource inventoryStackPanel}">
+                <Label Content="{Binding Path=DisplayName}"/>
+                <Image Visibility="{Binding Path=MultiTarget, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Multi-Target"/>
+                <Image Visibility="{Binding Path=IgnoresArmor, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Ignores Armor"/>
+                <Image Visibility="{Binding Path=HasBuffs, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Click to view buffs" MouseUp="BuffIcon_MouseUp" Tag="Buffs"/>
+            </StackPanel>
+        </DataTemplate>
     </Page.Resources>
     
     <Grid Background="WhiteSmoke">
@@ -147,7 +156,12 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="InfoBlock" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}"/>
+                <Grid>
+                    <TextBlock x:Name="InfoBlock" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}"/>
+                    <StackPanel Background="SlateGray">
+                        <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}"/>
+                    </StackPanel>
+                </Grid>
                 <StackPanel Grid.Column="1" x:Name="ActionPanel" Background="Snow">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Content="Attack" Click="Attack_Click" Style="{StaticResource buttonMedium}"/>

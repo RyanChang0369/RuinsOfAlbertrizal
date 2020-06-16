@@ -36,8 +36,6 @@ namespace RuinsOfAlbertrizal
 
         private List<Image> enemyTargetImages = new List<Image>();
 
-        public int CurrentPlayerIndex { get; set; }
-
         public BattleInterface(BattleField battleField)
         {
             InitializeComponent();
@@ -227,12 +225,23 @@ namespace RuinsOfAlbertrizal
 
         private void Attack_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Button btn = (Button)sender;
+            btn.Content = "Select Attack";
+            
+
+
+
+            btn.Content = "Attack";
+        }
+
+        private void LoadAttackSelector()
+        {
+            
         }
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
         {
-
+            FloatingInventory inventory = new FloatingInventory(BattleField.SelectedPlayer, BattleField.TurnNum);
         }
 
         private void Flee_Click(object sender, RoutedEventArgs e)
@@ -265,7 +274,7 @@ namespace RuinsOfAlbertrizal
             //update sprites
         }
 
-        public void NotifyPlayerIsReady(Player player)
+        public void NotifyPlayerIsReady(Player player, int turnNum)
         {
             Dispatcher.Invoke(() =>
             {
@@ -273,7 +282,7 @@ namespace RuinsOfAlbertrizal
             });
         }
 
-        public void NotifyPlayerAttacking(Player player)
+        public void NotifyPlayerAttacking(Player player, int turnNum)
         {
             Dispatcher.Invoke(() =>
             {
@@ -284,6 +293,13 @@ namespace RuinsOfAlbertrizal
         public void NotifyTick()
         {
             
+        }
+
+        private void BuffIcon_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            BuffDisplayer displayer = new BuffDisplayer((List<Buff>)ctrl.Tag);
+            displayer.Show();
         }
     }
 }
