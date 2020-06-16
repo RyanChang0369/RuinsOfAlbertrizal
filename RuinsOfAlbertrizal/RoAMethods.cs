@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.XMLInterpreter;
+﻿using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -85,7 +86,6 @@ namespace RuinsOfAlbertrizal
         {
             if (!GameBase.Initialized())
                 throw new Exception("Both static and current maps must be initialized");
-
 
             GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
 
