@@ -69,7 +69,7 @@ namespace RuinsOfAlbertrizal.Editor
             List<Buff> buffs = (List<Buff>)control.Tag;
             BuffAdderPrompt buffAdderPrompt = new BuffAdderPrompt(buffs);
             buffAdderPrompt.ShowDialog();
-            control.Tag = buffAdderPrompt.TargetBuffs;
+            control.Tag = buffAdderPrompt.GetSelected();
         }
 
         protected void EditAttackBtn_Click(object sender, RoutedEventArgs e)
@@ -80,7 +80,7 @@ namespace RuinsOfAlbertrizal.Editor
                 CreateMapPrompt.Map.StoredAttacks.Cast<ObjectOfAlbertrizal>().ToList(),
                 "Add/Remove Attacks");
             prompt.ShowDialog();
-            control.Tag = prompt.GetSelectedValue<Attack>();
+            control.Tag = prompt.GetSelected<Attack>();
         }
 
         protected void ComboBox_Initialize(object sender, RoutedEventArgs e)
