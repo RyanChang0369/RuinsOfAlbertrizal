@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
@@ -10,8 +11,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Text
 {
-    
-    public class Message
+    public class Message : INotifyPropertyChanged
     {
         private Timer TimerChar = new Timer(50);
 
@@ -24,6 +24,8 @@ namespace RuinsOfAlbertrizal.Text
         private int lineIndex;
 
         private int charIndex;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public List<string> Lines { get; set; }
 
@@ -62,6 +64,8 @@ namespace RuinsOfAlbertrizal.Text
         public void Add(string line)
         {
             Lines.Add(line);
+            OnPropertyChanged("Lines");
+            OnPropertyChanged("FormattedLines");
         }
 
         public void InitializeControls(TextBlock textBlock, Button nextButton, Button skipButton)
@@ -272,23 +276,9 @@ namespace RuinsOfAlbertrizal.Text
             }
         }
 
-        [XmlIgnore]
-        public string GetPreviewAsProperty
+        public void OnPropertyChanged([CallerMemberName] string name = null)
         {
-            get
-            {
-                return GetPreview(40);
-            }
-        }
-
-        public void Reset()
-        {
-            TimerChar = new System.Timers.Timer(100);
-            lineIndex = 0;
-            charIndex = 0;
-            TextBlock = new TextBlock();
-            NextBtn = new Button();
-            SkipBtn = new Button();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
