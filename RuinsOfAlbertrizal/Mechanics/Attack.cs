@@ -23,6 +23,9 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         public bool IsRanged { get; set; }
 
+        [XmlIgnore]
+        public bool HasBuffs => Buffs != null && Buffs.Count > 0;
+
         public int CoolDown { get; set; }
 
         public int ChargeUp { get; set; }
