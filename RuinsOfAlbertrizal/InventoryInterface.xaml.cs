@@ -59,6 +59,8 @@ namespace RuinsOfAlbertrizal
                 return;
             else if (!((Equiptment)SelectedItem).Slots.Contains((Equiptment.SlotMode)(index + 1)))
             {
+                //Equiptment does not fit on specified slots. Generate error message.
+
                 string selectedItemSlotsList = "";
 
                 for (int i = 0; i < ((Equiptment)SelectedItem).Slots.Count; i++)
@@ -75,6 +77,8 @@ namespace RuinsOfAlbertrizal
             }
             else
             {
+                //All test successful. Equipt equiptment.
+
                 SelectedPlayer.Equipt((Equiptment)SelectedItem);
                 SelectedItem = null;
             }
