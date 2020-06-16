@@ -20,9 +20,14 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     /// </summary>
     public partial class BuffAdderPrompt : BaseAdderPrompt
     {
-        public List<Buff> TargetBuffs { get; set; }
+        private List<Buff> TargetBuffs { get; set; }
 
         private List<Buff> OriginalBuffs { get; set; }
+
+        public List<Buff> GetSelected()
+        {
+            return TargetBuffs.MemoryClone();
+        }
 
         public BuffAdderPrompt()
         {
