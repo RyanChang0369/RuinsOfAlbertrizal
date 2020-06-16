@@ -96,13 +96,13 @@ namespace RuinsOfAlbertrizal
         /// Clones an object without needing a static map.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="objectOfAlbertrizal">Any ObjectOfAlbertrizal</param>
+        /// <param name="thing">Any Xml serializable object</param>
         /// <returns></returns>
-        public static T MemoryClone<T>(this T objectOfAlbertrizal) where T : ObjectOfAlbertrizal
+        public static T MemoryClone<T>(this T thing)
         {
-            XmlSerializer serializer = new XmlSerializer(objectOfAlbertrizal.GetType());
+            XmlSerializer serializer = new XmlSerializer(thing.GetType());
             MemoryStream memoryStream = new MemoryStream();
-            serializer.Serialize(memoryStream, objectOfAlbertrizal);
+            serializer.Serialize(memoryStream, thing);
             memoryStream.Seek(0, SeekOrigin.Begin);
             return (T)serializer.Deserialize(memoryStream);
         }
