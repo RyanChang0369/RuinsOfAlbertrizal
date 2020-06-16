@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Mechanics;
+﻿using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             InitializeComponent();
         }
 
-        public List<T> GetSelectedValue<T>() where T : ObjectOfAlbertrizal
+        public List<T> GetSelected<T>() where T : ObjectOfAlbertrizal
         {
             return TargetObjects.Cast<T>().ToList();
         }
