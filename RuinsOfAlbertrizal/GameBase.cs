@@ -12,6 +12,11 @@ namespace RuinsOfAlbertrizal
     public static class GameBase
     {
         /// <summary>
+        /// Number of turns per round.
+        /// </summary>
+        public const int NumTurns = 2;
+
+        /// <summary>
         /// The number of elements in the stats array
         /// </summary>
         public const int NumStats = 10;
