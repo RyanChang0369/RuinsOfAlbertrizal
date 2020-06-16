@@ -16,6 +16,7 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
             DataContext = GameBase.CurrentGame.CurrentLevel;
             Title = $"Exploring {GameBase.CurrentGame.CurrentLevel.Name}";
+            Testing.ExploreInterfaceTest();
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)

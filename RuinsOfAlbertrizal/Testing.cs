@@ -36,7 +36,7 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        public static void AdventureInterfaceTest()
+        public static void ExploreInterfaceTest()
         {
             if (!Debugging)
                 return;
