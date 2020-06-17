@@ -35,7 +35,7 @@ namespace RuinsOfAlbertrizal.Text
             {
                 string lines = "";
 
-                foreach (string str in Lines)
+                foreach (string str in Lines.ToList())
                     lines = $"{lines}\r\n{str}";
 
                 return lines;

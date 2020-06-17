@@ -371,7 +371,12 @@ namespace RuinsOfAlbertrizal.Environment
 
             int averageLevel = totalLevel / players.Count;
 
-            return averageLevel + RNG.GetRandomInteger(-2, 3);
+            int selectedLevel = averageLevel + RNG.GetRandomInteger(-2, 3);
+
+            if (selectedLevel < 0)
+                selectedLevel = 0;
+
+            return selectedLevel;
         }
 
         private void PlayerWins()
@@ -472,8 +477,6 @@ namespace RuinsOfAlbertrizal.Environment
             else
                 RoundKeeper.RoundEnd(this);
         }
-
-        
 
         public void StartCharacterRound(Character character)
         {
