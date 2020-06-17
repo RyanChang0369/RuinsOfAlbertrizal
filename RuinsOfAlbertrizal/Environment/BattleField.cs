@@ -198,6 +198,8 @@ namespace RuinsOfAlbertrizal.Environment
         {
             SelectedPlayerIndex = -1;
 
+            ConcurrentCharacters = new List<Character>();
+
             Enemies = SummonEnemies(GameBase.CurrentGame.Players);
 
             Random rnd = new Random();
@@ -450,32 +452,41 @@ namespace RuinsOfAlbertrizal.Environment
             //Avoid conflicting ticks by stopping timer during a tick
             SpeedTimer.Change(Timeout.Infinite, Timeout.Infinite);
 
-            ElaspedTime++;
-
-            ConcurrentCharacters = new List<Character>();
-
-            int maxTicks = MaxSpeed;
-
-            foreach (Character character in ActiveCharacters)
-            {
-                character.TurnTicks += character.CurrentStats[4];
-            }
-
-            foreach (Character character in ActiveCharacters)
-            {
-                if (character.TurnTicks >= maxTicks)
-                    ConcurrentCharacters.Add(character);
-            }
-
-            BattleInterface.NotifyTick();
-
             if (ConcurrentCharacters.Count > 0)
             {
-                for (int i = 0; i < ConcurrentCharacters.Count; i++)
-                    StartCharacterRound(ConcurrentCharacters[i]);
+                //If there are characters waiting to have a turn, "cancel" the tick
+                //and instead do the turn. This is to avoid having the AI wail on the
+                //player before they even get to select an attack
+                StartCharacterRound(ConcurrentCharacters[0]);
+                ConcurrentCharacters.RemoveAt(0);
             }
             else
-                RoundKeeper.RoundEnd(this);
+            {
+                //Else, do the turn as normal.
+                ElaspedTime++;
+
+                int maxTicks = MaxSpeed;
+
+                foreach (Character character in ActiveCharacters)
+                {
+                    character.TurnTicks += character.CurrentStats[4];
+                }
+
+                foreach (Character character in ActiveCharacters)
+                {
+                    if (character.TurnTicks >= maxTicks)
+                        ConcurrentCharacters.Add(character);
+                }
+
+                BattleInterface.NotifyTick();
+
+                if (ConcurrentCharacters.Count > 0)
+                {
+                    StartCharacterRound(ConcurrentCharacters[0]);
+                }
+                else
+                    RoundKeeper.RoundEnd(this);
+            }
         }
 
         public void StartCharacterRound(Character character)
@@ -524,10 +535,8 @@ namespace RuinsOfAlbertrizal.Environment
             if (TurnNum < GameBase.NumTurns)
             {
                 StartCharacterTurn(enemy);
-                AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
                 await MiscMethods.TaskDelay(500);
-                EndCharacterTurn(enemy);
-                EnemyTurn(enemy);
+                AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
             }
             else
             {
@@ -543,8 +552,6 @@ namespace RuinsOfAlbertrizal.Environment
             {
                 StartCharacterTurn(player);
                 BattleInterface.NotifyPlayerIsReady(player);
-                EndCharacterTurn(player);
-                PlayerTurn(player);
             }
             else
             {
@@ -582,10 +589,23 @@ namespace RuinsOfAlbertrizal.Environment
                 PlayerLoses();
         }
 
-        public void NotifyAttackBegin(Attack attack, Character attacker)
+        /// <summary>
+        /// Notifies BattleField that an attack has begun.
+        /// </summary>
+        /// <param name="attack"></param>
+        /// <param name="attacker"></param>
+        /// <param name="charging">True if the attack is being charged</param>
+        public void NotifyAttackBegin(Attack attack, Character attacker, bool charging)
         {
             StoredMessage.Add($"{attacker.DisplayName} attacked with {attack.DisplayName}!");
-            BattleInterface.NotifyAttackBegin(attack, attacker);
+            BattleInterface.NotifyAttackBegin(attack, attacker, charging);
+
+            EndCharacterTurn(attacker);
+
+            if (attacker.GetType() == typeof(Player))
+                PlayerTurn((Player)attacker);
+            else
+                EnemyTurn((Enemy)attacker);
         }
 
         public void NotifyAttackHit(Attack attack, Character target)

@@ -226,7 +226,7 @@ namespace RuinsOfAlbertrizal.Mechanics
                     }
                 }
 
-                GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker);
+                GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, false);
 
                 target.GetAttacked(this);
             }
@@ -242,6 +242,7 @@ namespace RuinsOfAlbertrizal.Mechanics
             TurnsSinceBeginCharge++;
             GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
             attacker.AttackToCharge = this;
+            GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, true);
         }
 
         /// <summary>

@@ -487,15 +487,11 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 throw e;
             }
-            
-            GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
         }
 
         public void Charge(Attack attack)
         {
             attack.Charge(this);
-
-            GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
         }
 
         /// <summary>
