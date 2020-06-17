@@ -118,11 +118,6 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        public void DoAttack(Character attacker, List<Character> targets)
-        {
-
-        }
-
         private void SwapEnemy(Enemy oldEnemy, Enemy newEnemy)
         {
             int index = Array.IndexOf(BattleField.ActiveEnemies, oldEnemy);
@@ -181,11 +176,13 @@ namespace RuinsOfAlbertrizal
         {
             foreach (int i in playerTargetIndexes)
             {
+                playerTargetImages[i].Visibility = Visibility.Visible;
                 Animate("targetFadeIn", playerTargetImages[i]);
             }
 
             foreach (int i in enemyTargetIndexes)
             {
+                enemyTargetImages[i].Visibility = Visibility.Visible;
                 Animate("targetFadeIn", enemyTargetImages[i]);
             }
         }
@@ -200,11 +197,13 @@ namespace RuinsOfAlbertrizal
             foreach (int i in playerTargetIndexes)
             {
                 Animate("targetFadeOut", playerTargetImages[i]);
+                playerTargetImages[i].Visibility = Visibility.Collapsed;
             }
 
             foreach (int i in enemyTargetIndexes)
             {
                 Animate("targetFadeOut", enemyTargetImages[i]);
+                enemyTargetImages[i].Visibility = Visibility.Collapsed;
             }
         }
 
@@ -226,27 +225,88 @@ namespace RuinsOfAlbertrizal
         private void Attack_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            btn.Content = "Select Attack";
-            
 
-
-
-            btn.Content = "Attack";
+            if (BattleField.SelectedAttack == null)
+                SelectAttack(btn);
+            else if (!BattleField.SelectedAttack.IsCharged())
+                DoCharge(btn, BattleField.SelectedPlayer, BattleField.SelectedAttack);
+            else if (BattleField.SelectedTarget != null)
+                DoAttack(btn, BattleField.SelectedPlayer, BattleField.SelectedTarget, BattleField.SelectedAttack);
         }
 
-        private void LoadAttackSelector()
+        private void AttackSelector_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            
+            ListBox listBox = (ListBox)sender;
+
+            if (listBox.SelectedIndex < 0)
+                return;
+
+            PreparePlayerAttack(BattleField.SelectedPlayer, (Attack)listBox.SelectedItem);
+
+            BattleField.SelectedAttack = (Attack)listBox.SelectedItem;
+
+            //Check if charged/cooled down
+            if (BattleField.SelectedAttack.IsCharged() && BattleField.SelectedAttack.IsCooledDown())
+            {
+                AttackBtn.Content = "Attack!";
+                AttackBtn.IsEnabled = true;
+            }
+            else if (!BattleField.SelectedAttack.IsCooledDown())
+            {
+                AttackBtn.Content = "Attack is Cooling Down";
+                AttackBtn.IsEnabled = false;
+            }
+            else
+            {
+                AttackBtn.Content = "Charge Attack";
+                AttackBtn.IsEnabled = true;
+            }
+        }
+
+        private void SelectAttack(Button attackBtn)
+        {
+            attackBtn.IsEnabled = false;
+            AttackPanel.Visibility = Visibility.Visible;
+            ForceListBoxUpdate(AttackSelector);
+        }
+
+        private void TargetImage_MouseUp(object sender, RoutedEventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            BattleField.SelectedTarget = (Character)ctrl.Tag;
+            AttackBtn.IsEnabled = true;
+        }
+
+        private void DoAttack(Button attackBtn, Player selectedPlayer, Character target, Attack selectedAttack)
+        {
+            //Hide panel
+            AttackPanel.Visibility = Visibility.Collapsed;
+            attackBtn.Content = "Select Attack";
+
+            selectedPlayer.Attack(selectedAttack, target);
+        }
+
+        private void DoCharge(Button attackBtn, Player selectedPlayer, Attack selectedAttack)
+        {
+            AttackPanel.Visibility = Visibility.Collapsed;
+            attackBtn.Content = "Select Attack";
+            selectedPlayer.Charge(selectedAttack);
         }
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
         {
             FloatingInventory inventory = new FloatingInventory(BattleField.SelectedPlayer, BattleField.TurnNum);
+            inventory.ShowDialog();
         }
 
         private void Flee_Click(object sender, RoutedEventArgs e)
         {
             Player.Run(BattleField);
+        }
+
+        private void EndTurn_Click(object sender, RoutedEventArgs e)
+        {
+            BattleField.EndCharacterTurn(BattleField.SelectedPlayer);
         }
 
         public void Exit()

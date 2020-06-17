@@ -46,6 +46,12 @@ namespace RuinsOfAlbertrizal.Environment
         }
 
         [XmlIgnore]
+        public Attack SelectedAttack { get; set; }
+
+        [XmlIgnore]
+        public Character SelectedTarget { get; set; }
+
+        [XmlIgnore]
         public List<Enemy> AliveEnemies
         {
             get

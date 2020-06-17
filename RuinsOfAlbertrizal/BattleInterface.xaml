@@ -42,6 +42,14 @@
                 <Image Visibility="{Binding Path=HasBuffs, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Click to view buffs" MouseUp="BuffIcon_MouseUp" Tag="Buffs"/>
             </StackPanel>
         </DataTemplate>
+
+        <Style x:Key="targetImgs" TargetType="Image">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Opacity" Value="0.0"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Source" Value="assets/target.png"/>
+            <EventSetter Event="MouseUp" Handler="TargetImage_MouseUp"/>
+        </Style>
     </Page.Resources>
     
     <Grid Background="WhiteSmoke">
@@ -71,10 +79,10 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/> <!--Used as spacer-->
                     </Grid.RowDefinitions>
-                    <Image x:Name="targetPlayer3" Margin="10" Opacity="0.0" Source="assets/target.png" Grid.Row="1"/>
-                    <Image x:Name="targetPlayer2" Margin="10" Opacity="0.0" Source="assets/target.png" Grid.Column="1" Grid.Row="2"/>
-                    <Image x:Name="targetPlayer1" Margin="10" Opacity="0.0" Source="assets/target.png" Grid.Column="2" Grid.Row="1"/>
-                    <Image x:Name="targetPlayer0" Margin="10" Opacity="0.0" Source="assets/target.png" Grid.Column="3" Grid.Row="2"/>
+                    <Image x:Name="targetPlayer3" Grid.Row="1" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetPlayer2" Grid.Column="1" Grid.Row="2" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetPlayer1" Grid.Column="2" Grid.Row="1" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetPlayer0" Grid.Column="3" Grid.Row="2" Style="{StaticResource targetImgs}"/>
                     
                     <Image x:Name="player3" Margin="-300,10,10,10" Grid.Row="1"/>
                     <Image x:Name="player2" Margin="-300,10,10,10" Grid.Column="1" Grid.Row="2"/>
@@ -139,10 +147,10 @@
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/> <!--Used as spacer-->
                     </Grid.RowDefinitions>
-                    <Image x:Name="targetEnemy3"  Margin="10" Opacity="0.0" Source="assets/target.png" Grid.Row="2"/>
-                    <Image x:Name="targetEnemy2"  Margin="10" Opacity="0.0" Source="assets/target.png" Grid.Column="1" Grid.Row="1"/>
-                    <Image x:Name="targetEnemy1"  Margin="10" Opacity="0.0" Source="assets/target.png" Grid.Column="2" Grid.Row="2"/>
-                    <Image x:Name="targetEnemy0"  Margin="10" Opacity="0.0" Source="assets/target.png" Grid.Column="3" Grid.Row="1"/>
+                    <Image x:Name="targetEnemy3" Grid.Row="2" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetEnemy2" Grid.Column="1" Grid.Row="1" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetEnemy1" Grid.Column="2" Grid.Row="2" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetEnemy0" Grid.Column="3" Grid.Row="1" Style="{StaticResource targetImgs}"/>
                     
                     <Image x:Name="enemy3" Margin="10, 10, -300, 10" Grid.Row="2"/>
                     <Image x:Name="enemy2" Margin="10, 10, -300, 10" Grid.Column="1" Grid.Row="1"/>
@@ -158,14 +166,14 @@
                 </Grid.ColumnDefinitions>
                 <Grid>
                     <TextBlock x:Name="InfoBlock" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}"/>
-                    <StackPanel Background="SlateGray">
-                        <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}"/>
+                    <StackPanel x:Name="AttackPanel" Background="SlateGray" Visibility="Collapsed">
+                        <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}" SelectionChanged="AttackSelector_SelectionChanged"/>
                     </StackPanel>
                 </Grid>
                 <StackPanel Grid.Column="1" x:Name="ActionPanel" Background="Snow">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="Attack" Click="Attack_Click" Style="{StaticResource buttonMedium}"/>
-                        <Button Content="[RESERVED]" Style="{StaticResource buttonMedium}"/>
+                        <Button x:Name="AttackBtn" Content="Select Attack" Click="Attack_Click" Style="{StaticResource buttonMedium}"/>
+                        <Button Content="End Turn" Click="EndTurn_Click" Style="{StaticResource buttonMedium}"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Content="Inventory" Click="Inventory_Click" Style="{StaticResource buttonMedium}"/>

@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -203,11 +204,14 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// <param name="attacker"></param>
         /// <param name="target"></param>
         /// <param name="useStatCost">If false, then do not use StatCostToUser</param>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="CannotTargetException"></exception>
+        /// <exception cref="NotEnoughManaException"></exception>
         public void BeginAttack(Character attacker, Character target, bool useStatCost = true)
         {
             if (!CanTargetCharacter(attacker, target))
-                throw new ArgumentException($"Character {attacker.DisplayName} cannot target {target.DisplayName}.");
+                throw new CannotTargetException($"Character {attacker.DisplayName} cannot target {target.DisplayName}.");
+            else if (StatCostToUser[1] > attacker.CurrentStats[1])
+                throw new NotEnoughManaException($"Character {attacker.DisplayName} does not have the required amount of mana to use this attack.");
 
             if (CanBeUsedBy(attacker))
             {
@@ -229,10 +233,15 @@ namespace RuinsOfAlbertrizal.Mechanics
             else if (!IsCharged())
             {
                 //Begin/Continue charge
-                TurnsSinceBeginCharge++;
-                GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
-                attacker.AttackToCharge = this;
+                Charge(attacker);
             }
+        }
+
+        public void Charge(Character attacker)
+        {
+            TurnsSinceBeginCharge++;
+            GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
+            attacker.AttackToCharge = this;
         }
 
         /// <summary>

@@ -471,20 +471,31 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         /// <param name="attack"></param>
         /// <param name="target"></param>
+        /// <exception cref="NotEnoughManaException"></exception>
+        /// <exception cref="CannotTargetException"></exception>
         public void Attack(Attack attack, Character target)
         {
-            if (attack.StatCostToUser[1] > CurrentStats[1])
-                throw new NotEnoughManaException($"Character {DisplayName} does not have the required amount of mana to use this attack.");
-
             try
             {
                 attack.BeginAttack(this, target);
             }
-            catch (ArgumentException)
+            catch (NotEnoughManaException e)
             {
-                throw;
+                throw e;
             }
-            EndTurn();
+            catch (CannotTargetException e)
+            {
+                throw e;
+            }
+            
+            GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
+        }
+
+        public void Charge(Attack attack)
+        {
+            attack.Charge(this);
+
+            GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
         }
 
         /// <summary>
@@ -504,12 +515,13 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 throw;
             }
+            GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
         }
 
         public void RecoverMana()
         {
             AppliedStats[1] += (int)Math.Round(LeveledStats[1] * 0.3);
-            EndTurn();
+            GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
         }
 
         public bool IsInvunerable()
