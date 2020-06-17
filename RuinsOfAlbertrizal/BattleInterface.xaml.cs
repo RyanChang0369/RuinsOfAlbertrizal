@@ -334,7 +334,7 @@ namespace RuinsOfAlbertrizal
             //update sprites
         }
 
-        public void NotifyPlayerIsReady(Player player, int turnNum)
+        public void NotifyPlayerIsReady(Player player)
         {
             Dispatcher.Invoke(() =>
             {
@@ -342,7 +342,7 @@ namespace RuinsOfAlbertrizal
             });
         }
 
-        public void NotifyPlayerAttacking(Player player, int turnNum)
+        public void NotifyPlayerAttacking(Player player)
         {
             Dispatcher.Invoke(() =>
             {

@@ -484,10 +484,20 @@ namespace RuinsOfAlbertrizal.Environment
 
             StoredMessage.Add($"{character.DisplayName} is up.");
 
+            Console.WriteLine(ElaspedTime);
+
             if (character.GetType() == typeof(Player))
                 PlayerTurn((Player)character);
             else
                 EnemyTurn((Enemy)character);
+        }
+
+        public void StartCharacterTurn(Character character)
+        {
+            RoundKeeper.TurnStart(this);
+            RoundKeeper.TurnStart(character);
+            RoundKeeper.TurnStart(character.CurrentConsumables);
+            RoundKeeper.TurnStart(character.AllAttacks);
         }
 
         public void EndCharacterRound(Character character)
@@ -508,20 +518,35 @@ namespace RuinsOfAlbertrizal.Environment
 
         private async void EnemyTurn(Enemy enemy)
         {
-            Console.WriteLine(ElaspedTime);
-            //Selects target twice as each character has two turns
-            AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
-            await MiscMethods.TaskDelay(500);
-            EndCharacterTurn(enemy);
-            AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
-            await MiscMethods.TaskDelay(500);
-            //EndCharacterRound(enemy);
+            if (TurnNum < GameBase.NumTurns)
+            {
+                StartCharacterTurn(enemy);
+                AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
+                await MiscMethods.TaskDelay(500);
+                EndCharacterTurn(enemy);
+                EnemyTurn(enemy);
+            }
+            else
+            {
+                EndCharacterRound(enemy);
+            }
         }
 
         private void PlayerTurn(Player player)
         {
             SelectedPlayerIndex = Array.IndexOf(ActivePlayers, player);
-            BattleInterface.NotifyPlayerIsReady(player, 0);
+
+            if (TurnNum < GameBase.NumTurns)
+            {
+                StartCharacterTurn(player);
+                BattleInterface.NotifyPlayerIsReady(player);
+                EndCharacterTurn(player);
+                PlayerTurn(player);
+            }
+            else
+            {
+                EndCharacterRound(player);
+            }
         }
 
         public void StartRound()
@@ -532,6 +557,8 @@ namespace RuinsOfAlbertrizal.Environment
         public void EndRound()
         {
             SelectedPlayerIndex = -1;
+            SelectedAttack = null;
+            SelectedTarget = null;
             TurnNum = 0;
             RoundsPassed++;
             SpeedTimer.Change(0, GameBase.TickSpeed);
