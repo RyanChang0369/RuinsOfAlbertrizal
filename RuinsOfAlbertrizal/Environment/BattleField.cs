@@ -373,8 +373,8 @@ namespace RuinsOfAlbertrizal.Environment
 
             int selectedLevel = averageLevel + RNG.GetRandomInteger(-2, 3);
 
-            if (selectedLevel < 0)
-                selectedLevel = 0;
+            if (selectedLevel < 1)
+                selectedLevel = 1;
 
             return selectedLevel;
         }
