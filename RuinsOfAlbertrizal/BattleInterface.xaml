@@ -91,7 +91,9 @@
                 </Grid>
 
                 <Grid Grid.Column="1">
-                    <StackPanel x:Name="TurnTickBarPanel" Orientation="Horizontal" Style="{StaticResource center}">
+                    
+                    <StackPanel x:Name="TurnTickBarPanel" VerticalAlignment="Center">
+                        <Label Content="Attack Bars" HorizontalAlignment="Center" ToolTip="When the bar reaches the maximum value, that player/enemy gets a turn."/>
                         <ProgressBar x:Name="player0_ProgressBar" Style="{StaticResource playerProgressBar}" 
                                 ToolTip="{Binding Path=ActivePlayers[0].DisplayName, UpdateSourceTrigger=PropertyChanged}"
                                 Value="{Binding Path=ActivePlayers[0].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
@@ -170,16 +172,18 @@
                         <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}" SelectionChanged="AttackSelector_SelectionChanged"/>
                     </StackPanel>
                 </Grid>
-                <StackPanel Grid.Column="1" x:Name="ActionPanel" Background="Snow">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button x:Name="AttackBtn" Content="Select Attack" Click="Attack_Click" Style="{StaticResource buttonMedium}"/>
-                        <Button Content="End Turn" Click="EndTurn_Click" Style="{StaticResource buttonMedium}"/>
+                <Grid Grid.Column="1" Background="Snow">
+                    <StackPanel x:Name="ActionPanel" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="AttackBtn" Content="Select Attack" Click="Attack_Click" Style="{StaticResource buttonMedium}"/>
+                            <Button Content="End Turn" Click="EndTurn_Click" Style="{StaticResource buttonMedium}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="Inventory" Click="Inventory_Click" Style="{StaticResource buttonMedium}"/>
+                            <Button Content="Flee" Click="Flee_Click" Style="{StaticResource buttonMedium}"/>
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="Inventory" Click="Inventory_Click" Style="{StaticResource buttonMedium}"/>
-                        <Button Content="Flee" Click="Flee_Click" Style="{StaticResource buttonMedium}"/>
-                    </StackPanel>
-                </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

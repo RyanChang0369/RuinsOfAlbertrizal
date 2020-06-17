@@ -319,9 +319,11 @@ namespace RuinsOfAlbertrizal
             BattleField.SetTimer();
         }
 
-        public void NotifyAttackBegin(Attack attack, Character attacker)
+        public void NotifyAttackBegin(Attack attack, Character attacker, bool charging)
         {
             //Do animation
+
+
         }
 
         public void NotifyAttackHit(Attack attack, Character target)
@@ -339,14 +341,6 @@ namespace RuinsOfAlbertrizal
             Dispatcher.Invoke(() =>
             {
                 ActionPanel.Visibility = Visibility.Visible;
-            });
-        }
-
-        public void NotifyPlayerAttacking(Player player)
-        {
-            Dispatcher.Invoke(() =>
-            {
-                ActionPanel.Visibility = Visibility.Hidden;
             });
         }
 

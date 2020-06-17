@@ -236,9 +236,22 @@
         <Style TargetType="Separator" BasedOn="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
         
         <!--ProgressBar Styles-->
-        <Style TargetType="ProgressBar" x:Key="verticalProgressBar" BasedOn="{StaticResource default}">
-            <Setter Property="Width" Value="20"/>
-            <Setter Property="Margin" Value="5"/>
+        <Style x:Key="defaultProgressBar" TargetType="ProgressBar">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="5, 1"/>
+        </Style>
+
+        <Style TargetType="ProgressBar" x:Key="verticalProgressBar" BasedOn="{StaticResource defaultProgressBar}">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="-85"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <RotateTransform Angle="-90"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="playerProgressBar" TargetType="ProgressBar" BasedOn="{StaticResource defaultProgressBar}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
@@ -250,23 +263,12 @@
                                 <Rectangle Name="Mask" MinWidth="{TemplateBinding Width}" Fill="LimeGreen"/>
                             </DockPanel>
                         </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="Orientation" Value="Vertical">
-                                <Setter Property="LayoutTransform" TargetName="TemplateRoot">
-                                    <Setter.Value>
-                                        <RotateTransform Angle="-90"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <Style x:Key="playerProgressBar" TargetType="ProgressBar" BasedOn="{StaticResource verticalProgressBar}"/>
-
-        <Style x:Key="enemyProgressBar" TargetType="ProgressBar" BasedOn="{StaticResource verticalProgressBar}">
+        <Style x:Key="enemyProgressBar" TargetType="ProgressBar" BasedOn="{StaticResource defaultProgressBar}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
