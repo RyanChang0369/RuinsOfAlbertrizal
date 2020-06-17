@@ -170,6 +170,7 @@
     <Compile Include="GameLoader.cs" />
     <Compile Include="Environment\Level.cs" />
     <Compile Include="GameValidator.cs" />
+    <Compile Include="IBaseFrameElement.cs" />
     <Compile Include="IconedObjectOfAlbertrizal.cs" />
     <Compile Include="IconedObjectPrompt.xaml.cs">
       <DependentUpon>IconedObjectPrompt.xaml</DependentUpon>

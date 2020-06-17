@@ -6,7 +6,7 @@ using System.Windows.Media.Animation;
 
 namespace RuinsOfAlbertrizal
 {
-    public abstract class BasePage : Page
+    public abstract class BasePage : Page, IBaseFrameElement
     {
         /// <summary>
         /// Uses tags to navigate to correct editor page (relative uri).

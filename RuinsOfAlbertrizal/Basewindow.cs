@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 
 namespace RuinsOfAlbertrizal
 {
-    public abstract class BaseWindow : Window
+    public abstract class BaseWindow : Window, IBaseFrameElement
     {
         public void Close(object sender, RoutedEventArgs e)
         {
