@@ -57,7 +57,16 @@ namespace RuinsOfAlbertrizal
         {
             GameBase.CurrentGame.Players.AddRange(CreatedPlayers);
             GameBase.CurrentGame.PlayerCreated = true;
+
+            foreach (Player player in GameBase.CurrentGame.Players)
+            {
+                player.InventoryEquiptments.AddRange(GameBase.CurrentGame.DefaultEquiptments);
+                player.InventoryItems.AddRange(GameBase.CurrentGame.DefaultItems);
+                player.InventoryConsumables.AddRange(GameBase.CurrentGame.DefaultConsumables);
+            }
+
             FileHandler.SaveCurrentMap();
+
             Navigate("IntroInterface.xaml");
         }
     }
