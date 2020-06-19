@@ -256,6 +256,9 @@ namespace RuinsOfAlbertrizal.Environment
             PlayerItems = new List<Item>();
             PlayerConsumables = new List<Consumable>();
             PlayerEquiptments = new List<Equiptment>();
+            DefaultConsumableGuids = new List<Guid>();
+            DefaultEquiptmentGuids = new List<Guid>();
+            DefaultItemGuids = new List<Guid>();
         }
 
         public void RefreshAllLevels()
