@@ -1,21 +1,8 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RuinsOfAlbertrizal.Editor
 {
@@ -25,10 +12,16 @@ namespace RuinsOfAlbertrizal.Editor
     public partial class CreateEnemyPrompt : EditorInterface
     {
         public static Enemy CreatedEnemy { get; set; }
-        public CreateEnemyPrompt()
+        
+        public CreateEnemyPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
+            DataContext = CreatedEnemy;
+        }
+
+        public CreateEnemyPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
             DataContext = CreatedEnemy;
         }
 

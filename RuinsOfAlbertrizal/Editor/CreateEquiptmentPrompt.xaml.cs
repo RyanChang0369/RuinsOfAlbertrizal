@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using RuinsOfAlbertrizal.Editor.AdderPrompts;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.XMLInterpreter;
 
@@ -25,11 +26,18 @@ namespace RuinsOfAlbertrizal.Editor
     {
         public static Equiptment CreatedEquiptment { get; set; }
 
-        public CreateEquiptmentPrompt()
+        public CreateEquiptmentPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
             DataContext = CreatedEquiptment;
+            ReloadDefaults();
+        }
+
+        public CreateEquiptmentPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
+            DataContext = CreatedEquiptment;
+            ReloadDefaults();
         }
 
         protected override void UpdateComponent()
@@ -70,6 +78,34 @@ namespace RuinsOfAlbertrizal.Editor
             {
 
             }
+        }
+
+        private void ReloadDefaults()
+        {
+            if (Map.DefaultEquiptmentGuids.Contains(CreatedEquiptment.GlobalID))
+            {
+                DefaultEquiptmentLbl.Content = "Remove from Default Equiptments";
+                DefaultEquiptmentBtn.Content = "Click to Remove";
+                DefaultNumberBox.IsEnabled = false;
+            }
+            else
+            {
+                DefaultEquiptmentLbl.Content = "Add to Default Equiptments";
+                DefaultEquiptmentBtn.Content = "Click to Add";
+                DefaultNumberBox.IsEnabled = true;
+            }
+
+        }
+
+        private void DefaultEquiptmentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (Map.DefaultEquiptmentGuids.Remove(CreatedEquiptment.GlobalID))
+            {
+                //Equiptment not found. Add Equiptment
+                Map.DefaultEquiptmentGuids.Add(CreatedEquiptment.GlobalID);
+            }
+
+            ReloadDefaults();
         }
     }
 }

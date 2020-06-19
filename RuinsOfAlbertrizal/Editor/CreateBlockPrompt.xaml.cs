@@ -25,10 +25,15 @@ namespace RuinsOfAlbertrizal.Editor
     public partial class CreateBlockPrompt : EditorInterface
     {
         public static Block CreatedBlock { get; set; }
-        public CreateBlockPrompt()
+        public CreateBlockPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
+            DataContext = CreatedBlock;
+        }
+
+        public CreateBlockPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
             DataContext = CreatedBlock;
         }
 

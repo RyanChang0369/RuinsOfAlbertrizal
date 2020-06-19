@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.XMLInterpreter;
 
@@ -24,11 +25,18 @@ namespace RuinsOfAlbertrizal.Editor
     {
         public static Item CreatedItem { get; set; }
 
-        public CreateItemPrompt()
+        public CreateItemPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
             DataContext = CreatedItem;
+            ReloadDefaults();
+        }
+
+        public CreateItemPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
+            DataContext = CreatedItem;
+            ReloadDefaults();
         }
 
         protected override void UpdateComponent()
@@ -58,6 +66,34 @@ namespace RuinsOfAlbertrizal.Editor
             {
 
             }
+        }
+
+        private void ReloadDefaults()
+        {
+            if (Map.DefaultItemGuids.Contains(CreatedItem.GlobalID))
+            {
+                DefaultItemLbl.Content = "Remove from Default Items";
+                DefaultItemBtn.Content = "Click to Remove";
+                DefaultNumberBox.IsEnabled = false;
+            }
+            else
+            {
+                DefaultItemLbl.Content = "Add to Default Items";
+                DefaultItemBtn.Content = "Click to Add";
+                DefaultNumberBox.IsEnabled = true;
+            }
+
+        }
+
+        private void DefaultItemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (Map.DefaultItemGuids.Remove(CreatedItem.GlobalID))
+            {
+                //Item not found. Add Item
+                Map.DefaultItemGuids.Add(CreatedItem.GlobalID);
+            }
+
+            ReloadDefaults();
         }
     }
 }

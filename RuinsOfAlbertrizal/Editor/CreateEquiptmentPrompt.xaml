@@ -47,6 +47,23 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
+                    <Label x:Name="DefaultEquiptmentLbl"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Every player gets any item labeled as a default equiptment."/>
+                </StackPanel>
+                <Button x:Name="DefaultEquiptmentBtn" Click="DefaultEquiptmentBtn_Click"/>
+
+                <Label FontSize="18" Content="Number of Equiptments Given (For Default)"/>
+                <TextBox x:Name="DefaultNumberBox">
+                    <TextBox.Text>
+                        <Binding Path="NumGivenIfDefault" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Drop Chance *"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy or from exploring. The higher the chance, the more likely this will happen."/>
                 </StackPanel>

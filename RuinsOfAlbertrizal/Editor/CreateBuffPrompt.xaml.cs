@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Mechanics;
+﻿using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,16 @@ namespace RuinsOfAlbertrizal.Editor
     public partial class CreateBuffPrompt : EditorInterface
     {
         public static Buff CreatedBuff { get; set; }
-        public CreateBuffPrompt()
+
+        public CreateBuffPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
+            DataContext = CreatedBuff;
+        }
+
+        public CreateBuffPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
             DataContext = CreatedBuff;
         }
 

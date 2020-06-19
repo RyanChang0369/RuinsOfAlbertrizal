@@ -10,6 +10,8 @@ namespace RuinsOfAlbertrizal.Items
         /// </summary>
         public double DropChance { get; set; }
 
+        public int NumGivenIfDefault { get; set; }
+
         public Item()
         { }
     }

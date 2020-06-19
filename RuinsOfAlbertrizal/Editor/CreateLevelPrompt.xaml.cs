@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Editor.AdderPrompts;
 using RuinsOfAlbertrizal.Environment;
@@ -26,10 +15,15 @@ namespace RuinsOfAlbertrizal.Editor
     {
         public static Level CreatedLevel { get; set; }
 
-        public CreateLevelPrompt()
+        public CreateLevelPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
+            DataContext = CreatedLevel;
+        }
+
+        public CreateLevelPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
             DataContext = CreatedLevel;
         }
 
@@ -77,7 +71,7 @@ namespace RuinsOfAlbertrizal.Editor
         private void AddBossBtn_Click(object sender, RoutedEventArgs e)
         {
             SimpleAdderPrompt prompt = new SimpleAdderPrompt(CreatedLevel.Bosses.Cast<ObjectOfAlbertrizal>().ToList(),
-                CreateMapPrompt.Map.StoredBosses.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Bosses");
+                Map.StoredBosses.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Bosses");
             prompt.ShowDialog();
             CreatedLevel.BossGuids = prompt.GetSelected<Boss>().ToGuidList();
             CreatedLevel.RefreshStoredItems();
@@ -85,7 +79,7 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void AddEnemyBtn_Click(object sender, RoutedEventArgs e)
         {
-            SimpleAdderPrompt simpleAdderPrompt = new SimpleAdderPrompt(CreatedLevel.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), CreateMapPrompt.Map.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Enemies");
+            SimpleAdderPrompt simpleAdderPrompt = new SimpleAdderPrompt(CreatedLevel.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), Map.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Enemies");
             simpleAdderPrompt.ShowDialog();
             CreatedLevel.StoredEnemyGuids = simpleAdderPrompt.GetSelected<Enemy>().ToGuidList();
             CreatedLevel.RefreshStoredItems();

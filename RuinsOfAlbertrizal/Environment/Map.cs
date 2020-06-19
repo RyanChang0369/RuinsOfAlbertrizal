@@ -88,6 +88,48 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Consumable> StoredConsumables { get; set; }
 
+        public List<Guid> DefaultItemGuids { get; set; }
+
+        /// <summary>
+        /// What each player starts out with.
+        /// </summary>
+        [XmlIgnore]
+        public List<Item> DefaultItems
+        {
+            get
+            {
+                return StoredItems.FilterByGuid(DefaultItemGuids);
+            }
+        }
+
+        public List<Guid> DefaultEquiptmentGuids { get; set; }
+
+        /// <summary>
+        /// What each player starts out with.
+        /// </summary>
+        [XmlIgnore]
+        public List<Equiptment> DefaultEquiptments
+        {
+            get
+            {
+                return StoredEquiptments.FilterByGuid(DefaultEquiptmentGuids);
+            }
+        }
+
+        public List<Guid> DefaultConsumableGuids { get; set; }
+
+        /// <summary>
+        /// What each player starts out with.
+        /// </summary>
+        [XmlIgnore]
+        public List<Consumable> DefaultConsumables
+        {
+            get
+            {
+                return StoredConsumables.FilterByGuid(DefaultConsumableGuids);
+            }
+        }
+
         /// <summary>
         /// A list of all stored items, consumables, and equipment
         /// </summary>

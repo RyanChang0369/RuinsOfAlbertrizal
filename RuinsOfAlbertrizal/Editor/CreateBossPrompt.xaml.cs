@@ -1,5 +1,6 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Editor.AdderPrompts;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
@@ -29,9 +30,14 @@ namespace RuinsOfAlbertrizal.Editor
         public CreateBossPrompt()
         {
             InitializeComponent();
-            UpdateComponent();
             DataContext = CreatedBoss;
-        }       
+        }
+
+        public CreateBossPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
+            DataContext = CreatedBoss;
+        }
 
         protected override void UpdateComponent()
         {

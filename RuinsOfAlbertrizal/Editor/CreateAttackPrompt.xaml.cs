@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Editor.AdderPrompts;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
@@ -24,10 +25,15 @@ namespace RuinsOfAlbertrizal.Editor
     {
         public static Attack CreatedAttack { get; set; }
 
-        public CreateAttackPrompt()
+        public CreateAttackPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
+            DataContext = CreatedAttack;
+        }
+
+        public CreateAttackPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
             DataContext = CreatedAttack;
         }
 

@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.IO;
@@ -16,10 +17,15 @@ namespace RuinsOfAlbertrizal.Editor
     {
         public static Player CreatedPlayer { get; set; }
 
-        public CreatePlayerPrompt()
+        public CreatePlayerPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
+            DataContext = CreatedPlayer;
+        }
+
+        public CreatePlayerPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
             DataContext = CreatedPlayer;
         }
 

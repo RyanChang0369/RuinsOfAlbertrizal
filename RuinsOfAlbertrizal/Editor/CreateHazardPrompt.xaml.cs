@@ -27,10 +27,16 @@ namespace RuinsOfAlbertrizal.Editor
     public partial class CreateHazardPrompt : EditorInterface
     {
         public static Hazard CreatedHazard { get; set; }
-        public CreateHazardPrompt()
+       
+        public CreateHazardPrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
+            DataContext = CreatedHazard;
+        }
+
+        public CreateHazardPrompt(Map map) : base(map)
+        {
+            InitializeComponent();
             DataContext = CreatedHazard;
         }
 

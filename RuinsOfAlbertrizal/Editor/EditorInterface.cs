@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Editor.AdderPrompts;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,21 @@ namespace RuinsOfAlbertrizal.Editor
 {
     public abstract partial class EditorInterface : Page
     {
+        protected Map Map;
+
         protected List<Control> RequiredControls { get; set; }
+
+        public EditorInterface()
+        {
+            Map = CreateMapPrompt.Map;
+            UpdateComponent();
+        }
+
+        public EditorInterface(Map map)
+        {
+            Map = map;
+            UpdateComponent();
+        }
 
         protected void Save(object sender, RoutedEventArgs e)
         {
@@ -77,7 +92,7 @@ namespace RuinsOfAlbertrizal.Editor
             Control control = (Control)sender;
             List<Attack> attacks = (List<Attack>)control.Tag;
             SimpleAdderPrompt prompt = new SimpleAdderPrompt(attacks.Cast<ObjectOfAlbertrizal>().ToList(),
-                CreateMapPrompt.Map.StoredAttacks.Cast<ObjectOfAlbertrizal>().ToList(),
+                Map.StoredAttacks.Cast<ObjectOfAlbertrizal>().ToList(),
                 "Add/Remove Attacks");
             prompt.ShowDialog();
             control.Tag = prompt.GetSelected<Attack>();

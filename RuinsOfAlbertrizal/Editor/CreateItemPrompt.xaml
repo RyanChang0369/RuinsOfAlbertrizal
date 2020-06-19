@@ -47,6 +47,23 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
+                    <Label x:Name="DefaultItemLbl"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Every player gets any item labeled as a default item."/>
+                </StackPanel>
+                <Button x:Name="DefaultItemBtn" Click="DefaultItemBtn_Click"/>
+
+                <Label FontSize="18" Content="Number of Items Given (For Default)"/>
+                <TextBox x:Name="DefaultNumberBox">
+                    <TextBox.Text>
+                        <Binding Path="NumGivenIfDefault" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Drop Chance *"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Chance, from 0.0 to 1.0, that this item will drop from an enemy or by exploring."/>
                 </StackPanel>

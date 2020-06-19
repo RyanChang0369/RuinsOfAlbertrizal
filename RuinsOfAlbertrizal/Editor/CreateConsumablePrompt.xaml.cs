@@ -1,20 +1,8 @@
-﻿using RuinsOfAlbertrizal.Editor.AdderPrompts;
+﻿using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RuinsOfAlbertrizal.Editor
 {
@@ -25,11 +13,18 @@ namespace RuinsOfAlbertrizal.Editor
     {
         public static Consumable CreatedConsumable { get; set; }
 
-        public CreateConsumablePrompt()
+        public CreateConsumablePrompt() : base()
         {
             InitializeComponent();
-            UpdateComponent();
             DataContext = CreatedConsumable;
+            ReloadDefaults();
+        }
+
+        public CreateConsumablePrompt(Map map) : base(map)
+        {
+            InitializeComponent();
+            DataContext = CreatedConsumable;
+            ReloadDefaults();
         }
 
         protected override void UpdateComponent()
@@ -64,6 +59,34 @@ namespace RuinsOfAlbertrizal.Editor
             {
 
             }
+        }
+
+        private void ReloadDefaults()
+        {
+            if (Map.DefaultConsumableGuids.Contains(CreatedConsumable.GlobalID))
+            {
+                DefaultConsumableLbl.Content = "Remove from Default Consumables";
+                DefaultConsumableBtn.Content = "Click to Remove";
+                DefaultNumberBox.IsEnabled = false;
+            }
+            else
+            {
+                DefaultConsumableLbl.Content = "Add to Default Consumables";
+                DefaultConsumableBtn.Content = "Click to Add";
+                DefaultNumberBox.IsEnabled = true;
+            }
+
+        }
+
+        private void DefaultConsumableBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (Map.DefaultConsumableGuids.Remove(CreatedConsumable.GlobalID))
+            {
+                //Consumable not found. Add consumable
+                Map.DefaultConsumableGuids.Add(CreatedConsumable.GlobalID);
+            }
+
+            ReloadDefaults();
         }
     }
 }
