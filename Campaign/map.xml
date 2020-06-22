@@ -4,9 +4,9 @@
   <Name>Campaign</Name>
   <Description>The main storyline of this game.</Description>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <PlayerCreated>true</PlayerCreated>
+  <PlayerCreated>false</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -79,7 +79,7 @@
     </Player>
   </Players>
   <ActivePlayerGuids>
-    <guid>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
@@ -832,6 +832,44 @@
       <MultiTarget>false</MultiTarget>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
+    <Attack>
+      <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
+      <Name>Poke</Name>
+      <Description>Aim for the eyes for extra damage.</Description>
+      <Buffs />
+      <StatLoss>
+        <int>11</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
+      <IsRanged>false</IsRanged>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>0</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IgnoresArmor>false</IgnoresArmor>
+      <MultiTarget>false</MultiTarget>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+    </Attack>
   </StoredAttacks>
   <StoredItems>
     <Item>
@@ -840,6 +878,7 @@
       <Description>For testing purposes</Description>
       <IconLocation>..\Item\Test Item_icon.png</IconLocation>
       <DropChance>0.69</DropChance>
+      <NumGivenIfDefault>0</NumGivenIfDefault>
     </Item>
   </StoredItems>
   <StoredEquiptments>
@@ -849,6 +888,7 @@
       <Description>A helmet for testing</Description>
       <IconLocation>..\Equiptment\Test Helmet_icon.png</IconLocation>
       <DropChance>0.13</DropChance>
+      <NumGivenIfDefault>0</NumGivenIfDefault>
       <Slots>
         <SlotMode>Head</SlotMode>
       </Slots>
@@ -874,6 +914,7 @@
       <Description>For testing the multislot functionality.</Description>
       <IconLocation>..\Equiptment\Test Multi Slot_icon.png</IconLocation>
       <DropChance>0</DropChance>
+      <NumGivenIfDefault>0</NumGivenIfDefault>
       <Slots>
         <SlotMode>Finger1</SlotMode>
         <SlotMode>Finger6</SlotMode>
@@ -902,6 +943,70 @@
       <GrantedBuffs />
       <Attacks />
     </Equiptment>
+    <Equiptment>
+      <GlobalID>eaaf9924-a075-4af9-ac2b-22ff02db5539</GlobalID>
+      <Name>Stick</Name>
+      <Description>A small stick you found from a tree.</Description>
+      <DropChance>0.8</DropChance>
+      <NumGivenIfDefault>0</NumGivenIfDefault>
+      <Slots>
+        <SlotMode>Hand1</SlotMode>
+        <SlotMode>Hand2</SlotMode>
+      </Slots>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <BuffImmunities />
+      <Attacks>
+        <Attack>
+          <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
+          <Name>Poke</Name>
+          <Description>Aim for the eyes for extra damage.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>11</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <MultiTarget>false</MultiTarget>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+      </Attacks>
+    </Equiptment>
   </StoredEquiptments>
   <StoredConsumables>
     <Consumable>
@@ -910,6 +1015,7 @@
       <Description />
       <IconLocation>..\Consumable\Test_icon.png</IconLocation>
       <DropChance>0</DropChance>
+      <NumGivenIfDefault>0</NumGivenIfDefault>
       <Buffs>
         <Buff>
           <GlobalID>b563ce00-8c7b-4c03-9bd9-1b531d0a7c42</GlobalID>
@@ -961,6 +1067,9 @@
       <RoundsPassed>0</RoundsPassed>
     </Consumable>
   </StoredConsumables>
+  <DefaultItemGuids />
+  <DefaultEquiptmentGuids />
+  <DefaultConsumableGuids />
   <StoredHazards />
   <StoredBlocks />
   <PlayerItems />
@@ -973,7 +1082,7 @@
       <Name>Final Level</Name>
       <Description />
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>true</SeenIntroduction>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>
