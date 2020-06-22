@@ -70,7 +70,7 @@ namespace RuinsOfAlbertrizal.Environment
         {
             get
             {
-                return Players.ToArray().FilterByGuid(ActivePlayerGuids);
+                return Players.ToArray().FilterByGlobalID(ActivePlayerGuids);
             }
         }
 
@@ -278,6 +278,7 @@ namespace RuinsOfAlbertrizal.Environment
         public void PlayerObtainObject(Item item)
         {
             item = item.MemoryClone();
+            item.GetNewInstanceID();
 
             if (item.GetType() == typeof(Equiptment))
                 ObtainEquiptment((Equiptment)item);

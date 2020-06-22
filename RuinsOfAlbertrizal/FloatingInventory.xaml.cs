@@ -68,18 +68,18 @@ namespace RuinsOfAlbertrizal
             }
             else if (SelectedItem.GetType() != typeof(Equiptment))
                 return;
-            else if (!((Equiptment)SelectedItem).Slots.Contains((Equiptment.SlotMode)(index + 1)))
+            else if (!((Equiptment)SelectedItem).EquiptableSlots.Contains((Equiptment.SlotMode)(index + 1)))
             {
                 //Equiptment does not fit on specified slots. Generate error message.
 
                 string selectedItemSlotsList = "";
 
-                for (int i = 0; i < ((Equiptment)SelectedItem).Slots.Count; i++)
+                for (int i = 0; i < ((Equiptment)SelectedItem).EquiptableSlots.Count; i++)
                 {
-                    Equiptment.SlotMode slot = ((Equiptment)SelectedItem).Slots[i];
+                    Equiptment.SlotMode slot = ((Equiptment)SelectedItem).EquiptableSlots[i];
 
                     selectedItemSlotsList = $"{selectedItemSlotsList}" +
-                        $"{MiscMethods.GetSeperator(i, ((Equiptment)SelectedItem).Slots.Count)} " +
+                        $"{MiscMethods.GetSeperator(i, ((Equiptment)SelectedItem).EquiptableSlots.Count)} " +
                         $"{slot.GetDescription()}".Trim();
                 }
 

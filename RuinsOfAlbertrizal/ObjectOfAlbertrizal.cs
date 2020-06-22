@@ -33,6 +33,20 @@ namespace RuinsOfAlbertrizal
             set => globalID = value;
         }
 
+        private Guid instanceID;
+
+        public Guid InstanceID
+        {
+            get
+            {
+                if (instanceID == null || instanceID == Guid.Empty)
+                    instanceID = Guid.NewGuid();
+
+                return instanceID;
+            }
+            set => instanceID = value;
+        }
+
         public string Name { get; set; }
 
         [XmlIgnore]
@@ -44,6 +58,11 @@ namespace RuinsOfAlbertrizal
         {
             Name = "";
             Description = "";
+        }
+
+        public void GetNewInstanceID()
+        {
+            instanceID = Guid.NewGuid();
         }
 
         /// <summary>
@@ -92,33 +111,6 @@ namespace RuinsOfAlbertrizal
         public void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        /// <summary>
-        /// Looks up an object by Guid. Returns null if guid is not found.
-        /// </summary>
-        /// <param name="lookupList">List of objects of look in.</param>
-        /// <param name="guid">The guid to look for.</param>
-        /// <returns></returns>
-        public static ObjectOfAlbertrizal LookUpByGuid(List<ObjectOfAlbertrizal> lookupList, Guid guid)
-        {
-            foreach (ObjectOfAlbertrizal thing in lookupList)
-            {
-                if (guid.Equals(thing.GlobalID))
-                    return thing;
-            }
-
-            return null;
-        }
-
-        public static List<Guid> ToGuidList<T>(List<T> objects) where T : ObjectOfAlbertrizal
-        {
-            List<Guid> guids = new List<Guid>();
-
-            foreach (T thing in objects)
-                guids.Add(thing.GlobalID);
-
-            return guids;
         }
     }
 }

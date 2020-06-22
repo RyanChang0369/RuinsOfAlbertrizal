@@ -10,9 +10,20 @@ namespace RuinsOfAlbertrizal.Items
     public class Equiptment : Item
     {
         /// <summary>
-        /// Refer to SlotEnum
+        /// If true, then this item is already equipted on another slot.
+        /// If true, then this item's buffs and StatGain will not be applied.
         /// </summary>
-        public List<SlotMode> Slots { get; set; }
+        public bool IsAClone { get; set; }
+
+        /// <summary>
+        /// Slots that this item can be equipted to.
+        /// </summary>
+        public List<SlotMode> EquiptableSlots { get; set; }
+
+        /// <summary>
+        /// When equipted, this item will take up all required slots.
+        /// </summary>
+        public List<SlotMode> RequiredSlots { get; set; }
 
         public enum SlotMode
         {
@@ -73,12 +84,12 @@ namespace RuinsOfAlbertrizal.Items
             StatGain = new int[GameBase.NumStats];
             BuffImmunities = new List<Buff>();
             Attacks = new List<Attack>();
-            Slots = new List<SlotMode>();
+            EquiptableSlots = new List<SlotMode>();
         }
 
         public bool CanAttack()
         {
-            foreach (SlotMode slot in Slots)
+            foreach (SlotMode slot in EquiptableSlots)
             {
                 if (slot == SlotMode.Hand1 || slot == SlotMode.Hand2)
                     return true;

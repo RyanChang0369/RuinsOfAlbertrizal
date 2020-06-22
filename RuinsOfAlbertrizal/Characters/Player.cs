@@ -116,12 +116,12 @@ namespace RuinsOfAlbertrizal.Characters
         public void Equipt(Equiptment equiptment)
         {
             //Unequipt all slots that this new equiptment will take up
-            foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
+            foreach (Equiptment.SlotMode slotMode in equiptment.EquiptableSlots)
             {
                 Unequipt((int)slotMode - 1);
             }
 
-            foreach (Equiptment.SlotMode slotMode in equiptment.Slots)
+            foreach (Equiptment.SlotMode slotMode in equiptment.EquiptableSlots)
             {
                 CurrentEquiptments[(int)slotMode - 1] = equiptment;
             }
@@ -141,7 +141,7 @@ namespace RuinsOfAlbertrizal.Characters
 
             Equiptment equiptment = CurrentEquiptments[index];
 
-            foreach (Equiptment.SlotMode slotMode in CurrentEquiptments[index].Slots)
+            foreach (Equiptment.SlotMode slotMode in CurrentEquiptments[index].EquiptableSlots)
             {
                 CurrentEquiptments[(int)slotMode - 1] = null;
             }

@@ -104,8 +104,8 @@ namespace RuinsOfAlbertrizal.Environment
             if (!GameBase.Initialized())
                 throw new ArgumentException("Cannot run method if GameBase is not initalized.");
 
-            Bosses = GameBase.CurrentGame.StoredBosses.FilterByGuid(BossGuids);
-            StoredEnemies = GameBase.CurrentGame.StoredEnemies.FilterByGuid(StoredEnemyGuids);
+            Bosses = GameBase.CurrentGame.StoredBosses.FilterByGlobalID(BossGuids);
+            StoredEnemies = GameBase.CurrentGame.StoredEnemies.FilterByGlobalID(StoredEnemyGuids);
         }
 
         /// <summary>

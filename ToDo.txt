@@ -27,3 +27,7 @@ Test Enemy.Run(). Make sure the enemy is removed from the thing.
 Test Battlefield.Tick at extremely high numbers of characters.
 
 Fix ActivePlayers
+
+Overhaul equipting equiptment.
+	Have a way of differenting between items that can go into mutliple slots	and items that take up multiple slots.
+
