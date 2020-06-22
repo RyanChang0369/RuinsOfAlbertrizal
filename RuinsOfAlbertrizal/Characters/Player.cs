@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Serialization;
+using static RuinsOfAlbertrizal.Items.Equiptment;
 
 namespace RuinsOfAlbertrizal.Characters
 {
@@ -113,29 +114,24 @@ namespace RuinsOfAlbertrizal.Characters
         /// </summary>
         /// <param name="index">The index of the item in InventoryEquiptments</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public void Equipt(Equiptment equiptment)
+        public void Equipt(Equiptment equiptment, SlotMode selectedSlot)
         {
-            //Unequipt all slots that this new equiptment will take up
-            foreach (Equiptment.SlotMode slotMode in equiptment.EquiptableSlots)
-            {
-                Unequipt((int)slotMode - 1);
-            }
+            Unequipt((int)selectedSlot - 1);
 
-            if (equiptment.EquiptableSlots.Count < 1)
-            {
-                MessageBox.Show("Error: EquiptableSlots does not exist or does not contain any slots. Cannot equipt equiptment.");
-                return;
-            }
-
-            CurrentEquiptments[(int)equiptment.EquiptableSlots[0] - 1] = equiptment;
+            CurrentEquiptments[(int)selectedSlot - 1] = equiptment;
 
             if (equiptment.EquiptableSlots.Count > 1)
             {
-                for (int i = 1; i < equiptment.EquiptableSlots.Count; i++)
+                foreach (SlotMode slot in equiptment.RequiredSlots)
                 {
+                    //Checks if this required slot is equal to the selected slot.
+                    //If it is, continue as it has already been equipted.
+                    if (slot.Equals(selectedSlot))
+                        continue;
+
                     Equiptment clone = equiptment.MemoryClone();
                     clone.IsAClone = true;
-                    CurrentEquiptments[(int)equiptment.EquiptableSlots[i] - 1] = clone;
+                    CurrentEquiptments[(int)slot - 1] = clone;
                 }
             }
 
@@ -144,7 +140,7 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Removes this equiptment and any of the slots it may have occupied.
+        /// Removes the equiptment in the specifed index and any of the slots it may have occupied.
         /// </summary>
         /// <param name="index"></param>
         public void Unequipt(int index)
@@ -154,10 +150,15 @@ namespace RuinsOfAlbertrizal.Characters
 
             Equiptment equiptment = CurrentEquiptments[index];
 
-            foreach (Equiptment.SlotMode slotMode in CurrentEquiptments[index].EquiptableSlots)
+            //Unequipts everything from required slots.
+            foreach (SlotMode slotMode in CurrentEquiptments[index].RequiredSlots)
             {
                 CurrentEquiptments[(int)slotMode - 1] = null;
             }
+
+            //Unequipt slot selected
+            CurrentEquiptments[index] = null;
+
             GameBase.CurrentGame.PlayerEquiptments.Add(equiptment);
         }
 

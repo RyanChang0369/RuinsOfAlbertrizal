@@ -79,7 +79,7 @@ namespace RuinsOfAlbertrizal
             {
                 //All test successful. Equipt equiptment.
 
-                SelectedPlayer.Equipt((Equiptment)SelectedItem);
+                SelectedPlayer.Equipt((Equiptment)SelectedItem, (Equiptment.SlotMode)(index + 1));
                 SelectedItem = null;
             }
 
