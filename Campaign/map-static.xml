@@ -948,7 +948,7 @@
       <Name>Stick</Name>
       <Description>A small stick you found from a tree.</Description>
       <DropChance>0.8</DropChance>
-      <NumGivenOnStart>0</NumGivenOnStart>
+      <NumGivenOnStart>1</NumGivenOnStart>
       <Slots>
         <SlotMode>Hand1</SlotMode>
         <SlotMode>Hand2</SlotMode>
@@ -966,6 +966,7 @@
         <int>0</int>
       </StatGain>
       <BuffImmunities />
+      <GrantedBuffs />
       <Attacks>
         <Attack>
           <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
