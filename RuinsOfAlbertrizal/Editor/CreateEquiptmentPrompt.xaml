@@ -47,15 +47,12 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label x:Name="DefaultEquiptmentLbl"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Every player gets any item labeled as a default equiptment."/>
+                    <Label Content="Number of Equiptments Given On Game Start"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="For example, if set to 2, every player will recieve 2 copies of this item upon creating their character."/>
                 </StackPanel>
-                <Button x:Name="DefaultEquiptmentBtn" Click="DefaultEquiptmentBtn_Click"/>
-
-                <Label FontSize="18" Content="Number of Equiptments Given (For Default)"/>
                 <TextBox x:Name="DefaultNumberBox">
                     <TextBox.Text>
-                        <Binding Path="NumGivenIfDefault" Mode="TwoWay">
+                        <Binding Path="NumGivenOnStart" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>

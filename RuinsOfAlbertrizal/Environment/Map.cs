@@ -88,8 +88,6 @@ namespace RuinsOfAlbertrizal.Environment
 
         public List<Consumable> StoredConsumables { get; set; }
 
-        public List<Guid> DefaultItemGuids { get; set; }
-
         /// <summary>
         /// What each player starts out with.
         /// </summary>
@@ -98,11 +96,9 @@ namespace RuinsOfAlbertrizal.Environment
         {
             get
             {
-                return StoredItems.FilterByGuid(DefaultItemGuids);
+                return StoredItems.FindAll(Item.IsDefault);
             }
         }
-
-        public List<Guid> DefaultEquiptmentGuids { get; set; }
 
         /// <summary>
         /// What each player starts out with.
@@ -112,11 +108,9 @@ namespace RuinsOfAlbertrizal.Environment
         {
             get
             {
-                return StoredEquiptments.FilterByGuid(DefaultEquiptmentGuids);
+                return StoredEquiptments.FindAll(Item.IsDefault);
             }
         }
-
-        public List<Guid> DefaultConsumableGuids { get; set; }
 
         /// <summary>
         /// What each player starts out with.
@@ -126,7 +120,7 @@ namespace RuinsOfAlbertrizal.Environment
         {
             get
             {
-                return StoredConsumables.FilterByGuid(DefaultConsumableGuids);
+                return StoredConsumables.FindAll(Item.IsDefault);
             }
         }
 

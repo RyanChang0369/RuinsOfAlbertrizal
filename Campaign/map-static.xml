@@ -878,7 +878,7 @@
       <Description>For testing purposes</Description>
       <IconLocation>..\Item\Test Item_icon.png</IconLocation>
       <DropChance>0.69</DropChance>
-      <NumGivenIfDefault>0</NumGivenIfDefault>
+      <NumGivenOnStart>0</NumGivenOnStart>
     </Item>
   </StoredItems>
   <StoredEquiptments>
@@ -888,7 +888,7 @@
       <Description>A helmet for testing</Description>
       <IconLocation>..\Equiptment\Test Helmet_icon.png</IconLocation>
       <DropChance>0.13</DropChance>
-      <NumGivenIfDefault>0</NumGivenIfDefault>
+      <NumGivenOnStart>0</NumGivenOnStart>
       <Slots>
         <SlotMode>Head</SlotMode>
       </Slots>
@@ -914,7 +914,7 @@
       <Description>For testing the multislot functionality.</Description>
       <IconLocation>..\Equiptment\Test Multi Slot_icon.png</IconLocation>
       <DropChance>0</DropChance>
-      <NumGivenIfDefault>0</NumGivenIfDefault>
+      <NumGivenOnStart>0</NumGivenOnStart>
       <Slots>
         <SlotMode>Finger1</SlotMode>
         <SlotMode>Finger6</SlotMode>
@@ -948,7 +948,7 @@
       <Name>Stick</Name>
       <Description>A small stick you found from a tree.</Description>
       <DropChance>0.8</DropChance>
-      <NumGivenIfDefault>0</NumGivenIfDefault>
+      <NumGivenOnStart>0</NumGivenOnStart>
       <Slots>
         <SlotMode>Hand1</SlotMode>
         <SlotMode>Hand2</SlotMode>
@@ -1015,7 +1015,7 @@
       <Description />
       <IconLocation>..\Consumable\Test_icon.png</IconLocation>
       <DropChance>0</DropChance>
-      <NumGivenIfDefault>0</NumGivenIfDefault>
+      <NumGivenOnStart>0</NumGivenOnStart>
       <Buffs>
         <Buff>
           <GlobalID>b563ce00-8c7b-4c03-9bd9-1b531d0a7c42</GlobalID>
@@ -1067,9 +1067,6 @@
       <RoundsPassed>0</RoundsPassed>
     </Consumable>
   </StoredConsumables>
-  <DefaultItemGuids />
-  <DefaultEquiptmentGuids />
-  <DefaultConsumableGuids />
   <StoredHazards />
   <StoredBlocks />
   <PlayerItems />

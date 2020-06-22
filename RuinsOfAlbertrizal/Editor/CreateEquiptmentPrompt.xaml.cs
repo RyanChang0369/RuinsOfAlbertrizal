@@ -99,7 +99,7 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void DefaultEquiptmentBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Map.DefaultEquiptmentGuids.Remove(CreatedEquiptment.GlobalID))
+            if (!Map.DefaultEquiptmentGuids.Remove(CreatedEquiptment.GlobalID))
             {
                 //Equiptment not found. Add Equiptment
                 Map.DefaultEquiptmentGuids.Add(CreatedEquiptment.GlobalID);
