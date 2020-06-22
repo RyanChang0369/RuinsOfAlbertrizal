@@ -17,14 +17,12 @@ namespace RuinsOfAlbertrizal.Editor
         {
             InitializeComponent();
             DataContext = CreatedConsumable;
-            ReloadDefaults();
         }
 
         public CreateConsumablePrompt(Map map) : base(map)
         {
             InitializeComponent();
             DataContext = CreatedConsumable;
-            ReloadDefaults();
         }
 
         protected override void UpdateComponent()
@@ -59,34 +57,6 @@ namespace RuinsOfAlbertrizal.Editor
             {
 
             }
-        }
-
-        private void ReloadDefaults()
-        {
-            if (Map.DefaultConsumableGuids.Contains(CreatedConsumable.GlobalID))
-            {
-                DefaultConsumableLbl.Content = "Remove from Default Consumables";
-                DefaultConsumableBtn.Content = "Click to Remove";
-                DefaultNumberBox.IsEnabled = false;
-            }
-            else
-            {
-                DefaultConsumableLbl.Content = "Add to Default Consumables";
-                DefaultConsumableBtn.Content = "Click to Add";
-                DefaultNumberBox.IsEnabled = true;
-            }
-
-        }
-
-        private void DefaultConsumableBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (Map.DefaultConsumableGuids.Remove(CreatedConsumable.GlobalID))
-            {
-                //Consumable not found. Add consumable
-                Map.DefaultConsumableGuids.Add(CreatedConsumable.GlobalID);
-            }
-
-            ReloadDefaults();
         }
     }
 }

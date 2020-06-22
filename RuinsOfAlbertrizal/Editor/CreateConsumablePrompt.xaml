@@ -47,15 +47,12 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label x:Name="DefaultConsumableLbl"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Every player gets any item labeled as a default consumable."/>
+                    <Label Content="Number of Consumables Given On Game Start"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="For example, if set to 2, every player will recieve 2 copies of this item upon creating their character."/>
                 </StackPanel>
-                <Button x:Name="DefaultConsumableBtn" Click="DefaultConsumableBtn_Click"/>
-
-                <Label FontSize="18" Content="Number of Consumables Given (For Default)"/>
                 <TextBox x:Name="DefaultNumberBox">
                     <TextBox.Text>
-                        <Binding Path="NumGivenIfDefault" Mode="TwoWay">
+                        <Binding Path="NumGivenOnStart" Mode="TwoWay">
                             <Binding.ValidationRules>
                                 <validation:NumberValidation/>
                             </Binding.ValidationRules>
