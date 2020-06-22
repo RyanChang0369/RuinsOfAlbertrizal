@@ -277,8 +277,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="item"></param>
         public void PlayerObtainObject(Item item)
         {
-            item = item.MemoryClone();
-            item.GetNewInstanceID();
+            item = item.RoAMemoryClone();
 
             if (item.GetType() == typeof(Equiptment))
                 ObtainEquiptment((Equiptment)item);
