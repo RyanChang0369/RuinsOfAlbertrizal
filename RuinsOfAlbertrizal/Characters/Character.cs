@@ -139,7 +139,7 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
-                    if (equiptment == null)
+                    if (equiptment == null || equiptment.IsAClone)
                         continue;
 
                     armoredStats = ArrayMethods.AddArrays(armoredStats, equiptment.StatGain);
@@ -264,7 +264,7 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
-                    if (equiptment == null)
+                    if (equiptment == null || equiptment.IsAClone)
                         continue;
 
                     foreach (Buff buff in equiptment.BuffImmunities)
@@ -316,7 +316,7 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
-                    if (equiptment == null)
+                    if (equiptment == null || equiptment.IsAClone)
                         continue;
 
                     foreach (Buff buff in equiptment.BuffImmunities)
@@ -413,7 +413,7 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Equiptment equiptment in Equiptment.GetAttackableEquiptment(CurrentEquiptments.ToList()))
                 {
-                    if (equiptment == null)
+                    if (equiptment == null || equiptment.IsAClone)
                         continue;
 
                     attacks.AddRange(equiptment.Attacks);

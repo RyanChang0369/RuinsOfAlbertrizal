@@ -134,7 +134,7 @@ namespace RuinsOfAlbertrizal
 
                 foreach (Equiptment equiptment in player.CurrentEquiptments)
                 {
-                    if (equiptment == null)
+                    if (equiptment == null || equiptment.IsAClone)
                         continue;
 
                     foreach (Buff buff in equiptment.GrantedBuffs)
