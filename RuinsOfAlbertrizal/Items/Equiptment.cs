@@ -20,11 +20,6 @@ namespace RuinsOfAlbertrizal.Items
         /// </summary>
         public List<SlotMode> EquiptableSlots { get; set; }
 
-        /// <summary>
-        /// When equipted, this item will take up all required slots.
-        /// </summary>
-        public List<SlotMode> RequiredSlots { get; set; }
-
         public enum SlotMode
         {
             [Description("No Slot")]

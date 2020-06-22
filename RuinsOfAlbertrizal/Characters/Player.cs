@@ -121,9 +121,22 @@ namespace RuinsOfAlbertrizal.Characters
                 Unequipt((int)slotMode - 1);
             }
 
-            foreach (Equiptment.SlotMode slotMode in equiptment.EquiptableSlots)
+            if (equiptment.EquiptableSlots.Count < 1)
             {
-                CurrentEquiptments[(int)slotMode - 1] = equiptment;
+                MessageBox.Show("Error: EquiptableSlots does not exist or does not contain any slots. Cannot equipt equiptment.");
+                return;
+            }
+
+            CurrentEquiptments[(int)equiptment.EquiptableSlots[0] - 1] = equiptment;
+
+            if (equiptment.EquiptableSlots.Count > 1)
+            {
+                for (int i = 1; i < equiptment.EquiptableSlots.Count; i++)
+                {
+                    Equiptment clone = equiptment.MemoryClone();
+                    clone.IsAClone = true;
+                    CurrentEquiptments[(int)equiptment.EquiptableSlots[i] - 1] = clone;
+                }
             }
 
             InventoryEquiptments.Remove(equiptment);
