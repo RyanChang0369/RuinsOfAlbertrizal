@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RuinsOfAlbertrizal.Editor.AdderPrompts"
         mc:Ignorable="d"
-        Title="Add Slots" Height="450" Width="800">
+        Title="Add Slots" Height="550" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="70"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" x:Name="SlotsContainer">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="SlotsContainer" Height="350" Grid.RowSpan="2" Width="400">
             <Grid.Resources>
                 <Style TargetType="Button">
                     <Setter Property="VerticalAlignment" Value="Center"/>
@@ -22,12 +23,24 @@
                     <Setter Property="Tag" Value=""/>
                     <Setter Property="Background" Value="LightGray"/>
                 </Style>
-                <Style TargetType="CheckBox">
+
+                <!--<Style TargetType="Button">
                     <Setter Property="VerticalAlignment" Value="Center"/>
                     <Setter Property="Width" Value="40"/>
                     <Setter Property="Height" Value="40"/>
                     <Setter Property="Margin" Value="5"/>
-                    <Setter Property="Opacity" Value="0.7"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <EventSetter Event="Click" Handler="SelectSlot_Clicked"/>
+                </Style>-->
+                
+                <Style x:Key="rectangleCheckBox" TargetType="CheckBox">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="40"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Opacity" Value="0.5"/>
+                    <Setter Property="Cursor" Value="Hand"/>
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="CheckBox">
@@ -43,45 +56,128 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <EventSetter Event="Click" Handler="SelectSlot_Clicked"/>
                 </Style>
             </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            <CheckBox x:Name="HeadSlot" Grid.Column="2" ToolTip="Head Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="NeckSlot" Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="TorsoSlot" Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="LeftHandSlot" Grid.Row="2" ToolTip="Left Hand Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="RightHandSlot" Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="LegsSlot" Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox x:Name="FootSlot" Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9" Click="SelectSlot_Clicked"/>
-            <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10" Click="SelectSlot_Clicked"/>
+            <Grid x:Name="EquiptableSlotsContainer" Panel.ZIndex="2">
+                <Grid.Resources>
+                    <Style TargetType="CheckBox" BasedOn="{StaticResource rectangleCheckBox}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="CheckBox">
+                                    <Rectangle x:Name="CheckRectangle" Width="40" Height="40"/>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="CheckRectangle" Property="Fill" Value="Green"/>
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="False">
+                                            <Setter TargetName="CheckRectangle" Property="Fill" Value="LightGray"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="2" ToolTip="Head Slot"/>
+                <CheckBox Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot"/>
+                <CheckBox Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot"/>
+                <CheckBox Grid.Row="2" ToolTip="Left Hand Slot"/>
+                <CheckBox Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot"/>
+                <CheckBox Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot"/>
+                <CheckBox Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot"/>
+                <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1"/>
+                <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2"/>
+                <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3"/>
+                <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4"/>
+                <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5"/>
+                <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6"/>
+                <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7"/>
+                <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8"/>
+                <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9"/>
+                <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10"/>
+            </Grid>
+            <Grid x:Name="RequiredSlotsContainer" Panel.ZIndex="1">
+                <Grid.Resources>
+                    <Style TargetType="CheckBox" BasedOn="{StaticResource rectangleCheckBox}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="CheckBox">
+                                    <Rectangle x:Name="CheckRectangle" Width="40" Height="40"/>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="CheckRectangle" Property="Fill" Value="Red"/>
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="False">
+                                            <Setter TargetName="CheckRectangle" Property="Fill" Value="LightGray"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="2" ToolTip="Head Slot"/>
+                <CheckBox Grid.Row="1" Grid.Column="2" ToolTip="Neck Slot"/>
+                <CheckBox Grid.Row="2" Grid.Column="2" ToolTip="Torso Slot"/>
+                <CheckBox Grid.Row="2" ToolTip="Left Hand Slot"/>
+                <CheckBox Grid.Row="2" Grid.Column="4" ToolTip="Right Hand Slot"/>
+                <CheckBox Grid.Row="4" Grid.Column="2" ToolTip="Legs Slot"/>
+                <CheckBox Grid.Row="5" Grid.Column="2" ToolTip="Foot Slot"/>
+                <CheckBox Grid.Column="6" Grid.Row="1" ToolTip="Accessory 1"/>
+                <CheckBox Grid.Column="6" Grid.Row="2" ToolTip="Accessory 2"/>
+                <CheckBox Grid.Column="6" Grid.Row="3" ToolTip="Accessory 3"/>
+                <CheckBox Grid.Column="6" Grid.Row="4" ToolTip="Accessory 4"/>
+                <CheckBox Grid.Column="6" Grid.Row="5" ToolTip="Accessory 5"/>
+                <CheckBox Grid.Column="7" Grid.Row="1" ToolTip="Accessory 6"/>
+                <CheckBox Grid.Column="7" Grid.Row="2" ToolTip="Accessory 7"/>
+                <CheckBox Grid.Column="7" Grid.Row="3" ToolTip="Accessory 8"/>
+                <CheckBox Grid.Column="7" Grid.Row="4" ToolTip="Accessory 9"/>
+                <CheckBox Grid.Column="7" Grid.Row="5" ToolTip="Accessory 10"/>
+            </Grid>
         </Grid>
-        <Button x:Name="ExitBtn" Grid.Row="1" Content="Exit" Click="ExitBtn_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Content="Equiptable Slots Selected" VerticalAlignment="Center" Style="{StaticResource buttonSmall}" Click="SlotTypeBtn_Click"  Width="250"/>
+            <Image Source="../questionMark.png" Style="{StaticResource questionCircle}" MouseUp="Help1_MouseUp"/>
+        </StackPanel>
+        <Button x:Name="ExitBtn" Grid.Row="2" Content="Exit" Click="ExitBtn_Click" Style="{StaticResource buttonSmall}"/>
     </Grid>
 </Window>

@@ -47,6 +47,11 @@ namespace RuinsOfAlbertrizal
             UpdateGrid();
             InitialAnimation();
 
+            foreach (ProgressBar bar in TurnTickBarPanel.Children.OfType<ProgressBar>())
+            {
+                bar.GetBindingExpression(ProgressBar.ValueProperty).UpdateTarget();
+            }
+
             //For animation help: http://www.codescratcher.com/wpf/sliding-panel-in-wpf/
         }
 

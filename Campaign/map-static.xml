@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GlobalID>94b2c76d-7603-406c-9f2b-e6aa0a5acc6d</GlobalID>
+  <InstanceID>3e2c6d36-45b5-4626-a92e-732c0698baa6</InstanceID>
   <Name>Campaign</Name>
   <Description>The main storyline of this game.</Description>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
@@ -18,6 +19,7 @@
   <Players>
     <Player>
       <GlobalID>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</GlobalID>
+      <InstanceID>12d4f94e-d9f5-4090-a637-cb12e20e982d</InstanceID>
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <TurnsPassed>0</TurnsPassed>
@@ -87,6 +89,7 @@
   <StoredBosses>
     <Boss>
       <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
+      <InstanceID>90ce0082-92fb-43b6-b390-9167bb6384de</InstanceID>
       <Name>Shotgun Slime</Name>
       <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
       <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
@@ -176,6 +179,7 @@
   <StoredEnemies>
     <Enemy>
       <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
+      <InstanceID>8909f9e2-858d-4296-9526-eefaea98b9df</InstanceID>
       <Name>Green Slime</Name>
       <Description>A fairly common sight around here. Not much of a threat unless it has a shotgun.</Description>
       <IconLocation>..\Enemy\Green Slime_icon.png</IconLocation>
@@ -236,6 +240,7 @@
       <BoundAttacks>
         <Attack>
           <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <InstanceID>1f7eac05-71e9-417a-a33c-46aeb7b2407d</InstanceID>
           <Name>Boop</Name>
           <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
           <Buffs />
@@ -285,6 +290,7 @@
     </Enemy>
     <Enemy>
       <GlobalID>8b03134d-450d-4ea2-b37d-19b8f931edb3</GlobalID>
+      <InstanceID>89e35ef8-b055-4a11-822d-2b62d5a31c80</InstanceID>
       <Name>Blue Slime</Name>
       <Description>Knows a bit about magic.</Description>
       <IconLocation>..\Enemy\Blue Slime_icon.png</IconLocation>
@@ -345,6 +351,7 @@
       <BoundAttacks>
         <Attack>
           <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <InstanceID>1681fb34-64f7-4dda-9312-4763c3477606</InstanceID>
           <Name>Boop</Name>
           <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
           <Buffs />
@@ -394,6 +401,7 @@
     </Enemy>
     <Enemy>
       <GlobalID>848a829e-1a48-46c2-be84-1314d72632b7</GlobalID>
+      <InstanceID>47fafe66-9b1d-43ff-b03a-31b3af0229af</InstanceID>
       <Name>Red Slime</Name>
       <Description>Arguably the most aggressive of all the slimes.</Description>
       <IconLocation>..\Enemy\Red Slime_icon.png</IconLocation>
@@ -454,6 +462,7 @@
       <BoundAttacks>
         <Attack>
           <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <InstanceID>e5a4fd8e-56fc-401f-8a33-9c77b47c32b9</InstanceID>
           <Name>Boop</Name>
           <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
           <Buffs />
@@ -492,6 +501,7 @@
         </Attack>
         <Attack>
           <GlobalID>838f77ef-e8db-45b9-90ef-52d7c48422f5</GlobalID>
+          <InstanceID>cde9684d-73f1-4807-840c-48e55648c521</InstanceID>
           <Name>Mega Boop</Name>
           <Description>Another attack that most slimes have. This attack causes more damage at the price of a short charge-up.</Description>
           <Buffs />
@@ -543,6 +553,7 @@
   <StoredBuffs>
     <Buff>
       <GlobalID>b563ce00-8c7b-4c03-9bd9-1b531d0a7c42</GlobalID>
+      <InstanceID>5fc60f5b-dc92-4f1c-82ed-7e7227f0416d</InstanceID>
       <Name>Paralysis</Name>
       <Description>Cannot move!</Description>
       <Duration>1</Duration>
@@ -577,6 +588,7 @@
     </Buff>
     <Buff>
       <GlobalID>36015ecc-b4ea-42ca-aea6-f0a2e5fd4dac</GlobalID>
+      <InstanceID>94ed8f63-9292-410e-9fb9-28041f2cc285</InstanceID>
       <Name>Poison</Name>
       <Description>Losing health!</Description>
       <Duration>1</Duration>
@@ -611,6 +623,7 @@
     </Buff>
     <Buff>
       <GlobalID>a5a315a7-e53e-4b10-8fff-a59ca1fd9463</GlobalID>
+      <InstanceID>a4b06805-ea75-48e6-99cd-3a9b1288ce64</InstanceID>
       <Name>Death</Name>
       <Description />
       <Duration>1</Duration>
@@ -647,6 +660,7 @@
   <StoredAttacks>
     <Attack>
       <GlobalID>1e4af09f-dcf6-465a-aa08-5f5ef088fe40</GlobalID>
+      <InstanceID>358f7009-6e80-4f21-8afe-7a5e3822a02b</InstanceID>
       <Name>Stab</Name>
       <Description>Basic stab attack.</Description>
       <Buffs />
@@ -685,11 +699,13 @@
     </Attack>
     <Attack>
       <GlobalID>deefeb9f-d585-42e6-9aa9-fa4ba375eb8a</GlobalID>
+      <InstanceID>a6bbde52-dd10-48ea-97e5-7e7aedc31215</InstanceID>
       <Name>Poison Stab</Name>
       <Description>A stab with a bit more flair.</Description>
       <Buffs>
         <Buff>
           <GlobalID>36015ecc-b4ea-42ca-aea6-f0a2e5fd4dac</GlobalID>
+          <InstanceID>3e3096cb-8ca2-4784-815d-1c03802b4465</InstanceID>
           <Name>Poison</Name>
           <Description>Losing health!</Description>
           <Duration>1</Duration>
@@ -758,6 +774,7 @@
     </Attack>
     <Attack>
       <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+      <InstanceID>e4e6cd32-2e43-4c41-bf42-00ba4cfbb894</InstanceID>
       <Name>Boop</Name>
       <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
       <Buffs />
@@ -796,6 +813,7 @@
     </Attack>
     <Attack>
       <GlobalID>838f77ef-e8db-45b9-90ef-52d7c48422f5</GlobalID>
+      <InstanceID>0fe1b5b6-fb54-400f-b58e-dedcdde2b184</InstanceID>
       <Name>Mega Boop</Name>
       <Description>Another attack that most slimes have. This attack causes more damage at the price of a short charge-up.</Description>
       <Buffs />
@@ -834,6 +852,7 @@
     </Attack>
     <Attack>
       <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
+      <InstanceID>41130ecc-d966-4b7d-85c8-0f62862534a7</InstanceID>
       <Name>Poke</Name>
       <Description>Aim for the eyes for extra damage.</Description>
       <Buffs />
@@ -874,6 +893,7 @@
   <StoredItems>
     <Item>
       <GlobalID>38b9d7d7-bd4c-4437-92ff-cdc092f582ae</GlobalID>
+      <InstanceID>3b697124-f989-43fd-9a38-6fc8da428323</InstanceID>
       <Name>Test Item</Name>
       <Description>For testing purposes</Description>
       <IconLocation>..\Item\Test Item_icon.png</IconLocation>
@@ -884,14 +904,15 @@
   <StoredEquiptments>
     <Equiptment>
       <GlobalID>aff7b21b-5a97-436a-b537-362614f50782</GlobalID>
+      <InstanceID>85b9a311-1e93-49d3-ba5f-6114e3c62cdf</InstanceID>
       <Name>Test Helmet</Name>
       <Description>A helmet for testing</Description>
       <IconLocation>..\Equiptment\Test Helmet_icon.png</IconLocation>
       <DropChance>0.13</DropChance>
       <NumGivenOnStart>0</NumGivenOnStart>
-      <Slots>
-        <SlotMode>Head</SlotMode>
-      </Slots>
+      <IsAClone>false</IsAClone>
+      <EquiptableSlots />
+      <RequiredSlots />
       <StatGain>
         <int>0</int>
         <int>0</int>
@@ -910,23 +931,15 @@
     </Equiptment>
     <Equiptment>
       <GlobalID>d4051d96-b702-4f90-a25b-55d0d4a44c5f</GlobalID>
+      <InstanceID>2d46a28d-8286-45f1-9c8f-c72e4090be86</InstanceID>
       <Name>Test Multi Slot</Name>
       <Description>For testing the multislot functionality.</Description>
       <IconLocation>..\Equiptment\Test Multi Slot_icon.png</IconLocation>
       <DropChance>0</DropChance>
       <NumGivenOnStart>0</NumGivenOnStart>
-      <Slots>
-        <SlotMode>Finger1</SlotMode>
-        <SlotMode>Finger6</SlotMode>
-        <SlotMode>Finger2</SlotMode>
-        <SlotMode>Finger7</SlotMode>
-        <SlotMode>Finger3</SlotMode>
-        <SlotMode>Finger8</SlotMode>
-        <SlotMode>Finger4</SlotMode>
-        <SlotMode>Finger9</SlotMode>
-        <SlotMode>Finger5</SlotMode>
-        <SlotMode>Finger10</SlotMode>
-      </Slots>
+      <IsAClone>false</IsAClone>
+      <EquiptableSlots />
+      <RequiredSlots />
       <StatGain>
         <int>0</int>
         <int>0</int>
@@ -945,14 +958,15 @@
     </Equiptment>
     <Equiptment>
       <GlobalID>eaaf9924-a075-4af9-ac2b-22ff02db5539</GlobalID>
+      <InstanceID>92b1bcb1-dc79-419a-9c03-64913211597f</InstanceID>
       <Name>Stick</Name>
       <Description>A small stick you found from a tree.</Description>
+      <IconLocation>..\Equiptment\Stick_icon.png</IconLocation>
       <DropChance>0.8</DropChance>
       <NumGivenOnStart>1</NumGivenOnStart>
-      <Slots>
-        <SlotMode>Hand1</SlotMode>
-        <SlotMode>Hand2</SlotMode>
-      </Slots>
+      <IsAClone>false</IsAClone>
+      <EquiptableSlots />
+      <RequiredSlots />
       <StatGain>
         <int>0</int>
         <int>0</int>
@@ -970,6 +984,7 @@
       <Attacks>
         <Attack>
           <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
+          <InstanceID>65a9c06e-3e24-42ed-9c8c-c94ccc7c9301</InstanceID>
           <Name>Poke</Name>
           <Description>Aim for the eyes for extra damage.</Description>
           <Buffs />
@@ -1012,6 +1027,7 @@
   <StoredConsumables>
     <Consumable>
       <GlobalID>4453bb4c-38ca-4272-afe3-cc434a9d483f</GlobalID>
+      <InstanceID>abc8d51a-7c6e-4936-b95f-66081a550ef5</InstanceID>
       <Name>Test Consumable</Name>
       <Description />
       <IconLocation>..\Consumable\Test_icon.png</IconLocation>
@@ -1020,6 +1036,7 @@
       <Buffs>
         <Buff>
           <GlobalID>b563ce00-8c7b-4c03-9bd9-1b531d0a7c42</GlobalID>
+          <InstanceID>9e52bd8a-d926-491a-bd50-338263afe104</InstanceID>
           <Name>Paralysis</Name>
           <Description>Cannot move!</Description>
           <Duration>1</Duration>
@@ -1077,6 +1094,7 @@
   <Levels>
     <Level>
       <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
+      <InstanceID>f73aacd5-9e47-4b25-b311-194d7ea7be36</InstanceID>
       <Name>Final Level</Name>
       <Description />
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>

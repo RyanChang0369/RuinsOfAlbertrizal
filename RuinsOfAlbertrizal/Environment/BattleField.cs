@@ -465,7 +465,7 @@ namespace RuinsOfAlbertrizal.Environment
                 //Else, do the turn as normal.
                 ElaspedTime++;
 
-                int maxTicks = MaxSpeed;
+                int maxTicks = MaxSpeed * 5;
 
                 foreach (Character character in ActiveCharacters)
                 {

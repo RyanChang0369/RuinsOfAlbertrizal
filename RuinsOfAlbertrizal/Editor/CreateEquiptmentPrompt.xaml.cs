@@ -61,9 +61,9 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void SelectSlotsBtn_Click(object sender, RoutedEventArgs e)
         {
-            SlotAdderPrompt slotAdderPrompt = new SlotAdderPrompt(CreatedEquiptment.EquiptableSlots);
+            SlotAdderPrompt slotAdderPrompt = new SlotAdderPrompt(CreatedEquiptment.EquiptableSlots, CreatedEquiptment.RequiredSlots);
             slotAdderPrompt.ShowDialog();
-            CreatedEquiptment.EquiptableSlots = slotAdderPrompt.Slots;
+            CreatedEquiptment.EquiptableSlots = slotAdderPrompt.EquiptableSlots;
         }
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)

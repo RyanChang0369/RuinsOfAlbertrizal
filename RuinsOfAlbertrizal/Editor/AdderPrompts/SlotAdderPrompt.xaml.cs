@@ -20,7 +20,11 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
     /// </summary>
     public partial class SlotAdderPrompt : Window
     {
-        public List<SlotMode> Slots { get;set; }
+        public bool EquiptableSlotsEnabled = true;
+
+        public List<SlotMode> EquiptableSlots { get; set; }
+
+        public List<SlotMode> RequiredSlots { get; set; }
 
         public SlotAdderPrompt()
         {
@@ -28,30 +32,48 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             UpdateComponent();
         }
 
-        public SlotAdderPrompt(List<SlotMode> slots)
+        public SlotAdderPrompt(List<SlotMode> equiptableSlots, List<SlotMode> requiredSlots)
         {
             InitializeComponent();
-            Slots = slots;
+            EquiptableSlots = equiptableSlots;
+            RequiredSlots = requiredSlots;
             UpdateComponent();
         }
 
         private void UpdateComponent()
         {
-            List<CheckBox> checkBoxes = SlotsContainer.Children.OfType<CheckBox>().ToList();
-            for (int i = 0; i < Slots.Count; i++)
+            List<CheckBox> equiptableCheckBoxes = EquiptableSlotsContainer.Children.OfType<CheckBox>().ToList();
+            List<CheckBox> requiredCheckBox = RequiredSlotsContainer.Children.OfType<CheckBox>().ToList();
+            
+            for (int i = 0; i < EquiptableSlots.Count; i++)
             {
-                checkBoxes[(int)Slots[i] - 1].IsChecked = true;
+                equiptableCheckBoxes[(int)EquiptableSlots[i] - 1].IsChecked = true;
+            }
+
+            for (int i = 0; i < RequiredSlots.Count; i++)
+            {
+                requiredCheckBox[(int)RequiredSlots[i] - 1].IsChecked = true;
             }
         }
 
         private void SelectSlot_Clicked(object sender, RoutedEventArgs e)
         {
-            List<CheckBox> checkBoxes = SlotsContainer.Children.OfType<CheckBox>().ToList();
-            for (int i = 0; i < checkBoxes.Count; i++)
+            List<CheckBox> equiptableCheckBoxes = EquiptableSlotsContainer.Children.OfType<CheckBox>().ToList();
+            List<CheckBox> requiredCheckBox = RequiredSlotsContainer.Children.OfType<CheckBox>().ToList();
+
+            for (int i = 0; i < equiptableCheckBoxes.Count; i++)
             {
-                if (checkBoxes[i].IsChecked == true && !Slots.Contains((SlotMode)(i + 1)))
+                if (equiptableCheckBoxes[i].IsChecked == true && !EquiptableSlots.Contains((SlotMode)(i + 1)))
                 {
-                    Slots.Add((SlotMode)(i + 1));
+                    EquiptableSlots.Add((SlotMode)(i + 1));
+                }
+            }
+
+            for (int i = 0; i < requiredCheckBox.Count; i++)
+            {
+                if (requiredCheckBox[i].IsChecked == true && !RequiredSlots.Contains((SlotMode)(i + 1)))
+                {
+                    RequiredSlots.Add((SlotMode)(i + 1));
                 }
             }
         }
@@ -59,6 +81,34 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Help1_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Equiptable slots are slots that the item is equipted to.\r\n\r\n" +
+                "Required slots are slots that the equiptment automatically takes up " +
+                "when equipting.\r\n\r\nNote that the slot selected by the player will also " +
+                "be taken up.");
+        }
+
+        private void SlotTypeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+
+            if (EquiptableSlotsEnabled)
+            {
+                btn.Content = "Editing Required Slots";
+                Panel.SetZIndex(RequiredSlotsContainer, 2);
+                Panel.SetZIndex(EquiptableSlotsContainer, 1);
+            }
+            else
+            {
+                btn.Content = "Editing Equiptable Slots";
+                Panel.SetZIndex(RequiredSlotsContainer, 1);
+                Panel.SetZIndex(EquiptableSlotsContainer, 2);
+            }
+
+            EquiptableSlotsEnabled = !EquiptableSlotsEnabled;
         }
     }
 }

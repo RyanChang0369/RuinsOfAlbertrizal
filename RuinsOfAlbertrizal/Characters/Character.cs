@@ -35,7 +35,7 @@ namespace RuinsOfAlbertrizal.Characters
             set
             {
                 turnTicks = value;
-                OnPropertyChanged();
+                OnPropertyChanged("TurnTicks");
             }
         }
 

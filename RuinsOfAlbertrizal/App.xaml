@@ -75,9 +75,11 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Margin" Value="10"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="MinWidth" Value="100"/>
         </Style>
         <Style x:Key="buttonSmallStretch" TargetType="Button" BasedOn="{StaticResource buttonSmall}">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="MinWidth" Value="0"/>
         </Style>
         <Style x:Key="toolTipBtn" TargetType="Button" BasedOn="{StaticResource buttonSmallStretch}">
             <Setter Property="Margin" Value="-1"/>
@@ -281,6 +283,15 @@
                             </DockPanel>
                         </Grid>
                     </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--CheckBox Styles-->
+        <Style x:Key="largeCheckBox" TargetType="CheckBox">
+            <Setter Property="LayoutTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="2" ScaleY="2" />
                 </Setter.Value>
             </Setter>
         </Style>

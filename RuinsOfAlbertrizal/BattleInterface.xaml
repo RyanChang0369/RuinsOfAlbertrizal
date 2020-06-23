@@ -167,7 +167,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <TextBlock x:Name="InfoBlock" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}"/>
+                    <ScrollViewer>
+                        <TextBlock x:Name="InfoBlock" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}" Padding="10"/>
+                    </ScrollViewer>
                     <StackPanel x:Name="AttackPanel" Background="SlateGray" Visibility="Collapsed">
                         <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}" SelectionChanged="AttackSelector_SelectionChanged"/>
                     </StackPanel>
