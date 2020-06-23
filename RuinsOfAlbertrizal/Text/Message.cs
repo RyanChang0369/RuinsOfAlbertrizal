@@ -276,6 +276,9 @@ namespace RuinsOfAlbertrizal.Text
             }
         }
 
+        [XmlIgnore]
+        public string GetPreviewAsProperty => GetPreview(16);
+
         public void OnPropertyChanged([CallerMemberName] string name = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
