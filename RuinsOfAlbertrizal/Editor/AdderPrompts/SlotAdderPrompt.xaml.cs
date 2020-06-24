@@ -85,10 +85,12 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
 
         private void Help1_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Equiptable slots are slots that the item is equipted to.\r\n\r\n" +
+            MessageBox.Show("Equiptable slots are slots that the item can be equipted to.\r\n\r\n" +
                 "Required slots are slots that the equiptment automatically takes up " +
-                "when equipting.\r\n\r\nNote that the slot selected by the player will also " +
-                "be taken up.");
+                "when equipting. For example, if the left and right hand slots are selected as " +
+                "required slots, the equipted item will occupy both the left and right hand slots. " +
+                "This is useful for dual wielded weapons, as an example." +
+                "\r\n\r\nNote that the slot selected by the player will also be taken up.");
         }
 
         private void SlotTypeBtn_Click(object sender, RoutedEventArgs e)
