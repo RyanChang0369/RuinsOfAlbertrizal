@@ -1,0 +1,3 @@
+The attack btn does not function.
+
+Duplication of available attacks can occur
