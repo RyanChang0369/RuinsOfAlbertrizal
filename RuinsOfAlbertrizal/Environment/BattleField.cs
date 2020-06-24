@@ -5,6 +5,7 @@ using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Timers;
@@ -12,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
 {
-    public class BattleField : IRoundBasedObject
+    public class BattleField : ObjectOfAlbertrizal, IRoundBasedObject
     {
 
         [XmlIgnore]
@@ -161,9 +162,16 @@ namespace RuinsOfAlbertrizal.Environment
                 int max = 0;
                 foreach (Character character in AliveCharacters)
                     max += character.CurrentStats[4];
+
+                OnPropertyChanged("MaxSpeed");
+                OnPropertyChanged("MaxTicks");
+
                 return max;
             }
         }
+
+        [XmlIgnore]
+        public int MaxTicks => MaxSpeed * 10;
 
         [XmlIgnore]
         public bool PlayerHasWon
@@ -465,7 +473,6 @@ namespace RuinsOfAlbertrizal.Environment
                 //Else, do the turn as normal.
                 ElaspedTime++;
 
-                int maxTicks = MaxSpeed * 5;
 
                 foreach (Character character in ActiveCharacters)
                 {
@@ -474,7 +481,7 @@ namespace RuinsOfAlbertrizal.Environment
 
                 foreach (Character character in ActiveCharacters)
                 {
-                    if (character.TurnTicks >= maxTicks)
+                    if (character.TurnTicks >= MaxTicks)
                         ConcurrentCharacters.Add(character);
                 }
 
@@ -571,7 +578,7 @@ namespace RuinsOfAlbertrizal.Environment
             SelectedTarget = null;
             TurnNum = 0;
             RoundsPassed++;
-            SpeedTimer.Change(0, GameBase.TickSpeed);
+            SpeedTimer.Change(GameBase.TickSpeed, GameBase.TickSpeed);
         }
 
         public void StartTurn()

@@ -91,7 +91,6 @@
                 </Grid>
 
                 <Grid Grid.Column="1">
-                    
                     <StackPanel x:Name="TurnTickBarPanel" VerticalAlignment="Center">
                         <StackPanel.Resources>
                             <Style TargetType="ProgressBar">
@@ -101,43 +100,35 @@
                         <Label Content="Attack Bars" HorizontalAlignment="Center" ToolTip="When the bar reaches the maximum value, that player/enemy gets a turn."/>
                         <ProgressBar x:Name="player0_ProgressBar" Style="{StaticResource playerProgressBar}" 
                                 ToolTip="{Binding Path=ActivePlayers[0].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActivePlayers[0].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="{Binding Path=MaxSpeed}"/>
+                                Value="{Binding Path=ActivePlayers[0].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
                         
                         <ProgressBar x:Name="player1_ProgressBar" Style="{StaticResource playerProgressBar}"
                                 ToolTip="{Binding Path=ActivePlayers[1].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActivePlayers[1].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="{Binding Path=MaxSpeed}"/>
+                                Value="{Binding Path=ActivePlayers[1].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
                         
                         <ProgressBar x:Name="player2_ProgressBar" Style="{StaticResource playerProgressBar}"
                                 ToolTip="{Binding Path=ActivePlayers[2].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActivePlayers[2].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="{Binding Path=MaxSpeed}"/>
+                                Value="{Binding Path=ActivePlayers[2].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
                         
                         <ProgressBar x:Name="player3_ProgressBar" Style="{StaticResource playerProgressBar}"
                                 ToolTip="{Binding Path=ActivePlayers[3].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActivePlayers[3].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="{Binding Path=MaxSpeed}"/>
+                                Value="{Binding Path=ActivePlayers[3].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
                         
                         <ProgressBar x:Name="enemy0_ProgressBar" Style="{StaticResource enemyProgressBar}"
                                 ToolTip="{Binding Path=ActiveEnemies[0].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActiveEnemies[0].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="{Binding Path=MaxSpeed}"/>
+                                Value="{Binding Path=ActiveEnemies[0].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
                         
                         <ProgressBar x:Name="enemy1_ProgressBar" Style="{StaticResource enemyProgressBar}"
                                 ToolTip="{Binding Path=ActiveEnemies[1].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActiveEnemies[1].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="{Binding Path=MaxSpeed}"/>
+                                Value="{Binding Path=ActiveEnemies[1].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
                         
                         <ProgressBar x:Name="enemy2_ProgressBar" Style="{StaticResource enemyProgressBar}"
                                 ToolTip="{Binding Path=ActiveEnemies[2].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActiveEnemies[2].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="{Binding Path=MaxSpeed}"/>
+                                Value="{Binding Path=ActiveEnemies[2].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
                         
                         <ProgressBar x:Name="enemy3_ProgressBar" Style="{StaticResource enemyProgressBar}"
                                 ToolTip="{Binding Path=ActiveEnemies[3].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActiveEnemies[3].TurnTicks, UpdateSourceTrigger=PropertyChanged}"
-                                Maximum="{Binding Path=MaxSpeed}"/>
+                                Value="{Binding Path=ActiveEnemies[3].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </Grid>
 

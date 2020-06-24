@@ -351,7 +351,14 @@ namespace RuinsOfAlbertrizal
 
         public void NotifyTick()
         {
-            
+            Dispatcher.Invoke(() =>
+            {
+                foreach (ProgressBar bar in TurnTickBarPanel.Children.OfType<ProgressBar>())
+                {
+                    bar.GetBindingExpression(ProgressBar.ValueProperty).UpdateTarget();
+                    bar.Maximum = BattleField.MaxTicks;
+                }
+            });
         }
 
         private void BuffIcon_MouseUp(object sender, MouseButtonEventArgs e)
