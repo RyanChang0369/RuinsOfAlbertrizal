@@ -360,5 +360,14 @@ namespace RuinsOfAlbertrizal
             BuffDisplayer displayer = new BuffDisplayer((List<Buff>)ctrl.Tag);
             displayer.Show();
         }
+
+        private void InfoBlockScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (e.ExtentHeightChange != 0)
+            {
+                ScrollViewer scrollViewer = (ScrollViewer)sender;
+                scrollViewer.ScrollToBottom();
+            }
+        }
     }
 }

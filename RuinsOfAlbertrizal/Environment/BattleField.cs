@@ -597,7 +597,15 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="charging">True if the attack is being charged</param>
         public void NotifyAttackBegin(Attack attack, Character attacker, bool charging)
         {
-            StoredMessage.Add($"{attacker.DisplayName} attacked with {attack.DisplayName}!");
+            if (charging)
+            {
+                StoredMessage.Add($"{attacker.DisplayName} is charging attack {attack.DisplayName}");
+            }
+            else
+            {
+                StoredMessage.Add($"{attacker.DisplayName} attacked with {attack.DisplayName}!");
+            }
+
             BattleInterface.NotifyAttackBegin(attack, attacker, charging);
 
             EndCharacterTurn(attacker);

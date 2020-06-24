@@ -240,7 +240,6 @@ namespace RuinsOfAlbertrizal.Mechanics
         public void Charge(Character attacker)
         {
             TurnsSinceBeginCharge++;
-            GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
             attacker.AttackToCharge = this;
             GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, true);
         }

@@ -93,6 +93,11 @@
                 <Grid Grid.Column="1">
                     
                     <StackPanel x:Name="TurnTickBarPanel" VerticalAlignment="Center">
+                        <StackPanel.Resources>
+                            <Style TargetType="ProgressBar">
+                                <Setter Property="Value" Value="0"/>
+                            </Style>
+                        </StackPanel.Resources>
                         <Label Content="Attack Bars" HorizontalAlignment="Center" ToolTip="When the bar reaches the maximum value, that player/enemy gets a turn."/>
                         <ProgressBar x:Name="player0_ProgressBar" Style="{StaticResource playerProgressBar}" 
                                 ToolTip="{Binding Path=ActivePlayers[0].DisplayName, UpdateSourceTrigger=PropertyChanged}"
@@ -167,7 +172,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <ScrollViewer>
+                    <ScrollViewer ScrollChanged="InfoBlockScrollViewer_ScrollChanged">
                         <TextBlock x:Name="InfoBlock" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}" Padding="10"/>
                     </ScrollViewer>
                     <StackPanel x:Name="AttackPanel" Background="SlateGray" Visibility="Collapsed">
