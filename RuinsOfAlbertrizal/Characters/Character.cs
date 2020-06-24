@@ -248,12 +248,33 @@ namespace RuinsOfAlbertrizal.Characters
         /// <summary>
         /// This character will receive the following buffs.
         /// </summary>
-        public List<Buff> PermanentBuffs { get; set; }
+        public List<Buff> PersonalPermanentBuffs { get; set; }
+
+        [XmlIgnore]
+        public List<Buff> AllPermanentBuffs
+        {
+            get
+            {
+                List<Buff> permanentBuffs = new List<Buff>();
+
+                foreach (Equiptment equiptment in CurrentEquiptments)
+                {
+                    if (equiptment == null || equiptment.IsAClone)
+                        continue;
+
+                    permanentBuffs.AddRange(equiptment.GrantedBuffs);
+                }
+
+                permanentBuffs.AddRange(PersonalPermanentBuffs);
+
+                return permanentBuffs;
+            }
+        }
 
         /// <summary>
         /// This character is immune to the following buffs of the same name. Permanent buffs are ignored.
         /// </summary>
-        public List<Buff> BuffImmunities { get; set; }
+        public List<Buff> PersonalBuffImmunities { get; set; }
 
         [XmlIgnore]
         public List<Buff> AllBuffImmunities
@@ -267,16 +288,10 @@ namespace RuinsOfAlbertrizal.Characters
                     if (equiptment == null || equiptment.IsAClone)
                         continue;
 
-                    foreach (Buff buff in equiptment.BuffImmunities)
-                    {
-                        buffImmunities.Add(buff);
-                    }
+                    buffImmunities.AddRange(equiptment.BuffImmunities);
                 }
 
-                foreach (Buff buff in BuffImmunities)
-                {
-                    BuffImmunities.Add(buff);
-                }
+                buffImmunities.AddRange(PersonalBuffImmunities);
 
                 return buffImmunities;
             }
@@ -314,17 +329,6 @@ namespace RuinsOfAlbertrizal.Characters
                     currentBuffs.Add(buff);
                 }
 
-                foreach (Equiptment equiptment in CurrentEquiptments)
-                {
-                    if (equiptment == null || equiptment.IsAClone)
-                        continue;
-
-                    foreach (Buff buff in equiptment.BuffImmunities)
-                    {
-                        currentBuffs.Add(buff);
-                    }
-                }
-
                 foreach (Consumable consumable in CurrentConsumables)
                 {
                     foreach (Buff buff in consumable.Buffs)
@@ -338,7 +342,7 @@ namespace RuinsOfAlbertrizal.Characters
                     currentBuffs.RemoveAll(item => buff.HasSameGlobalIDAs(item));
                 }
 
-                foreach (Buff buff in PermanentBuffs)
+                foreach (Buff buff in AllPermanentBuffs)
                 {
                     currentBuffs.Add(buff);
                 }
@@ -445,11 +449,10 @@ namespace RuinsOfAlbertrizal.Characters
             CurrentConsumables = new List<Consumable>();
             //AppliedBuffs = new List<Buff>();
             PreviousTargets = new List<Character>();
-            BuffImmunities = new List<Buff>();
-            PermanentBuffs = new List<Buff>();
+            PersonalBuffImmunities = new List<Buff>();
+            PersonalPermanentBuffs = new List<Buff>();
             BoundAttacks = new List<Attack>();
             BaseStats = new int[GameBase.NumStats];
-            PermanentBuffs = new List<Buff>();
         }
 
         ///// <summary>

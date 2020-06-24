@@ -52,8 +52,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -123,8 +123,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -214,8 +214,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -325,8 +325,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -436,8 +436,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />

@@ -136,7 +136,14 @@ namespace RuinsOfAlbertrizal.Characters
             }
 
             InventoryEquiptments.Remove(equiptment);
-            GameBase.CurrentGame.CurrentBattleField.NotifyItemUsed(equiptment, this);
+            try
+            {
+                GameBase.CurrentGame.CurrentBattleField.NotifyItemUsed(equiptment, this);
+            }
+            catch (NullReferenceException)
+            {
+
+            }
         }
 
         /// <summary>

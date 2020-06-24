@@ -117,13 +117,13 @@
                     <Label Content="Buff Immunities"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="This character is immune to the following buffs of the same name. Permanent buffs are ignored."/>
                 </StackPanel>
-                <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=BuffImmunities, Mode=TwoWay}"/>
+                <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=PersonalBuffImmunities, Mode=TwoWay}"/>
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Permanent Buffs"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="This character will receive the following permanent buffs."/>
                 </StackPanel>
-                <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=PermanentBuffs, Mode=TwoWay}"/>
+                <Button Content="Add or Remove Buffs" Click="EditBuffBtn_Click" Style="{StaticResource buttonSmall}" Tag="{Binding Path=PersonalPermanentBuffs, Mode=TwoWay}"/>
                 
                 <Label Content="HP *"/>
                 <TextBox x:Name="BaseHP" Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">

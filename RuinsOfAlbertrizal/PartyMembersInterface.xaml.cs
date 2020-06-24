@@ -119,7 +119,7 @@ namespace RuinsOfAlbertrizal
                     Height = 300
                 };
 
-                foreach (Buff buff in player.PermanentBuffs)
+                foreach (Buff buff in player.PersonalPermanentBuffs)
                 {
                     ListBoxItem item = new ListBoxItem
                     {
