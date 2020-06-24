@@ -258,11 +258,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
                         <Grid x:Name="TemplateRoot">
-                            <Rectangle Name="PART_Track" StrokeThickness="1" Fill="ForestGreen"/>
+                            <Rectangle Name="PART_Track" StrokeThickness="1" Fill="LimeGreen"/>
                             <DockPanel Margin="1">
                                 <Rectangle Name="PART_Indicator">
                                 </Rectangle>
-                                <Rectangle Name="Mask" MinWidth="{TemplateBinding Width}" Fill="LimeGreen"/>
+                                <Rectangle Name="Mask" MinWidth="{TemplateBinding Width}" Fill="ForestGreen"/>
                             </DockPanel>
                         </Grid>
                     </ControlTemplate>
@@ -275,11 +275,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ProgressBar}">
                         <Grid x:Name="TemplateRoot">
-                            <Rectangle Name="PART_Track" StrokeThickness="1" Fill="DarkRed"/>
+                            <Rectangle Name="PART_Track" StrokeThickness="1" Fill="Crimson"/>
                             <DockPanel Margin="1">
                                 <Rectangle Name="PART_Indicator">
                                 </Rectangle>
-                                <Rectangle Name="Mask" MinWidth="{TemplateBinding Width}" Fill="Crimson"/>
+                                <Rectangle Name="Mask" MinWidth="{TemplateBinding Width}" Fill="DarkRed"/>
                             </DockPanel>
                         </Grid>
                     </ControlTemplate>
