@@ -965,7 +965,10 @@
       <DropChance>0.8</DropChance>
       <NumGivenOnStart>1</NumGivenOnStart>
       <IsAClone>false</IsAClone>
-      <EquiptableSlots />
+      <EquiptableSlots>
+        <SlotMode>Hand1</SlotMode>
+        <SlotMode>Hand2</SlotMode>
+      </EquiptableSlots>
       <RequiredSlots />
       <StatGain>
         <int>0</int>
