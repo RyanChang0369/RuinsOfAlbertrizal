@@ -5,9 +5,9 @@
   <Name>Campaign</Name>
   <Description>The main storyline of this game.</Description>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <PlayerCreated>true</PlayerCreated>
+  <PlayerCreated>false</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -52,8 +52,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -123,8 +123,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -214,8 +214,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -325,8 +325,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -436,8 +436,8 @@
         <int>0</int>
         <int>0</int>
       </AppliedStats>
-      <PermanentBuffs />
-      <BuffImmunities />
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
       <AppliedBuffs />
       <CurrentEquiptments>
         <Equiptment xsi:nil="true" />
@@ -1101,7 +1101,7 @@
       <Name>Final Level</Name>
       <Description />
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>true</SeenIntroduction>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>
