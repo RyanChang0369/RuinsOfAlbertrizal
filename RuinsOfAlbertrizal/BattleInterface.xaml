@@ -48,6 +48,7 @@
             <Setter Property="Opacity" Value="0.0"/>
             <Setter Property="Visibility" Value="Collapsed"/>
             <Setter Property="Source" Value="assets/target.png"/>
+            <Setter Property="Panel.ZIndex" Value="5"/>
             <EventSetter Event="MouseUp" Handler="TargetImage_MouseUp"/>
         </Style>
     </Page.Resources>
@@ -167,7 +168,7 @@
                         <TextBlock x:Name="InfoBlock" FontSize="24" Background="PapayaWhip" Text="{Binding Path=StoredMessage.FormattedLines, UpdateSourceTrigger=PropertyChanged}" Padding="10"/>
                     </ScrollViewer>
                     <StackPanel x:Name="AttackPanel" Background="SlateGray" Visibility="Collapsed">
-                        <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}" SelectionChanged="AttackSelector_SelectionChanged"/>
+                        <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}" SelectionChanged="AttackSelector_SelectionChanged" Style="{StaticResource inventoryListBox}"/>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1" Background="Snow">

@@ -20,8 +20,6 @@ Implement fear, which is determined by the inventory quantity, amount of stats d
 
 Improve AI for Berserk
 
-Have some way of differentiation active party memebers.
-
 Test Enemy.Run(). Make sure the enemy is removed from the thing.
 
 Test Battlefield.Tick at extremely high numbers of characters.
@@ -29,7 +27,6 @@ Test Battlefield.Tick at extremely high numbers of characters.
 Fix ActivePlayers
 
 Overhaul equipting equiptment.
-	Have a way of differenting between items that can go into mutliple slots
-	and items that take up multiple slots.
+	Test the equiptment
 
-	Implement selecting those types of slots in the editor
+Test attacking and stuff.

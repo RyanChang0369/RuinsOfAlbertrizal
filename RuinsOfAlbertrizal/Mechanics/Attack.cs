@@ -278,7 +278,7 @@ namespace RuinsOfAlbertrizal.Mechanics
             for (int i = 0; i < GameBase.NumActiveCharacters; i++)
             {
                 if (CanTargetCharacter(attacker, activePlayers[i]))
-                    playerTargetIndexes.Add(i);
+                    enemyTargetIndexes.Add(i);
 
                 if (CanTargetCharacter(attacker, activeEnemies[i]))
                     playerTargetIndexes.Add(i);

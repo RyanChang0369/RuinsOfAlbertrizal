@@ -163,52 +163,64 @@ namespace RuinsOfAlbertrizal
         {
             List<int>[] targetIndexes = attack.GetAttackIndexes(attacker, GameBase.CurrentGame.ActivePlayers, BattleField.ActiveEnemies);
 
-            List<int> playerTargetIndexes = targetIndexes[0];
-            List<int> enemyTargetIndexes = targetIndexes[1];
+            List<int> attackablePlayers = targetIndexes[1];
+            List<int> attackableEnemies = targetIndexes[0];
 
             if (hideTargets)
-                HideTargets(playerTargetIndexes, enemyTargetIndexes);
+                HideTargets(attackablePlayers, attackableEnemies);
             else
-                ShowTargets(playerTargetIndexes, enemyTargetIndexes);
+                ShowTargets(attackablePlayers, attackableEnemies);
         }
 
         /// <summary>
         /// Fades in the target symbols.
         /// </summary>
-        /// <param name="playerTargetIndexes">The indexes of targetable players in ActivePlayers</param>
-        /// <param name="enemyTargetIndexes">The indexes of targetable enemies in ActiveEnemies</param>
-        private void ShowTargets(List<int> playerTargetIndexes, List<int> enemyTargetIndexes)
+        /// <param name="attackablePlayers">The indexes of targetable players in ActivePlayers</param>
+        /// <param name="attackableEnemies">The indexes of targetable enemies in ActiveEnemies</param>
+        private void ShowTargets(List<int> attackablePlayers, List<int> attackableEnemies)
         {
-            foreach (int i in playerTargetIndexes)
+            foreach (int i in attackablePlayers)
             {
-                playerTargetImages[i].Visibility = Visibility.Visible;
-                Animate("targetFadeIn", playerTargetImages[i]);
+                if (playerTargetImages[i].Tag != null)
+                {
+                    playerTargetImages[i].Visibility = Visibility.Visible;
+                    Animate("targetFadeIn", playerTargetImages[i]);
+                }
             }
 
-            foreach (int i in enemyTargetIndexes)
+            foreach (int i in attackableEnemies)
             {
-                enemyTargetImages[i].Visibility = Visibility.Visible;
-                Animate("targetFadeIn", enemyTargetImages[i]);
+                if (enemyTargetImages[i].Tag != null)
+                {
+                    enemyTargetImages[i].Visibility = Visibility.Visible;
+                    Animate("targetFadeIn", enemyTargetImages[i]); 
+                }
             }
         }
 
         /// <summary>
         /// Fades out the target symbols.
         /// </summary>
-        /// <param name="playerTargetIndexes">The indexes of targetable players in ActivePlayers</param>
-        /// <param name="enemyTargetIndexes">The indexes of targetable enemies in ActiveEnemies</param>
-        private void HideTargets(List<int> playerTargetIndexes, List<int> enemyTargetIndexes)
+        /// <param name="attackablePlayers">The indexes of targetable players in ActivePlayers</param>
+        /// <param name="attackableEnemies">The indexes of targetable enemies in ActiveEnemies</param>
+        private void HideTargets(List<int> attackablePlayers, List<int> attackableEnemies)
         {
-            foreach (int i in playerTargetIndexes)
+            foreach (int i in attackablePlayers)
             {
-                Animate("targetFadeOut", playerTargetImages[i]);
-                playerTargetImages[i].Visibility = Visibility.Collapsed;
+                if (playerTargetImages[i].Tag != null)
+                {
+                    Animate("targetFadeOut", playerTargetImages[i]);
+                    playerTargetImages[i].Visibility = Visibility.Collapsed; 
+                }
             }
 
-            foreach (int i in enemyTargetIndexes)
+            foreach (int i in attackableEnemies)
             {
-                Animate("targetFadeOut", enemyTargetImages[i]);
-                enemyTargetImages[i].Visibility = Visibility.Collapsed;
+                if (enemyTargetImages[i].Tag != null)
+                {
+                    Animate("targetFadeOut", enemyTargetImages[i]);
+                    enemyTargetImages[i].Visibility = Visibility.Collapsed; 
+                }
             }
         }
 
@@ -277,8 +289,8 @@ namespace RuinsOfAlbertrizal
 
         private void TargetImage_MouseUp(object sender, RoutedEventArgs e)
         {
-            Control ctrl = (Control)sender;
-            BattleField.SelectedTarget = (Character)ctrl.Tag;
+            Image img = (Image)sender;
+            BattleField.SelectedTarget = (Character)img.Tag;
             AttackBtn.IsEnabled = true;
         }
 
@@ -302,6 +314,7 @@ namespace RuinsOfAlbertrizal
         {
             FloatingInventory inventory = new FloatingInventory(BattleField.SelectedPlayer, BattleField.TurnNum);
             inventory.ShowDialog();
+            ForceListBoxUpdate(AttackSelector);
         }
 
         private void Flee_Click(object sender, RoutedEventArgs e)

@@ -27,38 +27,10 @@ namespace RuinsOfAlbertrizal.Environment
         public List<Player> Players { get; set; }
 
         [XmlIgnore]
-        public List<Player> AlivePlayers
-        {
-            get
-            {
-                List<Player> players = new List<Player>();
-
-                foreach (Player player in Players)
-                {
-                    if (!player.IsDead)
-                        players.Add(player);
-                }
-
-                return players;
-            }
-        }
+        public List<Player> AlivePlayers => Players.FindAll(player => !player.IsDead);
 
         [XmlIgnore]
-        public List<Player> DeadPlayers
-        {
-            get
-            {
-                List<Player> players = new List<Player>();
-
-                foreach (Player player in Players)
-                {
-                    if (player.IsDead)
-                        players.Add(player);
-                }
-
-                return players;
-            }
-        }
+        public List<Player> DeadPlayers => Players.FindAll(player => player.IsDead);
 
         public Guid[] ActivePlayerGuids { get; set; }
 
@@ -66,13 +38,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// The players that can attack. Consider using ActivePlayerGuids for better performance.
         /// </summary>
         [XmlIgnore]
-        public Player[] ActivePlayers
-        {
-            get
-            {
-                return Players.ToArray().FilterByGlobalID(ActivePlayerGuids);
-            }
-        }
+        public Player[] ActivePlayers => Players.ToArray().FilterByGlobalID(ActivePlayerGuids);
 
         public List<Boss> StoredBosses { get; set; }
 
