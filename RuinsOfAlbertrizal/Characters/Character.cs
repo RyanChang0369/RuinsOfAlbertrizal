@@ -413,7 +413,8 @@ namespace RuinsOfAlbertrizal.Characters
         {
             get
             {
-                List<Attack> attacks = BoundAttacks;
+                List<Attack> attacks = new List<Attack>();
+                attacks.AddRange(BoundAttacks);
 
                 foreach (Equiptment equiptment in Equiptment.GetAttackableEquiptment(CurrentEquiptments.ToList()))
                 {

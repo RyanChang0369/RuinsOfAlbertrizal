@@ -327,6 +327,20 @@ namespace RuinsOfAlbertrizal.Mechanics
             }
         }
 
+        public bool CanTargetEverything(Character attacker, Character[] targets)
+        {
+            if (attacker == null || attacker.IsDead)
+                return false;
+
+            foreach (Character target in targets)
+            {
+                if (CanTargetCharacter(attacker, target))
+                    return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Finds most damaging attack, in terms of the given stat, that the attacker can use, or returns null if no such attack can be found.
         /// </summary>

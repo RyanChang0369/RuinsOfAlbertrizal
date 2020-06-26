@@ -1,5 +1,1 @@
-Duplication of available attacks can occur
-
-Targets do not go away after player attack is over.
-
-
+The first enemy to attack has two rounds.
