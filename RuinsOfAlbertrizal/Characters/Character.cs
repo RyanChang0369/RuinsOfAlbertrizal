@@ -493,6 +493,22 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        public void Attack(Attack attack, List<Character> targets)
+        {
+            try
+            {
+                attack.BeginAttack(this, targets);
+            }
+            catch (NotEnoughManaException e)
+            {
+                throw e;
+            }
+            catch (CannotTargetException e)
+            {
+                throw e;
+            }
+        }
+
         public void Charge(Attack attack)
         {
             attack.Charge(this);

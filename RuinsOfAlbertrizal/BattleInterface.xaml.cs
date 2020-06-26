@@ -163,7 +163,7 @@ namespace RuinsOfAlbertrizal
         {
             if (attack.MultiTarget)
             {
-                if (attack.CanTargetEverything(attacker, BattleField.ActiveEnemies))
+                if (attack.CanTargetAnything(attacker, BattleField.ActiveEnemies))
                 {
                     if (hideTargets)
                         Animate("targetFadeIn", targetEnemyAll);
@@ -171,7 +171,7 @@ namespace RuinsOfAlbertrizal
                         Animate("targetFadeOut", targetEnemyAll);
                 }
 
-                if (attack.CanTargetEverything(attacker, BattleField.ActivePlayers))
+                if (attack.CanTargetAnything(attacker, BattleField.ActivePlayers))
                 {
                     if (hideTargets)
                         Animate("targetFadeIn", targetPlayerAll);
@@ -270,6 +270,8 @@ namespace RuinsOfAlbertrizal
                 DoCharge(btn, BattleField.SelectedPlayer, BattleField.SelectedAttack);
             else if (BattleField.SelectedTarget != null)
                 DoAttack(btn, BattleField.SelectedPlayer, BattleField.SelectedTarget, BattleField.SelectedAttack);
+            else if (BattleField.SelectedSide != null)
+                DoAttack(btn, BattleField.SelectedPlayer, BattleField.SelectedSide, BattleField.SelectedAttack);
         }
 
         private void AttackSelector_SelectionChanged(object sender, RoutedEventArgs e)
@@ -314,7 +316,15 @@ namespace RuinsOfAlbertrizal
 
             if (img.Opacity != 0.9)
             {
-                BattleField.SelectedTarget = (Character)img.Tag;
+                try
+                {
+                    BattleField.SelectedTarget = (Character)img.Tag;
+                }
+                catch (InvalidCastException)
+                {
+                    BattleField.SelectedSide = (List<Character>)img.Tag;
+                }
+
                 Animate("targetConfirm", img);
                 AttackBtn.IsEnabled = true;
             }
@@ -349,6 +359,18 @@ namespace RuinsOfAlbertrizal
             attackBtn.Content = "Select Attack";
 
             selectedPlayer.Attack(selectedAttack, target);
+
+            ToggleTargets(selectedPlayer, selectedAttack, true);
+            BattleField.SelectedAttack = null;
+        }
+
+        private void DoAttack(Button attackBtn, Player selectedPlayer, List<Character> targets, Attack selectedAttack)
+        {
+            //Hide panel
+            AttackPanel.Visibility = Visibility.Collapsed;
+            attackBtn.Content = "Select Attack";
+
+            selectedPlayer.Attack(selectedAttack, targets);
 
             ToggleTargets(selectedPlayer, selectedAttack, true);
             BattleField.SelectedAttack = null;

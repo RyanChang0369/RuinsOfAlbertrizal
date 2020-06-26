@@ -157,46 +157,48 @@ namespace RuinsOfAlbertrizal.Mechanics
             return total;
         }
 
-        ///// <summary>
-        ///// Starts the attack.
-        ///// </summary>
-        ///// <param name="attacker">The character doing the attacking.</param>
-        ///// <param name="targets">The character being attacked.</param>
-        ///// <param name="useStatCost">If false, then do not use StatCostToUser</param>
-        ///// <exception cref="ArgumentException"></exception>
-        //public void BeginAttack(Character attacker, List<Character> targets, bool useStatCost = true)
-        //{
-        //    if (CanBeUsedBy(attacker))
-        //    {
-        //        TurnSinceAttacked = 0;
-        //        TurnsSinceBeginCharge = 0;
+        /// <summary>
+        /// Starts the attack
+        /// </summary>
+        /// <param name="attacker"></param>
+        /// <param name="targets"></param>
+        /// <param name="useStatCost">If false, then do not use StatCostToUser</param>
+        /// <exception cref="CannotTargetException"></exception>
+        /// <exception cref="NotEnoughManaException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        public void BeginAttack(Character attacker, List<Character> targets, bool useStatCost = true)
+        {
+            if (StatCostToUser[1] > attacker.CurrentStats[1])
+                throw new NotEnoughManaException($"Character {attacker.DisplayName} does not have the required amount of mana to use this attack.");
+            else if (!CanTargetAnything(attacker, targets))
+                throw new CannotTargetException($"Character {attacker.DisplayName} cannot any of the selected targets.");
 
-        //        if (useStatCost)
-        //        {
-        //            for (int i = 0; i < StatCostToUser.Length; i++)
-        //            {
-        //                attacker.AppliedStats[i] -= StatCostToUser[i];
-        //            }
-        //        }
+            if (CanBeUsedBy(attacker))
+            {
+                TurnSinceAttacked = 0;
+                TurnsSinceBeginCharge = 0;
 
-        //        GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker);
+                if (useStatCost)
+                {
+                    for (int i = 0; i < StatCostToUser.Length; i++)
+                    {
+                        attacker.AppliedStats[i] -= StatCostToUser[i];
+                    }
+                }
 
-        //        foreach (Character target in targets)
-        //        {
-        //            if (!CanTargetCharacter(attacker, target))
-        //                throw new ArgumentException($"Character {attacker.DisplayName} cannot target {target.DisplayName}.");
-        //            else
-        //                target.GetAttacked(this);
-        //        }
-        //    }
-        //    else if (!IsCharged)
-        //    {
-        //        //Begin/Continue charge
-        //        TurnsSinceBeginCharge++;
-        //        GameBase.CurrentGame.CurrentBattleField.StoredMessage.Add($"{attacker.DisplayName} is charging attack {DisplayName}");
-        //        attacker.AttackToCharge = this;
-        //    }
-        //}
+                GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, false);
+
+                foreach (Character target in GetAttackableTargets(attacker, targets))
+                {
+                    target.GetAttacked(this);
+                }
+            }
+            else if (!IsCharged())
+            {
+                //Begin/Continue charge
+                Charge(attacker);
+            }
+        }
 
         /// <summary>
         /// Starts the attack
@@ -327,18 +329,42 @@ namespace RuinsOfAlbertrizal.Mechanics
             }
         }
 
-        public bool CanTargetEverything(Character attacker, Character[] targets)
+        /// <summary>
+        /// Returns true if the attacker can attack at least 1 target in the provided array of targets.
+        /// </summary>
+        /// <param name="attacker"></param>
+        /// <param name="targets"></param>
+        /// <returns></returns>
+        public bool CanTargetAnything(Character attacker, Character[] targets)
         {
+            return CanTargetAnything(attacker, targets.ToList());
+        }
+
+        /// <summary>
+        /// Returns true if the attacker can attack at least 1 target in the provided list of targets.
+        /// </summary>
+        /// <param name="attacker"></param>
+        /// <param name="targets"></param>
+        /// <returns></returns>
+        public bool CanTargetAnything(Character attacker, List<Character> targets)
+        {
+            return GetAttackableTargets(attacker, targets).Count > 0;
+        }
+
+        public List<Character> GetAttackableTargets(Character attacker, List<Character> targets)
+        {
+            List<Character> attackables = new List<Character>();
+
             if (attacker == null || attacker.IsDead)
-                return false;
+                return attackables;
 
             foreach (Character target in targets)
             {
                 if (CanTargetCharacter(attacker, target))
-                    return true;
+                    attackables.Add(target);
             }
 
-            return false;
+            return attackables;
         }
 
         /// <summary>

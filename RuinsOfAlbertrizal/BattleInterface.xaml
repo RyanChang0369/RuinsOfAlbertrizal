@@ -34,10 +34,10 @@
             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.4" To="0.0"/>
         </Storyboard>
         <Storyboard x:Key="targetConfirm">
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.4" To="0.9" Duration="500"/>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.4" To="0.9"/>
         </Storyboard>
         <Storyboard x:Key="targetDeconfirm">
-            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.9" To="0.4" Duration="400"/>
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.9" To="0.4"/>
         </Storyboard>
 
         <DataTemplate x:Key="attackDataTemplate">

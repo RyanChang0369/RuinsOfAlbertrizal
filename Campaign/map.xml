@@ -59,7 +59,76 @@
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
-        <Equiptment xsi:nil="true" />
+        <Equiptment>
+          <GlobalID>eaaf9924-a075-4af9-ac2b-22ff02db5539</GlobalID>
+          <InstanceID>92b1bcb1-dc79-419a-9c03-64913211597f</InstanceID>
+          <Name>Stick</Name>
+          <Description>A small stick you found from a tree.</Description>
+          <IconLocation>..\Equiptment\Stick_icon.png</IconLocation>
+          <DropChance>0.8</DropChance>
+          <NumGivenOnStart>1</NumGivenOnStart>
+          <IsAClone>false</IsAClone>
+          <EquiptableSlots>
+            <SlotMode>Hand1</SlotMode>
+            <SlotMode>Hand2</SlotMode>
+          </EquiptableSlots>
+          <RequiredSlots />
+          <StatGain>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatGain>
+          <BuffImmunities />
+          <GrantedBuffs />
+          <Attacks>
+            <Attack>
+              <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
+              <InstanceID>65a9c06e-3e24-42ed-9c8c-c94ccc7c9301</InstanceID>
+              <Name>Poke</Name>
+              <Description>Aim for the eyes for extra damage.</Description>
+              <Buffs />
+              <StatLoss>
+                <int>11</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+              </StatLoss>
+              <StatCostToUser>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+                <int>0</int>
+              </StatCostToUser>
+              <IsRanged>false</IsRanged>
+              <CoolDown>0</CoolDown>
+              <ChargeUp>0</ChargeUp>
+              <TurnSinceAttacked>0</TurnSinceAttacked>
+              <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+              <IgnoresArmor>false</IgnoresArmor>
+              <MultiTarget>false</MultiTarget>
+              <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+            </Attack>
+          </Attacks>
+        </Equiptment>
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -1092,78 +1161,7 @@
   <StoredBlocks />
   <PlayerItems />
   <PlayerConsumables />
-  <PlayerEquiptments>
-    <Equiptment>
-      <GlobalID>eaaf9924-a075-4af9-ac2b-22ff02db5539</GlobalID>
-      <InstanceID>92b1bcb1-dc79-419a-9c03-64913211597f</InstanceID>
-      <Name>Stick</Name>
-      <Description>A small stick you found from a tree.</Description>
-      <IconLocation>..\Equiptment\Stick_icon.png</IconLocation>
-      <DropChance>0.8</DropChance>
-      <NumGivenOnStart>1</NumGivenOnStart>
-      <IsAClone>false</IsAClone>
-      <EquiptableSlots>
-        <SlotMode>Hand1</SlotMode>
-        <SlotMode>Hand2</SlotMode>
-      </EquiptableSlots>
-      <RequiredSlots />
-      <StatGain>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-        <int>0</int>
-      </StatGain>
-      <BuffImmunities />
-      <GrantedBuffs />
-      <Attacks>
-        <Attack>
-          <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
-          <InstanceID>65a9c06e-3e24-42ed-9c8c-c94ccc7c9301</InstanceID>
-          <Name>Poke</Name>
-          <Description>Aim for the eyes for extra damage.</Description>
-          <Buffs />
-          <StatLoss>
-            <int>11</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </StatLoss>
-          <StatCostToUser>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </StatCostToUser>
-          <IsRanged>false</IsRanged>
-          <CoolDown>0</CoolDown>
-          <ChargeUp>0</ChargeUp>
-          <TurnSinceAttacked>0</TurnSinceAttacked>
-          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
-          <IgnoresArmor>false</IgnoresArmor>
-          <MultiTarget>false</MultiTarget>
-          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
-        </Attack>
-      </Attacks>
-    </Equiptment>
-  </PlayerEquiptments>
+  <PlayerEquiptments />
   <Difficulty>1</Difficulty>
   <Levels>
     <Level>

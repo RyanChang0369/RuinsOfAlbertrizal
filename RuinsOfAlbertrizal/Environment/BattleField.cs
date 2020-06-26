@@ -15,7 +15,6 @@ namespace RuinsOfAlbertrizal.Environment
 {
     public class BattleField : ObjectOfAlbertrizal, IRoundBasedObject
     {
-
         [XmlIgnore]
         public BattleInterface BattleInterface { get; set; }
 
@@ -51,6 +50,9 @@ namespace RuinsOfAlbertrizal.Environment
 
         [XmlIgnore]
         public Character SelectedTarget { get; set; }
+
+        [XmlIgnore]
+        public List<Character> SelectedSide { get; set; }
 
         [XmlIgnore]
         public List<Enemy> AliveEnemies
@@ -171,7 +173,7 @@ namespace RuinsOfAlbertrizal.Environment
         }
 
         [XmlIgnore]
-        public int MaxTicks => MaxSpeed * 10;
+        public int MaxTicks => MaxSpeed * 5;
 
         [XmlIgnore]
         public bool PlayerHasWon
@@ -599,8 +601,8 @@ namespace RuinsOfAlbertrizal.Environment
         /// <summary>
         /// Notifies BattleField that an attack has begun.
         /// </summary>
-        /// <param name="attack"></param>
-        /// <param name="attacker"></param>
+        /// <param name="attack">The selected attack</param>
+        /// <param name="attacker">The character doing the attack</param>
         /// <param name="charging">True if the attack is being charged</param>
         public void NotifyAttackBegin(Attack attack, Character attacker, bool charging)
         {
