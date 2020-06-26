@@ -161,6 +161,27 @@ namespace RuinsOfAlbertrizal
         /// <param name="hideTargets">If true, then hide targets instead of showing targets</param>
         private void ToggleTargets(Character attacker, Attack attack, bool hideTargets = false)
         {
+            if (attack.MultiTarget)
+            {
+                if (attack.CanTargetEverything(attacker, BattleField.ActiveEnemies))
+                {
+                    if (hideTargets)
+                        Animate("targetFadeIn", targetEnemyAll);
+                    else
+                        Animate("targetFadeOut", targetEnemyAll);
+                }
+
+                if (attack.CanTargetEverything(attacker, BattleField.ActivePlayers))
+                {
+                    if (hideTargets)
+                        Animate("targetFadeIn", targetPlayerAll);
+                    else
+                        Animate("targetFadeOut", targetPlayerAll);
+                }
+
+                return;
+            }
+
             List<int>[] targetIndexes = attack.GetAttackIndexes(attacker, GameBase.CurrentGame.ActivePlayers, BattleField.ActiveEnemies);
 
             List<int> attackablePlayers = targetIndexes[1];
@@ -290,8 +311,35 @@ namespace RuinsOfAlbertrizal
         private void TargetImage_MouseUp(object sender, RoutedEventArgs e)
         {
             Image img = (Image)sender;
-            BattleField.SelectedTarget = (Character)img.Tag;
-            AttackBtn.IsEnabled = true;
+
+            if (img.Opacity != 0.9)
+            {
+                BattleField.SelectedTarget = (Character)img.Tag;
+                Animate("targetConfirm", img);
+                AttackBtn.IsEnabled = true;
+            }
+            else
+            {
+                BattleField.SelectedTarget = null;
+                Animate("targetDeconfirm", img);
+                AttackBtn.IsEnabled = false;
+            }
+
+            foreach (Image image in EnemiesGrid.Children.OfType<Image>())
+            {
+                if (image.Opacity == 0.9 && image != img)
+                {
+                    Animate("targetDeconfirm", image);
+                }
+            }
+
+            foreach (Image image in PlayersGrid.Children.OfType<Image>())
+            {
+                if (image.Opacity == 0.9 && image != img)
+                {
+                    Animate("targetDeconfirm", image);
+                }
+            }
         }
 
         private void DoAttack(Button attackBtn, Player selectedPlayer, Character target, Attack selectedAttack)
@@ -301,6 +349,9 @@ namespace RuinsOfAlbertrizal
             attackBtn.Content = "Select Attack";
 
             selectedPlayer.Attack(selectedAttack, target);
+
+            ToggleTargets(selectedPlayer, selectedAttack, true);
+            BattleField.SelectedAttack = null;
         }
 
         private void DoCharge(Button attackBtn, Player selectedPlayer, Attack selectedAttack)
@@ -308,6 +359,9 @@ namespace RuinsOfAlbertrizal
             AttackPanel.Visibility = Visibility.Collapsed;
             attackBtn.Content = "Select Attack";
             selectedPlayer.Charge(selectedAttack);
+
+            ToggleTargets(selectedPlayer, selectedAttack, true);
+            BattleField.SelectedAttack = null;
         }
 
         private void Inventory_Click(object sender, RoutedEventArgs e)
