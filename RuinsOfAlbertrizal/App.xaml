@@ -321,6 +321,7 @@
         <converter:ListConverter x:Key="ListConverter"/>
         <converter:EnumConverter x:Key="EnumConverter"/>
         <converter:NotNullToBoolConverter x:Key="NotNullToBoolConverter"/>
+        <converter:NotNullToVisibilityConverter x:Key="NotNullToVisibilityConverter"/>
         <converter:ProperNameConverter x:Key="ProperNameConverter"/>
         <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <converter:BoolToVisibilityConverterNOT x:Key="BoolToVisibilityConverterNOT"/>

@@ -105,6 +105,7 @@
     <Compile Include="Editor\Converter\NameConverter.cs" />
     <Compile Include="Editor\Converter\ArrayConverter.cs" />
     <Compile Include="Editor\Converter\ClassToBaseStatsConverter.cs" />
+    <Compile Include="Editor\Converter\NotNullToVisibilityConverter.cs" />
     <Compile Include="Editor\Converter\NotNullToBoolConverter.cs" />
     <Compile Include="Editor\Converter\ProperNameConverter.cs" />
     <Compile Include="Editor\Converter\TooltipConverter.cs" />
