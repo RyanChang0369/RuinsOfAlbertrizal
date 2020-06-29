@@ -32,49 +32,49 @@
                     <StackPanel>
                         <Label Content="HP"/>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Path=ArmoredStats[0]}" Foreground="Red"/>
-                            <Label Content="/" Foreground="Red"/>
                             <Label Content="{Binding Path=CurrentStats[0]}" Foreground="Red"/>
+                            <Label Content="/" Foreground="Red"/>
+                            <Label Content="{Binding Path=ArmoredStats[0]}" Foreground="Red"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <Label Content="Mana"/>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Path=ArmoredStats[1]}" Foreground="Blue"/>
-                            <Label Content="/" Foreground="Blue"/>
                             <Label Content="{Binding Path=CurrentStats[1]}" Foreground="Blue"/>
+                            <Label Content="/" Foreground="Blue"/>
+                            <Label Content="{Binding Path=ArmoredStats[1]}" Foreground="Blue"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Row="1">
                         <Label Content="Defense"/>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Path=ArmoredStats[2]}" Foreground="SteelBlue"/>
-                            <Label Content="/" Foreground="SteelBlue"/>
                             <Label Content="{Binding Path=CurrentStats[2]}" Foreground="SteelBlue"/>
+                            <Label Content="/" Foreground="SteelBlue"/>
+                            <Label Content="{Binding Path=ArmoredStats[2]}" Foreground="SteelBlue"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row="1">
                         <Label Content="Attack"/>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Path=ArmoredStats[3]}" Foreground="Maroon"/>
-                            <Label Content="/" Foreground="Maroon"/>
                             <Label Content="{Binding Path=CurrentStats[3]}" Foreground="Maroon"/>
+                            <Label Content="/" Foreground="Maroon"/>
+                            <Label Content="{Binding Path=ArmoredStats[3]}" Foreground="Maroon"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Row="2">
                         <Label Content="Speed"/>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Path=ArmoredStats[4]}" Foreground="Yellow"/>
-                            <Label Content="/" Foreground="Yellow"/>
                             <Label Content="{Binding Path=CurrentStats[4]}" Foreground="Yellow"/>
+                            <Label Content="/" Foreground="Yellow"/>
+                            <Label Content="{Binding Path=ArmoredStats[4]}" Foreground="Yellow"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row="2">
                         <Label Content="Intelligence"/>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="{Binding Path=ArmoredStats[5]}" Foreground="Navy"/>
-                            <Label Content="/" Foreground="Navy"/>
                             <Label Content="{Binding Path=CurrentStats[5]}" Foreground="Navy"/>
+                            <Label Content="/" Foreground="Navy"/>
+                            <Label Content="{Binding Path=ArmoredStats[5]}" Foreground="Navy"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

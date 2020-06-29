@@ -423,11 +423,15 @@ namespace RuinsOfAlbertrizal
         public void NotifyAttackHit(Attack attack, Character target)
         {
             //Do animation
+            ForceItemsControlUpdate(playerSnapshot);
+            ForceItemsControlUpdate(enemySnapshot);
         }
 
         public void NotifyItemUsed(Item item, Character user)
         {
             //update sprites
+            ForceItemsControlUpdate(playerSnapshot);
+            ForceItemsControlUpdate(enemySnapshot);
         }
 
         public void NotifyPlayerIsReady(Player player)
