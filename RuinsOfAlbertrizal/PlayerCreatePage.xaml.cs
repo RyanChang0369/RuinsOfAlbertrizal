@@ -50,7 +50,7 @@ namespace RuinsOfAlbertrizal
                 return;
 
             CreatedPlayers.Remove((Player)listOfChums.SelectedItem);
-            ForceListBoxUpdate(listOfChums);
+            ForceItemsControlUpdate(listOfChums);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

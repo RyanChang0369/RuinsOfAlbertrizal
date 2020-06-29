@@ -11,12 +11,13 @@
     <Page.Resources>
         <DataTemplate x:Key="partyMembersTemplate">
             <StackPanel Width="200" HorizontalAlignment="Left">
-                <Label Content="{Binding Path=Name}"/>
-                <Image Source="{Binding Path=WorldImgAsBitmapSource}" Height="200" HorizontalAlignment="Center"/>
+                <Label Content="{Binding Path=Name}" FontFamily="Script MT Bold" Style="{StaticResource center}" FontSize="28"/>
+                <Image Source="{Binding Path=WorldImgAsBitmapSource}" Height="200" HorizontalAlignment="Center" Margin="10"/>
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="Label">
                             <Setter Property="FontSize" Value="18"/>
+                            <Setter Property="Margin" Value="0"/>
                         </Style>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
@@ -38,10 +39,108 @@
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <Label Content="Mana"/>
-                        <Label Content="20/20" Foreground="Blue" FontSize="18"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Path=ArmoredStats[1]}" Foreground="Blue"/>
+                            <Label Content="/" Foreground="Blue"/>
+                            <Label Content="{Binding Path=CurrentStats[1]}" Foreground="Blue"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <Label Content="Defense"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Path=ArmoredStats[2]}" Foreground="SteelBlue"/>
+                            <Label Content="/" Foreground="SteelBlue"/>
+                            <Label Content="{Binding Path=CurrentStats[2]}" Foreground="SteelBlue"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="1">
+                        <Label Content="Attack"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Path=ArmoredStats[3]}" Foreground="Maroon"/>
+                            <Label Content="/" Foreground="Maroon"/>
+                            <Label Content="{Binding Path=CurrentStats[3]}" Foreground="Maroon"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <Label Content="Speed"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Path=ArmoredStats[4]}" Foreground="Yellow"/>
+                            <Label Content="/" Foreground="Yellow"/>
+                            <Label Content="{Binding Path=CurrentStats[4]}" Foreground="Yellow"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="2">
+                        <Label Content="Intelligence"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Path=ArmoredStats[5]}" Foreground="Navy"/>
+                            <Label Content="/" Foreground="Navy"/>
+                            <Label Content="{Binding Path=CurrentStats[5]}" Foreground="Navy"/>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
-                <Button Content="Inventory" Style="{StaticResource buttonSmallStretch}" FontSize="24"/>
+                <Button Content="Inventory" Style="{StaticResource buttonSmallStretch}" FontSize="24" Tag="{Binding}" Click="InventoryBtn_Click"/>
+                
+                <Button Content="Set as Active" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverterNOT}}" Style="{StaticResource buttonSmallStretch}" FontSize="24" Tag="{Binding}" Click="SetActiveBtn_Click_Add"/>
+                
+                <Button Content="Remove from Active" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource buttonSmallStretch}" Tag="{Binding}" Click="SetActiveBtn_Click_Remove"/>
+                
+                <StackPanel Orientation="Horizontal" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverter}}">
+                    <Label Content="Active: In Position" FontSize="18" Margin="0"/>
+                    <Label Content="{Binding Path=DisplayActiveIndex}" FontWeight="Bold" FontSize="18" Margin="0"/>
+                </StackPanel>
+
+                <!--Advanced stuff-->
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="FontSize" Value="18"/>
+                        </Style>
+                        <Style TargetType="ListBox" BasedOn="{StaticResource inventoryListBox}"/>
+                    </StackPanel.Resources>
+                    <Label Content="Personal Buffs"/>
+                    <ScrollViewer>
+                        <ListBox ItemsSource="{Binding Path=PersonalPermanentBuffs}" ToolTip="Buffs or debuffs fixed to this player. These are not affected by buff immunities and do not expire.">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=DisplayName}" Background="DarkSlateGray" Foreground="Snow"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+
+                    <Label Content="Buffs from Equiptment"/>
+                    <ScrollViewer>
+                        <ListBox ItemsSource="{Binding Path=ArmoredBuffs}" ToolTip="A list of all buffs from equipment. These are not affected by buff immunities and do not expire.">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=DisplayName}" Background="DimGray" Foreground="Snow"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+
+                    <Label Content="Applied Buffs"/>
+                    <ScrollViewer>
+                        <ListBox ItemsSource="{Binding Path=ConsumableBuffsWithImmunities}" ToolTip="Buffs or debuffs granted by consumables.">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=DisplayName}" Background="DarkGray" Foreground="Snow"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+
+                    <Label Content="Applied Buffs"/>
+                    <ScrollViewer>
+                        <ListBox ItemsSource="{Binding Path=AppliedBuffsWithImmunities}" ToolTip="Buffs or debuffs gained from being attacked or being buffed by a teammate.">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=DisplayName}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </ScrollViewer>
+                </StackPanel>
             </StackPanel>
         </DataTemplate>
     </Page.Resources>
@@ -52,7 +151,8 @@
             <RowDefinition MaxHeight="70"/>
         </Grid.RowDefinitions>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="PartyMembersStackPanel" Orientation="Horizontal"/>
+            <!--<StackPanel x:Name="PartyMembersStackPanel" Orientation="Horizontal"/>-->
+            <ItemsControl x:Name="PartyMembersItemsControl" ItemsSource="{Binding}" ItemTemplate="{StaticResource partyMembersTemplate}"/>
         </ScrollViewer>
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
             <Button Content="Back" Tag="[back]" Click="Navigate"/>

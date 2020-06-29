@@ -22,11 +22,11 @@ namespace RuinsOfAlbertrizal
         public PartyMembersInterface()
         {
             InitializeComponent();
-            UpdatePartyMembersStackPanel(GameBase.CurrentGame.Players);
+            //UpdatePartyMembersStackPanel(GameBase.CurrentGame.Players);
             DataContext = GameBase.CurrentGame.Players;
         }
 
-        private void UpdatePartyMembersStackPanel(List<Player> players)
+        /*private void UpdatePartyMembersStackPanel(List<Player> players)
         {
             PartyMembersStackPanel.Children.Clear();
 
@@ -255,7 +255,7 @@ namespace RuinsOfAlbertrizal
 
                 Label isActiveLbl = new Label
                 {
-                    FontWeight = FontWeights.UltraBold
+                    FontWeight = FontWeights.Bold
                 };
 
                 if (!GameBase.CurrentGame.ActivePlayerGuids.Contains(player.GlobalID))
@@ -288,7 +288,7 @@ namespace RuinsOfAlbertrizal
                 PartyMembersStackPanel.Children.Add(containingStackPanel);
             }
         }
-
+        */
         private void InventoryBtn_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
@@ -297,6 +297,21 @@ namespace RuinsOfAlbertrizal
         }
 
         private void SetActiveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (((Player)btn.Tag).IsActive)
+            {
+                btn.Content = "Remove from Active";
+                SetActiveBtn_Click_Add(sender, e);
+            }
+            else
+            {
+                btn.Content = "Set as Active";
+                SetActiveBtn_Click_Remove(sender, e);
+            }
+        }
+
+        private void SetActiveBtn_Click_Add(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             PartySlotSelector selector = new PartySlotSelector();
@@ -309,7 +324,7 @@ namespace RuinsOfAlbertrizal
             {
                 GameBase.CurrentGame.ActivePlayerGuids[index] = ((Player)btn.Tag).GlobalID;
                 FileHandler.SaveCurrentMap();
-                UpdatePartyMembersStackPanel(GameBase.CurrentGame.Players);
+                ForceItemsControlUpdate(PartyMembersItemsControl);
             }
         }
 
@@ -319,7 +334,7 @@ namespace RuinsOfAlbertrizal
             int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayerGuids, ((Player)btn.Tag).GlobalID);
             GameBase.CurrentGame.ActivePlayerGuids[index] = Guid.Empty;
             FileHandler.SaveCurrentMap();
-            UpdatePartyMembersStackPanel(GameBase.CurrentGame.Players);
+            ForceItemsControlUpdate(PartyMembersItemsControl);
         }
     }
 }

@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
-    
+
     public abstract class Character : WorldMapObject, IRoundBasedObject, INotifyPropertyChanged
     {
         public const int MaxTurns = 2;
@@ -251,20 +251,32 @@ namespace RuinsOfAlbertrizal.Characters
         public List<Buff> PersonalPermanentBuffs { get; set; }
 
         [XmlIgnore]
-        public List<Buff> AllPermanentBuffs
+        public List<Buff> ArmoredBuffs
         {
             get
             {
-                List<Buff> permanentBuffs = new List<Buff>();
+                List<Buff> buffs = new List<Buff>();
 
                 foreach (Equiptment equiptment in CurrentEquiptments)
                 {
                     if (equiptment == null || equiptment.IsAClone)
                         continue;
 
-                    permanentBuffs.AddRange(equiptment.GrantedBuffs);
+                    buffs.AddRange(equiptment.GrantedBuffs);
                 }
 
+                return buffs;
+            }
+        }
+
+        [XmlIgnore]
+        public List<Buff> AllPermanentBuffs
+        {
+            get
+            {
+                List<Buff> permanentBuffs = new List<Buff>();
+
+                permanentBuffs.AddRange(ArmoredBuffs);
                 permanentBuffs.AddRange(PersonalPermanentBuffs);
 
                 return permanentBuffs;
@@ -319,6 +331,44 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         [XmlIgnore]
+        public List<Buff> AppliedBuffsWithImmunities
+        {
+            get
+            {
+                List<Buff> buffs = new List<Buff>();
+                buffs.AddRange(AppliedBuffs);
+
+                foreach (Buff buff in AllBuffImmunities)
+                {
+                    buffs.RemoveAll(item => buff.HasSameGlobalIDAs(item));
+                }
+
+                return buffs;
+            }
+        }
+
+        [XmlIgnore]
+        public List<Buff> ConsumableBuffsWithImmunities
+        {
+            get
+            {
+                List<Buff> buffs = new List<Buff>();
+
+                foreach (Consumable consumable in CurrentConsumables)
+                {
+                    buffs.AddRange(consumable.Buffs);
+                }
+
+                foreach (Buff buff in AllBuffImmunities)
+                {
+                    buffs.RemoveAll(item => buff.HasSameGlobalIDAs(item));
+                }
+
+                return buffs;
+            }
+        }
+
+        [XmlIgnore]
         public List<Buff> CurrentBuffs
         {
             get
@@ -331,10 +381,7 @@ namespace RuinsOfAlbertrizal.Characters
 
                 foreach (Consumable consumable in CurrentConsumables)
                 {
-                    foreach (Buff buff in consumable.Buffs)
-                    {
-                        currentBuffs.Add(buff);
-                    }
+                    currentBuffs.AddRange(consumable.Buffs);
                 }
 
                 foreach (Buff buff in AllBuffImmunities)

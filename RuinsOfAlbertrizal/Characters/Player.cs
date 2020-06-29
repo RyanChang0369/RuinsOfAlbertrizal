@@ -4,6 +4,7 @@ using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -51,6 +52,15 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         public int XP { get; set; }
+
+        [XmlIgnore]
+        public bool IsActive => GameBase.CurrentGame.ActivePlayerGuids.Contains(GlobalID);
+
+        [XmlIgnore]
+        public int ActiveIndex => Array.IndexOf(GameBase.CurrentGame.ActivePlayerGuids, GlobalID);
+
+        [XmlIgnore]
+        public int DisplayActiveIndex => ActiveIndex + 1;
 
         public Player() : base()
         {

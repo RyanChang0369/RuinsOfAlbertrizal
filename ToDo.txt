@@ -26,7 +26,7 @@ Test Battlefield.Tick at extremely high numbers of characters.
 
 Fix ActivePlayers
 
-Overhaul equipting equiptment.
-	Test the equiptment
+Overhaul equipping equipment.
+	Test the equipment
 
 Test attacking and stuff.

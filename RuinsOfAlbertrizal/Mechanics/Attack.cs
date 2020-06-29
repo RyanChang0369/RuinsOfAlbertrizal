@@ -173,7 +173,12 @@ namespace RuinsOfAlbertrizal.Mechanics
             else if (!CanTargetAnything(attacker, targets))
                 throw new CannotTargetException($"Character {attacker.DisplayName} cannot any of the selected targets.");
 
-            if (CanBeUsedBy(attacker))
+            if (!IsCharged())
+            {
+                //Begin/Continue charge
+                Charge(attacker);
+            }
+            else if (CanBeUsedBy(attacker))
             {
                 TurnSinceAttacked = 0;
                 TurnsSinceBeginCharge = 0;
@@ -193,11 +198,6 @@ namespace RuinsOfAlbertrizal.Mechanics
                     target.GetAttacked(this);
                 }
             }
-            else if (!IsCharged())
-            {
-                //Begin/Continue charge
-                Charge(attacker);
-            }
         }
 
         /// <summary>
@@ -215,7 +215,12 @@ namespace RuinsOfAlbertrizal.Mechanics
             else if (StatCostToUser[1] > attacker.CurrentStats[1])
                 throw new NotEnoughManaException($"Character {attacker.DisplayName} does not have the required amount of mana to use this attack.");
 
-            if (CanBeUsedBy(attacker))
+            if (!IsCharged())
+            {
+                //Begin/Continue charge
+                Charge(attacker);
+            }
+            else if (CanBeUsedBy(attacker))
             {
                 TurnSinceAttacked = 0;
                 TurnsSinceBeginCharge = 0;
@@ -231,11 +236,6 @@ namespace RuinsOfAlbertrizal.Mechanics
                 GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, false);
 
                 target.GetAttacked(this);
-            }
-            else if (!IsCharged())
-            {
-                //Begin/Continue charge
-                Charge(attacker);
             }
         }
 

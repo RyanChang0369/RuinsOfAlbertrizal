@@ -323,6 +323,7 @@
         <converter:NotNullToBoolConverter x:Key="NotNullToBoolConverter"/>
         <converter:ProperNameConverter x:Key="ProperNameConverter"/>
         <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converter:BoolToVisibilityConverterNOT x:Key="BoolToVisibilityConverterNOT"/>
 
         <!--Validator Resources-->
         <validator:DoubleValidation x:Key="DoubleValidation"/>

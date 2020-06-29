@@ -307,7 +307,7 @@ namespace RuinsOfAlbertrizal
         {
             attackBtn.IsEnabled = false;
             AttackPanel.Visibility = Visibility.Visible;
-            ForceListBoxUpdate(AttackSelector);
+            ForceItemsControlUpdate(AttackSelector);
         }
 
         private void TargetImage_MouseUp(object sender, RoutedEventArgs e)
@@ -390,7 +390,7 @@ namespace RuinsOfAlbertrizal
         {
             FloatingInventory inventory = new FloatingInventory(BattleField.SelectedPlayer, BattleField.TurnNum);
             inventory.ShowDialog();
-            ForceListBoxUpdate(AttackSelector);
+            ForceItemsControlUpdate(AttackSelector);
         }
 
         private void Flee_Click(object sender, RoutedEventArgs e)

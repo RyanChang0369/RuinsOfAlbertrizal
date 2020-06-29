@@ -71,10 +71,10 @@ namespace RuinsOfAlbertrizal
         /// <summary>
         /// Forces the ItemsSource property of the listbox to update
         /// </summary>
-        public static void ForceListBoxUpdate(ListBox listBox)
+        public static void ForceItemsControlUpdate(ItemsControl control)
         {
-            listBox.GetBindingExpression(ListBox.ItemsSourceProperty).UpdateTarget();
-            listBox.Items.Refresh();
+            control.GetBindingExpression(ItemsControl.ItemsSourceProperty).UpdateTarget();
+            control.Items.Refresh();
         }
     }
 }

@@ -492,6 +492,7 @@ namespace RuinsOfAlbertrizal.Environment
                 if (ConcurrentCharacters.Count > 0)
                 {
                     StartCharacterRound(ConcurrentCharacters[0]);
+                    ConcurrentCharacters.RemoveAt(0);
                 }
                 else
                     RoundKeeper.RoundEnd(this);
