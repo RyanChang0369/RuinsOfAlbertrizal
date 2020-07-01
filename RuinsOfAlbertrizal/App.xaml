@@ -295,6 +295,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
+        <!--ItemsControl Styles-->
+        <ItemsPanelTemplate x:Key="horzontalPanelTemplate">
+            <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
 
         <!--Validation Templates and Styles-->
         <ControlTemplate x:Key="validationTemplate">
