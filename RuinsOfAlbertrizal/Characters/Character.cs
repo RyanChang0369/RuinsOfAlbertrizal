@@ -605,7 +605,13 @@ namespace RuinsOfAlbertrizal.Characters
             return false;
         }
 
-        public abstract void Die();
+        public virtual void Die()
+        {
+            if (GameBase.CurrentGame.CurrentBattleField != null)
+            {
+                GameBase.CurrentGame.CurrentBattleField.NotifyDeath(this);
+            }
+        }
 
         public void EndTurn()
         {

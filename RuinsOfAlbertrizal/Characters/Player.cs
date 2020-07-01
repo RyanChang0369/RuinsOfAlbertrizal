@@ -70,8 +70,12 @@ namespace RuinsOfAlbertrizal.Characters
 
         public override void Die()
         {
-            MessageBox.Show("You have died...");
-            throw new NotImplementedException();
+            base.Die();
+
+            if (GameBase.CurrentGame.AlivePlayers.Count < 1)
+            {
+                GameBase.CurrentGame.CurrentBattleField.NotifyPlayerLost();
+            }
         }
 
         public static void Run(BattleField battleField)

@@ -96,11 +96,6 @@ namespace RuinsOfAlbertrizal.Characters
             GameBase.CurrentGame.CurrentBattleField.NotifyItemUsed(consumable, this);
         }
 
-        public override void Die()
-        {
-            
-        }
-
         public void Run(BattleField battleField)
         {
             int avePlayerSpd = 0;
