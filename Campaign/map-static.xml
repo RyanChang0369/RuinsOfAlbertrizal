@@ -18,6 +18,10 @@
   </IntroMessage>
   <Players>
     <Player>
+      <GlobalID>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</GlobalID>
+      <InstanceID>12d4f94e-d9f5-4090-a637-cb12e20e982d</InstanceID>
+      <Name>Jerry</Name>
+      <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -26,10 +30,6 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
-      <GlobalID>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</GlobalID>
-      <InstanceID>12d4f94e-d9f5-4090-a637-cb12e20e982d</InstanceID>
-      <Name>Jerry</Name>
-      <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Human</GeneralName>
@@ -96,6 +96,11 @@
   </ActivePlayerGuids>
   <StoredBosses>
     <Boss>
+      <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
+      <InstanceID>90ce0082-92fb-43b6-b390-9167bb6384de</InstanceID>
+      <Name>Shotgun Slime</Name>
+      <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
+      <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -104,11 +109,6 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
-      <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
-      <InstanceID>90ce0082-92fb-43b6-b390-9167bb6384de</InstanceID>
-      <Name>Shotgun Slime</Name>
-      <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
-      <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Rare Green Slime</GeneralName>
@@ -194,6 +194,12 @@
   </StoredBosses>
   <StoredEnemies>
     <Enemy>
+      <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
+      <InstanceID>8909f9e2-858d-4296-9526-eefaea98b9df</InstanceID>
+      <Name>Green Slime</Name>
+      <Description>A fairly common sight around here. Not much of a threat unless it has a shotgun.</Description>
+      <IconLocation>..\Enemy\Green Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Green Slime_worldImg.png</WorldImgLocation>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -202,12 +208,6 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
-      <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
-      <InstanceID>8909f9e2-858d-4296-9526-eefaea98b9df</InstanceID>
-      <Name>Green Slime</Name>
-      <Description>A fairly common sight around here. Not much of a threat unless it has a shotgun.</Description>
-      <IconLocation>..\Enemy\Green Slime_icon.png</IconLocation>
-      <WorldImgLocation>..\Enemy\Green Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
@@ -313,6 +313,12 @@
       <SpawnChance>1</SpawnChance>
     </Enemy>
     <Enemy>
+      <GlobalID>8b03134d-450d-4ea2-b37d-19b8f931edb3</GlobalID>
+      <InstanceID>89e35ef8-b055-4a11-822d-2b62d5a31c80</InstanceID>
+      <Name>Blue Slime</Name>
+      <Description>Knows a bit about magic.</Description>
+      <IconLocation>..\Enemy\Blue Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Blue Slime_worldImg.png</WorldImgLocation>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -321,12 +327,6 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
-      <GlobalID>8b03134d-450d-4ea2-b37d-19b8f931edb3</GlobalID>
-      <InstanceID>89e35ef8-b055-4a11-822d-2b62d5a31c80</InstanceID>
-      <Name>Blue Slime</Name>
-      <Description>Knows a bit about magic.</Description>
-      <IconLocation>..\Enemy\Blue Slime_icon.png</IconLocation>
-      <WorldImgLocation>..\Enemy\Blue Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
@@ -432,6 +432,12 @@
       <SpawnChance>1</SpawnChance>
     </Enemy>
     <Enemy>
+      <GlobalID>848a829e-1a48-46c2-be84-1314d72632b7</GlobalID>
+      <InstanceID>47fafe66-9b1d-43ff-b03a-31b3af0229af</InstanceID>
+      <Name>Red Slime</Name>
+      <Description>Arguably the most aggressive of all the slimes.</Description>
+      <IconLocation>..\Enemy\Red Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Red Slime_worldImg.png</WorldImgLocation>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -440,12 +446,6 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
-      <GlobalID>848a829e-1a48-46c2-be84-1314d72632b7</GlobalID>
-      <InstanceID>47fafe66-9b1d-43ff-b03a-31b3af0229af</InstanceID>
-      <Name>Red Slime</Name>
-      <Description>Arguably the most aggressive of all the slimes.</Description>
-      <IconLocation>..\Enemy\Red Slime_icon.png</IconLocation>
-      <WorldImgLocation>..\Enemy\Red Slime_worldImg.png</WorldImgLocation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
