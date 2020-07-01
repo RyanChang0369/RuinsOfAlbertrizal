@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -114,10 +115,15 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        public static void NewGame()
+        public static void NewGame(string path)
         {
             CurrentGame = new Map();
             StaticGame = new Map();
+
+            CurrentMapLocation = Path.GetDirectoryName(path) + "\\map.xml";
+            StaticMapLocation = Path.GetDirectoryName(path) + "\\map-static.xml";
+
+            FileHandler.SaveAllMaps();
         }
 
         /// <summary>

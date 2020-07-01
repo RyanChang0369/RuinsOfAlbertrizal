@@ -15,6 +15,9 @@ namespace RuinsOfAlbertrizal
     {
         public static void Validate(Map map)
         {
+            if (map == null)
+                return;
+
             if (map.Players.Count < 1)
                 AlertUser("You have not created any players. If the end user fails to create a player, the game will crash under most circumstances.");
             if (map.Levels.Count < 1)

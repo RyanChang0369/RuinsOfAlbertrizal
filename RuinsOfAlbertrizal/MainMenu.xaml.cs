@@ -2,20 +2,9 @@
 using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RuinsOfAlbertrizal
 {
@@ -54,9 +43,9 @@ namespace RuinsOfAlbertrizal
             {
                 return;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Project File Cannot Be Read!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Project File Cannot Be Read! Advanced Error Message:\r\n{ex}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -73,9 +62,9 @@ namespace RuinsOfAlbertrizal
             {
                 return;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Project File Cannot Be Read!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Project File Cannot Be Read! Advanced Error Message:\r\n{ex}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             
@@ -96,7 +85,7 @@ namespace RuinsOfAlbertrizal
 
             //NavIntroInterface();
 
-            throw new NotImplementedException();
+            MessageBox.Show("The campaign will be added shortly");
         }
 
         private void ContinueCampaign_Click(object sender, RoutedEventArgs e)
@@ -113,7 +102,7 @@ namespace RuinsOfAlbertrizal
 
             //NavIntroInterface();
 
-            throw new NotImplementedException();
+            MessageBox.Show("The campaign will be added shortly");
         }
 
         private void NavIntroInterface(Map currentMap)
@@ -150,9 +139,9 @@ namespace RuinsOfAlbertrizal
                 {
                     return;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Project File Cannot Be Read!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Project File Cannot Be Read! Advanced Error Message:\r\n{ex}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
             }
