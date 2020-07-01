@@ -58,12 +58,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         {
             FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Save, "XAML File|.xml", "map");
 
-            GameBase.CurrentMapLocation = dialog.GetPath();
-            GameBase.StaticMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
-
-            GameBase.NewGame();
-
-            SaveStaticMap();
+            GameBase.NewGame(dialog.GetPath());
         }
 
 
@@ -117,6 +112,12 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                 if (result == MessageBoxResult.Yes)
                     SaveObject(type, obj, path);
             }
+        }
+
+        public static void SaveAllMaps()
+        {
+            SaveStaticMap();
+            SaveCurrentMap();
         }
 
         public static void SaveStaticMap()
