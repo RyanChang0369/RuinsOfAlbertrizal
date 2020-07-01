@@ -27,10 +27,10 @@ namespace RuinsOfAlbertrizal
             {
                 case MessageBoxResult.Yes:
                     FileHandler.SaveCurrentMap();
-                    Navigate("[back]");
+                    Navigate("MainMenu.xaml");
                     break;
                 case MessageBoxResult.No:
-                    Navigate("[back]");
+                    Navigate("MainMenu.xaml");
                     break;
                 default:
                     return;
