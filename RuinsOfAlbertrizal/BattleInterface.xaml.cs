@@ -417,7 +417,31 @@ namespace RuinsOfAlbertrizal
         {
             //Do animation
 
+            Dispatcher.Invoke(() =>
+            {
+                if (attacker.GetType() == typeof(Player))
+                {
+                    foreach (Image img in playerImages)
+                    {
+                        if (img.Tag.Equals(attacker))
+                        {
+                            Animate("simpleAttackRight", img);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Image img in enemyImages)
+                    {
+                        if (img.Tag.Equals(attacker))
+                        {
+                            Animate("simpleAttackLeft", img);
+                        }
+                    }
+                }
+            });
 
+            Thread.Sleep(2000);
         }
 
         public void NotifyAttackHit(Attack attack, Character target)

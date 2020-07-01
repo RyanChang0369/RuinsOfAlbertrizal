@@ -27,6 +27,14 @@
             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1.0" To="0.0" Duration="0:0:2"/>
         </Storyboard>
 
+        <Storyboard x:Key="simpleAttackRight">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10" To="30, 10, 10, 10" Duration="0:0:2"/>
+        </Storyboard>
+
+        <Storyboard x:Key="simpleAttackLeft">
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10" To="10, 10, 30, 10" Duration="0:0:2"/>
+        </Storyboard>
+
         <Storyboard x:Key="targetFadeIn">
             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="0.4"/>
         </Storyboard>
