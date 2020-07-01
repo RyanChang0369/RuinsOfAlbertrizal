@@ -33,3 +33,5 @@ Test attacking and stuff.
 
 Improve BattleField
 	Implement movement
+
+Change charging animation to vibration instead of pulsating.
