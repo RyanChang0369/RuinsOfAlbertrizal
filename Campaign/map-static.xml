@@ -18,6 +18,14 @@
   </IntroMessage>
   <Players>
     <Player>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
       <GlobalID>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</GlobalID>
       <InstanceID>12d4f94e-d9f5-4090-a637-cb12e20e982d</InstanceID>
       <Name>Jerry</Name>
@@ -88,6 +96,14 @@
   </ActivePlayerGuids>
   <StoredBosses>
     <Boss>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
       <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
       <InstanceID>90ce0082-92fb-43b6-b390-9167bb6384de</InstanceID>
       <Name>Shotgun Slime</Name>
@@ -178,6 +194,14 @@
   </StoredBosses>
   <StoredEnemies>
     <Enemy>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
       <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
       <InstanceID>8909f9e2-858d-4296-9526-eefaea98b9df</InstanceID>
       <Name>Green Slime</Name>
@@ -289,6 +313,14 @@
       <SpawnChance>1</SpawnChance>
     </Enemy>
     <Enemy>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
       <GlobalID>8b03134d-450d-4ea2-b37d-19b8f931edb3</GlobalID>
       <InstanceID>89e35ef8-b055-4a11-822d-2b62d5a31c80</InstanceID>
       <Name>Blue Slime</Name>
@@ -400,6 +432,14 @@
       <SpawnChance>1</SpawnChance>
     </Enemy>
     <Enemy>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
       <GlobalID>848a829e-1a48-46c2-be84-1314d72632b7</GlobalID>
       <InstanceID>47fafe66-9b1d-43ff-b03a-31b3af0229af</InstanceID>
       <Name>Red Slime</Name>

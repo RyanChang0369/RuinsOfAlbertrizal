@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
+using Point = System.Windows.Point;
 
 namespace RuinsOfAlbertrizal.Characters
 {
@@ -21,6 +22,10 @@ namespace RuinsOfAlbertrizal.Characters
     public abstract class Character : WorldMapObject, IRoundBasedObject, INotifyPropertyChanged
     {
         public const int MaxTurns = 2;
+
+        public Point MapLocation { get; set; }
+
+        public Point BattleFieldLocation { get; set; }
 
         public int TurnsPassed { get; set; }
 
@@ -501,6 +506,8 @@ namespace RuinsOfAlbertrizal.Characters
             PersonalPermanentBuffs = new List<Buff>();
             BoundAttacks = new List<Attack>();
             BaseStats = new int[GameBase.NumStats];
+            MapLocation = new Point();
+            BattleFieldLocation = new Point();
         }
 
         ///// <summary>
