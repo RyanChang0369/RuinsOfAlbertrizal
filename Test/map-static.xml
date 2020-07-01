@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GlobalID>ae51e5f2-9a68-42f8-a2cc-a9b06fad23e7</GlobalID>
+  <InstanceID>01daf3f5-2911-40c9-b786-ff983b94a0ba</InstanceID>
+  <Name />
+  <Description />
+  <PlayerCreated>false</PlayerCreated>
+  <AllowForPlayerCreation>true</AllowForPlayerCreation>
+  <SeenIntroduction>false</SeenIntroduction>
+  <Players />
+  <ActivePlayerGuids>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+  </ActivePlayerGuids>
+  <StoredBosses />
+  <StoredEnemies>
+    <Enemy>
+      <GlobalID>d9dfd27c-3646-4a69-8ed7-754f4d5b3ba3</GlobalID>
+      <InstanceID>40b3e520-5f50-4ea1-a880-b0b1ff1dc368</InstanceID>
+      <Name>BOB</Name>
+      <Description />
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
+      <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
+      <Level>1</Level>
+      <StyleOfModel>Humanoid</StyleOfModel>
+      <AIStyle>NoAI</AIStyle>
+      <BaseStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <BoundAttacks />
+      <PreviousTargets />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <MessagesOnEncounter />
+      <MessagesOnAttack />
+      <MessagesOnDefeat />
+      <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
+    </Enemy>
+  </StoredEnemies>
+  <StoredBuffs />
+  <StoredAttacks />
+  <StoredItems />
+  <StoredEquiptments />
+  <StoredConsumables />
+  <StoredHazards />
+  <StoredBlocks />
+  <PlayerItems />
+  <PlayerConsumables />
+  <PlayerEquiptments />
+  <Difficulty>1</Difficulty>
+  <Levels />
+  <LevelsCompleted>0</LevelsCompleted>
+</Map>
