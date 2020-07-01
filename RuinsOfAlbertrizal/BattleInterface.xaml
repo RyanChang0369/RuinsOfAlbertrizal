@@ -28,11 +28,46 @@
         </Storyboard>
 
         <Storyboard x:Key="simpleAttackRight">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10" To="30, 10, 10, 10" Duration="0:0:2"/>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin">
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0"/>
+                <LinearThicknessKeyFrame Value="10, 10, -20, 10" KeyTime="0:0:0.2"/>
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0.4"/>
+            </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
 
         <Storyboard x:Key="simpleAttackLeft">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="10" To="10, 10, 30, 10" Duration="0:0:2"/>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin">
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0"/>
+                <LinearThicknessKeyFrame Value="-20, 10, 10, 10" KeyTime="0:0:0.2"/>
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0.4"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="chargeAttack">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin">
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0"/>
+                <LinearThicknessKeyFrame Value="0" KeyTime="0:0:0.05"/>
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0.1"/>
+                <LinearThicknessKeyFrame Value="0" KeyTime="0:0:0.15"/>
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0.2"/>
+                <LinearThicknessKeyFrame Value="0" KeyTime="0:0:0.25"/>
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:3"/>
+                <LinearThicknessKeyFrame Value="0" KeyTime="0:0:0.35"/>
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0.4"/>
+                <LinearThicknessKeyFrame Value="0" KeyTime="0:0:0.45"/>
+                <LinearThicknessKeyFrame Value="10" KeyTime="0:0:0.5"/>
+                <LinearThicknessKeyFrame Value="0" KeyTime="0:0:0.55"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+
+        <Storyboard x:Key="deathRight">
+            <DoubleAnimation Storyboard.TargetProperty="(TranslateTransform.X)" From="0" To="300" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="(RotateTransform.Angle)" From="0" To="95" Duration="0:0:2"/>
+        </Storyboard>
+
+        <Storyboard x:Key="deathLeft">
+            <DoubleAnimation Storyboard.TargetProperty="(TranslateTransform.X)" From="0" To="-300" Duration="0:0:2"/>
+            <DoubleAnimation Storyboard.TargetProperty="(RotateTransform.Angle)" From="0" To="-95" Duration="0:0:2"/>
         </Storyboard>
 
         <Storyboard x:Key="targetFadeIn">
@@ -58,6 +93,26 @@
         </DataTemplate>
 
         <DataTemplate x:Key="statsSnapshotTemplate">
+            <Border BorderBrush="Black" BorderThickness="3" Background="Snow" Visibility="{Binding Converter={StaticResource NotNullToVisibilityConverter}}" Width="200">
+                <Border.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="FontSize" Value="18"/>
+                    </Style>
+                    <Style TargetType="ProgressBar">
+                        <Setter Property="Height" Value="5"/>
+                    </Style>
+                </Border.Resources>
+                <StackPanel Margin="5">
+                    <Label Content="{Binding Path=Name}"/>
+                    <Label Content="HP"/>
+                    <ProgressBar Value="{Binding Path=CurrentStats[0]}" Maximum="{Binding Path=ArmoredStats[0]}" ToolTip="{Binding Path=CurerntStats[0]}" Foreground="Red" Background="LightGray"/>
+                    <Label Content="Mana"/>
+                    <ProgressBar Value="{Binding Path=CurrentStats[1]}" Maximum="{Binding Path=ArmoredStats[1]}" ToolTip="{Binding Path=CurerntStats[1]}" Foreground="Blue" Background="LightGray"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="statsDetailedTemplate">
             <Border BorderBrush="Black" BorderThickness="3" Background="Snow" Visibility="{Binding Converter={StaticResource NotNullToVisibilityConverter}}">
                 <StackPanel>
                     <Label Content="{Binding Path=Name}"/>
@@ -147,7 +202,7 @@
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid x:Name="CharactersGrid" Margin="50">
+            <Grid x:Name="CharactersGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
@@ -156,14 +211,14 @@
                 
                 <Grid x:Name="PlayersGrid">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="224"/>
+                        <ColumnDefinition Width="0"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/> <!--Used as spacer-->
+                        <RowDefinition Height="1.2*"/> <!--Used as spacer-->
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/> <!--Used as spacer-->
@@ -179,8 +234,8 @@
                     <Image x:Name="player2" Margin="-300,10,10,10" Grid.Column="3" Grid.Row="1"/>
                     <Image x:Name="player3" Margin="-300,10,10,10" Grid.Column="4" Grid.Row="2"/>
 
-                    <ScrollViewer Grid.RowSpan="4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="playerSnapshot" ItemsSource="{Binding Path=ActivePlayers}" ItemTemplate="{StaticResource statsSnapshotTemplate}"/>
+                    <ScrollViewer Grid.ColumnSpan="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                        <ItemsControl x:Name="playerSnapshot" ItemsSource="{Binding Path=ActivePlayers}" ItemTemplate="{StaticResource statsSnapshotTemplate}" ItemsPanel="{StaticResource horzontalPanelTemplate}"/>
                     </ScrollViewer>
                 </Grid>
 
@@ -232,10 +287,10 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="224"/>
+                        <ColumnDefinition Width="0"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/> <!--Used as spacer-->
+                        <RowDefinition Height="1.2*"/> <!--Used as spacer-->
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/> <!--Used as spacer-->
@@ -251,8 +306,8 @@
                     <Image x:Name="enemy2" Margin="10, 10, -300, 10" Grid.Column="2" Grid.Row="2"/>
                     <Image x:Name="enemy3" Margin="10, 10, -300, 10" Grid.Column="3" Grid.Row="1"/>
 
-                    <ScrollViewer Grid.Column="4" Grid.RowSpan="4" VerticalScrollBarVisibility="Auto">
-                        <ItemsControl x:Name="enemySnapshot" ItemsSource="{Binding Path=ActiveEnemies}" ItemTemplate="{StaticResource statsSnapshotTemplate}"/>
+                    <ScrollViewer Grid.ColumnSpan="4" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                        <ItemsControl x:Name="enemySnapshot" ItemsSource="{Binding Path=ActiveEnemies}" ItemTemplate="{StaticResource statsSnapshotTemplate}" ItemsPanel="{StaticResource horzontalPanelTemplate}"/>
                     </ScrollViewer>
                 </Grid>
             </Grid>

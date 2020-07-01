@@ -25,6 +25,12 @@ namespace RuinsOfAlbertrizal.Environment
         public int TurnNum { get; set; }
 
         /// <summary>
+        /// Only used for detailed stuff
+        /// </summary>
+        [XmlIgnore]
+        public Character SelectedCharacter { get; set; }
+
+        /// <summary>
         /// The index of the player in ActivePlayers that is having a turn.
         /// </summary>
         public int SelectedPlayerIndex { get; set; }
@@ -639,6 +645,17 @@ namespace RuinsOfAlbertrizal.Environment
             else if (item.GetType() == typeof(Equiptment))
                 StoredMessage.Add($"{user.DisplayName} has equipted {item.DisplayName}.");
             BattleInterface.NotifyItemUsed(item, user);
+        }
+
+        public void NotifyDeath(Character character)
+        {
+            StoredMessage.Add($"{character.Name} was slain!");
+            BattleInterface.NotifyDeath(character);
+        }
+
+        public void NotifyPlayerLost()
+        {
+            BattleInterface.NotifyPlayerLost();
         }
     }
 }

@@ -423,9 +423,13 @@ namespace RuinsOfAlbertrizal
                 {
                     foreach (Image img in playerImages)
                     {
-                        if (img.Tag.Equals(attacker))
+                        if (img.Tag != null && img.Tag.Equals(attacker))
                         {
-                            Animate("simpleAttackRight", img);
+                            if (charging)
+                                Animate("chargeAttack", img);
+                            else
+                                Animate("simpleAttackRight", img);
+                            return;
                         }
                     }
                 }
@@ -433,29 +437,37 @@ namespace RuinsOfAlbertrizal
                 {
                     foreach (Image img in enemyImages)
                     {
-                        if (img.Tag.Equals(attacker))
+                        if (img.Tag != null && img.Tag.Equals(attacker))
                         {
-                            Animate("simpleAttackLeft", img);
+                            if (charging)
+                                Animate("chargeAttack", img);
+                            else
+                                Animate("simpleAttackLeft", img);
+                            return;
                         }
                     }
                 }
             });
-
-            Thread.Sleep(2000);
         }
 
         public void NotifyAttackHit(Attack attack, Character target)
         {
             //Do animation
-            ForceItemsControlUpdate(playerSnapshot);
-            ForceItemsControlUpdate(enemySnapshot);
+            Dispatcher.Invoke(() =>
+            {
+                ForceItemsControlUpdate(playerSnapshot);
+                ForceItemsControlUpdate(enemySnapshot);
+            });
         }
 
         public void NotifyItemUsed(Item item, Character user)
         {
             //update sprites
-            ForceItemsControlUpdate(playerSnapshot);
-            ForceItemsControlUpdate(enemySnapshot);
+            Dispatcher.Invoke(() =>
+            {
+                ForceItemsControlUpdate(playerSnapshot);
+                ForceItemsControlUpdate(enemySnapshot);
+            });
         }
 
         public void NotifyPlayerIsReady(Player player)
@@ -464,6 +476,40 @@ namespace RuinsOfAlbertrizal
             {
                 ActionPanel.Visibility = Visibility.Visible;
             });
+        }
+
+        public void NotifyDeath(Character character)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (character.GetType() == typeof(Player))
+                {
+                    foreach (Image img in playerImages)
+                    {
+                        if (img.Tag != null && img.Tag.Equals(character))
+                        {
+                            Animate("deathLeft", img);
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Image img in enemyImages)
+                    {
+                        if (img.Tag != null && img.Tag.Equals(character))
+                        {
+                            Animate("deathRight", img);
+                            return;
+                        }
+                    }
+                }
+            });
+        }
+
+        public void NotifyPlayerLost()
+        {
+            throw new NotImplementedException();
         }
 
         public void NotifyTick()
