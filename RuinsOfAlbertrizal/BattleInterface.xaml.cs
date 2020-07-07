@@ -403,6 +403,20 @@ namespace RuinsOfAlbertrizal
             BattleField.EndCharacterTurn(BattleField.SelectedPlayer);
         }
 
+        private void ViewStats(object sender, RoutedEventArgs e)
+        {
+            Character character = (Character)((Image)sender).Tag;
+
+            if (character == null)
+                return;
+
+            List<Character> list = new List<Character>();
+            list.Add(character);
+
+            DetailedStatsContainer.Visibility = Visibility.Visible;
+            DetailedStatsList.ItemsSource = list;
+        }
+
         public void Exit()
         {
             Navigate("[back]");
@@ -457,6 +471,7 @@ namespace RuinsOfAlbertrizal
             {
                 ForceItemsControlUpdate(playerSnapshot);
                 ForceItemsControlUpdate(enemySnapshot);
+                ForceItemsControlUpdate(DetailedStatsList);
             });
         }
 
@@ -467,6 +482,7 @@ namespace RuinsOfAlbertrizal
             {
                 ForceItemsControlUpdate(playerSnapshot);
                 ForceItemsControlUpdate(enemySnapshot);
+                ForceItemsControlUpdate(DetailedStatsList);
             });
         }
 

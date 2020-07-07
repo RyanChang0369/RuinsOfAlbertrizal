@@ -115,7 +115,7 @@ namespace RuinsOfAlbertrizal
 
                 ListBox debuffsListBox = new ListBox
                 {
-                    Style = (Style)Resources["inventoryListBox"],
+                    Style = (Style)Resources["defaultItemsControl"],
                     Height = 300
                 };
 

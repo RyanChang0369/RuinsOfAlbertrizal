@@ -24,6 +24,26 @@ namespace RuinsOfAlbertrizal
             InitializeComponent();
         }
 
+        public IconedObjectPrompt(string title, string message, IconedObjectOfAlbertrizal obj)
+        {
+            Title = title;
+            MessageBlock.Text = message;
+            IconImg.Source = obj.IconAsBitmapSource;
+            ButtonCancel.Content = "OK";
+            ButtonYes.Visibility = Visibility.Collapsed;
+            ButtonNo.Visibility = Visibility.Collapsed;
+        }
+
+        public IconedObjectPrompt(string title, string message, IconedObjectOfAlbertrizal obj, string cancelText)
+        {
+            Title = title;
+            MessageBlock.Text = message;
+            IconImg.Source = obj.IconAsBitmapSource;
+            ButtonCancel.Content = cancelText;
+            ButtonYes.Visibility = Visibility.Collapsed;
+            ButtonNo.Visibility = Visibility.Collapsed;
+        }
+
         public IconedObjectPrompt(string title, string message, IconedObjectOfAlbertrizal obj, string yesBtnText, string noBtnText)
         {
             Title = title;
@@ -31,6 +51,17 @@ namespace RuinsOfAlbertrizal
             IconImg.Source = obj.IconAsBitmapSource;
             ButtonYes.Content = yesBtnText;
             ButtonNo.Content = noBtnText;
+            ButtonCancel.Visibility = Visibility.Collapsed;
+        }
+
+        public IconedObjectPrompt(string title, string message, IconedObjectOfAlbertrizal obj, string yesText, string noText, string cancelText)
+        {
+            Title = title;
+            MessageBlock.Text = message;
+            IconImg.Source = obj.IconAsBitmapSource;
+            ButtonYes.Content = yesText;
+            ButtonNo.Content = noText;
+            ButtonCancel.Content = cancelText;
         }
 
         private void ButtonYes_Click(object sender, EventArgs e)
@@ -45,7 +76,7 @@ namespace RuinsOfAlbertrizal
 
         private void ButtonCancel_Click(object sender, EventArgs e)
         {
-            DialogResult = false;
+            DialogResult = null;
         }
     }
 }

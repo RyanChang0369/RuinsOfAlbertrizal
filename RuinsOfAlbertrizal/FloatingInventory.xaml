@@ -82,7 +82,7 @@
                             </Grid.RowDefinitions>
                             <Image Source="assets/questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Click on an equiptment to select it, then click on a slot to the right to equipt it." HorizontalAlignment="Right"/>
                             <ScrollViewer Grid.Row="1">
-                                <ListBox x:Name="equiptmentsList" ItemsSource="{Binding Path=InventoryEquiptments, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryEquiptmentTemplate}" Style="{StaticResource inventoryListBox}"/>
+                                <ListBox x:Name="equiptmentsList" ItemsSource="{Binding Path=InventoryEquiptments, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryEquiptmentTemplate}" Style="{StaticResource defaultItemsControl}"/>
                             </ScrollViewer>
                         </Grid>
                     </TabItem>
@@ -94,18 +94,18 @@
                             </Grid.RowDefinitions>
                             <Image Source="assets/questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Click on a consumable to eat it." HorizontalAlignment="Right"/>
                             <ScrollViewer Grid.Row="1">
-                                <ListBox x:Name="consumablesList" ItemsSource="{Binding Path=InventoryConsumables, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryConsumableTemplate}" Style="{StaticResource inventoryListBox}"/>
+                                <ListBox x:Name="consumablesList" ItemsSource="{Binding Path=InventoryConsumables, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryConsumableTemplate}" Style="{StaticResource defaultItemsControl}"/>
                             </ScrollViewer>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Other Items">
                         <ScrollViewer>
-                            <ListBox x:Name="itemsList" ItemsSource="{Binding Path=InventoryItems, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryItemTemplate}" Style="{StaticResource inventoryListBox}"/>
+                            <ListBox x:Name="itemsList" ItemsSource="{Binding Path=InventoryItems, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ItemTemplate="{StaticResource inventoryItemTemplate}" Style="{StaticResource defaultItemsControl}"/>
                         </ScrollViewer>
                     </TabItem>
                     <!--<TabItem Header="Test">
                         <ScrollViewer>
-                            <ListBox Style="{StaticResource inventoryListBox}">
+                            <ListBox Style="{StaticResource defaultItemsControl}">
                                 <StackPanel Style="{StaticResource inventoryStackPanel}">
                                     <Image Source="assets/error.png" Style="{StaticResource iconSmall}"/>
                                     <TextBlock Text="Test" Style="{StaticResource inventoryTextBlock}"/>

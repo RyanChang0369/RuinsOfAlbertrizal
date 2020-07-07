@@ -95,7 +95,7 @@
                         <Style TargetType="Label">
                             <Setter Property="FontSize" Value="18"/>
                         </Style>
-                        <Style TargetType="ListBox" BasedOn="{StaticResource inventoryListBox}"/>
+                        <Style TargetType="ListBox" BasedOn="{StaticResource defaultItemsControl}"/>
                     </StackPanel.Resources>
                     <Label Content="Personal Buffs"/>
                     <ScrollViewer>

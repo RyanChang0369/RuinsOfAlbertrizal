@@ -5,25 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RuinsOfAlbertrizal"
         mc:Ignorable="d"
-        Title="" Height="300" Width="600">
+        Title="" Height="600" Width="1000">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <TextBlock x:Name="MessageBlock" Padding="10" TextWrapping="Wrap" FontSize="14" Text="The FitnessGram Pacer Test is a multistage aerobic capacity test that progressively gets more difficult as it continues."/>
+            <TextBlock x:Name="MessageBlock" Padding="10" TextWrapping="Wrap" FontSize="18"/>
             <Image x:Name="IconImg" Height="48"/>
         </StackPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <!--Used as a spacer-->
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonYes" Content="Yes" Click="ButtonYes_Click" Grid.Column="1" IsDefault="True" Style="{StaticResource buttonSmallStretch}"/>
-            <Button x:Name="ButtonNo" Content="No" Click="ButtonNo_Click" Grid.Column="2" Style="{StaticResource buttonSmallStretch}"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="1">
+                <Button x:Name="ButtonYes" Content="Yes" Click="ButtonYes_Click" IsDefault="True" Style="{StaticResource buttonMedium}"/>
+                <Button x:Name="ButtonNo" Content="No" Click="ButtonNo_Click" Style="{StaticResource buttonMedium}"/>
+                <Button x:Name="ButtonCancel" Content="Cancel" Click="ButtonCancel_Click" Style="{StaticResource buttonMedium}"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

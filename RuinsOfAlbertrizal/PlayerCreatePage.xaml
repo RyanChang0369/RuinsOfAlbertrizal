@@ -36,7 +36,7 @@
         <ScrollViewer Grid.Row="1">
             <ListBox x:Name="listOfChums" 
                      ItemsSource="{Binding Path=CreatedPlayers, RelativeSource={RelativeSource FindAncestor, AncestorType=Page}}" 
-                     ItemTemplate="{StaticResource playerDisplayer}" Style="{StaticResource inventoryListBox}"/>
+                     ItemTemplate="{StaticResource playerDisplayer}" Style="{StaticResource defaultItemsControl}"/>
         </ScrollViewer>
         
         <StackPanel Grid.Row="1" Grid.Column="1">

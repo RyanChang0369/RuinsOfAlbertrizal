@@ -36,7 +36,7 @@
         </Grid.RowDefinitions>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ListBox ItemsSource="{Binding}" Style="{StaticResource inventoryListBox}" ItemTemplate="{StaticResource buffsListTemplate}"/>
+            <ListBox ItemsSource="{Binding}" Style="{StaticResource defaultItemsControl}" ItemTemplate="{StaticResource buffsListTemplate}"/>
         </ScrollViewer>
 
         <Button Content="Exit" Grid.Row="1" Click="Close"/>
