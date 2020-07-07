@@ -160,9 +160,11 @@
         </Style>-->
         
         <!--Image Styles-->
-        <Style TargetType="Image">
+        <Style x:Key="pixelImg" TargetType="Image">
             <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
         </Style>
+
+        <Style TargetType="Image" BasedOn="{StaticResource pixelImg}"/>
 
         <Style TargetType="Image" x:Key="goodQuality">
             <Setter Property="RenderOptions.BitmapScalingMode" Value="Linear"/>
@@ -229,7 +231,7 @@
         <Style TargetType="ListBox">
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
-        <Style TargetType="ListBox" x:Key="inventoryListBox">
+        <Style TargetType="ItemsControl" x:Key="defaultItemsControl">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         </Style>
