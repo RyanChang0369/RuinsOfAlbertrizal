@@ -22,6 +22,7 @@
       <InstanceID>12d4f94e-d9f5-4090-a637-cb12e20e982d</InstanceID>
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
+      <WorldImgLocation>..\Player\Jerry_worldImg.png</WorldImgLocation>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
