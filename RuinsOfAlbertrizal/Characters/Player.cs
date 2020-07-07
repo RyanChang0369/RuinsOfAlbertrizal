@@ -15,7 +15,6 @@ using static RuinsOfAlbertrizal.Items.Equiptment;
 
 namespace RuinsOfAlbertrizal.Characters
 {
-    
     public class Player : Character, INotifyPropertyChanged
     {
         [XmlIgnore]
@@ -65,6 +64,15 @@ namespace RuinsOfAlbertrizal.Characters
         public Player() : base()
         {
             XP = 0;
+            AIStyle = AI.AIStyle.Player;
+        }
+
+        /// <summary>
+        /// Creates a new plaer from an existing enemy.
+        /// </summary>
+        /// <param name="enemy"></param>
+        public Player(Enemy enemy)
+        {
             AIStyle = AI.AIStyle.Player;
         }
 
