@@ -73,8 +73,15 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         public static void ForceItemsControlUpdate(ItemsControl control)
         {
-            control.GetBindingExpression(ItemsControl.ItemsSourceProperty).UpdateTarget();
-            control.Items.Refresh();
+            try
+            {
+                control.GetBindingExpression(ItemsControl.ItemsSourceProperty).UpdateTarget();
+                control.Items.Refresh();
+            }
+            catch (NullReferenceException)
+            {
+
+            }
         }
     }
 }
