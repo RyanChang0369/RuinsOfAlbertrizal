@@ -1,0 +1,58 @@
+Player
+------------------------------------------------
+
+Helmet
+	Location (from top left):	0, 0
+	Size:						48, 14
+
+Torso
+	Location (from top left):	0, 14
+	Size:						48, 16
+
+Legs
+	Location (from top left):	0, 30
+	Size:						48, 18
+
+Weapon Connection Point
+	Location (from top left):	32, 19
+	Size:						4, 4
+
+
+Swords
+------------------------------------------------
+
+Weapon Connection Point
+	Location (from top left):	4, 40
+	Size:						4, 4
+
+
+Staffs
+------------------------------------------------
+
+Weapon Connection Point
+	Location (from top left):	22, 22
+	Size:						4, 4
+
+
+Bows
+------------------------------------------------
+
+Weapon Connection Point
+	Location (from top left):	4, 22
+	Size:						4, 4
+
+
+Guns1
+------------------------------------------------
+
+Weapon Connection Point
+	Location (from top left):	4, 40
+	Size:						4, 4
+
+
+Guns2
+------------------------------------------------
+
+Weapon Connection Point
+	Location (from top left):	22, 40
+	Size:						4, 4
