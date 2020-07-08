@@ -45,7 +45,7 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
-        public System.Windows.Point Location { get; set; }
+        public Point Location { get; set; }
 
         public enum BlockType
         {

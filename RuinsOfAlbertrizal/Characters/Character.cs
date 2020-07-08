@@ -1,26 +1,20 @@
 ﻿using RuinsOfAlbertrizal.AIs;
-using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Exceptions;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
-using Point = System.Windows.Point;
+using System.Drawing;
 
 namespace RuinsOfAlbertrizal.Characters
 {
 
     public abstract class Character : CharacterMapBasedObject, IRoundBasedObject, INotifyPropertyChanged
     {
+
         public const int MaxTurns = 2;
 
         public Point MapLocation { get; set; }
@@ -95,7 +89,7 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 try
                 {
-                    return new Hitbox(MapImage.Width, MapImage.Height);
+                    return new Hitbox(WorldImg.Width, WorldImg.Height);
                 }
                 catch (ArgumentNullException)
                 {
@@ -103,11 +97,6 @@ namespace RuinsOfAlbertrizal.Characters
                 }
             }
         }
-
-        /// <summary>
-        /// Image as it appears on the map. Determines hitbox size.
-        /// </summary>
-        public Bitmap MapImage { get; set; }
 
         /// <summary>
         /// The original stats that SHOULD NOT CHANGE.
@@ -592,6 +581,26 @@ namespace RuinsOfAlbertrizal.Characters
         {
             AppliedStats[1] += (int)Math.Round(LeveledStats[1] * 0.3);
             GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
+        }
+
+        /// <summary>
+        /// Automatically loads ArmoredImage
+        /// </summary>
+        public void LoadImage()
+        {
+            if (StyleOfModel == ModelStyle.Humanoid)
+            {
+                LoadImage(
+                    CurrentEquiptments[(int)Equiptment.SlotMode.Head - 1].Icon,
+                    CurrentEquiptments[(int)Equiptment.SlotMode.Torso - 1].Icon,
+                    CurrentEquiptments[(int)Equiptment.SlotMode.Legs - 1].Icon,
+                    CurrentEquiptments[(int)Equiptment.SlotMode.Hand2 - 1]
+                    );
+            }
+            else
+            {
+                ArmoredImage = WorldImg;
+            }
         }
 
         public bool IsInvunerable()

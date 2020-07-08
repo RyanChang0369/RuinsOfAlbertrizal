@@ -969,6 +969,10 @@
       <BuffImmunities />
       <GrantedBuffs />
       <Attacks />
+      <ConnectionPoint>
+        <X>4</X>
+        <Y>4</Y>
+      </ConnectionPoint>
     </Equiptment>
     <Equiptment>
       <GlobalID>d4051d96-b702-4f90-a25b-55d0d4a44c5f</GlobalID>
@@ -996,6 +1000,10 @@
       <BuffImmunities />
       <GrantedBuffs />
       <Attacks />
+      <ConnectionPoint>
+        <X>4</X>
+        <Y>4</Y>
+      </ConnectionPoint>
     </Equiptment>
     <Equiptment>
       <GlobalID>eaaf9924-a075-4af9-ac2b-22ff02db5539</GlobalID>
@@ -1066,6 +1074,10 @@
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </Attacks>
+      <ConnectionPoint>
+        <X>4</X>
+        <Y>4</Y>
+      </ConnectionPoint>
     </Equiptment>
   </StoredEquiptments>
   <StoredConsumables>

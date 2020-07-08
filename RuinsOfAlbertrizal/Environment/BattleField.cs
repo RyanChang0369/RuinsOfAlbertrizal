@@ -229,6 +229,11 @@ namespace RuinsOfAlbertrizal.Environment
                 ActiveEnemies[i] = Enemies[i];
             }
 
+            foreach (Player player in ActivePlayers)
+            {
+                player.LoadImage();
+            }
+
             BattleInterface = new BattleInterface(this);
         }
 

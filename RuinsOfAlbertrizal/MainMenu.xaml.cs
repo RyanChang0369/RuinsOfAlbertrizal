@@ -27,7 +27,7 @@ namespace RuinsOfAlbertrizal
             {
                 FileHandler.CreateCustomCampaign();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return;
             }

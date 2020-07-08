@@ -92,7 +92,7 @@ namespace RuinsOfAlbertrizal
             try
             {
                 if (GameBase.CurrentGame.ActivePlayers[i].WorldImgIsValid)
-                    playerImages[i].Source = GameBase.CurrentGame.ActivePlayers[i].WorldImgAsBitmapSource;
+                    playerImages[i].Source = GameBase.CurrentGame.ActivePlayers[i].ArmoredImage.ToBitmapSource();
                 else
                     playerImages[i].Source = new BitmapImage();
 
@@ -110,7 +110,7 @@ namespace RuinsOfAlbertrizal
             try
             {
                 if (BattleField.Enemies[i].WorldImgIsValid)
-                    enemyImages[i].Source = BattleField.Enemies[i].WorldImgAsBitmapSource;
+                    enemyImages[i].Source = BattleField.Enemies[i].ArmoredImage.ToBitmapSource();
                 else
                     enemyImages[i].Source = new BitmapImage();
 
@@ -132,6 +132,8 @@ namespace RuinsOfAlbertrizal
 
             Animate("enemySlideOut", enemyImages[index]);
             BattleField.ActiveEnemies[index] = newEnemy;
+            oldEnemy.UnloadImage();
+            newEnemy.LoadImage();
             UpdateEnemyImage(index);
             Animate("enemySlideIn", enemyImages[index]);
         }
@@ -145,6 +147,8 @@ namespace RuinsOfAlbertrizal
 
             Animate("playerSlideOut", playerImages[index]);
             GameBase.CurrentGame.ActivePlayerGuids[index] = newPlayer.GlobalID;
+            oldPlayer.UnloadImage();
+            newPlayer.LoadImage();
             UpdatePlayerImage(index);
             Animate("playerSlideIn", playerImages[index]);
         }
