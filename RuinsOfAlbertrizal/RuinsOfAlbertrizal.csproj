@@ -61,12 +61,14 @@
       <DependentUpon>AdventureInterface.xaml</DependentUpon>
     </Compile>
     <Compile Include="AIs\AI.cs" />
+    <Compile Include="ArmorMapBasedImage.cs" />
     <Compile Include="ArrayMethods.cs" />
     <Compile Include="BasePage.cs" />
     <Compile Include="BaseWindow.cs" />
     <Compile Include="BuffDisplayer.xaml.cs">
       <DependentUpon>BuffDisplayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CharacterMapBasedImage.cs" />
     <Compile Include="Characters\Boss.cs" />
     <Compile Include="Characters\Character.cs" />
     <Compile Include="Characters\Player.cs" />
@@ -216,6 +218,7 @@
     <Compile Include="Text\Message.cs" />
     <Compile Include="ITurnBasedObject.cs" />
     <Compile Include="RoundKeeper.cs" />
+    <Compile Include="WeaponMapBasedObject.cs" />
     <Compile Include="WorldMapObject.cs" />
     <Compile Include="XMLInterpreter\FileDialog.cs" />
     <Compile Include="XMLInterpreter\FileHandler.cs" />

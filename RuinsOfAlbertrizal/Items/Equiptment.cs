@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Items
@@ -79,12 +80,18 @@ namespace RuinsOfAlbertrizal.Items
 
         public List<Attack> Attacks { get; set; }
 
+        public Point ConnectionPoint { get; set; }
+
+        [XmlIgnore]
+        public Rectangle ConnectionArea => new Rectangle(ConnectionPoint.X, ConnectionPoint.Y, 4, 4);
+
         public Equiptment()
         {
             StatGain = new int[GameBase.NumStats];
             BuffImmunities = new List<Buff>();
             Attacks = new List<Attack>();
             EquiptableSlots = new List<SlotMode>();
+            ConnectionPoint = new Point(4, 4);
         }
 
         public bool CanAttack()

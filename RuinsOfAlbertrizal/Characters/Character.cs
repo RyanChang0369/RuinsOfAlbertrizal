@@ -19,7 +19,7 @@ using Point = System.Windows.Point;
 namespace RuinsOfAlbertrizal.Characters
 {
 
-    public abstract class Character : WorldMapObject, IRoundBasedObject, INotifyPropertyChanged
+    public abstract class Character : CharacterMapBasedObject, IRoundBasedObject, INotifyPropertyChanged
     {
         public const int MaxTurns = 2;
 

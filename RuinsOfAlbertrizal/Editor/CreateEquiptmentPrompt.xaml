@@ -47,6 +47,32 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
+                    <Label Content="Weapon Connection Point"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Enter in the bottom left most pixel you want the weapon connection point to be drawn. See help in Main Menu for more information."/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox VerticalAlignment="Center" Width="100">
+                        <TextBox.Text>
+                            <Binding Path="ConnectionPoint.X" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <validation:NumberValidation ValidatesOnTargetUpdated="True"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <Label Content="×"/>
+                    <TextBox VerticalAlignment="Center" Width="100">
+                        <TextBox.Text>
+                            <Binding Path="ConnectionPoint.Y" Mode="TwoWay">
+                                <Binding.ValidationRules>
+                                    <validation:NumberValidation ValidatesOnTargetUpdated="True"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Number of Equiptments Given On Game Start"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="For example, if set to 2, every player will recieve 2 copies of this item upon creating their character."/>
                 </StackPanel>
