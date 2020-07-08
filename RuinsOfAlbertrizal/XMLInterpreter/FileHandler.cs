@@ -238,5 +238,18 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
  
             return saveLocation;
         }
+
+        public static void ClearTempDirectory()
+        {
+            try
+            {
+                string tempDirectory = $"{Path.GetTempPath()}RuinsOfAlbertrizal\\";
+                Directory.Delete(tempDirectory, true);
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

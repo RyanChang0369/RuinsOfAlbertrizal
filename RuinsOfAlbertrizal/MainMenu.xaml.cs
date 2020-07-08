@@ -2,6 +2,8 @@
 using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -162,8 +164,22 @@ namespace RuinsOfAlbertrizal
 
         private void Reference(object sender, RoutedEventArgs e)
         {
-            HelpSection helpSection = new HelpSection();
-            helpSection.Show();
+            //HelpSection helpSection = new HelpSection();
+            //helpSection.Show();
+            string tempDirectory = $"{Path.GetTempPath()}RuinsOfAlbertrizal\\";
+            Directory.CreateDirectory(tempDirectory);
+            string fileName = $"{tempDirectory}Help.pdf";
+
+            File.WriteAllBytes(fileName, Properties.Resources.Help);
+
+            try
+            {
+                Process.Start(fileName);
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

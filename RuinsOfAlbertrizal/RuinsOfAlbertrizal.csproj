@@ -252,6 +252,12 @@
     </EmbeddedResource>
     <None Include="assets\Other\TitleImage.xcf" />
     <None Include="assets\Other\TitleImage2.xcf" />
+    <None Include="Help\ActiveRegionsArmor.xcf" />
+    <None Include="Help\ActiveRegionsPlayer -Upscaled.xcf" />
+    <None Include="Help\ActiveRegionsPlayer.xcf" />
+    <None Include="Help\ActiveRegionsSwords.xcf" />
+    <None Include="Help\Help.odt" />
+    <None Include="Help\Help.pdf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -426,6 +432,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\target.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Help\ActiveRegionsPlayer -Upscaled.png" />
+    <Resource Include="Help\ActiveRegionsPlayer.png" />
+    <Resource Include="Help\Regions Areas and Locations.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

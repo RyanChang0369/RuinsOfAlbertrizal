@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Editor;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,8 @@ namespace RuinsOfAlbertrizal
             //    if (result == MessageBoxResult.Cancel)
             //        e.Cancel = true;
             //}
+
+            FileHandler.ClearTempDirectory();
         }
     }
 }
