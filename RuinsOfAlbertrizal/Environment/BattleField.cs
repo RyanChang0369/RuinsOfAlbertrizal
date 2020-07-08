@@ -231,7 +231,14 @@ namespace RuinsOfAlbertrizal.Environment
 
             foreach (Player player in ActivePlayers)
             {
-                player.LoadImage();
+                if (player != null)
+                    player.LoadImage();
+            }
+
+            foreach (Enemy enemy in ActiveEnemies)
+            {
+                if (enemy != null)
+                    enemy.LoadImage();
             }
 
             BattleInterface = new BattleInterface(this);

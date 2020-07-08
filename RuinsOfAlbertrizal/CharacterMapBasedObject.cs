@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
@@ -12,7 +13,7 @@ namespace RuinsOfAlbertrizal
     public abstract class CharacterMapBasedObject : WorldMapObject
     {
         [XmlIgnore]
-        public Point ConnectionPoint => new Point(33, 26);
+        public Point ConnectionPoint => new Point(33, 19);
 
         [XmlIgnore]
         public Rectangle ConnectionArea => new Rectangle(33, 26, 4, 4);
@@ -25,10 +26,13 @@ namespace RuinsOfAlbertrizal
 
         public void LoadImage(Bitmap imageHelmet, Bitmap imageTorso, Bitmap imageLegs, Equiptment weapon)
         {
+            int bx = -1, by = -1;
             if (weapon != null)
             {
-                int calculatedX = Math.Max(48, 48 + ConnectionPoint.X - weapon.ConnectionPoint.X);
-                int calculatedY = Math.Max(48, 48 + ConnectionPoint.Y - weapon.ConnectionPoint.Y);
+                bx = ConnectionPoint.X - weapon.ConnectionPointX;
+                by = weapon.ConnectionPointY - ConnectionPoint.Y;
+                int calculatedX = bx + 48;
+                int calculatedY = by + 48;
                 ArmoredImage = new Bitmap(calculatedX, calculatedY);
             }
             else
@@ -38,7 +42,7 @@ namespace RuinsOfAlbertrizal
 
             using (Graphics g = Graphics.FromImage(ArmoredImage))
             {
-                g.DrawImage(WorldImg, 0, 0);
+                g.DrawImage(WorldImg, 0, by, 48, 48);
 
                 if (imageHelmet != null)
                 {
@@ -57,7 +61,7 @@ namespace RuinsOfAlbertrizal
 
                 if (weapon != null)
                 {
-                    g.DrawImage(weapon.Icon, ConnectionPoint.X - weapon.ConnectionPoint.X, ConnectionPoint.Y - weapon.ConnectionPoint.Y);
+                    g.DrawImage(weapon.Icon, bx, 0, 48, 48);
                 }
             }
         }

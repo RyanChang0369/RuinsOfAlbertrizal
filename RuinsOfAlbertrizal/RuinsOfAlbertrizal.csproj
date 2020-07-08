@@ -157,6 +157,7 @@
     </Compile>
     <Compile Include="Editor\Validator\DoubleValidation.cs" />
     <Compile Include="Editor\Validator\PercentValidation.cs" />
+    <Compile Include="Editor\Validator\PointValidation.cs" />
     <Compile Include="Editor\Validator\SelectedIndexValidation.cs" />
     <Compile Include="Editor\Validator\RequiredValidation.cs" />
     <Compile Include="Editor\Validator\NumberValidation.cs" />

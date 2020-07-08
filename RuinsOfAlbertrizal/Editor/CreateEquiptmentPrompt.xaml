@@ -48,14 +48,14 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Weapon Connection Point"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Enter in the bottom left most pixel you want the weapon connection point to be drawn. See help in Main Menu for more information."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Enter in the top left most pixel you want the weapon connection point to be drawn. See help in Main Menu for more information."/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBox VerticalAlignment="Center" Width="100">
                         <TextBox.Text>
-                            <Binding Path="ConnectionPoint.X" Mode="TwoWay">
+                            <Binding Path="ConnectionPointX" Mode="TwoWay">
                                 <Binding.ValidationRules>
-                                    <validation:NumberValidation ValidatesOnTargetUpdated="True"/>
+                                    <validation:NumberValidation/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -63,9 +63,9 @@
                     <Label Content="×"/>
                     <TextBox VerticalAlignment="Center" Width="100">
                         <TextBox.Text>
-                            <Binding Path="ConnectionPoint.Y" Mode="TwoWay">
+                            <Binding Path="ConnectionPointY" Mode="TwoWay">
                                 <Binding.ValidationRules>
-                                    <validation:NumberValidation ValidatesOnTargetUpdated="True"/>
+                                    <validation:NumberValidation/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>

@@ -590,10 +590,19 @@ namespace RuinsOfAlbertrizal.Characters
         {
             if (StyleOfModel == ModelStyle.Humanoid)
             {
+                Bitmap headIcon = null;
+                Bitmap torsoIcon = null;
+                Bitmap legsIcon = null;
+
+                if (CurrentEquiptments[(int)Equiptment.SlotMode.Head - 1] != null)
+                    headIcon = CurrentEquiptments[(int)Equiptment.SlotMode.Head - 1].Icon;
+                if (CurrentEquiptments[(int)Equiptment.SlotMode.Torso - 1] != null)
+                    torsoIcon = CurrentEquiptments[(int)Equiptment.SlotMode.Torso - 1].Icon;
+                if (CurrentEquiptments[(int)Equiptment.SlotMode.Legs - 1] != null)
+                    legsIcon = CurrentEquiptments[(int)Equiptment.SlotMode.Legs - 1].Icon;
+
                 LoadImage(
-                    CurrentEquiptments[(int)Equiptment.SlotMode.Head - 1].Icon,
-                    CurrentEquiptments[(int)Equiptment.SlotMode.Torso - 1].Icon,
-                    CurrentEquiptments[(int)Equiptment.SlotMode.Legs - 1].Icon,
+                    headIcon, torsoIcon, legsIcon,
                     CurrentEquiptments[(int)Equiptment.SlotMode.Hand2 - 1]
                     );
             }

@@ -80,10 +80,14 @@ namespace RuinsOfAlbertrizal.Items
 
         public List<Attack> Attacks { get; set; }
 
-        public Point ConnectionPoint { get; set; }
+        public int ConnectionPointX { get; set; }
+
+        public int ConnectionPointY { get; set; }
+
+        public Point ConnectionPoint => new Point(ConnectionPointX, ConnectionPointY);
 
         [XmlIgnore]
-        public Rectangle ConnectionArea => new Rectangle(ConnectionPoint.X, ConnectionPoint.Y, 4, 4);
+        public Rectangle ConnectionArea => new Rectangle(ConnectionPointX, ConnectionPointY, 4, 4);
 
         public Equiptment()
         {
@@ -91,7 +95,8 @@ namespace RuinsOfAlbertrizal.Items
             BuffImmunities = new List<Buff>();
             Attacks = new List<Attack>();
             EquiptableSlots = new List<SlotMode>();
-            ConnectionPoint = new Point(4, 4);
+            ConnectionPointX = 4;
+            ConnectionPointY = 40;
         }
 
         public bool CanAttack()
