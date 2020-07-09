@@ -177,8 +177,8 @@
     <Compile Include="GameValidator.cs" />
     <Compile Include="IBaseFrameElement.cs" />
     <Compile Include="IconedObjectOfAlbertrizal.cs" />
-    <Compile Include="IconedObjectPrompt.xaml.cs">
-      <DependentUpon>IconedObjectPrompt.xaml</DependentUpon>
+    <Compile Include="ImagePrompt.xaml.cs">
+      <DependentUpon>ImagePrompt.xaml</DependentUpon>
     </Compile>
     <Compile Include="IRoundBasedObject.cs" />
     <Compile Include="LevelIntroInterface.xaml.cs">
@@ -371,7 +371,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="IconedObjectPrompt.xaml">
+    <Page Include="ImagePrompt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,7 +15,7 @@ namespace RuinsOfAlbertrizal
 
         private static void Test()
         {
-            //Player player = new Player();
+
         }
 
         public static void InitTest()

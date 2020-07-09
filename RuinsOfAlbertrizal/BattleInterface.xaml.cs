@@ -251,6 +251,12 @@ namespace RuinsOfAlbertrizal
 
         private void InitialAnimation()
         {
+            //Animate("overlaySlideRight", OverlayPanel1);
+            //Animate("overlaySlideLeft", OverlayPanel2);
+            
+            //await MiscMethods.TaskDelay(2000);
+            //Overlay.Visibility = Visibility.Collapsed;
+
             foreach (Image image in playerImages)
             {
                 Animate("playerSlideIn", image);
@@ -529,7 +535,9 @@ namespace RuinsOfAlbertrizal
 
         public void NotifyPlayerLost()
         {
-            throw new NotImplementedException();
+            BattleField = null;
+            Navigate("[back]");
+            MessageBox.Show("You just manage to escape.");
         }
 
         public void NotifyTick()

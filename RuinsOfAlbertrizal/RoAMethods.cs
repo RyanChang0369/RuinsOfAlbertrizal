@@ -1,7 +1,9 @@
-﻿using RuinsOfAlbertrizal.XMLInterpreter;
+﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
@@ -118,21 +120,21 @@ namespace RuinsOfAlbertrizal
             return objectOfAlbertrizal;
         }
 
-        ///// <summary>
-        ///// Uses StaticMap to clone an entire list.
-        ///// </summary>
-        ///// <typeparam name="T"></typeparam>
-        ///// <param name="list"></param>
-        ///// <returns></returns>
-        //public static List<T> StaticMapClone<T>(this List<T> listOfObjects) where T : ObjectOfAlbertrizal
-        //{
-        //    if (!GameBase.Initialized())
-        //        throw new Exception("Both static and current maps must be initialized");
+        /// <summary>
+        /// Uses StaticMap to clone an entire list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static List<T> StaticMapClone<T>(this List<T> listOfObjects) where T : ObjectOfAlbertrizal
+        {
+            if (!GameBase.Initialized())
+                throw new Exception("Both static and current maps must be initialized");
 
-        //    GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
+            GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
 
-        //    return listOfObjects;
-        //}
+            return listOfObjects;
+        }
 
         /// <summary>
         /// Clones an ObjectOfAlbertrizal and gives it a new InstanceID.
@@ -145,6 +147,49 @@ namespace RuinsOfAlbertrizal
             thing = MiscMethods.MemoryClone(thing);
             thing.GetNewInstanceID();
             return thing;
+        }
+
+        public static int TotalBI<T>(this IEnumerable<T> characters) where T : Character
+        {
+            int total = 0;
+            foreach (T character in characters)
+            {
+                try
+                {
+                    total += character.BattleIndex;
+                }
+                catch (NullReferenceException)
+                {
+
+                }
+            }
+            return total;
+        }
+
+        public static int AverageBI<T>(this IEnumerable<T> characters, bool includeNull) where T : Character
+        {
+            if (includeNull)
+            {
+                return TotalBI(characters) / characters.Count();
+            }
+            else
+            {
+                int total = 0;
+                int number = 0;
+                foreach (T character in characters)
+                {
+                    try
+                    {
+                        total += character.BattleIndex;
+                        number++;
+                    }
+                    catch (NullReferenceException)
+                    {
+
+                    }
+                }
+                return total / number;
+            }
         }
     }
 }

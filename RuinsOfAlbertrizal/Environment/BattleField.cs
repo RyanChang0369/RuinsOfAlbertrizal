@@ -667,6 +667,12 @@ namespace RuinsOfAlbertrizal.Environment
 
         public void NotifyPlayerLost()
         {
+            foreach (Player player in Players)
+            {
+                player.AppliedStats = new int[GameBase.NumStats];
+                player.AppliedStats[0] = (int)Math.Round(player.CurrentStats[0] * -0.9);
+            }
+
             BattleInterface.NotifyPlayerLost();
         }
     }

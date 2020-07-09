@@ -9,6 +9,13 @@
       Title="BattleInterface" Loaded="BasePage_Loaded">
 
     <Page.Resources>
+        <Storyboard x:Key="overlaySlideRight">
+            <DoubleAnimation Storyboard.TargetProperty="(TranslateTransform.X)" From="0" To="-3000" AccelerationRatio="0.5" Duration="0:0:2"/>
+        </Storyboard>
+        <Storyboard x:Key="overlaySlideLeft">
+            <DoubleAnimation Storyboard.TargetProperty="(TranslateTransform.X)" From="0" To="3000" AccelerationRatio="0.5" Duration="0:0:2"/>
+        </Storyboard>
+        
         <Storyboard x:Key="playerSlideIn">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300, 10, 10, 10" To="10" DecelerationRatio=".9" Duration="0:0:2"/>
             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:2"/>
@@ -365,5 +372,29 @@
                 </Grid>
             </Grid>
         </Grid>
+        <!--<Grid x:Name="Overlay">
+            <Grid.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="Background" Value="Black"/>
+                </Style>
+                <Style TargetType="Label">
+                    <Setter Property="Foreground" Value="Snow"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="20"/>
+                    <Setter Property="FontSize" Value="100"/>
+                    <Setter Property="FontFamily" Value="Impact"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border x:Name="OverlayPanel1">
+                <Label Content="Battle" HorizontalAlignment="Right"/>
+            </Border>
+            <Border x:Name="OverlayPanel2" Grid.Column="1">
+                <Label Content="Starts!"/>
+            </Border>
+        </Grid>-->
     </Grid>
 </local:BasePage>

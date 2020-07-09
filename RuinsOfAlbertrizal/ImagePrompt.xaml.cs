@@ -15,50 +15,50 @@ using System.Windows.Shapes;
 namespace RuinsOfAlbertrizal
 {
     /// <summary>
-    /// Interaction logic for IconedObjectPrompt.xaml
+    /// Interaction logic for ImagePrompt.xaml
     /// </summary>
-    public partial class IconedObjectPrompt : Window
+    public partial class ImagePrompt : Window
     {
-        public IconedObjectPrompt()
+        public ImagePrompt()
         {
             InitializeComponent();
         }
 
-        public IconedObjectPrompt(string title, string message, IconedObjectOfAlbertrizal obj)
+        public ImagePrompt(string title, string message, BitmapSource bitmapSource)
         {
             Title = title;
             MessageBlock.Text = message;
-            IconImg.Source = obj.IconAsBitmapSource;
+            IconImg.Source = bitmapSource;
             ButtonCancel.Content = "OK";
             ButtonYes.Visibility = Visibility.Collapsed;
             ButtonNo.Visibility = Visibility.Collapsed;
         }
 
-        public IconedObjectPrompt(string title, string message, IconedObjectOfAlbertrizal obj, string cancelText)
+        public ImagePrompt(string title, string message, BitmapSource bitmapSource, string cancelText)
         {
             Title = title;
             MessageBlock.Text = message;
-            IconImg.Source = obj.IconAsBitmapSource;
+            IconImg.Source = bitmapSource;
             ButtonCancel.Content = cancelText;
             ButtonYes.Visibility = Visibility.Collapsed;
             ButtonNo.Visibility = Visibility.Collapsed;
         }
 
-        public IconedObjectPrompt(string title, string message, IconedObjectOfAlbertrizal obj, string yesBtnText, string noBtnText)
+        public ImagePrompt(string title, string message, BitmapSource bitmapSource, string yesBtnText, string noBtnText)
         {
             Title = title;
             MessageBlock.Text = message;
-            IconImg.Source = obj.IconAsBitmapSource;
+            IconImg.Source = bitmapSource;
             ButtonYes.Content = yesBtnText;
             ButtonNo.Content = noBtnText;
             ButtonCancel.Visibility = Visibility.Collapsed;
         }
 
-        public IconedObjectPrompt(string title, string message, IconedObjectOfAlbertrizal obj, string yesText, string noText, string cancelText)
+        public ImagePrompt(string title, string message, BitmapSource bitmapSource, string yesText, string noText, string cancelText)
         {
             Title = title;
             MessageBlock.Text = message;
-            IconImg.Source = obj.IconAsBitmapSource;
+            IconImg.Source = bitmapSource;
             ButtonYes.Content = yesText;
             ButtonNo.Content = noText;
             ButtonCancel.Content = cancelText;

@@ -68,12 +68,20 @@ namespace RuinsOfAlbertrizal.Characters
         }
 
         /// <summary>
-        /// Creates a new plaer from an existing enemy.
+        /// Creates a new player from an existing enemy.
         /// </summary>
         /// <param name="enemy"></param>
         public Player(Enemy enemy)
         {
             AIStyle = AI.AIStyle.Player;
+            XP = 0;
+            Level = enemy.Level;
+
+            IconLocation = enemy.IconLocation;
+            WorldImgLocation = enemy.WorldImgLocation;
+            CurrentEquiptments = enemy.CurrentEquiptments;
+            PersonalBuffImmunities = enemy.PersonalBuffImmunities;
+            PersonalPermanentBuffs = enemy.PersonalPermanentBuffs;
         }
 
         public override void Die()

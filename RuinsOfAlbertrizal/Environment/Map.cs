@@ -5,6 +5,7 @@ using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Xml.Serialization;
 
@@ -259,7 +260,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="item"></param>
         public void ObtainItem(Item item)
         {
-            IconedObjectPrompt prompt = new IconedObjectPrompt("You found an item!", GetItemFindMessage(item), item, "Keep", "Discard");
+            ImagePrompt prompt = new ImagePrompt("You found an item!", GetItemFindMessage(item), item.IconAsBitmapSource, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
@@ -273,7 +274,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="equiptment"></param>
         public void ObtainEquiptment(Equiptment equiptment)
         {
-            IconedObjectPrompt prompt = new IconedObjectPrompt("You found an equiptment!", GetItemFindMessage(equiptment), equiptment, "Keep", "Discard");
+            ImagePrompt prompt = new ImagePrompt("You found an equiptment!", GetItemFindMessage(equiptment), equiptment.IconAsBitmapSource, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
@@ -287,7 +288,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="consumable"></param>
         public void ObtainConsumable(Consumable consumable)
         {
-            IconedObjectPrompt prompt = new IconedObjectPrompt("You found a consumable!", GetItemFindMessage(consumable), consumable, "Keep", "Discard");
+            ImagePrompt prompt = new ImagePrompt("You found a consumable!", GetItemFindMessage(consumable), consumable.IconAsBitmapSource, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
@@ -298,6 +299,18 @@ namespace RuinsOfAlbertrizal.Environment
         private string GetItemFindMessage(Item item)
         {
             return $"Out of the corner of your eye, you spot a {item.Name}.";
+        }
+
+        public void FindTeamMember(Enemy teamMember)
+        {
+            ImagePrompt prompt = new ImagePrompt("You found a team member!",
+                $"You found a new team member! {teamMember.Name} would like to join your party.",
+                teamMember.IconAsBitmapSource, "Accept", "Refuse");
+
+            if ((bool)prompt.DialogResult)
+            {
+                Players.Add(new Player(teamMember)); 
+            }
         }
     }
 }

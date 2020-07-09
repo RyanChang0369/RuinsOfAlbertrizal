@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Environment;
+﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System.Collections.Generic;
@@ -74,7 +75,7 @@ namespace RuinsOfAlbertrizal
                     DoFindTeamMember();
                     break;
                 case "Nothing":
-                    MessageBox.Show("After wandering the surrounding area for a few minutes, you find nothing.");
+                    DoFindNothing();
                     break;
             }
         }
@@ -137,7 +138,27 @@ namespace RuinsOfAlbertrizal
 
         private void DoFindTeamMember()
         {
+            int aveBI = GameBase.CurrentGame.Players.AverageBI(false);
 
+            List<Enemy> possibleTeamMembers = GameBase.StaticGame.StoredEnemies.StaticMapClone().FindAll(enemy => enemy.BattleIndex <= aveBI);
+            int fateSelector = RNG.GetRandomInteger(possibleTeamMembers.Count);
+            Enemy teamMember = possibleTeamMembers[fateSelector];
+
+            while (teamMember.BattleIndex < aveBI)
+            {
+                teamMember.Level++;
+            }
+
+            if (teamMember.Level > 1)
+                teamMember.Level--;
+
+            GameBase.CurrentGame.FindTeamMember(teamMember);
+            FileHandler.SaveCurrentMap();
+        }
+
+        private void DoFindNothing()
+        {
+            MessageBox.Show("After wandering the surrounding area for a few minutes, you find nothing.");
         }
     }
 }
