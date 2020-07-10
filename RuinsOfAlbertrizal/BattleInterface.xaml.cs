@@ -47,7 +47,9 @@ namespace RuinsOfAlbertrizal
             CreateGrid();
             UpdateImageLists();
             UpdateGrid();
+            BattleFieldScrollViewer.ScrollToHorizontalOffset(100 * BattleField.BattleFieldWidth - ActualWidth);
             InitialAnimation();
+
 
             //For animation help: http://www.codescratcher.com/wpf/sliding-panel-in-wpf/
         }

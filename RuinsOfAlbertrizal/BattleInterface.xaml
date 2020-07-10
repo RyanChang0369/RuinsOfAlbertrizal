@@ -253,7 +253,7 @@
                 </ScrollViewer>
             </Grid>
 
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="1">
+            <ScrollViewer x:Name="BattleFieldScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="1">
                 <Grid x:Name="BattleFieldGrid" HorizontalAlignment="Center">
                     <Image x:Name="targetPlayer0" DataContext="{Binding Path=ActivePlayers[0]}" Style="{StaticResource targetImgs}"/>
                     <Image x:Name="targetPlayer1" DataContext="{Binding Path=ActivePlayers[1]}" Style="{StaticResource targetImgs}"/>
