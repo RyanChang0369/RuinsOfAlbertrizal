@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal
@@ -23,6 +24,9 @@ namespace RuinsOfAlbertrizal
         /// </summary>
         [XmlIgnore]
         public Bitmap ArmoredImage { get; set; }
+
+        [XmlIgnore]
+        public BitmapSource ArmoredImageAsBitmapSource => ArmoredImage.ToBitmapSource();
 
         public void LoadImage(Bitmap imageHelmet, Bitmap imageTorso, Bitmap imageLegs, Equiptment weapon)
         {

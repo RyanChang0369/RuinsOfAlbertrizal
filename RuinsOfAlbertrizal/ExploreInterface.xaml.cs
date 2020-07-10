@@ -133,7 +133,7 @@ namespace RuinsOfAlbertrizal
 
         private void DoRandomEncounter()
         {
-            GameBase.CurrentGame.CurrentBattleField = new BattleField(Character.LeftRightOrientation.Right);
+            GameBase.CurrentGame.CurrentBattleField = new BattleField();
             Navigate(GameBase.CurrentGame.CurrentBattleField.BattleInterface);
         }
 

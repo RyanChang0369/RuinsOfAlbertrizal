@@ -43,10 +43,7 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public bool IgnoresArmor { get; set; }
 
-        /// <summary>
-        /// Can target multiple characters
-        /// </summary>
-        public bool MultiTarget { get; set; }
+        public int RadiusOfEffect { get; set; }
 
         public enum TargetType
         {

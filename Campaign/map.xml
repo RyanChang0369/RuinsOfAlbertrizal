@@ -134,7 +134,7 @@
               <TurnSinceAttacked>0</TurnSinceAttacked>
               <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
               <IgnoresArmor>false</IgnoresArmor>
-              <MultiTarget>false</MultiTarget>
+              
               <TypeOfTarget>EnemiesOnly</TypeOfTarget>
             </Attack>
           </Attacks>
@@ -370,7 +370,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <MultiTarget>false</MultiTarget>
+          
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -489,7 +489,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <MultiTarget>false</MultiTarget>
+          
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -608,7 +608,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <MultiTarget>false</MultiTarget>
+          
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
         <Attack>
@@ -647,7 +647,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <MultiTarget>false</MultiTarget>
+          
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -806,7 +806,7 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      <MultiTarget>false</MultiTarget>
+      
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -881,7 +881,7 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      <MultiTarget>false</MultiTarget>
+      
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -920,7 +920,7 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      <MultiTarget>false</MultiTarget>
+      
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -959,7 +959,7 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      <MultiTarget>false</MultiTarget>
+      
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -998,7 +998,7 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      <MultiTarget>false</MultiTarget>
+      
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
   </StoredAttacks>
@@ -1137,7 +1137,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <MultiTarget>false</MultiTarget>
+          
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </Attacks>

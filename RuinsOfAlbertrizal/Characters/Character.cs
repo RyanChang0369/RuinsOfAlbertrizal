@@ -715,7 +715,7 @@ namespace RuinsOfAlbertrizal.Characters
 
             foreach (Attack attack in AllAttacks)
             {
-                if (attack.MultiTarget)
+                if (attack.RadiusOfEffect > 0)
                 {
                     multiTargetAttacks.Add(attack); 
                 }

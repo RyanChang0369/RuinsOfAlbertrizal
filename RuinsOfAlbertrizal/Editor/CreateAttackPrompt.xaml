@@ -44,10 +44,18 @@
                 <CheckBox IsChecked="{Binding Path=IgnoresArmor, Mode=TwoWay}" Margin="10"/>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Multi-Target"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="If checked, then this attack will affect all opposing or friendly characters, depending on the target type (see below)."/>
+                    <Label Content="Radius of Effect"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The radius of effect of this attack."/>
                 </StackPanel>
-                <CheckBox IsChecked="{Binding Path=MultiTarget, Mode=TwoWay}" Margin="10"/>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="RadiusOfEffect" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Is Ranged"/>

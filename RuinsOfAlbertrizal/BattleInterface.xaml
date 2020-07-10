@@ -204,13 +204,20 @@
             <Setter Property="Source" Value="assets/target.png"/>
             <Setter Property="Panel.ZIndex" Value="5"/>
             <EventSetter Event="MouseUp" Handler="TargetImage_MouseUp"/>
+            <Setter Property="Grid.Column" Value="{Binding Path=BattleFieldLocation.X}"/>
+            <Setter Property="Grid.Row" Value="{Binding Path=BattleFieldLocation.Y}"/>
         </Style>
 
         <Style x:Key="characterImgs" TargetType="Image" BasedOn="{StaticResource pixelImg}">
             <EventSetter Event="MouseUp" Handler="ViewStats"/>
+            <Setter Property="Grid.Column" Value="{Binding Path=BattleFieldLocation.X}"/>
+            <Setter Property="Grid.Row" Value="{Binding Path=BattleFieldLocation.Y}"/>
+            <Setter Property="Source" Value="{Binding Path=ArmoredImageAsBitmapSource}"/>
         </Style>
 
-        <Style x:Key="playerImgs" TargetType="Image" BasedOn="{StaticResource characterImgs}"/>
+        <Style x:Key="playerImgs" TargetType="Image" BasedOn="{StaticResource characterImgs}">
+            
+        </Style>
 
         <Style x:Key="enemyImgs" TargetType="Image" BasedOn="{StaticResource characterImgs}">
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
@@ -247,146 +254,28 @@
             </Grid>
 
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                        <ColumnDefinition Width="200"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                <Grid x:Name="BattleFieldGrid" HorizontalAlignment="Center">
+                    <Image x:Name="targetPlayer0" DataContext="{Binding Path=ActivePlayers[0]}" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetPlayer1" DataContext="{Binding Path=ActivePlayers[1]}" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetPlayer2" DataContext="{Binding Path=ActivePlayers[2]}" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetPlayer3" DataContext="{Binding Path=ActivePlayers[3]}" Style="{StaticResource targetImgs}"/>
+
+                    <Image x:Name="player0" DataContext="{Binding Path=ActivePlayers[0]}" Margin="-300,10,10,10" Style="{StaticResource playerImgs}"/>
+                    <Image x:Name="player1" DataContext="{Binding Path=ActivePlayers[1]}" Margin="-300,10,10,10" Style="{StaticResource playerImgs}"/>
+                    <Image x:Name="player2" DataContext="{Binding Path=ActivePlayers[2]}" Margin="-300,10,10,10" Style="{StaticResource playerImgs}"/>
+                    <Image x:Name="player3" DataContext="{Binding Path=ActivePlayers[3]}" Margin="-300,10,10,10" Style="{StaticResource playerImgs}"/>
+
+                    <Image x:Name="targetEnemy0" DataContext="{Binding Path=ActiveEnemies[0]}" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetEnemy1" DataContext="{Binding Path=ActiveEnemies[1]}" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetEnemy2" DataContext="{Binding Path=ActiveEnemies[2]}" Style="{StaticResource targetImgs}"/>
+                    <Image x:Name="targetEnemy3" DataContext="{Binding Path=ActiveEnemies[3]}" Style="{StaticResource targetImgs}"/>
+
+                    <Image x:Name="enemy0" DataContext="{Binding Path=ActiveEnemies[0]}" Margin="10, 10, -300, 10" Style="{StaticResource enemyImgs}"/>
+                    <Image x:Name="enemy1" DataContext="{Binding Path=ActiveEnemies[1]}" Margin="10, 10, -300, 10" Style="{StaticResource enemyImgs}"/>
+                    <Image x:Name="enemy2" DataContext="{Binding Path=ActiveEnemies[2]}" Margin="10, 10, -300, 10" Style="{StaticResource enemyImgs}"/>
+                    <Image x:Name="enemy3" DataContext="{Binding Path=ActiveEnemies[3]}" Margin="10, 10, -300, 10" Style="{StaticResource enemyImgs}"/>
                 </Grid>
             </ScrollViewer>
-
-            <Grid x:Name="CharactersGrid" Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                
-                <Grid x:Name="PlayersGrid">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/> <!--Used as spacer-->
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="20"/> <!--Used as spacer-->
-                    </Grid.RowDefinitions>
-                    <Image x:Name="targetPlayer0" Grid.Column="0" Grid.Row="1" Style="{StaticResource targetImgs}"/>
-                    <Image x:Name="targetPlayer1" Grid.Column="1" Grid.Row="2" Style="{StaticResource targetImgs}"/>
-                    <Image x:Name="targetPlayer2" Grid.Column="2" Grid.Row="1" Style="{StaticResource targetImgs}"/>
-                    <Image x:Name="targetPlayer3" Grid.Column="3" Grid.Row="2" Style="{StaticResource targetImgs}"/>
-                    <Image x:Name="targetPlayerAll" Grid.Column="0" Style="{StaticResource targetImgs}" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
-                    
-                    <Image x:Name="player0" Margin="-300,10,10,10" Grid.Column="1" Grid.Row="1" Style="{StaticResource playerImgs}"/>
-                    <Image x:Name="player1" Margin="-300,10,10,10" Grid.Column="2" Grid.Row="2" Style="{StaticResource playerImgs}"/>
-                    <Image x:Name="player2" Margin="-300,10,10,10" Grid.Column="3" Grid.Row="1" Style="{StaticResource playerImgs}"/>
-                    <Image x:Name="player3" Margin="-300,10,10,10" Grid.Column="4" Grid.Row="2" Style="{StaticResource playerImgs}"/>
-                </Grid>
-
-                <Grid Grid.Column="1">
-                    <StackPanel x:Name="TurnTickBarPanel" VerticalAlignment="Center">
-                        <StackPanel.Resources>
-                            <Style TargetType="ProgressBar">
-                                <Setter Property="Value" Value="0"/>
-                            </Style>
-                        </StackPanel.Resources>
-                        <Label Content="Attack Bars" HorizontalAlignment="Center" ToolTip="When the bar reaches the maximum value, that player/enemy gets a turn."/>
-                        <ProgressBar x:Name="player0_ProgressBar" Style="{StaticResource playerProgressBar}" 
-                                ToolTip="{Binding Path=ActivePlayers[0].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActivePlayers[0].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <ProgressBar x:Name="player1_ProgressBar" Style="{StaticResource playerProgressBar}"
-                                ToolTip="{Binding Path=ActivePlayers[1].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActivePlayers[1].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <ProgressBar x:Name="player2_ProgressBar" Style="{StaticResource playerProgressBar}"
-                                ToolTip="{Binding Path=ActivePlayers[2].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActivePlayers[2].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <ProgressBar x:Name="player3_ProgressBar" Style="{StaticResource playerProgressBar}"
-                                ToolTip="{Binding Path=ActivePlayers[3].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActivePlayers[3].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <ProgressBar x:Name="enemy0_ProgressBar" Style="{StaticResource enemyProgressBar}"
-                                ToolTip="{Binding Path=ActiveEnemies[0].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActiveEnemies[0].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <ProgressBar x:Name="enemy1_ProgressBar" Style="{StaticResource enemyProgressBar}"
-                                ToolTip="{Binding Path=ActiveEnemies[1].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActiveEnemies[1].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <ProgressBar x:Name="enemy2_ProgressBar" Style="{StaticResource enemyProgressBar}"
-                                ToolTip="{Binding Path=ActiveEnemies[2].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActiveEnemies[2].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
-                        
-                        <ProgressBar x:Name="enemy3_ProgressBar" Style="{StaticResource enemyProgressBar}"
-                                ToolTip="{Binding Path=ActiveEnemies[3].DisplayName, UpdateSourceTrigger=PropertyChanged}"
-                                Value="{Binding Path=ActiveEnemies[3].TurnTicks, UpdateSourceTrigger=PropertyChanged}"/>
-                    </StackPanel>
-                </Grid>
-
-                <Grid x:Name="EnemiesGrid" Grid.Column="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"/> <!--Used as spacer-->
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="20"/> <!--Used as spacer-->
-                    </Grid.RowDefinitions>
-                    <Image x:Name="targetEnemy0" Grid.Row="2" Style="{StaticResource targetImgs}"/>
-                    <Image x:Name="targetEnemy1" Grid.Column="1" Grid.Row="1" Style="{StaticResource targetImgs}"/>
-                    <Image x:Name="targetEnemy2" Grid.Column="2" Grid.Row="2" Style="{StaticResource targetImgs}"/>
-                    <Image x:Name="targetEnemy3" Grid.Column="3" Grid.Row="1" Style="{StaticResource targetImgs}"/>
-                    <Image x:Name="targetEnemyAll" Style="{StaticResource targetImgs}" Grid.ColumnSpan="4" Grid.RowSpan="4"/>
-
-                    <Image x:Name="enemy0" Margin="10, 10, -300, 10" Grid.Row="2" Style="{StaticResource enemyImgs}"/>
-                    <Image x:Name="enemy1" Margin="10, 10, -300, 10" Grid.Column="1" Grid.Row="1" Style="{StaticResource enemyImgs}"/>
-                    <Image x:Name="enemy2" Margin="10, 10, -300, 10" Grid.Column="2" Grid.Row="2" Style="{StaticResource enemyImgs}"/>
-                    <Image x:Name="enemy3" Margin="10, 10, -300, 10" Grid.Column="3" Grid.Row="1" Style="{StaticResource enemyImgs}"/>
-                </Grid>
-            </Grid>
 
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>

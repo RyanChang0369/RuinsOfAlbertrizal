@@ -196,8 +196,6 @@
     <Compile Include="Environment\Obstacle.cs" />
     <Compile Include="GameBase.cs" />
     <Compile Include="Environment\Map.cs" />
-    <Compile Include="Mechanics\CardinalOrientation.cs" />
-    <Compile Include="Mechanics\LeftRightOrientation.cs" />
     <Compile Include="MiscMethods.cs" />
     <Compile Include="ObjectOfAlbertrizal.cs" />
     <Compile Include="PartyMembersInterface.xaml.cs">
