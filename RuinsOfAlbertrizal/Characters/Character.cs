@@ -21,6 +21,20 @@ namespace RuinsOfAlbertrizal.Characters
 
         public Point BattleFieldLocation { get; set; }
 
+        public enum CardinalOrientation
+        {
+            North, East, South, West
+        }
+
+        public enum LeftRightOrientation
+        {
+            Left, Right
+        }
+
+        public CardinalOrientation AdventureOrientation { get; set; }
+
+        public LeftRightOrientation BattleFieldOrientation { get; set; }
+
         public int TurnsPassed { get; set; }
 
         private int turnTicks;
@@ -35,6 +49,17 @@ namespace RuinsOfAlbertrizal.Characters
             {
                 turnTicks = value;
                 OnPropertyChanged("TurnTicks");
+            }
+        }
+
+        public static int MaxTicks
+        {
+            get
+            {
+                if (GameBase.CurrentGame.CurrentBattleField != null)
+                    return GameBase.CurrentGame.CurrentBattleField.MaxTicks;
+                else
+                    return -1;
             }
         }
 

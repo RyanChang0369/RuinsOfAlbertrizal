@@ -111,10 +111,15 @@
                 </Border.Resources>
                 <StackPanel Margin="5">
                     <Label Content="{Binding Path=Name}"/>
+                    
                     <Label Content="HP"/>
-                    <ProgressBar Value="{Binding Path=CurrentStats[0]}" Maximum="{Binding Path=ArmoredStats[0]}" ToolTip="{Binding Path=CurerntStats[0]}" Foreground="Red" Background="LightGray"/>
+                    <ProgressBar Value="{Binding Path=CurrentStats[0]}" Maximum="{Binding Path=ArmoredStats[0]}" ToolTip="{Binding Path=CurrentStats[0]}" Foreground="Red" Background="LightGray" Style="{StaticResource thinProgressBar}"/>
+                    
                     <Label Content="Mana"/>
-                    <ProgressBar Value="{Binding Path=CurrentStats[1]}" Maximum="{Binding Path=ArmoredStats[1]}" ToolTip="{Binding Path=CurerntStats[1]}" Foreground="Blue" Background="LightGray"/>
+                    <ProgressBar Value="{Binding Path=CurrentStats[1]}" Maximum="{Binding Path=ArmoredStats[1]}" ToolTip="{Binding Path=CurrentStats[1]}" Foreground="Blue" Background="LightGray" Style="{StaticResource thinProgressBar}"/>
+                    
+                    <Label Content="Attack Bar" ToolTip="When the bar reaches the maximum value, that player/enemy gets a turn."/>
+                    <ProgressBar Value="{Binding Path=TurnTicks}" Maximum="{Binding Path=MaxTicks}" Foreground="LimeGreen" Background="LightGray" Style="{StaticResource thinProgressBar}"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
@@ -123,7 +128,7 @@
             <Border BorderBrush="Black" BorderThickness="3" Background="Snow" Visibility="{Binding Converter={StaticResource NotNullToVisibilityConverter}}">
                 <StackPanel>
                     <Label Content="{Binding Path=Name}"/>
-                    <Grid Width="200">
+                    <Grid>
                         <Grid.Resources>
                             <Style TargetType="Label">
                                 <Setter Property="FontSize" Value="18"/>
@@ -223,7 +228,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="5*"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
 
             <Grid>
@@ -240,6 +245,48 @@
                     <ItemsControl x:Name="enemySnapshot" ItemsSource="{Binding Path=ActiveEnemies}" ItemTemplate="{StaticResource statsSnapshotTemplate}" ItemsPanel="{StaticResource horzontalPanelTemplate}"/>
                 </ScrollViewer>
             </Grid>
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </ScrollViewer>
 
             <Grid x:Name="CharactersGrid" Grid.Row="1">
                 <Grid.ColumnDefinitions>

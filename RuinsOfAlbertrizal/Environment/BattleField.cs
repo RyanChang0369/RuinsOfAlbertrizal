@@ -210,7 +210,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <summary>
         /// Creates a new battlefield using the players in GameBase.CurrentGame. Navigate to BattleInterface to show the interface.
         /// </summary>
-        public BattleField()
+        public BattleField(Character.LeftRightOrientation playerFacing)
         {
             SelectedPlayerIndex = -1;
 
@@ -229,16 +229,22 @@ namespace RuinsOfAlbertrizal.Environment
                 ActiveEnemies[i] = Enemies[i];
             }
 
-            foreach (Player player in ActivePlayers)
+            if (playerFacing == Character.LeftRightOrientation.Right)
             {
-                if (player != null)
-                    player.LoadImage();
-            }
+                foreach (Player player in ActivePlayers)
+                {
+                    if (player != null)
+                    {
+                        player.LoadImage();
 
-            foreach (Enemy enemy in ActiveEnemies)
-            {
-                if (enemy != null)
-                    enemy.LoadImage();
+                    }
+                }
+
+                foreach (Enemy enemy in ActiveEnemies)
+                {
+                    if (enemy != null)
+                        enemy.LoadImage();
+                } 
             }
 
             BattleInterface = new BattleInterface(this);

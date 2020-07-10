@@ -245,6 +245,10 @@
             <Setter Property="Margin" Value="5, 1"/>
         </Style>
 
+        <Style x:Key="thinProgressBar" TargetType="ProgressBar" BasedOn="{StaticResource defaultProgressBar}">
+            <Setter Property="Height" Value="10"/>
+        </Style>
+
         <Style TargetType="ProgressBar" x:Key="verticalProgressBar" BasedOn="{StaticResource defaultProgressBar}">
             <Setter Property="Width" Value="200"/>
             <Setter Property="Margin" Value="-85"/>
@@ -256,37 +260,13 @@
         </Style>
 
         <Style x:Key="playerProgressBar" TargetType="ProgressBar" BasedOn="{StaticResource defaultProgressBar}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                        <Grid x:Name="TemplateRoot">
-                            <Rectangle Name="PART_Track" StrokeThickness="1" Fill="LimeGreen"/>
-                            <DockPanel Margin="1">
-                                <Rectangle Name="PART_Indicator">
-                                </Rectangle>
-                                <Rectangle Name="Mask" MinWidth="{TemplateBinding Width}" Fill="ForestGreen"/>
-                            </DockPanel>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Foreground" Value="LimeGreen"/>
+            <Setter Property="Background" Value="ForestGreen"/>
         </Style>
 
         <Style x:Key="enemyProgressBar" TargetType="ProgressBar" BasedOn="{StaticResource defaultProgressBar}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                        <Grid x:Name="TemplateRoot">
-                            <Rectangle Name="PART_Track" StrokeThickness="1" Fill="Crimson"/>
-                            <DockPanel Margin="1">
-                                <Rectangle Name="PART_Indicator">
-                                </Rectangle>
-                                <Rectangle Name="Mask" MinWidth="{TemplateBinding Width}" Fill="DarkRed"/>
-                            </DockPanel>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Foreground" Value="Crimson"/>
+            <Setter Property="Background" Value="DarkRed"/>
         </Style>
         
         <!--CheckBox Styles-->

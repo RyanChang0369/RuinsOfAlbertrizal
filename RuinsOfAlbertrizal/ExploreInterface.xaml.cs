@@ -1,6 +1,7 @@
 ﻿using RuinsOfAlbertrizal.Characters;
 using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
+using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System.Collections.Generic;
 using System.Windows;
@@ -132,7 +133,7 @@ namespace RuinsOfAlbertrizal
 
         private void DoRandomEncounter()
         {
-            GameBase.CurrentGame.CurrentBattleField = new BattleField();
+            GameBase.CurrentGame.CurrentBattleField = new BattleField(Character.LeftRightOrientation.Right);
             Navigate(GameBase.CurrentGame.CurrentBattleField.BattleInterface);
         }
 
