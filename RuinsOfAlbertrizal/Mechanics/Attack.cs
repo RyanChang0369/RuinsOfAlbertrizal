@@ -43,7 +43,12 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public bool IgnoresArmor { get; set; }
 
+        public int Range { get; set; }
+
         public int RadiusOfEffect { get; set; }
+
+        [XmlIgnore]
+        public bool MultiTarget => RadiusOfEffect > 0;
 
         public enum TargetType
         {
@@ -154,48 +159,48 @@ namespace RuinsOfAlbertrizal.Mechanics
             return total;
         }
 
-        /// <summary>
-        /// Starts the attack
-        /// </summary>
-        /// <param name="attacker"></param>
-        /// <param name="targets"></param>
-        /// <param name="useStatCost">If false, then do not use StatCostToUser</param>
-        /// <exception cref="CannotTargetException"></exception>
-        /// <exception cref="NotEnoughManaException"></exception>
-        /// <exception cref="ArgumentException"></exception>
-        public void BeginAttack(Character attacker, List<Character> targets, bool useStatCost = true)
-        {
-            if (StatCostToUser[1] > attacker.CurrentStats[1])
-                throw new NotEnoughManaException($"Character {attacker.DisplayName} does not have the required amount of mana to use this attack.");
-            else if (!CanTargetAnything(attacker, targets))
-                throw new CannotTargetException($"Character {attacker.DisplayName} cannot any of the selected targets.");
+        ///// <summary>
+        ///// Starts the attack
+        ///// </summary>
+        ///// <param name="attacker"></param>
+        ///// <param name="targets"></param>
+        ///// <param name="useStatCost">If false, then do not use StatCostToUser</param>
+        ///// <exception cref="CannotTargetException"></exception>
+        ///// <exception cref="NotEnoughManaException"></exception>
+        ///// <exception cref="ArgumentException"></exception>
+        //public void BeginAttack(Character attacker, List<Character> targets, bool useStatCost = true)
+        //{
+        //    if (StatCostToUser[1] > attacker.CurrentStats[1])
+        //        throw new NotEnoughManaException($"Character {attacker.DisplayName} does not have the required amount of mana to use this attack.");
+        //    else if (!CanTargetAnything(attacker, targets))
+        //        throw new CannotTargetException($"Character {attacker.DisplayName} cannot any of the selected targets.");
 
-            if (!IsCharged())
-            {
-                //Begin/Continue charge
-                Charge(attacker);
-            }
-            else if (CanBeUsedBy(attacker))
-            {
-                TurnSinceAttacked = 0;
-                TurnsSinceBeginCharge = 0;
+        //    if (!IsCharged())
+        //    {
+        //        //Begin/Continue charge
+        //        Charge(attacker);
+        //    }
+        //    else if (CanBeUsedBy(attacker))
+        //    {
+        //        TurnSinceAttacked = 0;
+        //        TurnsSinceBeginCharge = 0;
 
-                if (useStatCost)
-                {
-                    for (int i = 0; i < StatCostToUser.Length; i++)
-                    {
-                        attacker.AppliedStats[i] -= StatCostToUser[i];
-                    }
-                }
+        //        if (useStatCost)
+        //        {
+        //            for (int i = 0; i < StatCostToUser.Length; i++)
+        //            {
+        //                attacker.AppliedStats[i] -= StatCostToUser[i];
+        //            }
+        //        }
 
-                GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, false);
+        //        GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, false);
 
-                foreach (Character target in GetAttackableTargets(attacker, targets))
-                {
-                    target.GetAttacked(this);
-                }
-            }
-        }
+        //        foreach (Character target in GetAttackableTargets(attacker, targets))
+        //        {
+        //            target.GetAttacked(this);
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Starts the attack
@@ -230,7 +235,7 @@ namespace RuinsOfAlbertrizal.Mechanics
                     }
                 }
 
-                GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, false);
+                GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, target, false);
 
                 target.GetAttacked(this);
             }
@@ -240,7 +245,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         {
             TurnsSinceBeginCharge++;
             attacker.AttackToCharge = this;
-            GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, true);
+            GameBase.CurrentGame.CurrentBattleField.NotifyAttackBegin(this, attacker, null, true);
         }
 
         /// <summary>

@@ -44,8 +44,22 @@
                 <CheckBox IsChecked="{Binding Path=IgnoresArmor, Mode=TwoWay}" Margin="10"/>
 
                 <StackPanel Orientation="Horizontal">
+                    <Label Content="Range"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The range of this attack. Minimum of 1. All other values interpreted as 1."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="Range" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:NumberValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Radius of Effect"/>
-                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The radius of effect of this attack."/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The radius of effect of this attack. Enter 0 if attack is single target."/>
                 </StackPanel>
                 <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
                     <TextBox.Text>

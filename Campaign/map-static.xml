@@ -31,6 +31,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Human</GeneralName>
@@ -110,6 +112,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Rare Green Slime</GeneralName>
@@ -209,6 +213,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
@@ -299,7 +305,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -328,6 +335,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
@@ -418,7 +427,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -447,6 +457,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
@@ -537,7 +549,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
         <Attack>
@@ -576,7 +589,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -735,7 +749,8 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -810,7 +825,8 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -849,14 +865,15 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
       <GlobalID>838f77ef-e8db-45b9-90ef-52d7c48422f5</GlobalID>
       <InstanceID>0fe1b5b6-fb54-400f-b58e-dedcdde2b184</InstanceID>
       <Name>Mega Boop</Name>
-      <Description>Another attack that most slimes have. This attack causes more damage at the price of a short charge-up.</Description>
+      <Description>Another attack that most slimes have. This attack causes more damage and has more range at the price of a short charge-up.</Description>
       <Buffs />
       <StatLoss>
         <int>15</int>
@@ -888,7 +905,8 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>2</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -927,7 +945,8 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>2</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
   </StoredAttacks>
@@ -1066,7 +1085,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </Attacks>

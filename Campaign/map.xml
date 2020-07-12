@@ -5,9 +5,9 @@
   <Name>Campaign</Name>
   <Description>The main storyline of this game.</Description>
   <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
-  <PlayerCreated>true</PlayerCreated>
+  <PlayerCreated>false</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
-  <SeenIntroduction>true</SeenIntroduction>
+  <SeenIntroduction>false</SeenIntroduction>
   <IntroMessage>
     <Lines>
       <string>Legends speak of a glorious castle that is now abandoned.</string>
@@ -31,6 +31,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Human</GeneralName>
@@ -69,78 +71,7 @@
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
-        <Equiptment>
-          <GlobalID>eaaf9924-a075-4af9-ac2b-22ff02db5539</GlobalID>
-          <InstanceID>92b1bcb1-dc79-419a-9c03-64913211597f</InstanceID>
-          <Name>Stick</Name>
-          <Description>A small stick you found from a tree.</Description>
-          <IconLocation>..\Equiptment\Stick_icon.png</IconLocation>
-          <DropChance>0.8</DropChance>
-          <NumGivenOnStart>1</NumGivenOnStart>
-          <IsAClone>false</IsAClone>
-          <EquiptableSlots>
-            <SlotMode>Hand1</SlotMode>
-            <SlotMode>Hand2</SlotMode>
-          </EquiptableSlots>
-          <RequiredSlots />
-          <StatGain>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-            <int>0</int>
-          </StatGain>
-          <BuffImmunities />
-          <GrantedBuffs />
-          <Attacks>
-            <Attack>
-              <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
-              <InstanceID>65a9c06e-3e24-42ed-9c8c-c94ccc7c9301</InstanceID>
-              <Name>Poke</Name>
-              <Description>Aim for the eyes for extra damage.</Description>
-              <Buffs />
-              <StatLoss>
-                <int>11</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-              </StatLoss>
-              <StatCostToUser>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-                <int>0</int>
-              </StatCostToUser>
-              <IsRanged>false</IsRanged>
-              <CoolDown>0</CoolDown>
-              <ChargeUp>0</ChargeUp>
-              <TurnSinceAttacked>0</TurnSinceAttacked>
-              <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
-              <IgnoresArmor>false</IgnoresArmor>
-              
-              <TypeOfTarget>EnemiesOnly</TypeOfTarget>
-            </Attack>
-          </Attacks>
-          <ConnectionPointX>22</ConnectionPointX>
-          <ConnectionPointY>25</ConnectionPointY>
-        </Equiptment>
+        <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
         <Equiptment xsi:nil="true" />
@@ -161,7 +92,7 @@
     </Player>
   </Players>
   <ActivePlayerGuids>
-    <guid>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</guid>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
@@ -181,6 +112,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Rare Green Slime</GeneralName>
@@ -280,6 +213,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
@@ -370,7 +305,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -399,6 +335,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
@@ -489,7 +427,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -518,6 +457,8 @@
         <X>0</X>
         <Y>0</Y>
       </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
       <TurnsPassed>0</TurnsPassed>
       <TurnTicks>0</TurnTicks>
       <GeneralName>Slime</GeneralName>
@@ -608,7 +549,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
         <Attack>
@@ -647,7 +589,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </BoundAttacks>
@@ -806,7 +749,8 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -881,7 +825,8 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -920,14 +865,15 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
       <GlobalID>838f77ef-e8db-45b9-90ef-52d7c48422f5</GlobalID>
       <InstanceID>0fe1b5b6-fb54-400f-b58e-dedcdde2b184</InstanceID>
       <Name>Mega Boop</Name>
-      <Description>Another attack that most slimes have. This attack causes more damage at the price of a short charge-up.</Description>
+      <Description>Another attack that most slimes have. This attack causes more damage and has more range at the price of a short charge-up.</Description>
       <Buffs />
       <StatLoss>
         <int>15</int>
@@ -959,7 +905,8 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>2</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -998,7 +945,8 @@
       <TurnSinceAttacked>0</TurnSinceAttacked>
       <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
       <IgnoresArmor>false</IgnoresArmor>
-      
+      <Range>2</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
   </StoredAttacks>
@@ -1137,7 +1085,8 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          
+          <Range>0</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
       </Attacks>
@@ -1219,7 +1168,7 @@
       <Name>Final Level</Name>
       <Description />
       <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
-      <SeenIntroduction>true</SeenIntroduction>
+      <SeenIntroduction>false</SeenIntroduction>
       <IntroMessage>
         <Lines>
           <string>This is it. The final floor. All you need to do now is escape.</string>
