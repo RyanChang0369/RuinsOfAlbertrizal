@@ -140,6 +140,14 @@
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
+        
+        <!--Grid Styles-->
+        <Style x:Key="itemsControlGrid" TargetType="Grid">
+            <Setter Property="Background" Value="#FFE5E5E5"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
 
         <!--ComboBox Styles-->
         <Style TargetType="ComboBox" x:Key="defaultComboBox">

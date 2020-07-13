@@ -2,22 +2,15 @@
 using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
-using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace RuinsOfAlbertrizal
 {
@@ -26,6 +19,10 @@ namespace RuinsOfAlbertrizal
     /// </summary>
     public partial class BattleInterface : BasePage
     {
+        public int BattleFieldGridRowHeight => (int)BattleFieldGrid.ActualHeight / BattleField.BattleFieldHeight;
+
+        public int BattleFieldGridColumnWidth => 200;
+
         public BattleField BattleField { get; set; }
 
         private List<Image> playerImages = new List<Image>();
@@ -47,18 +44,24 @@ namespace RuinsOfAlbertrizal
             CreateGrid();
             UpdateImageLists();
             UpdateGrid();
-            BattleFieldScrollViewer.ScrollToHorizontalOffset(100 * BattleField.BattleFieldWidth - ActualWidth);
+            
             InitialAnimation();
 
 
             //For animation help: http://www.codescratcher.com/wpf/sliding-panel-in-wpf/
         }
 
+        private void BattleInterface_Loaded(object sender, RoutedEventArgs e)
+        {
+            BattleFieldScrollViewer.ScrollToHorizontalOffset(BattleFieldScrollViewer.ScrollableWidth / 2);
+            BattleField.SetTimer();
+        }
+
         private void CreateGrid()
         {
             for (int i = 0; i < BattleField.BattleFieldWidth; i++)
             {
-                BattleFieldGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(200) });
+                BattleFieldGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(BattleFieldGridColumnWidth) });
             }
 
             for (int i = 0; i < BattleField.BattleFieldHeight; i++)
@@ -140,45 +143,6 @@ namespace RuinsOfAlbertrizal
 
             }
         }
-
-        //private void UpdateCharacterLocations()
-        //{
-        //    foreach (Image img in playerImages)
-        //    {
-        //        if (img.Tag != null)
-        //        {
-        //            Player player = (Player)img.Tag;
-                    
-        //            if (player.BattleFieldLocation.X != Grid.GetColumn(img))
-        //            {
-        //                Grid.SetColumn(img, player.BattleFieldLocation.X);
-        //            }
-
-        //            if (player.BattleFieldLocation.Y != Grid.GetRow(img))
-        //            {
-        //                Grid.SetRow(img, player.BattleFieldLocation.Y);
-        //            }
-        //        }
-        //    }
-
-        //    foreach (Image img in enemyImages)
-        //    {
-        //        if (img.Tag != null)
-        //        {
-        //            Enemy enemy = (Enemy)img.Tag;
-
-        //            if (enemy.BattleFieldLocation.X != Grid.GetColumn(img))
-        //            {
-        //                Grid.SetColumn(img, enemy.BattleFieldLocation.X);
-        //            }
-
-        //            if (enemy.BattleFieldLocation.Y != Grid.GetRow(img))
-        //            {
-        //                Grid.SetRow(img, enemy.BattleFieldLocation.Y);
-        //            }
-        //        }
-        //    }
-        //}
 
         private void UpdateCharacterLocation(int i, Type characterType)
         {
@@ -285,7 +249,7 @@ namespace RuinsOfAlbertrizal
         {
             foreach (int i in attackablePlayers)
             {
-                if (playerTargetImages[i].Tag != null)
+                if (BattleField.ActivePlayers[i] != null)
                 {
                     playerTargetImages[i].Visibility = Visibility.Visible;
                     Animate("targetFadeIn", playerTargetImages[i]);
@@ -294,7 +258,7 @@ namespace RuinsOfAlbertrizal
 
             foreach (int i in attackableEnemies)
             {
-                if (enemyTargetImages[i].Tag != null)
+                if (BattleField.ActiveEnemies[i] != null)
                 {
                     enemyTargetImages[i].Visibility = Visibility.Visible;
                     Animate("targetFadeIn", enemyTargetImages[i]); 
@@ -328,7 +292,7 @@ namespace RuinsOfAlbertrizal
             }
         }
 
-        private void InitialAnimation()
+        private async void InitialAnimation()
         {
             //Animate("overlaySlideRight", OverlayPanel1);
             //Animate("overlaySlideLeft", OverlayPanel2);
@@ -338,14 +302,16 @@ namespace RuinsOfAlbertrizal
 
             foreach (Image image in playerImages)
             {
+                await MiscMethods.TaskDelay(50);
                 Animate("playerSlideIn", image);
-                Thread.Sleep(50);
+                image.Visibility = Visibility.Visible;
             }
 
             foreach (Image image in enemyImages)
             {
+                await MiscMethods.TaskDelay(50);
                 Animate("enemySlideIn", image);
-                Thread.Sleep(50);
+                image.Visibility = Visibility.Visible;
             }
         }
 
@@ -359,11 +325,9 @@ namespace RuinsOfAlbertrizal
                 DoCharge(btn, BattleField.SelectedPlayer, BattleField.SelectedAttack);
             else if (BattleField.SelectedTarget != null)
                 DoAttack(btn, BattleField.SelectedPlayer, BattleField.SelectedTarget, BattleField.SelectedAttack);
-            else if (BattleField.SelectedSide != null)
-                DoAttack(btn, BattleField.SelectedPlayer, BattleField.SelectedSide, BattleField.SelectedAttack);
         }
 
-        private void AttackSelector_SelectionChanged(object sender, RoutedEventArgs e)
+        private void AttackSelector_MouseUp(object sender, RoutedEventArgs e)
         {
             ListBox listBox = (ListBox)sender;
 
@@ -411,7 +375,8 @@ namespace RuinsOfAlbertrizal
                 }
                 catch (InvalidCastException)
                 {
-                    BattleField.SelectedSide = (List<Character>)img.Tag;
+                    //BattleField.SelectedSide = (List<Character>)img.Tag;
+                    throw;
                 }
 
                 Animate("targetConfirm", img);
@@ -453,17 +418,17 @@ namespace RuinsOfAlbertrizal
             BattleField.SelectedAttack = null;
         }
 
-        private void DoAttack(Button attackBtn, Player selectedPlayer, List<Character> targets, Attack selectedAttack)
-        {
-            //Hide panel
-            AttackPanel.Visibility = Visibility.Collapsed;
-            attackBtn.Content = "Select Attack";
+        //private void DoAttack(Button attackBtn, Player selectedPlayer, List<Character> targets, Attack selectedAttack)
+        //{
+        //    //Hide panel
+        //    AttackPanel.Visibility = Visibility.Collapsed;
+        //    attackBtn.Content = "Select Attack";
 
-            selectedPlayer.Attack(selectedAttack, targets);
+        //    selectedPlayer.Attack(selectedAttack, targets);
 
-            ToggleTargets(selectedPlayer, selectedAttack, true);
-            BattleField.SelectedAttack = null;
-        }
+        //    ToggleTargets(selectedPlayer, selectedAttack, true);
+        //    BattleField.SelectedAttack = null;
+        //}
 
         private void DoCharge(Button attackBtn, Player selectedPlayer, Attack selectedAttack)
         {
@@ -489,7 +454,20 @@ namespace RuinsOfAlbertrizal
 
         private void EndTurn_Click(object sender, RoutedEventArgs e)
         {
-            BattleField.EndCharacterTurn(BattleField.SelectedPlayer);
+            Player player = BattleField.SelectedPlayer;
+            if (player.TurnsPassed < GameBase.NumTurns - 1)
+            {
+                BattleField.EndCharacterTurn(player);
+            }
+            else
+            {
+                BattleField.EndCharacterRound(player);
+            }
+        }
+
+        private void Move_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void ViewStats(object sender, RoutedEventArgs e)
@@ -511,42 +489,39 @@ namespace RuinsOfAlbertrizal
             Navigate("[back]");
         }
 
-        private void BasePage_Loaded(object sender, RoutedEventArgs e)
+        public void NotifyAttackBegin(Attack attack, Character attacker, Character target, bool charging)
         {
-            BattleField.SetTimer();
-        }
-
-        public void NotifyAttackBegin(Attack attack, Character attacker, bool charging)
-        {
-            //Do animation
-
             Dispatcher.Invoke(() =>
             {
                 if (attacker.GetType() == typeof(Player))
                 {
-                    foreach (Image img in playerImages)
+                    int index = Array.IndexOf(BattleField.ActivePlayers, (Player)attacker);
+                    if (index != -1)
                     {
-                        if (img.Tag != null && img.Tag.Equals(attacker))
+                        if (charging)
+                            Animate("chargeAttack", playerImages[index]);
+                        else
                         {
-                            if (charging)
-                                Animate("chargeAttack", img);
+                            if (attacker.BattleFieldLocation.X < target.BattleFieldLocation.X)
+                                Animate("simpleAttackRight", playerImages[index]);
                             else
-                                Animate("simpleAttackRight", img);
-                            return;
+                                Animate("simpleAttackLeft", playerImages[index]);
                         }
                     }
                 }
                 else
                 {
-                    foreach (Image img in enemyImages)
+                    int index = Array.IndexOf(BattleField.ActiveEnemies, (Enemy)attacker);
+                    if (index != -1)
                     {
-                        if (img.Tag != null && img.Tag.Equals(attacker))
+                        if (charging)
+                            Animate("chargeAttack", enemyImages[index]);
+                        else
                         {
-                            if (charging)
-                                Animate("chargeAttack", img);
+                            if (attacker.BattleFieldLocation.X < target.BattleFieldLocation.X)
+                                Animate("simpleAttackRight", enemyImages[index]);
                             else
-                                Animate("simpleAttackLeft", img);
-                            return;
+                                Animate("simpleAttackLeft", enemyImages[index]);
                         }
                     }
                 }
@@ -561,6 +536,48 @@ namespace RuinsOfAlbertrizal
                 ForceItemsControlUpdate(playerSnapshot);
                 ForceItemsControlUpdate(enemySnapshot);
                 ForceItemsControlUpdate(DetailedStatsList);
+            });
+        }
+
+        public async void NotifyMovement(Character character, System.Drawing.Point oldLocation)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                DoubleAnimation animationX = new DoubleAnimation((character.BattleFieldLocation.X - oldLocation.X) * BattleFieldGridColumnWidth, TimeSpan.FromSeconds(2));
+                DoubleAnimation animationY = new DoubleAnimation((character.BattleFieldLocation.Y - oldLocation.Y) * BattleFieldGridRowHeight, TimeSpan.FromSeconds(2));
+
+                if (character.GetType() == typeof(Player))
+                {
+                    int index = Array.IndexOf(BattleField.ActivePlayers, (Player)character);
+                    playerImages[index].BeginAnimation(TranslateTransform.XProperty, animationX);
+                    playerImages[index].BeginAnimation(TranslateTransform.YProperty, animationY);
+                    //playerImages[index].RenderTransform = new TranslateTransform(0, 0);
+                }
+                else
+                {
+                    int index = Array.IndexOf(BattleField.ActiveEnemies, (Enemy)character);
+                    enemyImages[index].BeginAnimation(TranslateTransform.XProperty, animationX);
+                    enemyImages[index].BeginAnimation(TranslateTransform.YProperty, animationY);
+                    //enemyImages[index].RenderTransform = new TranslateTransform(0, 0);
+                }
+            });
+
+            await MiscMethods.TaskDelay(2000);
+
+            Dispatcher.Invoke(() =>
+            {
+                if (character.GetType() == typeof(Player))
+                {
+                    int index = Array.IndexOf(BattleField.ActivePlayers, (Player)character);
+                    UpdatePlayerLocation(index);
+                    //playerImages[index].RenderTransform = new TranslateTransform(0, 0);
+                }
+                else
+                {
+                    int index = Array.IndexOf(BattleField.ActiveEnemies, (Enemy)character);
+                    UpdateEnemyLocation(index);
+                    //enemyImages[index].RenderTransform = new TranslateTransform(0, 0);
+                }
             });
         }
 

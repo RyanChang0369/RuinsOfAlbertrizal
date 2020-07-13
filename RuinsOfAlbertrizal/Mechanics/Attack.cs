@@ -3,6 +3,7 @@ using RuinsOfAlbertrizal.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,6 +90,16 @@ namespace RuinsOfAlbertrizal.Mechanics
             return CoolDown <= TurnsSinceBeginCharge;
         }
 
+        public bool WithinRange(Character attacker, Character target)
+        {
+            return Range >= MiscMethods.DistanceFormula(attacker.BattleFieldLocation, target.BattleFieldLocation);
+        }
+
+        public bool WithinSplashDamage(Point damagePoint, Character target)
+        {
+            return RadiusOfEffect >= MiscMethods.DistanceFormula(damagePoint, target.BattleFieldLocation);
+        }
+
         /// <summary>
         /// Returns true if the attack can be used by the provided character (has enough mana, etc).
         /// </summary>
@@ -142,7 +153,7 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         /// <param name="target">The character whose CurrentStats will be evaluated
         /// to determine the stat gain from PercentStatGain</param>
-        /// <param name="statIndex">The index of the stat to evaluate</param>
+        /// <param name="stat">The stat to evaluate</param>
         /// <returns></returns>
         public int GetLifetimeStatLoss(Character target, GameBase.Stats stat)
         {
@@ -158,6 +169,24 @@ namespace RuinsOfAlbertrizal.Mechanics
 
             return total;
         }
+
+        //public int GetLifetimeStatLoss<T>(T[] targets, GameBase.Stats stat) where T : Chara
+        //{
+        //    int total = 0;
+        //    int statIndex = (int)stat;
+
+        //    total += StatLoss[statIndex];
+
+        //    foreach (Buff buff in Buffs)
+        //    {
+        //        foreach (T target in targets)
+        //        {
+        //            total -= buff.GetLifetimeStatGain(target, stat); 
+        //        }
+        //    }
+
+        //    return total;
+        //}
 
         ///// <summary>
         ///// Starts the attack
@@ -294,9 +323,12 @@ namespace RuinsOfAlbertrizal.Mechanics
             return targetIndexes;
         }
 
-        public bool CanTargetCharacter(Character attacker, Character target)
+        public bool CanTargetCharacter(Character attacker, Character target, bool ignoreRange = false)
         {
             if (target == null || attacker == null || attacker.IsDead)
+                return false;
+
+            if (!ignoreRange && !WithinRange(attacker, target))
                 return false;
 
             if (target.IsDead)
@@ -374,22 +406,66 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// </summary>
         public static Attack FindStrongestAttack(Character attacker, Character target, GameBase.Stats stat)
         {
-            return FindStrongestAttack(attacker, target, stat, attacker.AllAttacks);
+            return FindStrongestAttack(attacker, target, stat, attacker.AllAttacks, false);
         }
 
         /// <summary>
-        /// Finds most damaging attack that the attacker can use from a list of provided attacks, or returns null if no such attack can be found.
+        /// Finds most damaging attack that the attacker can use from a list of provided attacks, or returns null if no such attack can be found. This method does not consider splash damage.
         /// </summary>
-        public static Attack FindStrongestAttack(Character attacker, Character target, GameBase.Stats stat, List<Attack> attacks)
+        /// <param name="attacker">The character doing the attack.</param>
+        /// <param name="target">The target of the attack.</param>
+        /// <param name="stat">The stat to evaluate when determining the strongest attack.</param>
+        /// <param name="attacks">The list of attacks to choose from.</param>
+        /// <returns></returns>
+        public static Attack FindStrongestAttack(Character attacker, Character target, GameBase.Stats stat, List<Attack> attacks, bool ignoreRange)
         {
             Attack strongestAttack = null;
-            int strongestStat = 0;
+            int strongestStat = int.MinValue;
 
             foreach (Attack attack in attacks)
             {
-                if (!attack.IsCooledDown() || !attack.CanTargetCharacter(attacker, target))
+                if (!attack.IsCooledDown() || !attack.CanTargetCharacter(attacker, target, ignoreRange))
                     continue;
                 else if (attack.GetLifetimeStatLoss(target, stat) > strongestStat)
+                {
+                    strongestAttack = attack;
+                    strongestStat = strongestAttack.GetLifetimeStatLoss(target, stat);
+                }
+            }
+
+            return strongestAttack;
+        }
+
+        /// <summary>
+        /// Finds most damaging attack that the attacker can use from a list of provided attacks, or returns null if no such attack can be found. This method considers splash damage.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="attacker">The character doing the attack.</param>
+        /// <param name="target">The main target of the attack.</param>
+        /// <param name="targets">All targets including main target.</param>
+        /// <param name="stat">The stat to evaluate when determining the strongest attack.</param>
+        /// <param name="attacks">The list of attacks to choose from.</param>
+        /// <returns></returns>
+        public static Attack FindStrongestAttack<T>(Character attacker, Character target, T[] targets, GameBase.Stats stat, List<Attack> attacks, bool ignoreRange) where T : Character
+        {
+            Attack strongestAttack = null;
+            int strongestStat = int.MinValue;
+
+
+            foreach (Attack attack in attacks)
+            {
+                if (!attack.IsCooledDown() || !attack.CanTargetCharacter(attacker, target, ignoreRange))
+                    continue;
+
+                int possTargets = 0;
+
+                foreach (T bystander in targets)
+                {
+                    if (attack.WithinSplashDamage(target.BattleFieldLocation, target))
+                        possTargets++;
+                }
+
+                if (attack.GetLifetimeStatLoss(target, stat) * possTargets > strongestStat)
                 {
                     strongestAttack = attack;
                     strongestStat = strongestAttack.GetLifetimeStatLoss(target, stat);

@@ -6,6 +6,7 @@ using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Timers;
@@ -61,8 +62,8 @@ namespace RuinsOfAlbertrizal.Environment
         [XmlIgnore]
         public Character SelectedTarget { get; set; }
 
-        [XmlIgnore]
-        public List<Character> SelectedSide { get; set; }
+        //[XmlIgnore]
+        //public List<Character> SelectedSide { get; set; }
 
         [XmlIgnore]
         public List<Enemy> AliveEnemies
@@ -538,9 +539,9 @@ namespace RuinsOfAlbertrizal.Environment
             Console.WriteLine(ElaspedTime);
 
             if (character.GetType() == typeof(Player))
-                PlayerTurn((Player)character);
+                NewPlayerTurn((Player)character);
             else
-                EnemyTurn((Enemy)character);
+                NewEnemyTurn((Enemy)character);
         }
 
         public void StartCharacterTurn(Character character)
@@ -567,7 +568,25 @@ namespace RuinsOfAlbertrizal.Environment
             RoundKeeper.TurnEnd(this);
         }
 
-        private async void EnemyTurn(Enemy enemy)
+        /// <summary>
+        /// Ends character's turn and starts another turn if character still has turns left.
+        /// </summary>
+        /// <param name="character"></param>
+        public void NewTurn(Character character)
+        {
+            EndCharacterTurn(character);
+
+            if (character.GetType() == typeof(Player))
+            {
+                NewPlayerTurn((Player)character);
+            }
+            else
+            {
+                NewEnemyTurn((Enemy)character);
+            }
+        }
+
+        private async void NewEnemyTurn(Enemy enemy)
         {
             if (TurnNum < GameBase.NumTurns)
             {
@@ -581,7 +600,7 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
-        private void PlayerTurn(Player player)
+        private void NewPlayerTurn(Player player)
         {
             SelectedPlayerIndex = Array.IndexOf(ActivePlayers, player);
 
@@ -632,7 +651,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="attack">The selected attack</param>
         /// <param name="attacker">The character doing the attack</param>
         /// <param name="charging">True if the attack is being charged</param>
-        public void NotifyAttackBegin(Attack attack, Character attacker, bool charging)
+        public void NotifyAttackBegin(Attack attack, Character attacker, Character target, bool charging)
         {
             if (charging)
             {
@@ -641,22 +660,40 @@ namespace RuinsOfAlbertrizal.Environment
             else
             {
                 StoredMessage.Add($"{attacker.DisplayName} attacked with {attack.DisplayName}!");
+                attacker.TurnsSinceLastAttack = 0;
             }
 
-            BattleInterface.NotifyAttackBegin(attack, attacker, charging);
+            BattleInterface.NotifyAttackBegin(attack, attacker, target, charging);
 
-            EndCharacterTurn(attacker);
-
-            if (attacker.GetType() == typeof(Player))
-                PlayerTurn((Player)attacker);
-            else
-                EnemyTurn((Enemy)attacker);
+            NewTurn(attacker);
         }
 
         public void NotifyAttackHit(Attack attack, Character target)
         {
             StoredMessage.Add($"{target.DisplayName} received {attack.StatLoss[0]} points of damage!");
             BattleInterface.NotifyAttackHit(attack, target);
+        }
+
+        public async void NotifyMovement(Character character, Point oldLocation)
+        {
+            BattleInterface.NotifyMovement(character, oldLocation);
+            await MiscMethods.TaskDelay(2000);
+            if (character.MovementPoints == 0)
+            {
+                NewTurn(character);
+            }
+        }
+
+        /// <summary>
+        /// Same as NotifyMovement, but this will always end the character's turn.
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="oldLocation"></param>
+        public async void FinalizeMovement(Character character, Point oldLocation)
+        {
+            BattleInterface.NotifyMovement(character, oldLocation);
+            await MiscMethods.TaskDelay(2000);
+            NewTurn(character);
         }
 
         public void NotifyItemUsed(Item item, Character user)
@@ -683,6 +720,35 @@ namespace RuinsOfAlbertrizal.Environment
             }
 
             BattleInterface.NotifyPlayerLost();
+        }
+
+        public static int GetDistance(Point a, Point b)
+        {
+            int count = 0;
+            Point newA = a;
+
+            while (newA.X != b.X && newA.Y != b.Y)
+            {
+                if (newA.X > b.X)
+                {
+                    newA.X--;
+                }
+                else if (newA.X < b.Y)
+                {
+                    newA.X++;
+                }
+                else if (newA.Y > b.Y)
+                {
+                    newA.Y--;
+                }
+                else
+                {
+                    newA.Y++;
+                }
+                count++;
+            }
+
+            return count;
         }
     }
 }

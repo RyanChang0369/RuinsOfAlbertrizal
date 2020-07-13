@@ -23,6 +23,8 @@
       <Name>Jerry</Name>
       <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
       <WorldImgLocation>..\Player\Jerry_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -104,6 +106,8 @@
       <Name>Shotgun Slime</Name>
       <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
       <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -205,6 +209,8 @@
       <Description>A fairly common sight around here. Not much of a threat unless it has a shotgun.</Description>
       <IconLocation>..\Enemy\Green Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Green Slime_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -305,7 +311,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <Range>0</Range>
+          <Range>1</Range>
           <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
@@ -327,6 +333,8 @@
       <Description>Knows a bit about magic.</Description>
       <IconLocation>..\Enemy\Blue Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Blue Slime_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -427,7 +435,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <Range>0</Range>
+          <Range>1</Range>
           <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
@@ -449,6 +457,8 @@
       <Description>Arguably the most aggressive of all the slimes.</Description>
       <IconLocation>..\Enemy\Red Slime_icon.png</IconLocation>
       <WorldImgLocation>..\Enemy\Red Slime_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
       <MapLocation>
         <X>0</X>
         <Y>0</Y>
@@ -549,7 +559,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <Range>0</Range>
+          <Range>1</Range>
           <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
@@ -589,7 +599,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <Range>0</Range>
+          <Range>1</Range>
           <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>
@@ -1085,7 +1095,7 @@
           <TurnSinceAttacked>0</TurnSinceAttacked>
           <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
           <IgnoresArmor>false</IgnoresArmor>
-          <Range>0</Range>
+          <Range>1</Range>
           <RadiusOfEffect>0</RadiusOfEffect>
           <TypeOfTarget>EnemiesOnly</TypeOfTarget>
         </Attack>

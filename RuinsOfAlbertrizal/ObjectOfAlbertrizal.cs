@@ -112,5 +112,10 @@ namespace RuinsOfAlbertrizal
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
+        public virtual void Initialize()
+        {
+
+        }
     }
 }

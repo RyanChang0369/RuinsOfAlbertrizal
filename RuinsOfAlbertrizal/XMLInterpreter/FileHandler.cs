@@ -143,7 +143,9 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             {
                 try
                 {
-                    return (Map)serializer.Deserialize(fs);
+                    Map map = (Map)serializer.Deserialize(fs);
+                    map.Initialize();
+                    return map;
                 }
                 catch (InvalidOperationException e)
                 {

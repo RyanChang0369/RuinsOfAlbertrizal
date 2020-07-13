@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -183,9 +184,9 @@ namespace RuinsOfAlbertrizal.AIs
             //Else consume the item if it is not null
             else if (selectedConsumable != null)
                 user.Consume(selectedConsumable);
-            //Else recover
+            //Else return
             else
-                user.RecoverMana();
+                return;
         }
 
         public static void AIStyle_Berserk(Enemy attacker, Player[] activePlayers)
@@ -203,25 +204,27 @@ namespace RuinsOfAlbertrizal.AIs
 
             Attack attack;
 
-            if (attacker.GetMultiTargetAttacks().Count < 1)
+            List<Attack> multiTargetAttacks = attacker.GetMultiTargetAttacks(activePlayers);
+
+            if (multiTargetAttacks.Count < 1)
             {
                 //Attacker does not multitarget attacks
                 attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP);
             }
-            else if (fateSelector < 0.5 && target.PercentStats[0] < 0.35)
+            else if (fateSelector < 0.85 && target.PercentStats[0] < 0.35)
             {
-                //50% chance that the enemy will use the strongest multitargeting attack instead of the strongest single attack
+                //85% chance that the enemy will use the strongest multitargeting attack instead of the strongest single attack
                 //if target is below 35% health
 
-                attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP,
-                    attacker.GetMultiTargetAttacks());
+                attack = Attack.FindStrongestAttack(attacker, target, activePlayers, GameBase.Stats.HP,
+                    multiTargetAttacks, false);
             }
             else if (fateSelector < 0.1)
             {
                 //10% chance that the enemy will use the strongest multitargeting attack anyways
 
-                attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP,
-                    attacker.GetMultiTargetAttacks());
+                attack = Attack.FindStrongestAttack(attacker, target, activePlayers, GameBase.Stats.HP,
+                    multiTargetAttacks, false);
             }
             else
             {
@@ -231,7 +234,10 @@ namespace RuinsOfAlbertrizal.AIs
 
             if (attack == null)
             {
-
+                //No attacks in range. Move closer.
+                attack = Attack.FindStrongestAttack(attacker, target, GameBase.Stats.HP, attacker.AllAttacks, true);
+                PathFind(attacker, target, attack.Range);
+                return;
             }
 
             try
@@ -248,8 +254,8 @@ namespace RuinsOfAlbertrizal.AIs
         {
             if (attacker.PercentStats[0] < 0.4)
                 UseItem(attacker, GameBase.Stats.HP);
-            else
-                AIStyle_Berserk(attacker, activePlayers);
+            
+            AIStyle_Berserk(attacker, activePlayers);
         }
 
         public static void AIStyle_Timid(Enemy attacker, Player[] activePlayers)
@@ -264,8 +270,57 @@ namespace RuinsOfAlbertrizal.AIs
                 UseItem(attacker, GameBase.Stats.Int);
             else if (attacker.PercentStats[3] < 0.25)
                 UseItem(attacker, GameBase.Stats.Dmg);
-            else
-                AIStyle_Berserk(attacker, activePlayers);
+
+            //Find low and high bounds of range
+            int lowBound = int.MaxValue, highBound = 0;
+
+            foreach (Attack attack in attacker.AllAttacks)
+            {
+                if (attack.Range < lowBound)
+                    lowBound = attack.Range;
+                else if (attack.Range > highBound)
+                    highBound = attack.Range;
+            }
+
+            List<Player> playersWithinRange = new List<Player>();
+                
+            foreach (Player player in activePlayers)
+            {
+                if (attacker.DirectDistanceFrom(player) <= highBound && attacker.DirectDistanceFrom(player) >= lowBound)
+                {
+                    playersWithinRange.Add(player);
+                }
+            }
+
+            if (playersWithinRange.Count < 1)
+            {
+                //No players within range.
+                playersWithinRange = activePlayers.ToList();
+            }
+
+            if (attacker.PercentStats[0] < 0.6)
+            {
+                //If health under 60%, try to back off and attack with longest ranged attack
+
+                //Find closest player and select that as target
+                Player target = activePlayers[0];
+                double minDistance = double.PositiveInfinity;
+
+                foreach (Player player in playersWithinRange)
+                {
+                    if (player == null)
+                        continue;
+
+                    double distance = target.DirectDistanceFrom(player);
+                    if (minDistance < distance)
+                    {
+                        target = player;
+                        minDistance = distance;
+                    }
+                }
+            }
+
+            AIStyle_Berserk(attacker, playersWithinRange.ToArray());
         }
 
         public static void AIStyle_Healer(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
@@ -298,10 +353,50 @@ namespace RuinsOfAlbertrizal.AIs
                 }
 
                 Attack attack = Attack.FindBestHealingAttack(attacker, mostWounded, GameBase.Stats.HP);
-                attacker.Attack(attack, mostWounded);
+
+                if (attack != null)
+                    attacker.Attack(attack, mostWounded);
+                else
+                    AIStyle_Timid(attacker, activePlayers);
             }
             else
                 AIStyle_Timid(attacker, activePlayers);
+        }
+
+        public static void PathFind(Enemy attacker, Character target, int range)
+        {
+            int spacesLeft = attacker.CurrentStats[4];
+            Point attackerPoint = attacker.BattleFieldLocation;
+            Point oldLocation = attackerPoint;
+            Point targetPoint = target.BattleFieldLocation;
+
+            while (MiscMethods.DistanceFormula(attackerPoint, targetPoint) > range && spacesLeft > 0)
+            {
+                if (attackerPoint.X > targetPoint.X)
+                {
+                    //Attacker is right of target. Move left.
+                    attackerPoint.X--;
+                }
+                else if (attackerPoint.X < targetPoint.Y)
+                {
+                    //Attacker is left of target. Move right.
+                    attackerPoint.X++;
+                }
+                else if (attackerPoint.Y > targetPoint.Y)
+                {
+                    //Attacker is above of target. Move down.
+                    attackerPoint.Y--;
+                }
+                else
+                {
+                    //Attacker is below of target. Move up.
+                    attackerPoint.Y++;
+                }
+                spacesLeft--;
+            }
+
+            attacker.BattleFieldLocation = attackerPoint;
+            GameBase.CurrentGame.CurrentBattleField.FinalizeMovement(attacker, oldLocation);
         }
     }
 }

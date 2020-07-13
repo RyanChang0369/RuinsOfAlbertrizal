@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:RuinsOfAlbertrizal"
       mc:Ignorable="d" 
       d:DesignHeight="1000" d:DesignWidth="1600"
-      Title="BattleInterface" Loaded="BasePage_Loaded">
+      Title="BattleInterface" Loaded="BattleInterface_Loaded">
 
     <Page.Resources>
         <Storyboard x:Key="overlaySlideRight">
@@ -91,12 +91,16 @@
         </Storyboard>
 
         <DataTemplate x:Key="attackDataTemplate">
-            <StackPanel Style="{StaticResource inventoryStackPanel}">
+            <Grid Style="{StaticResource itemsControlGrid}">
                 <Label Content="{Binding Path=DisplayName}"/>
-                <Image Visibility="{Binding Path=MultiTarget, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Multi-Target"/>
-                <Image Visibility="{Binding Path=IgnoresArmor, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Ignores Armor"/>
-                <Image Visibility="{Binding Path=HasBuffs, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Click to view buffs" MouseUp="BuffIcon_MouseUp" Tag="Buffs"/>
-            </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Content="{Binding Path=RadiusOfEffect}" ToolTip="Radius of Effect"/>
+                    <Label Content="{Binding Path=Range}" ToolTip="Range"/>
+                    <Image Visibility="{Binding Path=IgnoresArmor, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Ignores Armor"/>
+                    <Image Visibility="{Binding Path=HasBuffs, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Click to view buffs" MouseUp="BuffIcon_MouseUp" Tag="{Binding Path=Buffs}"/>
+                </StackPanel>
+            </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="statsSnapshotTemplate">
@@ -206,6 +210,7 @@
             <EventSetter Event="MouseUp" Handler="TargetImage_MouseUp"/>
             <Setter Property="Grid.Column" Value="{Binding Path=BattleFieldLocation.X}"/>
             <Setter Property="Grid.Row" Value="{Binding Path=BattleFieldLocation.Y}"/>
+            <Setter Property="Tag" Value="{Binding}"/>
         </Style>
 
         <Style x:Key="characterImgs" TargetType="Image" BasedOn="{StaticResource pixelImg}">
@@ -213,6 +218,8 @@
             <Setter Property="Grid.Column" Value="{Binding Path=BattleFieldLocation.X}"/>
             <Setter Property="Grid.Row" Value="{Binding Path=BattleFieldLocation.Y}"/>
             <Setter Property="Source" Value="{Binding Path=ArmoredImageAsBitmapSource}"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+            <Setter Property="Tag" Value="{Binding}"/>
         </Style>
 
         <Style x:Key="playerImgs" TargetType="Image" BasedOn="{StaticResource characterImgs}">
@@ -290,7 +297,7 @@
                         <ItemsControl x:Name="DetailedStatsList" ItemTemplate="{StaticResource statsDetailedTemplate}" Style="{StaticResource defaultItemsControl}"/>
                     </StackPanel>
                     <StackPanel x:Name="AttackPanel" Background="SlateGray" Visibility="Collapsed">
-                        <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}" SelectionChanged="AttackSelector_SelectionChanged" Style="{StaticResource defaultItemsControl}"/>
+                        <ListBox x:Name="AttackSelector" ItemsSource="{Binding Path=SelectedPlayer.AllAttacks, UpdateSourceTrigger=Explicit}" ItemTemplate="{StaticResource attackDataTemplate}" MouseUp="AttackSelector_MouseUp" Style="{StaticResource defaultItemsControl}"/>
                     </StackPanel>
                     
                 </Grid>
@@ -299,6 +306,7 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button x:Name="AttackBtn" Content="Select Attack" Click="Attack_Click" Style="{StaticResource buttonMedium}"/>
                             <Button Content="End Turn" Click="EndTurn_Click" Style="{StaticResource buttonMedium}"/>
+                            <Button Content="Move" Click="Move_Click"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <Button Content="Inventory" Click="Inventory_Click" Style="{StaticResource buttonMedium}"/>

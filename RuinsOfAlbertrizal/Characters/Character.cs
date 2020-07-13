@@ -8,12 +8,17 @@ using System.ComponentModel;
 using System.Linq;
 using System.Xml.Serialization;
 using System.Drawing;
+using RuinsOfAlbertrizal.Environment;
+using System.Xaml.Schema;
 
 namespace RuinsOfAlbertrizal.Characters
 {
 
     public abstract class Character : CharacterMapBasedObject, IRoundBasedObject, INotifyPropertyChanged
     {
+        public int MovementPoints { get; set; }
+
+        public int TurnsSinceLastAttack { get; set; }
 
         public const int MaxTurns = 2;
 
@@ -561,21 +566,21 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        public void Attack(Attack attack, List<Character> targets)
-        {
-            try
-            {
-                attack.BeginAttack(this, targets);
-            }
-            catch (NotEnoughManaException e)
-            {
-                throw e;
-            }
-            catch (CannotTargetException e)
-            {
-                throw e;
-            }
-        }
+        //public void Attack(Attack attack, List<Character> targets)
+        //{
+        //    try
+        //    {
+        //        attack.BeginAttack(this, targets);
+        //    }
+        //    catch (NotEnoughManaException e)
+        //    {
+        //        throw e;
+        //    }
+        //    catch (CannotTargetException e)
+        //    {
+        //        throw e;
+        //    }
+        //}
 
         public void Charge(Attack attack)
         {
@@ -593,19 +598,36 @@ namespace RuinsOfAlbertrizal.Characters
 
             try
             {
-                AttackToCharge.BeginAttack(this, CharacterTargetedByCharge, false);
+                AttackToCharge.Charge(this);
             }
             catch (ArgumentException)
             {
                 throw;
             }
-            GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
         }
 
         public void RecoverMana()
         {
             AppliedStats[1] += (int)Math.Round(LeveledStats[1] * 0.3);
-            GameBase.CurrentGame.CurrentBattleField.EndCharacterTurn(this);
+            GameBase.CurrentGame.CurrentBattleField.NewTurn(this);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newLocation"></param>
+        public void MoveOnBattleField(Point newLocation)
+        {
+            int distance = BattleField.GetDistance(BattleFieldLocation, newLocation);
+            
+            if (distance <= MovementPoints)
+            {
+                BattleFieldLocation = newLocation;
+            }
+            else
+            {
+
+            }            
         }
 
         /// <summary>
@@ -659,11 +681,14 @@ namespace RuinsOfAlbertrizal.Characters
         public void EndTurn()
         {
             CheckIfDead();
+            TurnsPassed++;
+            TurnsSinceLastAttack++;
         }
 
         public void StartTurn()
         {
             CheckIfDead();
+            MovementPoints = CurrentStats[4];
         }
 
         public void StartRound()
@@ -709,7 +734,13 @@ namespace RuinsOfAlbertrizal.Characters
             GameBase.CurrentGame.CurrentBattleField.NotifyAttackHit(attack, this);
         }
 
-        public List<Attack> GetMultiTargetAttacks()
+        /// <summary>
+        /// Gets all multitarget attacks
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="characters"></param>
+        /// <returns></returns>
+        public List<Attack> GetMultiTargetAttacks<T>(T[] characters) where T : Character
         {
             List<Attack> multiTargetAttacks = new List<Attack>();
 
@@ -722,6 +753,16 @@ namespace RuinsOfAlbertrizal.Characters
             }
 
             return multiTargetAttacks;
+        }
+
+        /// <summary>
+        /// Gives the distance between two characters by the crow flies.
+        /// </summary>
+        /// <param name="character"></param>
+        /// <returns></returns>
+        public double DirectDistanceFrom(Character character)
+        {
+            return MiscMethods.DistanceFormula(BattleFieldLocation, character.BattleFieldLocation);
         }
     }
 }

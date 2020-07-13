@@ -219,6 +219,19 @@ namespace RuinsOfAlbertrizal.Environment
             PlayerEquiptments = new List<Equiptment>();
         }
 
+        //public override void Initialize()
+        //{
+        //    foreach (Player player in Players)
+        //    {
+        //        player.Initialize();
+        //    }
+
+        //    foreach (Enemy enemy in StoredEnemies)
+        //    {
+        //        enemy.Initialize();
+        //    }
+        //}
+
         public void RefreshAllLevels()
         {
             foreach (Level level in Levels)

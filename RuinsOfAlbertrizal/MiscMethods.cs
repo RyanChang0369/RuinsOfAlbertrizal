@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
@@ -117,6 +118,19 @@ namespace RuinsOfAlbertrizal
             serializer.Serialize(memoryStream, thing);
             memoryStream.Seek(0, SeekOrigin.Begin);
             return (T)serializer.Deserialize(memoryStream);
+        }
+
+        public static double DistanceFormula(System.Drawing.Point a, System.Drawing.Point b)
+        {
+            return Math.Sqrt(
+                Math.Pow(a.X - b.X, 2) +
+                Math.Pow(a.Y - b.Y, 2));
+        }
+
+        public static void SetGridPoint(this UIElement element, System.Drawing.Point point)
+        {
+            Grid.SetColumn(element, point.X);
+            Grid.SetRow(element, point.Y);
         }
     }
 }
