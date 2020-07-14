@@ -546,20 +546,41 @@ namespace RuinsOfAlbertrizal
                 DoubleAnimation animationX = new DoubleAnimation((character.BattleFieldLocation.X - oldLocation.X) * BattleFieldGridColumnWidth, TimeSpan.FromSeconds(2));
                 DoubleAnimation animationY = new DoubleAnimation((character.BattleFieldLocation.Y - oldLocation.Y) * BattleFieldGridRowHeight, TimeSpan.FromSeconds(2));
 
+                Storyboard.SetTargetProperty(animationX, new PropertyPath(TranslateTransform.XProperty));
+                Storyboard.SetTargetProperty(animationY, new PropertyPath(TranslateTransform.YProperty));
+
+                Storyboard storyboard = new Storyboard();
+                Image img;
+                TransformGroup transformGroup = new TransformGroup();
+                TranslateTransform translate = new TranslateTransform(0, 0);
+                string translationName = $"translation{translate.GetHashCode()}";
+                transformGroup.Children.Add(translate);
+
                 if (character.GetType() == typeof(Player))
                 {
                     int index = Array.IndexOf(BattleField.ActivePlayers, (Player)character);
-                    playerImages[index].BeginAnimation(TranslateTransform.XProperty, animationX);
-                    playerImages[index].BeginAnimation(TranslateTransform.YProperty, animationY);
+                    img = playerImages[index];
+                    //playerImages[index].BeginAnimation(TranslateTransform.XProperty, animationX);
+                    //playerImages[index].BeginAnimation(TranslateTransform.YProperty, animationY);
                     //playerImages[index].RenderTransform = new TranslateTransform(0, 0);
                 }
                 else
                 {
                     int index = Array.IndexOf(BattleField.ActiveEnemies, (Enemy)character);
-                    enemyImages[index].BeginAnimation(TranslateTransform.XProperty, animationX);
-                    enemyImages[index].BeginAnimation(TranslateTransform.YProperty, animationY);
+                    img = enemyImages[index];
+                    transformGroup.Children.Add(new ScaleTransform(-1, 1));
+                    //enemyImages[index].BeginAnimation(TranslateTransform.XProperty, animationX);
+                    //enemyImages[index].BeginAnimation(TranslateTransform.YProperty, animationY);
                     //enemyImages[index].RenderTransform = new TranslateTransform(0, 0);
                 }
+
+                img.RenderTransform = transformGroup;
+                Storyboard.SetTargetName(img, translationName);
+                storyboard.Children.Add(animationX);
+                storyboard.Children.Add(animationY);
+
+                //storyboard.Begin();
+                Animate("characterMove", img);
             });
 
             await MiscMethods.TaskDelay(2000);
