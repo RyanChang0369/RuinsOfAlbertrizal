@@ -204,7 +204,7 @@ namespace RuinsOfAlbertrizal.Editor
         {
             try
             {
-                FileHandler.LoadCustomCampaign();
+                FileHandler.LoadCustomCampaign("map-static.xml");
                 Map = GameBase.StaticGame;
             }
             catch (Exception)

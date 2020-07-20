@@ -99,7 +99,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// Bosses and enemies bound to this level will be refreshed/created based on Guid filtering.
         /// Run this method when you want Bosses or StoredEnemies to be recreated.
         /// </summary>
-        public void RefreshStoredItems()
+        public void RefreshStoredObjects()
         {
             if (!GameBase.Initialized())
                 throw new ArgumentException("Cannot run method if GameBase is not initalized.");

@@ -74,7 +74,7 @@ namespace RuinsOfAlbertrizal.Editor
                 Map.StoredBosses.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Bosses");
             prompt.ShowDialog();
             CreatedLevel.BossGuids = prompt.GetSelected<Boss>().ToGlobalIDList();
-            CreatedLevel.RefreshStoredItems();
+            CreatedLevel.RefreshStoredObjects();
         }
 
         private void AddEnemyBtn_Click(object sender, RoutedEventArgs e)
@@ -82,7 +82,7 @@ namespace RuinsOfAlbertrizal.Editor
             SimpleAdderPrompt simpleAdderPrompt = new SimpleAdderPrompt(CreatedLevel.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), Map.StoredEnemies.Cast<ObjectOfAlbertrizal>().ToList(), "Add/Remove Enemies");
             simpleAdderPrompt.ShowDialog();
             CreatedLevel.StoredEnemyGuids = simpleAdderPrompt.GetSelected<Enemy>().ToGlobalIDList();
-            CreatedLevel.RefreshStoredItems();
+            CreatedLevel.RefreshStoredObjects();
         }
 
         private void AddIntroMessage_Click(object sender, RoutedEventArgs e)

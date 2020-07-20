@@ -235,7 +235,7 @@ namespace RuinsOfAlbertrizal.Environment
         public void RefreshAllLevels()
         {
             foreach (Level level in Levels)
-                level.RefreshStoredItems();
+                level.RefreshStoredObjects();
         }
 
         public void NextLevel()
