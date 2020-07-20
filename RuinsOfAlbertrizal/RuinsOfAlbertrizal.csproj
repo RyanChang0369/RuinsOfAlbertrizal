@@ -61,11 +61,15 @@
       <DependentUpon>AdventureInterface.xaml</DependentUpon>
     </Compile>
     <Compile Include="AIs\AI.cs" />
+    <Compile Include="AIs\Pathfinding.cs" />
     <Compile Include="ArrayMethods.cs" />
     <Compile Include="BasePage.cs" />
     <Compile Include="BaseWindow.cs" />
     <Compile Include="BuffDisplayer.xaml.cs">
       <DependentUpon>BuffDisplayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterImage.xaml.cs">
+      <DependentUpon>CharacterImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="CharacterMapBasedObject.cs" />
     <Compile Include="Characters\Boss.cs" />
@@ -165,11 +169,12 @@
     <Compile Include="Environment\BattleField.cs" />
     <Compile Include="Environment\Block.cs" />
     <Compile Include="Exceptions\CannotTargetException.cs" />
+    <Compile Include="Exceptions\DidNotMoveException.cs" />
     <Compile Include="Exceptions\NotEnoughManaException.cs" />
     <Compile Include="ExploreInterface.xaml.cs">
       <DependentUpon>ExploreInterface.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FloatingInventory.xaml.cs">
+    <Compile Include="Inventory\FloatingInventory.xaml.cs">
       <DependentUpon>FloatingInventory.xaml</DependentUpon>
     </Compile>
     <Compile Include="GameLoader.cs" />
@@ -223,10 +228,10 @@
     <Compile Include="XMLInterpreter\FileHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BattleInterface.xaml.cs">
+    <Compile Include="Environment\BattleInterface.xaml.cs">
       <DependentUpon>BattleInterface.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InventoryInterface.xaml.cs">
+    <Compile Include="Inventory\InventoryInterface.xaml.cs">
       <DependentUpon>InventoryInterface.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.xaml.cs">
@@ -273,11 +278,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="BattleInterface.xaml">
+    <Page Include="Environment\BattleInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="BuffDisplayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CharacterImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -365,7 +374,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FloatingInventory.xaml">
+    <Page Include="Inventory\FloatingInventory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -381,7 +390,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InventoryInterface.xaml">
+    <Page Include="Inventory\InventoryInterface.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -408,6 +417,10 @@
     <Page Include="PlayerCreatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

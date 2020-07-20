@@ -293,7 +293,7 @@ namespace RuinsOfAlbertrizal
         {
             Button btn = (Button)sender;
             SelectedPlayer = (Player)btn.Tag;
-            Navigate("InventoryInterface.xaml");
+            Navigate("Inventory/InventoryInterface.xaml");
         }
 
         private void SetActiveBtn_Click(object sender, RoutedEventArgs e)

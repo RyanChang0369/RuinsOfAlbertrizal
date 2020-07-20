@@ -39,7 +39,7 @@ namespace RuinsOfAlbertrizal
         {
             try
             {
-                FileHandler.LoadCustomCampaign();
+                FileHandler.LoadCustomCampaign("map-static.xml");
             }
             catch (ArgumentNullException)
             {
@@ -58,7 +58,7 @@ namespace RuinsOfAlbertrizal
         {
             try
             {
-                FileHandler.LoadCustomCampaign();
+                FileHandler.LoadCustomCampaign("map.xml");
             }
             catch (ArgumentNullException)
             {
@@ -115,11 +115,11 @@ namespace RuinsOfAlbertrizal
                 (currentMap.CurrentLevel.IntroMessage == null || currentMap.CurrentLevel.IntroMessage.IsEmpty()))
                 NavigationService.Navigate(new Uri("ExploreInterface.xaml", UriKind.RelativeOrAbsolute));
             else if (currentMap.IntroMessage == null || currentMap.IntroMessage.IsEmpty())
-                NavigationService.Navigate(new Uri("LevelIntroInterface"), UriKind.RelativeOrAbsolute);
+                NavigationService.Navigate(new Uri("LevelIntroInterface.xaml"), UriKind.RelativeOrAbsolute);
             else if (currentMap.SeenIntroduction && currentMap.CurrentLevel.SeenIntroduction)
                 NavigationService.Navigate(new Uri("ExploreInterface.xaml", UriKind.RelativeOrAbsolute));
             else if (currentMap.SeenIntroduction)
-                NavigationService.Navigate(new Uri("LevelIntroInterface"), UriKind.RelativeOrAbsolute);
+                NavigationService.Navigate(new Uri("LevelIntroInterface.xaml"), UriKind.RelativeOrAbsolute);
             else
                 NavigationService.Navigate(new Uri("IntroInterface.xaml", UriKind.RelativeOrAbsolute));
         }
