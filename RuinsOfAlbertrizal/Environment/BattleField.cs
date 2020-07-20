@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Xml.Serialization;
 
@@ -21,6 +22,12 @@ namespace RuinsOfAlbertrizal.Environment
         public const int BattleFieldHeight = 4;
 
         [XmlIgnore]
+        public int CalculatedX { get; set; }
+
+        [XmlIgnore]
+        public int CalculatedY { get; set; }
+
+        [XmlIgnore]
         public BattleInterface BattleInterface { get; set; }
 
         public Message StoredMessage { get; set; }
@@ -30,7 +37,7 @@ namespace RuinsOfAlbertrizal.Environment
         public int TurnNum { get; set; }
 
         /// <summary>
-        /// Only used for detailed stuff
+        /// Only used for detailed stats
         /// </summary>
         [XmlIgnore]
         public Character SelectedCharacter { get; set; }
@@ -40,6 +47,9 @@ namespace RuinsOfAlbertrizal.Environment
         /// </summary>
         public int SelectedPlayerIndex { get; set; }
 
+        /// <summary>
+        /// The player in ActivePlayers that is having a turn
+        /// </summary>
         [XmlIgnore]
         public Player SelectedPlayer
         {
@@ -674,11 +684,20 @@ namespace RuinsOfAlbertrizal.Environment
             BattleInterface.NotifyAttackHit(attack, target);
         }
 
+        /// <summary>
+        /// Allows for the previewing of movement without actually moving.
+        /// </summary>
+        /// <param name="character"></param>
+        /// <param name="oldLocation"></param>
+        public async void FakeMovement(Character character, Point oldLocation)
+        {
+            await BattleInterface.NotifyMovement(character, oldLocation);
+        }
+
         public async void NotifyMovement(Character character, Point oldLocation)
         {
-            BattleInterface.NotifyMovement(character, oldLocation);
-            await MiscMethods.TaskDelay(2000);
-            if (character.MovementPoints == 0)
+            await BattleInterface.NotifyMovement(character, oldLocation);
+            if (character.MovementPoints <= 0)
             {
                 NewTurn(character);
             }
@@ -691,8 +710,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="oldLocation"></param>
         public async void FinalizeMovement(Character character, Point oldLocation)
         {
-            BattleInterface.NotifyMovement(character, oldLocation);
-            await MiscMethods.TaskDelay(2000);
+            await BattleInterface.NotifyMovement(character, oldLocation);
             NewTurn(character);
         }
 
