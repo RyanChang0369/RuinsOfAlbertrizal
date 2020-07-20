@@ -56,7 +56,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         /// <exception cref="ArgumentNullException"></exception>
         public static void CreateCustomCampaign()
         {
-            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Save, "XAML File|.xml", "map");
+            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Save, "XAML File|.xml", "map-static");
 
             GameBase.NewGame(dialog.GetPath());
         }
@@ -65,14 +65,15 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         /// <summary>
         /// Opens a file dialog to load a custom map (loads current map).
         /// </summary>
+        /// <param name="mapName">The name of the map. Allows for the specification of which map, map-static.xml or map.xml, that will be shown.</param>
         /// <exception cref="IOException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="InvalidOperationException"></exception>
-        public static void LoadCustomCampaign()
+        public static void LoadCustomCampaign(string mapName)
         {
-            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, "XAML File | map.xml");
+            FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, $"XAML File | {mapName}");
 
-            GameBase.CurrentMapLocation = dialog.GetPath();
+            GameBase.CurrentMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map.xml";
             GameBase.StaticMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map-static.xml";
 
             try
