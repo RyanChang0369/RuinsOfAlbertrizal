@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace RuinsOfAlbertrizal
+namespace RuinsOfAlbertrizal.Inventory
 {
     /// <summary>
     /// Interaction logic for FloatingInventory.xaml
