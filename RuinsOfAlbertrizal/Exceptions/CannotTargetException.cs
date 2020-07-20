@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal.Exceptions
 {
-    class CannotTargetException : Exception
+    public class CannotTargetException : Exception
     {
         public CannotTargetException() { }
 
