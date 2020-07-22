@@ -49,7 +49,14 @@ namespace RuinsOfAlbertrizal
 
         public object GetSelected()
         {
-            return GetSelectedRandomEvent().Tag;
+            try
+            {
+                return GetSelectedRandomEvent().Tag;
+            }
+            catch (NullReferenceException)
+            {
+                return null;
+            }
         }
     }
 }
