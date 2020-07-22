@@ -94,57 +94,117 @@ namespace RuinsOfAlbertrizal.AIs
         }
 
 
-        public static void PathFind_AvoidPlayers(Enemy attacker, Character target, List<Player> players, int range)
-        {
-            int spacesLeft = attacker.CurrentStats[4];
-            Point attackerPoint = attacker.BattleFieldLocation;
-            Point oldLocation = attackerPoint;
-            Point targetPoint = target.BattleFieldLocation;
+        //public static void PathFind_AvoidPlayers(Enemy attacker, Character target, List<Player> players, int range)
+        //{
+        //    int spacesLeft = attacker.CurrentStats[4];
+        //    Point attackerPoint = attacker.BattleFieldLocation;
+        //    Point oldLocation = attackerPoint;
+        //    Point targetPoint = target.BattleFieldLocation;
 
-            //Divide BattleField into two parts based on number of players in either side of the field.
-            //The attacker would want to move in the direction with the least amount of players while still being within range of attack
-            List<Player> playersOnLeft = new List<Player>(), playersOnRight = new List<Player>();
+        //    //Divide BattleField into two parts based on number of players in either side of the field.
+        //    //The attacker would want to move in the direction with the least amount of players while still being within range of attack
+        //    List<Player> playersOnLeft = new List<Player>(), playersOnRight = new List<Player>();
 
-            foreach (Player player in players)
-            {
-                if (targetPoint.X > player.BattleFieldLocation.X)
-                {
-                    playersOnLeft.Add(player);
-                }
-                else if (targetPoint.X < player.BattleFieldLocation.X)
-                {
-                    playersOnRight.Add(player);
-                }
-            }
+        //    foreach (Player player in players)
+        //    {
+        //        if (targetPoint.X > player.BattleFieldLocation.X)
+        //        {
+        //            playersOnLeft.Add(player);
+        //        }
+        //        else if (targetPoint.X < player.BattleFieldLocation.X)
+        //        {
+        //            playersOnRight.Add(player);
+        //        }
+        //    }
 
-            
+        //    Gets in range the first time
+        //    while (MiscMethods.DistanceFormula(attackerPoint, targetPoint) > range && spacesLeft > 1)
+        //    {
+        //        if (attackerPoint.X > targetPoint.X)
+        //        {
+        //            Attacker is right of target.Move left.
+        //            attackerPoint.X--;
+        //        }
+        //        else if (attackerPoint.X < targetPoint.Y)
+        //        {
+        //            Attacker is left of target.Move right.
+        //            attackerPoint.X++;
+        //        }
+        //        else if (attackerPoint.Y > targetPoint.Y)
+        //        {
+        //            Attacker is above of target.Move down.
+        //            attackerPoint.Y--;
+        //        }
+        //        else
+        //        {
+        //            Attacker is below of target.Move up.
+        //            attackerPoint.Y++;
+        //        }
+        //        spacesLeft--;
+        //    }
 
-            //Gets in range
-            while (MiscMethods.DistanceFormula(attackerPoint, targetPoint) > range && spacesLeft > 0)
-            {
-                if (attackerPoint.X > targetPoint.X)
-                {
-                    //Attacker is right of target. Move left.
-                    attackerPoint.X--;
-                }
-                else if (attackerPoint.X < targetPoint.Y)
-                {
-                    //Attacker is left of target. Move right.
-                    attackerPoint.X++;
-                }
-                else if (attackerPoint.Y > targetPoint.Y)
-                {
-                    //Attacker is above of target. Move down.
-                    attackerPoint.Y--;
-                }
-                else
-                {
-                    //Attacker is below of target. Move up.
-                    attackerPoint.Y++;
-                }
-                spacesLeft--;
-            }
-        }
+        //    Back up until the attacker is just out of range from the target
+        //    while (MiscMethods.DistanceFormula(attackerPoint, targetPoint) < range && spacesLeft > 1)
+        //    {
+        //        if (attackerPoint.X > targetPoint.X)
+        //        {
+        //            Attacker is right of target.Move right.
+        //            attackerPoint.X++;
+        //        }
+        //        else if (attackerPoint.X < targetPoint.Y)
+        //        {
+        //            Attacker is left of target.Move left.
+        //            attackerPoint.X--;
+        //        }
+        //        else if (attackerPoint.Y > targetPoint.Y)
+        //        {
+        //            Attacker is above of target.Move up.
+        //            attackerPoint.Y++;
+        //        }
+        //        else
+        //        {
+        //            Attacker is below of target.Move down.
+        //            attackerPoint.Y--;
+        //        }
+        //        spacesLeft--;
+        //    }
+
+        //    Get in range again
+        //    while (MiscMethods.DistanceFormula(attackerPoint, targetPoint) > range && spacesLeft > 0)
+        //    {
+        //        if (attackerPoint.X > targetPoint.X)
+        //        {
+        //            Attacker is right of target.Move left.
+        //            attackerPoint.X--;
+        //        }
+        //        else if (attackerPoint.X < targetPoint.Y)
+        //        {
+        //            Attacker is left of target.Move right.
+        //            attackerPoint.X++;
+        //        }
+        //        else if (attackerPoint.Y > targetPoint.Y)
+        //        {
+        //            Attacker is above of target.Move down.
+        //            attackerPoint.Y--;
+        //        }
+        //        else
+        //        {
+        //            Attacker is below of target.Move up.
+        //            attackerPoint.Y++;
+        //        }
+        //        spacesLeft--;
+        //    }
+
+        //    if (oldLocation == attackerPoint)
+        //    {
+        //        throw new DidNotMoveException($"Enemy {attacker.Name} did not move. Try to attack?");
+        //    }
+        //    else
+        //    {
+        //        attacker.BattleFieldLocation = attackerPoint;
+        //        GameBase.CurrentGame.CurrentBattleField.FinalizeMovement(attacker, oldLocation);
+        //    }
+        //}
 
         public static void PathFind_RunFromPlayers(Enemy attacker, List<Player> players, int spacesLeft)
         {
