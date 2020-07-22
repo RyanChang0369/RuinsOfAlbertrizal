@@ -442,11 +442,11 @@ namespace RuinsOfAlbertrizal.Mechanics
         /// <typeparam name="T"></typeparam>
         /// <param name="attacker">The character doing the attack.</param>
         /// <param name="target">The main target of the attack.</param>
-        /// <param name="targets">All targets including main target.</param>
+        /// <param name="bystanders">All targets including main target.</param>
         /// <param name="stat">The stat to evaluate when determining the strongest attack.</param>
         /// <param name="attacks">The list of attacks to choose from.</param>
         /// <returns></returns>
-        public static Attack FindStrongestAttack<T>(Character attacker, Character target, T[] targets, GameBase.Stats stat, List<Attack> attacks, bool ignoreRange) where T : Character
+        public static Attack FindStrongestAttack<T>(Character attacker, Character target, T[] bystanders, GameBase.Stats stat, List<Attack> attacks, bool ignoreRange) where T : Character
         {
             Attack strongestAttack = null;
             int strongestStat = int.MinValue;
@@ -459,7 +459,7 @@ namespace RuinsOfAlbertrizal.Mechanics
 
                 int possTargets = 0;
 
-                foreach (T bystander in targets)
+                foreach (T bystander in bystanders)
                 {
                     if (attack.WithinSplashDamage(target.BattleFieldLocation, target))
                         possTargets++;
