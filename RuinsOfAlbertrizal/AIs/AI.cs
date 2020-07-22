@@ -128,7 +128,7 @@ namespace RuinsOfAlbertrizal.AIs
         }
 
         /// <summary>
-        /// 
+        /// Returns true if a consumable was consumed or a healing attack was used and false otherwise
         /// </summary>
         /// <param name="user">The enemy consuming the consumable</param>
         /// <param name="statPercentages">An array that contains all of the percent stat at which the user will consume the consumable.</param>
@@ -147,10 +147,29 @@ namespace RuinsOfAlbertrizal.AIs
                     if (percentStats[i] < statPercentages[i])
                     {
                         Consumable consumable = FindUsableConsumable(user, (GameBase.Stats)i);
+                        Attack bestHealyAttack = user.FindBestHealingAttack(user, (GameBase.Stats)i);
 
-                        if (consumable != null)
+                        if (consumable != null && bestHealyAttack != null)
+                        {
+                            if (consumable.GetLifetimeStatGain(user, (GameBase.Stats)i) > (bestHealyAttack.GetLifetimeStatLoss(user, (GameBase.Stats)i) * -1) / (bestHealyAttack.ChargeUp + 1))
+                            {
+                                user.Consume(consumable);
+                            }
+                            else
+                            {
+                                user.DoAttack(bestHealyAttack, user);
+                            }
+                            
+                            return true;
+                        }
+                        else if (consumable != null)
                         {
                             user.Consume(consumable);
+                            return true;
+                        }
+                        else if (bestHealyAttack != null)
+                        {
+                            user.DoAttack(bestHealyAttack, user);
                             return true;
                         }
                     }
@@ -161,11 +180,12 @@ namespace RuinsOfAlbertrizal.AIs
                 }
             }
 
+
             return false;
         }
 
         /// <summary>
-        /// 
+        /// Returns true if a consumable was consumed or a healing attack was used and false otherwise
         /// </summary>
         /// <param name="user">The enemy consuming the consumable</param>
         /// <param name="stat">The stat to evaluate</param>
@@ -181,10 +201,29 @@ namespace RuinsOfAlbertrizal.AIs
                 return false;
 
             Consumable consumable = FindUsableConsumable(user, stat);
+            Attack bestHealyAttack = user.FindBestHealingAttack(user, stat);
 
-            if (consumable != null)
+            if (consumable != null && bestHealyAttack != null)
+            {
+                if (consumable.GetLifetimeStatGain(user, stat) > (bestHealyAttack.GetLifetimeStatLoss(user, stat) * -1) / (bestHealyAttack.ChargeUp + 1))
+                {
+                    user.Consume(consumable);
+                }
+                else
+                {
+                    user.DoAttack(bestHealyAttack, user);
+                }
+
+                return true;
+            }
+            else if (consumable != null)
             {
                 user.Consume(consumable);
+                return true;
+            }
+            else if (bestHealyAttack != null)
+            {
+                user.DoAttack(bestHealyAttack, user);
                 return true;
             }
             else
@@ -258,7 +297,7 @@ namespace RuinsOfAlbertrizal.AIs
         public static void AIStyle_Berserk(Enemy attacker, Player[] activePlayers)
         {
             //Find player with lowest hp and select that as target
-            Player target = FindSmallestStat(activePlayers, GameBase.Stats.HP);
+            Player target = FindWeakestCharacter(activePlayers, GameBase.Stats.HP);
 
             double fateSelector = RNG.GetRandomDouble();
 
@@ -302,7 +341,7 @@ namespace RuinsOfAlbertrizal.AIs
 
             try
             {
-                attacker.Attack(attack, target);
+                attacker.DoAttack(attack, target);
             }
             catch (NotEnoughManaException)
             {
@@ -325,10 +364,11 @@ namespace RuinsOfAlbertrizal.AIs
         {
             double[] percentStats = attacker.PercentStats;
 
-            double[] statPercentages = { 0.5, 0.0, 0.3, 0.25, 0.4, 0.25 };
+            double[] statPercentages1 = { 0.5, 0.0, 0.3, 0.25, 0.4, 0.25 };
+            double[] statPercentages2 = { 0.2, 0.0, 0.1, 0.05, 0.2, 0.05 };
 
-            if (AutoConsume(attacker, statPercentages))
-                return;
+            //if (AutoConsume(attacker, statPercentages))
+            //    return;
 
             //Test
 
@@ -344,7 +384,7 @@ namespace RuinsOfAlbertrizal.AIs
             //}
 
             List<Player> playersWithinRange = CharactersWithinRange(attacker, attacker.AllAttacks, activePlayers);
-                
+
             //foreach (Player player in activePlayers)
             //{
             //    if (player != null && attacker.DirectDistanceFrom(player) <= highBound && attacker.DirectDistanceFrom(player) >= lowBound)
@@ -353,60 +393,97 @@ namespace RuinsOfAlbertrizal.AIs
             //    }
             //}
 
-            if (playersWithinRange.Count < 1)
+
+            //Find closest player and select that as target
+            Player target = activePlayers[0];
+            double minDistance = double.PositiveInfinity;
+
+            foreach (Player player in playersWithinRange)
             {
-                //No players within range.
-                playersWithinRange = activePlayers.ToList();
+                if (player == null)
+                    continue;
+
+                double distance = target.DirectDistanceFrom(player);
+                if (minDistance < distance)
+                {
+                    target = player;
+                    minDistance = distance;
+                }
             }
 
-            else if (percentStats[0] < 0.5)
+            Attack longestRangeAttack = attacker.AllAttacks[0];
+
+            foreach (Attack attack in attacker.AllAttacks)
             {
-                //If health under 50%, try to back off and attack with longest ranged attack
+                if (attack.Range > longestRangeAttack.Range)
+                    longestRangeAttack = attack;
+            }
 
-                //Find closest player and select that as target
-                Player target = activePlayers[0];
-                double minDistance = double.PositiveInfinity;
+            //Start logic for AI Style
 
-                foreach (Player player in playersWithinRange)
+            if (attacker.IsWellOff(statPercentages1))
+            {
+                if (playersWithinRange.Count < 1)
                 {
-                    if (player == null)
-                        continue;
+                    //No players within range.
+                    //Path find towards players
 
-                    double distance = target.DirectDistanceFrom(player);
-                    if (minDistance < distance)
-                    {
-                        target = player;
-                        minDistance = distance;
-                    }
+                    Pathfinding.PathFind_Direct(attacker, target, longestRangeAttack.Range, false);
+                    return;
                 }
-
-                Attack selectedAttack = attacker.AllAttacks[0];
-
-                //Find attack with greatest range
-                foreach (Attack attack in attacker.AllAttacks)
-                {
-                    if (attack.CanBeUsedBy(attacker) && selectedAttack.Range < attack.Range)
-                    {
-                        selectedAttack = attack;
-                    }
-                }
-
-                //Find distance between attacker and target
-                double targetDistance = MiscMethods.DistanceFormula(target.BattleFieldLocation, attacker.BattleFieldLocation);
-
-                //If distance between targetDistance and range of selected attack is negligible, attack
-                if (targetDistance - selectedAttack.Range < 2)
-                {
-                    attacker.Attack(selectedAttack, target);
-                }
-                //Else, move away
                 else
                 {
-                    //try
-                    //{
-                        
-                    //}
+                    //Attack weakest player
+                    target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
+                    Attack selectedAttack = attacker.FindStrongestAttack(target, GameBase.Stats.HP);
+                    attacker.DoAttack(selectedAttack, target);
+                    return;
                 }
+            }
+            else if (attacker.IsWellOff(statPercentages2))
+            {
+                RandomEventChooser chooser = new RandomEventChooser
+                (
+                    new List<RandomEvent>
+                    {
+                        new RandomEvent("Attack", percentStats[0]),
+                        new RandomEvent("Heal", percentStats[0])
+                    }
+                );
+
+                if (chooser.GetSelected().Equals("Attack") && target != null)
+                {
+                    Attack selectedAttack = attacker.FindStrongestAttack(target, GameBase.Stats.HP);
+
+                    //Find distance between attacker and target
+                    double targetDistance = MiscMethods.DistanceFormula(target.BattleFieldLocation, attacker.BattleFieldLocation);
+
+                    //If distance between targetDistance and range of selected attack is negligible, attack
+                    if (selectedAttack.Range - targetDistance < 2)
+                    {
+                        //Attack weakest player
+                        target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
+                        attacker.DoAttack(selectedAttack, target);
+                        return;
+                    }
+                    //Else, move away
+                    else
+                    {
+                        try
+                        {
+                            Pathfinding.PathFind_Direct(attacker, target, selectedAttack.Range, true);
+                        }
+                        catch (DidNotMoveException)
+                        {
+                            //Attack weakest player
+                            target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
+                            attacker.DoAttack(selectedAttack, target);
+                            return;
+                        }
+                    }
+                }
+
+                
             }
 
             AIStyle_Berserk(attacker, playersWithinRange.ToArray());
@@ -442,7 +519,7 @@ namespace RuinsOfAlbertrizal.AIs
                 Attack attack = Attack.FindBestHealingAttack(attacker, mostWounded, GameBase.Stats.HP);
 
                 if (attack != null)
-                    attacker.Attack(attack, mostWounded);
+                    attacker.DoAttack(attack, mostWounded);
                 else
                     AIStyle_Timid(attacker, activePlayers);
             }
@@ -450,7 +527,7 @@ namespace RuinsOfAlbertrizal.AIs
                 AIStyle_Timid(attacker, activePlayers);
         }
 
-        public static T FindSmallestStat<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
+        public static T FindWeakestCharacter<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
         {
             T selected = null;
             foreach (T thing in characters)
@@ -461,7 +538,7 @@ namespace RuinsOfAlbertrizal.AIs
             return selected;
         }
 
-        public static T FindLargestStat<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
+        public static T FindStrongestCharacter<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
         {
             T selected = null;
             foreach (T thing in characters)
@@ -479,12 +556,10 @@ namespace RuinsOfAlbertrizal.AIs
 
         public static List<T> CharactersWithinRange<T>(Character attacker, IEnumerable<Attack> attacks, IEnumerable<T> characters) where T : Character
         {
-            int lowBound = int.MaxValue, highBound = 0;
+            int highBound = 0;
 
             foreach (Attack attack in attacks)
             {
-                if (attack.Range < lowBound)
-                    lowBound = attack.Range;
                 if (attack.Range > highBound)
                     highBound = attack.Range;
             }
@@ -493,7 +568,7 @@ namespace RuinsOfAlbertrizal.AIs
 
             foreach (T thing in characters)
             {
-                if (thing != null && attacker.DirectDistanceFrom(thing) <= highBound && attacker.DirectDistanceFrom(thing) >= lowBound)
+                if (thing != null && attacker.DirectDistanceFrom(thing) <= highBound)
                 {
                     withinRange.Add(thing);
                 }
