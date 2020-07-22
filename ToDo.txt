@@ -1,12 +1,7 @@
 Have equipment drawn onto the characters.
+	Make this method work with images larger or smaller than 48x48 pixels
 
 Have method that sets the application's icon with the icon of the current map.
-
-Introduce a cap on the number of players?
-
-Finish and test inventory
-
-Create a pop up inventory
 
 Finish and test battle screen
 
@@ -16,7 +11,7 @@ Test line 21 of ProperNameConverter
 
 Implement death and running
 
-Implement fear, which is determined by the inventory quantity, amount of stats depleted, and whether or not an enemy with a large BI has died.
+Implement fear, which is determined by the inventory quantity, current percent stats, remaining enemies, and remaining allies
 
 Improve AI for Berserk
 
@@ -29,9 +24,9 @@ Fix ActivePlayers
 Overhaul equipping equipment.
 	Test the equipment
 
-Test attacking and stuff.
-
 Improve BattleField
 	Implement movement
 
-Change charging animation to vibration instead of pulsating.
+Test Timid AI
+
+Does End TUrn btn work?
