@@ -550,7 +550,7 @@ namespace RuinsOfAlbertrizal.Characters
         /// <param name="target"></param>
         /// <exception cref="NotEnoughManaException"></exception>
         /// <exception cref="CannotTargetException"></exception>
-        public void Attack(Attack attack, Character target)
+        public void DoAttack(Attack attack, Character target)
         {
             try
             {
@@ -755,6 +755,31 @@ namespace RuinsOfAlbertrizal.Characters
             return multiTargetAttacks;
         }
 
+        public Attack FindStrongestAttack(Character target, GameBase.Stats stat)
+        {
+            return FindStrongestAttack(target, stat, AllAttacks, false);
+        }
+
+        public Attack FindStrongestAttack(Character target, GameBase.Stats stat, List<Attack> attacks, bool ignoreRange)
+        {
+            return Attack.FindStrongestAttack(this, target, stat, attacks, ignoreRange);
+        }
+
+        public Attack FindStrongestAttack<T>(Character target, T[] bystanders, GameBase.Stats stat, List<Attack> attacks, bool ignoreRange) where T : Character
+        {
+            return Attack.FindStrongestAttack(this, target, bystanders, stat, attacks, ignoreRange);
+        }
+
+        public Attack FindBestHealingAttack(Character target, GameBase.Stats stat)
+        {
+            return FindBestHealingAttack(target, stat, AllAttacks);
+        }
+
+        public Attack FindBestHealingAttack(Character target, GameBase.Stats stat, List<Attack> attacks)
+        {
+            return Attack.FindBestHealingAttack(this, target, stat, attacks);
+        }
+
         /// <summary>
         /// Gives the distance between two characters by the crow flies.
         /// </summary>
@@ -763,6 +788,33 @@ namespace RuinsOfAlbertrizal.Characters
         public double DirectDistanceFrom(Character character)
         {
             return MiscMethods.DistanceFormula(BattleFieldLocation, character.BattleFieldLocation);
+        }
+
+        /// <summary>
+        /// Returns true if character's percent stats are above the given percentStatsThreshold
+        /// </summary>
+        /// <param name="percentStatsThreshold"></param>
+        /// <returns></returns>
+        public bool IsWellOff(double[] percentStatsThreshold)
+        {
+            double[] percentStats = PercentStats;
+
+            for (int i = 0; i < GameBase.NumStats; i++)
+            {
+                try
+                {
+                    if (percentStats[i] < percentStatsThreshold[i])
+                    {
+                        return false;
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    throw;
+                }
+            }
+
+            return true;
         }
     }
 }

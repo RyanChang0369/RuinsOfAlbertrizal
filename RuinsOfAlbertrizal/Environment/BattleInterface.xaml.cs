@@ -456,7 +456,7 @@ namespace RuinsOfAlbertrizal.Environment
             AttackPanel.Visibility = Visibility.Collapsed;
             attackBtn.Content = "Select Attack";
 
-            selectedPlayer.Attack(selectedAttack, target);
+            selectedPlayer.DoAttack(selectedAttack, target);
 
             ToggleTargets(selectedPlayer, selectedAttack, true);
             BattleField.SelectedAttack = null;
