@@ -18,6 +18,9 @@ namespace RuinsOfAlbertrizal.AIs
     {
         public static int counter = 0;
 
+        private static readonly double[] statPercentages_Timid1 = { 0.5, 0.0, 0.3, 0.25, 0.4, 0.25 };
+        private static readonly double[] statPercentages_Timid2 = { 0.2, 0.0, 0.1, 0.05, 0.2, 0.05 };
+
         public enum AIStyle
         {
             [Description(
@@ -364,9 +367,6 @@ namespace RuinsOfAlbertrizal.AIs
         {
             double[] percentStats = attacker.PercentStats;
 
-            double[] statPercentages1 = { 0.5, 0.0, 0.3, 0.25, 0.4, 0.25 };
-            double[] statPercentages2 = { 0.2, 0.0, 0.1, 0.05, 0.2, 0.05 };
-
             //if (AutoConsume(attacker, statPercentages))
             //    return;
 
@@ -421,7 +421,7 @@ namespace RuinsOfAlbertrizal.AIs
 
             //Start logic for AI Style
 
-            if (attacker.IsWellOff(statPercentages1))
+            if (attacker.IsWellOff(statPercentages_Timid1))
             {
                 if (playersWithinRange.Count < 1)
                 {
@@ -440,7 +440,7 @@ namespace RuinsOfAlbertrizal.AIs
                     return;
                 }
             }
-            else if (attacker.IsWellOff(statPercentages2))
+            else if (attacker.IsWellOff(statPercentages_Timid2))
             {
                 RandomEventChooser chooser = new RandomEventChooser
                 (
@@ -471,7 +471,7 @@ namespace RuinsOfAlbertrizal.AIs
                             attacker.DoAttack(selectedAttack, target);
                             return;
                         }
-                        else if (AutoConsume(attacker, statPercentages1))
+                        else if (AutoConsume(attacker, statPercentages_Timid1))
                         {
                             return;
                         }
@@ -498,7 +498,7 @@ namespace RuinsOfAlbertrizal.AIs
                                 attacker.DoAttack(selectedAttack, target);
                                 return;
                             }
-                            else if (AutoConsume(attacker, statPercentages1))
+                            else if (AutoConsume(attacker, statPercentages_Timid1))
                             {
                                 return;
                             }
@@ -514,7 +514,7 @@ namespace RuinsOfAlbertrizal.AIs
                 }
                 else
                 {
-                    HealWithItemsOrAttacks(attacker, statPercentages1);
+                    HealWithItemsOrAttacks(attacker, statPercentages_Timid1);
                     return;
                 }
             }
@@ -535,7 +535,7 @@ namespace RuinsOfAlbertrizal.AIs
                 switch (eventSelector)
                 {
                     case "Heal":
-                        HealWithItemsOrAttacks(attacker, statPercentages1);
+                        HealWithItemsOrAttacks(attacker, statPercentages_Timid1);
                         return;
                     case "RunFromPlayer":
                         Pathfinding.PathFind_RunFromPlayers(attacker, activePlayers.ToList());
@@ -565,7 +565,7 @@ namespace RuinsOfAlbertrizal.AIs
             List<Enemy> woundedAllies = new List<Enemy>();
 
             //If self is critically wounded, then just heal self
-            if (AutoConsume(attacker, GameBase.Stats.HP, 0.2))
+            if (AutoConsume(attacker, statPercentages_Timid1))
                 return;
 
             foreach (Enemy enemy in activeEnemies)
