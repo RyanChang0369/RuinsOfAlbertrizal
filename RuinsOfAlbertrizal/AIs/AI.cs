@@ -447,11 +447,13 @@ namespace RuinsOfAlbertrizal.AIs
                     new List<RandomEvent>
                     {
                         new RandomEvent("Attack", percentStats[0]),
-                        new RandomEvent("Heal", percentStats[0])
+                        new RandomEvent("Heal", 0.5)
                     }
                 );
 
-                if (chooser.GetSelected().Equals("Attack") && target != null)
+                string selectedEvent = chooser.GetSelected().ToString();
+
+                if (selectedEvent.Equals("Attack") && target != null)
                 {
                     Attack selectedAttack = attacker.FindStrongestAttack(target, GameBase.Stats.HP);
 
@@ -463,8 +465,21 @@ namespace RuinsOfAlbertrizal.AIs
                     {
                         //Attack weakest player
                         target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
-                        attacker.DoAttack(selectedAttack, target);
-                        return;
+                        
+                        if (target != null)
+                        {
+                            attacker.DoAttack(selectedAttack, target);
+                            return;
+                        }
+                        else if (AutoConsume(attacker, statPercentages1))
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            //Change to something else?
+                            attacker.RecoverMana();
+                        }
                     }
                     //Else, move away
                     else
@@ -477,14 +492,71 @@ namespace RuinsOfAlbertrizal.AIs
                         {
                             //Attack weakest player
                             target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
-                            attacker.DoAttack(selectedAttack, target);
+
+                            if (target != null)
+                            {
+                                attacker.DoAttack(selectedAttack, target);
+                                return;
+                            }
+                            else if (AutoConsume(attacker, statPercentages1))
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                //Change to something else?
+                                attacker.RecoverMana();
+                            }
                         }
 
                         return;
                     }
                 }
+                else
+                {
+                    HealWithItemsOrAttacks(attacker, statPercentages1);
+                    return;
+                }
+            }
+            else
+            {
+                RandomEventChooser chooser = new RandomEventChooser
+                (
+                    new List<RandomEvent>
+                    {
+                        new RandomEvent("Heal", 0.75),
+                        new RandomEvent("RunFromPlayer", 0.25),
+                        new RandomEvent("RunFromBattleField", 0.25)
+                    }
+                );
 
-                
+                string eventSelector = chooser.GetSelected().ToString();
+
+                switch (eventSelector)
+                {
+                    case "Heal":
+                        HealWithItemsOrAttacks(attacker, statPercentages1);
+                        return;
+                    case "RunFromPlayer":
+                        Pathfinding.PathFind_RunFromPlayers(attacker, activePlayers.ToList());
+                        return;
+                    case "RunFromBattleField":
+                        attacker.Run(GameBase.CurrentGame.CurrentBattleField);
+                        return;
+                }
+            }
+        }
+
+        private static void HealWithItemsOrAttacks(Enemy attacker, double[] statPercentages)
+        {
+            if (AutoConsume(attacker, statPercentages))
+            {
+                return;
+            }
+            else
+            {
+                //Change to something else?
+                attacker.RecoverMana();
             }
         }
 
@@ -493,8 +565,8 @@ namespace RuinsOfAlbertrizal.AIs
             List<Enemy> woundedAllies = new List<Enemy>();
 
             //If self is critically wounded, then just heal self
-            if (attacker.PercentStats[0] < 0.2)
-                FindUsableConsumable(attacker, GameBase.Stats.HP);
+            if (AutoConsume(attacker, GameBase.Stats.HP, 0.2))
+                return;
 
             foreach (Enemy enemy in activeEnemies)
             {
