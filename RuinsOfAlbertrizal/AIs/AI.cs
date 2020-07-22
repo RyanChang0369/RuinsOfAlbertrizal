@@ -32,8 +32,8 @@ namespace RuinsOfAlbertrizal.AIs
             [Description("No AI. Cannot move, regenerate mana, or attack.")]
             NoAI = 2,
             [Description(
-                "Attacks player with the most damaging attacks possible." + 
-                //" Moves so that its most damaging attack or attacks is in range of the player." + 
+                "Attacks player with the most damaging attacks possible." +
+                " Moves so that its most damaging attack or attacks is in range of the player." +
                 " Attacks twice if doing so will deal the most damage to the player." +
                 " No regard to health." +
                 " Recovers mana only if unable to attack." +
@@ -41,32 +41,32 @@ namespace RuinsOfAlbertrizal.AIs
             Berserk = 10,
             [Description(
                 "Attacks player with the most damaging attacks possible." +
-                //" Moves so that its most damaging attack or attacks is in range of the player." +
+                " Moves so that its most damaging attack or attacks is in range of the player." +
                 " Attacks twice if doing so will deal the most damage to the player." +
                 " Heals with healing items and/or spells if below 40% health." +
                 " Recovers mana only if unable to attack." +
                 " Uses items to recover health and mana.")]
             Berserk_UseItem = 11,
             [Description(
-                "Similar to beserk. " +
-                "Heals with healing items and/or spells if below 60% health.")]
+                "Tries to avoid players. " +
+                "Heals with healing items.")]
             Timid = 20,
             [Description(
                 "Similar to Timid. " +
                 "Heals other enemies if they are below 75% health. Identical to Timid otherwise.")]
             Healer = 30,
-            [Description(
-            //"Tries to stay above the player. " +
-            "Same as timid."
-            //"Moves so it is out of range of player. Moves on its first turn. " +
-            //"Attacks twice only if player is very far away (twice the range of the player). " +
-            //"Only heals if out of range of player. " +
-            //"Recovers when unable to attack and player is out of range or when player is very far away (twice the player's movement range). " +
-            //"Uses items when unable to attack and player is out of range or when player is very far away (twice the player's movement range). "
-            )]
-            Flying = 40,
-            [Description("Same as healer.")]
-            Flying_Healer = 41
+            //[Description(
+            ////"Tries to stay above the player. " +
+            //"Same as timid."
+            ////"Moves so it is out of range of player. Moves on its first turn. " +
+            ////"Attacks twice only if player is very far away (twice the range of the player). " +
+            ////"Only heals if out of range of player. " +
+            ////"Recovers when unable to attack and player is out of range or when player is very far away (twice the player's movement range). " +
+            ////"Uses items when unable to attack and player is out of range or when player is very far away (twice the player's movement range). "
+            //)]
+            //Flying = 40,
+            //[Description("Same as healer.")]
+            //Flying_Healer = 41
         }
 
         [XmlIgnore]
@@ -120,11 +120,11 @@ namespace RuinsOfAlbertrizal.AIs
                     AIStyle_BerserkUseItem(attacker, activePlayers);
                     break;
                 case AIStyle.Timid:
-                case AIStyle.Flying:
+                //case AIStyle.Flying:
                     AIStyle_Timid(attacker, activePlayers);
                     break;
                 case AIStyle.Healer:
-                case AIStyle.Flying_Healer:
+                //case AIStyle.Flying_Healer:
                     AIStyle_Healer(attacker, activePlayers, activeEnemies);
                     break;
             }
@@ -562,11 +562,11 @@ namespace RuinsOfAlbertrizal.AIs
 
         public static void AIStyle_Healer(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
         {
-            List<Enemy> woundedAllies = new List<Enemy>();
-
             //If self is critically wounded, then just heal self
             if (AutoConsume(attacker, statPercentages_Timid1))
                 return;
+
+            List<Enemy> woundedAllies = new List<Enemy>();
 
             foreach (Enemy enemy in activeEnemies)
             {
@@ -597,6 +597,40 @@ namespace RuinsOfAlbertrizal.AIs
             else
                 AIStyle_Timid(attacker, activePlayers);
         }
+
+        //public static void AIStyle_HealerBerserk(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
+        //{
+        //    List<Enemy> woundedAllies = new List<Enemy>();
+
+        //    foreach (Enemy enemy in activeEnemies)
+        //    {
+        //        if (enemy != null && enemy.PercentStats[0] < 0.75)
+        //        {
+        //            woundedAllies.Add(enemy);
+        //        }
+        //    }
+
+        //    if (woundedAllies.Count > 0)
+        //    {
+        //        //Heal wounded allies
+        //        Enemy mostWounded = woundedAllies[0];
+
+        //        foreach (Enemy enemy in woundedAllies)
+        //        {
+        //            if (enemy.CurrentStats[0] < mostWounded.CurrentStats[0])
+        //                mostWounded = enemy;
+        //        }
+
+        //        Attack attack = Attack.FindBestHealingAttack(attacker, mostWounded, GameBase.Stats.HP);
+
+        //        if (attack != null)
+        //            attacker.DoAttack(attack, mostWounded);
+        //        else
+        //            AIStyle_Berserk(attacker, activePlayers);
+        //    }
+        //    else
+        //        AIStyle_Berserk(attacker, activePlayers);
+        //}
 
         public static T FindWeakestCharacter<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
         {
