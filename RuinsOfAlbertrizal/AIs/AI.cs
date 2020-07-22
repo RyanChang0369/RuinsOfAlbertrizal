@@ -478,15 +478,14 @@ namespace RuinsOfAlbertrizal.AIs
                             //Attack weakest player
                             target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
                             attacker.DoAttack(selectedAttack, target);
-                            return;
                         }
+
+                        return;
                     }
                 }
 
                 
             }
-
-            AIStyle_Berserk(attacker, playersWithinRange.ToArray());
         }
 
         public static void AIStyle_Healer(Enemy attacker, Player[] activePlayers, Enemy[] activeEnemies)
