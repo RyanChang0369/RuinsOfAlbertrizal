@@ -27,7 +27,7 @@ namespace RuinsOfAlbertrizal.Environment
 
         private bool PlayerMoving { get; set; }
 
-        private Point LastPlayerPosition { get; set; }
+        private Point OriginalPlayerPosition { get; set; }
 
         public BattleField BattleField { get; set; }
 
@@ -42,7 +42,6 @@ namespace RuinsOfAlbertrizal.Environment
             BattleField = battleField;
             InitialPositionCharacters();
             InitializeComponent();
-            ActionPanel.Visibility = Visibility.Hidden;
             DataContext = BattleField;
             BackgroundImg.Source = GameBase.CurrentGame.CurrentLevel.WorldImgAsBitmapSource;
             CreateGrid();
@@ -200,32 +199,16 @@ namespace RuinsOfAlbertrizal.Environment
         //    }
         //}
 
-        private void SwapEnemy(Enemy oldEnemy, Enemy newEnemy)
+        public void SwapEnemy(int index)
         {
-            int index = Array.IndexOf(BattleField.ActiveEnemies, oldEnemy);
-
-            if (index == -1)
-                throw new ArgumentOutOfRangeException($"{oldEnemy.DisplayName} not found within ActiveEnemies");
-
             Animate("enemySlideOut", enemyImages[index]);
-            BattleField.ActiveEnemies[index] = newEnemy;
-            oldEnemy.UnloadImage();
-            newEnemy.LoadImage();
             UpdateEnemyImage(index);
             Animate("enemySlideIn", enemyImages[index]);
         }
 
-        private void SwapPlayer(Player oldPlayer, Player newPlayer)
+        public void SwapPlayer(int index)
         {
-            int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayerGuids, oldPlayer.GlobalID);
-
-            if (index == -1)
-                throw new ArgumentOutOfRangeException($"{oldPlayer.DisplayName} not found within ActivePlayers");
-
             Animate("playerSlideOut", playerImages[index]);
-            GameBase.CurrentGame.ActivePlayerGuids[index] = newPlayer.GlobalID;
-            oldPlayer.UnloadImage();
-            newPlayer.LoadImage();
             UpdatePlayerImage(index);
             Animate("playerSlideIn", playerImages[index]);
         }
@@ -301,6 +284,13 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
+        private void CollapseAllBtnPanels()
+        {
+            ActionBtnsPanel.Visibility = Visibility.Collapsed;
+            AttackBtnsPanel.Visibility = Visibility.Collapsed;
+            MoveBtnsPanel.Visibility = Visibility.Collapsed;
+        }
+
         private async void InitialAnimation()
         {
             //Animate("overlaySlideRight", OverlayPanel1);
@@ -324,16 +314,36 @@ namespace RuinsOfAlbertrizal.Environment
 
         private void Attack_Click(object sender, RoutedEventArgs e)
         {
-            MoveBtn.Content = "Move";
-            PlayerMoving = false;
-            Button btn = (Button)sender;
+            AttackBtnsPanel.Visibility = Visibility.Visible;
+            MoveBtnsPanel.Visibility = Visibility.Collapsed;
+            ActionBtnsPanel.Visibility = Visibility.Collapsed;
 
-            if (BattleField.SelectedAttack == null)
-                SelectAttack(btn);
-            else if (!BattleField.SelectedAttack.IsCharged())
-                DoCharge(btn, BattleField.SelectedPlayer, BattleField.SelectedAttack);
+            SelectAttack();
+
+            //if (BattleField.SelectedAttack == null)
+            //    SelectAttack(btn);
+            //else if (!BattleField.SelectedAttack.IsCharged())
+            //    DoCharge(btn, BattleField.SelectedPlayer, BattleField.SelectedAttack);
+            //else if (BattleField.SelectedTarget != null)
+            //    DoAttack(btn, BattleField.SelectedPlayer, BattleField.SelectedTarget, BattleField.SelectedAttack);
+        }
+
+        private void ConfirmAttackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CancelAttackBtn_Click(sender, e);
+
+            if (!BattleField.SelectedAttack.IsCharged())
+                DoCharge(BattleField.SelectedPlayer, BattleField.SelectedAttack);
             else if (BattleField.SelectedTarget != null)
-                DoAttack(btn, BattleField.SelectedPlayer, BattleField.SelectedTarget, BattleField.SelectedAttack);
+                DoAttack(BattleField.SelectedPlayer, BattleField.SelectedTarget, BattleField.SelectedAttack);
+        }
+
+        private void CancelAttackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AttackBtnsPanel.Visibility = Visibility.Collapsed;
+            ActionBtnsPanel.Visibility = Visibility.Visible;
+            AttackBtnsPanel.Visibility = Visibility.Collapsed;
+            AttackPanel.Visibility = Visibility.Collapsed;
         }
 
         private void AttackSelector_MouseUp(object sender, RoutedEventArgs e)
@@ -350,24 +360,22 @@ namespace RuinsOfAlbertrizal.Environment
             //Check if charged/cooled down
             if (BattleField.SelectedAttack.IsCharged() && BattleField.SelectedAttack.IsCooledDown())
             {
-                AttackBtn.Content = "Attack!";
-                AttackBtn.IsEnabled = true;
+                ConfirmAttackBtn.Content = "Confirm Attack";
+                ConfirmAttackBtn.IsEnabled = true;
             }
             else if (!BattleField.SelectedAttack.IsCooledDown())
             {
-                AttackBtn.Content = "Attack is Cooling Down";
-                AttackBtn.IsEnabled = false;
+                MessageBox.Show("Attack is cooling down");
             }
             else
             {
-                AttackBtn.Content = "Charge Attack";
-                AttackBtn.IsEnabled = true;
+                ConfirmAttackBtn.Content = "Charge Attack";
+                ConfirmAttackBtn.IsEnabled = true;
             }
         }
 
-        private void SelectAttack(Button attackBtn)
+        private void SelectAttack()
         {
-            attackBtn.IsEnabled = false;
             AttackPanel.Visibility = Visibility.Visible;
             ForceItemsControlUpdate(AttackSelector);
         }
@@ -450,11 +458,10 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
-        private void DoAttack(Button attackBtn, Player selectedPlayer, Character target, Attack selectedAttack)
+        private void DoAttack(Player selectedPlayer, Character target, Attack selectedAttack)
         {
             //Hide panel
             AttackPanel.Visibility = Visibility.Collapsed;
-            attackBtn.Content = "Select Attack";
 
             selectedPlayer.DoAttack(selectedAttack, target);
 
@@ -462,22 +469,9 @@ namespace RuinsOfAlbertrizal.Environment
             BattleField.SelectedAttack = null;
         }
 
-        //private void DoAttack(Button attackBtn, Player selectedPlayer, List<Character> targets, Attack selectedAttack)
-        //{
-        //    //Hide panel
-        //    AttackPanel.Visibility = Visibility.Collapsed;
-        //    attackBtn.Content = "Select Attack";
-
-        //    selectedPlayer.Attack(selectedAttack, targets);
-
-        //    ToggleTargets(selectedPlayer, selectedAttack, true);
-        //    BattleField.SelectedAttack = null;
-        //}
-
-        private void DoCharge(Button attackBtn, Player selectedPlayer, Attack selectedAttack)
+        private void DoCharge(Player selectedPlayer, Attack selectedAttack)
         {
             AttackPanel.Visibility = Visibility.Collapsed;
-            attackBtn.Content = "Select Attack";
             selectedPlayer.Charge(selectedAttack);
 
             ToggleTargets(selectedPlayer, selectedAttack, true);
@@ -511,44 +505,65 @@ namespace RuinsOfAlbertrizal.Environment
 
         private void Move_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
+            PlayerMoving = true;
+            Player player = BattleField.SelectedPlayer;
 
-            if (!PlayerMoving)
-            {
-                if (AnimatingMovement)
-                    return;
+            AttackBtnsPanel.Visibility = Visibility.Collapsed;
+            MoveBtnsPanel.Visibility = Visibility.Visible;
+            ActionBtnsPanel.Visibility = Visibility.Collapsed;
 
-                btn.Content = "Confirm Movement";
-
-                Point location = BattleField.SelectedPlayer.BattleFieldLocation;
-                int moveRange = BattleField.SelectedPlayer.CurrentStats[4];
+            Point location = player.BattleFieldLocation;
+            int moveRange = player.CurrentStats[4];
                 
-                int rightEdge = Math.Max(location.X - moveRange + 1, 0);
-                int leftEdge = Math.Min(location.X + moveRange, BattleField.BattleFieldWidth);
-                int topEdge = Math.Max(location.Y - moveRange, 0);
-                int bottomEdge = Math.Min(location.Y + 2 * moveRange + 1, BattleField.BattleFieldHeight);
+            int rightEdge = Math.Max(location.X - moveRange + 1, 0);
+            int leftEdge = Math.Min(location.X + moveRange, BattleField.BattleFieldWidth);
+            int topEdge = Math.Max(location.Y - moveRange, 0);
+            int bottomEdge = Math.Min(location.Y + 2 * moveRange + 1, BattleField.BattleFieldHeight);
 
-                for (int i = topEdge; i < bottomEdge; i++)
-                {
-                    int jaggedRightEdge = Math.Max(rightEdge + Math.Abs(i - location.Y), 0);
-                    int jaggedLeftEdge = Math.Min(leftEdge - Math.Abs(i - location.Y) + 1, BattleField.BattleFieldWidth);
-                    for (int j = jaggedRightEdge; j <= jaggedLeftEdge; j++)
-                    {
-                        if (j >= BattleField.BattleFieldWidth)
-                            continue;
-
-                        movementIndicators[i, j].Visibility = Visibility.Visible;
-                    }
-                }
-
-                LastPlayerPosition = location;
-            }
-            else
+            for (int i = topEdge; i < bottomEdge; i++)
             {
-                btn.Content = "Move";
+                int jaggedRightEdge = Math.Max(rightEdge + Math.Abs(i - location.Y), 0);
+                int jaggedLeftEdge = Math.Min(leftEdge - Math.Abs(i - location.Y) + 1, BattleField.BattleFieldWidth);
+                for (int j = jaggedRightEdge; j <= jaggedLeftEdge; j++)
+                {
+                    if (j >= BattleField.BattleFieldWidth)
+                        continue;
 
-                BattleField.FinalizeMovement(BattleField.SelectedPlayer, LastPlayerPosition);
+                    movementIndicators[i, j].Visibility = Visibility.Visible;
+                }
             }
+
+            OriginalPlayerPosition = player.BattleFieldLocation;
+        }
+
+        private void ConfirmMoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BattleField.FinalizeMovement(BattleField.SelectedPlayer, BattleField.SelectedPlayer.BattleFieldLocation);
+
+            CancelMoveBtn_Click(sender, e);
+        }
+
+        private void CancelMoveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MoveBtnsPanel.Visibility = Visibility.Collapsed;
+            ActionBtnsPanel.Visibility = Visibility.Visible;
+            PlayerMoving = false;
+            ConfirmMoveBtn.IsEnabled = false;
+
+            for (int i = 0; i < BattleField.BattleFieldHeight; i++)
+            {
+                for (int j = 0; j < BattleField.BattleFieldWidth; j++)
+                {
+                    movementIndicators[i, j].Visibility = Visibility.Collapsed;
+                }
+            }
+
+            Player player = BattleField.SelectedPlayer;
+            Point tempPoint = player.BattleFieldLocation;
+
+            player.BattleFieldLocation = OriginalPlayerPosition;
+
+            BattleField.FakeMovement(player, tempPoint);
         }
 
         private void MoveTileSelect(object sender, RoutedEventArgs e)
@@ -557,13 +572,15 @@ namespace RuinsOfAlbertrizal.Environment
 
             Player player = BattleField.SelectedPlayer;
 
-            LastPlayerPosition = player.BattleFieldLocation;
+            Point lastPlayerPosition = player.BattleFieldLocation;
 
             int x = Grid.GetColumn(btn);
             int y = Grid.GetRow(btn);
 
             player.BattleFieldLocation = new Point(x, y);
-            BattleField.FakeMovement(player, LastPlayerPosition);
+            BattleField.FakeMovement(player, lastPlayerPosition);
+
+            ConfirmMoveBtn.IsEnabled = true;
         }
 
         public void Exit()
@@ -646,11 +663,19 @@ namespace RuinsOfAlbertrizal.Environment
             });
         }
 
-        public void NotifyPlayerIsReady(Player player)
+        public void NotifyPlayerRoundStart()
         {
             Dispatcher.Invoke(() =>
             {
-                ActionPanel.Visibility = Visibility.Visible;
+                ActionBtnsPanel.Visibility = Visibility.Visible;
+            });
+        }
+
+        public void NotifyEnemyRoundStart()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                CollapseAllBtnPanels();
             });
         }
 

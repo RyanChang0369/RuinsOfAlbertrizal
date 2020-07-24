@@ -810,7 +810,7 @@ namespace RuinsOfAlbertrizal.Characters
                 }
                 catch (IndexOutOfRangeException)
                 {
-                    throw;
+                    
                 }
             }
 

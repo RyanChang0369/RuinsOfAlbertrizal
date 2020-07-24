@@ -35,19 +35,19 @@ namespace RuinsOfAlbertrizal.AIs
                     //Attacker is right of target. Move left.
                     attackerPoint.X--;
                 }
-                else if (attackerPoint.X < targetPoint.Y)
+                else if (attackerPoint.X < targetPoint.X)
                 {
                     //Attacker is left of target. Move right.
                     attackerPoint.X++;
                 }
                 else if (attackerPoint.Y > targetPoint.Y)
                 {
-                    //Attacker is above of target. Move down.
+                    //Attacker is above target. Move down.
                     attackerPoint.Y--;
                 }
                 else
                 {
-                    //Attacker is below of target. Move up.
+                    //Attacker is below target. Move up.
                     attackerPoint.Y++;
                 }
                 spacesLeft--;
@@ -63,7 +63,7 @@ namespace RuinsOfAlbertrizal.AIs
                         //Attacker is right of target. Move right.
                         attackerPoint.X++;
                     }
-                    else if (attackerPoint.X < targetPoint.Y)
+                    else if (attackerPoint.X < targetPoint.X)
                     {
                         //Attacker is left of target. Move left.
                         attackerPoint.X--;
@@ -125,7 +125,7 @@ namespace RuinsOfAlbertrizal.AIs
         //            Attacker is right of target.Move left.
         //            attackerPoint.X--;
         //        }
-        //        else if (attackerPoint.X < targetPoint.Y)
+        //        else if (attackerPoint.X < targetPoint.X)
         //        {
         //            Attacker is left of target.Move right.
         //            attackerPoint.X++;
@@ -151,7 +151,7 @@ namespace RuinsOfAlbertrizal.AIs
         //            Attacker is right of target.Move right.
         //            attackerPoint.X++;
         //        }
-        //        else if (attackerPoint.X < targetPoint.Y)
+        //        else if (attackerPoint.X < targetPoint.X)
         //        {
         //            Attacker is left of target.Move left.
         //            attackerPoint.X--;
@@ -177,7 +177,7 @@ namespace RuinsOfAlbertrizal.AIs
         //            Attacker is right of target.Move left.
         //            attackerPoint.X--;
         //        }
-        //        else if (attackerPoint.X < targetPoint.Y)
+        //        else if (attackerPoint.X < targetPoint.X)
         //        {
         //            Attacker is left of target.Move right.
         //            attackerPoint.X++;

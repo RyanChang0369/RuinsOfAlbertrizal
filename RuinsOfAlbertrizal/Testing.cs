@@ -17,48 +17,12 @@ namespace RuinsOfAlbertrizal
 
         private static void Test()
         {
-            //bool[, ] table = new bool[BattleField.BattleFieldHeight, BattleField.BattleFieldWidth];
-
-            //Point location = new Point(10, 1);
-            //int moveRange = 2;
-
-            //int rightEdge = Math.Max(location.X - moveRange + 1, 0);
-            //int leftEdge = Math.Min(location.X + moveRange, BattleField.BattleFieldWidth);
-            //int topEdge = Math.Max(location.Y - moveRange, 0);
-            //int bottomEdge = Math.Min(location.Y + 2 * moveRange + 1, BattleField.BattleFieldHeight);
-
-            //for (int i = topEdge; i < bottomEdge; i++)
+            //List<Point> points = new List<Point>()
             //{
-            //    int jaggedRightEdge = Math.Max(rightEdge + Math.Abs(i - location.Y), 0);
-            //    int jaggedLeftEdge = Math.Min(leftEdge - Math.Abs(i - location.Y) + 1, BattleField.BattleFieldWidth);
-            //    for (int j = jaggedRightEdge; j <= jaggedLeftEdge; j++)
-            //    {
-            //        try
-            //        {
-            //            table[i, j] = true;
-            //        }
-            //        catch (IndexOutOfRangeException)
-            //        {
+                
+            //};
 
-            //        }
-            //    }
-            //}
-
-            //for (int i = 0; i < BattleField.BattleFieldHeight; i++)
-            //{
-            //    for (int j = 0; j < BattleField.BattleFieldWidth; j++)
-            //    {
-            //        if (table[i, j])
-            //        {
-            //            Console.Write("* ");
-            //        }
-            //        else
-            //        {
-            //            Console.Write("x ");
-            //        }
-            //    }
-            //    Console.WriteLine();
-            //}
+            //Point i = points.MaxBy(t => t.X);
         }
 
         public static void InitTest()
@@ -84,5 +48,48 @@ namespace RuinsOfAlbertrizal
             if (!Debugging)
                 return;
         }
+
+        //bool[, ] table = new bool[BattleField.BattleFieldHeight, BattleField.BattleFieldWidth];
+
+        //Point location = new Point(10, 1);
+        //int moveRange = 2;
+
+        //int rightEdge = Math.Max(location.X - moveRange + 1, 0);
+        //int leftEdge = Math.Min(location.X + moveRange, BattleField.BattleFieldWidth);
+        //int topEdge = Math.Max(location.Y - moveRange, 0);
+        //int bottomEdge = Math.Min(location.Y + 2 * moveRange + 1, BattleField.BattleFieldHeight);
+
+        //for (int i = topEdge; i < bottomEdge; i++)
+        //{
+        //    int jaggedRightEdge = Math.Max(rightEdge + Math.Abs(i - location.Y), 0);
+        //    int jaggedLeftEdge = Math.Min(leftEdge - Math.Abs(i - location.Y) + 1, BattleField.BattleFieldWidth);
+        //    for (int j = jaggedRightEdge; j <= jaggedLeftEdge; j++)
+        //    {
+        //        try
+        //        {
+        //            table[i, j] = true;
+        //        }
+        //        catch (IndexOutOfRangeException)
+        //        {
+
+        //        }
+        //    }
+        //}
+
+        //for (int i = 0; i < BattleField.BattleFieldHeight; i++)
+        //{
+        //    for (int j = 0; j < BattleField.BattleFieldWidth; j++)
+        //    {
+        //        if (table[i, j])
+        //        {
+        //            Console.Write("* ");
+        //        }
+        //        else
+        //        {
+        //            Console.Write("x ");
+        //        }
+        //    }
+        //    Console.WriteLine();
+        //}
     }
 }

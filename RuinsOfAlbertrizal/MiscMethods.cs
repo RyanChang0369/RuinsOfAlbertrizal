@@ -34,7 +34,7 @@ namespace RuinsOfAlbertrizal
                 return true;
         }
 
-        public static BitmapSource ToBitmapSource(this System.Drawing.Bitmap bitmap)
+        public static BitmapSource ToBitmapSource(this Bitmap bitmap)
         {
             try
             {
@@ -131,6 +131,54 @@ namespace RuinsOfAlbertrizal
         {
             Grid.SetColumn(element, point.X);
             Grid.SetRow(element, point.Y);
+        }
+
+        public static T FindMax<T>(this IEnumerable<T> list, Func<T, int> selector, bool ignoreNullValues = true)
+        {
+            T selected = list.First();
+            foreach (T thing in list)
+            {
+                try
+                {
+                    if (selector(thing) > selector(selected))
+                    {
+                        selected = thing;
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    if (!ignoreNullValues)
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            return selected;
+        }
+
+        public static T FindMin<T>(this IEnumerable<T> list, Func<T, int> selector, bool ignoreNullValues = true)
+        {
+            T selected = list.First();
+            foreach (T thing in list)
+            {
+                try
+                {
+                    if (selector(thing) < selector(selected))
+                    {
+                        selected = thing;
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    if (!ignoreNullValues)
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            return selected;
         }
     }
 }

@@ -5,12 +5,9 @@ using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Environment
@@ -35,12 +32,6 @@ namespace RuinsOfAlbertrizal.Environment
         public List<Enemy> Enemies { get; set; }
 
         public int TurnNum { get; set; }
-
-        /// <summary>
-        /// Only used for detailed stats
-        /// </summary>
-        [XmlIgnore]
-        public Character SelectedCharacter { get; set; }
 
         /// <summary>
         /// The index of the player in ActivePlayers that is having a turn.
@@ -533,7 +524,7 @@ namespace RuinsOfAlbertrizal.Environment
                     ConcurrentCharacters.RemoveAt(0);
                 }
                 else
-                    RoundKeeper.RoundEnd(this);
+                    SpeedTimer.Change(GameBase.TickSpeed, GameBase.TickSpeed);
             }
         }
 
@@ -601,6 +592,7 @@ namespace RuinsOfAlbertrizal.Environment
             if (TurnNum < GameBase.NumTurns)
             {
                 StartCharacterTurn(enemy);
+                BattleInterface.NotifyEnemyRoundStart();
                 await MiscMethods.TaskDelay(500);
                 AI.SelectTarget(enemy, GameBase.CurrentGame.ActivePlayers, ActiveEnemies);
             }
@@ -617,7 +609,7 @@ namespace RuinsOfAlbertrizal.Environment
             if (TurnNum < GameBase.NumTurns)
             {
                 StartCharacterTurn(player);
-                BattleInterface.NotifyPlayerIsReady(player);
+                BattleInterface.NotifyPlayerRoundStart();
             }
             else
             {
@@ -726,6 +718,16 @@ namespace RuinsOfAlbertrizal.Environment
         public void NotifyDeath(Character character)
         {
             StoredMessage.Add($"{character.Name} was slain!");
+
+            if (character.GetType() == typeof(Player))
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                SwapEnemy((Enemy)character, Enemies.Except(ActiveEnemies).GetRandomValue());
+            }
+
             BattleInterface.NotifyDeath(character);
         }
 
@@ -767,6 +769,32 @@ namespace RuinsOfAlbertrizal.Environment
             }
 
             return count;
+        }
+
+        private void SwapEnemy(Enemy oldEnemy, Enemy newEnemy)
+        {
+            int index = Array.IndexOf(ActiveEnemies, oldEnemy);
+
+            if (index == -1)
+                throw new ArgumentOutOfRangeException($"{oldEnemy.DisplayName} not found within ActiveEnemies");
+            
+            ActiveEnemies[index] = newEnemy;
+            oldEnemy.UnloadImage();
+            newEnemy.LoadImage();
+            BattleInterface.SwapEnemy(index);
+        }
+
+        private void SwapPlayer(Player oldPlayer, Player newPlayer)
+        {
+            int index = Array.IndexOf(GameBase.CurrentGame.ActivePlayerGuids, oldPlayer.GlobalID);
+
+            if (index == -1)
+                throw new ArgumentOutOfRangeException($"{oldPlayer.DisplayName} not found within ActivePlayers");
+
+            GameBase.CurrentGame.ActivePlayerGuids[index] = newPlayer.GlobalID;
+            oldPlayer.UnloadImage();
+            newPlayer.LoadImage();
+            BattleInterface.SwapPlayer(index);
         }
     }
 }

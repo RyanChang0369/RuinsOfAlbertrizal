@@ -300,7 +300,7 @@ namespace RuinsOfAlbertrizal.AIs
         public static void AIStyle_Berserk(Enemy attacker, Player[] activePlayers)
         {
             //Find player with lowest hp and select that as target
-            Player target = FindWeakestCharacter(activePlayers, GameBase.Stats.HP);
+            Player target = activePlayers.FindMin(t => t.CurrentStats[0]);
 
             double fateSelector = RNG.GetRandomDouble();
 
@@ -367,36 +367,11 @@ namespace RuinsOfAlbertrizal.AIs
         {
             double[] percentStats = attacker.PercentStats;
 
-            //if (AutoConsume(attacker, statPercentages))
-            //    return;
-
-            //Test
-
-            //Find low and high bounds of range
-            //int lowBound = int.MaxValue, highBound = 0;
-
-            //foreach (Attack attack in attacker.AllAttacks)
-            //{
-            //    if (attack.Range < lowBound)
-            //        lowBound = attack.Range;
-            //    else if (attack.Range > highBound)
-            //        highBound = attack.Range;
-            //}
-
             List<Player> playersWithinRange = CharactersWithinRange(attacker, attacker.AllAttacks, activePlayers);
 
-            //foreach (Player player in activePlayers)
-            //{
-            //    if (player != null && attacker.DirectDistanceFrom(player) <= highBound && attacker.DirectDistanceFrom(player) >= lowBound)
-            //    {
-            //        playersWithinRange.Add(player);
-            //    }
-            //}
-
-
-            //Find closest player and select that as target
+            //Step 1: Find closest player and select that as target
             Player target = activePlayers[0];
-            double minDistance = double.PositiveInfinity;
+            double minDistance = int.MaxValue;
 
             foreach (Player player in playersWithinRange)
             {
@@ -411,13 +386,8 @@ namespace RuinsOfAlbertrizal.AIs
                 }
             }
 
-            Attack longestRangeAttack = attacker.AllAttacks[0];
-
-            foreach (Attack attack in attacker.AllAttacks)
-            {
-                if (attack.Range > longestRangeAttack.Range)
-                    longestRangeAttack = attack;
-            }
+            //Step 2: Find longest ranged attack.
+            Attack longestRangeAttack = attacker.AllAttacks.FindMax(t => t.Range);
 
             //Start logic for AI Style
 
@@ -434,7 +404,7 @@ namespace RuinsOfAlbertrizal.AIs
                 else
                 {
                     //Attack weakest player
-                    target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
+                    target = playersWithinRange.FindMin(t => t.CurrentStats[0]);
                     Attack selectedAttack = attacker.FindStrongestAttack(target, GameBase.Stats.HP);
                     attacker.DoAttack(selectedAttack, target);
                     return;
@@ -464,7 +434,7 @@ namespace RuinsOfAlbertrizal.AIs
                     if (selectedAttack.Range - targetDistance < 2)
                     {
                         //Attack weakest player
-                        target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
+                        target = playersWithinRange.FindMin(t => t.CurrentStats[0]);
                         
                         if (target != null)
                         {
@@ -491,7 +461,7 @@ namespace RuinsOfAlbertrizal.AIs
                         catch (DidNotMoveException)
                         {
                             //Attack weakest player
-                            target = FindWeakestCharacter(playersWithinRange, GameBase.Stats.HP);
+                            target = playersWithinRange.FindMin(t => t.CurrentStats[0]);
 
                             if (target != null)
                             {
@@ -632,27 +602,27 @@ namespace RuinsOfAlbertrizal.AIs
         //        AIStyle_Berserk(attacker, activePlayers);
         //}
 
-        public static T FindWeakestCharacter<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
-        {
-            T selected = null;
-            foreach (T thing in characters)
-            {
-                if (selected == null || thing.CurrentStats[(int)stat] > selected.CurrentStats[(int)stat])
-                    selected = thing;
-            }
-            return selected;
-        }
+        //public static T FindWeakestCharacter<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
+        //{
+        //    T selected = null;
+        //    foreach (T thing in characters)
+        //    {
+        //        if (thing != null && thing.CurrentStats[(int)stat] > selected.CurrentStats[(int)stat])
+        //            selected = thing;
+        //    }
+        //    return selected;
+        //}
 
-        public static T FindStrongestCharacter<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
-        {
-            T selected = null;
-            foreach (T thing in characters)
-            {
-                if (selected == null || thing.CurrentStats[(int)stat] < selected.CurrentStats[(int)stat])
-                    selected = thing;
-            }
-            return selected;
-        }
+        //public static T FindStrongestCharacter<T>(IEnumerable<T> characters, GameBase.Stats stat) where T : Character
+        //{
+        //    T selected = null;
+        //    foreach (T thing in characters)
+        //    {
+        //        if (selected == null || thing.CurrentStats[(int)stat] < selected.CurrentStats[(int)stat])
+        //            selected = thing;
+        //    }
+        //    return selected;
+        //}
 
         //public static T FindSmallestDistance<T>(Point location, IEnumerable<T> targets) where T : Character
         //{

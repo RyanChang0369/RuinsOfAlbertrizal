@@ -19,7 +19,9 @@
                 <Label Content="{Binding Path=DisplayName}"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Image Source="../assets/radiusOfEffect.png" ToolTip="Radius of Effect" Style="{StaticResource iconSmall}"/>
                     <Label Content="{Binding Path=RadiusOfEffect}" ToolTip="Radius of Effect"/>
+                    <Image Source="../assets/range.png" ToolTip="Range" Style="{StaticResource iconSmall}"/>
                     <Label Content="{Binding Path=Range}" ToolTip="Range"/>
                     <Image Visibility="{Binding Path=IgnoresArmor, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Ignores Armor"/>
                     <Image Visibility="{Binding Path=HasBuffs, Converter={StaticResource BoolToVisibilityConverter}}" ToolTip="Click to view buffs" MouseUp="BuffIcon_MouseUp" Tag="{Binding Path=Buffs}"/>
@@ -53,7 +55,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="statsDetailedTemplate">
-            <Border BorderBrush="Black" BorderThickness="3" Background="Snow" Visibility="{Binding Converter={StaticResource NotNullToVisibilityConverter}}">
+            <Border BorderBrush="Black" BorderThickness="3" Background="Snow" Visibility="{Binding Converter={StaticResource NotNullToVisibilityConverter}}" Height="150">
                 <StackPanel>
                     <Label Content="{Binding Path=Name}"/>
                     <Grid>
@@ -61,6 +63,8 @@
                             <Style TargetType="Label">
                                 <Setter Property="FontSize" Value="18"/>
                                 <Setter Property="Margin" Value="0"/>
+                            </Style>
+                            <Style TargetType="ProgressBar" BasedOn="{StaticResource thinProgressBar}">
                             </Style>
                         </Grid.Resources>
                         <Grid.ColumnDefinitions>
@@ -74,51 +78,27 @@
                         </Grid.RowDefinitions>
                         <StackPanel>
                             <Label Content="HP"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Path=CurrentStats[0]}" Foreground="Red"/>
-                                <Label Content="/" Foreground="Red"/>
-                                <Label Content="{Binding Path=ArmoredStats[0]}" Foreground="Red"/>
-                            </StackPanel>
+                            <ProgressBar Maximum="{Binding Path=ArmoredStats[0]}" Value="{Binding Path=CurrentStats[0]}" Foreground="Red"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
                             <Label Content="Mana"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Path=CurrentStats[1]}" Foreground="Blue"/>
-                                <Label Content="/" Foreground="Blue"/>
-                                <Label Content="{Binding Path=ArmoredStats[1]}" Foreground="Blue"/>
-                            </StackPanel>
+                            <ProgressBar Maximum="{Binding Path=ArmoredStats[1]}" Value="{Binding Path=CurrentStats[1]}" Foreground="Blue"/>
                         </StackPanel>
                         <StackPanel Grid.Column="2">
                             <Label Content="Defense"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Path=CurrentStats[2]}" Foreground="SteelBlue"/>
-                                <Label Content="/" Foreground="SteelBlue"/>
-                                <Label Content="{Binding Path=ArmoredStats[2]}" Foreground="SteelBlue"/>
-                            </StackPanel>
+                            <ProgressBar Maximum="{Binding Path=ArmoredStats[2]}" Value="{Binding Path=CurrentStats[2]}" Foreground="SteelBlue"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1">
                             <Label Content="Attack"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Path=CurrentStats[3]}" Foreground="Maroon"/>
-                                <Label Content="/" Foreground="Maroon"/>
-                                <Label Content="{Binding Path=ArmoredStats[3]}" Foreground="Maroon"/>
-                            </StackPanel>
+                            <ProgressBar Maximum="{Binding Path=ArmoredStats[3]}" Value="{Binding Path=CurrentStats[0]}" Foreground="Maroon"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.Column="1">
                             <Label Content="Speed"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Path=CurrentStats[4]}" Foreground="Orange"/>
-                                <Label Content="/" Foreground="Orange"/>
-                                <Label Content="{Binding Path=ArmoredStats[4]}" Foreground="Orange"/>
-                            </StackPanel>
+                            <ProgressBar Maximum="{Binding Path=ArmoredStats[4]}" Value="{Binding Path=CurrentStats[4]}" Foreground="Orange"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.Column="2">
                             <Label Content="Intelligence"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="{Binding Path=CurrentStats[5]}" Foreground="Navy"/>
-                                <Label Content="/" Foreground="Navy"/>
-                                <Label Content="{Binding Path=ArmoredStats[5]}" Foreground="Navy"/>
-                            </StackPanel>
+                            <ProgressBar Maximum="{Binding Path=ArmoredStats[5]}" Value="{Binding Path=CurrentStats[5]}" Foreground="Navy"/>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
@@ -213,17 +193,31 @@
                     </StackPanel>
                     
                 </Grid>
+
                 <Grid Grid.Column="1" Background="Snow">
-                    <StackPanel x:Name="ActionPanel" VerticalAlignment="Center">
+                    <Grid.Resources>
+                        <Style TargetType="Button" BasedOn="{StaticResource buttonMedium}"/>
+                    </Grid.Resources>
+                    <StackPanel x:Name="ActionBtnsPanel" VerticalAlignment="Center" Visibility="Collapsed">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="AttackBtn" Content="Select Attack" Click="Attack_Click" Style="{StaticResource buttonMedium}"/>
-                            <Button x:Name="MoveBtn" Content="Move" Click="Move_Click" Style="{StaticResource buttonMedium}"/>
-                            <Button Content="End Turn" Click="EndTurn_Click" Style="{StaticResource buttonMedium}"/>
+                            <Button x:Name="AttackBtn" Content="Select Attack" Click="Attack_Click"/>
+                            <Button x:Name="MoveBtn" Content="Move" Click="Move_Click"/>
+                            <Button Content="End Turn" Click="EndTurn_Click"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button Content="Inventory" Click="Inventory_Click" Style="{StaticResource buttonMedium}"/>
-                            <Button Content="Flee" Click="Flee_Click" Style="{StaticResource buttonMedium}"/>
+                            <Button Content="Inventory" Click="Inventory_Click"/>
+                            <Button Content="Flee" Click="Flee_Click"/>
                         </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel x:Name="AttackBtnsPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Visibility="Collapsed">
+                        <Button x:Name="ConfirmAttackBtn" Content="Confirm Attack" IsEnabled="False" Click="ConfirmAttackBtn_Click"/>
+                        <Button x:Name="CancelAttackBtn" Content="Cancel Attack" Click="CancelAttackBtn_Click"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="MoveBtnsPanel" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" Visibility="Collapsed">
+                        <Button x:Name="ConfirmMoveBtn" Content="Confirm Move" IsEnabled="False" Click="ConfirmMoveBtn_Click"/>
+                        <Button x:Name="CancelMoveBtn" Content="Cancel Move" Click="CancelMoveBtn_Click"/>
                     </StackPanel>
                 </Grid>
             </Grid>

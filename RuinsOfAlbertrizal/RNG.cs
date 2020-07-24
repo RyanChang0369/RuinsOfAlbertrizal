@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RuinsOfAlbertrizal
 {
-    class RNG
+    public static class RNG
     {
         private static Random RNGNum = new Random();
 
@@ -72,6 +72,15 @@ namespace RuinsOfAlbertrizal
         public static double GetRandomDouble()
         {
             return RNGNum.NextDouble();
+        }
+
+        public static T GetRandomValue<T>(this IEnumerable<T> values)
+        {
+            int length = values.Count();
+
+            List<T> valuesList = values.ToList();
+
+            return valuesList[GetRandomInteger(length)];
         }
     }
 }

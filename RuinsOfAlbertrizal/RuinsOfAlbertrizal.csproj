@@ -453,5 +453,11 @@
     <Resource Include="Help\ActiveRegionsPlayer.png" />
     <Resource Include="Help\Regions Areas and Locations.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\range.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\radiusOfEffect.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
