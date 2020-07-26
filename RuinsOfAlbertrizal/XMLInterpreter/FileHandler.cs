@@ -97,7 +97,10 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         {
             try
             {
-                GameBase.NewGame(Path.GetFullPath("..\\..\\..\\Campaign\\map.xml"));
+                GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
+                GameBase.CurrentGame = GameBase.StaticGame;
+
+                SaveCurrentMap();
             }
             catch (FileNotFoundException)
             {
@@ -169,11 +172,13 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
 
         public static void SaveStaticMap()
         {
+            GameBase.StaticGame.Unload();
             SaveObject(typeof(Map), GameBase.StaticGame, GameBase.StaticMapLocation);
         }
 
         public static void SaveCurrentMap()
         {
+            GameBase.CurrentGame.Unload();
             SaveObject(typeof(Map), GameBase.CurrentGame, GameBase.CurrentMapLocation);
         }
 
@@ -191,7 +196,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                 try
                 {
                     Map map = (Map)serializer.Deserialize(fs);
-                    map.Initialize();
+                    map.Load();
                     return map;
                 }
                 catch (InvalidOperationException e)
