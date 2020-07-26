@@ -91,6 +91,52 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public static void NewCampaign()
+        {
+            try
+            {
+                GameBase.NewGame(Path.GetFullPath("..\\..\\..\\Campaign\\map.xml"));
+            }
+            catch (FileNotFoundException)
+            {
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Loads the campaign that came with the game.
+        /// </summary>
+        /// <exception cref="FileNotFoundException"></exception>
+        public static void LoadCampaign()
+        {
+            GameBase.CurrentMapLocation = Path.GetFullPath("..\\..\\..\\Campaign\\map.xml");
+            GameBase.StaticMapLocation = Path.GetFullPath("..\\..\\..\\Campaign\\map-static.xml");
+
+            if (!File.Exists(GameBase.CurrentMapLocation) || !File.Exists(GameBase.StaticMapLocation))
+            {
+                GameBase.CurrentMapLocation = null;
+                GameBase.StaticMapLocation = null;
+                throw new FileNotFoundException("CurrentMapLocation and/or StaticMapLocation could not be found! Have the exe file been moved from bin directory?");
+            }
+
+            try
+            {
+                GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
+                GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
+
+                GameBase.CurrentGame.RefreshAllLevels();
+                GameBase.StaticGame.RefreshAllLevels();     //Just in case we decide to use staticgame's variables to clone currentgame's
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Saves an object
         /// </summary>
         /// <param name="type"></param>

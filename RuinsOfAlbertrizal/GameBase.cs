@@ -109,6 +109,10 @@ namespace RuinsOfAlbertrizal
             }
         }
 
+        /// <summary>
+        /// Creates a new static and current game
+        /// </summary>
+        /// <param name="path"></param>
         public static void NewGame(string path)
         {
             CurrentGame = new Map();
@@ -116,6 +120,13 @@ namespace RuinsOfAlbertrizal
 
             CurrentMapLocation = Path.GetDirectoryName(path) + "\\map.xml";
             StaticMapLocation = Path.GetDirectoryName(path) + "\\map-static.xml";
+
+            if (!File.Exists(CurrentMapLocation) || !File.Exists(StaticMapLocation))
+            {
+                CurrentMapLocation = null;
+                StaticMapLocation = null;
+                throw new FileNotFoundException("CurrentMapLocation and/or StaticMapLocation could not be found! Have the exe file been moved from bin directory?");
+            }
 
             FileHandler.SaveAllMaps();
         }

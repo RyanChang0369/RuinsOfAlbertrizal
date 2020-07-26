@@ -75,36 +75,32 @@ namespace RuinsOfAlbertrizal
 
         private void NewCampaign_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    GameLoader.NewCampaign();
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Program files not found.", "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    return;
-            //}
+            try
+            {
+                FileHandler.NewCampaign();
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show($"Importaint game files could not be found! Have the Campaign folder been altered? Have the exe file been moved from bin directory?\r\n\r\n{ex.Message}");
+                throw;
+            }
 
-            //NavIntroInterface();
-
-            MessageBox.Show("The campaign will be added shortly");
+            NavIntroInterface(GameBase.CurrentGame);
         }
 
         private void ContinueCampaign_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    GameLoader.LoadCampaign();
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Program files not found.", "Critical Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    return;
-            //}
+            try
+            {
+                FileHandler.LoadCampaign();
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show($"Importaint game files could not be found! Have the Campaign folder been altered? Have the exe file been moved from bin directory?\r\n\r\n{ex.Message}");
+                throw;
+            }
 
-            //NavIntroInterface();
-
-            MessageBox.Show("The campaign will be added shortly");
+            NavIntroInterface(GameBase.CurrentGame);
         }
 
         private void NavIntroInterface(Map currentMap)
