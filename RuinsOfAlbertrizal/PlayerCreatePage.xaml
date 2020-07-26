@@ -40,7 +40,7 @@
         </ScrollViewer>
         
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="Create and delete players using the buttons below. You can create as many characters as you like, but remeber that difficulty scales with the number of players regardless if they are dead or alive." Style="{StaticResource contentTextBlock}"/>
+            <TextBlock Text="Create and delete players using the buttons below. You can create as many characters as you like, but remember that difficulty scales with the number of players regardless if they are dead or alive." Style="{StaticResource contentTextBlock}"/>
             <Button Content="Create New Player" Click="Navigate" Tag="Editor/CreatePlayerPrompt.xaml"/>
             <Button Content="Delete Selected Player" Click="Delete_Click"/>
             <Separator/>
