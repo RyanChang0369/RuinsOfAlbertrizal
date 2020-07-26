@@ -1,32 +1,1202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <GlobalID>7cea256d-18bf-4f24-b8be-3ab9187fb359</GlobalID>
-  <InstanceID>60abeb25-af48-41d6-900f-7c2af84e0f62</InstanceID>
-  <Name />
-  <Description />
+  <GlobalID>94b2c76d-7603-406c-9f2b-e6aa0a5acc6d</GlobalID>
+  <InstanceID>3e2c6d36-45b5-4626-a92e-732c0698baa6</InstanceID>
+  <Name>Campaign</Name>
+  <Description>The main storyline of this game.</Description>
+  <WorldImgLocation>..\Map\Campaign_worldImg.png</WorldImgLocation>
   <PlayerCreated>false</PlayerCreated>
   <AllowForPlayerCreation>true</AllowForPlayerCreation>
   <SeenIntroduction>false</SeenIntroduction>
-  <Players />
+  <IntroMessage>
+    <Lines>
+      <string>Legends speak of a glorious castle that is now abandoned.</string>
+      <string>Mysterious creatures have been reported roam the hallways.</string>
+      <string>Mysterious creatures that exists nowhere else but here.</string>
+      <string>But you do not worry about them, for you have your trusty stick.</string>
+    </Lines>
+  </IntroMessage>
+  <Players>
+    <Player>
+      <GlobalID>f8dd5700-ef64-417c-8e8d-ae05cd83db7c</GlobalID>
+      <InstanceID>12d4f94e-d9f5-4090-a637-cb12e20e982d</InstanceID>
+      <Name>Jerry</Name>
+      <Description>A human who is now regretting their decision to come to this god-forsaken place.</Description>
+      <WorldImgLocation>..\Player\Jerry_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
+      <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
+      <GeneralName>Human</GeneralName>
+      <Level>1</Level>
+      <StyleOfModel>Humanoid</StyleOfModel>
+      <AIStyle>Player</AIStyle>
+      <BaseStats>
+        <int>200</int>
+        <int>20</int>
+        <int>20</int>
+        <int>13</int>
+        <int>10</int>
+        <int>20</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <BoundAttacks />
+      <PreviousTargets />
+      <XP>0</XP>
+    </Player>
+  </Players>
   <ActivePlayerGuids>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
     <guid>00000000-0000-0000-0000-000000000000</guid>
   </ActivePlayerGuids>
-  <StoredBosses />
-  <StoredEnemies />
-  <StoredBuffs />
-  <StoredAttacks />
-  <StoredItems />
-  <StoredEquiptments />
-  <StoredConsumables />
+  <StoredBosses>
+    <Boss>
+      <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
+      <InstanceID>90ce0082-92fb-43b6-b390-9167bb6384de</InstanceID>
+      <Name>Shotgun Slime</Name>
+      <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
+      <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
+      <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
+      <GeneralName>Rare Green Slime</GeneralName>
+      <Level>1</Level>
+      <StyleOfModel>Slime</StyleOfModel>
+      <AIStyle>Berserk</AIStyle>
+      <BaseStats>
+        <int>2000</int>
+        <int>500</int>
+        <int>10</int>
+        <int>10</int>
+        <int>50</int>
+        <int>2</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <BoundAttacks />
+      <PreviousTargets />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <MessagesOnEncounter>
+        <Message>
+          <Lines>
+            <string>*reloads shotgun*</string>
+          </Lines>
+        </Message>
+        <Message>
+          <Lines>
+            <string>*inserts 7 clips*</string>
+          </Lines>
+        </Message>
+      </MessagesOnEncounter>
+      <MessagesOnAttack />
+      <MessagesOnDefeat>
+        <Message>
+          <Lines>
+            <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+            <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+          </Lines>
+        </Message>
+      </MessagesOnDefeat>
+      <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
+    </Boss>
+  </StoredBosses>
+  <StoredEnemies>
+    <Enemy>
+      <GlobalID>70aa32f8-221d-4cad-8dea-1f1659bf6a54</GlobalID>
+      <InstanceID>8909f9e2-858d-4296-9526-eefaea98b9df</InstanceID>
+      <Name>Green Slime</Name>
+      <Description>A fairly common sight around here. Not much of a threat unless it has a shotgun.</Description>
+      <IconLocation>..\Enemy\Green Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Green Slime_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
+      <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
+      <GeneralName>Slime</GeneralName>
+      <Level>0</Level>
+      <StyleOfModel>Slime</StyleOfModel>
+      <AIStyle>Timid</AIStyle>
+      <BaseStats>
+        <int>25</int>
+        <int>10</int>
+        <int>3</int>
+        <int>3</int>
+        <int>10</int>
+        <int>2</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <BoundAttacks>
+        <Attack>
+          <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <InstanceID>1f7eac05-71e9-417a-a33c-46aeb7b2407d</InstanceID>
+          <Name>Boop</Name>
+          <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <Range>1</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+      </BoundAttacks>
+      <PreviousTargets />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <MessagesOnEncounter />
+      <MessagesOnAttack />
+      <MessagesOnDefeat />
+      <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
+    </Enemy>
+    <Enemy>
+      <GlobalID>8b03134d-450d-4ea2-b37d-19b8f931edb3</GlobalID>
+      <InstanceID>89e35ef8-b055-4a11-822d-2b62d5a31c80</InstanceID>
+      <Name>Blue Slime</Name>
+      <Description>Knows a bit about magic.</Description>
+      <IconLocation>..\Enemy\Blue Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Blue Slime_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
+      <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
+      <GeneralName>Slime</GeneralName>
+      <Level>1</Level>
+      <StyleOfModel>Slime</StyleOfModel>
+      <AIStyle>Healer</AIStyle>
+      <BaseStats>
+        <int>25</int>
+        <int>25</int>
+        <int>0</int>
+        <int>0</int>
+        <int>10</int>
+        <int>5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <BoundAttacks>
+        <Attack>
+          <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <InstanceID>1681fb34-64f7-4dda-9312-4763c3477606</InstanceID>
+          <Name>Boop</Name>
+          <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <Range>1</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+      </BoundAttacks>
+      <PreviousTargets />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <MessagesOnEncounter />
+      <MessagesOnAttack />
+      <MessagesOnDefeat />
+      <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
+    </Enemy>
+    <Enemy>
+      <GlobalID>848a829e-1a48-46c2-be84-1314d72632b7</GlobalID>
+      <InstanceID>47fafe66-9b1d-43ff-b03a-31b3af0229af</InstanceID>
+      <Name>Red Slime</Name>
+      <Description>Arguably the most aggressive of all the slimes.</Description>
+      <IconLocation>..\Enemy\Red Slime_icon.png</IconLocation>
+      <WorldImgLocation>..\Enemy\Red Slime_worldImg.png</WorldImgLocation>
+      <MovementPoints>0</MovementPoints>
+      <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
+      <MapLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </MapLocation>
+      <BattleFieldLocation>
+        <X>0</X>
+        <Y>0</Y>
+      </BattleFieldLocation>
+      <AdventureOrientation>North</AdventureOrientation>
+      <BattleFieldOrientation>Left</BattleFieldOrientation>
+      <TurnsPassed>0</TurnsPassed>
+      <TurnTicks>0</TurnTicks>
+      <GeneralName>Slime</GeneralName>
+      <Level>1</Level>
+      <StyleOfModel>Slime</StyleOfModel>
+      <AIStyle>Berserk</AIStyle>
+      <BaseStats>
+        <int>50</int>
+        <int>3</int>
+        <int>10</int>
+        <int>8</int>
+        <int>13</int>
+        <int>2</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </BaseStats>
+      <AppliedStats>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </AppliedStats>
+      <PersonalPermanentBuffs />
+      <PersonalBuffImmunities />
+      <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
+      <CurrentConsumables />
+      <BoundAttacks>
+        <Attack>
+          <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+          <InstanceID>e5a4fd8e-56fc-401f-8a33-9c77b47c32b9</InstanceID>
+          <Name>Boop</Name>
+          <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <Range>1</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+        <Attack>
+          <GlobalID>838f77ef-e8db-45b9-90ef-52d7c48422f5</GlobalID>
+          <InstanceID>cde9684d-73f1-4807-840c-48e55648c521</InstanceID>
+          <Name>Mega Boop</Name>
+          <Description>Another attack that most slimes have. This attack causes more damage at the price of a short charge-up.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>15</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>1</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <Range>1</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+      </BoundAttacks>
+      <PreviousTargets />
+      <InventoryEquiptments />
+      <InventoryConsumables />
+      <InventoryItems />
+      <MessagesOnEncounter />
+      <MessagesOnAttack />
+      <MessagesOnDefeat />
+      <MessagesOnVictory />
+      <SpawnChance>1</SpawnChance>
+    </Enemy>
+  </StoredEnemies>
+  <StoredBuffs>
+    <Buff>
+      <GlobalID>b563ce00-8c7b-4c03-9bd9-1b531d0a7c42</GlobalID>
+      <InstanceID>5fc60f5b-dc92-4f1c-82ed-7e7227f0416d</InstanceID>
+      <Name>Paralysis</Name>
+      <Description>Cannot move!</Description>
+      <Duration>1</Duration>
+      <RoundsPassed>0</RoundsPassed>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <PercentStatGain>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
+      <TypeOfBuff>Normal</TypeOfBuff>
+      <AIChange>NoAI</AIChange>
+      <Level>100</Level>
+    </Buff>
+    <Buff>
+      <GlobalID>36015ecc-b4ea-42ca-aea6-f0a2e5fd4dac</GlobalID>
+      <InstanceID>94ed8f63-9292-410e-9fb9-28041f2cc285</InstanceID>
+      <Name>Poison</Name>
+      <Description>Losing health!</Description>
+      <Duration>1</Duration>
+      <RoundsPassed>0</RoundsPassed>
+      <StatGain>
+        <int>-5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <PercentStatGain>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
+      <TypeOfBuff>Normal</TypeOfBuff>
+      <AIChange>NoChange</AIChange>
+      <Level>1</Level>
+    </Buff>
+    <Buff>
+      <GlobalID>a5a315a7-e53e-4b10-8fff-a59ca1fd9463</GlobalID>
+      <InstanceID>a4b06805-ea75-48e6-99cd-3a9b1288ce64</InstanceID>
+      <Name>Death</Name>
+      <Description />
+      <Duration>1</Duration>
+      <RoundsPassed>0</RoundsPassed>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <PercentStatGain>
+        <double>-5</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+        <double>0</double>
+      </PercentStatGain>
+      <TypeOfBuff>Normal</TypeOfBuff>
+      <AIChange>NoChange</AIChange>
+      <Level>0</Level>
+    </Buff>
+  </StoredBuffs>
+  <StoredAttacks>
+    <Attack>
+      <GlobalID>1e4af09f-dcf6-465a-aa08-5f5ef088fe40</GlobalID>
+      <InstanceID>358f7009-6e80-4f21-8afe-7a5e3822a02b</InstanceID>
+      <Name>Stab</Name>
+      <Description>Basic stab attack.</Description>
+      <Buffs />
+      <StatLoss>
+        <int>5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
+      <IsRanged>false</IsRanged>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>0</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IgnoresArmor>false</IgnoresArmor>
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+    </Attack>
+    <Attack>
+      <GlobalID>deefeb9f-d585-42e6-9aa9-fa4ba375eb8a</GlobalID>
+      <InstanceID>a6bbde52-dd10-48ea-97e5-7e7aedc31215</InstanceID>
+      <Name>Poison Stab</Name>
+      <Description>A stab with a bit more flair.</Description>
+      <Buffs>
+        <Buff>
+          <GlobalID>36015ecc-b4ea-42ca-aea6-f0a2e5fd4dac</GlobalID>
+          <InstanceID>3e3096cb-8ca2-4784-815d-1c03802b4465</InstanceID>
+          <Name>Poison</Name>
+          <Description>Losing health!</Description>
+          <Duration>1</Duration>
+          <RoundsPassed>0</RoundsPassed>
+          <StatGain>
+            <int>-5</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatGain>
+          <PercentStatGain>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+          </PercentStatGain>
+          <TypeOfBuff>Normal</TypeOfBuff>
+          <AIChange>NoChange</AIChange>
+          <Level>1</Level>
+        </Buff>
+      </Buffs>
+      <StatLoss>
+        <int>6</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
+      <IsRanged>false</IsRanged>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>0</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IgnoresArmor>false</IgnoresArmor>
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+    </Attack>
+    <Attack>
+      <GlobalID>091208d9-0bd6-4a4d-8ae6-16b85c2a8613</GlobalID>
+      <InstanceID>e4e6cd32-2e43-4c41-bf42-00ba4cfbb894</InstanceID>
+      <Name>Boop</Name>
+      <Description>A common attack for slimes. Consists of a slime ramming into a player.</Description>
+      <Buffs />
+      <StatLoss>
+        <int>5</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
+      <IsRanged>false</IsRanged>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>0</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IgnoresArmor>false</IgnoresArmor>
+      <Range>1</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+    </Attack>
+    <Attack>
+      <GlobalID>838f77ef-e8db-45b9-90ef-52d7c48422f5</GlobalID>
+      <InstanceID>0fe1b5b6-fb54-400f-b58e-dedcdde2b184</InstanceID>
+      <Name>Mega Boop</Name>
+      <Description>Another attack that most slimes have. This attack causes more damage and has more range at the price of a short charge-up.</Description>
+      <Buffs />
+      <StatLoss>
+        <int>15</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
+      <IsRanged>false</IsRanged>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>1</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IgnoresArmor>false</IgnoresArmor>
+      <Range>2</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+    </Attack>
+    <Attack>
+      <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
+      <InstanceID>41130ecc-d966-4b7d-85c8-0f62862534a7</InstanceID>
+      <Name>Poke</Name>
+      <Description>Aim for the eyes for extra damage.</Description>
+      <Buffs />
+      <StatLoss>
+        <int>11</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatLoss>
+      <StatCostToUser>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatCostToUser>
+      <IsRanged>false</IsRanged>
+      <CoolDown>0</CoolDown>
+      <ChargeUp>0</ChargeUp>
+      <TurnSinceAttacked>0</TurnSinceAttacked>
+      <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+      <IgnoresArmor>false</IgnoresArmor>
+      <Range>2</Range>
+      <RadiusOfEffect>0</RadiusOfEffect>
+      <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+    </Attack>
+  </StoredAttacks>
+  <StoredItems>
+    <Item>
+      <GlobalID>38b9d7d7-bd4c-4437-92ff-cdc092f582ae</GlobalID>
+      <InstanceID>3b697124-f989-43fd-9a38-6fc8da428323</InstanceID>
+      <Name>Test Item</Name>
+      <Description>For testing purposes</Description>
+      <IconLocation>..\Item\Test Item_icon.png</IconLocation>
+      <DropChance>0.69</DropChance>
+      <NumGivenOnStart>0</NumGivenOnStart>
+    </Item>
+  </StoredItems>
+  <StoredEquiptments>
+    <Equiptment>
+      <GlobalID>aff7b21b-5a97-436a-b537-362614f50782</GlobalID>
+      <InstanceID>85b9a311-1e93-49d3-ba5f-6114e3c62cdf</InstanceID>
+      <Name>Test Helmet</Name>
+      <Description>A helmet for testing</Description>
+      <IconLocation>..\Equiptment\Test Helmet_icon.png</IconLocation>
+      <DropChance>0.13</DropChance>
+      <NumGivenOnStart>0</NumGivenOnStart>
+      <IsAClone>false</IsAClone>
+      <EquiptableSlots />
+      <RequiredSlots />
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>5</int>
+        <int>0</int>
+        <int>-1</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <BuffImmunities />
+      <GrantedBuffs />
+      <Attacks />
+      <ConnectionPointX>4</ConnectionPointX>
+      <ConnectionPointY>40</ConnectionPointY>
+    </Equiptment>
+    <Equiptment>
+      <GlobalID>d4051d96-b702-4f90-a25b-55d0d4a44c5f</GlobalID>
+      <InstanceID>2d46a28d-8286-45f1-9c8f-c72e4090be86</InstanceID>
+      <Name>Test Multi Slot</Name>
+      <Description>For testing the multislot functionality.</Description>
+      <IconLocation>..\Equiptment\Test Multi Slot_icon.png</IconLocation>
+      <DropChance>0</DropChance>
+      <NumGivenOnStart>0</NumGivenOnStart>
+      <IsAClone>false</IsAClone>
+      <EquiptableSlots />
+      <RequiredSlots />
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <BuffImmunities />
+      <GrantedBuffs />
+      <Attacks />
+      <ConnectionPointX>4</ConnectionPointX>
+      <ConnectionPointY>40</ConnectionPointY>
+    </Equiptment>
+    <Equiptment>
+      <GlobalID>eaaf9924-a075-4af9-ac2b-22ff02db5539</GlobalID>
+      <InstanceID>92b1bcb1-dc79-419a-9c03-64913211597f</InstanceID>
+      <Name>Stick</Name>
+      <Description>A small stick you found from a tree.</Description>
+      <IconLocation>..\Equiptment\Stick_icon.png</IconLocation>
+      <DropChance>0.8</DropChance>
+      <NumGivenOnStart>1</NumGivenOnStart>
+      <IsAClone>false</IsAClone>
+      <EquiptableSlots>
+        <SlotMode>Hand1</SlotMode>
+        <SlotMode>Hand2</SlotMode>
+      </EquiptableSlots>
+      <RequiredSlots />
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <BuffImmunities />
+      <GrantedBuffs />
+      <Attacks>
+        <Attack>
+          <GlobalID>fd1063a8-a77f-40c7-a6a4-cc449bf5641a</GlobalID>
+          <InstanceID>65a9c06e-3e24-42ed-9c8c-c94ccc7c9301</InstanceID>
+          <Name>Poke</Name>
+          <Description>Aim for the eyes for extra damage.</Description>
+          <Buffs />
+          <StatLoss>
+            <int>11</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatLoss>
+          <StatCostToUser>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatCostToUser>
+          <IsRanged>false</IsRanged>
+          <CoolDown>0</CoolDown>
+          <ChargeUp>0</ChargeUp>
+          <TurnSinceAttacked>0</TurnSinceAttacked>
+          <TurnsSinceBeginCharge>0</TurnsSinceBeginCharge>
+          <IgnoresArmor>false</IgnoresArmor>
+          <Range>1</Range>
+          <RadiusOfEffect>0</RadiusOfEffect>
+          <TypeOfTarget>EnemiesOnly</TypeOfTarget>
+        </Attack>
+      </Attacks>
+      <ConnectionPointX>22</ConnectionPointX>
+      <ConnectionPointY>25</ConnectionPointY>
+    </Equiptment>
+  </StoredEquiptments>
+  <StoredConsumables>
+    <Consumable>
+      <GlobalID>4453bb4c-38ca-4272-afe3-cc434a9d483f</GlobalID>
+      <InstanceID>abc8d51a-7c6e-4936-b95f-66081a550ef5</InstanceID>
+      <Name>Test Consumable</Name>
+      <Description />
+      <IconLocation>..\Consumable\Test_icon.png</IconLocation>
+      <DropChance>0</DropChance>
+      <NumGivenOnStart>0</NumGivenOnStart>
+      <Buffs>
+        <Buff>
+          <GlobalID>b563ce00-8c7b-4c03-9bd9-1b531d0a7c42</GlobalID>
+          <InstanceID>9e52bd8a-d926-491a-bd50-338263afe104</InstanceID>
+          <Name>Paralysis</Name>
+          <Description>Cannot move!</Description>
+          <Duration>1</Duration>
+          <RoundsPassed>0</RoundsPassed>
+          <StatGain>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </StatGain>
+          <PercentStatGain>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+            <double>0</double>
+          </PercentStatGain>
+          <TypeOfBuff>Normal</TypeOfBuff>
+          <AIChange>NoAI</AIChange>
+          <Level>100</Level>
+        </Buff>
+      </Buffs>
+      <StatGain>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+        <int>0</int>
+      </StatGain>
+      <RoundsPassed>0</RoundsPassed>
+    </Consumable>
+  </StoredConsumables>
   <StoredHazards />
   <StoredBlocks />
   <PlayerItems />
   <PlayerConsumables />
   <PlayerEquiptments />
   <Difficulty>1</Difficulty>
-  <Levels />
+  <Levels>
+    <Level>
+      <GlobalID>81f1680e-9719-44f9-bd11-d98fb2a964e7</GlobalID>
+      <InstanceID>f73aacd5-9e47-4b25-b311-194d7ea7be36</InstanceID>
+      <Name>Final Level</Name>
+      <Description />
+      <WorldImgLocation>..\Level\Final Level_worldImg.png</WorldImgLocation>
+      <SeenIntroduction>false</SeenIntroduction>
+      <IntroMessage>
+        <Lines>
+          <string>This is it. The final floor. All you need to do now is escape.</string>
+        </Lines>
+      </IntroMessage>
+      <StoredEnemyGuids>
+        <guid>70aa32f8-221d-4cad-8dea-1f1659bf6a54</guid>
+        <guid>8b03134d-450d-4ea2-b37d-19b8f931edb3</guid>
+        <guid>848a829e-1a48-46c2-be84-1314d72632b7</guid>
+      </StoredEnemyGuids>
+      <Difficulty>2</Difficulty>
+      <MaxPoints>9000</MaxPoints>
+      <Points>0</Points>
+      <BossGuids>
+        <guid>4a80723a-427f-4706-b3d1-ce7abf264f40</guid>
+      </BossGuids>
+      <TheWinCondition>DefeatEnemies</TheWinCondition>
+    </Level>
+  </Levels>
   <LevelsCompleted>0</LevelsCompleted>
 </Map>
