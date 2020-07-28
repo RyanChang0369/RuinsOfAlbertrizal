@@ -87,25 +87,25 @@ namespace RuinsOfAlbertrizal.Environment
 
         public Level()
         {
-            StoredEnemyGuids = new List<Guid>();
-            BossGuids = new List<Guid>();
             Bosses = new List<Boss>();
             StoredEnemies = new List<Enemy>();
             IntroMessage = new Message();
             Difficulty = 1.0;
         }
 
-        /// <summary>
-        /// Bosses and enemies bound to this level will be refreshed/created based on Guid filtering.
-        /// Run this method when you want Bosses or StoredEnemies to be recreated.
-        /// </summary>
-        public void RefreshStoredObjects()
+        public override void Load(Map map)
         {
-            if (!GameBase.Initialized())
-                throw new ArgumentException("Cannot run method if GameBase is not initalized.");
+            Bosses = map.StoredBosses.FilterByGlobalID(BossGuids);
+            StoredEnemies = map.StoredEnemies.FilterByGlobalID(StoredEnemyGuids);
+        }
 
-            Bosses = GameBase.CurrentGame.StoredBosses.FilterByGlobalID(BossGuids);
-            StoredEnemies = GameBase.CurrentGame.StoredEnemies.FilterByGlobalID(StoredEnemyGuids);
+        public override void Unload(bool force)
+        {
+            if (force)
+            {
+                BossGuids = Bosses.ToGlobalIDList();
+                StoredEnemyGuids = StoredEnemies.ToGlobalIDList();
+            }
         }
 
         /// <summary>

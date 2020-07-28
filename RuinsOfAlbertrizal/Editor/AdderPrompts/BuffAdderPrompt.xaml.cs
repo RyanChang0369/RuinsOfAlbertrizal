@@ -62,7 +62,7 @@ namespace RuinsOfAlbertrizal.Editor.AdderPrompts
             if (listBox.SelectedIndex < 0)
                 return;
 
-            Buff buff = CreateMapPrompt.Map.StoredBuffs[listBox.SelectedIndex];
+            Buff buff = CreateMapPrompt.Map.StoredBuffs[listBox.SelectedIndex].MemoryClone();
 
             LevelSelect levelSelect = new LevelSelect("buff", buff.Name);
             levelSelect.ShowDialog();

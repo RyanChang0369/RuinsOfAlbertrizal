@@ -10,23 +10,37 @@ namespace RuinsOfAlbertrizal
 {
     public static class RoAMethods
     {
-        public static List<Guid> ToGlobalIDList<T>(this List<T> objects) where T : ObjectOfAlbertrizal
+        public static List<Guid> ToGlobalIDList<T>(this IEnumerable<T> objects) where T : ObjectOfAlbertrizal
         {
+            if (objects == null)
+                return new List<Guid>();
+
             List<Guid> guids = new List<Guid>();
 
             foreach (T thing in objects)
-                guids.Add(thing.GlobalID);
+            {
+                if (thing != null)
+                    guids.Add(thing.GlobalID);
+            }
 
             return guids;
         }
 
-        public static List<T> FilterByGlobalID<T>(this List<T> objects, List<Guid> guids) where T : ObjectOfAlbertrizal
+        public static Guid[] ToGlobalIDArray<T>(this IEnumerable<T> objects) where T : ObjectOfAlbertrizal
         {
+            return ToGlobalIDList(objects).ToArray();
+        }
+
+        public static List<T> FilterByGlobalID<T>(this List<T> objects, IEnumerable<Guid> guids) where T : ObjectOfAlbertrizal
+        {
+            if (objects == null || guids == null || objects.Count < 1 || guids.Count() < 1)
+                return new List<T>();
+
             List<T> filteredList = new List<T>();
 
             foreach (T thing in objects)
             {
-                if (guids.Contains(thing.GlobalID))
+                if (thing != null && guids.Contains(thing.GlobalID))
                     filteredList.Add(thing);
             }
 
@@ -102,39 +116,39 @@ namespace RuinsOfAlbertrizal
             return filteredArr;
         }
 
-        /// <summary>
-        /// Uses StaticMap to clone a single ObjectOfAlbertrizal.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="objectOfAlbertrizal">An object from static map.</param>
-        /// <returns></returns>
-        public static T StaticMapClone<T>(this T objectOfAlbertrizal) where T : ObjectOfAlbertrizal
-        {
-            if (!GameBase.Initialized())
-                throw new Exception("Both static and current maps must be initialized");
+        ///// <summary>
+        ///// Uses StaticMap to clone a single ObjectOfAlbertrizal.
+        ///// </summary>
+        ///// <typeparam name="T"></typeparam>
+        ///// <param name="objectOfAlbertrizal">An object from static map.</param>
+        ///// <returns></returns>
+        //public static T StaticMapClone<T>(this T objectOfAlbertrizal) where T : ObjectOfAlbertrizal
+        //{
+        //    if (!GameBase.Initialized())
+        //        throw new Exception("Both static and current maps must be initialized");
 
-            //Break link
-            GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
-            objectOfAlbertrizal.GetNewInstanceID();
+        //    //Break link
+        //    GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
+        //    objectOfAlbertrizal.GetNewInstanceID();
 
-            return objectOfAlbertrizal;
-        }
+        //    return objectOfAlbertrizal;
+        //}
 
-        /// <summary>
-        /// Uses StaticMap to clone an entire list.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="list"></param>
-        /// <returns></returns>
-        public static List<T> StaticMapClone<T>(this List<T> listOfObjects) where T : ObjectOfAlbertrizal
-        {
-            if (!GameBase.Initialized())
-                throw new Exception("Both static and current maps must be initialized");
+        ///// <summary>
+        ///// Uses StaticMap to clone an entire list.
+        ///// </summary>
+        ///// <typeparam name="T"></typeparam>
+        ///// <param name="list"></param>
+        ///// <returns></returns>
+        //public static List<T> StaticMapClone<T>(this List<T> listOfObjects) where T : ObjectOfAlbertrizal
+        //{
+        //    if (!GameBase.Initialized())
+        //        throw new Exception("Both static and current maps must be initialized");
 
-            GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
+        //    GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
 
-            return listOfObjects;
-        }
+        //    return listOfObjects;
+        //}
 
         /// <summary>
         /// Clones an ObjectOfAlbertrizal and gives it a new InstanceID.

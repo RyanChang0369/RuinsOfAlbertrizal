@@ -113,7 +113,7 @@ namespace RuinsOfAlbertrizal
         /// Creates a new static and current game
         /// </summary>
         /// <param name="path"></param>
-        public static void NewGame(string path)
+        public static void NewCustomCampaign(string path)
         {
             CurrentGame = new Map();
             StaticGame = new Map();
@@ -137,7 +137,7 @@ namespace RuinsOfAlbertrizal
         /// <returns></returns>
         public static bool Initialized()
         {
-            return CurrentGame != null && StaticGame != null;
+            return CurrentGame != null || StaticGame != null;
         }
     }
 }

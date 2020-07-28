@@ -2,6 +2,7 @@
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
+using RuinsOfAlbertrizal.XMLInterpreter;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -219,23 +220,80 @@ namespace RuinsOfAlbertrizal.Environment
             PlayerEquiptments = new List<Equiptment>();
         }
 
-        //public override void Initialize()
-        //{
-        //    foreach (Player player in Players)
-        //    {
-        //        player.Initialize();
-        //    }
-
-        //    foreach (Enemy enemy in StoredEnemies)
-        //    {
-        //        enemy.Initialize();
-        //    }
-        //}
-
-        public void RefreshAllLevels()
+        public override void Load(Map map)
         {
+            foreach (Attack attack in StoredAttacks)
+            {
+                attack.Load(map);
+            }
+
+            foreach (Consumable consumable in StoredConsumables)
+            {
+                consumable.Load(map);
+            }
+
+            foreach (Equiptment equiptment in StoredEquiptments)
+            {
+                equiptment.Load(map);
+            }
+
+            foreach (Player player in Players)
+            {
+                player.Load(map);
+            }
+
+            foreach (Enemy enemy in StoredEnemies)
+            {
+                enemy.Load(map);
+            }
+
             foreach (Level level in Levels)
-                level.RefreshStoredObjects();
+            {
+                level.Load(map);
+            }
+
+            //if (map == GameBase.StaticGame)
+            //{
+            //    GameBase.StaticGame = FileHandler.LoadMap(GameBase.StaticMapLocation);
+            //}
+            //else
+            //{
+            //    GameBase.CurrentGame = FileHandler.LoadMap(GameBase.CurrentMapLocation);
+            //}
+        }
+
+        public override void Unload(bool force)
+        {
+            foreach (Attack attack in StoredAttacks)
+            {
+                attack.Unload(force);
+            }
+
+            foreach (Consumable consumable in StoredConsumables)
+            {
+                consumable.Unload(force);
+            }
+
+            foreach (Equiptment equiptment in StoredEquiptments)
+            {
+                equiptment.Unload(force);
+            }
+
+
+            foreach (Player player in Players)
+            {
+                player.Unload(force);
+            }
+
+            foreach (Enemy enemy in StoredEnemies)
+            {
+                enemy.Unload(force);
+            }
+
+            foreach (Level level in Levels)
+            {
+                level.Unload(force);
+            }
         }
 
         public void NextLevel()

@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,9 @@ namespace RuinsOfAlbertrizal.Items
     
     public class Consumable : Item, IRoundBasedObject
     {
+        public BuffGuidStorage BuffStorage { get; set; }
+
+        [XmlIgnore]
         public List<Buff> Buffs { get; set; }
 
         public int[] StatGain { get; set; }
@@ -42,6 +46,23 @@ namespace RuinsOfAlbertrizal.Items
         {
             Buffs = new List<Buff>();
             StatGain = new int[GameBase.NumStats];
+            BuffStorage = new BuffGuidStorage();
+        }
+
+        public override void Load(Map map)
+        {
+            base.Load(map);
+            Buffs = BuffStorage.Load(map.StoredBuffs);
+        }
+
+        public override void Unload(bool force)
+        {
+            base.Unload(force);
+
+            if (force)
+            {
+                BuffStorage.Unload(Buffs);
+            }
         }
 
         public void EndRound()

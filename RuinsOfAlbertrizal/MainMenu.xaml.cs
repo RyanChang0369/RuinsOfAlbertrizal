@@ -39,7 +39,7 @@ namespace RuinsOfAlbertrizal
         {
             try
             {
-                FileHandler.LoadCustomCampaign("map-static.xml");
+                FileHandler.LoadCustomCampaign(true);
             }
             catch (ArgumentNullException)
             {
@@ -58,7 +58,7 @@ namespace RuinsOfAlbertrizal
         {
             try
             {
-                FileHandler.LoadCustomCampaign("map.xml");
+                FileHandler.LoadCustomCampaign(false);
             }
             catch (ArgumentNullException)
             {

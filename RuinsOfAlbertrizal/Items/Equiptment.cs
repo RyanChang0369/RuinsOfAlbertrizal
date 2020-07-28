@@ -1,4 +1,5 @@
-﻿using RuinsOfAlbertrizal.Mechanics;
+﻿using RuinsOfAlbertrizal.Environment;
+using RuinsOfAlbertrizal.Mechanics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,16 +69,25 @@ namespace RuinsOfAlbertrizal.Items
 
         public int[] StatGain { get; set; }
 
+        public BuffGuidStorage BuffImmunityStorage { get; set; }
+
         /// <summary>
         /// The character who equipts this equiptment is immune to the listed buffs. Permanent buffs are not affected.
         /// </summary>
+        [XmlIgnore]
         public List<Buff> BuffImmunities { get; set; }
+
+        public BuffGuidStorage GrantedBuffStorage { get; set; }
 
         /// <summary>
         /// The character who equipts this equiptment will receive the following permanent buffs.
         /// </summary>
+        [XmlIgnore]
         public List<Buff> GrantedBuffs { get; set; }
 
+        public List<Guid> AttackGuids { get; set; }
+
+        [XmlIgnore]
         public List<Attack> Attacks { get; set; }
 
         public int ConnectionPointX { get; set; }
@@ -94,9 +104,33 @@ namespace RuinsOfAlbertrizal.Items
             StatGain = new int[GameBase.NumStats];
             BuffImmunities = new List<Buff>();
             Attacks = new List<Attack>();
+            GrantedBuffStorage = new BuffGuidStorage();
+            BuffImmunityStorage = new BuffGuidStorage();
+            GrantedBuffs = new List<Buff>();
             EquiptableSlots = new List<SlotMode>();
             ConnectionPointX = 4;
             ConnectionPointY = 40;
+        }
+
+        public override void Load(Map map)
+        {
+            base.Load(map);
+
+            GrantedBuffs = GrantedBuffStorage.Load(map.StoredBuffs);
+            BuffImmunities = BuffImmunityStorage.Load(map.StoredBuffs);
+            Attacks = map.StoredAttacks.FilterByGlobalID(AttackGuids);
+        }
+
+        public override void Unload(bool force)
+        {
+            base.Unload(force);
+
+            if (force)
+            {
+                GrantedBuffStorage.Unload(GrantedBuffs);
+                BuffImmunityStorage.Unload(BuffImmunities);
+                AttackGuids = Attacks.ToGlobalIDList();
+            }
         }
 
         public bool CanAttack()

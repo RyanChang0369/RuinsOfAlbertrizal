@@ -7,16 +7,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace RuinsOfAlbertrizal.Characters
 {
     
     public class Enemy : Character
     {
+        public List<Guid> InventoryEquiptmentGuids { get; set; }
+
+        /// <summary>
+        /// Serves as the loot table
+        /// </summary>
+        [XmlIgnore]
         public List<Equiptment> InventoryEquiptments { get; set; }
 
+        public List<Guid> InventoryConsumableGuids { get; set; }
+
+        /// <summary>
+        /// Serves as the loot table. Enemies can also use these items.
+        /// </summary>
+        [XmlIgnore]
         public List<Consumable> InventoryConsumables { get; set; }
 
+        public List<Guid> InventoryItemGuids { get; set; }
+
+        /// <summary>
+        /// Serves as the loot table
+        /// </summary>
+        [XmlIgnore]
         public List<Item> InventoryItems { get; set; }
 
         /// <summary>
@@ -69,6 +88,27 @@ namespace RuinsOfAlbertrizal.Characters
             CurrentConsumables = new List<Consumable>();
             InventoryConsumables = new List<Consumable>();
             InventoryItems = new List<Item>();
+        }
+
+        public override void Load(Map map)
+        {
+            base.Load(map);
+            InventoryConsumables = map.StoredConsumables.FilterByGlobalID(InventoryConsumableGuids);
+            InventoryEquiptments = map.StoredEquiptments.FilterByGlobalID(InventoryEquiptmentGuids);
+            InventoryItems = map.StoredItems.FilterByGlobalID(InventoryItemGuids);
+        }
+
+        public override void Unload(bool force)
+        {
+            base.Unload(force);
+
+            InventoryConsumableGuids = InventoryConsumables.ToGlobalIDList();
+
+            if (force)
+            {
+                InventoryEquiptmentGuids = InventoryEquiptments.ToGlobalIDList();
+                InventoryItemGuids = InventoryItems.ToGlobalIDList();
+            }
         }
 
         /// <summary>

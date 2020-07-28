@@ -1,4 +1,5 @@
 ﻿using RuinsOfAlbertrizal.Characters;
+using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,9 @@ namespace RuinsOfAlbertrizal.Mechanics
 
     public class Attack : ObjectOfAlbertrizal, IRoundBasedObject
     {
+        public BuffGuidStorage BuffStorage { get; set; }
+
+        [XmlIgnore]
         public List<Buff> Buffs { get; set; }
 
         public int[] StatLoss { get; set; }
@@ -78,6 +82,20 @@ namespace RuinsOfAlbertrizal.Mechanics
             StatLoss = new int[GameBase.NumStats];
             StatCostToUser = new int[GameBase.NumStats];
             Buffs = new List<Buff>();
+            BuffStorage = new BuffGuidStorage();
+        }
+
+        public override void Load(Map map)
+        {
+            Buffs = BuffStorage.Load(map.StoredBuffs);
+        }
+
+        public override void Unload(bool force)
+        {
+            if (force)
+            {
+                BuffStorage.Unload(Buffs);
+            }
         }
 
         public bool IsCharged()

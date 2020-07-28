@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RuinsOfAlbertrizal.Environment;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -113,7 +114,16 @@ namespace RuinsOfAlbertrizal
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
-        public virtual void Initialize()
+        public virtual void Load(Map map)
+        {
+
+        }
+
+        /// <summary>
+        /// Unloads the object, making sure that all guid lists are updated
+        /// </summary>
+        /// <param name="force">Set to true if editing the item.</param>
+        public virtual void Unload(bool force)
         {
 
         }

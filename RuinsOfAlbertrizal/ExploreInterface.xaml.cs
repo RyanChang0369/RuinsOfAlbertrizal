@@ -141,7 +141,7 @@ namespace RuinsOfAlbertrizal
         {
             int aveBI = GameBase.CurrentGame.Players.AverageBI(false);
 
-            List<Enemy> possibleTeamMembers = GameBase.StaticGame.StoredEnemies.StaticMapClone().FindAll(enemy => enemy.BattleIndex <= aveBI);
+            List<Enemy> possibleTeamMembers = GameBase.StaticGame.StoredEnemies.FindAll(enemy => enemy.BattleIndex <= aveBI);
             int fateSelector = RNG.GetRandomInteger(possibleTeamMembers.Count);
             Enemy teamMember = possibleTeamMembers[fateSelector];
 
@@ -153,7 +153,7 @@ namespace RuinsOfAlbertrizal
             if (teamMember.Level > 1)
                 teamMember.Level--;
 
-            GameBase.CurrentGame.FindTeamMember(teamMember);
+            GameBase.CurrentGame.FindTeamMember(teamMember.RoAMemoryClone());
             FileHandler.SaveCurrentMap();
         }
 

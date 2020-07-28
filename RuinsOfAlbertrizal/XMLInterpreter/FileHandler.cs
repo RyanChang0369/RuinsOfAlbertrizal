@@ -58,19 +58,30 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         {
             FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Save, "XAML File|.xml", "map-static");
 
-            GameBase.NewGame(dialog.GetPath());
+            GameBase.NewCustomCampaign(dialog.GetPath());
         }
 
 
         /// <summary>
         /// Opens a file dialog to load a custom map (loads current map).
         /// </summary>
-        /// <param name="mapName">The name of the map. Allows for the specification of which map, map-static.xml or map.xml, that will be shown.</param>
+        /// <param name="editing">If true, this will call the load method on the static map instead of the current map.</param>
         /// <exception cref="IOException"></exception>
         /// <exception cref="ArgumentNullException"></exception>
         /// <exception cref="InvalidOperationException"></exception>
-        public static void LoadCustomCampaign(string mapName)
+        public static void LoadCustomCampaign(bool editing)
         {
+            string mapName;
+
+            if (editing)
+            {
+                mapName = "map-static.xml";
+            }
+            else
+            {
+                mapName = "map.xml";
+            }
+
             FileDialog dialog = new FileDialog(FileDialog.DialogOptions.Open, $"XAML File | {mapName}");
 
             GameBase.CurrentMapLocation = Path.GetDirectoryName(dialog.GetPath()) + "\\map.xml";
@@ -78,11 +89,16 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
 
             try
             {
-                GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
-                GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
-
-                GameBase.CurrentGame.RefreshAllLevels();
-                GameBase.StaticGame.RefreshAllLevels();     //Just in case we decide to use staticgame's variables to clone currentgame's
+                if (editing)
+                {
+                    GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
+                    GameBase.StaticGame.Load(GameBase.StaticGame); 
+                }
+                else
+                {
+                    GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
+                    GameBase.CurrentGame.Load(GameBase.CurrentGame);
+                }
             }
             catch (InvalidOperationException)
             {
@@ -91,7 +107,7 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
         }
 
         /// <summary>
-        /// 
+        /// Creates a new campaign
         /// </summary>
         public static void NewCampaign()
         {
@@ -99,6 +115,8 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             {
                 GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
                 GameBase.CurrentGame = GameBase.StaticGame;
+
+                GameBase.CurrentGame.Load(GameBase.CurrentGame);
 
                 SaveCurrentMap();
             }
@@ -128,10 +146,8 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
             try
             {
                 GameBase.CurrentGame = LoadMap(GameBase.CurrentMapLocation);
-                GameBase.StaticGame = LoadMap(GameBase.StaticMapLocation);
 
-                GameBase.CurrentGame.RefreshAllLevels();
-                GameBase.StaticGame.RefreshAllLevels();     //Just in case we decide to use staticgame's variables to clone currentgame's
+                GameBase.CurrentGame.Load(GameBase.CurrentGame);
             }
             catch (InvalidOperationException)
             {
@@ -172,13 +188,13 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
 
         public static void SaveStaticMap()
         {
-            GameBase.StaticGame.Unload();
+            GameBase.StaticGame.Unload(true);
             SaveObject(typeof(Map), GameBase.StaticGame, GameBase.StaticMapLocation);
         }
 
         public static void SaveCurrentMap()
         {
-            GameBase.CurrentGame.Unload();
+            GameBase.CurrentGame.Unload(false);
             SaveObject(typeof(Map), GameBase.CurrentGame, GameBase.CurrentMapLocation);
         }
 
@@ -196,7 +212,6 @@ namespace RuinsOfAlbertrizal.XMLInterpreter
                 try
                 {
                     Map map = (Map)serializer.Deserialize(fs);
-                    map.Load();
                     return map;
                 }
                 catch (InvalidOperationException e)

@@ -269,9 +269,12 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        public BuffGuidStorage PersonalPermanentBuffStorage { get; set; }
+
         /// <summary>
         /// This character will receive the following buffs.
         /// </summary>
+        [XmlIgnore]
         public List<Buff> PersonalPermanentBuffs { get; set; }
 
         [XmlIgnore]
@@ -307,9 +310,12 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        public BuffGuidStorage PersonalBuffImmunityStorage { get; set; }
+
         /// <summary>
         /// This character is immune to the following buffs of the same name. Permanent buffs are ignored.
         /// </summary>
+        [XmlIgnore]
         public List<Buff> PersonalBuffImmunities { get; set; }
 
         [XmlIgnore]
@@ -444,11 +450,14 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        public Guid[] CurrentEquiptmentGuids { get; set; }
+
         private Equiptment[] currentEquiptment;
 
         /// <summary>
         /// The equiptment the character has equipted
         /// </summary>
+        [XmlIgnore]
         public Equiptment[] CurrentEquiptments
         {
             get => currentEquiptment;
@@ -459,11 +468,14 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        public List<Guid> CurrentConsumableGuids { get; set; }
+
         private List<Consumable> currentConsumables;
 
         /// <summary>
         /// The consumables the character has consumed
         /// </summary>
+        [XmlIgnore]
         public List<Consumable> CurrentConsumables
         {
             get => currentConsumables;
@@ -474,9 +486,12 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
+        public List<Guid> BoundAttackGuids { get; set; }
+
         /// <summary>
         /// Attacks bound to the character
         /// </summary>
+        [XmlIgnore]
         public List<Attack> BoundAttacks { get; set; }
 
         [XmlIgnore]
@@ -512,21 +527,42 @@ namespace RuinsOfAlbertrizal.Characters
         [XmlIgnore]
         public bool IsDead { get => CurrentStats[0] <= 0; }
 
-        public List<Character> PreviousTargets { get; set; }
+        //public List<Character> PreviousTargets { get; set; }
 
         public Character() : base()
         {
             Level = 1;
             CurrentEquiptments = new Equiptment[GameBase.NumCurrentEquiptment];
             CurrentConsumables = new List<Consumable>();
-            //AppliedBuffs = new List<Buff>();
-            PreviousTargets = new List<Character>();
             PersonalBuffImmunities = new List<Buff>();
             PersonalPermanentBuffs = new List<Buff>();
-            BoundAttacks = new List<Attack>();
+            PersonalBuffImmunityStorage = new BuffGuidStorage();
+            PersonalPermanentBuffStorage = new BuffGuidStorage();
             BaseStats = new int[GameBase.NumStats];
             MapLocation = new Point();
             BattleFieldLocation = new Point();
+        }
+
+        public override void Load(Map map)
+        {
+            CurrentEquiptments = map.StoredEquiptments.FilterByGlobalID(CurrentEquiptmentGuids).ToArray();
+            CurrentConsumables = map.StoredConsumables.FilterByGlobalID(CurrentConsumableGuids);
+            BoundAttacks = map.StoredAttacks.FilterByGlobalID(BoundAttackGuids);
+            PersonalBuffImmunities = PersonalBuffImmunityStorage.Load(map.StoredBuffs);
+            PersonalPermanentBuffs = PersonalPermanentBuffStorage.Load(map.StoredBuffs);
+        }
+
+        public override void Unload(bool force)
+        {
+            CurrentEquiptmentGuids = CurrentEquiptments.ToGlobalIDArray();
+            CurrentConsumableGuids = CurrentConsumables.ToGlobalIDList();
+
+            if (force)
+            {
+                BoundAttackGuids = BoundAttacks.ToGlobalIDList();
+                PersonalBuffImmunityStorage.Unload(PersonalBuffImmunities);
+                PersonalPermanentBuffStorage.Unload(PersonalPermanentBuffs);
+            }
         }
 
         ///// <summary>

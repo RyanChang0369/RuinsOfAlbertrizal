@@ -393,10 +393,10 @@ namespace RuinsOfAlbertrizal.Environment
 
         private Enemy GetRandomEnemy(List<Player> players)
         {
-            List<Enemy> storedEnemies = GameBase.StaticGame.StoredEnemies;
+            List<Enemy> storedEnemies = GameBase.CurrentGame.StoredEnemies;
 
             int fateSelector = RNG.GetRandomInteger(storedEnemies.Count);
-            Enemy enemy = storedEnemies[fateSelector].StaticMapClone();
+            Enemy enemy = storedEnemies[fateSelector].RoAMemoryClone();
             enemy.Level = GetAdjustedLevel(players);
             return enemy;
         }
