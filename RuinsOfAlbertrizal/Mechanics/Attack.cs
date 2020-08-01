@@ -52,6 +52,10 @@ namespace RuinsOfAlbertrizal.Mechanics
 
         public int RadiusOfEffect { get; set; }
 
+        public double CriticalHitChance { get; set; }
+
+        public double Accuracy { get; set; }
+
         [XmlIgnore]
         public bool MultiTarget => RadiusOfEffect > 0;
 
@@ -83,6 +87,8 @@ namespace RuinsOfAlbertrizal.Mechanics
             StatCostToUser = new int[GameBase.NumStats];
             Buffs = new List<Buff>();
             BuffStorage = new BuffGuidStorage();
+            CriticalHitChance = 0.05;
+            Accuracy = 1.0;
         }
 
         public override void Load(Map map)

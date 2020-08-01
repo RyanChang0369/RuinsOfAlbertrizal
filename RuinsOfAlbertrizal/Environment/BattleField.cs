@@ -670,9 +670,21 @@ namespace RuinsOfAlbertrizal.Environment
             NewTurn(attacker);
         }
 
-        public void NotifyAttackHit(Attack attack, Character target)
+        public void NotifyAttackHit(Attack attack, Character target, List<string> appendedLines)
         {
             StoredMessage.Add($"{target.DisplayName} received {attack.StatLoss[0]} points of damage!");
+
+            foreach (string line in appendedLines)
+            {
+                StoredMessage.Add(line);
+            }
+
+            BattleInterface.NotifyAttackHit(attack, target);
+        }
+
+        public void NotifyAttackMiss(Attack attack, Character target)
+        {
+            StoredMessage.Add($"{attack.Name} missed!");
             BattleInterface.NotifyAttackHit(attack, target);
         }
 

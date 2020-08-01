@@ -72,6 +72,34 @@
                 </TextBox>
 
                 <StackPanel Orientation="Horizontal">
+                    <Label Content="Accuracy"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The accuracy of this attack. An accuracy of 1.0 guarantees a hit, while an accuracy of 0.0 guarantees a miss."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="Accuracy" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:PercentValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Critical Hit Chance"/>
+                    <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="The critical hit chance of this attack. A value of 1.0 guarantees a critical hit. A critical hit doubles the damage."/>
+                </StackPanel>
+                <TextBox Validation.ErrorTemplate="{StaticResource validationTemplate}" Style="{StaticResource validationError}">
+                    <TextBox.Text>
+                        <Binding Path="CriticalHitChance" Mode="TwoWay">
+                            <Binding.ValidationRules>
+                                <validation:PercentValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <StackPanel Orientation="Horizontal">
                     <Label Content="Is Ranged"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="Affects the animation of the attack. Does not affect range."/>
                 </StackPanel>

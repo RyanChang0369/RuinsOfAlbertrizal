@@ -753,21 +753,33 @@ namespace RuinsOfAlbertrizal.Characters
         public void GetAttacked(Attack attack)
         {
             bool canUseLastHope = CurrentStats[0] != 1;
+            List<string> appendedLines = new List<string>();
 
-            attack.DealStats(this);
-            attack.DealBuffs(this);
+            if (RNG.GetRandomDouble() < attack.Accuracy)
+            {
+                attack.DealStats(this);
+                attack.DealBuffs(this);
+
+                if (RNG.GetRandomDouble() < attack.CriticalHitChance)
+                {
+                    attack.DealStats(this);
+                    attack.DealBuffs(this);
+                    appendedLines.Add("A critical hit!");
+                }
+            }
+            
 
             foreach (Buff buff in CurrentBuffs)
             {
-                if (buff.TypeOfBuff == Buff.BuffType.LastHope && canUseLastHope
-                    && CurrentStats[0] <= 0)
+                if (buff.TypeOfBuff == Buff.BuffType.LastHope && canUseLastHope)
                 {
                     appliedStats[0] = (-1 * CurrentStats[0]) + 1;
-                    return;
+                    appendedLines.Add($"{Name} was saved by Last Hope");
+                    break;
                 }
             }
 
-            GameBase.CurrentGame.CurrentBattleField.NotifyAttackHit(attack, this);
+            GameBase.CurrentGame.CurrentBattleField.NotifyAttackHit(attack, this, appendedLines);
         }
 
         /// <summary>
