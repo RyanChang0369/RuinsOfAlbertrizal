@@ -74,7 +74,25 @@
         <BuffLevels />
       </PersonalBuffImmunityStorage>
       <AppliedBuffs />
-      <CurrentEquiptmentGuids />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
       <CurrentConsumableGuids />
       <BoundAttackGuids />
       <XP>0</XP>
@@ -144,6 +162,25 @@
         <BuffLevels />
       </PersonalBuffImmunityStorage>
       <AppliedBuffs />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
       <CurrentConsumableGuids />
       <BoundAttackGuids />
       <InventoryEquiptmentGuids />
@@ -233,7 +270,25 @@
         <BuffLevels />
       </PersonalBuffImmunityStorage>
       <AppliedBuffs />
-      <CurrentEquiptmentGuids />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
       <CurrentConsumableGuids />
       <BoundAttackGuids />
       <InventoryEquiptmentGuids />
@@ -303,7 +358,25 @@
         <BuffLevels />
       </PersonalBuffImmunityStorage>
       <AppliedBuffs />
-      <CurrentEquiptmentGuids />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
       <CurrentConsumableGuids />
       <BoundAttackGuids />
       <InventoryEquiptmentGuids />
@@ -373,7 +446,25 @@
         <BuffLevels />
       </PersonalBuffImmunityStorage>
       <AppliedBuffs />
-      <CurrentEquiptmentGuids />
+      <CurrentEquiptments>
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+        <Equiptment xsi:nil="true" />
+      </CurrentEquiptments>
       <CurrentConsumableGuids />
       <BoundAttackGuids />
       <InventoryEquiptmentGuids />
@@ -570,6 +661,8 @@
       <IgnoresArmor>false</IgnoresArmor>
       <Range>1</Range>
       <RadiusOfEffect>0</RadiusOfEffect>
+      <CriticalHitChance>0.05</CriticalHitChance>
+      <Accuracy>1</Accuracy>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -578,12 +671,8 @@
       <Name>Poison Stab</Name>
       <Description>A stab with a bit more flair.</Description>
       <BuffStorage>
-        <BuffGuids>
-          <guid>36015ecc-b4ea-42ca-aea6-f0a2e5fd4dac</guid>
-        </BuffGuids>
-        <BuffLevels>
-          <int>1</int>
-        </BuffLevels>
+        <BuffGuids />
+        <BuffLevels />
       </BuffStorage>
       <StatLoss>
         <int>6</int>
@@ -617,6 +706,8 @@
       <IgnoresArmor>false</IgnoresArmor>
       <Range>1</Range>
       <RadiusOfEffect>0</RadiusOfEffect>
+      <CriticalHitChance>0.05</CriticalHitChance>
+      <Accuracy>1</Accuracy>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -660,6 +751,8 @@
       <IgnoresArmor>false</IgnoresArmor>
       <Range>1</Range>
       <RadiusOfEffect>0</RadiusOfEffect>
+      <CriticalHitChance>0.05</CriticalHitChance>
+      <Accuracy>1</Accuracy>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -703,6 +796,8 @@
       <IgnoresArmor>false</IgnoresArmor>
       <Range>2</Range>
       <RadiusOfEffect>0</RadiusOfEffect>
+      <CriticalHitChance>0.05</CriticalHitChance>
+      <Accuracy>1</Accuracy>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
     <Attack>
@@ -746,6 +841,8 @@
       <IgnoresArmor>false</IgnoresArmor>
       <Range>2</Range>
       <RadiusOfEffect>0</RadiusOfEffect>
+      <CriticalHitChance>0.05</CriticalHitChance>
+      <Accuracy>1</Accuracy>
       <TypeOfTarget>EnemiesOnly</TypeOfTarget>
     </Attack>
   </StoredAttacks>
@@ -887,12 +984,8 @@
       <DropChance>0.5</DropChance>
       <NumGivenOnStart>0</NumGivenOnStart>
       <BuffStorage>
-        <BuffGuids>
-          <guid>25387945-e1c2-4696-8254-6024bdbea01c</guid>
-        </BuffGuids>
-        <BuffLevels>
-          <int>2</int>
-        </BuffLevels>
+        <BuffGuids />
+        <BuffLevels />
       </BuffStorage>
       <StatGain>
         <int>50</int>
@@ -917,12 +1010,8 @@
       <DropChance>0.4</DropChance>
       <NumGivenOnStart>0</NumGivenOnStart>
       <BuffStorage>
-        <BuffGuids>
-          <guid>25387945-e1c2-4696-8254-6024bdbea01c</guid>
-        </BuffGuids>
-        <BuffLevels>
-          <int>6</int>
-        </BuffLevels>
+        <BuffGuids />
+        <BuffLevels />
       </BuffStorage>
       <StatGain>
         <int>75</int>
@@ -946,12 +1035,8 @@
       <DropChance>0.05</DropChance>
       <NumGivenOnStart>0</NumGivenOnStart>
       <BuffStorage>
-        <BuffGuids>
-          <guid>25387945-e1c2-4696-8254-6024bdbea01c</guid>
-        </BuffGuids>
-        <BuffLevels>
-          <int>12</int>
-        </BuffLevels>
+        <BuffGuids />
+        <BuffLevels />
       </BuffStorage>
       <StatGain>
         <int>150</int>
