@@ -9,6 +9,13 @@
       d:DesignHeight="1000" d:DesignWidth="1600"
       Title="Exploration">
 
+    <Page.Resources>
+        <!--Storyboards-->
+        <Storyboard x:Key="overlayAppear">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:1" To="1"/>
+        </Storyboard>
+    </Page.Resources>
+
     <Grid Background="WhiteSmoke">
         <Image Style="{StaticResource blurred}" x:Name="mainImage">
             <Image.Source>
@@ -29,5 +36,6 @@
                 <Button Content="Back" Click="BackBtn_Click"/>
             </StackPanel>
         </StackPanel>
+        <Grid x:Name="overlay" Style="{StaticResource overlay}"/>
     </Grid>
 </local:BasePage>

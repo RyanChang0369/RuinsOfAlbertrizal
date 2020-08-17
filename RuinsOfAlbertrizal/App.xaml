@@ -151,6 +151,11 @@
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
+        <Style x:Key="overlay" TargetType="Grid">
+            <Setter Property="Opacity" Value="0"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Background" Value="Black"/>
+        </Style>
 
         <!--ComboBox Styles-->
         <Style TargetType="ComboBox" x:Key="defaultComboBox">

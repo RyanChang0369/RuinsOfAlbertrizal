@@ -83,7 +83,6 @@ namespace RuinsOfAlbertrizal
 
         private void DoFindItem()
         {
-            //Check if stored items are affected
             List<RandomEvent> randomEvents = new List<RandomEvent>();
             foreach (Item item in GameBase.CurrentGame.AllItems)
             {
@@ -131,9 +130,17 @@ namespace RuinsOfAlbertrizal
             FileHandler.SaveCurrentMap();
         }
 
-        private void DoRandomEncounter()
+        private async void DoRandomEncounter()
         {
             GameBase.CurrentGame.CurrentBattleField = new BattleField();
+
+            MessageBox.Show("Oh no! Enemies! (Placeholder)");
+
+            //overlay.Visibility = Visibility.Visible;
+            //Animate("overlayAppear", overlay);
+
+            //await MiscMethods.TaskDelay(1000);
+
             Navigate(GameBase.CurrentGame.CurrentBattleField.BattleInterface);
         }
 
