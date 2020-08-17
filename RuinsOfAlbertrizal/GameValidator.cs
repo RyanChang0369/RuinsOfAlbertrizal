@@ -28,7 +28,7 @@ namespace RuinsOfAlbertrizal
                 if (level.StoredEnemyGuids.Count < 1)
                     AlertUser($"The level titled {level.Name} does not have any stored enemies.");
 
-                if (level.BossGuids.Count < 1)
+                if (level.Bosses.Count < 1)
                     AlertUser($"The level titled {level.Name} does not have any stored bosses.");
 
                 if (level.Difficulty <= 0)

@@ -41,12 +41,11 @@ namespace RuinsOfAlbertrizal.Environment
 
         public int Points { get; set; }
 
-        public List<Guid> BossGuids { get; set; }
+        //public List<Guid> BossGuids { get; set; }
 
         /// <summary>
         /// The boss(es) that appears at the end of the level. If there are multiple, they will appear at the same time.
         /// </summary>
-        [XmlIgnore]
         public List<Boss> Bosses { get; set; }
 
         /// <summary>
@@ -95,7 +94,6 @@ namespace RuinsOfAlbertrizal.Environment
 
         public override void Load(Map map)
         {
-            Bosses = map.StoredBosses.FilterByGlobalID(BossGuids);
             StoredEnemies = map.StoredEnemies.FilterByGlobalID(StoredEnemyGuids);
         }
 
@@ -103,7 +101,6 @@ namespace RuinsOfAlbertrizal.Environment
         {
             if (force)
             {
-                BossGuids = Bosses.ToGlobalIDList();
                 StoredEnemyGuids = StoredEnemies.ToGlobalIDList();
             }
         }
