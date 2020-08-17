@@ -1072,11 +1072,121 @@
           <string>This is it. The final floor. All you need to do now is escape.</string>
         </Lines>
       </IntroMessage>
-      <StoredEnemyGuids />
+      <StoredEnemyGuids>
+        <guid>70aa32f8-221d-4cad-8dea-1f1659bf6a54</guid>
+        <guid>8b03134d-450d-4ea2-b37d-19b8f931edb3</guid>
+        <guid>848a829e-1a48-46c2-be84-1314d72632b7</guid>
+      </StoredEnemyGuids>
       <Difficulty>2</Difficulty>
       <MaxPoints>9000</MaxPoints>
       <Points>0</Points>
-      <BossGuids />
+      <Bosses>
+        <Boss>
+          <GlobalID>4a80723a-427f-4706-b3d1-ce7abf264f40</GlobalID>
+          <InstanceID>90ce0082-92fb-43b6-b390-9167bb6384de</InstanceID>
+          <Name>Shotgun Slime</Name>
+          <Description>It is a slime that seems to have grown a face and found a shotgun. In addition, it seems to have a bit more health than your average slime.</Description>
+          <WorldImgLocation>..\Boss\Shotgun Slime_worldImg.png</WorldImgLocation>
+          <MovementPoints>0</MovementPoints>
+          <TurnsSinceLastAttack>0</TurnsSinceLastAttack>
+          <MapLocation>
+            <X>0</X>
+            <Y>0</Y>
+          </MapLocation>
+          <BattleFieldLocation>
+            <X>0</X>
+            <Y>0</Y>
+          </BattleFieldLocation>
+          <AdventureOrientation>North</AdventureOrientation>
+          <BattleFieldOrientation>Left</BattleFieldOrientation>
+          <TurnsPassed>0</TurnsPassed>
+          <TurnTicks>0</TurnTicks>
+          <GeneralName>Rare Green Slime</GeneralName>
+          <Level>1</Level>
+          <StyleOfModel>Slime</StyleOfModel>
+          <AIStyle>Berserk</AIStyle>
+          <BaseStats>
+            <int>2000</int>
+            <int>500</int>
+            <int>10</int>
+            <int>10</int>
+            <int>50</int>
+            <int>2</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </BaseStats>
+          <AppliedStats>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+            <int>0</int>
+          </AppliedStats>
+          <PersonalPermanentBuffStorage>
+            <BuffGuids />
+            <BuffLevels />
+          </PersonalPermanentBuffStorage>
+          <PersonalBuffImmunityStorage>
+            <BuffGuids />
+            <BuffLevels />
+          </PersonalBuffImmunityStorage>
+          <AppliedBuffs />
+          <CurrentEquiptments>
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+            <Equiptment xsi:nil="true" />
+          </CurrentEquiptments>
+          <CurrentConsumableGuids />
+          <BoundAttackGuids />
+          <InventoryEquiptmentGuids />
+          <InventoryConsumableGuids />
+          <InventoryItemGuids />
+          <MessagesOnEncounter>
+            <Message>
+              <Lines>
+                <string>*reloads shotgun*</string>
+              </Lines>
+            </Message>
+            <Message>
+              <Lines>
+                <string>*inserts 7 clips*</string>
+              </Lines>
+            </Message>
+          </MessagesOnEncounter>
+          <MessagesOnAttack />
+          <MessagesOnDefeat>
+            <Message>
+              <Lines>
+                <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+                <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+              </Lines>
+            </Message>
+          </MessagesOnDefeat>
+          <MessagesOnVictory />
+          <SpawnChance>1</SpawnChance>
+        </Boss>
+      </Bosses>
       <TheWinCondition>DefeatEnemies</TheWinCondition>
     </Level>
   </Levels>
