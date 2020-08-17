@@ -92,12 +92,18 @@ namespace RuinsOfAlbertrizal.Editor
 
         private void AddAllEnemyBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedLevel.StoredEnemies = Map.StoredEnemies;
+            MessageBoxResult result = MessageBox.Show("This action will replace all stored enemies in the level with those stored in the map.", "Confirm Action", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.OK)
+                CreatedLevel.StoredEnemies = Map.StoredEnemies;
         }
 
         private void AddAllBossBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreatedLevel.Bosses = Map.StoredBosses;
+            MessageBoxResult result = MessageBox.Show("This action will replace all stored bosses in the level with those stored in the map.", "Confirm Action", MessageBoxButton.OKCancel, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.OK)
+                CreatedLevel.Bosses = Map.StoredBosses;
         }
     }
 }

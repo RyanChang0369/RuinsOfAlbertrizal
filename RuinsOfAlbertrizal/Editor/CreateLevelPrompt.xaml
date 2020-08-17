@@ -168,14 +168,15 @@
                 <TabItem Header="Add Enemies" FontSize="48">
                     <StackPanel Background="#FFE5E5E5">
                         <Label Style="{StaticResource h2}" Content="Add/Remove Enemies"/>
-                        <Label Style="{StaticResource h3}" Content="Enemies"/>
                         <StackPanel Orientation="Horizontal">
                             <StackPanel>
+                                <Label Style="{StaticResource h3}" Content="Enemies"/>
                                 <Button x:Name="AddEnemyBtn" Click="AddEnemyBtn_Click" Content="Manual Select" HorizontalAlignment="Left" Style="{DynamicResource buttonMedium}" ToolTip="Opens a menu where you can individually select enemies to add to the level"/>
                                 <Button x:Name="AddAllEnemyBtn" Click="AddAllEnemyBtn_Click" Content="Select All" Style="{DynamicResource buttonMedium}" ToolTip="Adds all enemies stored in the game"/>
                             </StackPanel>
 
                             <StackPanel>
+                                <Label Style="{StaticResource h3}" Content="Bosses"/>
                                 <Button x:Name="AddBossBtn" Click="AddBossBtn_Click" Content="Manual Select" HorizontalAlignment="Left" Style="{DynamicResource buttonMedium}" ToolTip="Opens a menu where you can individually select bosses to add to the level"/>
                                 <Button x:Name="AddAllBossBtn" Click="AddAllBossBtn_Click" Content="Select All" Style="{DynamicResource buttonMedium}" ToolTip="Adds all bosses stored in the game"/>
                             </StackPanel>
