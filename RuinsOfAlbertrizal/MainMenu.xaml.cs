@@ -81,7 +81,7 @@ namespace RuinsOfAlbertrizal
             }
             catch (FileNotFoundException ex)
             {
-                MessageBox.Show($"Important game files could not be found! Has the Campaign folder been altered? Have the exe file been moved from bin directory?\r\n\r\n{ex.Message}");
+                MessageBox.Show($"Important game files could not be found! Has the Campaign folder been altered? Has the exe file been moved from bin directory?\r\n\r\n{ex.Message}");
                 throw;
             }
 
@@ -96,7 +96,7 @@ namespace RuinsOfAlbertrizal
             }
             catch (FileNotFoundException ex)
             {
-                MessageBox.Show($"Important game files could not be found! Has the Campaign folder been altered? Have the exe file been moved from bin directory?\r\n\r\n{ex.Message}");
+                MessageBox.Show($"Important game files could not be found! Has the Campaign folder been altered? Has the exe file been moved from bin directory?\r\n\r\n{ex.Message}");
                 throw;
             }
 
