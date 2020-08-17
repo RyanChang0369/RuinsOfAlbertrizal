@@ -450,14 +450,13 @@ namespace RuinsOfAlbertrizal.Characters
             }
         }
 
-        public Guid[] CurrentEquiptmentGuids { get; set; }
+        //public Guid[] CurrentEquiptmentGuids { get; set; }
 
         private Equiptment[] currentEquiptment;
 
         /// <summary>
         /// The equiptment the character has equipted
         /// </summary>
-        [XmlIgnore]
         public Equiptment[] CurrentEquiptments
         {
             get => currentEquiptment;
@@ -533,6 +532,7 @@ namespace RuinsOfAlbertrizal.Characters
         {
             Level = 1;
             CurrentEquiptments = new Equiptment[GameBase.NumCurrentEquiptment];
+            //CurrentEquiptmentGuids = new Guid[GameBase.NumCurrentEquiptment];
             CurrentConsumables = new List<Consumable>();
             PersonalBuffImmunities = new List<Buff>();
             PersonalPermanentBuffs = new List<Buff>();
@@ -545,7 +545,8 @@ namespace RuinsOfAlbertrizal.Characters
 
         public override void Load(Map map)
         {
-            CurrentEquiptments = map.StoredEquiptments.FilterByGlobalID(CurrentEquiptmentGuids).ToArray();
+            //CurrentEquiptments cannot be loaded
+
             CurrentConsumables = map.StoredConsumables.FilterByGlobalID(CurrentConsumableGuids);
             BoundAttacks = map.StoredAttacks.FilterByGlobalID(BoundAttackGuids);
             PersonalBuffImmunities = PersonalBuffImmunityStorage.Load(map.StoredBuffs);
@@ -554,7 +555,7 @@ namespace RuinsOfAlbertrizal.Characters
 
         public override void Unload(bool force)
         {
-            CurrentEquiptmentGuids = CurrentEquiptments.ToGlobalIDArray();
+            //CurrentEquiptmentGuids = CurrentEquiptments.ToGlobalIDArray();
             CurrentConsumableGuids = CurrentConsumables.ToGlobalIDList();
 
             if (force)
