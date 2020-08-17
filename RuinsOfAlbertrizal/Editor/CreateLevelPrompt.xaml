@@ -166,56 +166,20 @@
 
 
                 <TabItem Header="Add Enemies" FontSize="48">
-                    <StackPanel Background="#FFE5E5E5" Orientation="Horizontal">
-                        <StackPanel>
-                            <Label Style="{StaticResource h2}" Content="Add/Remove Enemies"/>
-                            <Button x:Name="AddEnemyBtn" Click="AddEnemyBtn_Click" Content="Add/Remove Enemy" HorizontalAlignment="Left" Tag="Editor/CreateEnemyPrompt.xaml"/>
-                            <Button x:Name="AddBossBtn" Click="AddBossBtn_Click" Content="Add/Remove Boss" HorizontalAlignment="Left" Tag="Editor/CreateBossPrompt.xaml"/>
+                    <StackPanel Background="#FFE5E5E5">
+                        <Label Style="{StaticResource h2}" Content="Add/Remove Enemies"/>
+                        <Label Style="{StaticResource h3}" Content="Enemies"/>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel>
+                                <Button x:Name="AddEnemyBtn" Click="AddEnemyBtn_Click" Content="Manual Select" HorizontalAlignment="Left" Style="{DynamicResource buttonMedium}" ToolTip="Opens a menu where you can individually select enemies to add to the level"/>
+                                <Button x:Name="AddAllEnemyBtn" Click="AddAllEnemyBtn_Click" Content="Select All" Style="{DynamicResource buttonMedium}" ToolTip="Adds all enemies stored in the game"/>
+                            </StackPanel>
+
+                            <StackPanel>
+                                <Button x:Name="AddBossBtn" Click="AddBossBtn_Click" Content="Manual Select" HorizontalAlignment="Left" Style="{DynamicResource buttonMedium}" ToolTip="Opens a menu where you can individually select bosses to add to the level"/>
+                                <Button x:Name="AddAllBossBtn" Click="AddAllBossBtn_Click" Content="Select All" Style="{DynamicResource buttonMedium}" ToolTip="Adds all bosses stored in the game"/>
+                            </StackPanel>
                         </StackPanel>
-
-                        <!--<StackPanel Orientation="Horizontal">
-                            <Separator/>
-
-                            <Grid>
-                                <StackPanel>
-                                    <Label Content="Added Enemies"/>
-                                    <ListBox x:Name="CreatedEnemiesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedEnemiesList_SelectionChanged" HorizontalAlignment="Center">
-                                        <ListBox.ItemsSource>
-                                            <Binding Path="StoredEnemies" UpdateSourceTrigger="PropertyChanged">
-                                                <Binding.Converter>
-                                                    <converter:NameConverter/>
-                                                </Binding.Converter>
-                                            </Binding>
-                                        </ListBox.ItemsSource>
-                                    </ListBox>
-                                </StackPanel>
-                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Enemy">
-                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
-                                    <Button Content="Remove Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
-                                </StackPanel>
-                            </Grid>
-
-                            <Separator/>
-
-                            <Grid>
-                                <StackPanel>
-                                    <Label Content="Added Bosses"/>
-                                    <ListBox x:Name="CreatedBossesList" Width="200" FontSize="18" ToolTip="Click Item to Edit" SelectionChanged="CreatedBossesList_SelectionChanged">
-                                        <ListBox.ItemsSource>
-                                            <Binding Path="StoredBosses" UpdateSourceTrigger="PropertyChanged">
-                                                <Binding.Converter>
-                                                    <converter:NameConverter/>
-                                                </Binding.Converter>
-                                            </Binding>
-                                        </ListBox.ItemsSource>
-                                    </ListBox>
-                                </StackPanel>
-                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Tag="Boss">
-                                    <Button Content="Clear Selection" Click="ClearSelection" Style="{StaticResource buttonSmallStretch}"/>
-                                    <Button Content="Remove Selection" Click="DeleteSelection" Style="{StaticResource buttonSmallStretch}"/>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>-->
                     </StackPanel>
                 </TabItem>
 

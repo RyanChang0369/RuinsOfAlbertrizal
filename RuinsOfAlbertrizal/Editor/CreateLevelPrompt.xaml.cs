@@ -89,5 +89,15 @@ namespace RuinsOfAlbertrizal.Editor
             messageSelect.ShowDialog();
             CreatedLevel.IntroMessage = messageSelect.GetMessage();
         }
+
+        private void AddAllEnemyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatedLevel.StoredEnemies = Map.StoredEnemies;
+        }
+
+        private void AddAllBossBtn_Click(object sender, RoutedEventArgs e)
+        {
+            CreatedLevel.Bosses = Map.StoredBosses;
+        }
     }
 }
