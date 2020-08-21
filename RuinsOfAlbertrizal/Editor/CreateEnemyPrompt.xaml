@@ -107,7 +107,7 @@
                     <Label Content="{Binding Path=BoundAttacks, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ProperNameConverter}}"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
+                <!--<StackPanel Orientation="Horizontal">
                     <Label Content="Spawn Chance"/>
                     <Image Source="questionMark.png" Style="{StaticResource questionCircle}" ToolTip="When this enemy is choosen for spawning, the spawn chance is looked at to determine the chance of spawning that enemy. If the spawn chance is 1.0, the enemy will always spawn if it is choosen. If it is 0.0, then the enemy will never spawn."/>
                 </StackPanel>
@@ -117,7 +117,7 @@
                             <validation:PercentValidation/>
                         </Binding.ValidationRules>
                     </Binding>
-                </TextBox>
+                </TextBox>-->
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Buff Immunities"/>
