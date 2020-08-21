@@ -45,7 +45,7 @@ namespace RuinsOfAlbertrizal.Editor
             RequiredControls.Add(BaseDef);
             RequiredControls.Add(BaseDmg);
             RequiredControls.Add(BaseInt);
-            RequiredControls.Add(SpawnChance);
+            //RequiredControls.Add(SpawnChance);
         }
 
         private void SelectIconBtn_Click(object sender, RoutedEventArgs e)
