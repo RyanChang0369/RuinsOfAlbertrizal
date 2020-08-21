@@ -5,6 +5,7 @@ using RuinsOfAlbertrizal.Mechanics;
 using RuinsOfAlbertrizal.Text;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace RuinsOfAlbertrizal
@@ -56,8 +57,8 @@ namespace RuinsOfAlbertrizal
             List<RandomEvent> randomEvents = new List<RandomEvent>
             {
                 new RandomEvent("Find Item", 0.0),          //Original value: 0.2
-                new RandomEvent("Enemy Encounter", 0.2),    //Original value: 0.2
-                new RandomEvent("Find Team Member", 0.0),   //Original value: 0.1
+                new RandomEvent("Enemy Encounter", 0.0),    //Original value: 0.2
+                new RandomEvent("Find Team Member", 0.1),   //Original value: 0.1
                 new RandomEvent("Nothing", 0.0)             //Original value: 0.5
             };
 
@@ -111,10 +112,11 @@ namespace RuinsOfAlbertrizal
         private void DoFindTeamMember()
         {
             int aveBI = GameBase.CurrentGame.Players.AverageBI(false);
+            int aveLvl = (int)GameBase.CurrentGame.Players.Average(thing => thing.Level);
 
-            List<Enemy> possibleTeamMembers = GameBase.StaticGame.StoredEnemies.FindAll(enemy => enemy.BattleIndex <= aveBI);
+            List<Enemy> possibleTeamMembers = GameBase.CurrentGame.StoredEnemies.FindAll(enemy => enemy.BattleIndex <= aveBI);
             int fateSelector = RNG.GetRandomInteger(possibleTeamMembers.Count);
-            Enemy teamMember = possibleTeamMembers[fateSelector];
+            Enemy teamMember = possibleTeamMembers[fateSelector].RoAMemoryClone();
 
             while (teamMember.BattleIndex < aveBI)
             {
@@ -124,8 +126,14 @@ namespace RuinsOfAlbertrizal
             if (teamMember.Level > 1)
                 teamMember.Level--;
 
-            GameBase.CurrentGame.FindTeamMember(teamMember.RoAMemoryClone());
-            FileHandler.SaveCurrentMap();
+            //Cap level of new teammate to that of the average level of players.
+            //Prevents a level 168 slime
+            if (teamMember.Level > aveLvl)
+                teamMember.Level = aveLvl;
+
+
+            GameBase.CurrentGame.FindTeamMember(teamMember);
+            //FileHandler.SaveCurrentMap();
         }
 
         private void DoFindNothing()

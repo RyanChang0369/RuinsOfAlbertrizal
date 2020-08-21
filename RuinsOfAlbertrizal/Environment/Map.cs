@@ -333,6 +333,8 @@ namespace RuinsOfAlbertrizal.Environment
         {
             ImagePrompt prompt = new ImagePrompt("You found an item!", StringStorage.GetItemFindString(item), item.IconAsBitmapSource, "Keep", "Discard");
 
+            prompt.ShowDialog();
+
             if ((bool)prompt.DialogResult)
             {
                 GameBase.CurrentGame.PlayerItems.Add(item);
@@ -346,6 +348,8 @@ namespace RuinsOfAlbertrizal.Environment
         public void ObtainEquiptment(Equiptment equiptment)
         {
             ImagePrompt prompt = new ImagePrompt("You found an equiptment!", StringStorage.GetItemFindString(equiptment), equiptment.IconAsBitmapSource, "Keep", "Discard");
+
+            prompt.ShowDialog();
 
             if ((bool)prompt.DialogResult)
             {
@@ -361,6 +365,8 @@ namespace RuinsOfAlbertrizal.Environment
         {
             ImagePrompt prompt = new ImagePrompt("You found a consumable!", StringStorage.GetItemFindString(consumable), consumable.IconAsBitmapSource, "Keep", "Discard");
 
+            prompt.ShowDialog();
+
             if ((bool)prompt.DialogResult)
             {
                 GameBase.CurrentGame.PlayerConsumables.Add(consumable);
@@ -372,6 +378,8 @@ namespace RuinsOfAlbertrizal.Environment
             ImagePrompt prompt = new ImagePrompt("You found a team member!",
                 StringStorage.GetTeamMemberFindString(teamMember),
                 teamMember.IconAsBitmapSource, "Accept", "Refuse");
+
+            prompt.ShowDialog();
 
             if ((bool)prompt.DialogResult)
             {

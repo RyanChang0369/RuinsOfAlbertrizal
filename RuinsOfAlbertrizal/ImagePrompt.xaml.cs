@@ -26,6 +26,7 @@ namespace RuinsOfAlbertrizal
 
         public ImagePrompt(string title, string message, BitmapSource bitmapSource)
         {
+            InitializeComponent();
             Title = title;
             MessageBlock.Text = message;
             IconImg.Source = bitmapSource;
@@ -36,6 +37,7 @@ namespace RuinsOfAlbertrizal
 
         public ImagePrompt(string title, string message, BitmapSource bitmapSource, string cancelText)
         {
+            InitializeComponent();
             Title = title;
             MessageBlock.Text = message;
             IconImg.Source = bitmapSource;
@@ -46,6 +48,7 @@ namespace RuinsOfAlbertrizal
 
         public ImagePrompt(string title, string message, BitmapSource bitmapSource, string yesBtnText, string noBtnText)
         {
+            InitializeComponent();
             Title = title;
             MessageBlock.Text = message;
             IconImg.Source = bitmapSource;
@@ -56,6 +59,7 @@ namespace RuinsOfAlbertrizal
 
         public ImagePrompt(string title, string message, BitmapSource bitmapSource, string yesText, string noText, string cancelText)
         {
+            InitializeComponent();
             Title = title;
             MessageBlock.Text = message;
             IconImg.Source = bitmapSource;
