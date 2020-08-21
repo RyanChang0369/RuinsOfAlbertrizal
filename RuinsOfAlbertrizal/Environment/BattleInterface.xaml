@@ -9,6 +9,13 @@
       Title="BattleInterface" Loaded="BattleInterface_Loaded">
 
     <Page.Resources>
+        <Storyboard x:Key="overlaySlideRight">
+            <DoubleAnimation Storyboard.TargetProperty="(Image.RenderTransform).(TranslateTransform.X)" From="0" To="-3000" AccelerationRatio="0.9" Duration="0:0:2"/>
+        </Storyboard>
+        <Storyboard x:Key="overlaySlideLeft">
+            <DoubleAnimation Storyboard.TargetProperty="(Image.RenderTransform).(TranslateTransform.X)" From="0" To="3000" AccelerationRatio="0.9" Duration="0:0:2"/>
+        </Storyboard>
+
         <Storyboard x:Key="characterMove">
             <DoubleAnimation Storyboard.TargetName="(Image.RenderTransform).(TranslateTransform.X)" Storyboard.TargetProperty="X" From="0" To="1000" Duration="0:0:2"/>
             <DoubleAnimation Storyboard.TargetName="(Image.RenderTransform).(TranslateTransform.Y)" Storyboard.TargetProperty="Y" From="0" To="1000" Duration="0:0:2"/>
@@ -222,7 +229,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <!--<Grid x:Name="Overlay">
+        <Grid x:Name="Overlay">
             <Grid.Resources>
                 <Style TargetType="Border">
                     <Setter Property="Background" Value="Black"/>
@@ -240,11 +247,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Border x:Name="OverlayPanel1">
+                <Border.RenderTransform>
+                    <TranslateTransform/>
+                </Border.RenderTransform>
                 <Label Content="Battle" HorizontalAlignment="Right"/>
             </Border>
             <Border x:Name="OverlayPanel2" Grid.Column="1">
+                <Border.RenderTransform>
+                    <TranslateTransform/>
+                </Border.RenderTransform>
                 <Label Content="Starts!"/>
             </Border>
-        </Grid>-->
+        </Grid>
     </Grid>
 </local:BasePage>

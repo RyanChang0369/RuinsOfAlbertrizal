@@ -132,14 +132,14 @@ namespace RuinsOfAlbertrizal
 
         private async void DoRandomEncounter()
         {
-            GameBase.CurrentGame.CurrentBattleField = new BattleField();
-
             MessageBox.Show("Oh no! Enemies! (Placeholder)");
 
-            //overlay.Visibility = Visibility.Visible;
-            //Animate("overlayAppear", overlay);
+            overlay.Visibility = Visibility.Visible;
+            Animate("overlayAppear", overlay);
 
-            //await MiscMethods.TaskDelay(1000);
+            await MiscMethods.TaskDelay(1000);
+
+            GameBase.CurrentGame.CurrentBattleField = new BattleField();
 
             Navigate(GameBase.CurrentGame.CurrentBattleField.BattleInterface);
         }

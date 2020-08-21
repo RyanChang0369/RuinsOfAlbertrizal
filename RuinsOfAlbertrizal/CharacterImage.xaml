@@ -7,13 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
     <UserControl.Resources>
-        <Storyboard x:Key="overlaySlideRight">
-            <DoubleAnimation Storyboard.TargetProperty="(Image.RenderTransform).(TranslateTransform.X)" From="0" To="-3000" AccelerationRatio="0.5" Duration="0:0:2"/>
-        </Storyboard>
-        <Storyboard x:Key="overlaySlideLeft">
-            <DoubleAnimation Storyboard.TargetProperty="(Image.RenderTransform).(TranslateTransform.X)" From="0" To="3000" AccelerationRatio="0.5" Duration="0:0:2"/>
-        </Storyboard>
-
         <Storyboard x:Key="playerSlideIn">
             <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-300, 10, 10, 10" To="10" DecelerationRatio=".9" Duration="0:0:2"/>
             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:2"/>

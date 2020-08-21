@@ -47,6 +47,8 @@ namespace RuinsOfAlbertrizal.Environment
             CreateGrid();
             UpdateImageLists();
             UpdateGrid();
+
+
             
             InitialAnimation();
 
@@ -133,8 +135,6 @@ namespace RuinsOfAlbertrizal.Environment
             {
                 UpdatePlayerImage(i);
                 UpdateEnemyImage(i);
-                //UpdateEnemyLocation(i);
-                //UpdatePlayerLocation(i);
             }
         }
 
@@ -160,6 +160,11 @@ namespace RuinsOfAlbertrizal.Environment
             {
 
             }
+        }
+
+        private async void SlideOutOverlay()
+        {
+            
         }
 
         //private void UpdateCharacterLocation(int i, Type characterType)
@@ -293,11 +298,14 @@ namespace RuinsOfAlbertrizal.Environment
 
         private async void InitialAnimation()
         {
-            //Animate("overlaySlideRight", OverlayPanel1);
-            //Animate("overlaySlideLeft", OverlayPanel2);
+            await MiscMethods.TaskDelay(1500);
 
-            //await MiscMethods.TaskDelay(2000);
-            //Overlay.Visibility = Visibility.Collapsed;
+            Animate("overlaySlideRight", OverlayPanel1);
+            Animate("overlaySlideLeft", OverlayPanel2);
+
+            await MiscMethods.TaskDelay(1990);
+
+            Overlay.Visibility = Visibility.Collapsed;
 
             foreach (CharacterImage image in playerImages)
             {
