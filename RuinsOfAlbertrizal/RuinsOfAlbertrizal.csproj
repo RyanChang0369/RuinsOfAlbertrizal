@@ -224,6 +224,7 @@
     <Compile Include="Text\Message.cs" />
     <Compile Include="ITurnBasedObject.cs" />
     <Compile Include="RoundKeeper.cs" />
+    <Compile Include="Text\StringStorage.cs" />
     <Compile Include="WorldMapObject.cs" />
     <Compile Include="XMLInterpreter\FileDialog.cs" />
     <Compile Include="XMLInterpreter\FileHandler.cs" />

@@ -2,6 +2,7 @@
 using RuinsOfAlbertrizal.Environment;
 using RuinsOfAlbertrizal.Items;
 using RuinsOfAlbertrizal.Mechanics;
+using RuinsOfAlbertrizal.Text;
 using RuinsOfAlbertrizal.XMLInterpreter;
 using System.Collections.Generic;
 using System.Windows;
@@ -132,8 +133,6 @@ namespace RuinsOfAlbertrizal
 
         private async void DoRandomEncounter()
         {
-            MessageBox.Show("Oh no! Enemies! (Placeholder)");
-
             overlay.Visibility = Visibility.Visible;
             Animate("overlayAppear", overlay);
 

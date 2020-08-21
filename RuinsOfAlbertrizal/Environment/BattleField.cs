@@ -235,14 +235,12 @@ namespace RuinsOfAlbertrizal.Environment
                 ActiveEnemies[i] = Enemies[i];
             }
 
-  
+            System.Windows.MessageBox.Show(StringStorage.GetEnemyEncounterString(Enemies.Count));
+
             foreach (Player player in ActivePlayers)
             {
                 if (player != null)
-                {
                     player.LoadImage();
-
-                }
             }
 
             foreach (Enemy enemy in ActiveEnemies)

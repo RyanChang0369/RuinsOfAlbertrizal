@@ -331,7 +331,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="item"></param>
         public void ObtainItem(Item item)
         {
-            ImagePrompt prompt = new ImagePrompt("You found an item!", GetItemFindMessage(item), item.IconAsBitmapSource, "Keep", "Discard");
+            ImagePrompt prompt = new ImagePrompt("You found an item!", StringStorage.GetItemFindString(item), item.IconAsBitmapSource, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
@@ -345,7 +345,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="equiptment"></param>
         public void ObtainEquiptment(Equiptment equiptment)
         {
-            ImagePrompt prompt = new ImagePrompt("You found an equiptment!", GetItemFindMessage(equiptment), equiptment.IconAsBitmapSource, "Keep", "Discard");
+            ImagePrompt prompt = new ImagePrompt("You found an equiptment!", StringStorage.GetItemFindString(equiptment), equiptment.IconAsBitmapSource, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
@@ -359,7 +359,7 @@ namespace RuinsOfAlbertrizal.Environment
         /// <param name="consumable"></param>
         public void ObtainConsumable(Consumable consumable)
         {
-            ImagePrompt prompt = new ImagePrompt("You found a consumable!", GetItemFindMessage(consumable), consumable.IconAsBitmapSource, "Keep", "Discard");
+            ImagePrompt prompt = new ImagePrompt("You found a consumable!", StringStorage.GetItemFindString(consumable), consumable.IconAsBitmapSource, "Keep", "Discard");
 
             if ((bool)prompt.DialogResult)
             {
@@ -367,15 +367,10 @@ namespace RuinsOfAlbertrizal.Environment
             }
         }
 
-        private string GetItemFindMessage(Item item)
-        {
-            return $"Out of the corner of your eye, you spot a {item.Name}.";
-        }
-
         public void FindTeamMember(Enemy teamMember)
         {
             ImagePrompt prompt = new ImagePrompt("You found a team member!",
-                $"You found a new team member! {teamMember.Name} would like to join your party.",
+                StringStorage.GetTeamMemberFindString(teamMember),
                 teamMember.IconAsBitmapSource, "Accept", "Refuse");
 
             if ((bool)prompt.DialogResult)
