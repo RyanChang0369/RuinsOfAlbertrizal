@@ -76,6 +76,9 @@ namespace RuinsOfAlbertrizal.Characters
             AIStyle = AI.AIStyle.Player;
             XP = 0;
             Level = enemy.Level;
+            Name = enemy.Name;
+            GeneralName = enemy.GeneralName;
+            BaseStats = enemy.BaseStats;
 
             IconLocation = enemy.IconLocation;
             WorldImgLocation = enemy.WorldImgLocation;
