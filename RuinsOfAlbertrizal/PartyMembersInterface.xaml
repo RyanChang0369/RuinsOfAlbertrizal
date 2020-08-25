@@ -78,11 +78,11 @@
                         </StackPanel>
                     </StackPanel>
                 </Grid>
-                <Button Content="Inventory" Style="{StaticResource buttonSmallStretch}" FontSize="24" Tag="{Binding}" Click="InventoryBtn_Click"/>
+                <Button Content="Equipt Items" Style="{StaticResource buttonSmallStretch}" FontSize="24" Tag="{Binding}" Click="InventoryBtn_Click"/>
                 
-                <Button Content="Set as Active" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverterNOT}}" Style="{StaticResource buttonSmallStretch}" FontSize="24" Tag="{Binding}" Click="SetActiveBtn_Click_Add"/>
+                <!--<Button Content="Set as Active" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverterNOT}}" Style="{StaticResource buttonSmallStretch}" FontSize="24" Tag="{Binding}" Click="SetActiveBtn_Click_Add"/>
                 
-                <Button Content="Remove from Active" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource buttonSmallStretch}" Tag="{Binding}" Click="SetActiveBtn_Click_Remove"/>
+                <Button Content="Remove from Active" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource buttonSmallStretch}" Tag="{Binding}" Click="SetActiveBtn_Click_Remove"/>-->
                 
                 <StackPanel Orientation="Horizontal" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverter}}">
                     <Label Content="Active: In Position" FontSize="18" Margin="0"/>
@@ -152,9 +152,10 @@
         </Grid.RowDefinitions>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <!--<StackPanel x:Name="PartyMembersStackPanel" Orientation="Horizontal"/>-->
-            <ItemsControl x:Name="PartyMembersItemsControl" ItemsSource="{Binding}" ItemTemplate="{StaticResource partyMembersTemplate}"/>
+            <ItemsControl x:Name="PartyMembersItemsControl" ItemsSource="{Binding}" ItemTemplate="{StaticResource partyMembersTemplate}" Style="{StaticResource horzontalItemControl}"/>
         </ScrollViewer>
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <Button Content="Formation" Click="FormationBtn_Click"/>
             <Button Content="Back" Tag="[back]" Click="Navigate"/>
         </StackPanel>
     </Grid>

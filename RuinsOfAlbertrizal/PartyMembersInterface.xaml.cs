@@ -313,19 +313,19 @@ namespace RuinsOfAlbertrizal
 
         private void SetActiveBtn_Click_Add(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
-            PartySlotSelector selector = new PartySlotSelector();
-            selector.ShowDialog();
-            int index = selector.SelectedIndex;
+            //Button btn = (Button)sender;
+            //PartySlotSelector selector = new PartySlotSelector(GameBase.CurrentGame.Players);
+            //selector.ShowDialog();
+            //int index = selector.SelectedIndex;
 
-            if (index < 0)
-                return;
-            else
-            {
-                GameBase.CurrentGame.ActivePlayerGuids[index] = ((Player)btn.Tag).GlobalID;
-                FileHandler.SaveCurrentMap();
-                ForceItemsControlUpdate(PartyMembersItemsControl);
-            }
+            //if (index < 0)
+            //    return;
+            //else
+            //{
+            //    GameBase.CurrentGame.ActivePlayerGuids[index] = ((Player)btn.Tag).GlobalID;
+            //    FileHandler.SaveCurrentMap();
+            //    ForceItemsControlUpdate(PartyMembersItemsControl);
+            //}
         }
 
         private void SetActiveBtn_Click_Remove(object sender, RoutedEventArgs e)
@@ -335,6 +335,14 @@ namespace RuinsOfAlbertrizal
             GameBase.CurrentGame.ActivePlayerGuids[index] = Guid.Empty;
             FileHandler.SaveCurrentMap();
             ForceItemsControlUpdate(PartyMembersItemsControl);
+        }
+
+        private void FormationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PartySlotSelector selector = new PartySlotSelector(GameBase.CurrentGame);
+            selector.ShowDialog();
+
+            //GameBase.CurrentGame.ActivePlayerGuids = selector.ActivePlayers.ToGlobalIDArray();
         }
     }
 }

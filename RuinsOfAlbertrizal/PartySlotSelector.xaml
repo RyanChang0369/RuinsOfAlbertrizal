@@ -8,27 +8,56 @@
         Title="PartySlotSelector" Height="600" Width="1000">
 
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="100"/>
-            <Setter Property="FontSize" Value="24"/>
-        </Style>
+        <DataTemplate x:Key="partyIcons">
+            <Border Margin="5" MouseUp="Party_MouseUp" BorderThickness="3" BorderBrush="Transparent">
+                <StackPanel>
+                    <Label Content="{Binding Path=Name}"/>
+                    <Image Source="{Binding Path=IconAsBitmapSource}" Width="150"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
     </Window.Resources>
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="202"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Select&#xD;&#xA;Slot 1" Tag="0" Click="Button_Click"/>
-        <Button Content="Select&#xA;Slot 2" Tag="1" Grid.Column="1" Click="Button_Click"/>
-        <Button Content="Select&#xA;Slot 3" Tag="2" Grid.Column="2" Click="Button_Click"/>
-        <Button Content="Select&#xA;Slot 4" Tag="3" Grid.Column="3" Click="Button_Click"/>
+        <ScrollViewer>
+            <ItemsControl x:Name="PartyItemsControl" ItemsSource="{Binding Path=Players}" ItemTemplate="{StaticResource partyIcons}" ToolTip="Click here first to select player"/>
+        </ScrollViewer>
+
+        <Image Grid.Column="1" Source="{Binding Path=CurrentLevel.WorldImgAsBitmapSource}" Style="{StaticResource fill}"/>
+
+        <Grid x:Name="SlotGrid" Grid.Column="1" Style="{StaticResource center}" Width="200" Height="400">
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Background" Value="Snow"/>
+                    <Setter Property="Opacity" Value="0.8"/>
+                    <Setter Property="FontSize" Value="24"/>
+                    <Setter Property="AllowDrop" Value="True"/>
+                    <Setter Property="BorderThickness" Value="3"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <EventSetter Event="MouseDown" Handler="Slot_MouseDown"/>
+                    <EventSetter Event="Drop" Handler="Slot_Drop"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Content="[Empty]" Tag="0" ToolTip="Then click to set slot 1"/>
+            <Label Content="[Empty]" Tag="1" Grid.Row="1" ToolTip="Then click to set slot 2"/>
+            <Label Content="[Empty]" Tag="2" Grid.Row="2" ToolTip="Then click to set slot 3"/>
+            <Label Content="[Empty]" Tag="3" Grid.Row="3" ToolTip="Then click to set slot 4"/>
+        </Grid>
     </Grid>
 </Window>
