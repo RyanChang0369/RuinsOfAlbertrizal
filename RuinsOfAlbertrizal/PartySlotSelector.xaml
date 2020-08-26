@@ -10,7 +10,7 @@
     <Window.Resources>
         <DataTemplate x:Key="partyIcons">
             <Border Margin="5" MouseUp="Party_MouseUp" BorderThickness="3" BorderBrush="Transparent">
-                <StackPanel>
+                <StackPanel Cursor="Hand">
                     <Label Content="{Binding Path=Name}"/>
                     <Image Source="{Binding Path=IconAsBitmapSource}" Width="150"/>
                 </StackPanel>
@@ -40,6 +40,7 @@
                     <Setter Property="Opacity" Value="0.8"/>
                     <Setter Property="FontSize" Value="24"/>
                     <Setter Property="AllowDrop" Value="True"/>
+                    <Setter Property="Cursor" Value="Hand"/>
                     <Setter Property="BorderThickness" Value="3"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
