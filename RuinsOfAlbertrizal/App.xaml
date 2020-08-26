@@ -88,6 +88,11 @@
             <Setter Property="Margin" Value="-1"/>
             <Setter Property="Width" Value="100"/>
         </Style>
+        <Style x:Key="buttonIcon" TargetType="Button" BasedOn="{StaticResource default}">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
         
         <!--Label Styles-->
         <Style TargetType="Label">

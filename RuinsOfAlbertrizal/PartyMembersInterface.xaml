@@ -79,11 +79,11 @@
                     </StackPanel>
                 </Grid>
                 <Button Content="Equipt Items" Style="{StaticResource buttonSmallStretch}" FontSize="24" Tag="{Binding}" Click="InventoryBtn_Click"/>
-                
+
                 <!--<Button Content="Set as Active" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverterNOT}}" Style="{StaticResource buttonSmallStretch}" FontSize="24" Tag="{Binding}" Click="SetActiveBtn_Click_Add"/>
                 
                 <Button Content="Remove from Active" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverter}}" Style="{StaticResource buttonSmallStretch}" Tag="{Binding}" Click="SetActiveBtn_Click_Remove"/>-->
-                
+
                 <StackPanel Orientation="Horizontal" Visibility="{Binding Path=IsActive, Converter={StaticResource BoolToVisibilityConverter}}">
                     <Label Content="Active: In Position" FontSize="18" Margin="0"/>
                     <Label Content="{Binding Path=DisplayActiveIndex}" FontWeight="Bold" FontSize="18" Margin="0"/>
@@ -146,17 +146,29 @@
     </Page.Resources>
 
     <Grid Background="DarkGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition MaxHeight="70"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+
+        <StackPanel>
+            <Button Click="FormationBtn_Click" Style="{StaticResource buttonIcon}" ToolTip="Formation">
+                <Image Source="assets/formation.png"/>
+            </Button>
+            <Button Tag="[back]" Click="Navigate" Style="{StaticResource buttonIcon}" ToolTip="Back">
+                <Image Source="assets/back.png"/>
+            </Button>
+        </StackPanel>
+
+
+        <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10">
             <!--<StackPanel x:Name="PartyMembersStackPanel" Orientation="Horizontal"/>-->
             <ItemsControl x:Name="PartyMembersItemsControl" ItemsSource="{Binding}" ItemTemplate="{StaticResource partyMembersTemplate}" Style="{StaticResource horzontalItemControl}"/>
         </ScrollViewer>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <Button Content="Formation" Click="FormationBtn_Click"/>
-            <Button Content="Back" Tag="[back]" Click="Navigate"/>
-        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"/>
     </Grid>
 </local:BasePage>

@@ -429,7 +429,6 @@
     <Folder Include="UserCampaign\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="assets\Other\Shotguns.jpg" />
     <Resource Include="assets\Other\TitleImage2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -460,6 +459,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="assets\radiusOfEffect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\formation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\back.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
