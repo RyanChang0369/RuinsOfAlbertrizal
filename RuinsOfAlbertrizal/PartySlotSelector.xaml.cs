@@ -27,19 +27,6 @@ namespace RuinsOfAlbertrizal
 
         private Border SelectedBorder { get; set; }
 
-        //private bool PartySelected { get; set; }
-
-        //private SolidColorBrush PartyBorderBrush
-        //{
-        //    get
-        //    {
-        //        if (PartySelected)
-        //            return new SolidColorBrush(Colors.Red);
-        //        else
-        //            return new SolidColorBrush(Colors.Transparent);
-        //    }
-        //}
-
         public PartySlotSelector()
         {
             InitializeComponent();
