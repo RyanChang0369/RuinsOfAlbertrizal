@@ -229,6 +229,7 @@
                 </Grid>
             </Grid>
         </Grid>
+        
         <Grid x:Name="Overlay">
             <Grid.Resources>
                 <Style TargetType="Border">
