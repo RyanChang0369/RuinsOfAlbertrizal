@@ -33,7 +33,7 @@
 
         <Image Grid.Column="1" Source="{Binding Path=CurrentLevel.WorldImgAsBitmapSource}" Style="{StaticResource fill}"/>
 
-        <Grid x:Name="SlotGrid" Grid.Column="1" Style="{StaticResource center}" Width="200" Height="400">
+        <Grid x:Name="SlotGrid" Grid.Column="1" Style="{StaticResource center}" Width="1000" Height="400" ShowGridLines="True">
             <Grid.Resources>
                 <Style TargetType="Label">
                     <Setter Property="Background" Value="Snow"/>
@@ -47,6 +47,18 @@
                     <EventSetter Event="Drop" Handler="Slot_Drop"/>
                 </Style>
             </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -54,10 +66,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Label Content="[Empty]" Tag="0" ToolTip="Then click to set slot 1"/>
-            <Label Content="[Empty]" Tag="1" Grid.Row="1" ToolTip="Then click to set slot 2"/>
-            <Label Content="[Empty]" Tag="2" Grid.Row="2" ToolTip="Then click to set slot 3"/>
-            <Label Content="[Empty]" Tag="3" Grid.Row="3" ToolTip="Then click to set slot 4"/>
+            <Label Content="Slot 1&#xD;[Empty]" Tag="0" Grid.Column="4" ToolTip="Then click to set slot 1"/>
+            <Label Content="Slot 2&#xD;[Empty]" Tag="1" Grid.Column="4" Grid.Row="1" ToolTip="Then click to set slot 2"/>
+            <Label Content="Slot 3&#xD;[Empty]" Tag="2" Grid.Column="4" Grid.Row="2" ToolTip="Then click to set slot 3"/>
+            <Label Content="Slot 4&#xD;[Empty]" Tag="3" Grid.Column="4" Grid.Row="3" ToolTip="Then click to set slot 4"/>
         </Grid>
     </Grid>
 </Window>

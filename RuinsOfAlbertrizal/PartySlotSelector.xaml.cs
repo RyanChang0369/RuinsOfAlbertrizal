@@ -118,7 +118,7 @@ namespace RuinsOfAlbertrizal
             }
             else
             {
-                lbl.Content = "[Empty]";
+                lbl.Content = $"Slot {(int)lbl.Tag + 1}\r\n[Empty]";
             }
 
             DeselectAllSlots();
@@ -126,7 +126,7 @@ namespace RuinsOfAlbertrizal
 
         private void Slot_Drop(object sender, DragEventArgs e)
         {
-
+            Slot_MouseDown(sender, null);
         }
     }
 }
